@@ -6,4 +6,4 @@ This documentation is unofficial and produced by the BeamMP Mod Team and the Bea
 
 ## Snippets
 
-Helpful code snippets can be found here: [Lua Snippets](lua-snippets.md)
+Helpful code snippets can be found here: [Lua Snippets](/en/game-documentation/snippets/lua-snippets)

@@ -62,7 +62,7 @@ function onPlayerAuth(playerName, playerRole, isGuest, identifiers)
 end
 ```
 
-关于BeamMP服务端函数的详细信息请查阅[最新版服务端技术文档](../../../scripting/server/latest-server-reference.md)
+关于BeamMP服务端函数的详细信息请查阅[最新版服务端技术文档](/zh/developers/beammp-scripting/server/latest)
 
 ## 客户端 lua
 

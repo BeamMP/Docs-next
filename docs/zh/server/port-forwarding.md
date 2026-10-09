@@ -179,7 +179,7 @@ admin | password
 
 找到路由器的端口转发设置后，即可开始输入必要信息。路由器会提供输入区域用于填写需要转发的端口号以及对应的目标IP地址。若路由器同时显示内部端口和外部端口选项，请确保填写相同的端口号以保持一致。
 
-BeamMP 需要同时开放 UDP 和 TCP 协议的 30814 端口（除非您已在 [ServerConfig.toml](create-a-server.md#4-configuration) 配置文件中修改过此端口）。
+BeamMP 需要同时开放 UDP 和 TCP 协议的 30814 端口（除非您已在 [ServerConfig.toml](/zh/server-owners/host-a-server#4-configuration) 配置文件中修改过此端口）。
 
 ::: info 注意
 
@@ -214,5 +214,5 @@ BeamMP 需要同时开放 UDP 和 TCP 协议的 30814 端口（除非您已在 [
 :::
 
 ::: failure status: error
-如果连接完全失败，您的ISP可能正在使用CGNAT（运营商级网络地址转换）。有关更多详细信息，请查看[如何检查CGNAT？](../FAQ/How-to-check-for-CGNAT.md)，或者在我们的[Discord服务器](https://discord.gg/beammp)的`#support`频道中提交服务器支持工单，我们的工作人员会处理您的工单！如果您只看到TCP工作而UDP失败，请再次检查防火墙和端口转发规则。
+如果连接完全失败，您的ISP可能正在使用CGNAT（运营商级网络地址转换）。有关更多详细信息，请查看[如何检查CGNAT？](/zh/server-owners/cgnat)，或者在我们的[Discord服务器](https://discord.gg/beammp)的`#support`频道中提交服务器支持工单，我们的工作人员会处理您的工单！如果您只看到TCP工作而UDP失败，请再次检查防火墙和端口转发规则。
 :::

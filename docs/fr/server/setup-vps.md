@@ -16,7 +16,7 @@ Les serveurs sont un élément essentiel de BeamMP : ils permettent aux joueurs 
 
 Vous pouvez créer des serveurs privés, accessibles uniquement aux personnes que vous invitez, ou des serveurs publics, qui apparaîtront dans notre liste officielle des serveurs.
 
-La mise en place d’un serveur se fait en quelques étapes. Si vous rencontrez un problème, n’hésitez pas à demander de l’aide sur notre [forum](https://forum.beammp.com) ou sur notre [serveur Discord](https://discord.gg/beammp), dans le canal `❔-support`. Consultez également la section [« Maintenance du serveur »](server-maintenance.md) pour plus d’informations.
+La mise en place d’un serveur se fait en quelques étapes. Si vous rencontrez un problème, n’hésitez pas à demander de l’aide sur notre [forum](https://forum.beammp.com) ou sur notre [serveur Discord](https://discord.gg/beammp), dans le canal `❔-support`. Consultez également la section [« Maintenance du serveur »](/fr/server-owners/maintenance) pour plus d’informations.
 
 Avant toute utilisation, veuillez lire la [licence](https://raw.githubusercontent.com/BeamMP/BeamMP-Server/master/LICENSE) du serveur.
 
@@ -119,7 +119,7 @@ Le panneau de gestion comporte plusieurs champs à remplir. Certains peuvent êt
 
 Avec l’`AuthKey` copiée dans votre presse-papiers, recherchez le champ **« Authkey »** dans le panneau de gestion et collez-y la clé.
 
-Donnez également un **nom** et une **description** à votre serveur. Pour personnaliser leur apparence, notamment avec des couleurs, consultez [la section « Personnalisation du nom »](server-maintenance.md#customize-the-look-of-your-server-name) de la page consacrée à la maintenance du serveur.
+Donnez également un **nom** et une **description** à votre serveur. Pour personnaliser leur apparence, notamment avec des couleurs, consultez [la section « Personnalisation du nom »](/fr/server-owners/maintenance#customize-the-look-of-your-server-name) de la page consacrée à la maintenance du serveur.
 
 #### **3.1. Vérification**
 
@@ -149,7 +149,7 @@ Ils seront automatiquement téléchargés par les joueurs qui rejoignent votre s
 
 #### **4.2. Cartes**
 
-Toutes les cartes par défaut (c’est-à-dire les cartes qui ne sont pas des mods) fonctionnent directement et ne nécessitent aucune installation. Il vous suffit de modifier le paramètre `Map` dans le panneau de gestion et de choisir l’une des [cartes disponibles](server-maintenance.md#all-vanilla-maps-names).
+Toutes les cartes par défaut (c’est-à-dire les cartes qui ne sont pas des mods) fonctionnent directement et ne nécessitent aucune installation. Il vous suffit de modifier le paramètre `Map` dans le panneau de gestion et de choisir l’une des [cartes disponibles](/fr/server-owners/maintenance#all-vanilla-maps-names).
 
 Pour les autres cartes modifiées, procédez comme suit :
 

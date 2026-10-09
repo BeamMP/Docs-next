@@ -8,4 +8,4 @@ Cette documentation est non officielle. Elle est maintenue par l’équipe de d�
 
 ## Extraits de code
 
-Vous trouverez ici des extraits de code utiles : [Extraits Lua](lua-snippets.md).
+Vous trouverez ici des extraits de code utiles : [Extraits Lua](/fr/game-documentation/snippets/lua-snippets).

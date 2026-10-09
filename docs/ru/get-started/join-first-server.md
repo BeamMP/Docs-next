@@ -117,7 +117,7 @@ cd ~/beammp-launcher
 
 Если вы хотите использовать родной Linux BeamMP-Launcher вместе с BeamNG.drive, работающим через Proton, вы можете сделать это:
 
-Запустите BeamMP-Launcher, используя аргумент `--no-launch` (Это не позволит Launcher запустить собственный Linux BeamNG.drive). Дополнительную информацию об аргументах Launcher можно найти в [разделе Настройка среды разработки](../guides/beammp-dev/beammp-dev.md)
+Запустите BeamMP-Launcher, используя аргумент `--no-launch` (Это не позволит Launcher запустить собственный Linux BeamNG.drive). Дополнительную информацию об аргументах Launcher можно найти в [разделе Настройка среды разработки](/ru/developers/dev-environment-setup)
 
 Измените расположение пользовательской папки Proton-BeamNG.drive на расположение Linux-BeamNG.drive (поскольку собственный Linux BeamMP-Launcher в настоящее время записывает только в пользовательскую папку Linux-BeamNG.drive)
 

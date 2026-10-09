@@ -2,24 +2,7 @@
  "docs/de/FAQ/Clearing-mods.md": {
   "indented-container": 1
  },
- "docs/de/players/mod-safety.md": {
-  "indented-container": 1
- },
- "docs/de/server-owners/port-forwarding.md": {
-  "mkdocs-grid-cards": 1,
-  "mkdocs-icon": 5
- },
  "docs/de/server/port-forwarding.md": {
-  "mkdocs-grid-cards": 1,
-  "mkdocs-icon": 5
- },
- "docs/en/FAQ/Clearing-mods.md": {
-  "indented-container": 1
- },
- "docs/en/server-owners/host-a-server.md": {
-  "dead-link": 1
- },
- "docs/en/server-owners/port-forwarding.md": {
   "mkdocs-grid-cards": 1,
   "mkdocs-icon": 5
  },
@@ -32,9 +15,6 @@
  },
  "docs/en/server/setup-vps.md": {
   "dead-link": 1
- },
- "docs/fr/server-owners/host-a-server.md": {
-  "mkdocs-icon": 1
  },
  "docs/fr/server-owners/index.md": {
   "mkdocs-icon": 1
@@ -49,15 +29,7 @@
  "docs/ru/community/rules.md": {
   "mkdocs-icon": 1
  },
- "docs/ru/server-owners/port-forwarding.md": {
-  "mkdocs-grid-cards": 1,
-  "mkdocs-icon": 5
- },
  "docs/ru/server/port-forwarding.md": {
-  "mkdocs-grid-cards": 1,
-  "mkdocs-icon": 5
- },
- "docs/zh/server-owners/port-forwarding.md": {
   "mkdocs-grid-cards": 1,
   "mkdocs-icon": 5
  },

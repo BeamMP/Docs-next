@@ -45,10 +45,10 @@ features:
 
 ## Pour les Propriétaires de Serveur
 
-Vous envisagez de créer votre propre serveur BeamMP ? Notre guide [complet](../server/create-a-server.md) vous guidera à travers le processus. Veillez à ce que vous ayez tous les outils et connaissances nécessaires pour configurer votre serveur de manière efficace.
+Vous envisagez de créer votre propre serveur BeamMP ? Notre guide [complet](/fr/server-owners/host-a-server) vous guidera à travers le processus. Veillez à ce que vous ayez tous les outils et connaissances nécessaires pour configurer votre serveur de manière efficace.
 
 ## Pour les Développeurs
 
-Explorez tous les détails sur la création de ressources pour le serveur BeamMP dans notre [Guide de Développement de Ressources](../guides/mod-creation/server/getting-started.md).
+Explorez tous les détails sur la création de ressources pour le serveur BeamMP dans notre [Guide de Développement de Ressources](/fr/developers/mod-and-resource-creation).
 
 D'excitantes mises à jour sont à venir, notamment une toute nouvelle page d'accueil conçue pour améliorer votre expérience de navigation. Restez à l'écoute pour plus d'informations ! :slight_smile:

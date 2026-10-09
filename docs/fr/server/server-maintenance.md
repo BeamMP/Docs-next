@@ -4,7 +4,7 @@ Guides et astuces sur la façon de configurer et de prendre soin d'un serveur Be
 
 ## Comment installer
 
-Pour les instructions d'installation, veuillez consulter [l'installation du serveur](create-a-server.md).
+Pour les instructions d'installation, veuillez consulter [l'installation du serveur](/fr/server-owners/host-a-server) .
 
 ## Le fichier ServerConfig
 

@@ -8,4 +8,4 @@
 
 ## 片段
 
-对您可能有用的代码片段可以在这里找到： [Lua Snippets](lua-snippets.md)
+对您可能有用的代码片段可以在这里找到： [Lua Snippets](/zh/game-documentation/snippets/lua-snippets)

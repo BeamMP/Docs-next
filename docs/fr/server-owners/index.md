@@ -41,7 +41,7 @@ Nous ne sommes pas responsables du contenu des services ou sites web externes.
 
 Il est donc recommandé d'héberger un serveur avec l'un de nos services partenaires !
 
-*Veuillez consulter [ce guide sur la façon de rediriger un port](port-forwarding.md)*.
+*Veuillez consulter [ce guide sur la façon de rediriger un port](/fr/server-owners/port-forwarding)*.
 
 #### Services d'hébergement partenaires (payants) :
 

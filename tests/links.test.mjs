@@ -17,10 +17,11 @@ const PAIRS = [
 ]
 const FILES = [
   'en/index.md',
-  'en/game/getting-started.md', 'en/get-started/index.md',
-  'en/server/create-a-server.md', 'en/server-owners/host-a-server.md', 'en/server-owners/error-codes.md',
-  'en/FAQ/player-faq.md', 'en/players/faq.md', 'en/FAQ/game-faq.md',
-  'en/FAQ/Update-launcher.md', 'en/troubleshooting/launcher-update.md',
+  // One file per page, at its old path: the config serves it at its new one.
+  'en/game/getting-started.md',
+  'en/server/create-a-server.md', 'en/server-owners/error-codes.md',
+  'en/FAQ/player-faq.md', 'en/FAQ/game-faq.md',
+  'en/FAQ/Update-launcher.md',
   'de/FAQ/game-faq.md', 'de/support/game-faq.md', 'de/players/index.md', 'de/get-started/index.md',
 ]
 const index = buildIndex(FILES, PAIRS, undefined, ['FAQ/game-faq'])
@@ -36,10 +37,17 @@ test('the pages the sidebar links to are read, without the language or a trailin
 })
 
 test('links that work are left alone', () => {
-  assert.equal(resolves('en/FAQ/player-faq.md', 'game-faq.md', index), true)
-  assert.equal(resolves('en/FAQ/player-faq.md', './game-faq', index), true)
-  assert.equal(resolves('en/FAQ/player-faq.md', '/en/FAQ/game-faq', index), true)
-  assert.equal(repairLink('en/FAQ/player-faq.md', 'game-faq.md', index), null)
+  assert.equal(resolves('en/FAQ/game-faq.md', 'player-faq.md', index), false, 'player-faq is served at players/faq, not beside game-faq')
+  assert.equal(resolves('en/FAQ/game-faq.md', '/en/FAQ/game-faq', index), true)
+  assert.equal(resolves('en/FAQ/game-faq.md', '/en/players/faq', index), true, 'an address a page is served at')
+  assert.equal(resolves('en/FAQ/game-faq.md', '/en/FAQ/player-faq', index), false, 'the address it was served at before the rewrite')
+  assert.equal(repairLink('en/FAQ/game-faq.md', '/en/players/faq', index), null)
+})
+
+test('a relative link is read from where the page is served, not where its file is', () => {
+  // player-faq.md is served at en/players/faq, so `game-faq` would be en/players/game-faq
+  assert.equal(resolves('en/FAQ/player-faq.md', './game-faq', index), false)
+  assert.equal(repairLink('en/FAQ/player-faq.md', './game-faq', index), '/en/FAQ/game-faq')
 })
 
 test('other sites, anchors and mail links are never touched', () => {
@@ -98,8 +106,8 @@ test('the language is respected: a link never jumps to another language', () => 
 test('repairLinks fixes dead links in a page, counts them and lists the ones it could not fix', () => {
   const source = ['See [the guide](../../game/getting-started.md), [the FAQ](game-faq.md) and [missing](../../FAQ/How-to-deactivate-mods.md).', '', '[site](https://example.com)'].join('\n')
   const result = repairLinks(source, 'en/FAQ/player-faq.md', index)
-  assert.equal(result.fixed, 1)
-  assert.equal(result.text.split('\n')[0], 'See [the guide](/en/get-started/), [the FAQ](game-faq.md) and [missing](../../FAQ/How-to-deactivate-mods.md).')
+  assert.equal(result.fixed, 2)
+  assert.equal(result.text.split('\n')[0], 'See [the guide](/en/get-started/), [the FAQ](/en/FAQ/game-faq) and [missing](../../FAQ/How-to-deactivate-mods.md).')
   assert.deepEqual(result.unresolved, [{ line: 1, href: '../../FAQ/How-to-deactivate-mods.md' }])
 })
 

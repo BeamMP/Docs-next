@@ -4,7 +4,6 @@
 
 ::: details Show advanced options
 If enabled, you will see all multiplayer settings
-
 If disabled, you will see only basic multiplayer settings
 :::
 

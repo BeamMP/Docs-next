@@ -309,12 +309,12 @@ const legacyRewritePairs: Record<string, string> = {
   'beamng/imgui-snippets': 'game-documentation/snippets/imgui-snippets',
   'beamng/cef-snippets': 'game-documentation/snippets/cef-snippets',
 
-  contributing: 'community/contributing'
+  'contributing': 'community/contributing'
 }
 
 const rewrites = docsLocales.reduce<Record<string, string>>((acc, locale) => {
   for (const [from, to] of Object.entries(legacyRewritePairs)) {
-    acc[`${locale}/${from}`] = `${locale}/${to}`
+    acc[`${locale}/${from}.md`] = `${locale}/${to}.md`
   }
   return acc
 }, {})

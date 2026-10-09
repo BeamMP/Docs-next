@@ -12,10 +12,10 @@ Code | Beschreibung | Mögliche Lösung
 10052 | Netzwerk neugestartet | Tritt auf, wenn das Netzwerk die Verbindung verliert während eine Verbindung hergestellt wird. Versuche den Verbindungsaufbau erneut.
 10053 | Verbindung abgebrochen | Verursacht durch Zeitüberschreitung oder Netzwerkfehler. Versuche es erneut.
 10054 | Verbindung von Peer abgebrochen | Ein Client hat die Verbindung getrennt.
-10060 | Zeitüberschreitung der Verbindung | Es gibt ein Problem mit der Port Weiterleitng. Siehe [Port Weiterleitung](create-a-server.md#1-port-forwarding).
-10061 | Verbindung nicht zugelassen | Es gibt ein Problem mit der Port Weiterleitng. Siehe [Port Weiterleitung](create-a-server.md#1-port-forwarding).
+10060 | Zeitüberschreitung der Verbindung | Es gibt ein Problem mit der Port Weiterleitng. Siehe [Port Weiterleitung](/de/server-owners/host-a-server#1-port-forwarding).
+10061 | Verbindung nicht zugelassen | Es gibt ein Problem mit der Port Weiterleitng. Siehe [Port Weiterleitung](/de/server-owners/host-a-server#1-port-forwarding).
 10064 | Host nicht verfügbar | Unwahrscheinlicher Fehler, aber bedeutet, der Server ist nicht erreichbar.<br>Entweder weil der Server abgeschaltet ist, oder weil die Ports geschlossen wurden.
-10065 | Host nicht erreichbar | Kein Internet oder schlechtes Port Forwarding. Sieh dir die [Anleitung](create-a-server.md#1-port-forwarding) an.
+10065 | Host nicht erreichbar | Kein Internet oder schlechtes Port Forwarding. Sieh dir die [Anleitung](/de/server-owners/host-a-server#1-port-forwarding) an.
 
 ::: note
 Für codes, welche nicht in der Liste vorkommen, siehe [https://learn.microsoft.com/en-us/windows/win32/winsock/windows-sockets-error-codes-2](https://learn.microsoft.com/en-us/windows/win32/winsock/windows-sockets-error-codes-2) wenn du dich etwas mit Netzwerke / Sockets auskennst.

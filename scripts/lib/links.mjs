@@ -41,7 +41,15 @@ export function buildIndex(pageFiles, rewritePairs, locales = ['en', 'de', 'es',
     if (!byName.has(name)) byName.set(name, [])
     byName.get(name).push(page)
   }
-  return { pages, legacyToNew, newToLegacy, byName, locales, preferred: new Set(preferred) }
+  // The address each page is served at: a page named in the rewrites is served at its new path.
+  const servedPath = (page) => {
+    const locale = locales.find((l) => page.startsWith(l + '/'))
+    if (!locale) return page
+    const next = legacyToNew.get(page.slice(locale.length + 1))
+    return next ? `${locale}/${next}` : page
+  }
+  const served = new Set([...pages].map(servedPath))
+  return { pages, served, servedPath, legacyToNew, newToLegacy, byName, locales, preferred: new Set(preferred) }
 }
 
 const isExternal = (href) => /^<?(?:[a-z][a-z0-9+.-]*:|\/\/|#)/i.test(href)
@@ -68,14 +76,19 @@ function resolveRelative(fromDir, relative) {
   return parts.join('/')
 }
 
-/** Does VitePress find a page for this link? Same reading as its own dead link check. */
+/**
+ * Does VitePress find a page for this link? Same reading as its own dead link check:
+ * a relative link is read from where the linking page is served, which is not where
+ * its file is when the config rewrites it.
+ */
 export function resolves(fileRel, href, index) {
   if (isExternal(href)) return true
   const { path } = splitHref(href)
   if (!path) return true
   const url = normalize(path)
-  const target = url.startsWith('/') ? url.slice(1) : resolveRelative(fileRel.split('/').slice(0, -1).join('/'), url)
-  return index.pages.has(target) || /\.(png|jpe?g|gif|svg|webp|ico|css|js|json|pdf|zip|exe)$/i.test(path)
+  const servedFrom = index.servedPath(pagePath(fileRel))
+  const target = url.startsWith('/') ? url.slice(1) : resolveRelative(servedFrom.split('/').slice(0, -1).join('/'), url)
+  return index.served.has(target) || /\.(png|jpe?g|gif|svg|webp|ico|css|js|json|pdf|zip|exe)$/i.test(path)
 }
 
 const toHref = (pageRel, suffix) => '/' + pageRel.replace(/\/index$/, '/').replace(/^index$/, '') + suffix
@@ -117,22 +130,20 @@ export function repairLink(fileRel, href, index) {
     candidates.push(`${locale}/${stripped}`)
   }
 
-  const moved = (page) => {
-    if (!page.startsWith(locale + '/')) return page
-    const next = index.legacyToNew.get(page.slice(locale.length + 1))
-    return next && index.pages.has(`${locale}/${next}`) ? `${locale}/${next}` : page
-  }
+  const moved = (page) => index.servedPath(page)
 
   for (const candidate of candidates) {
     if (index.pages.has(candidate)) return toHref(moved(candidate), suffix)
     if (index.pages.has(candidate + '/index')) return toHref(moved(candidate + '/index'), suffix)
+    if (index.served.has(candidate)) return toHref(candidate, suffix)
+    if (index.served.has(candidate + '/index')) return toHref(candidate + '/index', suffix)
   }
 
   // A moved page, named by its old path, whose old file no longer exists.
   for (const candidate of candidates) {
     const withoutLoc = candidate.startsWith(locale + '/') ? candidate.slice(locale.length + 1) : candidate
     const next = index.legacyToNew.get(withoutLoc) || index.legacyToNew.get(withoutLoc.replace(/\/index$/, ''))
-    if (next && index.pages.has(`${locale}/${next}`)) return toHref(`${locale}/${next}`, suffix)
+    if (next && index.served.has(`${locale}/${next}`)) return toHref(`${locale}/${next}`, suffix)
   }
 
   // A moved page named by the name it had: `.../player-faq` is now `players/faq`. (A trailing
@@ -140,7 +151,7 @@ export function repairLink(fileRel, href, index) {
   const name = path.replace(/[?#].*$/, '').split('/').filter(Boolean).pop()?.replace(/\.(html|md)$/, '')
   if (name) {
     const oldNames = [...index.legacyToNew].filter(([legacy]) => legacy.split('/').pop() === name)
-    const live = oldNames.map(([, next]) => `${locale}/${next}`).filter((page) => index.pages.has(page))
+    const live = oldNames.map(([, next]) => `${locale}/${next}`).filter((page) => index.served.has(page))
     if (live.length === 1) return toHref(live[0], suffix)
   }
 

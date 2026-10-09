@@ -86,4 +86,4 @@ When the The Hello World Button button is pressed, the counter below it will upd
 
 ## Download
 
-This tutorial is almost entirely based off of [StanleyDudek](https://github.com/StanleyDudek)'s ImGui example mod. You can download this example mod [here](../../../../assets/content/imguiExample.zip).
+This tutorial is almost entirely based off of [StanleyDudek](https://github.com/StanleyDudek)'s ImGui example mod. You can download this example mod [here](../../../../../assets/content/imguiExample.zip).

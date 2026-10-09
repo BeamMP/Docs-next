@@ -218,7 +218,7 @@ Votre routeur doit vous permettre d’indiquer les ports à rediriger ainsi que 
 
 Si votre routeur distingue les **ports internes** et **externes**, utilisez le même numéro pour les deux.
 
-BeamMP utilise par défaut le port **30814** en **TCP et UDP**, sauf si vous avez modifié ce paramètre dans votre [fichier `ServerConfig.toml`](create-a-server.md#4-configuration).
+BeamMP utilise par défaut le port **30814** en **TCP et UDP**, sauf si vous avez modifié ce paramètre dans votre [fichier `ServerConfig.toml`](/fr/server-owners/host-a-server#4-configuration).
 
 ::: info À noter
 Le port par défaut est **30814**, mais vous pouvez choisir n’importe quel autre port compris entre `1025` et `65534`.
@@ -269,7 +269,7 @@ Comme vous hébergez le serveur sur votre propre réseau, utilisez `127.0.0.1` (
 ::: failure status: error
 Si la connexion échoue complètement, votre fournisseur d’accès à Internet utilise peut-être un **CGNAT (Carrier-Grade Network Address Translation)**.
 
-Pour plus d’informations, consultez [« Comment vérifier si vous êtes derrière un CGNAT ? »](../FAQ/How-to-check-for-CGNAT.md).
+Pour plus d’informations, consultez [« Comment vérifier si vous êtes derrière un CGNAT ? »](/fr/server-owners/cgnat).
 
 Vous pouvez également ouvrir un **ticket d’assistance serveur** sur notre [serveur Discord](https://discord.gg/beammp), dans le canal `#support`. Un membre de notre équipe pourra alors vous aider.
 

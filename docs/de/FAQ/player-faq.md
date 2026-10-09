@@ -19,4 +19,4 @@ Bitte habe Geduld. Es kann ein paar Stunden, manchmal bis zu 12, dauern damit da
 
 ## Ich habe weitere Fragen!
 
-Wenn deine Frage oder dein Problem sich auf BeamMP oder das Spielen bezieht, sieh dir das [Spiel FAQs](game-faq.md) an. Wenn deine Frage oder dein Problem in Relation zum hosten eines Servers steht, verweisen wir auf die [Server FAQs](server-faq.md). Andernfalls prüfe die [Forums](https://forum.beammp.com/c/faq/35) wo die Community Fragen stellen und Antworten erhalten kann.
+Wenn deine Frage oder dein Problem sich auf BeamMP oder das Spielen bezieht, sieh dir das [Spiel FAQs](/de/FAQ/game-faq) an. Wenn deine Frage oder dein Problem in Relation zum hosten eines Servers steht, verweisen wir auf die [Server FAQs](/de/server-owners/faq). Andernfalls prüfe die [Forums](https://forum.beammp.com/c/faq/35) wo die Community Fragen stellen und Antworten erhalten kann.

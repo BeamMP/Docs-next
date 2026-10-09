@@ -207,7 +207,7 @@ Find the port forwarding section in your router web interface. Navigate around i
 Once you find your router's port forwarding section, you are ready to enter the necessary information.
 Your router will have a place to enter the ports to be forwarded and the destination IP address to point those forwarded ports. If your router lists both Internal and External ports, make them the same. 
 
-BeamMP requires both UDP and TCP port 30814 (Unless you have changed this in your [ServerConfig.toml](create-a-server.md#4-configuration)). 
+BeamMP requires both UDP and TCP port 30814 (Unless you have changed this in your [ServerConfig.toml](/en/server-owners/host-a-server#4-configuration)). 
 
 ::: info Note
 While the default **Port** is **30814**, you can choose any other number greater than 1024 but less than 65535, but you need to note down what you picked if it's not 30814\. You need to forward both **TCP** and **UDP**.
@@ -247,7 +247,7 @@ Since you are hosting a server on-premise, use 127.0.0.1 (localhost) if the Serv
 :::
 
 ::: failure status: error
-If the connection fails entirely, your ISP could be using CGNAT (Carrier Grade Network Address Translation). For more details, please check [How to check for CGNAT?](../FAQ/How-to-check-for-CGNAT.md),
-or open a Server Support ticket on our [Discord server](https://discord.gg/beammp) in the `#support` channel and one of our staff will get to your ticket!
-Should you only see TCP working and UDP failing, check Firewall and Port forwarding rules again.
+If the connection fails entirely, your ISP could be using CGNAT (Carrier Grade Network Address Translation). For more details, please check [How to check for CGNAT?](../server-owners/cgnat.md),
+  or open a Server Support ticket on our [Discord server](https://discord.gg/beammp) in the `#support` channel and one of our staff will get to your ticket!
+  Should you only see TCP working and UDP failing, check Firewall and Port forwarding rules again.
 :::

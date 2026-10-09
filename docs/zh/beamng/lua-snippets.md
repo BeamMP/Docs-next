@@ -275,7 +275,7 @@ guihooks.trigger("introPopupCareer", {
 guihooks.trigger("introPopupClose")
 ```
 
-<figure class="image image_resized" style="width:75%" markdown="">   !在 BeamNG.drive 中显示的introPopupCareer代码片段](../../assets/content/introPopupCareer.png) </figure>
+<figure class="image image_resized" style="width:75%" markdown="">   !在 BeamNG.drive 中显示的introPopupCareer代码片段](../assets/content/introPopupCareer.png) </figure>
 
 如果提供了多个页面，或者该Hook被多次触发，这些页面将被合并到同一个弹出窗口中。<br>如果在一个introPopup处于活动状态时触发了该钩子，或者已经触发了另一种不同类型的introPopup，那么它将在当前窗口关闭后，通过一个独立的弹出窗口进行显示。
 

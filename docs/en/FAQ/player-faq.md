@@ -20,6 +20,6 @@ Please be patient, it can take a few hours, sometimes up to 12, for the system t
 
 ## I have more questions!
 
-If your question or issue relates to the Game or playing please refer to the [Game FAQs](game-faq.md). 
-If your question or issue relates to running a Server please refer to the [Server FAQs](server-faq.md).
+If your question or issue relates to the Game or playing please refer to the [Game FAQs](/en/FAQ/game-faq). 
+If your question or issue relates to running a Server please refer to the [Server FAQs](/en/server-owners/faq).
 Otherwise please check out the [forums](https://forum.beammp.com/c/faq/35) where the community can ask questions and get answers.

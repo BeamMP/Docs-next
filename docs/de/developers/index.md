@@ -45,7 +45,7 @@ features:
 
 ## Für Serverbesitzer
 
-Du möchtest deinen eigenen BeamMP-Server erstellen? Unsere umfassende Anleitung [hier](../server/create-a-server.md) führt dich durch den Prozess und stellt sicher, dass du alle notwendigen Werkzeuge und Kenntnisse für die effiziente Konfiguration deines Servers zur Verfügung hast.
+Du möchtest deinen eigenen BeamMP-Server erstellen? Unsere umfassende Anleitung [hier](/de/server-owners/host-a-server) führt dich durch den Prozess und stellt sicher, dass du alle notwendigen Werkzeuge und Kenntnisse für die effiziente Konfiguration deines Servers zur Verfügung hast.
 
 ## Für Entwickler
 

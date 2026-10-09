@@ -183,7 +183,7 @@ Suche den Abschnitt zur Portweiterleitung in der Weboberfläche deines Routers. 
 
 Sobald du den Bereich für die Portweiterleitung gefunden hast, kannst du die erforderlichen Informationen eingeben. Dein Router bietet dir die Möglichkeit, die weiterzuleitenden Ports und die Ziel-IP-Adresse für diese Portweiterleitung einzugeben. Wenn dein Router sowohl interne als auch externe Ports angibt, achte darauf, dass diese identisch sind.
 
-BeamMP erfordert sowohl UDP- als auch TCP-Port 30814 (es sei denn, du hast diesen in deiner [ServerConfig.toml](create-a-server.md#4-configuration) geändert).
+BeamMP erfordert sowohl UDP- als auch TCP-Port 30814 (es sei denn, du hast diesen in deiner [ServerConfig.toml](/de/server-owners/host-a-server#4-configuration) geändert).
 
 ::: info Hinweis
 
@@ -220,7 +220,7 @@ Da du einen Server vor Ort hostest, verwenden 127.0.0.1 (localhost), wenn der Se
 :::
 
 ::: failure status: error
-Wenn die Verbindung vollständig fehlschlägt, verwendet dein Anbieter möglicherweise CGNAT (Carrier Grade Network Address Translation). Weitere Informationen findest du unter [Wie kann ich auf CGNAT prüfen?](../FAQ/How-to-check-for-CGNAT.md),
+Wenn die Verbindung vollständig fehlschlägt, verwendet dein Anbieter möglicherweise CGNAT (Carrier Grade Network Address Translation). Weitere Informationen findest du unter [Wie kann ich auf CGNAT prüfen?](/de/server-owners/cgnat),
 oder öffne ein Server-Support-Ticket auf unserem [Discord-Server](https://discord.gg/beammp) im Kanal „#support“ und einer unserer Mitarbeiter wird sich um dein Ticket kümmern!
 Wenn du nur siehst, dass TCP funktioniert und UDP fehlschlägt, überprüfe die Firewall- und Portweiterleitungsregeln erneut.
 :::

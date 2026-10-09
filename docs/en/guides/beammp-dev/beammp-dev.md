@@ -67,7 +67,7 @@ Feel free to ask in the #scripting channel in our [Discord](https://discord.gg/b
 ---
 # Setting up a local server
 
-While working on BeamMP, it can be beneficial to use a local server. You can follow the general [server installation](../../server/create-a-server.md) while omitting the first two steps for purely local connections.
+While working on BeamMP, it can be beneficial to use a local server. You can follow the general [server installation](/en/server-owners/host-a-server) while omitting the first two steps for purely local connections.
 
 Set the server to private in the `serverConfig.toml` while using any string as the `AuthKey`.
 

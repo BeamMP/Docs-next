@@ -15,7 +15,7 @@ Vous pouvez créer des serveurs privés, auxquels seules les personnes que vous 
 
 Mettre en place un serveur se fait en quelques étapes !
 - Si vous rencontrez des problèmes, n'hésitez pas à nous contacter sur notre [forum](https://forum.beammp.com) ou sur notre [serveur Discord](https://discord.gg/beammp) dans le canal `❔-support` . 
-- Consultez également la section [maintenance du serveur](server-maintenance.md) pour plus d'informations.
+- Consultez également la section [maintenance du serveur](/fr/server-owners/maintenance) pour plus d'informations.
 
 Veuillez vous assurer d’avoir lu la [LICENCE](https://raw.githubusercontent.com/BeamMP/BeamMP-Server/master/LICENSE) du serveur avant toute utilisation.
 
@@ -213,7 +213,7 @@ Pour notre exemple de clé, cela devrait alors ressembler à ceci :
 AuthKey = '3173a2e-6az0-4542-a3p0-ddqq5ff95558'
 ```
 
-Donnez également un nom à votre serveur dans le champ `Name`. Vous pouvez personnaliser son apparence en ajoutant des couleurs et d’autres options. Pour plus d’informations, consultez la section [Personnalisation du nom](server-maintenance.md#customize-the-look-of-your-server-name) de la page dédiée à la maintenance du serveur.
+Donnez également un nom à votre serveur dans le champ `Name`. Vous pouvez personnaliser son apparence en ajoutant des couleurs et d’autres options. Pour plus d’informations, consultez la section [Personnalisation du nom](/fr/server-owners/maintenance#customize-the-look-of-your-server-name) de la page dédiée à la maintenance du serveur.
 
 
 Si vous avez choisi un **port** différent de **30814** , assurez-vous de le remplacer dans le champ `Port`.

@@ -14,7 +14,7 @@
 
 你可以制作私人服务器，只有你邀请的人才能加入，或者设置为公共服务器，显示在我们的官方服务器列表中。
 
-让服务器上线运行需要经过几个步骤！如果遇到任何问题，可以随时在我们的 [论坛](https://forum.beammp.com) 或 [Discord 服务器](https://discord.gg/beammp) 的 `#support` 频道提问。更多信息也可参考 [服务器维护](server-maintenance.md) 部分。
+让服务器上线运行需要经过几个步骤！如果遇到任何问题，可以随时在我们的 [论坛](https://forum.beammp.com) 或 [Discord 服务器](https://discord.gg/beammp) 的 `#support` 频道提问。更多信息也可参考 [服务器维护](/zh/server-owners/maintenance) 部分。
 
 请在使用服务器前务必阅读 [许可协议](https://raw.githubusercontent.com/BeamMP/BeamMP-Server/master/LICENSE)。
 
@@ -186,7 +186,7 @@ ResourceFolder = "Resources"
 ```
 
 ::: info
-这是您的配置文件。它采用了一种名为 TOML的格式。有关该文件及其变量的更多信息，请参考 [Server Maintenance（服务器维护）](server-maintenance.md) 章节。
+这是您的配置文件。它采用了一种名为 TOML的格式。有关该文件及其变量的更多信息，请参考 [Server Maintenance（服务器维护）](/zh/server-owners/maintenance) 章节。
 
 只要设置了`Private = true`，您的服务器就不会出现在服务器列表中。如果您希望服务器在列表中显示，请将其设置为`Private = false`。
 :::
@@ -199,7 +199,7 @@ ResourceFolder = "Resources"
 AuthKey = '3173a2e-6az0-4542-a3p0-ddqq5ff95558'
 ```
 
-同时，请在`Name`字段中为您的服务器命名。您可以为其设置颜色或其他样式，具体请参考服务器维护页面中关于[名称自定义的章节](server-maintenance.md#customize-the-look-of-your-server-name)。
+同时，请在`Name`字段中为您的服务器命名。您可以为其设置颜色或其他样式，具体请参考服务器维护页面中关于[名称自定义的章节](/zh/server-owners/maintenance#customize-the-look-of-your-server-name)。
 
 如果你选择了除 **30814** 之外的其他 **端口**，请确保在 `Port` 下进行替换。
 
@@ -229,7 +229,7 @@ AuthKey = '3173a2e-6az0-4542-a3p0-ddqq5ff95558'
 
 #### 5.2 地图
 
-所有默认地图（非模组的地图）都可以开箱即用，无需安装。您只需在 `ServerConfig.toml` 文件中将 `Map` 设置更改为 [这些](server-maintenance.md#all-vanilla-maps-names) 中的任意一个。对于任何其他模组地图，请执行以下操作：
+所有默认地图（非模组的地图）都可以开箱即用，无需安装。您只需在 `ServerConfig.toml` 文件中将 `Map` 设置更改为 [这些](/zh/server-owners/maintenance#all-vanilla-maps-names) 中的任意一个。对于任何其他模组地图，请执行以下操作：
 
 1. 将你的地图 `.zip` 文件放入服务器的 (`Resources/Client`) 文件夹中。
 2. 接下来，查看地图的 zip 文件内容（不要解压），并打开 `levels` 文件夹。在此文件夹中，应仅有一个以地图名称命名的子文件夹，例如 “myawesomedriftmap2021”。请确保 *完全按照该文件夹的名称复制或记住这个名称*。

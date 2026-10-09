@@ -112,7 +112,7 @@ cd ~/beammp-launcher
 
 若您需要在Proton环境运行BeamNG.drive时同步使用原生Linux版BeamMP启动器，可通过以下方案实现：
 
-使用`--no-launch`参数运行BeamMP-Launcher（此参数将阻止启动器唤起原生Linux版BeamNG.drive）。更多启动器参数详解请参阅[开发环境配置指南](../guides/beammp-dev/beammp-dev.md)
+使用`--no-launch`参数运行BeamMP-Launcher（此参数将阻止启动器唤起原生Linux版BeamNG.drive）。更多启动器参数详解请参阅[开发环境配置指南](/zh/developers/dev-environment-setup)
 
 将Proton-BeamNG.drive的用户文件夹路径指向Linux-BeamNG.drive的位置（因原生Linux版BeamMP-Launcher当前仅支持向Linux-BeamNG.drive用户文件夹写入数据）
 
