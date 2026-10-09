@@ -1,57 +1,46 @@
----
-layout: home
+# Contribuir a la documentación de BeamMP
 
-hero:
-  name: Documentación de BeamMP
-  text: Todo lo que necesitas saber
-  tagline: Guías completas para jugadores, propietarios de servidores y desarrolladores
-  image:
-    light: /assets/core/beammp_dark.png
-    dark: /assets/core/beammp_light.png
-    alt: BeamMP
-  actions:
-    - theme: brand
-      text: Comenzar
-      link: /es/game/getting-started
-    - theme: alt
-      text: Ver en GitHub
-      link: https://github.com/beammp/docs
+BeamMP usa [Material for MkDocs](https://squidfunk.github.io/mkdocs-material) como tema. Es un tema para [MkDocs](https://www.mkdocs.org).
+La documentación completa se encuentra en sus respectivos sitios web.
 
-features:
-  - icon: 🎮
-    title: Para Jugadores
-    details: Aprende cómo instalar BeamMP, conectarte a servidores y aprovechar al máximo tu experiencia multijugador
-    link: /es/game/getting-started
-  - icon: 🖥️
-    title: Para Propietarios de Servidores
-    details: Configura y administra tu propio servidor BeamMP con nuestras guías completas y recursos de solución de problemas
-    link: /es/server/create-a-server
-  - icon: 💻
-    title: Para Desarrolladores
-    details: Crea mods, recursos y aplicaciones de interfaz de usuario con documentación detallada de API y ejemplos de código
-    link: /es/guides/index
-  - icon: ❓
-    title: Preguntas Frecuentes
-    details: Encuentra respuestas rápidas a preguntas frecuentes sobre configuración, solución de problemas y mejores prácticas
-    link: /es/FAQ/player-faq
-  - icon: 📋
-    title: Reglas de la Comunidad
-    details: Aprende sobre nuestras directrices de la comunidad y cómo reportar problemas o apelar decisiones
-    link: /es/community/rules
-  - icon: 🔗
-    title: Comunidad
-    details: Únete a nuestro Discord, síguenos en redes sociales y conecta con otros jugadores y desarrolladores de BeamMP
-    link: /es/community/index
----
+## Primeros pasos
 
-¿Nuevo en BeamMP? Échale un vistazo [Cómo Empezar](/es/get-started/) para ayudarte a tocar la carretera y hacer la mayoría de tus aventuras en multijugador. Para preguntas generales y problemas, por favor échale un ojo a [Players FAQ](/es/players/faq).
+Para contribuir a esta documentación puedes seguir uno de los dos enfoques que se describen a continuación:
 
-## Para Propietarios de Servidor
+### 1. Editar directamente los archivos Markdown
 
-¿Pensando en crear tu propio servidor de BeamMP? Nuestra [guía comprensiva](/es/server-owners/host-a-server) te ayudará a través del proceso, asegurándose de que tengas todas las herramientas y conocimientos necesarios para para configurar tu servidor eficientemente.
+Editar directamente los archivos Markdown es el enfoque más rápido y el más adecuado para ediciones puntuales, como correcciones ortográficas o gramaticales, o nuevos fragmentos de contenido. 
+Eso sí, este enfoque requiere conocimientos previos de Markdown, ya que necesitarás entender qué resultado producirá tu contribución.
 
-## Para Desarrolladores
+Si quieres seguir este enfoque, sigue estos pasos:
 
-Descubre los entresijos de la creación de recursos para los Servidores de BeamMP en nuestra [Guía de Desarrollo de Recursos](/es/developers/mod-and-resource-creation).
+1. Haz clic en editar en la página que quieras modificar.
+2. Haz un fork del proyecto en tu propia cuenta de GitHub.
+3. Realiza los cambios que consideres oportunos.
+4. Haz commit de tus cambios en tu fork.
+5. Abre un pull request contra nuestro repositorio [aquí](https://github.com/BeamMP/Docs).
 
-Emocionantes actualizaciones están en camino, incluyendo una nueva página de inicio diseñada para mejorar tu experiencia de navegación. ¡Mantente al tanto para más novedades! :slight_smile:
+Una vez creado tu pull request, un miembro del equipo de moderación de mods de BeamMP lo revisará y lo aprobará o solicitará algunos cambios.
+Si se solicitaron cambios y ya los has completado, volveremos a revisar tu pull request.
+Después, tus cambios se fusionarán en el repositorio y se desplegarán automáticamente como parte de nuestra integración continua.
+
+### 2. Editar con vista previa en directo
+
+Editar nuestra documentación de esta forma sigue un enfoque similar al de la opción 1, pero te permite previsualizar tus cambios.
+
+1. Haz clic en editar en la página que quieras modificar.
+2. Haz un fork del proyecto en tu propia cuenta de GitHub.
+3. Clona el proyecto en local.
+4. Configura Material for MkDocs siguiendo su guía [aquí](https://squidfunk.github.io/mkdocs-material/getting-started/)
+5. Ejecuta `mkdocs serve` desde la carpeta donde clonaste el fork para iniciar el servidor de documentación con recarga automática.
+6. Realiza los cambios que consideres oportunos.
+7. Haz commit de tus cambios en tu fork.
+8. Abre un pull request contra nuestro repositorio [aquí](https://github.com/BeamMP/Docs).
+
+
+## Estructura del proyecto
+
+    mkdocs.yml    # El archivo de configuración.
+    docs/
+        index.md  # La página de inicio de la documentación.
+        ...       # Otras páginas Markdown, imágenes y otros archivos.

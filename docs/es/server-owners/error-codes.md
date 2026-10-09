@@ -1,57 +1,22 @@
----
-layout: home
+# Códigos de error
 
-hero:
-  name: Documentación de BeamMP
-  text: Todo lo que necesitas saber
-  tagline: Guías completas para jugadores, propietarios de servidores y desarrolladores
-  image:
-    light: /assets/core/beammp_dark.png
-    dark: /assets/core/beammp_light.png
-    alt: BeamMP
-  actions:
-    - theme: brand
-      text: Comenzar
-      link: /es/game/getting-started
-    - theme: alt
-      text: Ver en GitHub
-      link: https://github.com/beammp/docs
+Esta página contiene todos los códigos de error que puede mostrar el servidor.
 
-features:
-  - icon: 🎮
-    title: Para Jugadores
-    details: Aprende cómo instalar BeamMP, conectarte a servidores y aprovechar al máximo tu experiencia multijugador
-    link: /es/game/getting-started
-  - icon: 🖥️
-    title: Para Propietarios de Servidores
-    details: Configura y administra tu propio servidor BeamMP con nuestras guías completas y recursos de solución de problemas
-    link: /es/server/create-a-server
-  - icon: 💻
-    title: Para Desarrolladores
-    details: Crea mods, recursos y aplicaciones de interfaz de usuario con documentación detallada de API y ejemplos de código
-    link: /es/guides/index
-  - icon: ❓
-    title: Preguntas Frecuentes
-    details: Encuentra respuestas rápidas a preguntas frecuentes sobre configuración, solución de problemas y mejores prácticas
-    link: /es/FAQ/player-faq
-  - icon: 📋
-    title: Reglas de la Comunidad
-    details: Aprende sobre nuestras directrices de la comunidad y cómo reportar problemas o apelar decisiones
-    link: /es/community/rules
-  - icon: 🔗
-    title: Comunidad
-    details: Únete a nuestro Discord, síguenos en redes sociales y conecta con otros jugadores y desarrolladores de BeamMP
-    link: /es/community/index
 ---
 
-¿Nuevo en BeamMP? Échale un vistazo [Cómo Empezar](/es/get-started/) para ayudarte a tocar la carretera y hacer la mayoría de tus aventuras en multijugador. Para preguntas generales y problemas, por favor échale un ojo a [Players FAQ](/es/players/faq).
+| Código | Descripción                                | Posible solución                                                                                                      |
+|--------|--------------------------------------------|-----------------------------------------------------------------------------------------------------------------------|
+| 10022  | Hay un problema al enlazar con el puerto   | Comprueba si el puerto del servidor ya está en uso por otro servicio; si es así, usa otro.                            |
+| 10048  | Dirección ya en uso                        | Otro servidor de BeamMP u otro programa se está ejecutando en ese puerto; usa otro.                                   |
+| 10051  | Red inaccesible                            | Redirección de puertos incorrecta o problemas similares; comprueba que todo esté bien configurado.                    |
+| 10052  | Red restablecida                           | Ocurre si la red pierde la conexión mientras se está estableciendo una conexión. Vuelve a intentar la conexión.       |
+| 10053  | Conexión anulada                           | Causada por un tiempo de espera agotado o un error de red; vuelve a intentar la conexión.                             |
+| 10054  | Conexión restablecida por el par           | Un cliente se ha desconectado de tu servidor.                                                                         |
+| 10060  | Tiempo de espera de la conexión agotado    | Hay un problema con tu redirección de puertos; consulta los [pasos de la guía](/es/server-owners/host-a-server#1-port-forwarding). |
+| 10061  | Conexión rechazada                         | Hay un problema con tu redirección de puertos; consulta los [pasos de la guía](/es/server-owners/host-a-server#1-port-forwarding). |
+| 10064  | Host caído                                 | Es un error poco probable, pero significa que el host está caído, ya sea porque está apagado o porque se cerraron los puertos. |
+| 10065  | Host inaccesible                           | No hay internet o la redirección de puertos es incorrecta; consulta los [pasos de la guía](/es/server-owners/host-a-server#1-port-forwarding). |
 
-## Para Propietarios de Servidor
-
-¿Pensando en crear tu propio servidor de BeamMP? Nuestra [guía comprensiva](/es/server-owners/host-a-server) te ayudará a través del proceso, asegurándose de que tengas todas las herramientas y conocimientos necesarios para para configurar tu servidor eficientemente.
-
-## Para Desarrolladores
-
-Descubre los entresijos de la creación de recursos para los Servidores de BeamMP en nuestra [Guía de Desarrollo de Recursos](/es/developers/mod-and-resource-creation).
-
-Emocionantes actualizaciones están en camino, incluyendo una nueva página de inicio diseñada para mejorar tu experiencia de navegación. ¡Mantente al tanto para más novedades! :slight_smile:
+::: note
+Para cualquier otro código que no figure en esta lista, puedes consultar <https://learn.microsoft.com/en-us/windows/win32/winsock/windows-sockets-error-codes-2> si tienes algunos conocimientos de redes y sockets.
+:::

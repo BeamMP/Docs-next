@@ -1,57 +1,70 @@
----
-layout: home
+::: warning ¡Este sitio está en construcción!
 
-hero:
-  name: Documentación de BeamMP
-  text: Todo lo que necesitas saber
-  tagline: Guías completas para jugadores, propietarios de servidores y desarrolladores
-  image:
-    light: /assets/core/beammp_dark.png
-    dark: /assets/core/beammp_light.png
-    alt: BeamMP
-  actions:
-    - theme: brand
-      text: Comenzar
-      link: /es/game/getting-started
-    - theme: alt
-      text: Ver en GitHub
-      link: https://github.com/beammp/docs
+Se está trabajando activamente en este sitio. 
 
-features:
-  - icon: 🎮
-    title: Para Jugadores
-    details: Aprende cómo instalar BeamMP, conectarte a servidores y aprovechar al máximo tu experiencia multijugador
-    link: /es/game/getting-started
-  - icon: 🖥️
-    title: Para Propietarios de Servidores
-    details: Configura y administra tu propio servidor BeamMP con nuestras guías completas y recursos de solución de problemas
-    link: /es/server/create-a-server
-  - icon: 💻
-    title: Para Desarrolladores
-    details: Crea mods, recursos y aplicaciones de interfaz de usuario con documentación detallada de API y ejemplos de código
-    link: /es/guides/index
-  - icon: ❓
-    title: Preguntas Frecuentes
-    details: Encuentra respuestas rápidas a preguntas frecuentes sobre configuración, solución de problemas y mejores prácticas
-    link: /es/FAQ/player-faq
-  - icon: 📋
-    title: Reglas de la Comunidad
-    details: Aprende sobre nuestras directrices de la comunidad y cómo reportar problemas o apelar decisiones
-    link: /es/community/rules
-  - icon: 🔗
-    title: Comunidad
-    details: Únete a nuestro Discord, síguenos en redes sociales y conecta con otros jugadores y desarrolladores de BeamMP
-    link: /es/community/index
----
+¿Crees que podrías ayudar? ¡Hazlo haciendo clic en la página con un lápiz de la derecha!
 
-¿Nuevo en BeamMP? Échale un vistazo [Cómo Empezar](/es/get-started/) para ayudarte a tocar la carretera y hacer la mayoría de tus aventuras en multijugador. Para preguntas generales y problemas, por favor échale un ojo a [Players FAQ](/es/players/faq).
+Esto se puede hacer en cualquier página.
+:::
 
-## Para Propietarios de Servidor
+# Fragmentos de código ImGui de BeamNG.drive
 
-¿Pensando en crear tu propio servidor de BeamMP? Nuestra [guía comprensiva](/es/server-owners/host-a-server) te ayudará a través del proceso, asegurándose de que tengas todas las herramientas y conocimientos necesarios para para configurar tu servidor eficientemente.
+## Configuración
 
-## Para Desarrolladores
+### Configurar ImGui
+```lua
+local im = ui_imgui
+```
+### Configurar la ventana
+```lua
+im.SetNextWindowSize(im.ImVec2(366, 100), im.Cond_FirstUseEver)
+```
+### Crear la ventana
+```lua
+im.Begin("Window Title") -- Create window
+im.End()
+```
+## General
 
-Descubre los entresijos de la creación de recursos para los Servidores de BeamMP en nuestra [Guía de Desarrollo de Recursos](/es/developers/mod-and-resource-creation).
+::: tabs
 
-Emocionantes actualizaciones están en camino, incluyendo una nueva página de inicio diseñada para mejorar tu experiencia de navegación. ¡Mantente al tanto para más novedades! :slight_smile:
+== Formato básico
+```lua
+im.Text("")
+im.TextWrapped("") -- automatic word wrap
+im.TextColored(im.ImVec4(0,1,0,1), "") -- R,G,B,A
+im.TextDisabled("") -- predefined style for disabled text
+
+im.LabelText("", "")
+im.BulletText("") -- Bullet point with text
+im.SeparatorText("") -- Separator with centered text
+
+im.Separator() -- might want a NewLine before these
+im.SameLine() -- horizontally append the following element to the previous element
+im.NewLine()
+
+im.Spacing() -- small padding
+im.Indent()
+im.Unindent()
+```
+== Entradas
+```lua
+im.Button("", im.ImVec2(0,0)) -- 0 = fit to content
+im.SmallButton("") -- Fit to content and slightly less padding
+im.ArrowButton("", 0) -- arg 1: string is not actually used? arg 2: 0 = left, 1 = right, 2 = up, 3 = down
+im.InvisibleButton("", im.ImVec2(0,0), ...) -- used for imgui cursor positioning?
+
+im.Checkbox("", im.BoolPtr(false))
+
+im.RadioButton1("", im.BoolPtr(false))
+im.RadioButton2("", im.IntPtr(), 0) -- arg. 3: 0 or 1 for disabled or enabled
+```
+== Otros
+```lua
+im.Bullet()
+
+im.ProgressBar(0.5, im.ImVec2(0,0), "") -- arg 2: 0 for default width and/or height
+
+im.TextUnformatted("", "") -- Second argument seems to crash the game
+```
+:::

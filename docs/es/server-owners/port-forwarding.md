@@ -1,57 +1,251 @@
----
-layout: home
+# Redirección de puertos
 
-hero:
-  name: Documentación de BeamMP
-  text: Todo lo que necesitas saber
-  tagline: Guías completas para jugadores, propietarios de servidores y desarrolladores
-  image:
-    light: /assets/core/beammp_dark.png
-    dark: /assets/core/beammp_light.png
-    alt: BeamMP
-  actions:
-    - theme: brand
-      text: Comenzar
-      link: /es/game/getting-started
-    - theme: alt
-      text: Ver en GitHub
-      link: https://github.com/beammp/docs
+::: danger AVISO LEGAL:
+**La redirección de puertos supone un riesgo**.
 
-features:
-  - icon: 🎮
-    title: Para Jugadores
-    details: Aprende cómo instalar BeamMP, conectarte a servidores y aprovechar al máximo tu experiencia multijugador
-    link: /es/game/getting-started
-  - icon: 🖥️
-    title: Para Propietarios de Servidores
-    details: Configura y administra tu propio servidor BeamMP con nuestras guías completas y recursos de solución de problemas
-    link: /es/server/create-a-server
-  - icon: 💻
-    title: Para Desarrolladores
-    details: Crea mods, recursos y aplicaciones de interfaz de usuario con documentación detallada de API y ejemplos de código
-    link: /es/guides/index
-  - icon: ❓
-    title: Preguntas Frecuentes
-    details: Encuentra respuestas rápidas a preguntas frecuentes sobre configuración, solución de problemas y mejores prácticas
-    link: /es/FAQ/player-faq
-  - icon: 📋
-    title: Reglas de la Comunidad
-    details: Aprende sobre nuestras directrices de la comunidad y cómo reportar problemas o apelar decisiones
-    link: /es/community/rules
-  - icon: 🔗
-    title: Comunidad
-    details: Únete a nuestro Discord, síguenos en redes sociales y conecta con otros jugadores y desarrolladores de BeamMP
-    link: /es/community/index
----
+Al redirigir puertos, entiendes los riesgos de exponer puertos de tu red doméstica a internet y, por tanto, renuncias al derecho de exigir responsabilidades a BeamMP por **cualquier daño** que puedas sufrir tú o las personas de tu hogar.
 
-¿Nuevo en BeamMP? Échale un vistazo [Cómo Empezar](/es/get-started/) para ayudarte a tocar la carretera y hacer la mayoría de tus aventuras en multijugador. Para preguntas generales y problemas, por favor échale un ojo a [Players FAQ](/es/players/faq).
+No asumimos ninguna responsabilidad por el contenido de ningún servicio o sitio web enlazado externamente.
 
-## Para Propietarios de Servidor
+<u>**Si no entiendes esta guía, te recomendamos usar uno de nuestros socios.**</u>
+:::
 
-¿Pensando en crear tu propio servidor de BeamMP? Nuestra [guía comprensiva](/es/server-owners/host-a-server) te ayudará a través del proceso, asegurándose de que tengas todas las herramientas y conocimientos necesarios para para configurar tu servidor eficientemente.
+::: warning
+Asegúrate de que tu router no sea un dispositivo exclusivamente 4G/5G. Si es un dispositivo híbrido, ¡asegúrate de seleccionar más adelante, en la sección 3 de esta guía, el adaptador conectado por cable!
+:::
 
-## Para Desarrolladores
+## Cómo configurar la redirección de puertos.
 
-Descubre los entresijos de la creación de recursos para los Servidores de BeamMP en nuestra [Guía de Desarrollo de Recursos](/es/developers/mod-and-resource-creation).
+Crear una regla de redirección de puertos implica algunos términos de red detallados. Prepárate para anotar algunas cosas a medida que avanzas en el proceso.
 
-Emocionantes actualizaciones están en camino, incluyendo una nueva página de inicio diseñada para mejorar tu experiencia de navegación. ¡Mantente al tanto para más novedades! :slight_smile:
+Esta guía tiene 4 pasos principales.
+
+## Una guía rápida. (Más abajo hay una guía más detallada)
+
+1. **Asigna una dirección IP estática a tu ordenador o dispositivos**
+
+   Esto es necesario para evitar que la IP de tu dispositivo cambie y deje de funcionar la regla de redirección de puertos.
+
+   [Consulta la información sobre tu router](https://portforward.com/router.htm#1)
+
+2. **Inicia sesión en tu router**
+
+   Normalmente puedes hacerlo averiguando la IP de la 'Puerta de enlace predeterminada' (Default Gateway), que aparece al ejecutar `ipconfig` en un símbolo del sistema, y escribiéndola en la barra de direcciones de un navegador web.
+
+3. **Redirige los puertos a tu ordenador**
+
+   Busca la sección de redirección de puertos en la interfaz web de tu router. La mayoría de los routers la ubican en Red, Avanzado o LAN.
+
+4. **Comprueba que tu puerto está correctamente redirigido**
+
+   Usa una herramienta como CheckBeamMP para comprobar si la regla funciona.
+
+   <form action="https://check.beammp.com/api/v2/beammp" method="get" target="_blank">
+    <label for="ip">Dirección IP:</label>
+    <input type="text" id="ip" name="ip"><br>
+    <label for="port">Puerto:</label>
+    <input type="text" id="port" name="port"><br>
+    <input type="submit" value="CheckBeamMP">
+   </form>
+
+## La guía detallada
+
+### 1. Asignar una dirección IP estática
+
+### Método 1: configurar una IP estática mediante reservas DHCP
+
+Otra forma de establecer una dirección IP estática en tu red local es usar la función de reserva DHCP de tu router. No todos los routers tienen esta función, así que puede que no sea una opción para ti. Busca en internet el modelo de tu router para encontrar un manual. 
+
+Si lo has conseguido, pasa directamente al [paso 2](port-forwarding.md#2-log-in-to-your-router)
+
+### Método 2: asignar una IP estática en Windows
+
+#### 1.1. Averigua tu dirección IP actual, la puerta de enlace y los servidores DNS:
+
+Antes de poder configurar una dirección IP estática, necesitamos conocer tu configuración de red actual. 
+Te conviene anotarla, así que ten a mano una ventana del bloc de notas. 
+Para este paso usaremos el símbolo del sistema.
+
+Abre un símbolo del sistema. Las 3 formas principales son:
+
+- Pulsa la tecla Windows, empieza a escribir "cmd" y pulsa Intro cuando veas resaltado "Símbolo del sistema".
+
+
+<figure class="image image_resized" style="width:62%;">
+
+![](../../assets/content/win11-open-cmd.png)
+
+</figure>
+
+Una vez en el símbolo del sistema, ejecuta el siguiente comando:
+```
+ipconfig /all
+```
+Verás muchos datos.
+Si tienes adaptadores de red virtuales o varios adaptadores, verás aún más datos. 
+Es habitual ver muchos adaptadores virtuales si tienes instalado Hyper-V o Docker.
+
+<figure class="image image_resized" style="width:62%;">
+
+![](../../assets/content/win11-command-prompt-ipconfig-highlighted.png)
+
+</figure>
+
+Se recomienda usar una conexión de red por cable en el equipo que ejecutará este servidor, aunque también funcionará con una conexión inalámbrica.
+Tendrás que buscar en esta lista un adaptador que tenga una conexión a internet activa. Recorre la lista y busca uno que tenga asignada una puerta de enlace predeterminada. 
+Muchos de los adaptadores virtuales no tendrán puerta de enlace predeterminada. 
+
+A continuación tienes ejemplos de direcciones IPv4 locales; al menos uno de los adaptadores debería tener una de ellas.
+Tendrás que anotar la información de tu adaptador.
+
+- 192.168.x.x
+- 10.x.x.x.
+- 172.16.x.x - 172.31.x.x
+
+Máscara de subred (lo más probable es 255.255.255.0)
+</br>
+Puerta de enlace predeterminada (lo más probable es 192.168.0.1 o 192.168.1.1)
+
+::: info Ten en cuenta
+Actualmente BeamMP no es compatible con IPv6 para alojar un servidor. 
+:::
+
+#### 1.2. Modificar la configuración del adaptador
+
+Ahora tenemos que cambiar la configuración de tu adaptador de red para que tu PC conserve la configuración IP que tiene actualmente. Para acceder a la configuración de tu red, el método más rápido es:
+
+- Pulsa una vez la tecla Windows
+- Escribe "conexiones de red" hasta que veas "Ver conexiones de red".
+- Pulsa la tecla Intro
+
+
+<figure class="image image_resized" style="width:62%;">
+
+![](../../assets/content/win11-start-menu-view-network-connections.png)
+
+</figure>
+
+Deberías ver una lista de las conexiones de red de tu ordenador. 
+Si tienes Hyper-V o Docker instalados, puede haber muchas. 
+Busca los adaptadores cuyo nombre no sea "Hyper-V".
+
+<figure class="image image_resized" style="width:62%;">
+
+![](../../assets/content/win11-network-connections.png)
+
+</figure>
+
+
+Haz clic derecho en tu adaptador y elige Propiedades. Si `Internet Protocol Version 4` no está marcado, este no es el adaptador correcto. Elige otro.
+
+<figure class="image image_resized" style="width:62%;">
+
+![](../../assets/content/win11-ethernet-properties-highlighted.png)
+
+</figure>
+
+Haz doble clic en `Internet Protocol Version 4`. Cambia `Obtain an IP address automatically` por `Use the following IP address`.
+
+Rellena la dirección IP, la máscara de subred, la puerta de enlace predeterminada y el servidor DNS preferido con la información del símbolo del sistema (ipconfig /all).
+
+Como alternativa, en lugar de usar tus servidores DNS, puedes usar los de CloudFlare o Google:
+
+- DNS de CloudFlare: 1.1.1.1, 1.0.0.1
+- DNS de Google: 8.8.8.8, 8.8.4.4
+
+
+<figure class="image image_resized" style="width:62%;">
+
+![](../../assets/content/win11-network-settings-static-ip.png)
+
+</figure>
+
+Haz clic en Aceptar y de nuevo en Aceptar, y tu adaptador pasará de DHCP a estático. Navega por la web para comprobar que sigues teniendo conexión a internet. Si no es así, vuelve a poner la configuración en «Obtener una dirección IP automáticamente» e inténtalo con el siguiente método.
+
+### 2. Inicia sesión en tu router {#2-log-in-to-your-router}
+
+Ahora que tu dispositivo tiene una dirección IP estática, ¡ya puedes redirigir el puerto para BeamMP!
+
+Para empezar, tenemos que iniciar sesión en tu router. Antes anotaste, entre otros ajustes, tu puerta de enlace predeterminada. Esa es la dirección IP de tu router.
+
+La mayoría de los routers usan una página web alojada localmente para su administración. Para ver el menú y los ajustes de tu router:
+
+- Abre un navegador web. Firefox, Chrome o Edge deberían funcionar bien.
+- En la barra de direcciones, escribe la dirección IP de tu puerta de enlace predeterminada, como 192.168.0.1 o 192.168.1.1, y pulsa Intro
+
+Ahora deberías ver la pantalla de inicio de sesión de tu router. No todos los routers piden iniciar sesión, pero la mayoría sí. Necesitas conocer el nombre de usuario y la contraseña de tu router. Si nunca has iniciado sesión, lo más probable es que tengan los valores de fábrica o, en algunos casos, que estén escritos en una etiqueta del router.
+
+Aquí se enumeran algunos de los nombres de usuario y contraseñas de fábrica más comunes:
+
+| Usuario     | Contraseña |
+| ----------- | ---------- |
+| admin       | admin      |
+| admin       | password   |
+| {vacío}     | admin      |
+| {vacío}     | password   |
+
+Prueba varias combinaciones de admin, password y dejando los campos vacíos. *Donde dice vacío, prueba a dejar el valor en blanco.* 
+
+### 3. ¡Crea las reglas de redirección!
+
+#### 3.1. Busca la sección de redirección
+
+Busca la sección de redirección de puertos en la interfaz web de tu router. Navega por tu router haciendo clic en las pestañas o enlaces de la parte superior o izquierda de cada página. La mayoría de los routers ubican la sección de redirección de puertos en Red, Avanzado o LAN. Busca las siguientes palabras clave para ayudarte a encontrarla:
+
+- Port Forwarding
+- Forwarding
+- Port Range Forwarding
+- Virtual Servers
+- Apps & Gaming
+- Advanced Setup/Settings
+- NAT
+
+#### 3.2. Introduce los datos
+
+Una vez que encuentres la sección de redirección de puertos de tu router, ya puedes introducir la información necesaria.
+Tu router tendrá un lugar para introducir los puertos que se van a redirigir y la dirección IP de destino a la que apuntarán esos puertos. Si tu router muestra tanto puertos internos como externos, ponlos iguales. 
+
+BeamMP necesita el puerto 30814 tanto UDP como TCP (a menos que lo hayas cambiado en tu [ServerConfig.toml](/es/server-owners/host-a-server#4-configuration)). 
+
+::: info Nota
+Aunque el **puerto** predeterminado es el **30814**, puedes elegir cualquier otro número mayor que 1024 y menor que 65535, pero debes anotar cuál elegiste si no es el 30814\. Tienes que redirigir tanto **TCP** como **UDP**.
+</br>
+Se recomienda mantener el puerto predeterminado, ya que es muy poco probable que lo use otro servicio de tu PC.
+</br>
+Sin embargo, si alojas varios servidores en una misma máquina, cada servidor necesita un puerto distinto. Por ejemplo, servidor 1: 30814, servidor 2: 30815.
+:::
+
+En algunos routers puede que tengas que crear 2 reglas, una para UDP y otra para TCP, mientras que otros permiten hacer ambas cosas con una sola regla.
+
+La mayoría de los routers tienen un botón de 'guardar', y algunos requieren un reinicio para que los cambios surtan efecto.
+
+### 4. ¡Es hora de probar!
+
+Hay varias formas de probar la conexión.
+
+Nuestra forma recomendada es usar nuestra herramienta **CheckBeamMP**, ya que comprueba problemas y protocolos específicos de BeamMP.
+
+<form action="https://check.beammp.com/api/v2/beammp" method="get" target="_blank">
+  <label for="ip">Dirección IP:</label>
+  <input type="text" id="ip" name="ip"><br>
+  <label for="port">Puerto:</label>
+  <input type="text" id="port" name="port"><br>
+  <input type="submit" value="CheckBeamMP">
+</form>
+
+Para ello necesitas tu dirección IPv4 pública, que, una vez más, puedes obtener de varias formas. La principal es usar un sitio web llamado [whatsmyip.org](https://whatsmyip.org/). Es un sitio sencillo que muestra tu dirección IP pública. Debes buscar una dirección IP con el formato: xxx.xxx.xxx.xxx
+
+Visita el siguiente enlace y sustituye "IP" por tu dirección IPv4 real y "Port" por el puerto de tu servidor. Asegúrate de no dejar espacios.
+https://check.beammp.com/api/v2/beammp/ip/port
+
+::: success status: ok
+¡Si obtienes el resultado anterior, ya puedes unirte a tu servidor!
+Hay 2 formas de unirse: directamente con los datos que introdujiste en Probably UP o, si tu servidor está configurado como 'público', a través de la lista de servidores.
+Como estás alojando un servidor en tu propia red, usa 127.0.0.1 (localhost) si el servidor se ejecuta en el mismo PC con el que juegas, o la IPv4 de LAN de la máquina local que ejecuta el servidor.
+:::
+
+::: failure status: error
+Si la conexión falla por completo, es posible que tu proveedor de internet esté usando CGNAT (Carrier Grade Network Address Translation). Para más detalles, consulta [¿Cómo comprobar si hay CGNAT?](/es/server-owners/cgnat),
+  o abre un ticket de Server Support en nuestro [servidor de Discord](https://discord.gg/beammp), en el canal `#support`, y uno de nuestros miembros del equipo atenderá tu ticket.
+  Si solo ves que funciona TCP y UDP falla, vuelve a revisar las reglas del firewall y de redirección de puertos.
+:::

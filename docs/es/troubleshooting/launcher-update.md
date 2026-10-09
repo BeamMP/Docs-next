@@ -1,57 +1,20 @@
----
-layout: home
+# Problema
 
-hero:
-  name: Documentación de BeamMP
-  text: Todo lo que necesitas saber
-  tagline: Guías completas para jugadores, propietarios de servidores y desarrolladores
-  image:
-    light: /assets/core/beammp_dark.png
-    dark: /assets/core/beammp_light.png
-    alt: BeamMP
-  actions:
-    - theme: brand
-      text: Comenzar
-      link: /es/game/getting-started
-    - theme: alt
-      text: Ver en GitHub
-      link: https://github.com/beammp/docs
+¿El launcher no puede actualizarse o muestra una pantalla en blanco?
+Esta guía rápida explica cómo actualizar el launcher manualmente.
 
-features:
-  - icon: 🎮
-    title: Para Jugadores
-    details: Aprende cómo instalar BeamMP, conectarte a servidores y aprovechar al máximo tu experiencia multijugador
-    link: /es/game/getting-started
-  - icon: 🖥️
-    title: Para Propietarios de Servidores
-    details: Configura y administra tu propio servidor BeamMP con nuestras guías completas y recursos de solución de problemas
-    link: /es/server/create-a-server
-  - icon: 💻
-    title: Para Desarrolladores
-    details: Crea mods, recursos y aplicaciones de interfaz de usuario con documentación detallada de API y ejemplos de código
-    link: /es/guides/index
-  - icon: ❓
-    title: Preguntas Frecuentes
-    details: Encuentra respuestas rápidas a preguntas frecuentes sobre configuración, solución de problemas y mejores prácticas
-    link: /es/FAQ/player-faq
-  - icon: 📋
-    title: Reglas de la Comunidad
-    details: Aprende sobre nuestras directrices de la comunidad y cómo reportar problemas o apelar decisiones
-    link: /es/community/rules
-  - icon: 🔗
-    title: Comunidad
-    details: Únete a nuestro Discord, síguenos en redes sociales y conecta con otros jugadores y desarrolladores de BeamMP
-    link: /es/community/index
----
+::: note
+Antes de continuar, ya deberías haber usado o instalado BeamMP con el instalador que ofrece [nuestro sitio web](https://beammp.com).
+:::
 
-¿Nuevo en BeamMP? Échale un vistazo [Cómo Empezar](/es/get-started/) para ayudarte a tocar la carretera y hacer la mayoría de tus aventuras en multijugador. Para preguntas generales y problemas, por favor échale un ojo a [Players FAQ](/es/players/faq).
+# Descargar e instalar un nuevo launcher
 
-## Para Propietarios de Servidor
+1. Descarga directamente el último launcher desde [GitHub](https://github.com/BeamMP/BeamMP-Launcher/releases/latest/download/BeamMP-Launcher.exe).
+2. Ve al directorio de BeamMP-Launcher.exe. Por defecto, esta carpeta se encuentra en ```C:\Users\<username>\AppData\Roaming\``` . Sustituye `<username>` por el nombre de usuario de tu cuenta de Windows.
+Si has instalado BeamMP en otro lugar, por ejemplo ```D:\BeamMP-Launcher```, coloca el launcher en la carpeta BeamMP-Launcher correspondiente.
+4. Si procede, sustituye el launcher existente por el nuevo en la carpeta BeamMP-Launcher.
+5. Inicia BeamMP-Launcher como de costumbre para comprobar si funciona.
 
-¿Pensando en crear tu propio servidor de BeamMP? Nuestra [guía comprensiva](/es/server-owners/host-a-server) te ayudará a través del proceso, asegurándose de que tengas todas las herramientas y conocimientos necesarios para para configurar tu servidor eficientemente.
-
-## Para Desarrolladores
-
-Descubre los entresijos de la creación de recursos para los Servidores de BeamMP en nuestra [Guía de Desarrollo de Recursos](/es/developers/mod-and-resource-creation).
-
-Emocionantes actualizaciones están en camino, incluyendo una nueva página de inicio diseñada para mejorar tu experiencia de navegación. ¡Mantente al tanto para más novedades! :slight_smile:
+## ¿Sigues teniendo problemas?
+Crea un ticket de soporte en nuestro [servidor de Discord](https://discord.gg/BeamMP).
+Etiquetas: Launcher, descarga,

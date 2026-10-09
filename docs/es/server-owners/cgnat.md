@@ -1,57 +1,40 @@
----
-layout: home
+¿Cómo comprobar si hay CGNAT?
+## Problema
 
-hero:
-  name: Documentación de BeamMP
-  text: Todo lo que necesitas saber
-  tagline: Guías completas para jugadores, propietarios de servidores y desarrolladores
-  image:
-    light: /assets/core/beammp_dark.png
-    dark: /assets/core/beammp_light.png
-    alt: BeamMP
-  actions:
-    - theme: brand
-      text: Comenzar
-      link: /es/game/getting-started
-    - theme: alt
-      text: Ver en GitHub
-      link: https://github.com/beammp/docs
+¿Todas las exclusiones del firewall y las reglas de redirección de puertos están bien configuradas y, aun así, nadie puede unirse a tu servidor alojado en casa?
 
-features:
-  - icon: 🎮
-    title: Para Jugadores
-    details: Aprende cómo instalar BeamMP, conectarte a servidores y aprovechar al máximo tu experiencia multijugador
-    link: /es/game/getting-started
-  - icon: 🖥️
-    title: Para Propietarios de Servidores
-    details: Configura y administra tu propio servidor BeamMP con nuestras guías completas y recursos de solución de problemas
-    link: /es/server/create-a-server
-  - icon: 💻
-    title: Para Desarrolladores
-    details: Crea mods, recursos y aplicaciones de interfaz de usuario con documentación detallada de API y ejemplos de código
-    link: /es/guides/index
-  - icon: ❓
-    title: Preguntas Frecuentes
-    details: Encuentra respuestas rápidas a preguntas frecuentes sobre configuración, solución de problemas y mejores prácticas
-    link: /es/FAQ/player-faq
-  - icon: 📋
-    title: Reglas de la Comunidad
-    details: Aprende sobre nuestras directrices de la comunidad y cómo reportar problemas o apelar decisiones
-    link: /es/community/rules
-  - icon: 🔗
-    title: Comunidad
-    details: Únete a nuestro Discord, síguenos en redes sociales y conecta con otros jugadores y desarrolladores de BeamMP
-    link: /es/community/index
----
+Si tienes problemas de conexión y usas un servicio de alojamiento, contacta con ellos para pedir ayuda. Si quieres usar un VPS o no puedes alojar un servidor en casa, echa un vistazo a nuestra
+[lista de servicios de alojamiento asociados](/es/server-owners/host-a-server#partnered-hosting-services-paid) (documentación de configuración del servidor).
 
-¿Nuevo en BeamMP? Échale un vistazo [Cómo Empezar](/es/get-started/) para ayudarte a tocar la carretera y hacer la mayoría de tus aventuras en multijugador. Para preguntas generales y problemas, por favor échale un ojo a [Players FAQ](/es/players/faq).
+# ¿Qué es exactamente el CGNAT?
 
-## Para Propietarios de Servidor
+Para una explicación detallada de qué es el CGNAT y por qué supone un problema al intentar alojar un servidor en casa, consulta [esta página](https://en.wikipedia.org/wiki/Carrier-grade_NAT).
 
-¿Pensando en crear tu propio servidor de BeamMP? Nuestra [guía comprensiva](/es/server-owners/host-a-server) te ayudará a través del proceso, asegurándose de que tengas todas las herramientas y conocimientos necesarios para para configurar tu servidor eficientemente.
+# ¿Cómo comprobar si hay CGNAT?
 
-## Para Desarrolladores
+## Método 1:
+Abre una ventana de símbolo del sistema y ejecuta ``tracert -4 beammp.com``. Esto mostrará una serie de saltos de red. Espera a que termine la operación (puede llegar a tardar hasta 30 saltos). Fíjate en las primeras direcciones IP después de la IP de tu router/módem/puerta de enlace.
+Si después del primer salto aparecen varias direcciones IP dentro del rango ``100.64.x.x``-``100.127.x.x`` o ``10.xx.xx.xx``, lo más probable es que estés detrás de un CGNAT.
 
-Descubre los entresijos de la creación de recursos para los Servidores de BeamMP en nuestra [Guía de Desarrollo de Recursos](/es/developers/mod-and-resource-creation).
+::: note
+El primer salto será tu router/módem/puerta de enlace y varía según el dispositivo.
+Los rangos oficiales de las redes locales son los siguientes: ``10.0.0.xxx`` - ``192.168.xxx.xxx`` - ```172.16.xxx.xxx``
+:::
 
-Emocionantes actualizaciones están en camino, incluyendo una nueva página de inicio diseñada para mejorar tu experiencia de navegación. ¡Mantente al tanto para más novedades! :slight_smile:
+## Método 2:
+Averigua la IP WAN de tu router consultándola en su interfaz. Compárala con la IP que aparece en, por ejemplo, https://whatsmyip.org . Si NO son la misma, estás detrás de un CGNAT.
+
+## Método 3/Solución:
+Llama a tu proveedor de servicios de internet para pedir ayuda.
+Dependiendo de tu proveedor, puede que no ofrezca direcciones IP *dinámicas* dedicadas. Ten en cuenta que no es necesario que la IP sea estática.
+
+::: warning
+Es posible que los proveedores de servicios de internet solo ofrezcan direcciones IP dedicadas como una **opción de pago**.
+¡Consulta los precios de nuestros servicios de alojamiento asociados, ya que podrían ser más baratos que esa tarifa!
+:::
+
+Ejemplo de una red sin CGNAT:
+
+![imagen](https://github.com/user-attachments/assets/fee21a50-cbb0-4322-9c26-d9f04f88ae37)
+
+Etiquetas: Servidor, 10060 10061, CGNAT, Conexión fallida, Redirección de puertos, Firewall

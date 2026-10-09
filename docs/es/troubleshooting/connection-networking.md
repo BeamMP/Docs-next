@@ -1,57 +1,26 @@
----
-layout: home
+# ¿Cómo puedo encontrar la IP de mi servidor?
 
-hero:
-  name: Documentación de BeamMP
-  text: Todo lo que necesitas saber
-  tagline: Guías completas para jugadores, propietarios de servidores y desarrolladores
-  image:
-    light: /assets/core/beammp_dark.png
-    dark: /assets/core/beammp_light.png
-    alt: BeamMP
-  actions:
-    - theme: brand
-      text: Comenzar
-      link: /es/game/getting-started
-    - theme: alt
-      text: Ver en GitHub
-      link: https://github.com/beammp/docs
+## Para servidores alojados en un VPS
+Si alojas un servidor con uno de nuestros servicios de alojamiento asociados, la IP aparecerá en la interfaz de gestión del servidor correspondiente.
+También puedes encontrar la IP de tus servidores en el sitio web del [Keymaster](https://keymaster.beammp.com/login).
 
-features:
-  - icon: 🎮
-    title: Para Jugadores
-    details: Aprende cómo instalar BeamMP, conectarte a servidores y aprovechar al máximo tu experiencia multijugador
-    link: /es/game/getting-started
-  - icon: 🖥️
-    title: Para Propietarios de Servidores
-    details: Configura y administra tu propio servidor BeamMP con nuestras guías completas y recursos de solución de problemas
-    link: /es/server/create-a-server
-  - icon: 💻
-    title: Para Desarrolladores
-    details: Crea mods, recursos y aplicaciones de interfaz de usuario con documentación detallada de API y ejemplos de código
-    link: /es/guides/index
-  - icon: ❓
-    title: Preguntas Frecuentes
-    details: Encuentra respuestas rápidas a preguntas frecuentes sobre configuración, solución de problemas y mejores prácticas
-    link: /es/FAQ/player-faq
-  - icon: 📋
-    title: Reglas de la Comunidad
-    details: Aprende sobre nuestras directrices de la comunidad y cómo reportar problemas o apelar decisiones
-    link: /es/community/rules
-  - icon: 🔗
-    title: Comunidad
-    details: Únete a nuestro Discord, síguenos en redes sociales y conecta con otros jugadores y desarrolladores de BeamMP
-    link: /es/community/index
----
+## Para servidores alojados en casa
+Si el servidor está alojado en casa, abre [whatsmyip.org](https://whatsmyip.org) en un navegador.
+Mostrará la dirección IPv4 pública con la que se te contacta desde internet.
 
-¿Nuevo en BeamMP? Échale un vistazo [Cómo Empezar](/es/get-started/) para ayudarte a tocar la carretera y hacer la mayoría de tus aventuras en multijugador. Para preguntas generales y problemas, por favor échale un ojo a [Players FAQ](/es/players/faq).
+Ten en cuenta que 127.0.0.1 es la dirección localhost y solo puedes usarla tú, si el servidor está alojado en el mismo ordenador.
+Si sigues teniendo problemas de conexión con tu servidor alojado en casa, revisa la [redirección de puertos](https://docs.beammp.com/server/port-forwarding/) y usa también CheckBeamMP
 
-## Para Propietarios de Servidor
+<form action="https://check.beammp.com/api/v2/beammp" method="get" target="_blank">
+  <label for="ip">Dirección IP:</label>
+  <input type="text" id="ip" name="ip"><br>
+  <label for="port">Puerto:</label>
+  <input type="text" id="port" name="port"><br>
+  <input type="submit" value="CheckBeamMP">
+</form>
 
-¿Pensando en crear tu propio servidor de BeamMP? Nuestra [guía comprensiva](/es/server-owners/host-a-server) te ayudará a través del proceso, asegurándose de que tengas todas las herramientas y conocimientos necesarios para para configurar tu servidor eficientemente.
+## ¿Cómo comprobar si hay CGNAT?
+Echa un vistazo a [esta página](https://docs.beammp.com/FAQ/How-to-check-for-CGNAT/) para determinar si puedes alojar un servidor en casa o no.
 
-## Para Desarrolladores
 
-Descubre los entresijos de la creación de recursos para los Servidores de BeamMP en nuestra [Guía de Desarrollo de Recursos](/es/developers/mod-and-resource-creation).
-
-Emocionantes actualizaciones están en camino, incluyendo una nueva página de inicio diseñada para mejorar tu experiencia de navegación. ¡Mantente al tanto para más novedades! :slight_smile:
+Etiquetas: IP, Servidor, Conexión fallida, 10060/10061
