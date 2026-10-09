@@ -30,6 +30,8 @@ test('the theme loads the tokens first and uses system fonts, not a bundled web 
   assert.match(read('tokens.css'), /--vp-font-family-base:\s*ui-sans-serif, system-ui/)
 })
 
-test('the top menu stays out of the bar, so the language and theme switchers are never pushed off screen', () => {
-  assert.match(read('layout.css'), /@media \(min-width: 768px\) \{\s*\.VPNavBarMenu \{\s*display: none !important;/)
+test('the top menu is dropped below 1280px and the controls move into the "..." menu, so the switchers are never pushed off screen', () => {
+  const css = read('layout.css')
+  assert.match(css, /@media \(min-width: 768px\) and \(max-width: 1279px\) \{\s*\.VPNavBarMenu \{\s*display: none !important;/)
+  assert.match(css, /@media \(min-width: 1280px\) and \(max-width: 1699px\) \{\s*\.VPNavBarExtra \{\s*display: block !important;/)
 })

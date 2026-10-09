@@ -80,14 +80,43 @@ body {
 }
 
 /*
- * The eight top-level links need 900px or more (more again in German, French or Russian), next
- * to the logo column (as wide as the sidebar), search, language and theme. They pushed the
- * language and theme switchers off the screen at every width up to 1920px. The sidebar lists
- * the same sections, and a phone still gets the full menu in the drawer, so the bar keeps to
- * what beammp.com's header has: the logo, search, language and theme.
+ * The top-level links share the bar with the logo column (as wide as the sidebar), search, the
+ * repository card, language and theme, and the labels are much wider in Spanish, Russian or
+ * German. The config keeps four sections and a "More" menu; and:
+ *  - the links are set compact,
+ *  - from 1280px the language and theme switchers move into the "..." menu, which frees room,
+ *  - where the links still cannot fit, the sidebar (which lists the same sections) is the
+ *    navigation, and the links return as soon as there is room.
  */
-@media (min-width: 768px) {
+.VPNavBarMenuLink,
+.VPNavBarMenuGroup .button {
+  font-size: 13.5px;
+  padding-left: 6px !important;
+  padding-right: 6px !important;
+}
+
+@media (min-width: 768px) and (max-width: 1279px) {
   .VPNavBarMenu {
+    display: none !important;
+  }
+}
+
+/* Search is an icon until there is room for the box. */
+@media (min-width: 768px) and (max-width: 1439px) {
+  .VPNavBarSearchButton .placeholder,
+  .VPNavBarSearchButton .keys {
+    display: none;
+  }
+}
+
+@media (min-width: 1280px) and (max-width: 1699px) {
+  .VPNavBarExtra {
+    display: block !important;
+  }
+
+  .VPNavBarTranslations,
+  .VPNavBarAppearance,
+  .VPNavBarSocialLinks {
     display: none !important;
   }
 }

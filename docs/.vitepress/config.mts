@@ -269,7 +269,16 @@ const baseNav: NavItem[] = [
 
 const navByLocale = (_locale: LocaleKey) => baseNav
 
-const localeNav = (locale: LocaleKey) => localizeItems(locale, navByLocale(locale))
+// The top bar has room for about four sections next to search, the repository card and the
+// language and theme switchers (eight did not fit in any language, and not at all in Spanish or
+// Russian). The rest go in a "More" menu. The sidebar keeps the full list.
+const topNavTexts = ['Get Started', 'Players', 'Server Owners', 'Developers']
+const topNav = (nav: NavItem[]): NavItem[] => [
+  ...nav.filter((item) => topNavTexts.includes(item.text)),
+  { text: 'More', items: nav.filter((item) => !topNavTexts.includes(item.text) && item.text !== 'Home') }
+]
+
+const localeNav = (locale: LocaleKey) => localizeItems(locale, topNav(navByLocale(locale)))
 
 const localeSidebar = (locale: LocaleKey) => localizeItems(locale, navByLocale(locale))
 
