@@ -1,26 +1,26 @@
-# 图形界面-应用程序 创建
+---
+description: "制作 BeamNG.drive 图形界面应用程序：它需要的四个文件、包含 HTML、JavaScript、Lua、CSS 和 JSON 的完整示例，以及游戏提供的函数。"
+---
+# 图形界面应用程序（HTML）
 
-为了制作一个图形界面应用程序，你需要一些AngularJS框架的知识，主要的文档可以在这里找到: [AngularJS docs](https://docs.angularjs.org/guide)
+要制作图形界面应用程序，你需要对 AngularJS 框架有一定了解。它的文档是 [AngularJS 指南](https://docs.angularjs.org/guide)。
 
 ## 文件结构
 
 一个图形界面应用程序需要四个重要的文件才能工作：
-
-- app.js | 包含图形界面应用程序使用的主要代码 [Javascript docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
-- app.html | 显示应用程序的代码 [Html docs](https://developer.mozilla.org/fr/docs/Web/HTML)
+- app.js | 包含图形界面应用程序所用的主要代码 [Javascript 文档](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+- app.html | 用于显示你的应用的代码 [HTML 文档](https://developer.mozilla.org/en-US/docs/Web/HTML)
 - app.json | 包含图形界面应用程序的信息
-- app.png | 显示在应用程序选择器中的图像文件
+- app.png | 显示在应用选择器中的图像文件
 
-### 图形界面应用程序 样式
+### 为你的应用设置样式
+我们建议使用 ``<style>`` 标签来设置应用的样式。使用 .css 文件也可以，但你将无法实时看到修改效果。
 
-我们建议使用 `<style>` 标签来设置应用的样式, a .css 文件会工作，但您将无法实时看到更改。
+## 示例
 
-## 范例
-
-这个例子来自DanielW，感谢他
+这个示例由 DanielW 提供，感谢他。
 
 ui\modules\apps\ExampleApp\app.html
-
 ```html
 <div style="width: 100%; height: 100%;" class="bngApp">
     <link type="text/css" rel="stylesheet" href="/ui/modules/apps/ExampleApp/app.css" />
@@ -51,15 +51,13 @@ ui\modules\apps\ExampleApp\app.html
                     <md-icon class="material-icons">delete</md-icon>
                 </md-button>
             </li>
-        </ul>
+        </ul>        
     </div>
 </div>
 ```
-
-在这里, 你可以看到一个 `<span>` 显示车辆挡位的标签, 用于将消息发送给 `sendMessage()`函数和一个重复的`<li>`标签（在Javascript中的`messages`变量上使用<b>ng-repeat</b>）
+在这里，你可以看到一个显示车辆当前挡位的 ``<span>`` 标签、一个用来把消息发送给 Javascript 中 ``sendMessage()`` 函数的输入框，以及一个在 Javascript 中的 ``messages`` 变量上使用 <b>ng-repeat</b> 的重复 ``<li>`` 标签。
 
 ui\modules\apps\ExampleApp\app.js
-
 ```js
 angular.module('beamng.apps')
 .directive('exampleApp', [function() {
@@ -120,26 +118,23 @@ angular.module('beamng.apps')
     }
 }])
 ```
+请注意 <b>$scope</b> 的用法，这一点非常重要，因为你需要在 <b>$scope</b> 中定义变量和函数，才能在 <b>Html</b> 里任何 <b>ng-*</b> 标签内访问它们。
+所以在这个示例中，``sendMessage()`` 函数从 <b>Html</b> 中执行后，会把消息发送给模组 extensions 目录中的一个 lua 文件，并执行该 lua 文件里的 ``modifyMessage()`` 函数。
 
-注意<b>$scope{/b0}的用法。这是非常重要的，因为你需要在{b1}$作用域</b>中定义变量和函数，以便能够从<b>ng-*</b>标签中的<b>Html</b>中访问它。所以在这个例子中，在<b>Html</b>中执行`sendMessage()`函数后，它将把它发送到mod的extensions目录中的lua文件中，并在这个lua文件中执行`modifyMessage()`函数。
-
-下面是lua的一个例子：
-
+下面是 lua 一侧大致的样子：
 ```lua
 local function modifyMessage(message)
     message = message .. " [Modified!]"
     guihooks.trigger('MessageReady', message)
 end
 ```
+^ 这是 lua 的简化版本，只是为了展示这个函数
 
-^这是lua的一个简化版本，只是为了展示函数
+这里的重点是 <b>guihooks.trigger</b> 的用法：它会触发一个由 ``$scope.$on()`` 定义的 AngularJS 事件。正如你在 Javascript 文件最底部看到的，这个事件名为 MessageReady，会由 <b>guihooks.trigger</b> 函数连同消息内容一起触发，然后被推入 ``$scope.messages`` 变量，再由 <b>Html</b> 文件中使用 <b>ng-repeat</b> 的 li 标签显示出来。
 
-这里主要关注的是<b>基钩子的使用。触发器</b>触发一个用`$scope.$on()`定义的AngularJS事件。正如您在Javascript文件的最底部看到的那样，该事件被命名为MessageReady，并将由<b>guihook执行。用消息有效负载触发</b>函数，然后将被推入`$范围。在<b data-md-type="raw_html">Html</b>文件中使用<b data-md-type="raw_html">ng-repeat</b>来显示li标签中的messages`变量
-
-完整的lua文件就在下面
+完整的 lua 文件如下
 
 lua\ge\extensions\exampleMod.lua
-
 ```lua
 local M = {}
 
@@ -206,11 +201,11 @@ M.modifyMessage            = modifyMessage
 
 return M
 ```
+请注意，务必要返回包含所需函数的 M（模块）变量！
+例如，如果没有 ``M.modifyMessage = modifyMessage`` 这一行，``bngApi.engineLua('extensions.exampleMod.modifyMessage("' + $scope.message + '")')`` 函数就找不到 modifyMessage() 函数。
 
-请注意，返回包含所需函数的M（模块）变量非常重要！例如，如果没有`M。modifyMessage = modifyMessage`行，`bngApi.engineLua(‘extensions.exampleMod. ’modifyMessage（' + $scope. '）message + ' ') ')`函数将无法找到modifyMessage（）函数
 
 ui\modules\apps\ExampleApp\app.css
-
 ```css
 #exampleAppContainer {
     width: 100%;
@@ -227,9 +222,7 @@ ui\modules\apps\ExampleApp\app.css
     padding: 0;
 }
 ```
-
 ui\modules\apps\ExampleApp\app.json
-
 ```json
 {
   "domElement": "<example-app></example-app>",
@@ -251,23 +244,18 @@ ui\modules\apps\ExampleApp\app.json
   "directive": "exampleApp"
 }
 ```
+这里的 directive 必须与 <b>Javascript</b> 文件中的一致。
 
-该指令需要与<b>Javascript</b>文件中的指令相同
-
-# BeamNG为图形界面应用程序提供的Javascript函数
-
+## BeamNG 为图形界面应用程序提供的 JavaScript 函数
 ```js
 bngApi.engineLua("lua_path.function()")
 ```
+可用于运行带参数或不带参数的 lua 函数。
 
-用于运行带或不带参数的lua函数
-
-# BeamNG为图形界面应用程序提供的Lua函数
-
+## BeamNG 为图形界面应用程序提供的 Lua 函数
 ```lua
 guihooks.trigger("EventName", Payload)
 ```
+载荷可以是任意类型，但最好使用数组 / 对象或字符串，以免丢失。
 
-有效载荷可以是任何类型，但最好将其保留为数组/对象或字符串，以免丢失。
-
-<b>IMPORTANT</b>：有时候，你使用的事件名称可能已经在内部被其他东西使用了，从而导致问题，因此，如果你的应用名为Nickel，那么最好将你的每个Angular事件命名为NKEventName，而不是EventName
+<b>重要</b>：有时你使用的事件名可能已经被其他内部功能占用，从而引发问题。例如，如果你的应用名为 Nickel，一个好的做法是把你所有的 Angular 事件命名为 NKEventName，而不是 EventName。

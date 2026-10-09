@@ -1,22 +1,19 @@
-::: warning 本页面正在建设中！
-本站点目前正处于积极开发与维护阶段。
+---
+description: "可直接使用的 BeamNG.drive Lua 片段：绘制标记、检测车辆，以及显示弹出通知、消息、闪烁提示、确认对话框和教程弹窗。"
+---
+# Lua 代码片段
 
-觉得您可以提供帮助？请点击页面右侧的铅笔图标参与编辑！
-此操作适用于站内的任何页面。
-:::
-
-# BeamNG.drive Lua Code 的片段
+可供你复制并修改的 BeamNG.drive 代码片段。
 
 ## 世界
 
-### 绘制标记&amp;车辆检测
+### 绘制标记与车辆检测
 
-在地图上绘制标记是告知用户该处存在某种交互形式的最佳方式之一。
+在地图上绘制标记，是向用户表明此处可以进行某种交互的最佳方式之一。
 
-绘制标记相当简单。以下是巴士路线标记绘制方式的一个示例：
-
+绘制标记相当简单。下面是巴士路线标记的绘制方式示例：
 ```lua
-local function createBusMarker(markerName)
+  local function createBusMarker(markerName)
     local marker =  createObject('TSStatic')
     marker:setField('shapeName', 0, "art/shapes/interface/position_marker.dae")
     marker:setPosition(vec3(0, 0, 0))
@@ -24,14 +21,14 @@ local function createBusMarker(markerName)
     marker:setField('rotation', 0, '1 0 0 0')
     marker.useInstanceRenderData = true
     marker:setField('instanceColor', 0, '1 1 1 0')
-    marker:setField('collisionType', 0, "Collision Mesh") -- 碰撞类型：碰撞网格
-    marker:setField('decalType', 0, "Collision Mesh")     -- 贴花类型：碰撞网格
-    marker:setField('playAmbient', 0, "1")               -- 播放环境动画
-    marker:setField('allowPlayerStep', 0, "1")           -- 允许玩家踏上
-    marker:setField('canSave', 0, "0")                   -- 是否可保存
-    marker:setField('canSaveDynamicFields', 0, "1")      -- 是否可保存动态字段
-    marker:setField('renderNormals', 0, "0")             -- 渲染法线
-    marker:setField('meshCulling', 0, "0")               -- 网格剔除
+    marker:setField('collisionType', 0, "Collision Mesh")
+    marker:setField('decalType', 0, "Collision Mesh")
+    marker:setField('playAmbient', 0, "1")
+    marker:setField('allowPlayerStep', 0, "1")
+    marker:setField('canSave', 0, "0")
+    marker:setField('canSaveDynamicFields', 0, "1")
+    marker:setField('renderNormals', 0, "0")
+    marker:setField('meshCulling', 0, "0")
     marker:setField('originSort', 0, "0")
     marker:setField('forceDetail', 0, "-1")
     marker.canSave = false
@@ -40,13 +37,13 @@ local function createBusMarker(markerName)
     return marker
   end
 
-  -- 随后可以在循环中调用此函数来设置您的标记。
-  -- 注意：您应该只在初始化设置时执行一次，而不是在每一帧都调用。
+  -- this can then be called in a loop to setup your markers. 
+  -- NOTE: You should only do this once as part of your setup and not called on each frame.
   if #markers == 0 then
     for k,v in pairs(nameMarkers) do
       local mk = scenetree.findObject(v)
       if mk == nil then
-        log('I', logTag,'Creating marker '..tostring(v)) -- 正在创建标记...
+        log('I', logTag,'Creating marker '..tostring(v))
         mk = createBusMarker(v)
         ScenarioObjectsGroup:addObject(mk.obj)
       end
@@ -54,193 +51,174 @@ local function createBusMarker(markerName)
     end
   end
 ```
-
-这是来自 [BeamNG-FuelStations](https://github.com/BeamMP/BeamNG-FuelStations/tree/master) 的自定义标记示例：
-
+下面是来自 [BeamNG-FuelStations](https://github.com/BeamMP/BeamNG-FuelStations/tree/master) 的自定义标记示例：
 ```lua
-local stations = [
-    { "location": [ -778.813,  485.973, 23.46 ], "type":"gas" }, -- 燃油站
-    { "location": [  617.164, -192.107, 53.2  ], "type":"ev"  }, -- 充电站
+  local stations = [
+    { "location": [ -778.813,  485.973, 23.46 ], "type":"gas" },
+    { "location": [  617.164, -192.107, 53.2  ], "type":"ev"  },
   ]
 
-  -- 检查实体是否在区域内
   local function IsEntityInsideArea(pos1, pos2, radius)
     return pos1:distance(pos2) < radius
   end
 
   local onUpdate = function (dt)
-    for k, spot in pairs(stations) do -- 遍历当前地图上的所有站点
+    for k, spot in pairs(stations) do -- loop through all spots on the current map
       local bottomPos = vec3(spot.location[1], spot.location[2], spot.location[3])
-      local topPos = bottomPos + vec3(0,0,2) -- 偏移向量以获得顶部位置（2米高）
+      local topPos = bottomPos + vec3(0,0,2) -- offset vec to get top position (2m tall)
 
-      local spotInRange = false -- 站点是否在范围内？用于颜色判定
-      local spotCompatible = false -- 站点是否匹配（燃料类型）？
+      local spotInRange = false -- is this spot in range? used for color
+      local spotCompatible = false -- is this spot compatible?
 
-      if activeVeh then -- 如果存在车辆且属于当前玩家（若在多人模式下）
+      if activeVeh then -- we have a car and its ours (if in mp)
         local vehPos = activeVeh:getPosition()
 
-        -- 检查车辆是否在站点 1.5 米范围内
         spotInRange = IsEntityInsideArea(vec3(vehPos.x, vehPos.y,vehPos.z), bottomPos, 1.5)
 
-        -- 检查燃料类型是否匹配
         spotCompatible = activeFuelType == "any" or spot.type == "any" or activeFuelType == spot.type
       end
 
-      -- 确定站点颜色：如果范围内且匹配，则使用活动颜色，否则使用非活动颜色或默认半透明白色
       local spotColor = (spotInRange and spotCompatible) and activeColorMap[spot.type] or inactiveColorMap[spot.type] or ColorF(1,1,1,0.5)
 
-      -- 绘制圆柱体：底部位置，顶部位置，半径，颜色
-      debugDrawer:drawCylinder(bottomPos:toPoint3F(), topPos:toPoint3F(), 1, spotColor)
+      debugDrawer:drawCylinder(bottomPos:toPoint3F(), topPos:toPoint3F(), 1, spotColor) --bottom, top, radius, color
     end
   end
 ```
-
 ## 用户界面
 
-### 屏幕右上角弹出的通知
+### 弹出通知（Toast），位于屏幕右上角
 
 <figure class="image image_resized" style="width:75%">
 
-![image](https://github.com/StanleyDudek/Docs/assets/49531350/c8a87842-b95a-4eca-84dc-93072ecc9158)
+  ![image](https://github.com/StanleyDudek/Docs/assets/49531350/c8a87842-b95a-4eca-84dc-93072ecc9158)
 
 </figure>
-
 ```lua
---guihooks.trigger('toastrMsg', {type, title, msg, config = {timeOut}})
-guihooks.trigger('toastrMsg', {type = "info", title = "Info Message:", msg = "Info Message Text Here", config = {timeOut = 5000}})
-guihooks.trigger('toastrMsg', {type = "warning", title = "Warning Message:", msg = "Warning Message Text Here", config = {timeOut = 5000}})
-guihooks.trigger('toastrMsg', {type = "error", title = "Error Message:", msg = "Error Message Text Here", config = {timeOut = 5000}})
+--guihooks.trigger('toastrMsg', {type, title, msg, config = {timeOut}}) 
+guihooks.trigger('toastrMsg', {type = "info", title = "Info Message:", msg = "Info Message Text Here", config = {timeOut = 5000}}) 
+guihooks.trigger('toastrMsg', {type = "warning", title = "Warning Message:", msg = "Warning Message Text Here", config = {timeOut = 5000}}) 
+guihooks.trigger('toastrMsg', {type = "error", title = "Error Message:", msg = "Error Message Text Here", config = {timeOut = 5000}}) 
 ```
+### 消息通知，默认显示在“消息”应用的屏幕左上角
 
-### 消息通知，默认显示在消息应用的屏幕左上角
-
-这需要安装“消息”或“消息与任务”UI 应用。图标可以在此处找到： `ui\ui-vue\src\assets\fonts\bngIcons\svg这需要安装“消息”或“消息与任务”UI 应用。图标可以在此处找到：
+这需要安装“消息”（Messages）或“消息与任务”（Messages & Tasks）图形界面应用程序。图标可以在 `ui\ui-vue\src\assets\fonts\bngIcons\svg\` 中找到。
 
 <figure class="image image_resized" style="width:75%">
 
-![image](https://github.com/StanleyDudek/Docs/assets/49531350/6baef813-50cb-43c3-9c59-0de550b014b6)
+  ![image](https://github.com/StanleyDudek/Docs/assets/49531350/6baef813-50cb-43c3-9c59-0de550b014b6)
 
 </figure>
-
 ```lua
 --guihooks.trigger('Message', {msg, ttl, category, icon})
 --ui_message(msg, ttl, category, icon)
-guihooks.trigger('Message', {msg = "Message Text Here", ttl = 5.0, category = "arrow_upward", icon = "arrow_upward"})
-guihooks.trigger('Message', {msg = "Message Text Here", ttl = 5.0, category = "arrow_downward", icon = "arrow_downward"})
-guihooks.trigger('Message', {msg = "Message Text Here", ttl = 5.0, category = "flag", icon = "flag"})
-guihooks.trigger('Message', {msg = "Message Text Here", ttl = 5.0, category = "check", icon = "check"})
-guihooks.trigger('Message', {msg = "Message Text Here", ttl = 5.0, category = "check_circle", icon = "check_circle"})
-guihooks.trigger('Message', {msg = "Message Text Here", ttl = 5.0, category = "warning", icon = "warning"})
-guihooks.trigger('Message', {msg = "Message Text Here", ttl = 5.0, category = "error", icon = "error"})
-guihooks.trigger('Message', {msg = "Message Text Here", ttl = 5.0, category = "directions_car", icon = "directions_car"})
-guihooks.trigger('Message', {msg = "Message Text Here", ttl = 5.0, category = "star", icon = "star"})
-guihooks.trigger('Message', {msg = "Message Text Here", ttl = 5.0, category = "timeline", icon = "timeline"})
-guihooks.trigger('Message', {msg = "Message Text Here", ttl = 5.0, category = "save", icon = "save"})
-guihooks.trigger('Message', {msg = "Message Text Here", ttl = 5.0, category = "settings", icon = "settings"})
+guihooks.trigger('Message', {msg = "Message Text Here", ttl = 5.0, category = "arrow_upward", icon = "arrow_upward"}) 
+guihooks.trigger('Message', {msg = "Message Text Here", ttl = 5.0, category = "arrow_downward", icon = "arrow_downward"}) 
+guihooks.trigger('Message', {msg = "Message Text Here", ttl = 5.0, category = "flag", icon = "flag"}) 
+guihooks.trigger('Message', {msg = "Message Text Here", ttl = 5.0, category = "check", icon = "check"}) 
+guihooks.trigger('Message', {msg = "Message Text Here", ttl = 5.0, category = "check_circle", icon = "check_circle"}) 
+guihooks.trigger('Message', {msg = "Message Text Here", ttl = 5.0, category = "warning", icon = "warning"}) 
+guihooks.trigger('Message', {msg = "Message Text Here", ttl = 5.0, category = "error", icon = "error"}) 
+guihooks.trigger('Message', {msg = "Message Text Here", ttl = 5.0, category = "directions_car", icon = "directions_car"}) 
+guihooks.trigger('Message', {msg = "Message Text Here", ttl = 5.0, category = "star", icon = "star"}) 
+guihooks.trigger('Message', {msg = "Message Text Here", ttl = 5.0, category = "timeline", icon = "timeline"}) 
+guihooks.trigger('Message', {msg = "Message Text Here", ttl = 5.0, category = "save", icon = "save"}) 
+guihooks.trigger('Message', {msg = "Message Text Here", ttl = 5.0, category = "settings", icon = "settings"}) 
 ```
-
-### 屏幕中央大尺寸或小尺寸闪烁显示
+### 屏幕中央的大尺寸或小尺寸闪烁提示
 
 <figure class="image image_resized" style="width:75%">
 
-![image](https://github.com/StanleyDudek/Docs/assets/49531350/d0cf754f-83f8-4d15-9159-27350da127de)
+  ![image](https://github.com/StanleyDudek/Docs/assets/49531350/d0cf754f-83f8-4d15-9159-27350da127de)
 
 </figure>
 
 <figure class="image image_resized" style="width:75%">
 
-![image](https://github.com/StanleyDudek/Docs/assets/49531350/1df6fc9b-756f-484e-b8d9-5df346dc4c26)
+  ![image](https://github.com/StanleyDudek/Docs/assets/49531350/1df6fc9b-756f-484e-b8d9-5df346dc4c26)
 
 </figure>
-
 ```lua
 --guihooks.trigger('ScenarioFlashMessage', {{msg, ttl, sound, big}} ) -- requires RaceCountdown ui app
-guihooks.trigger('ScenarioFlashMessage', {{"Message", 5.0, 0, true}} )
-guihooks.trigger('ScenarioFlashMessage', {{"Message Text Here", 5.0, 0, false}} )
+guihooks.trigger('ScenarioFlashMessage', {{"Message", 5.0, 0, true}} ) 
+guihooks.trigger('ScenarioFlashMessage', {{"Message Text Here", 5.0, 0, false}} ) 
 
 --countdown example, when all executed at once, the items are queued and will follow eachother after the previous ttl expires
-guihooks.trigger('ScenarioFlashMessage', {{"3", 1.0, "Engine.Audio.playOnce('AudioGui', 'event:UI_Countdown1')", true}})
-guihooks.trigger('ScenarioFlashMessage', {{"2", 1.0, "Engine.Audio.playOnce('AudioGui', 'event:UI_Countdown2')", true}})
-guihooks.trigger('ScenarioFlashMessage', {{"1", 1.0, "Engine.Audio.playOnce('AudioGui', 'event:UI_Countdown3')", true}})
-guihooks.trigger('ScenarioFlashMessage', {{"GO!", 3.0, "Engine.Audio.playOnce('AudioGui', 'event:UI_CountdownGo')", true}})
+guihooks.trigger('ScenarioFlashMessage', {{"3", 1.0, "Engine.Audio.playOnce('AudioGui', 'event:UI_Countdown1')", true}}) 
+guihooks.trigger('ScenarioFlashMessage', {{"2", 1.0, "Engine.Audio.playOnce('AudioGui', 'event:UI_Countdown2')", true}}) 
+guihooks.trigger('ScenarioFlashMessage', {{"1", 1.0, "Engine.Audio.playOnce('AudioGui', 'event:UI_Countdown3')", true}}) 
+guihooks.trigger('ScenarioFlashMessage', {{"GO!", 3.0, "Engine.Audio.playOnce('AudioGui', 'event:UI_CountdownGo')", true}}) 
 
---另一个声音示例
-guihooks.trigger('ScenarioFlashMessage', {{"Teleported!", 3.0, "Engine.Audio.playOnce('AudioGui', 'event:UI_Checkpoint')", false}})
+--another sound example
+guihooks.trigger('ScenarioFlashMessage', {{"Teleported!", 3.0, "Engine.Audio.playOnce('AudioGui', 'event:UI_Checkpoint')", false}}) 
 ```
+### 屏幕中央的中等尺寸持久显示
 
-### 屏幕中央中等尺寸持久显示
-
-这需要安装实时竞赛显示UI 应用。
+这需要安装“实时竞赛显示”（Race Realtime Display）图形界面应用程序。
 
 <figure class="image image_resized" style="width:75%">
 
-![image](https://github.com/StanleyDudek/Docs/assets/49531350/6290e018-6b3d-4674-98f2-34282a723258)
+  ![image](https://github.com/StanleyDudek/Docs/assets/49531350/6290e018-6b3d-4674-98f2-34282a723258)
 
 </figure>
-
 ```lua
---guihooks.trigger('ScenarioRealtimeDisplay', {msg = msg} ) -- 需要安装 Race Realtime Display UI 应用
-guihooks.trigger('ScenarioRealtimeDisplay', {msg = "在此输入消息文本"} )
--- 这些消息会持久显示，可以通过发送空字符串来清除
--- 如果您正在运行实时数据（例如计时器、距离计算等），这是一个非常适合快速更新的接口
+--guihooks.trigger('ScenarioRealtimeDisplay', {msg = msg} ) -- requires Race Realtime Display ui app
+guihooks.trigger('ScenarioRealtimeDisplay', {msg = "Message Text Here"} )
+--these messages persist, clear with a blank string
+--if you are running live data, this is a good one to update rapidly (think timers, distance calcs, et cetera)
 guihooks.trigger('ScenarioRealtimeDisplay', {msg = ""} )
 ```
-
 ### 确认对话框
 
-确认对话框是一个带有多达两个按钮的简化弹出窗口。
-
+ConfirmationDialog 是一个简单的弹出窗口，最多带有两个按钮。
 ```lua
--- 打开一个包含标题、正文文本和最多两个按钮的确认对话框（ConfirmationDialog）
+-- Open a ConfirmationDialog with a title, body text, and up to two buttons
 guihooks.trigger("ConfirmationDialogOpen",
-    "示例标题",
-    "示例正文文本内容",
-    "确定",
-    "", -- 对应的 gelua 代码，此处为空字符串
-    "取消",
-    "" -- 对应的 gelua 代码
+    "Example Title",
+    "Example Body Text",
+    "Okay",
+    "", --gelua. empty string
+    "Cancel",
+    "" --gelua
 )
 
--- 关闭任何具有指定标题的已打开确认对话框
-guihooks.trigger("ConfirmationDialogClose", "示例标题")
+-- Close any open ConfirmationDialog with the provided title
+guihooks.trigger("ConfirmationDialogClose", "Example Title")
 ```
-
 <figure class="image image_resized" style="width:75%">
 
-![Example of a ConfirmationDialog](../../../assets/content/ConfirmationDialog.png)
+  ![ConfirmationDialog 示例](../../../assets/content/ConfirmationDialog.png)
 
 </figure>
 
-按钮的两个字段都必须为字符串类型，按钮才会显示。
+按钮的两个字段都必须是字符串，按钮才会显示。
 
-如果提供了确定按钮，按下 *确定 / 首要操作（OK / Primary action）* 键等同于点击“确定”按钮。
+如果提供了 Okay 按钮，那么按下 *确定 / 首要操作（OK / Primary action）* 键，等同于按下 Okay 按钮。
 
-如果提供了取消按钮，按下 *菜单（Menu）*键等同于点击取消按钮。
+如果提供了 Cancel 按钮，那么按下 *菜单（Menu）* 键，等同于按下 Cancel 按钮。
 
-支持HTML，例如可以用来添加图片或图标。
+支持 HTML，例如可以用来添加图片或图标。
 
-可以同时显示多个，并将按顺序排列显示。
+可以同时显示多个，它们会依次显示。
 
 ::: bug
-如果不提供任何按钮，玩家将无法在不使用控制台的情况下关闭或退出该对话框。
+如果不提供任何按钮，玩家就无法在不使用控制台的情况下退出该对话框。
 :::
 
 ::: bug
-当 ConfirmationDialog（确认对话框）处于活动状态时，迷你地图UI应用的 SDF 部分仍然保持可见。
+ConfirmationDialog 显示期间，Minimap 图形界面应用程序中的 SDF 部分仍然可见。
 
-可以使用 `#!lua guihooks.trigger('ShowApps', false)` 隐藏 UI 应用，作为一种临时解决方案。
+可以使用 `#!lua guihooks.trigger('ShowApps', false)` 来隐藏图形界面应用程序，作为一个取巧的临时解决办法。
 :::
 
 <figure class="image image_resized" style="width:75%">
 
-![确认对话框用于挂机踢出系统](../../../assets/content/ConfirmationDialog_Example.png)
+  ![ConfirmationDialog 被用于一个挂机踢出系统](../../../assets/content/ConfirmationDialog_Example.png)
 
 </figure>
 
 ### introPopupTutorial
 
-introPopupTutorial 是一个高度可定制的弹出窗口，很大程度上是通过嵌入式 HTML 来定义的。通常的做法是从一个独立的 HTML 文件中进行加载，该文件位于：`/gameplay/tutorials/pages/*/content.html`.
-
+introPopupTutorial 是一个高度可定制的弹窗，主要通过嵌入的 HTML 来定义。通常的做法是从位于 `/gameplay/tutorials/pages/*/content.html` 的独立 HTML 文件加载内容。
 ```lua
 guihooks.trigger("introPopupTutorial", {
     {
@@ -251,48 +229,46 @@ guihooks.trigger("introPopupTutorial", {
 
 guihooks.trigger("introPopupClose")
 ```
-
 <figure class="image image_resized" style="width:75%">
 
-![在 BeamNG.drive 中显示的introPopupTutorial代码片段](../../../assets/content/introPopupTutorial.png)
+  ![BeamNG.drive 中显示的 introPopupTutorial 片段](../../../assets/content/introPopupTutorial.png)
 
 </figure>
 
-`flavour` 控制哪些按钮会被显示。共有四种类型：
+`flavour` 控制显示哪些按钮。共有四种 flavour：
 
-- `withLogbook`
-    - Buttons: Career Logbook, Okay
-- `onlyOk`
-    - Buttons: Okay
-- `onlyLogbook`
-    - Buttons: Career Logbook
-- `noButtons`
-    - 不提供任何按钮
+* `withLogbook`
+    * 按钮：Career Logbook（生涯日志）、Okay（确定）
+* `onlyOk`
+    * 按钮：Okay（确定）
+* `onlyLogbook`
+    * 按钮：Career Logbook（生涯日志）
+* `noButtons`
+    * 不提供任何按钮
 
 ::: warning
-如果在页面中使用noButtons类型，且页面内容中没有提供额外的 JavaScript 来关闭该弹出窗口，则会导致游戏出现Softlock。在此类型下，多个页面不会合并到同一个弹出窗口中。因此，不建议使用此类型。
+在页面上使用 noButtons flavour 时，如果页面内容中没有提供用于关闭弹窗的额外 JavaScript，就会导致软锁死。在这种 flavour 下，各页面不会合并到同一个弹窗中。不建议使用这种 flavour。
 :::
 
-如果提供了多个页面，或者该Hook被多次触发，这些页面将合并到同一个弹出窗口中。<br>如果在一个 introPopup 处于活动状态时触发该钩子，或者已经触发了另一种不同类型的 introPopup，则它会在当前窗口关闭后，在一个独立的弹出窗口中显示。
+如果提供了多个页面，或者该钩子被多次触发，这些页面会合并到同一个弹窗中。如果在某个 introPopup 处于活动状态时触发该钩子，或者已经触发过另一种 introPopup 类型，那么它会在现有弹窗关闭后，在一个单独的弹窗中显示。
 
 ### introPopupCareer
 
-introPopupCareer是一种易于使用且开放式Open-ended的弹出窗口，如果需要，它还支持嵌入 HTML 内容。
+introPopupCareer 是一个易于使用但自由度很高的弹窗，需要时支持嵌入 HTML。
 
-Flavours控制显示哪些按钮以及默认的图像长宽比。共有四种类型：
+Flavour 控制显示哪些按钮以及默认的图片宽高比。共有四种 flavour：
 
-- `default`
-    - Default image aspect ratio: 16x9
-    - Buttons: Later, Okay
-- `welcome`
-    - Default image aspect ratio: 16x9
-    - Buttons: Career Logbook, Okay
-- `branch-info`
-    - Default image aspect ratio: 16x9
-    - Buttons: Career Logbook, Okay
-- `garage`
-    - Buttons: Later, Okay
-
+* `default`
+  * 默认图片宽高比：16x9
+  * 按钮：Later（稍后）、Okay（确定）
+* `welcome`
+  * 默认图片宽高比：16x9
+  * 按钮：Career Logbook（生涯日志）、Okay（确定）
+* `branch-info`
+  * 默认图片宽高比：16x9
+  * 按钮：Career Logbook（生涯日志）、Okay（确定）
+* `garage`
+  * 按钮：Later（稍后）、Okay（确定）
 ```lua
 guihooks.trigger("introPopupCareer", {
     {
@@ -306,35 +282,33 @@ guihooks.trigger("introPopupCareer", {
 
 guihooks.trigger("introPopupClose")
 ```
-
 <figure class="image image_resized" style="width:75%">
 
-!在 BeamNG.drive 中显示的introPopupCareer代码片段](../../assets/content/introPopupCareer.png)
+  ![BeamNG.drive 中显示的 introPopupCareer 片段](../../../assets/content/introPopupCareer.png)
 
 </figure>
 
-如果提供了多个页面，或者该Hook被多次触发，这些页面将被合并到同一个弹出窗口中。<br>如果在一个introPopup处于活动状态时触发了该钩子，或者已经触发了另一种不同类型的introPopup，那么它将在当前窗口关闭后，通过一个独立的弹出窗口进行显示。
+如果提供了多个页面，或者该钩子被多次触发，这些页面会合并到同一个弹窗中。如果在某个 introPopup 处于活动状态时触发该钩子，或者已经触发过另一种 introPopup 类型，那么它会在现有弹窗关闭后，在一个单独的弹窗中显示。
 
 ::: bug
-背景模糊具有最小高度限制，这会导致内容较少的弹出窗口在其窗口下方出现多余的模糊区域。目前主要有两种解决方法：
+背景模糊有一个最小高度，所以内容较短的弹窗，其窗口下方会出现多余的模糊区域。主要有两种解决办法：
 
-* 重复输入 `\n`（换行符）并在结尾添加 `#!html <div />`，直到窗口遮住模糊区域。
-* 使用空路径或缺失的 `image` 路径，并调整长宽比（Aspect Ratio），直到窗口遮住模糊区域。
+* 重复 `\n`，并以 `#!html <div />` 结尾，直到窗口覆盖模糊区域
+* 使用空的或缺失的 `image` 路径，并调整宽高比，直到窗口覆盖模糊区域
 :::
 
 ### introPopupMission
 
-introPopupMission与 introPopupCareer几乎完全相同，但它需要手动定义按钮，而不是直接为按钮选择预设样式。
+introPopupMission 与 introPopupCareer 几乎相同，但需要自行定义按钮，而不是从预设中选择按钮。
 
-按钮样式组合为*bng-button-*`style`。内置的按钮样式包括：
+按钮样式会组合成 *bng-button-*`style`。内置的按钮样式有：
 
-- `main` - 橙色
-- `secondary` - 青色
-- `attention` - 红色
-- `white` - 白色
-- `link`  - 半透明
-- `outline` - 橙色轮廓
-
+* `main` - 橙色
+* `secondary` - 青色
+* `attention` - 红色
+* `white` - 白色
+* `link`  - 半透明
+* `outline` - 橙色轮廓
 ```lua
 guihooks.trigger('introPopupMission', {
     title   = "introPopupMission title",
@@ -353,22 +327,52 @@ guihooks.trigger('introPopupMission', {
 
 guihooks.trigger("introPopupClose")
 ```
-
 <figure class="image image_resized" style="width:75%">
 
-![在 BeamNG.drive 中显示的introPopupMission代码片段](../../../assets/content/introPopupMission.png)
+  ![BeamNG.drive 中显示的 introPopupMission 片段](../../../assets/content/introPopupMission.png)
 
 </figure>
 
-如果提供了多个页面，或者该Hook被多次触发，这些页面将合并到同一个弹出窗口中。<br>如果在一个introPopup处于活动状态时触发了该钩子，或者已经触发了另一种不同类型的 introPopup，则它会在当前窗口关闭后，通过一个独立的弹出窗口进行显示。
+如果提供了多个页面，或者该钩子被多次触发，这些页面会合并到同一个弹窗中。如果在某个 introPopup 处于活动状态时触发该钩子，或者已经触发过另一种 introPopup 类型，那么它会在现有弹窗关闭后，在一个单独的弹窗中显示。
 
 ::: bug
-背景模糊具有最小高度限制，这会导致内容较少的弹出窗口在其窗口下方出现多余的模糊区域。目前主要有两种解决方法：
+背景模糊有一个最小高度，所以内容较短的弹窗，其窗口下方会出现多余的模糊区域。主要有两种解决办法：
 
-* 重复输入 `\n`（换行符）并在结尾添加 `#!html <div />`，直到窗口拉长并遮住模糊区域。
-* 使用空路径或缺失的 `image`（图像）路径，并调整长宽比（Aspect Ratio），直到窗口覆盖住模糊区域。
+* 重复 `\n`，并以 `#!html <div />` 结尾，直到窗口覆盖模糊区域
+* 使用空的或缺失的 `image` 路径，并调整宽高比，直到窗口覆盖模糊区域
 :::
 
-### 对话窗口
+### Dialogue
 
-todo
+Dialogue 在 *A Rocky Start* 战役中用于显示任务相关的信息。它是一个居中、垂直排列的弹窗，有特定的布局，不支持嵌入 HTML。
+```lua
+ui_missionInfo.openDialogue({
+    title    = "Dialogue title",
+    type     = "Custom", -- isn't actually displayed
+    typeName = "typeName",
+    data     = {
+        {label = "objective",  value = "reward"}
+        -- add more...
+    },
+    buttons  = {
+        {action = "accept", text = "Accept",  cmd = ""},
+        {action = 'decline',text = "Decline", cmd = ""}
+        -- add more...
+    }
+})
+
+ui_missionInfo.closeDialogue()
+```
+<figure class="image image_resized" style="width:75%">
+
+  ![BeamNG.drive 中显示的 Dialogue 片段](../../../assets/content/Dialogue.png)
+
+</figure>
+
+同一时间只能显示一个 Dialogue。任何已存在的 Dialogue 都会被覆盖。
+
+::: info
+必须使用 `#!lua ui_missionInfo.closeDialogue()` 来关闭 dialogue。
+
+请确保在任何按钮被按下时都调用这个函数。
+:::
