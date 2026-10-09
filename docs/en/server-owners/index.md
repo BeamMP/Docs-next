@@ -14,7 +14,8 @@ Choose how you will host:
 
 ## Look after your server
 
-- [Server Maintenance](/en/server-owners/maintenance): the `ServerConfig.toml` settings, server names and tags, the log file and updating.
+- [Server Configuration](/en/server-owners/configuration): the `ServerConfig.toml` settings, server names and tags, and the stock map paths.
+- [Server Maintenance](/en/server-owners/maintenance): the log file and updating the server.
 - [Server Manual](/en/server-owners/manual): environment variables, the Resources folder, command-line arguments and limits.
 
 ## When something goes wrong

@@ -75,5 +75,6 @@
   "Rules": "Правила",
   "More": "Ещё",
   "Server Setup on VPS": "Настройка сервера на VPS",
-  "Changing the Launcher Port": "Изменение порта лаунчера"
+  "Changing the Launcher Port": "Изменение порта лаунчера",
+  "Server Configuration": "Настройка сервера"
 }

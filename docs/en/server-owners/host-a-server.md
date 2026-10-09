@@ -13,7 +13,7 @@ Read the server's [LICENSE](https://raw.githubusercontent.com/BeamMP/BeamMP-Serv
 
 The server only supports IPv4. If you do not know which you have, look at the IP address shown on [whatsmyip.org](https://www.whatsmyip.org/). If it contains colons, it is IPv6. In that case, find out whether you also have an IPv4, by asking your ISP or someone who knows networks. IPv6 support is planned.
 
-If you run into problems, ask on the [forum](https://forum.beammp.com) or in the `#support` channel on the [Discord server](https://discord.gg/beammp). [Server Maintenance](/en/server-owners/maintenance) has more detail on the server's settings.
+If you run into problems, ask on the [forum](https://forum.beammp.com) or in the `#support` channel on the [Discord server](https://discord.gg/beammp). [Server Configuration](/en/server-owners/configuration) has more detail on the server's settings.
 
 ## Forward the port
 
@@ -104,7 +104,7 @@ Description = "Total Random Beam MP Server"
 ResourceFolder = "Resources"
 ```
 
-This file uses the TOML format. [Server Maintenance](/en/server-owners/maintenance) describes every setting.
+This file uses the TOML format. [Server Configuration](/en/server-owners/configuration) describes every setting.
 
 1. Set `AuthKey` to the key you copied. Paste it between the quotes. For the example key it looks like this:
 
@@ -112,7 +112,7 @@ This file uses the TOML format. [Server Maintenance](/en/server-owners/maintenan
    AuthKey = '3173a2e-6az0-4542-a3p0-ddqq5ff95558'
    ```
 
-2. Set `Name`, the name of your server in the server list. You can format it with colors and more: see [Customize the look of your server name](/en/server-owners/maintenance#customize-the-look-of-your-server-name).
+2. Set `Name`, the name of your server in the server list. You can format it with colors and more: see [Customize the look of your server name](/en/server-owners/configuration#customize-the-look-of-your-server-name).
 3. If you picked a port other than 30814, set it in `Port`.
 4. Your server does not show in the server list while `Private = true`. To list it, set `Private = false`.
 
@@ -134,7 +134,7 @@ Put the mod's `.zip` file in `Resources/Client`. Everyone who joins downloads it
 
 ### Maps
 
-The stock maps work without installing anything. Set `Map` in `ServerConfig.toml` to one of the [stock map paths](/en/server-owners/maintenance#all-vanilla-maps-names).
+The stock maps work without installing anything. Set `Map` in `ServerConfig.toml` to one of the [stock map paths](/en/server-owners/configuration#all-vanilla-maps-names).
 
 For a modded map:
 

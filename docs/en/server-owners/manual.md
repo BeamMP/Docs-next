@@ -3,7 +3,7 @@ description: "Reference for the BeamMP server: what it reads from its environmen
 ---
 # Server Manual
 
-This page is the reference for how the BeamMP server behaves. For setting one up, see [Host a Server](/en/server-owners/host-a-server). For the settings in `ServerConfig.toml`, see [Server Maintenance](/en/server-owners/maintenance).
+This page is the reference for how the BeamMP server behaves. For setting one up, see [Host a Server](/en/server-owners/host-a-server). For the settings in `ServerConfig.toml`, see [Server Configuration](/en/server-owners/configuration).
 
 ## What affects the server
 

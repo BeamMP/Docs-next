@@ -13,7 +13,7 @@ Servers are an integral part of BeamMP: players connect to each other through th
 
 Read the server's [LICENSE](https://raw.githubusercontent.com/BeamMP/BeamMP-Server/master/LICENSE) before you use it.
 
-If you run into problems, ask on the [forum](https://forum.beammp.com) or in the `#support` channel on the [Discord server](https://discord.gg/beammp). [Server Maintenance](/en/server-owners/maintenance) has more detail on the server's settings.
+If you run into problems, ask on the [forum](https://forum.beammp.com) or in the `#support` channel on the [Discord server](https://discord.gg/beammp). [Server Configuration](/en/server-owners/configuration) has more detail on the server's settings.
 
 If you have not chosen a VPS yet, look at our partnered hosting services. They are paid.
 
@@ -32,7 +32,7 @@ Make sure your server management page is reachable. When you have checked that t
 The hosting panel has some fields to fill in. Fields marked with `*` are mandatory.
 
 1. Paste your AuthKey into the **Authkey** field.
-2. Give your server a name and a description. You can format them with colors and more: see [Customize the look of your server name](/en/server-owners/maintenance#customize-the-look-of-your-server-name).
+2. Give your server a name and a description. You can format them with colors and more: see [Customize the look of your server name](/en/server-owners/configuration#customize-the-look-of-your-server-name).
 
 ::: warning
 You cannot edit `ServerConfig.toml` directly in the file manager. This is intentional, so that the hosting company can enforce limits such as the number of players.
@@ -56,7 +56,7 @@ Put the mod's `.zip` file in `Resources/Client`. Everyone who joins downloads it
 
 ### Maps
 
-The stock maps work without installing anything. Set the **Map** field in the management panel to one of the [stock map paths](/en/server-owners/maintenance#all-vanilla-maps-names).
+The stock maps work without installing anything. Set the **Map** field in the management panel to one of the [stock map paths](/en/server-owners/configuration#all-vanilla-maps-names).
 
 For a modded map:
 

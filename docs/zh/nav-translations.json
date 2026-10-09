@@ -75,5 +75,6 @@
   "Rules": "规则",
   "More": "更多",
   "Server Setup on VPS": "在 VPS 上设置服务器",
-  "Changing the Launcher Port": "更改启动器端口"
+  "Changing the Launcher Port": "更改启动器端口",
+  "Server Configuration": "服务器配置"
 }
