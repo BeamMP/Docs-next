@@ -15,14 +15,8 @@ The BeamMP support team does not offer support for issues with pirated / outdate
 
 ### **2a. Windows Installation**
 
-::: note
-As of April 1st, 2026, the MSI installer is an "unrecognized app" according to Windows Defender SmartScreen.
-
-To bypass this warning, click 'More info', then click 'Run anyway'.
-:::
-
 1. Go to [beammp.com](https://beammp.com/) and click the 'Download Now' button.
-2. Run the `BeamMP_Installer.msi` installer and follow the instructions.
+2. Run the `BeamMP_Installer.exe` installer and follow the instructions.
 3. The BeamMP Launcher icon should appear on your desktop. If not, just search for “BeamMP” in the Windows search bar.
 
 ::: note
@@ -122,9 +116,9 @@ Change the userfolder location of Proton-BeamNG.drive to the location of Linux-B
 
 This can be done for example by creating a symlink
 
-- Note the Linux-BeamNG.drive userfolder location (this is usually found in `~/.local/share/BeamNG.drive`) and rename it, for example to `BeamNG.drive_old`
-- Note the Proton-BeamNG.drive userfolder location (this is usually found in `~/.local/share/Steam/steamapps/compatdata/284160/pfx/drive_c/users/steamuser/AppData/Local/BeamNG.drive`)
-- Create a symlink between both userfolders `ln -s ~/.local/share/Steam/steamapps/compatdata/284160/pfx/drive_c/users/steamuser/AppData/Local/BeamNG.drive ~/.local/share`
+- Note the Linux-BeamNG.drive userfolder location (this is usually found in `~/.local/share/BeamNG/BeamNG.drive`) and rename it, for example to `BeamNG.drive_old`
+- Note the Proton-BeamNG.drive userfolder location (this is usually found in `~/.local/share/Steam/steamapps/compatdata/284160/pfx/drive_c/users/steamuser/AppData/Local/BeamNG/BeamNG.drive`)
+- Create a symlink between both userfolders `ln -s ~/.local/share/Steam/steamapps/compatdata/284160/pfx/drive_c/users/steamuser/AppData/Local/BeamNG/BeamNG.drive ~/.local/share/BeamNG`
 
 With the symlink in place between the userfolders and the launcher compiled, you can have Steam run the game via Proton, while also automatically executing the launcher with the following replacement for your launch options for the vanilla game, found in the game's Properties window in its entry in Steam:
 
