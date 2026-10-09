@@ -1,108 +1,147 @@
-# Pour commencer
-
-## **1. Compatibilitée**
-
-BeamMP est entièrement compatible avec Windows et Linux, la compatibilité avec MacOS est en cours de développement. 
-Cependant, puisque Linux et MacOS sont des systèmes d'opération secondaire plusieurs problèmes (bug) sont à prévoir.
-
-::: warning Attention
-Aucune version piratée ou dépassée de BeamNG.drive ne sera compatible avec BeamMP.
-L'équipe de support de BeamMP ne fournit aucun soutien pour les versions piratées ou défectueuses.
-:::
-
-## **2. Installation**
-
-### **2a. Installation sur Windows**
-1. Accéder à [beammp.com](https://beammp.com/) et cliquer sur le bouton "Download client".
-2. Extractez l'archive `BeamMP_Installer.zip`.
-3. Exécutez `BeamMP_Installer.exe` et suivez les instructions.
-4. L'icone du lanceur BeamMP devrais apparaître sur le bureau de votre ordinateur. Si ce n'est pas le cas, cherchez "BeamMP" dans la barre de recherche Windows.
-5. Une fois que le lanceur est lancé, vous devriez voir une fenêtre du terminal, BeamNG.drive devrais se lancer automatiquement peu de temps après. **Ne fermez pas** la fenêtre du terminal.
-6. Une fois que BeamNG est lancé, cliquer sur l'onglet `Repository` (Dépot en français) dans le menu principal et assurez-vous que `multiplayerbeammp` **est le seul** mod activé.
-7. Retournez au menu principal and cliquez le bouton 'Multiplayer' pour lancer le mode multijoueur.
-8. On va vous demander si vous voulez vous connecter ou si vous voulez jouer en teant qu'invité (guest) (Certains serveurs bloque les joueur invités (guest)). Vous pouvez créer un compte sur notre [forum](https://forum.beammp.com) et vous connecter à BeamMP avec les mêmes informations par la suite.
-9. Choisissez n'importe quel serveur de votre choix et appuyer sur `Connect`. Amusez-vous!
-
-::: note
-Lorsque vous vous connectez à un serveur avec plusieurs joueurs et/ou véhicules, les temps de chargement peuvent être prolongés.
-:::
-
-### **2b. Installation sur Linux**
-
-Vous devrez construire le lanceur vous même pour le moment.
-Pour ce faire, vous avez besoin d'un minimum de connaissences de base pour construire (build) une application.
-
-Assurez-vous d'avoir [`vcpkg`](https://learn.microsoft.com/en-us/vcpkg/get_started/get-started?pivots=shell-bash#1---set-up-vcpkg) d'installé, ainse que des outil de dévelopement de base, souvent trouvé dans des packets (package) tel que (par exemple):
-
-- Debian: `sudo apt install build-essential`
-- Fedora: `sudo dnf install cmake gcc-c++ perl-IPC-Cmd perl-FindBin perl-File-Compare perl-File-Copy`
-- Arch: `sudo pacman -S base-devel`
-- openSUSE: `zypper in -t pattern devel-basis`
-- SteamOS (Arch): `sudo pacman -S base-devel linux-api-headers glibc libconfig` (Vous devez également faire `sudo steamos-readonly disable` mais assurez-vous de l'activer à nouveau après l'installation des paquets.)
-
-Clônez le répertoire BeamMP-Launcher sur votre système en utilisant `git`, exemple:
-`git clone https://github.com/BeamMP/BeamMP-Launcher.git`
-[Informations complémentaires sur le clonage d'une réplique GitHub](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository)
-
-Assurez-vous d'avoir le bon identifiant de version utilisé pour la [dernière version](https://github.com/BeamMP/BeamMP-Launcher/releases/latest) disponible (Latest version). Par exemple, si `v2.3.2` est utilisé dans la dernière version disponible, faites `git checkout v2.3.2`
-
-Dans la root directory du projet,
-
-1. 
-```cmake
-cmake . -B bin -DCMAKE_TOOLCHAIN_FILE=~/vcpkg/scripts/buildsystems/vcpkg.cmake -DVCPKG_TARGET_TRIPLET=x64-linux
-```
-
-2. 
-```cmake
-cmake --build bin --parallel
-```
-
-::: note
-Si vous manquer de RAM lorsque vous construisez, vous pouvez ignorer --parallel instruction, cela va utiliser moin s de RAM puisque la construction n'utilisera qu'un fil (thread) du CPU.
-:::
-
-::: note
-Si vous ne spécifiez pas `-DCMAKE_BUILD_TYPE=Release`, vous allez construire la version debug qui est plus volumineuse, mais ne contient pas le problème (bug):
-launcher-can-only-connect-to-a-server-once (Lanceur-peut-se-connecter-seulement-unefois-à-un-serveur)
-:::
-
-Déplacez l'application terminée en dehors du dossier `/bin` vers son propre dossier et executer l'application à partir de là.
-
-La version native à linux du lanceur BeamMP va se lancer et va lancer la version native à linux de BeamNg.drive. 
-
-### **2c. Utiliser BeamNG.drive avec Proton**
-
-Vous souhaitez utiliser la version native à linux de BeamMP et Beamng via proton? Vous pouvez le faire en suivant les étapes ci-dessous:
-
-Exécutez le lancer BeamMP avec la commande suivante ` --no-launch` (Ceci va empêcher le lanceur de lancer la version native à linux de beamNG.drive). Plus d'informations peut être retrouvée dans la [Configuration de l'environnement de développement](/fr/developers/dev-environment-setup)
-
-Changez l'emplacement du userfolder de Proton-BeamNG.drive pour l'emplacement de Linux-BeamNG.drive (puisque la version native à linux du lanceur BeamMP écrit, pour le momant, que dans le Linux-BeamNG.drive userfolder)
-
-Cela peut être fait simplement en créant un symlink
-
-- Notez l'emplacement du userfolder de Linux-BeamNG.drive (il est généralement trouvé dans `~/.local/share/BeamNG.drive`) et renomez le, par exemple: `BeamNG.drive` à  `BeamNG.drive_old 
-- Notez l'emplacement du userfolder de Proton-BeamNG.drive  (il est généralement trouvé dans `~/.local/share/Steam/steamapps/compatdata/284160/pfx/drive_c/users/steamuser/AppData/Local/BeamNG.drive`)
-- Créez un symlink entre les deux userfolders `ln -s ~/.local/share/Steam/steamapps/compatdata/284160/pfx/drive_c/users/steamuser/AppData/Local/BeamNG.drive ~/.local/share`
-
-Avec le symlink configuré antre le lanceur compilé et les userfolders, vous pouvez lancer le jeux avec Proton via Steam tout en executant automatiquement le lanceur avec les remplacement suivents pour les option de lancement du jeu vanilla (version sans mod), retrouvés dans la fenêtre des propriétées du jeu dans son entrée sur Steam.
-
-- `~/BeamMP/BeamMP-Launcher --no-launch & %command% ; killall BeamMP-Launcher`
-
-Notez que ceci assume que vous avez mis, les binairies du lanceur que vous avez compilé plus tôt, dans `/home/user/BeamMP/`, donc changez l'emplacement pour qu'il corresponde à où vous avez mis les binairies terminées et vous allez avoir besoin de recompiler le lanceur avec la bonne branche git à chaque fois qu'une nouvelle mise à jour sera disponible.
-
-::: tip Ajoutez une police d'écriture pour les emojis pour avoir les emojis en jeu
-Pour avoir accès aux emojis soit dans la liste des serveurs (certains serveurs utilisent des emojis dans leur nom personalisé), soit dans le chat en jeu, vous avez besoin d'une police d'écriture qui contient certains emojis.
-
-Cela peut être fait, par exemple, en ajoutant le [Linux-port of the Windows Segoe-UI emoji font](https://github.com/mrbvrz/segoe-ui-linux)
-:::
-
 ---
+description: "Installez BeamMP sur Windows avec l'installateur, ou compilez vous-même le lanceur BeamMP sur Linux, avec ou sans Proton."
+---
+# Installer BeamMP
 
-## **3. Problèmes connus**
-- La version actuel du lanceur natif à linux ne peut ce connecter qu'une fois à un serveur, après vous être déconnecté, vous devez redémarer le lanceur. Vous pouvez le faire sans fermer le jeu à chaque fois
-- Si vous ne voyez pas le bouton “Multiplayer”. Assurez-vous que le mod BeamMP est présent et activé dans le “Gestionnaire de mods” et appuyer sur CTRL + L sur votre clavier.
-- Tout les types de VPNs pourrait causer des problèmes de connection.
-- Si le lanceur donne n'importe quelle erreur, lisez la [FAQ](https://forum.beammp.com/c/faq/35).
+Il vous faut le lanceur BeamMP. Sous Windows, un installateur s'en charge. Sous Linux, vous le compilez vous-même.
 
-Si vous avez besoin d'aide avec l'installation, faites un post sur notre [forum](https://forum.beammp.com) ou posez vos questions dans notre [serveur Discord](https://discord.gg/beammp).
+::: warning
+BeamMP ne fonctionne pas avec les copies piratées ou obsolètes de BeamNG.drive.
+:::
+
+## Installation sur Windows
+
+1. Rendez-vous sur [beammp.com](https://beammp.com/) et cliquez sur **Download Now**.
+2. Exécutez `BeamMP_Installer.exe` et suivez les instructions.
+3. L'icône du lanceur BeamMP apparaît sur votre bureau. Si ce n'est pas le cas, cherchez « BeamMP » dans la barre de recherche de Windows.
+
+Étape suivante : [rejoindre votre premier serveur](/fr/get-started/join-first-server).
+
+## Installation sur Linux {#install-on-linux}
+
+Il n'existe pas encore d'installateur pour Linux : vous devez donc compiler le lanceur vous-même. Il vous faut une connaissance de base de la compilation d'une application.
+
+### Installer les outils de compilation
+
+Installez les outils de développement de base. Sur la plupart des systèmes, ils se trouvent dans un paquet :
+
+| Système | Commande |
+|---|---|
+| Debian, Ubuntu | `sudo apt install build-essential` |
+| Fedora | `sudo dnf install cmake gcc gcc-c++ make perl perl-IPC-Cmd perl-FindBin perl-File-Compare perl-File-Copy kernel-headers kernel-devel` |
+| Arch | `sudo pacman -S base-devel` |
+| openSUSE | `zypper in -t pattern devel-basis` |
+| SteamOS (Arch) | `sudo pacman -S base-devel linux-api-headers glibc libconfig` |
+
+::: info SteamOS
+Exécutez `sudo steamos-readonly disable` avant d'installer les paquets, puis réactivez-le ensuite.
+:::
+
+### Obtenir vcpkg
+
+Clonez `vcpkg`, initialisez-le (bootstrap) et ajoutez-le à votre `PATH` :
+
+1. Clonez-le :
+   ```bash
+   git clone https://github.com/microsoft/vcpkg.git
+   ```
+2. Initialisez-le :
+   ```bash
+   ./vcpkg/bootstrap-vcpkg.sh
+   ```
+3. Ajoutez-le à votre `PATH` :
+   ```bash
+   export VCPKG_ROOT="$(pwd)/vcpkg"
+   export PATH=$VCPKG_ROOT:$PATH
+   ```
+### Compiler le lanceur {#build-the-launcher}
+
+1. Clonez le dépôt [BeamMP-Launcher](https://github.com/BeamMP/BeamMP-Launcher), puis placez-vous dedans :
+   ```bash
+   git clone https://github.com/BeamMP/BeamMP-Launcher.git
+   cd BeamMP-Launcher
+   ```
+   Si vous n'avez encore jamais cloné de dépôt, consultez le guide de GitHub pour [cloner un dépôt](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository).
+
+2. Récupérez le tag de la [dernière version](https://github.com/BeamMP/BeamMP-Launcher/releases/latest) (commande `checkout`). Si la dernière version est `v2.8.0`, exécutez :
+   ```bash
+   git checkout v2.8.0
+   ```
+3. Dans le répertoire racine du projet, configurez la compilation :
+   ```bash
+   cmake . -B bin -DCMAKE_TOOLCHAIN_FILE=$VCPKG_ROOT/scripts/buildsystems/vcpkg.cmake -DVCPKG_TARGET_TRIPLET=x64-linux
+   ```
+4. Lancez la compilation :
+   ```bash
+   cmake --build bin --parallel
+   ```
+5. Déplacez l'application terminée hors du dossier `bin`, dans son propre dossier, et exécutez-la à partir de là :
+   ```bash
+   mkdir -p ~/beammp-launcher
+   cp bin/BeamMP-Launcher ~/beammp-launcher/
+   cd ~/beammp-launcher
+   ./BeamMP-Launcher
+   ```
+Le lanceur natif Linux démarre et utilise la version native Linux de BeamNG.drive.
+
+::: tip Vous manquez de RAM ?
+Omettez `--parallel`. La compilation n'utilise alors qu'un seul thread du processeur et moins de RAM.
+:::
+
+::: info Version de débogage
+Sans `-DCMAKE_BUILD_TYPE=Release`, vous compilez une version de débogage (debug). Elle est plus volumineuse, mais elle ne présente pas le bug qui empêche le lanceur de se connecter à un serveur plus d'une fois.
+:::
+
+::: details Fedora : vcpkg échoue pendant la compilation d'OpenSSL
+Si vcpkg échoue avec des erreurs d'en-têtes du noyau pendant la compilation d'OpenSSL, assurez-vous que les dépendances sont installées :
+```bash
+sudo dnf install kernel-headers kernel-devel gcc gcc-c++ make perl
+```
+Puis videz le cache de vcpkg et relancez la commande de configuration :
+```bash
+rm -rf $VCPKG_ROOT/buildtrees/openssl
+```
+:::
+
+### Utiliser BeamNG.drive avec Proton
+
+Vous pouvez utiliser le lanceur natif Linux avec BeamNG.drive exécuté via Proton.
+
+1. Démarrez le lanceur avec `--no-launch`, afin qu'il ne démarre pas la version native Linux de BeamNG.drive. D'autres arguments du lanceur sont décrits dans la page [Configuration de l'environnement de développement](/fr/developers/dev-environment-setup).
+2. Faites en sorte que le jeu sous Proton utilise le dossier utilisateur (user folder) du jeu Linux, car le lanceur natif n'écrit que dans celui-ci. Un lien symbolique (symlink) permet de le faire :
+   1. Repérez le dossier utilisateur de BeamNG.drive pour Linux, généralement `~/.local/share/BeamNG/BeamNG.drive`, et renommez-le, par exemple en `BeamNG.drive_old`.
+   2. Repérez le dossier utilisateur de BeamNG.drive sous Proton, généralement `~/.local/share/Steam/steamapps/compatdata/284160/pfx/drive_c/users/steamuser/AppData/Local/BeamNG/BeamNG.drive`.
+   3. Reliez les deux :
+      ```bash
+      ln -s ~/.local/share/Steam/steamapps/compatdata/284160/pfx/drive_c/users/steamuser/AppData/Local/BeamNG/BeamNG.drive ~/.local/share/BeamNG
+      ```
+3. Dans Steam, ouvrez les **Propriétés** du jeu et remplacez les options de lancement par :
+   ```bash
+   ~/BeamMP/BeamMP-Launcher --no-launch & %command% ; killall BeamMP-Launcher
+   ```
+   Steam démarre alors le lanceur en même temps que le jeu.
+
+Remplacez `~/BeamMP/` par le dossier dans lequel vous avez placé le lanceur que vous avez compilé. Vous devez recompiler le lanceur à partir du bon tag git à chaque nouvelle version du lanceur.
+
+::: tip Emojis dans les noms et le chat
+Pour afficher les emojis dans les noms de serveurs de la liste des serveurs, ainsi que dans le chat en jeu, il vous faut une police qui les contient. Une possibilité est le [portage Linux de la police d'emojis Segoe UI de Windows](https://github.com/mrbvrz/segoe-ui-linux).
+:::
+
+### Mettre à jour le lanceur sous Linux
+
+1. Placez-vous dans le dossier du lanceur et récupérez les nouveaux tags :
+   ```bash
+   export VCPKG_ROOT="$(pwd)/vcpkg"
+   cd BeamMP-Launcher
+   git fetch --tags
+   ```
+2. Récupérez le tag de la [dernière version](https://github.com/BeamMP/BeamMP-Launcher/releases/latest), comme dans [Compiler le lanceur](#build-the-launcher).
+3. Compilez-le de nouveau et copiez-le dans votre dossier du lanceur :
+   ```bash
+   cmake . -B bin -DCMAKE_TOOLCHAIN_FILE=$VCPKG_ROOT/scripts/buildsystems/vcpkg.cmake -DVCPKG_TARGET_TRIPLET=x64-linux
+   cmake --build bin --parallel
+   cp bin/BeamMP-Launcher ~/beammp-launcher/
+   cd ~/beammp-launcher
+   ./BeamMP-Launcher
+   ```
+Étape suivante : [rejoindre votre premier serveur](/fr/get-started/join-first-server).
