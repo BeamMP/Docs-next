@@ -84,29 +84,49 @@
 
 通过 Discord 登录至 [Keymaster](https://keymaster.beammp.com)。在 Keymaster 主页中，点击屏幕左侧的“Keys（密钥）”：
 
-<figure markdown="">   ![](../../assets/content/keymaster_homepage.png) </figure>
+<figure>
+
+![](../../assets/content/keymaster_homepage.png)
+
+</figure>
 
 #### 2.2. 创建密钥
 
 要创建密钥，请单击右上角的绿色“+”按钮。
 
-<figure markdown="">   ![](../../assets/content/keymaster_new_key.png) </figure>
+<figure>
+
+![](../../assets/content/keymaster_new_key.png)
+
+</figure>
 
 #### 2.3. 填写关键信息
 
 接下来，填写服务器名称字段（这只是密钥的名称，而不是服务器列表上显示的实际名称），然后点击“Create”。范例：
 
-<figure class="image image_resized" style="width:44.84%;" markdown="">   ![](../../assets/content/keymaster_server_name.png) </figure>
+<figure class="image image_resized" style="width:44.84%;">
+
+![](../../assets/content/keymaster_server_name.png)
+
+</figure>
 
 最后，它看起来应该是这样的：
 
-<figure markdown="">   ![](../../assets/content/keymaster_key_done.png) </figure>
+<figure>
+
+![](../../assets/content/keymaster_key_done.png)
+
+</figure>
 
 #### 2.4. 复制密钥
 
 现在复制“Key”字段中的文本，在此范例中为 `3173a2e-6az0-4542-a3p0-ddqq5ff95558`，并保存以便下一步使用。你可以点击密钥右侧的剪贴板图标来完成复制：
 
-<figure markdown="">   ![](../../assets/content/keymaster_copy_key.png) </figure>
+<figure>
+
+![](../../assets/content/keymaster_copy_key.png)
+
+</figure>
 
 ### **3. 安装**
 
@@ -152,7 +172,11 @@ BeamMP-Server适用于Windows和Linux。接下来的两节分别介绍Windows和
 
 现在你已经运行过一次服务器，它应该已经生成了一些文件，并可能出现了一两个错误。这是正常的，因为我们还没有完成。你的文件夹中应该包含以下文件：
 
-<figure markdown="">   ![](../../assets/content/after-running-once.png) </figure>
+<figure>
+
+![](../../assets/content/after-running-once.png)
+
+</figure>
 
 它们分别是 ‘ServerConfig.toml’、‘Server.log’ 和 ‘BeamMP-Server.exe’！（根据你的设置，你可能看不到 [.toml]、[.log]、[.exe] 后缀）
 

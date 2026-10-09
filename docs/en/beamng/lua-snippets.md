@@ -95,8 +95,10 @@ Here is a custom marker example from [BeamNG-FuelStations](https://github.com/Be
 
 ### Toast Notifications, Top right of screen
 
-<figure class="image image_resized" style="width:75%" markdown>
+<figure class="image image_resized" style="width:75%">
+
   ![image](https://github.com/StanleyDudek/Docs/assets/49531350/c8a87842-b95a-4eca-84dc-93072ecc9158)
+
 </figure>
 
 ```lua
@@ -110,8 +112,10 @@ guihooks.trigger('toastrMsg', {type = "error", title = "Error Message:", msg = "
 
 This requires the 'Messages' or 'Messages & Tasks' UI app. Icons can be found at `ui\ui-vue\src\assets\fonts\bngIcons\svg\`
 
-<figure class="image image_resized" style="width:75%" markdown>
+<figure class="image image_resized" style="width:75%">
+
   ![image](https://github.com/StanleyDudek/Docs/assets/49531350/6baef813-50cb-43c3-9c59-0de550b014b6)
+
 </figure>
 
 ```lua
@@ -133,12 +137,16 @@ guihooks.trigger('Message', {msg = "Message Text Here", ttl = 5.0, category = "s
 
 ### Center large or small display flash
 
-<figure class="image image_resized" style="width:75%" markdown>
+<figure class="image image_resized" style="width:75%">
+
   ![image](https://github.com/StanleyDudek/Docs/assets/49531350/d0cf754f-83f8-4d15-9159-27350da127de)
+
 </figure>
 
-<figure class="image image_resized" style="width:75%" markdown>
+<figure class="image image_resized" style="width:75%">
+
   ![image](https://github.com/StanleyDudek/Docs/assets/49531350/1df6fc9b-756f-484e-b8d9-5df346dc4c26)
+
 </figure>
 
 ```lua
@@ -160,8 +168,10 @@ guihooks.trigger('ScenarioFlashMessage', {{"Teleported!", 3.0, "Engine.Audio.pla
 
 This requires the 'Race Realtime Display' UI app.
 
-<figure class="image image_resized" style="width:75%" markdown>
+<figure class="image image_resized" style="width:75%">
+
   ![image](https://github.com/StanleyDudek/Docs/assets/49531350/6290e018-6b3d-4674-98f2-34282a723258)
+
 </figure>
 
 ```lua
@@ -191,8 +201,10 @@ guihooks.trigger("ConfirmationDialogOpen",
 guihooks.trigger("ConfirmationDialogClose", "Example Title")
 ```
 
-<figure class="image image_resized" style="width:75%" markdown>
+<figure class="image image_resized" style="width:75%">
+
   ![Example of a ConfirmationDialog](../../assets/content/ConfirmationDialog.png)
+
 </figure>
 
 Both fields of a button must be strings in order for the button to appear.
@@ -215,8 +227,10 @@ The SDF parts of the Minimap UI app remain visible while a ConfirmationDialog is
 `#!lua guihooks.trigger('ShowApps', false)` to hide UI apps can be used as a hacky workaround.
 :::
 
-<figure class="image image_resized" style="width:75%" markdown>
+<figure class="image image_resized" style="width:75%">
+
   ![ConfirmationDialog being used for an inactivity kick system](../../assets/content/ConfirmationDialog_Example.png)
+
 </figure>
 
 ### introPopupTutorial
@@ -234,8 +248,10 @@ guihooks.trigger("introPopupTutorial", {
 guihooks.trigger("introPopupClose")
 ```
 
-<figure class="image image_resized" style="width:75%" markdown>
+<figure class="image image_resized" style="width:75%">
+
   ![The introPopupTutorial snippet displayed in BeamNG.drive](../../assets/content/introPopupTutorial.png)
+
 </figure>
 
 `flavour` controls which buttons are displayed. Four flavours exist:
@@ -287,8 +303,10 @@ guihooks.trigger("introPopupCareer", {
 guihooks.trigger("introPopupClose")
 ```
 
-<figure class="image image_resized" style="width:75%" markdown>
+<figure class="image image_resized" style="width:75%">
+
   ![The introPopupCareer snippet displayed in BeamNG.drive](../../assets/content/introPopupCareer.png)
+
 </figure>
 
 If multiple pages are provided, or the hook is triggered multiple times, then the pages are combined into the same popup. If the hook is triggered while a introPopup is active, or when a different introPopup type has already been triggered, then it is displayed in a separate popup after the existing popup is closed.
@@ -332,8 +350,10 @@ guihooks.trigger('introPopupMission', {
 guihooks.trigger("introPopupClose")
 ```
 
-<figure class="image image_resized" style="width:75%" markdown>
+<figure class="image image_resized" style="width:75%">
+
   ![The introPopupMission snippet displayed in BeamNG.drive](../../assets/content/introPopupMission.png)
+
 </figure>
 
 If multiple pages are provided, or the hook is triggered multiple times, then the pages are combined into the same popup. If the hook is triggered while a introPopup is active, or when a different introPopup type has already been triggered, then it is displayed in a separate popup after the existing popup is closed.
@@ -368,8 +388,10 @@ ui_missionInfo.openDialogue({
 ui_missionInfo.closeDialogue()
 ```
 
-<figure class="image image_resized" style="width:75%" markdown>
+<figure class="image image_resized" style="width:75%">
+
   ![The Dialogue snippet displayed in BeamNG.drive](../../assets/content/Dialogue.png)
+
 </figure>
 
 Only one Dialogue can be displayed at once. Any existing Dialogue is overridden.

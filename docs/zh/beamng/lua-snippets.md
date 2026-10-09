@@ -99,7 +99,11 @@ local stations = [
 
 ### 屏幕右上角弹出的通知
 
-<figure class="image image_resized" style="width:75%" markdown="">   ![image](https://github.com/StanleyDudek/Docs/assets/49531350/c8a87842-b95a-4eca-84dc-93072ecc9158) </figure>
+<figure class="image image_resized" style="width:75%">
+
+![image](https://github.com/StanleyDudek/Docs/assets/49531350/c8a87842-b95a-4eca-84dc-93072ecc9158)
+
+</figure>
 
 ```lua
 --guihooks.trigger('toastrMsg', {type, title, msg, config = {timeOut}})
@@ -112,7 +116,11 @@ guihooks.trigger('toastrMsg', {type = "error", title = "Error Message:", msg = "
 
 这需要安装“消息”或“消息与任务”UI 应用。图标可以在此处找到： `ui\ui-vue\src\assets\fonts\bngIcons\svg这需要安装“消息”或“消息与任务”UI 应用。图标可以在此处找到：
 
-<figure class="image image_resized" style="width:75%" markdown="">   ![image](https://github.com/StanleyDudek/Docs/assets/49531350/6baef813-50cb-43c3-9c59-0de550b014b6) </figure>
+<figure class="image image_resized" style="width:75%">
+
+![image](https://github.com/StanleyDudek/Docs/assets/49531350/6baef813-50cb-43c3-9c59-0de550b014b6)
+
+</figure>
 
 ```lua
 --guihooks.trigger('Message', {msg, ttl, category, icon})
@@ -133,9 +141,17 @@ guihooks.trigger('Message', {msg = "Message Text Here", ttl = 5.0, category = "s
 
 ### 屏幕中央大尺寸或小尺寸闪烁显示
 
-<figure class="image image_resized" style="width:75%" markdown="">   ![image](https://github.com/StanleyDudek/Docs/assets/49531350/d0cf754f-83f8-4d15-9159-27350da127de) </figure>
+<figure class="image image_resized" style="width:75%">
 
-<figure class="image image_resized" style="width:75%" markdown="">   ![image](https://github.com/StanleyDudek/Docs/assets/49531350/1df6fc9b-756f-484e-b8d9-5df346dc4c26) </figure>
+![image](https://github.com/StanleyDudek/Docs/assets/49531350/d0cf754f-83f8-4d15-9159-27350da127de)
+
+</figure>
+
+<figure class="image image_resized" style="width:75%">
+
+![image](https://github.com/StanleyDudek/Docs/assets/49531350/1df6fc9b-756f-484e-b8d9-5df346dc4c26)
+
+</figure>
 
 ```lua
 --guihooks.trigger('ScenarioFlashMessage', {{msg, ttl, sound, big}} ) -- requires RaceCountdown ui app
@@ -156,7 +172,11 @@ guihooks.trigger('ScenarioFlashMessage', {{"Teleported!", 3.0, "Engine.Audio.pla
 
 这需要安装实时竞赛显示UI 应用。
 
-<figure class="image image_resized" style="width:75%" markdown="">   ![image](https://github.com/StanleyDudek/Docs/assets/49531350/6290e018-6b3d-4674-98f2-34282a723258) </figure>
+<figure class="image image_resized" style="width:75%">
+
+![image](https://github.com/StanleyDudek/Docs/assets/49531350/6290e018-6b3d-4674-98f2-34282a723258)
+
+</figure>
 
 ```lua
 --guihooks.trigger('ScenarioRealtimeDisplay', {msg = msg} ) -- 需要安装 Race Realtime Display UI 应用
@@ -185,7 +205,11 @@ guihooks.trigger("ConfirmationDialogOpen",
 guihooks.trigger("ConfirmationDialogClose", "示例标题")
 ```
 
-<figure class="image image_resized" style="width:75%" markdown="">   ![Example of a ConfirmationDialog](../../assets/content/ConfirmationDialog.png) </figure>
+<figure class="image image_resized" style="width:75%">
+
+![Example of a ConfirmationDialog](../../assets/content/ConfirmationDialog.png)
+
+</figure>
 
 按钮的两个字段都必须为字符串类型，按钮才会显示。
 
@@ -207,7 +231,11 @@ guihooks.trigger("ConfirmationDialogClose", "示例标题")
 可以使用 `#!lua guihooks.trigger('ShowApps', false)` 隐藏 UI 应用，作为一种临时解决方案。
 :::
 
-<figure class="image image_resized" style="width:75%" markdown="">   ![确认对话框用于挂机踢出系统](../../assets/content/ConfirmationDialog_Example.png) </figure>
+<figure class="image image_resized" style="width:75%">
+
+![确认对话框用于挂机踢出系统](../../assets/content/ConfirmationDialog_Example.png)
+
+</figure>
 
 ### introPopupTutorial
 
@@ -224,7 +252,11 @@ guihooks.trigger("introPopupTutorial", {
 guihooks.trigger("introPopupClose")
 ```
 
-<figure class="image image_resized" style="width:75%" markdown="">   ![在 BeamNG.drive 中显示的introPopupTutorial代码片段](../../assets/content/introPopupTutorial.png) </figure>
+<figure class="image image_resized" style="width:75%">
+
+![在 BeamNG.drive 中显示的introPopupTutorial代码片段](../../assets/content/introPopupTutorial.png)
+
+</figure>
 
 `flavour` 控制哪些按钮会被显示。共有四种类型：
 
@@ -275,7 +307,11 @@ guihooks.trigger("introPopupCareer", {
 guihooks.trigger("introPopupClose")
 ```
 
-<figure class="image image_resized" style="width:75%" markdown="">   !在 BeamNG.drive 中显示的introPopupCareer代码片段](../assets/content/introPopupCareer.png) </figure>
+<figure class="image image_resized" style="width:75%">
+
+!在 BeamNG.drive 中显示的introPopupCareer代码片段](../assets/content/introPopupCareer.png)
+
+</figure>
 
 如果提供了多个页面，或者该Hook被多次触发，这些页面将被合并到同一个弹出窗口中。<br>如果在一个introPopup处于活动状态时触发了该钩子，或者已经触发了另一种不同类型的introPopup，那么它将在当前窗口关闭后，通过一个独立的弹出窗口进行显示。
 
@@ -318,7 +354,11 @@ guihooks.trigger('introPopupMission', {
 guihooks.trigger("introPopupClose")
 ```
 
-<figure class="image image_resized" style="width:75%" markdown="">   ![在 BeamNG.drive 中显示的introPopupMission代码片段](../../assets/content/introPopupMission.png) </figure>
+<figure class="image image_resized" style="width:75%">
+
+![在 BeamNG.drive 中显示的introPopupMission代码片段](../../assets/content/introPopupMission.png)
+
+</figure>
 
 如果提供了多个页面，或者该Hook被多次触发，这些页面将合并到同一个弹出窗口中。<br>如果在一个introPopup处于活动状态时触发了该钩子，或者已经触发了另一种不同类型的 introPopup，则它会在当前窗口关闭后，通过一个独立的弹出窗口进行显示。
 

@@ -516,3 +516,16 @@
 .bm-footer__legal-link:hover {
   color: var(--beammp-blue);
 }
+
+/* Pictures from the old MkDocs pages: `<figure class="image image_resized" style="width:62%">`
+   holds an image. The figure sets the width, the picture fills it. */
+.vp-doc figure {
+  margin: 16px 0;
+}
+.vp-doc figure p {
+  margin: 0;
+}
+.vp-doc figure img {
+  width: 100%;
+  height: auto;
+}

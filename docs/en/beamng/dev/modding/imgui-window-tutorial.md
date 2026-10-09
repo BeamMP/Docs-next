@@ -78,8 +78,10 @@ end
 
 ## Result
 
-<figure class="image image_resized" style="width:100%" markdown>
+<figure class="image image_resized" style="width:100%">
+
   ![The ImGui example code demonstrated ingame](../../../../assets/content/imguiExample.png)
+
 </figure>
 
 When the The Hello World Button button is pressed, the counter below it will update to display the amount of times the The Hello World Button button has been pressed.

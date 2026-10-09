@@ -267,3 +267,34 @@ test('a page with a closed, quoted box is tidied by convertPage', () => {
   assert.equal(text, lines('::: warning Careful', 'Text.', ':::'))
   assert.equal(converted.openerTitles, 1)
 })
+
+test('a figure with a markdown attribute gets blank lines inside, so the image is an image', () => {
+  const { text, converted } = convert(lines('<figure class="image image_resized" style="width:62%;" markdown>', '![](a.png)', '</figure>', '', 'After.'))
+  assert.equal(text, lines('<figure class="image image_resized" style="width:62%;">', '', '![](a.png)', '', '</figure>', '', 'After.'))
+  assert.equal(converted.markdownBlocks, 1)
+})
+
+test('a figure that is written with markdown="" or the attribute alone is handled the same', () => {
+  assert.equal(convert(lines('<figure markdown="">', '![x](a.png)', '</figure>')).text, lines('<figure>', '', '![x](a.png)', '', '</figure>'))
+  assert.equal(convert(lines('<figure markdown>', '', '![x](a.png)', '', '</figure>')).text, lines('<figure>', '', '![x](a.png)', '', '</figure>'))
+})
+
+test('a figure shown inside a code block is not touched', () => {
+  const source = lines('```html', '<figure markdown>', '![](a.png)', '</figure>', '```')
+  assert.equal(convertPage(source).changed, false)
+})
+
+test('grid cards become a numbered list, from the markdown form and from the HTML GitLocalize left', () => {
+  const md = lines('<div class="grid cards" markdown>', '', '-   :material-dns:{ .lg .middle } __Assign an IP__', '', '    ---', '    Needed so it does not change.', '', '    [:octicons-arrow-right-24: More](https://x.test)', '', '-   :material-router-wireless:{ .lg .middle } __Log in__', '', '    ---', '', '    Use the gateway.', '', '</div>', '', 'After.')
+  const out = convertPage(md)
+  assert.equal(out.text, lines('1. **Assign an IP**', '', '   Needed so it does not change.', '', '   [More](https://x.test)', '', '2. **Log in**', '', '   Use the gateway.', '', 'After.'))
+  assert.equal(out.converted.gridCards, 1)
+  const html = lines('<div class="grid cards" markdown>', '</div>', '<ul data-md-type="list" data-md-list-type="unordered">', '<li data-md-type="list_item">', '<p data-md-type="paragraph">:material-dns:{ .lg .middle } <strong data-md-type="double_emphasis">Assign</strong></p>', '<hr data-md-type="hrule">', '<p data-md-type="paragraph">Run <code data-md-type="codespan">ipconfig</code> <a href="https://x.test" data-md-type="link">:octicons-arrow-right-24: here</a></p>', '</li>', '</ul>', '<div data-md-type="block_html"></div>', '', 'After.')
+  assert.equal(convertPage(html).text, lines('1. **Assign**', '', '   Run `ipconfig` [here](https://x.test)', '', 'After.'))
+  assert.equal(convertPage(convertPage(html).text).changed, false)
+})
+
+test('a figure written on one line (as GitLocalize left it) is split so the image is an image', () => {
+  const { text } = convert(lines('<figure class="image" style="width:44%;" markdown="">![](a.png)</figure>', 'After.'))
+  assert.equal(text, lines('<figure class="image" style="width:44%;">', '', '![](a.png)', '', '</figure>', 'After.'))
+})

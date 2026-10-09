@@ -20,41 +20,31 @@ Diese Anleitung besteht aus vier Hauptschritten.
 
 ## Eine Kurzanleitung. (Eine ausführlichere Anleitung findest du weiter unten.)
 
-<div class="grid cards" markdown>
-</div>
-<ul data-md-type="list" data-md-list-type="unordered" data-md-list-tight="false">
-<li data-md-type="list_item" data-md-list-type="unordered">
-<p data-md-type="paragraph">:material-dns:{ .lg .middle } <strong data-md-type="double_emphasis">Weisen Sie Ihrem Computer oder Ihren Geräten eine statische IP-Adresse zu</strong></p>
-<hr data-md-type="hrule">
-<p data-md-type="paragraph">ies ist erforderlich, um zu verhindern, dass sich die IP deines Geräts ändert und die Portweiterleitung funktioniert.</p>
-<p data-md-type="paragraph"><a href="https://portforward.com/router.htm#1" data-md-type="link">:octicons-arrow-right-24: Informationen zu Ihrem Router anzeigen</a></p>
-</li>
-<li data-md-type="list_item" data-md-list-type="unordered">
-<p data-md-type="paragraph">:material-router-wireless:{ .lg .middle } <strong data-md-type="double_emphasis">Melde dich bei deinem Router an</strong></p>
-<hr data-md-type="hrule">
-<p data-md-type="paragraph">Dies kann normalerweise durch Suchen der IP des „Standard-Gateways“ erfolgen, die gefunden werden kann, wenn <code data-md-type="codespan">ipconfig</code> in einer Eingabeaufforderung ausgeführt und in die Adressleiste eines Webbrowsers eingegeben wird.</p>
-</li>
-<li data-md-type="list_item" data-md-list-type="unordered">
-<p data-md-type="paragraph">:material-lan-connect:{ .lg .middle } <strong data-md-type="double_emphasis">Leite Ports an deinen Computer weiter</strong></p>
-<hr data-md-type="hrule">
-<p data-md-type="paragraph">Suche in der Weboberfläche Ihres Routers nach dem Abschnitt zur Portweiterleitung. Bei den meisten Routern findet man dies unter „Netzwerk“, „Erweitert“ oder „LAN“.</p>
-</li>
-<li data-md-type="list_item" data-md-list-type="unordered">
-<p data-md-type="paragraph">:material-test-tube:{ .lg .middle } <strong data-md-type="double_emphasis">Teste, ob dein Port richtig weitergeleitet wird</strong></p>
-<hr data-md-type="hrule">
-<p data-md-type="paragraph">Verwenden Sie ein Tool wie CheckBeamMP, um zu testen, ob die Regel funktioniert.</p>
-<div data-md-type="block_html">
-<form action="https://check.beammp.com/api/v2/beammp" method="get" target="_blank">
- <label for="ip">IP Adresse:</label>
- <input type="text" id="ip" name="ip"><br>
- <label for="port">Port:</label>
- <input type="text" id="port" name="port"><br>
- <input type="submit" value="CheckBeamMP">
-</form>
-</div>
-</li>
-</ul>
-<div data-md-type="block_html"></div>
+1. **Weisen Sie Ihrem Computer oder Ihren Geräten eine statische IP-Adresse zu**
+
+   Dies ist erforderlich, um zu verhindern, dass sich die IP deines Geräts ändert und die Portweiterleitung funktioniert.
+
+   [Informationen zu Ihrem Router anzeigen](https://portforward.com/router.htm#1)
+
+2. **Melde dich bei deinem Router an**
+
+   Dies kann normalerweise durch Suchen der IP des „Standard-Gateways“ erfolgen, die gefunden werden kann, wenn `ipconfig` in einer Eingabeaufforderung ausgeführt und in die Adressleiste eines Webbrowsers eingegeben wird.
+
+3. **Leite Ports an deinen Computer weiter**
+
+   Suche in der Weboberfläche Ihres Routers nach dem Abschnitt zur Portweiterleitung. Bei den meisten Routern findet man dies unter „Netzwerk“, „Erweitert“ oder „LAN“.
+
+4. **Teste, ob dein Port richtig weitergeleitet wird**
+
+   Verwenden Sie ein Tool wie CheckBeamMP, um zu testen, ob die Regel funktioniert.
+
+   <form action="https://check.beammp.com/api/v2/beammp" method="get" target="_blank">
+    <label for="ip">IP Adresse:</label>
+    <input type="text" id="ip" name="ip"><br>
+    <label for="port">Port:</label>
+    <input type="text" id="port" name="port"><br>
+    <input type="submit" value="CheckBeamMP">
+   </form>
 
 ## Die ausführliche Anleitung
 
@@ -77,7 +67,11 @@ Bevor wir eine statische IP-Adresse einrichten können, benötigen wir deine akt
 - Drücke die Windows-Taste, gebe dann „cmd“ ein und drücke die Eingabetaste, wenn „Eingabeaufforderung“ hervorgehoben ist.
 
 
-<figure class="image image_resized" style="width:62%;" markdown=""> ![](../../assets/content/win11-open-cmd.png) </figure>
+<figure class="image image_resized" style="width:62%;">
+
+![](../../assets/content/win11-open-cmd.png)
+
+</figure>
 
 Sobald du dich in der Eingabeaufforderung befindest, führe den folgenden Befehl aus:
 
@@ -88,7 +82,11 @@ ipconfig /all
 Du wirst eine Menge an Daten sehen. Wenn du virtuelle oder mehrere Netzwerkadapter verwendest, werden noch mehr Daten angezeigt. Bei der Installation von Hyper-V oder Docker werden häufig viele virtuelle Adapter angezeigt.
 
 
-<figure class="image image_resized" style="width:62%;" markdown=""> ![](../../assets/content/win11-command-prompt-ipconfig-highlighted.png) </figure>
+<figure class="image image_resized" style="width:62%;">
+
+![](../../assets/content/win11-command-prompt-ipconfig-highlighted.png)
+
+</figure>
 
 Es wird empfohlen, für den Betrieb dieses Servers eine kabelgebundene Netzwerkverbindung zu verwenden. Eine drahtlose Verbindung funktioniert jedoch auch. Suche in dieser Liste nach einem Adapter mit aktiver Internetverbindung. Scrolle durch die Liste und suche einen Adapter mit zugewiesenem Standard-Gateway. Viele virtuelle Adapter verfügen über kein Standard-Gateway.
 
@@ -115,17 +113,29 @@ Nun müssen wir die Einstellungen deines  Netzwerkadapters ändern, damit dein P
 - Drücke die Eingabetaste
 
 
-<figure class="image image_resized" style="width:62%;" markdown=""> ![](../../assets/content/win11-start-menu-view-network-connections.png) </figure>
+<figure class="image image_resized" style="width:62%;">
+
+![](../../assets/content/win11-start-menu-view-network-connections.png)
+
+</figure>
 
 Du solltest eine Liste der Netzwerkverbindungen auf deinem Computer sehen. Wenn du einen Hyper-V oder Docker installiert hast, kann es viele davon geben. Suche nach Adaptern, die nicht „Hyper-V“ heißen.
 
 
-<figure class="image image_resized" style="width:62%;" markdown=""> ![](../../assets/content/win11-network-connections.png) </figure>
+<figure class="image image_resized" style="width:62%;">
+
+![](../../assets/content/win11-network-connections.png)
+
+</figure>
 
 Klicke mit der rechten Maustaste auf deinen Adapter und wähle Eigenschaften. Wenn `Internet Protocol Version 4` nicht aktiviert ist, handelt es sich um den falschen Adapter. Wähle einen anderen.
 
 
-<figure class="image image_resized" style="width:62%;" markdown=""> ![](../../assets/content/win11-ethernet-properties-highlighted.png) </figure>
+<figure class="image image_resized" style="width:62%;">
+
+![](../../assets/content/win11-ethernet-properties-highlighted.png)
+
+</figure>
 
 Doppelklicken Sie auf `Internet Protocol Version 4` Ändern `Obtain an IP address automatically` beziehen in `Use the following IP address` .
 
@@ -137,7 +147,11 @@ Alternativ kannst du anstelle deines DNS-Servers entweder die CloudFlare- oder G
 - Google DNS: 8.8.8.8, 8.8.4.4
 
 
-<figure class="image image_resized" style="width:62%;" markdown=""> ![](../../assets/content/win11-network-settings-static-ip.png) </figure>
+<figure class="image image_resized" style="width:62%;">
+
+![](../../assets/content/win11-network-settings-static-ip.png)
+
+</figure>
 
 Klicke auf „OK“ und dann erneut auf „OK“. Dein Adapter ist nun von DHCP auf statisch umgestellt. Surfe im Internet, um sicherzustellen, dass du weiterhin eine Internetverbindung hast. Falls nicht, ändere deine Einstellungen wieder auf „IP-Adresse automatisch beziehen“ und versuche die nächste Methode.
 

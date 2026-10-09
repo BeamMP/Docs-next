@@ -487,6 +487,136 @@ function mapProse(lines, fn, notes, key) {
 }
 
 /**
+ * MkDocs reads Markdown inside an HTML block that has a `markdown` attribute
+ * (`<figure markdown>`). VitePress follows CommonMark: the block is raw HTML until
+ * a blank line, so the image inside shows as the text `![](...)`. Dropping the
+ * attribute and putting a blank line inside each end makes the inside Markdown.
+ */
+export function convertMarkdownBlocks(lines, notes) {
+  const marked = splitLines(lines.join('\n'))
+  const out = []
+  const open = []
+  lines.forEach((line, i) => {
+    if (marked[i].code) return out.push(line)
+    // GitLocalize left the whole block on one line: <figure markdown="">![](a.png)</figure>
+    const inline = line.match(/^(\s*)<(figure|section|details|aside|article)\b([^>]*?)\smarkdown(?:=["']?1?["']?)?([^>]*)>(.+)<\/\2>\s*$/)
+    if (inline) {
+      out.push(`${inline[1]}<${inline[2]}${inline[3]}${inline[4]}>`, '', inline[5].trim(), '', `${inline[1]}</${inline[2]}>`)
+      notes.converted.markdownBlocks = (notes.converted.markdownBlocks || 0) + 1
+      return
+    }
+    const opener = line.match(/^(\s*)<(figure|section|details|aside|article)\b([^>]*?)\smarkdown(?:=["']?1?["']?)?([^>]*)>\s*$/)
+    if (opener) {
+      out.push(`${opener[1]}<${opener[2]}${opener[3]}${opener[4]}>`)
+      if (lines[i + 1] !== undefined && lines[i + 1].trim()) out.push('')
+      open.push(opener[2])
+      notes.converted.markdownBlocks = (notes.converted.markdownBlocks || 0) + 1
+      return
+    }
+    const closer = line.match(/^\s*<\/(\w+)>\s*$/)
+    if (closer && open.length && open[open.length - 1] === closer[1]) {
+      open.pop()
+      if (out.length && out[out.length - 1].trim()) out.push('')
+    }
+    out.push(line)
+  })
+  return out
+}
+
+// ---------------------------------------------------------------------------
+// Grid cards
+// ---------------------------------------------------------------------------
+
+const decodeEntities = (text) => text.replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&amp;/g, '&')
+
+/** The icon shortcodes MkDocs Material puts in front of a title or a link text. */
+const stripIcons = (text) => text.replace(/:(?:material|fontawesome|octicons|simple)-[a-z0-9-]+:(?:\{[^}]*\})?\s*/g, '')
+
+/** One card written as MkDocs markdown: a `- :icon:{ .lg .middle } **Title**` line and an indented body after `---`. */
+function cardsFromMarkdown(body) {
+  const items = []
+  for (const line of body) {
+    const start = line.match(/^[-*]\s+(.*)$/)
+    if (start) {
+      const title = stripIcons(start[1]).replace(/^(__|\*\*)(.*)\1\s*$/, '$2').trim()
+      items.push({ title, lines: [] })
+    } else if (items.length) {
+      items[items.length - 1].lines.push(line.replace(/^( {2,4})/, ''))
+    }
+  }
+  for (const item of items) {
+    item.lines = item.lines.filter((line, i, all) => !(line.trim() === '---' && all.slice(0, i).every((l) => !l.trim() || l.trim() === '---')))
+  }
+  return items
+}
+
+/** The same cards after GitLocalize turned the markdown into HTML (`<ul data-md-type="list">`). */
+function cardsFromHtml(body) {
+  const html = body.join('\n')
+  const items = []
+  for (const li of html.matchAll(/<li data-md-type="list_item"[^>]*>([\s\S]*?)<\/li>/g)) {
+    const parts = []
+    let title = ''
+    for (const block of li[1].matchAll(/<p data-md-type="paragraph">([\s\S]*?)<\/p>|<div data-md-type="block_html">\n?([\s\S]*?)\n?<\/div>/g)) {
+      if (block[2] !== undefined) {
+        parts.push('', ...block[2].split('\n'))
+        continue
+      }
+      const text = decodeEntities(
+        block[1]
+          .replace(/<strong[^>]*>([\s\S]*?)<\/strong>/g, '**$1**')
+          .replace(/<code[^>]*>([\s\S]*?)<\/code>/g, '`$1`')
+          .replace(/<a href="([^"]*)"[^>]*>([\s\S]*?)<\/a>/g, '[$2]($1)')
+      )
+      if (!title && /\*\*/.test(text)) title = stripIcons(text).replace(/^\*\*(.*)\*\*\s*$/, '$1').trim()
+      else parts.push('', stripIcons(text).trim())
+    }
+    items.push({ title, lines: parts })
+  }
+  return items
+}
+
+/**
+ * A MkDocs "grid of cards" has no VitePress equivalent, and its icons are text
+ * there. It becomes a numbered list: bold title, then the card's text and link.
+ * Handles the markdown form and the HTML GitLocalize left in the translations.
+ */
+export function convertGridCards(lines, notes) {
+  const start = lines.findIndex((line) => /^<div[^>]*class="[^"]*\bgrid\b[^"]*\bcards\b[^"]*"[^>]*>\s*$/.test(line))
+  if (start < 0) return lines
+  const html = lines[start + 1]?.trim() === '</div>' && /^<ul data-md-type/.test(lines[start + 2] || '')
+  let end
+  if (html) {
+    end = lines.findIndex((line, i) => i > start + 2 && /^<div data-md-type="block_html"><\/div>\s*$/.test(line))
+  } else {
+    end = lines.findIndex((line, i) => i > start && /^<\/div>\s*$/.test(line))
+  }
+  if (end < 0) {
+    notes.review.push({ line: start + 1, text: 'A grid of cards could not be converted: its end was not found.' })
+    return lines
+  }
+  const items = html ? cardsFromHtml(lines.slice(start + 2, end)) : cardsFromMarkdown(lines.slice(start + 1, end))
+  if (!items.length) return lines
+  const out = []
+  items.forEach((item, i) => {
+    out.push(`${i + 1}. **${item.title}**`)
+    const body = []
+    for (const line of item.lines) {
+      const text = stripIcons(line).replace(/^\[\s+/, '[')
+      if (!text.trim() && (!body.length || !body[body.length - 1].trim())) continue
+      body.push(text)
+    }
+    while (body.length && !body[body.length - 1].trim()) body.pop()
+    if (body.length && body[0].trim()) body.unshift('')
+    for (const line of body) out.push(line.trim() ? '   ' + line : '')
+    out.push('')
+  })
+  while (out.length && !out[out.length - 1].trim()) out.pop()
+  notes.converted.gridCards = (notes.converted.gridCards || 0) + 1
+  return [...lines.slice(0, start), ...out, ...lines.slice(end + 1)]
+}
+
+/**
  * Converts one page. Returns `{ text, changed, converted, review }`:
  *  - `converted` counts what was changed, by kind,
  *  - `review` lists anything a person should look at.
@@ -498,6 +628,8 @@ export function convertPage(source) {
   let lines = source.replace(/\r\n?/g, '\n').split('\n')
   lines = convertFrontMatter(lines, notes)
   lines = unwrapDoubleFences(lines, notes)
+  lines = convertGridCards(lines, notes)
+  lines = convertMarkdownBlocks(lines, notes)
   lines = render(parseRegion(lines, notes))
   lines = mapProse(lines, normalizeOpener, notes, 'openerTitles')
   lines = mapProse(lines, convertThemeImages, notes, 'themeImages')

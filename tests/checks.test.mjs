@@ -116,7 +116,14 @@ test('splitLines marks fenced lines as code', () => {
 })
 
 test('every rule has an explanation', () => {
-  for (const rule of ['mkdocs-admonition', 'mkdocs-collapsible', 'mkdocs-tabs', 'mkdocs-icon', 'mkdocs-theme-image', 'mkdocs-grid-cards', 'mkdocs-front-matter', 'mkdocs-snippet', 'unclosed-container', 'stray-container-close', 'indented-container']) {
+  for (const rule of ['mkdocs-admonition', 'mkdocs-collapsible', 'mkdocs-tabs', 'mkdocs-icon', 'mkdocs-theme-image', 'mkdocs-grid-cards', 'mkdocs-markdown-attr', 'mkdocs-front-matter', 'mkdocs-snippet', 'unclosed-container', 'stray-container-close', 'indented-container']) {
     assert.ok(RULES[rule] && RULES[rule].length > 10, rule)
   }
+})
+
+test('an HTML block with a markdown attribute is found, quoted or not, and not inside code', () => {
+  assert.deepEqual(rules('<figure markdown>\n![](a.png)\n</figure>'), ['mkdocs-markdown-attr'])
+  assert.deepEqual(rules('<figure class="image" style="width:62%;" markdown="">\n'), ['mkdocs-markdown-attr'])
+  assert.deepEqual(rules('<figure class="image">\n\n![](a.png)\n\n</figure>'), [])
+  assert.deepEqual(rules('```html\n<figure markdown>\n```'), [])
 })

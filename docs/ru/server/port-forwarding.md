@@ -22,41 +22,31 @@
 
 ## Краткое руководство. (Более подробное руководство приведено ниже)
 
-<div class="grid cards" markdown>
-</div>
-<ul data-md-type="list" data-md-list-type="unordered" data-md-list-tight="false">
-<li data-md-type="list_item" data-md-list-type="unordered">
-<p data-md-type="paragraph">:material-dns:{ .lg .middle } <strong data-md-type="double_emphasis">Назначьте статический IP-адрес вашему компьютеру или устройствам</strong></p>
-<hr data-md-type="hrule">
-<p data-md-type="paragraph">Это необходимо для предотвращения изменения IP-адреса вашего устройства и нарушения правила переадресации портов.</p>
-<p data-md-type="paragraph"><a href="https://portforward.com/router.htm#1" data-md-type="link">:octicons-arrow-right-24: Просмотр информации о вашем маршрутизаторе</a></p>
-</li>
-<li data-md-type="list_item" data-md-list-type="unordered">
-<p data-md-type="paragraph">:material-router-wireless:{ .lg .middle } <strong data-md-type="double_emphasis">Войдите в свой маршрутизатор</strong></p>
-<hr data-md-type="hrule">
-<p data-md-type="paragraph">Обычно это можно сделать, найдя IP-адрес «шлюза по умолчанию», который можно найти, выполнив <code data-md-type="codespan">ipconfig</code> в командной строке и введя его в адресную строку веб-браузера.</p>
-</li>
-<li data-md-type="list_item" data-md-list-type="unordered">
-<p data-md-type="paragraph">:material-lan-connect:{ .lg .middle } <strong data-md-type="double_emphasis">Перенаправьте порты на ваш компьютер</strong></p>
-<hr data-md-type="hrule">
-<p data-md-type="paragraph">Найдите раздел переадресации портов в веб-интерфейсе маршрутизатора. Большинство маршрутизаторов перечисляют раздел переадресации портов в разделе «Сеть», «Дополнительно» или «Локальная сеть».</p>
-</li>
-<li data-md-type="list_item" data-md-list-type="unordered">
-<p data-md-type="paragraph">:material-test-tube:{ .lg .middle } <strong data-md-type="double_emphasis">Проверьте, что ваш порт правильно перенаправлен</strong></p>
-<hr data-md-type="hrule">
-<p data-md-type="paragraph">Используйте такой инструмент, как CheckBeamMP, чтобы проверить, работает ли правило.</p>
-<div data-md-type="block_html">
-<form action="https://check.beammp.com/api/v2/beammp" method="get" target="_blank">
- <label for="ip">IP-адрес:</label>
- <input type="text" id="ip" name="ip"><br>
- <label for="port">Порт:</label>
- <input type="text" id="port" name="port"><br>
- <input type="submit" value="CheckBeamMP">
-</form>
-</div>
-</li>
-</ul>
-<div data-md-type="block_html"></div>
+1. **Назначьте статический IP-адрес вашему компьютеру или устройствам**
+
+   Это необходимо для предотвращения изменения IP-адреса вашего устройства и нарушения правила переадресации портов.
+
+   [Просмотр информации о вашем маршрутизаторе](https://portforward.com/router.htm#1)
+
+2. **Войдите в свой маршрутизатор**
+
+   Обычно это можно сделать, найдя IP-адрес «шлюза по умолчанию», который можно найти, выполнив `ipconfig` в командной строке и введя его в адресную строку веб-браузера.
+
+3. **Перенаправьте порты на ваш компьютер**
+
+   Найдите раздел переадресации портов в веб-интерфейсе маршрутизатора. Большинство маршрутизаторов перечисляют раздел переадресации портов в разделе «Сеть», «Дополнительно» или «Локальная сеть».
+
+4. **Проверьте, что ваш порт правильно перенаправлен**
+
+   Используйте такой инструмент, как CheckBeamMP, чтобы проверить, работает ли правило.
+
+   <form action="https://check.beammp.com/api/v2/beammp" method="get" target="_blank">
+    <label for="ip">IP-адрес:</label>
+    <input type="text" id="ip" name="ip"><br>
+    <label for="port">Порт:</label>
+    <input type="text" id="port" name="port"><br>
+    <input type="submit" value="CheckBeamMP">
+   </form>
 
 ## Подробное руководство
 
@@ -79,7 +69,11 @@
 - Нажмите клавишу Windows, затем начните вводить фразу «cmd», затем нажмите Enter, когда увидите выделенную строку «Командная строка».
 
 
-<figure class="image image_resized" style="width:62%;" markdown="">![](../../assets/content/win11-open-cmd.png)</figure>
+<figure class="image image_resized" style="width:62%;">
+
+![](../../assets/content/win11-open-cmd.png)
+
+</figure>
 
 После того, как вы окажетесь в командной строке, выполните следующую команду:
 
@@ -90,7 +84,11 @@ ipconfig /all
 Вы увидите много данных. Если у вас есть виртуальные или несколько сетевых адаптеров, то вы увидите еще больше данных. Обычно можно увидеть много виртуальных адаптеров, если у вас установлен Hyper-V или Docker.
 
 
-<figure class="image image_resized" style="width:62%;" markdown="">![](../../assets/content/win11-command-prompt-ipconfig-highlighted.png)</figure>
+<figure class="image image_resized" style="width:62%;">
+
+![](../../assets/content/win11-command-prompt-ipconfig-highlighted.png)
+
+</figure>
 
 Рекомендуется использовать проводное сетевое соединение, которое будет запускать этот сервер, однако он будет работать и через беспроводное соединение. Вам нужно будет найти в этом списке адаптер, который имеет активное подключение к Интернету. Прокрутите список и найдите тот, которому назначен шлюз по умолчанию. Многие из виртуальных адаптеров не будут иметь шлюза по умолчанию.
 
@@ -117,17 +115,29 @@ BeamMP в настоящее время не поддерживает IPv6 дл�
 - Нажмите клавишу Enter.
 
 
-<figure class="image image_resized" style="width:62%;" markdown="">![](../../assets/content/win11-start-menu-view-network-connections.png)</figure>
+<figure class="image image_resized" style="width:62%;">
+
+![](../../assets/content/win11-start-menu-view-network-connections.png)
+
+</figure>
 
 Вы должны увидеть список сетевых подключений на вашем компьютере. Если у вас установлены Hyper-V или Docker, их может быть много. Найдите все адаптеры, которые не называются "Hyper-V".
 
 
-<figure class="image image_resized" style="width:62%;" markdown="">![](../../assets/content/win11-network-connections.png)</figure>
+<figure class="image image_resized" style="width:62%;">
+
+![](../../assets/content/win11-network-connections.png)
+
+</figure>
 
 Щелкните правой кнопкой мыши по вашему адаптеру и выберите свойства. Если `Internet Protocol Version 4` не отмечен, то это неправильный адаптер. Выберите другой.
 
 
-<figure class="image image_resized" style="width:62%;" markdown="">![](../../assets/content/win11-ethernet-properties-highlighted.png)</figure>
+<figure class="image image_resized" style="width:62%;">
+
+![](../../assets/content/win11-ethernet-properties-highlighted.png)
+
+</figure>
 
 Дважды щелкните по `Internet Protocol Version 4` Измените `Obtain an IP address automatically` на `Use the following IP address` .
 
@@ -139,7 +149,11 @@ BeamMP в настоящее время не поддерживает IPv6 дл�
 - Google DNS: 8.8.8.8, 8.8.4.4
 
 
-<figure class="image image_resized" style="width:62%;" markdown="">![](../../assets/content/win11-network-settings-static-ip.png)</figure>
+<figure class="image image_resized" style="width:62%;">
+
+![](../../assets/content/win11-network-settings-static-ip.png)
+
+</figure>
 
 Нажмите Ok, затем нажмите Ok еще раз, и ваш адаптер теперь изменен с DHCP на статический. Поищите в Интернете, чтобы убедиться, что у вас все еще есть подключение к Интернету. Если нет, то измените настройки обратно на Получить IP-адрес автоматически и попробуйте следующий метод.
 

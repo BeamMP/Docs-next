@@ -18,6 +18,7 @@ export const RULES = {
   'mkdocs-icon': 'A MkDocs icon (`:material-...:`). VitePress shows it as plain text.',
   'mkdocs-theme-image': 'A light/dark image suffix (`#only-dark`). VitePress ignores it, so both images show.',
   'mkdocs-grid-cards': 'A MkDocs grid of cards (`<div class="grid cards" markdown>`).',
+  'mkdocs-markdown-attr': 'An HTML block with a `markdown` attribute (`<figure markdown>`). VitePress shows what is inside as text.',
   'mkdocs-front-matter': 'MkDocs-only front matter (`hide:`).',
   'mkdocs-snippet': 'A MkDocs include (`--8<--`).',
   'unclosed-container': 'A `:::` box that is never closed, so it swallows the rest of the page.',
@@ -63,6 +64,7 @@ const LINE_RULES = [
   ['mkdocs-icon', /:(?:material|fontawesome|octicons|simple)-[a-z0-9-]+:/],
   ['mkdocs-theme-image', /#only-(?:dark|light)\b/],
   ['mkdocs-grid-cards', /<div[^>]*(?:class="[^"]*\bgrid\b[^"]*\bcards\b|\smarkdown(?:=["']?1["']?)?[\s>])/],
+  ['mkdocs-markdown-attr', /<(?!div\b)[a-z][\w-]*\b[^>]*\smarkdown(?:=["']?1?["']?)?[\s/>]/],
   ['mkdocs-snippet', /--8<--/],
 ]
 

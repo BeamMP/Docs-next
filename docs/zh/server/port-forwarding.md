@@ -22,41 +22,31 @@
 
 ## 快速指南（更详细的指南见下文）
 
-<div class="grid cards" markdown>
-</div>
-<ul data-md-type="list" data-md-list-type="unordered" data-md-list-tight="false">
-<li data-md-type="list_item" data-md-list-type="unordered">
-<p data-md-type="paragraph">:material-dns:{ .lg .middle } <strong data-md-type="double_emphasis">为你的电脑或设备分配一个静态 IP 地址</strong></p>
-<hr data-md-type="hrule">
-<p data-md-type="paragraph">这是为了防止你的设备 IP 发生变化，从而导致端口转发规则失效。</p>
-<p data-md-type="paragraph"><a href="https://portforward.com/router.htm#1" data-md-type="link">:octicons-arrow-right-24: 查看你的路由器信息</a></p>
-</li>
-<li data-md-type="list_item" data-md-list-type="unordered">
-<p data-md-type="paragraph">:material-router-wireless:{ .lg .middle } <strong data-md-type="double_emphasis">登录你的路由器</strong></p>
-<hr data-md-type="hrule">
-<p data-md-type="paragraph">通常可以通过查找‘默认网关’IP 来完成，此 IP 可在命令提示符执行 <code data-md-type="codespan">ipconfig</code> 时找到，然后将其输入浏览器地址栏。</p>
-</li>
-<li data-md-type="list_item" data-md-list-type="unordered">
-<p data-md-type="paragraph">:material-lan-connect:{ .lg .middle } <strong data-md-type="double_emphasis">将端口转发到你的电脑</strong></p>
-<hr data-md-type="hrule">
-<p data-md-type="paragraph">在路由器的网页界面中找到端口转发部分。大多数路由器会将端口转发部分列在网络（Network）、高级（Advanced）或局域网（LAN）下。</p>
-</li>
-<li data-md-type="list_item" data-md-list-type="unordered">
-<p data-md-type="paragraph">:material-test-tube:{ .lg .middle } <strong data-md-type="double_emphasis">测试端口是否已正确转发</strong></p>
-<hr data-md-type="hrule">
-<p data-md-type="paragraph">使用像 CheckBeamMP 这样的工具测试规则是否生效。</p>
-<div data-md-type="block_html">
-<form action="https://check.beammp.com/api/v2/beammp" method="get" target="_blank">
- <label for="ip">IP address:</label>
- <input type="text" id="ip" name="ip"><br>
- <label for="port">端口:</label>
- <input type="text" id="port" name="port"><br>
- <input type="submit" value="CheckBeamMP">
-</form>
-</div>
-</li>
-</ul>
-<div data-md-type="block_html"></div>
+1. **为你的电脑或设备分配一个静态 IP 地址**
+
+   这是为了防止你的设备 IP 发生变化，从而导致端口转发规则失效。
+
+   [查看你的路由器信息](https://portforward.com/router.htm#1)
+
+2. **登录你的路由器**
+
+   通常可以通过查找‘默认网关’IP 来完成，此 IP 可在命令提示符执行 `ipconfig` 时找到，然后将其输入浏览器地址栏。
+
+3. **将端口转发到你的电脑**
+
+   在路由器的网页界面中找到端口转发部分。大多数路由器会将端口转发部分列在网络（Network）、高级（Advanced）或局域网（LAN）下。
+
+4. **测试端口是否已正确转发**
+
+   使用像 CheckBeamMP 这样的工具测试规则是否生效。
+
+   <form action="https://check.beammp.com/api/v2/beammp" method="get" target="_blank">
+    <label for="ip">IP address:</label>
+    <input type="text" id="ip" name="ip"><br>
+    <label for="port">端口:</label>
+    <input type="text" id="port" name="port"><br>
+    <input type="submit" value="CheckBeamMP">
+   </form>
 
 ## 详细指南
 
@@ -78,7 +68,11 @@
 
 - 按下Windows键，然后输入“cmd”，当看到“命令提示符”高亮显示时按Enter键。
 
-<figure class="image image_resized" style="width:62%;" markdown=""> ![](../../assets/content/win11-open-cmd.png) </figure>
+<figure class="image image_resized" style="width:62%;">
+
+![](../../assets/content/win11-open-cmd.png)
+
+</figure>
 
 一旦您进入了命令提示符，运行以下命令：
 
@@ -88,7 +82,11 @@ ipconfig /all
 
 你会看到大量数据。如果你有虚拟或多个网络适配器，那么你会看到更多数据。如果安装了 Hyper-V 或 Docker，通常会出现许多虚拟适配器。
 
-<figure class="image image_resized" style="width:62%;" markdown=""> ![](../../assets/content/win11-command-prompt-ipconfig-highlighted.png) </figure>
+<figure class="image image_resized" style="width:62%;">
+
+![](../../assets/content/win11-command-prompt-ipconfig-highlighted.png)
+
+</figure>
 
 建议使用有线网络连接来运行此服务器，但无线连接也可正常工作。您需要在此列表中寻找具有活跃互联网连接的适配器。滚动列表并找到已分配默认网关的适配器，许多虚拟适配器通常没有默认网关。
 
@@ -114,15 +112,27 @@ BeamMP 目前不支持使用 IPv6 协议托管服务器.
 - 输入“网络连接”，直到您看到“查看网络连接”。
 - 按下回车键
 
-<figure class="image image_resized" style="width:62%;" markdown=""> ![](../../assets/content/win11-start-menu-view-network-connections.png) </figure>
+<figure class="image image_resized" style="width:62%;">
+
+![](../../assets/content/win11-start-menu-view-network-connections.png)
+
+</figure>
 
 你会看到电脑上的网络连接列表。如果你安装了 Hyper-V 或 Docker，可能会有很多适配器。请寻找任何不命名为 "Hyper-V" 的适配器。
 
-<figure class="image image_resized" style="width:62%;" markdown=""> ![](../../assets/content/win11-network-connections.png) </figure>
+<figure class="image image_resized" style="width:62%;">
+
+![](../../assets/content/win11-network-connections.png)
+
+</figure>
 
 右键点击您的适配器并选择属性。如果`互联网协议版本4`未被勾选，则表明此适配器选择有误，请更换其他适配器。
 
-<figure class="image image_resized" style="width:62%;" markdown=""> ![](../../assets/content/win11-ethernet-properties-highlighted.png) </figure>
+<figure class="image image_resized" style="width:62%;">
+
+![](../../assets/content/win11-ethernet-properties-highlighted.png)
+
+</figure>
 
 双击`互联网协议版本4`。将`自动获取IP地址`更改为`使用以下IP地址`。
 
@@ -133,7 +143,11 @@ BeamMP 目前不支持使用 IPv6 协议托管服务器.
 - CloudFlare DNS: 1.1.1.1, 1.0.0.1
 - Google DNS: 8.8.8.8, 8.8.4.4
 
-<figure class="image image_resized" style="width:62%;" markdown=""> ![](../../assets/content/win11-network-settings-static-ip.png) </figure>
+<figure class="image image_resized" style="width:62%;">
+
+![](../../assets/content/win11-network-settings-static-ip.png)
+
+</figure>
 
 点击确定，然后再次点击确定，您的适配器现在已从DHCP更改为静态IP配置。请上网浏览以确认是否仍然保持互联网连接。如果无法连接，请将设置改回自动获取IP地址，并尝试下一种方法。
 

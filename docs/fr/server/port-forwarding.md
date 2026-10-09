@@ -24,43 +24,31 @@ Ce guide comporte **4 grandes étapes** :
 
 *(Un guide plus détaillé est disponible ci-dessous.)*
 
-<div class="grid cards" markdown>
+1. **Attribuer une adresse IP statique à votre ordinateur ou à vos appareils**
 
-* :material-dns:{ .lg .middle } **Attribuer une adresse IP statique à votre ordinateur ou à vos appareils**
+   Cette étape est nécessaire pour empêcher l’adresse IP de votre appareil de changer et de rendre la règle de redirection de ports inutilisable.
 
-  ---
+   [Consulter les informations concernant votre routeur](https://portforward.com/router.htm#1)
 
-  Cette étape est nécessaire pour empêcher l’adresse IP de votre appareil de changer et de rendre la règle de redirection de ports inutilisable.
+2. **Se connecter à votre routeur**
 
-  [:octicons-arrow-right-24: Consulter les informations concernant votre routeur](https://portforward.com/router.htm#1)
+   Cela se fait généralement en trouvant l’adresse IP de la **passerelle par défaut**, que vous pouvez obtenir en exécutant `ipconfig` dans une invite de commandes, puis en saisissant cette adresse dans la barre d’adresse de votre navigateur.
 
-* :material-router-wireless:{ .lg .middle } **Se connecter à votre routeur**
+3. **Rediriger les ports vers votre ordinateur**
 
-  ---
+   Trouvez la section dédiée à la redirection de ports dans l’interface web de votre routeur. Elle se trouve généralement dans les sections **Network**, **Advanced** ou **LAN**.
 
-  Cela se fait généralement en trouvant l’adresse IP de la **passerelle par défaut**, que vous pouvez obtenir en exécutant `ipconfig` dans une invite de commandes, puis en saisissant cette adresse dans la barre d’adresse de votre navigateur.
+4. **Vérifier que la redirection fonctionne correctement**
 
-* :material-lan-connect:{ .lg .middle } **Rediriger les ports vers votre ordinateur**
+   Utilisez un outil tel que **CheckBeamMP** pour vérifier que votre règle fonctionne.
 
-  ---
-
-  Trouvez la section dédiée à la redirection de ports dans l’interface web de votre routeur. Elle se trouve généralement dans les sections **Network**, **Advanced** ou **LAN**.
-
-* :material-test-tube:{ .lg .middle } **Vérifier que la redirection fonctionne correctement**
-
-  ---
-
-  Utilisez un outil tel que **CheckBeamMP** pour vérifier que votre règle fonctionne.
-
-  <form action="https://check.beammp.com/api/v2/beammp" method="get" target="_blank">
+   <form action="https://check.beammp.com/api/v2/beammp" method="get" target="_blank">
    <label for="ip">Adresse IP :</label>
    <input type="text" id="ip" name="ip"><br>
    <label for="port">Port :</label>
    <input type="text" id="port" name="port"><br>
    <input type="submit" value="CheckBeamMP">
-  </form>
-
-</div>
+   </form>
 
 ## Guide détaillé
 
@@ -86,8 +74,10 @@ Ouvrez une invite de commandes. Vous pouvez notamment :
 
 * Appuyer sur la touche Windows, puis commencer à saisir `cmd` et appuyer sur Entrée lorsque **« Invite de commandes »** apparaît.
 
-<figure class="image image_resized" style="width:62%;" markdown>
+<figure class="image image_resized" style="width:62%;">
+
 ![](../../assets/content/win11-open-cmd.png)
+
 </figure>
 
 Une fois l’invite de commandes ouverte, exécutez la commande suivante :
@@ -100,8 +90,10 @@ Vous verrez alors de nombreuses informations.
 
 Si votre ordinateur possède plusieurs adaptateurs réseau ou des adaptateurs virtuels, la liste peut être encore plus longue. Il est notamment courant d’avoir plusieurs adaptateurs virtuels lorsque **Hyper-V** ou **Docker** est installé.
 
-<figure class="image image_resized" style="width:62%;" markdown>
+<figure class="image image_resized" style="width:62%;">
+
 ![](../../assets/content/win11-command-prompt-ipconfig-highlighted.png)
+
 </figure>
 
 Il est recommandé d’utiliser une connexion réseau filaire pour l’ordinateur qui hébergera le serveur, même si une connexion sans fil fonctionnera également.
@@ -131,22 +123,28 @@ La méthode la plus rapide pour accéder aux paramètres réseau est la suivante
 * Saisissez **« connexions réseau »** jusqu’à ce que **« Afficher les connexions réseau »** apparaisse.
 * Appuyez sur Entrée.
 
-<figure class="image image_resized" style="width:62%;" markdown>
+<figure class="image image_resized" style="width:62%;">
+
 ![](../../assets/content/win11-start-menu-view-network-connections.png)
+
 </figure>
 
 Vous devriez voir une liste des connexions réseau disponibles sur votre ordinateur.
 
 Si Hyper-V ou Docker est installé, cette liste peut contenir de nombreux adaptateurs. Recherchez un adaptateur qui **ne porte pas le nom « Hyper-V »**.
 
-<figure class="image image_resized" style="width:62%;" markdown>
+<figure class="image image_resized" style="width:62%;">
+
 ![](../../assets/content/win11-network-connections.png)
+
 </figure>
 
 Faites un clic droit sur votre adaptateur et sélectionnez **Propriétés**. Si **« Protocole Internet version 4 »** n’est pas coché, il ne s’agit probablement pas du bon adaptateur. Essayez-en un autre.
 
-<figure class="image image_resized" style="width:62%;" markdown>
+<figure class="image image_resized" style="width:62%;">
+
 ![](../../assets/content/win11-ethernet-properties-highlighted.png)
+
 </figure>
 
 Double-cliquez sur **« Protocole Internet version 4 »**. Remplacez **« Obtenir une adresse IP automatiquement »** par **« Utiliser l’adresse IP suivante »**.
@@ -158,8 +156,10 @@ Vous pouvez également utiliser les serveurs DNS de Cloudflare ou de Google :
 * **DNS Cloudflare :** `1.1.1.1`, `1.0.0.1`
 * **DNS Google :** `8.8.8.8`, `8.8.4.4`
 
-<figure class="image image_resized" style="width:62%;" markdown>
+<figure class="image image_resized" style="width:62%;">
+
 ![](../../assets/content/win11-network-settings-static-ip.png)
+
 </figure>
 
 Cliquez sur **OK**, puis à nouveau sur **OK**. Votre adaptateur utilise désormais une adresse IP statique au lieu du DHCP.

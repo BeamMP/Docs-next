@@ -22,43 +22,31 @@ There are 4 major steps in this guide.
 
 ## A quick guide. (A more detailed guide is below)
 
-<div class="grid cards" markdown>
+1. **Assign a static IP address to your computer or devices**
 
--   :material-dns:{ .lg .middle } __Assign a static IP address to your computer or devices__
+   This is needed to prevent the IP of your device changing and breaking the port forwarding rule.
 
-    ---
-    This is needed to prevent the IP of your device changing and breaking the port forwarding rule.
-    
+   [See info about your router](https://portforward.com/router.htm#1)
 
-    [:octicons-arrow-right-24: See info about your router](https://portforward.com/router.htm#1)
+2. **Log in to your router**
 
--   :material-router-wireless:{ .lg .middle } __Log in to your router__
+   This can normally be done by finding the 'Default Gateway' IP, which can be found when executing `ipconfig` in a command prompt and entering it in a web browsers address bar.
 
-    ---
+3. **Forward ports to your computer**
 
-    This can normally be done by finding the 'Default Gateway' IP, which can be found when executing `ipconfig` in a command prompt and entering it in a web browsers address bar.
+   Find the port forwarding section in your routers web interface. Most routers list the port forwarding section under Network, Advanced, or LAN.
 
--   :material-lan-connect:{ .lg .middle } __Forward ports to your computer__
+4. **Test that your port is forwarded properly**
 
-    ---
+   Use a tool such as CheckBeamMP to test if the rule is working.
 
-    Find the port forwarding section in your routers web interface. Most routers list the port forwarding section under Network, Advanced, or LAN.
-
--   :material-test-tube:{ .lg .middle } __Test that your port is forwarded properly__
-
-    ---
-
-    Use a tool such as CheckBeamMP to test if the rule is working.
-
-    <form action="https://check.beammp.com/api/v2/beammp" method="get" target="_blank">
-     <label for="ip">IP address:</label>
-     <input type="text" id="ip" name="ip"><br>
-     <label for="port">Port:</label>
-     <input type="text" id="port" name="port"><br>
-     <input type="submit" value="CheckBeamMP">
-    </form>
-
-</div>
+   <form action="https://check.beammp.com/api/v2/beammp" method="get" target="_blank">
+    <label for="ip">IP address:</label>
+    <input type="text" id="ip" name="ip"><br>
+    <label for="port">Port:</label>
+    <input type="text" id="port" name="port"><br>
+    <input type="submit" value="CheckBeamMP">
+   </form>
 
 ## The detailed guide
 
@@ -83,8 +71,10 @@ Open up a command prompt. The 3 main ways are:
 - Windows Key, then start typing the phrase "cmd", then press Enter when you see "Command Prompt" highlighted.
 
 
-<figure class="image image_resized" style="width:62%;" markdown>
+<figure class="image image_resized" style="width:62%;">
+
 ![](../../assets/content/win11-open-cmd.png)
+
 </figure>
 
 Once you are in the command prompt, run the following command:
@@ -97,8 +87,10 @@ You will see a lot of data.
 If you have virtual or multiple network adapters, then you will see even more data. 
 It is common to see many virtual adapters if you have either Hyper-V or Docker installed.
 
-<figure class="image image_resized" style="width:62%;" markdown>
+<figure class="image image_resized" style="width:62%;">
+
 ![](../../assets/content/win11-command-prompt-ipconfig-highlighted.png)
+
 </figure>
 
 It is recommended to use a wired network connection which will be running this server, however, it will work over a wireless connection.
@@ -129,23 +121,29 @@ Now we need to change the settings on your network adapter in order for your PC 
 - Press the Enter key
 
 
-<figure class="image image_resized" style="width:62%;" markdown>
+<figure class="image image_resized" style="width:62%;">
+
 ![](../../assets/content/win11-start-menu-view-network-connections.png)
+
 </figure>
 
 You should see a list of network connections on your computer. 
 If you have Hyper-V or Docker installed, there can be many. 
 Look for any adapters that are not named "Hyper-V".
 
-<figure class="image image_resized" style="width:62%;" markdown>
+<figure class="image image_resized" style="width:62%;">
+
 ![](../../assets/content/win11-network-connections.png)
+
 </figure>
 
 
 Right-click on your adapter and choose properties. If `Internet Protocol Version 4` is not checked, then this is the wrong adapter. Choose a different one.
 
-<figure class="image image_resized" style="width:62%;" markdown>
+<figure class="image image_resized" style="width:62%;">
+
 ![](../../assets/content/win11-ethernet-properties-highlighted.png)
+
 </figure>
 
 Double click on `Internet Protocol Version 4`. Change `Obtain an IP address automatically` to `Use the following IP address`.
@@ -158,8 +156,10 @@ Alternatively, instead of using your DNS servers, you can use either the CloudFl
 - Google DNS: 8.8.8.8, 8.8.4.4
 
 
-<figure class="image image_resized" style="width:62%;" markdown>
+<figure class="image image_resized" style="width:62%;">
+
 ![](../../assets/content/win11-network-settings-static-ip.png)
+
 </figure>
 
 Click Ok, then click Ok again, and your adapter is now changed from DHCP to static. Surf the web to make sure that you still have internet connectivity. If you do not, then change your settings back to Obtain an IP address automatically and try the next method.

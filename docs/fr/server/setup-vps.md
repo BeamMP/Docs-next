@@ -71,16 +71,20 @@ Connectez-vous avec Discord à [Keymaster](https://keymaster.beammp.com).
 
 Depuis la page d’accueil de Keymaster, cliquez sur **« Keys »** à gauche de l’écran :
 
-<figure markdown>
+<figure>
+
   ![](../../assets/content/keymaster_homepage.png)
+
 </figure>
 
 #### **2.2. Créer une clé**
 
 Pour créer une clé, cliquez sur le bouton vert **« + »** situé en haut à droite.
 
-<figure markdown>
+<figure>
+
   ![](../../assets/content/keymaster_new_key.png)
+
 </figure>
 
 #### **2.3. Renseigner les informations de la clé**
@@ -89,14 +93,18 @@ Saisissez ensuite le nom du serveur dans le champ **« Server Name »**. Il s’
 
 Exemple :
 
-<figure class="image image_resized" style="width:44.84%;" markdown>
+<figure class="image image_resized" style="width:44.84%;">
+
   ![](../../assets/content/keymaster_server_name.png)
+
 </figure>
 
 Une fois la clé créée, vous devriez obtenir un résultat similaire à celui-ci :
 
-<figure markdown>
+<figure>
+
   ![](../../assets/content/keymaster_key_done.png)
+
 </figure>
 
 #### **2.4. Copier la clé**
@@ -105,8 +113,10 @@ Copiez maintenant le contenu du champ **« Key »**. Dans cet exemple, il s’ag
 
 Vous pouvez la copier en cliquant sur l’icône en forme de presse-papiers située à droite de la clé :
 
-<figure markdown>
+<figure>
+
   ![](../../assets/content/keymaster_copy_key.png)
+
 </figure>
 
 ::: warning

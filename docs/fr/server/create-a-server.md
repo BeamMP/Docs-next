@@ -96,38 +96,48 @@ Vous aurez besoin d'un compte [Discord](https://discord.com/register) pour cette
 
 Connectez-vous à [Keymaster](https://keymaster.beammp.com/) via Discord. Depuis la page d'accueil de Keymaster, cliquez sur « AuthKeys » à gauche de l'écran :
 
-<figure markdown>
+<figure>
+
   ![](../../assets/content/keymaster_homepage.png)
+
 </figure>
 
 #### 2.2. Création d'une clé
 
 Pour créer votre clé, cliquez sur le bouton vert "+" en haut à droite.
 
-<figure markdown>
+<figure>
+
   ![](../../assets/content/keymaster_new_key.png)
+
 </figure>
 
 #### 2.3. Remplir les informations clés
 
 Ensuite, remplissez le champ `Server Name` (il s'agit uniquement du nom de la clé, et non du nom réel du serveur dans la liste), puis cliquez sur `Create`. Exemple :
 
-<figure class="image image_resized" style="width:44.84%;" markdown>
+<figure class="image image_resized" style="width:44.84%;">
+
   ![](../../assets/content/keymaster_server_name.png)
+
 </figure>
 
 Cela devrait, au final, ressembler à ceci :
 
-<figure markdown>
+<figure>
+
   ![](../../assets/content/keymaster_key_done.png)
+
 </figure>
 
 #### 2.4. Copie de la clé
 
 Copiez maintenant le texte dans le champ « Clé », dans cet exemple : `3173a2e-6az0-4542-a3p0-ddqq5ff95558` et conservez-le pour l'étape suivante. Pour ce faire, cliquez sur le presse-papiers à droite de la clé :
 
-<figure markdown>
+<figure>
+
   ![](../../assets/content/keymaster_copy_key.png)
+
 </figure>
 
 ### **3. Installation**
@@ -177,8 +187,10 @@ D’autres distributions, en plus de celles pour lesquelles un binaire est déj�
 
 Après avoir exécuté le serveur une première fois, celui-ci devrait avoir créé plusieurs fichiers et probablement généré une ou deux erreurs. C’est normal à ce stade, car la configuration n’est pas encore terminée. Votre dossier devrait maintenant contenir les fichiers suivants :
 
-<figure markdown>
+<figure>
+
   ![](../../assets/content/after-running-once.png)
+
 </figure>
 
 Ils s’appellent `ServerConfig.toml`, `Server.log` et `BeamMP-Server.exe` ! Selon vos paramètres système, les extensions `.toml`, `.log` et `.exe` peuvent ne pas être affichées.
