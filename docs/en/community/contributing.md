@@ -20,6 +20,8 @@ If this is the approach you wish to take then please follow these steps:
 4. Commit your changes to your fork.
 5. Raise a pull request against our repository [here](https://github.com/__repo__).
 
+Please follow the [style guide](https://github.com/__repo__/blob/main/STYLE_GUIDE.md) when you write or change a page.
+
 Once you have created your pull request one of the BeamMP Mod Team will review your Pull Request and either approve it or request some changes.
 If changes were requested and you have completed them we will re-review your Pull Request.
 Then your changes will be merged into the repository and automatically deployed as part of our continuous integration.

@@ -40,6 +40,8 @@ Pages are Markdown, with VitePress extensions. The old MkDocs syntax does **not*
 
 Always close a box with `:::`. A box that is left open swallows the rest of the page.
 
+How a page should read (voice, page layout, when to use each box, images, links, the words we use) is in the [style guide](STYLE_GUIDE.md). Please read it before writing a new page.
+
 ## Checks
 
 ```bash
@@ -58,11 +60,17 @@ Every push to `main` is built and published to GitHub Pages by `.github/workflow
 ## Project layout
 
     docs/
-        .vitepress/   # Site configuration, navigation and theme.
-        en/ de/ ...   # The pages, one folder per language.
+        .vitepress/   # Site configuration, navigation, theme, and site.ts (the repository and address).
+        en/ de/ ...   # The pages, one folder per language, each at its final path.
         assets/       # Images and other files.
-    scripts/          # The check tooling and its baseline.
+    scripts/          # The check tooling, its baseline, and old-addresses.txt (see below).
     tests/            # Tests for the check tooling.
+    STYLE_GUIDE.md    # How a page is written.
+
+The English folder is the master: the other languages follow it. A page that moved keeps its old
+address through `movedPages` in `docs/.vitepress/config.mts`, which writes a small redirect page
+for it. `scripts/old-addresses.txt` is the sitemap of the old MkDocs site, and `npm run check`
+fails if any of those addresses stops working.
 
 ## Translations
 
