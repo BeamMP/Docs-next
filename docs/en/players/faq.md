@@ -1,25 +1,36 @@
-# Players FAQ
+---
+description: "Answers to BeamMP account questions: linking Discord, getting early access, and getting your Patreon perks."
+---
+# Player FAQ
 
-## How do I link my Discord account?
-Linking your Discord and BeamMP account is a new feature to BeamMP. To do this go to your [Forum Account Preferences](https://forum.beammp.com/my/preferences/account) and connect your Discord account under "Associated Accounts" (this is only visible when 2FA for the forum is disabled).
+Questions about your BeamMP account and supporting the project. For questions about playing, see the [Game FAQ](/en/players/game-faq).
 
-## How do I get early access?
+## Linking your Discord account
 
-Early access (including the purple nametag and other benefits) can be obtained by supporting us financially on [Patreon](https://patreon.com/BeamMP) by buying a tier, donating, or by boosting the Discord Server.
-Donating **x** amount US$ = **x** additional server key(s) including EA benefits.
-Boosting gives you +5 Server keys (in total, not accumulative per boost) in addition to EA benefits.
+### How do I link my Discord account?
 
-## I subscribed on Patreon. How do I get my perks?
+Linking your Discord and BeamMP accounts is a new feature. Go to your [forum account preferences](https://forum.beammp.com/my/preferences/account) and connect your Discord account under **Associated Accounts**. This is only visible when 2FA is disabled on the forum.
 
-Please ensure you do the following to automatically receive your perks:
+## Early access and Patreon
 
-1. Link your Discord account on [Patreon](https://www.patreon.com/settings/apps/discord) to receive the Roles and Access in the Discord server.
-2. Please ensure you use the same email address on Patreon as you do for your BeamMP account on the [Forum](https://forum.beammp.com/).
+### How do I get early access?
 
-Please be patient, it can take a few hours, sometimes up to 12, for the system to sync. If you have not received your perks after 12 hours and have completed the above steps please contact BeamMP support.
+You get early access, including the purple nametag and other benefits, by supporting us financially. You can buy a tier on [Patreon](https://patreon.com/BeamMP), donate, or boost the Discord server.
 
-## I have more questions!
+- Donating **x** US$ gives you **x** additional server keys, plus the early access benefits.
+- Boosting the Discord server gives you 5 additional server keys in total (not 5 per boost), plus the early access benefits.
 
-If your question or issue relates to the Game or playing please refer to the [Game FAQs](/en/players/game-faq). 
-If your question or issue relates to running a Server please refer to the [Server FAQs](/en/server-owners/faq).
-Otherwise please check out the [forums](https://forum.beammp.com/c/faq/35) where the community can ask questions and get answers.
+### I subscribed on Patreon. How do I get my perks?
+
+You get your perks automatically if you do both of these:
+
+1. Link your Discord account on [Patreon](https://www.patreon.com/settings/apps/discord), to receive the roles and access in the Discord server.
+2. Use the same email address on Patreon as for your BeamMP account on the [forum](https://forum.beammp.com/).
+
+It can take a few hours, sometimes up to 12, for the system to sync. If you have done both and still have no perks after 12 hours, contact BeamMP support.
+
+## I have more questions
+
+- About the game or playing: the [Game FAQ](/en/players/game-faq).
+- About running a server: the [Server FAQ](/en/server-owners/faq).
+- Anything else: the [forum FAQ](https://forum.beammp.com/c/faq/35), where the community can ask questions and get answers.
