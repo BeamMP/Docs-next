@@ -30,7 +30,7 @@ Alle anderen Dateien im Ordner Client verursachen beim Serverstart einen Fehler,
 Die modScript.lua wird von BeamNG gelesen und teilt dem Spiel mit, welches Plugin geladen werden soll.
 
 ::: example
-[Lade die examplePlugin.zip herunter](../../../../assets/content/ResourcesForExamplePlugin.zip)
+[Lade die examplePlugin.zip herunter](/assets/content/ResourcesForExamplePlugin.zip)
 :::
 
 ## Serverseitiges Lua

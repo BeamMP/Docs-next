@@ -34,7 +34,7 @@ Tout autre fichier présent directement dans le dossier `Client` provoquera une 
 Le fichier `modScript.lua` est lu par BeamNG.drive et indique au jeu quelle extension doit être chargée.
 
 ::: example
-[Télécharger `examplePlugin.zip`](../../assets/content/ResourcesForExamplePlugin.zip)
+[Télécharger `examplePlugin.zip`](/assets/content/ResourcesForExamplePlugin.zip)
 :::
 
 ## Lua côté serveur

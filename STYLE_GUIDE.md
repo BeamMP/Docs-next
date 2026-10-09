@@ -38,7 +38,8 @@ One sentence saying who this is for and what they will have at the end.
 ## Steps
 ```
 
-1. **One `# Title`** per page, in Title Case, the same words as the navigation entry. No
+1. **One `# Title`** per page, in Title Case, the same words as the navigation entry (a reference page may add
+   what it is a reference for, such as "Server Scripting Reference (Version 3.X)"). No
    "Introduction", "Overview" or "Guide" as a title on its own.
 2. **A `description:`** in the front matter on every page. It is what search results and the card a
    shared link shows (Discord, Slack) display, so write it for a stranger. Without one, the first
@@ -100,6 +101,12 @@ box. Give a box a title only if it adds something ("Windows only"); otherwise le
 When the same steps belong on two pages (getting an AuthKey is on both server setup pages), write them once in a
 `_parts` folder next to the pages and include them: `<!--@include: ./_parts/authkey.md-->`. A part is not a
 page of its own. Write its images and links as they should look from the pages that include it.
+
+## Downloads
+
+A file the reader downloads (a zip, an installer) goes in `docs/public/assets/content/` and is linked with a
+root path: `[examplePlugin.zip](/assets/content/ResourcesForExamplePlugin.zip)`. A relative link to a file
+is not published and gives a 404.
 
 ## Links
 

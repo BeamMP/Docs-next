@@ -27,7 +27,7 @@ Server目录需创建多个子文件夹存放各服务端模组。推荐只在�
 
 Client目录专门存放将发送给客户端的ZIP格式模组包，当客户端接收后会自动以模组形式加载。该目录若存在其他类型文件会导致服务器启动时报错（但不会阻断服务运行），不过这些无关文件仅会被服务端忽略。核心配置脚本modScript.lua由BeamNG游戏引擎解析，用于指引游戏加载指定插件模块。
 
-:::范例 "" [Download the examplePlugin.zip](../../assets/content/ResourcesForExamplePlugin.zip)
+:::范例 "" [Download the examplePlugin.zip](/assets/content/ResourcesForExamplePlugin.zip)
 
 ## 服务器端 lua
 

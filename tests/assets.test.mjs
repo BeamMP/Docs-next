@@ -120,3 +120,18 @@ test('the logos the header and home pages use are published', () => {
     assert.equal(fs.existsSync(path.join(docsDir, 'public', 'assets', 'core', name)), true, name)
   }
 })
+
+test('a link to a downloadable file points at docs/public with a root path, so the file is published', () => {
+  const problems = []
+  for (const file of pages()) {
+    const prose = splitLines(fs.readFileSync(file, 'utf8')).filter((l) => !l.code).map((l) => l.text).join('\n')
+    for (const m of prose.matchAll(/(?<!!)\[[^\]]*\]\(\s*<?([^)\s>]+\.(?:zip|7z|rar|exe|pdf))>?[^)]*\)/gi)) {
+      const url = m[1]
+      if (/^(?:[a-z]+:)?\/\//i.test(url)) continue
+      const where = path.relative(docsDir, file)
+      if (!url.startsWith('/')) problems.push(`${where}: ${url} (a relative link to a file is not published; put the file in docs/public and use a root path)`)
+      else if (!existsExactCase(path.join(docsDir, 'public'), url)) problems.push(`${where}: ${url} is not in docs/public`)
+    }
+  }
+  assert.deepEqual(problems, [])
+})

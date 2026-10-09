@@ -88,4 +88,4 @@ Lorsque vous appuyez sur le bouton « The Hello World Button », le compteur sit
 
 ## Téléchargement
 
-Ce tutoriel est presque entièrement basé sur le mod d'exemple ImGui de [StanleyDudek](https://github.com/StanleyDudek). Vous pouvez télécharger ce mod d'exemple [ici](../../../../assets/content/imguiExample.zip).
+Ce tutoriel est presque entièrement basé sur le mod d'exemple ImGui de [StanleyDudek](https://github.com/StanleyDudek). Vous pouvez télécharger ce mod d'exemple [ici](/assets/content/imguiExample.zip).
