@@ -1,43 +1,40 @@
-# Zur BeamMP Dokumentation beitragen
+---
+description: "Hilf mit, die BeamMP-Dokumentation zu verbessern: eine Seite auf GitHub bearbeiten, Änderungen lokal ansehen, den Styleguide befolgen und was nach einem Pull Request passiert."
+---
+# Mitwirken
 
-BeamMP verwendet [Material for MkDocs](https://squidfunk.github.io/mkdocs-material) sowie [MkDocs](https://www.mkdocs.org) . Die vollständige Dokumentation finden Sie auf den jeweiligen Websites.
+Du kannst helfen, diese Dokumentation zu verbessern, indem du einen Fehler behebst, etwas Fehlendes ergänzt oder eine Seite schreibst. Diese Seite zeigt dir, wie.
 
-## Erste Schritte
+## Bevor du schreibst
 
-Um zu dieser Dokumentation beizutragen, können Sie einen der beiden Ansätze wählen:
+Lies den [Styleguide](https://github.com/__repo__/blob/main/STYLE_GUIDE.md). Er beschreibt, wie eine Seite zu lesen sein soll, wann welche Box verwendet wird und wie man Bilder und Links schreibt.
 
-### 1. Bearbeiten Sie die rohen Markdown-Dateien
+Die englischen Seiten sind die Vorlage. Ändere die englische Seite, dann ziehen die anderen Sprachen nach. Wenn du beim Übersetzen helfen möchtest, siehe [Übersetzen](#translating).
 
-Das Bearbeiten der rohen Markdown-Dateien ist der schnellste Ansatz und eignet sich am besten für schnelle Änderungen wie Rechtschreibung, Grammatik oder neue Inhaltsausschnitte. Dieser Ansatz erfordert jedoch Vorkenntnisse über Markdown, da Sie verstehen müssen, was Ihre Änderung bewirken wird.
+## Eine Seite auf GitHub bearbeiten
 
-Wenn dies der Ansatz ist, den Sie wählen möchten, befolgen Sie bitte diese Schritte:
+Das ist der schnellste Weg für Rechtschreibung, Grammatik und kleine Ergänzungen. Du brauchst dafür etwas Wissen über Markdown.
 
-1. Klicken Sie auf der Seite, die Sie bearbeiten möchten, auf Bearbeiten.
-2. Forken Sie das Projekt in Ihr eigenes GitHub-Konto.
-3. Nehmen Sie die Änderungen vor, die Sie für richtig halten.
-4. Übernehmen Sie Ihre Änderungen in Ihren Fork.
-5. Stellen Sie [hier](https://github.com/__repo__) einen Pull-Request für unser Repository.
+1. Klicke unten auf der Seite, die du ändern möchtest, auf **Edit this page**.
+2. Forke das Projekt in dein eigenes GitHub-Konto.
+3. Nimm deine Änderungen vor.
+4. Committe sie in deinen Fork.
+5. Eröffne einen Pull Request gegen [@repo@](https://github.com/__repo__).
 
-Sobald Sie Ihren Pull-Request erstellt haben, wird jemand vom BeamMP-Mod-Team Ihren Pull-Request prüfen und ihn entweder genehmigen oder Änderungen anfordern. Wenn Änderungen angefordert wurden und Sie diese abgeschlossen haben, werden wir Ihren Pull-Request erneut prüfen. Anschließend werden Ihre Änderungen im Repository zusammengeführt und im Rahmen unserer kontinuierlichen Integration automatisch bereitgestellt.
+## Änderungen lokal ansehen
 
-### 2. Nehmen Sie Änderungen mit der Live-Vorschau vor
+Bei größeren Änderungen siehst du dir die Vorschau beim Schreiben an.
 
-Wenn Sie unsere Dokumentation auf diese Weise bearbeiten, erfolgt dies ähnlich wie bei Option 1. Allerdings können Sie auf diese Weise eine Vorschau Ihrer Änderungen anzeigen.
+1. Forke das Projekt und klone deinen Fork.
+2. Installiere [Node.js](https://nodejs.org) 22 oder neuer und führe dann `npm install` aus.
+3. Führe `npm run dev` aus und öffne die Adresse, die ausgegeben wird. Die Seite aktualisiert sich, während du bearbeitest.
+4. Nimm deine Änderungen vor und führe dann `npm test` und `npm run check` aus. Die Prüfung findet tote Links, nicht geschlossene Boxen, fehlende Bilder und Seiten, die nicht dargestellt werden.
+5. Committe in deinen Fork und eröffne einen Pull Request.
 
-1. Klicken Sie auf der Seite, die Sie bearbeiten möchten, auf Bearbeiten.
-2. Forken Sie das Projekt in Ihr eigenes GitHub-Konto.
-3. Klonen Sie das Projekt lokal.
-4. Richten Sie Material for MkDocs gemäß der Anleitung [hier](https://squidfunk.github.io/mkdocs-material/getting-started/) ein
-5. Führen Sie `mkdocs serve` aus, um den Live-Reload-Docs-Server von dort aus zu starten, wo Sie den Fork geklont haben.
-6. Nehmen Sie die Änderungen vor, die Sie für richtig halten.
-7. Übernehmen Sie Ihre Änderungen in Ihren Fork.
-8. Stellen Sie [hier](https://github.com/__repo__) einen Pull-Request für unser Repository.
+## Was danach passiert
 
-## Projektlayout
+Ein Mitglied des BeamMP-Mod-Teams prüft deinen Pull Request und genehmigt ihn entweder oder bittet um Änderungen. Wenn du die Änderungen vorgenommen hast, prüfen wir ihn erneut. Sobald er zusammengeführt ist, wird er automatisch bereitgestellt.
 
-```
-mkdocs.yml # Die Konfigurationsdatei.
-docs/
-index.md # Die Dokumentations-Homepage.
-... # Andere Markdown-Seiten, Bilder und andere Dateien.
-```
+## Übersetzen {#translating}
+
+Die Dokumentation wird mit [GitLocalize](https://gitlocalize.com/repo/9180) in mehrere Sprachen übersetzt. GitLocalize kann einen Absatz als „nicht übersetzt“ anzeigen, obwohl er es schon ist. Prüfe daher, ob eine Seite nicht schon übersetzt ist, bevor du sie änderst.
