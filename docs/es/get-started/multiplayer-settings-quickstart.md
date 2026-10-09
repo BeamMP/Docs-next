@@ -1,39 +1,29 @@
-# Cómo Empezar
-
 ---
-
-## **Antes de empezar**
-
-BeamMP sólo es compatible con copias legítimas (de Steam) del juego. Las copias "Crackeadas" no están soportadas.
-
+description: "Los pocos ajustes multijugador de BeamMP que conviene conocer en tu primera sesión: chat, etiquetas de nombre, suavizado, la cola de eventos y el puerto del Launcher."
 ---
+# Ajustes multijugador por primera vez
 
-## **Instalación**
+BeamMP tiene sus propios ajustes multijugador. No necesitas cambiar ninguno para jugar. Estos son los que conviene conocer en tu primera sesión. Todos los ajustes se describen en [Ajustes multijugador](/es/players/multiplayer-settings).
 
-BeamMP sólo es compatible de forma nativa con Windows, por ahora.
+## Ver todos los ajustes
 
-### **Instalación en Windows**
+Activa **Show advanced options** para ver todos los ajustes multijugador. Si está desactivado, solo verás los básicos.
 
-1. Ve a [beammp.com](https://beammp.com/) y haz clic en el botón de "Download client".
-2. Extrae el archivo `BeamMP_Installer.zip`.
-3. Inicia `BeamMP_Installer.exe` y sigue las instrucciones.
-4. El icono del 'Launcher' de BeamMP debería aparecer en tu escritorio. Si no, simplemente busca "BeamMP" en la barra de búsqueda de Windows.
-5. Una vez el 'launcher' se haya iniciado, deberías ver una ventana de terminal, poco después BeamNG.drive debería inciarse automáticamente **no** cierres la ventana de terminal.
-6. Una vez BeamNG se inicie, en el menú principal, haz clic en el botón `Multijugador` para iniciar el multijugador.
-7. Se te pedirá que inicies sesión o juegues como invitado (no todos los servidores permiten invitados). Puedes crear una cuenta en nuestro [foro](https://forum.beammp.com) e iniciar sesión en BeamMP con las mismas credenciales.
-8. Selecciona cualquier servidor que te guste y presiona `Conectarse`. ¡Disfruta!
+## Ajustes que quizá quieras cambiar
 
-Nota: *Si te estás uniendo a un mapa con múltiples vehículos cargados, tardarás más de lo esperado en unirte.*
+| Ajuste | Qué hace | Cámbialo cuando |
+|---|---|---|
+| **New chat menu** | Muestra el chat del juego en una ventana que puedes sacar del juego, por ejemplo a otro monitor | Quieres el chat en una segunda pantalla |
+| **Enable vehicle position smoothing** | Suaviza el movimiento de los vehículos de otros jugadores a intervalos regulares | Un jugador tiene un ping alto o tu conexión pierde muchos paquetes |
+| **Use simplified vehicles when available** | Sustituye los vehículos de otros jugadores por sus versiones simplificadas, cuando existen | Las prefieres a los modelos completos |
+| **Skip the mod security warning popups** | Oculta la advertencia que aparece al conectarte a un servidor con mods | Te conectas a menudo a los mismos servidores |
+| **Hide player nametags** | Evita que se dibujen las etiquetas de nombre | Las etiquetas de nombre te estorban |
+| **Enable player vehicle update/edit queuing** | Pone en cola la aparición y las ediciones de los vehículos de otros jugadores en lugar de cargarlas de inmediato | Quieres que los vehículos aparezcan cuando tú decidas; consulta [la cola de eventos](/es/players/multiplayer-settings#event-queue) |
 
-### **Instalación en Linux**
+## Ajustes que es mejor no tocar
 
-Consulte la [documentación en inglés](https://docs.beammp.com/game/getting-started/#2b-linux-installation).
+- **Disable pausing caused by instabilities** es mejor dejarlo desactivado. Las inestabilidades repetidas pueden hacer que el juego se cierre.
+- **Show network activity in the console** escribe todo en los archivos de registro, que pueden crecer cientos de megabytes en unos minutos.
+- **Launcher port** solo hay que cambiarlo si no se puede usar el puerto 4444. Si lo cambias, cámbialo también en `launcher.cfg`. Consulta [Cambiar el puerto del Launcher](/en/troubleshooting/launcher-port).
 
----
-
-## **Problemas Conocidos**
-
-- Si no ves el botón de "Multijugador". Asegúrate de que el mod de BeamMP está activado en el "Gestor de Modificaciones" y prueba presionando CTRL + L.
-- También es importante que BeamMP sea el **único** mod activado en el "Gestor de Modificaciones", ya que sino esto puede provocar problemas.
-
-Si necesitas más ayuda con la instalación, crea un 'post' en nuestro  [foro](https://forum.beammp.com) o pregunta en nuestro [Servidor de Discord](https://discord.gg/beammp).
+Siguiente: [Fundamentos de jugabilidad](/es/players/gameplay-basics).

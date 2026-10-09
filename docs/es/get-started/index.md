@@ -1,39 +1,27 @@
-# Cómo Empezar
-
 ---
-
-## **Antes de empezar**
-
-BeamMP sólo es compatible con copias legítimas (de Steam) del juego. Las copias "Crackeadas" no están soportadas.
-
+description: "Pasa de no tener nada instalado a conducir en un servidor de BeamMP con otros jugadores: qué necesitas y los tres pasos."
 ---
+# Primeros pasos
 
-## **Instalación**
+BeamMP añade multijugador a BeamNG.drive. Esta sección te lleva desde cero hasta conducir en un servidor con otros jugadores.
 
-BeamMP sólo es compatible de forma nativa con Windows, por ahora.
+## Qué necesitas
 
-### **Instalación en Windows**
+- Una copia legítima y actualizada de BeamNG.drive.
+- Windows o Linux. El soporte para macOS está en desarrollo. Linux y macOS son plataformas secundarias, así que es posible que encuentres algunos errores.
 
-1. Ve a [beammp.com](https://beammp.com/) y haz clic en el botón de "Download client".
-2. Extrae el archivo `BeamMP_Installer.zip`.
-3. Inicia `BeamMP_Installer.exe` y sigue las instrucciones.
-4. El icono del 'Launcher' de BeamMP debería aparecer en tu escritorio. Si no, simplemente busca "BeamMP" en la barra de búsqueda de Windows.
-5. Una vez el 'launcher' se haya iniciado, deberías ver una ventana de terminal, poco después BeamNG.drive debería inciarse automáticamente **no** cierres la ventana de terminal.
-6. Una vez BeamNG se inicie, en el menú principal, haz clic en el botón `Multijugador` para iniciar el multijugador.
-7. Se te pedirá que inicies sesión o juegues como invitado (no todos los servidores permiten invitados). Puedes crear una cuenta en nuestro [foro](https://forum.beammp.com) e iniciar sesión en BeamMP con las mismas credenciales.
-8. Selecciona cualquier servidor que te guste y presiona `Conectarse`. ¡Disfruta!
+::: warning
+BeamMP no funciona con copias piratas o desactualizadas de BeamNG.drive, y el equipo de soporte no puede ayudarte con los problemas que tengas en ellas.
+:::
 
-Nota: *Si te estás uniendo a un mapa con múltiples vehículos cargados, tardarás más de lo esperado en unirte.*
+## Los tres pasos
 
-### **Instalación en Linux**
+1. [Instala BeamMP](/es/get-started/install-beammp): descarga el instalador (Windows) o compila el Launcher (Linux).
+2. [Únete a tu primer servidor](/es/get-started/join-first-server): inicia el Launcher, abre el multijugador y conéctate.
+3. [Revisa los ajustes de la primera vez](/es/get-started/multiplayer-settings-quickstart): los pocos ajustes multijugador que conviene conocer antes de tu primera sesión.
 
-Consulte la [documentación en inglés](/es/get-started/#2b-linux-installation).
+## Si algo sale mal
 
----
-
-## **Problemas Conocidos**
-
-- Si no ves el botón de "Multijugador". Asegúrate de que el mod de BeamMP está activado en el "Gestor de Modificaciones" y prueba presionando CTRL + L.
-- También es importante que BeamMP sea el **único** mod activado en el "Gestor de Modificaciones", ya que sino esto puede provocar problemas.
-
-Si necesitas más ayuda con la instalación, crea un 'post' en nuestro  [foro](https://forum.beammp.com) o pregunta en nuestro [Servidor de Discord](https://discord.gg/beammp).
+- Las páginas de [Solución de problemas](/es/troubleshooting/) tratan las actualizaciones del Launcher, los problemas de conexión y los códigos de error.
+- Las [Preguntas frecuentes del jugador](/es/players/faq) responden a las dudas más habituales.
+- Puedes preguntar en el [foro](https://forum.beammp.com) o en el [servidor de Discord](https://discord.gg/beammp).

@@ -1,39 +1,29 @@
-# Cómo Empezar
-
 ---
-
-## **Antes de empezar**
-
-BeamMP sólo es compatible con copias legítimas (de Steam) del juego. Las copias "Crackeadas" no están soportadas.
-
+description: "Inicia el Launcher de BeamMP, abre el multijugador en BeamNG.drive, inicia sesión o juega como invitado y conéctate a un servidor."
 ---
+# Únete a tu primer servidor
 
-## **Instalación**
+Ya has [instalado BeamMP](/es/get-started/install-beammp). Ahora inicia el Launcher y conéctate a un servidor.
 
-BeamMP sólo es compatible de forma nativa con Windows, por ahora.
+## Inicia el multijugador
 
-### **Instalación en Windows**
+1. Inicia el Launcher de BeamMP. Se abre una ventana de terminal y, poco después, arranca el launcher estándar de BeamNG. No cierres la ventana de terminal.
+2. En el menú principal de BeamNG.drive, haz clic en **Repository** y comprueba que `multiplayerbeammp` es el único mod activado.
+3. Vuelve al menú principal, haz clic en **More…** y luego en **Multijugador**.
+4. Inicia sesión o juega como invitado. No todos los servidores permiten invitados. Puedes crear una cuenta en el [foro](https://forum.beammp.com) e iniciar sesión en BeamMP con los mismos datos.
+5. Elige un servidor y haz clic en **Conectarse**.
 
-1. Ve a [beammp.com](https://beammp.com/) y haz clic en el botón de "Download client".
-2. Extrae el archivo `BeamMP_Installer.zip`.
-3. Inicia `BeamMP_Installer.exe` y sigue las instrucciones.
-4. El icono del 'Launcher' de BeamMP debería aparecer en tu escritorio. Si no, simplemente busca "BeamMP" en la barra de búsqueda de Windows.
-5. Una vez el 'launcher' se haya iniciado, deberías ver una ventana de terminal, poco después BeamNG.drive debería inciarse automáticamente **no** cierres la ventana de terminal.
-6. Una vez BeamNG se inicie, en el menú principal, haz clic en el botón `Multijugador` para iniciar el multijugador.
-7. Se te pedirá que inicies sesión o juegues como invitado (no todos los servidores permiten invitados). Puedes crear una cuenta en nuestro [foro](https://forum.beammp.com) e iniciar sesión en BeamMP con las mismas credenciales.
-8. Selecciona cualquier servidor que te guste y presiona `Conectarse`. ¡Disfruta!
+::: info Unirse puede tardar
+Cuando entras en un mapa en el que ya hay muchos vehículos generados, unirse puede tardar más de lo que esperas.
+:::
 
-Nota: *Si te estás uniendo a un mapa con múltiples vehículos cargados, tardarás más de lo esperado en unirte.*
+## Si no puedes conectarte
 
-### **Instalación en Linux**
+- **No aparece el botón Multijugador.** Asegúrate de que el mod de BeamMP está presente y activado en el **Gestor de mods** y luego pulsa `Ctrl` + `L`.
+- **Tienes una VPN activada.** Cualquier tipo de VPN puede causar problemas de conexión. Desactívala e inténtalo de nuevo.
+- **El Launcher muestra un error.** Búscalo en los [códigos de error](/es/troubleshooting/error-codes) o en las [preguntas frecuentes del foro](https://forum.beammp.com/c/faq/35).
+- **En Linux, solo puedes conectarte una vez.** Por ahora, el Launcher nativo de Linux se conecta a un solo servidor por cada inicio. Después de desconectarte, reinicia el Launcher. Puedes hacerlo sin cerrar el juego.
 
-Consulte la [documentación en inglés](https://docs.beammp.com/game/getting-started/#2b-linux-installation).
+Si necesitas más ayuda, consulta [Solución de problemas](/es/troubleshooting/) o pregunta en el [foro](https://forum.beammp.com) o en el [servidor de Discord](https://discord.gg/beammp).
 
----
-
-## **Problemas Conocidos**
-
-- Si no ves el botón de "Multijugador". Asegúrate de que el mod de BeamMP está activado en el "Gestor de Modificaciones" y prueba presionando CTRL + L.
-- También es importante que BeamMP sea el **único** mod activado en el "Gestor de Modificaciones", ya que sino esto puede provocar problemas.
-
-Si necesitas más ayuda con la instalación, crea un 'post' en nuestro  [foro](https://forum.beammp.com) o pregunta en nuestro [Servidor de Discord](https://discord.gg/beammp).
+Siguiente: [revisa los ajustes de la primera vez](/es/get-started/multiplayer-settings-quickstart).
