@@ -1,33 +1,25 @@
-::: warning Этот сайт находится в стадии разработки!
-This site is being actively worked on.
+---
+description: "Внутриигровые (клиентские) Lua-функции BeamMP: TriggerServerEvent, TriggerClientEvent и AddEventHandler, с примером разбора сообщений чата."
+---
+# Справочник по скриптингу мода (в игре)
 
-Feel you could help? Please do by clicking on the page with a pencil on the right!
+BeamMP позволяет писать и клиентские плагины. Несколько функций позволяют общаться с другими мультиплеерными модами и с другими игроками через сервер. Как настроить плагин, см. на странице [Создание модов и ресурсов](/ru/developers/mod-and-resource-creation).
 
-This can be done any page too.
-:::
+## Функции
 
-# Справочник по Модам/Внутриигровым Скриптам
+| Функция | Что делает |
+|---|---|
+| `TriggerServerEvent("eventName", "data")` | Вызывает событие в Lua-окружении сервера. Оба параметра — строки |
+| `TriggerClientEvent("eventName", "data")` | Вызывает событие в локальном Lua-окружении. Оба параметра — строки. Подходит для связи между плагинами |
+| `AddEventHandler("eventName", Function)` | Добавляет `Function`, которая будет вызвана при получении `eventName`, локально или от сервера. `Function` получает один параметр: строку с данными события |
 
-BeamMP также позволяет вам создавать собственные плагины на стороне клиента. Мы предоставили несколько функций, которые вы можете использовать для связи с другими многопользовательскими модами и другими игроками через сервер.
+## Пример: чтение сообщений чата
 
-# Функции
-
-Список доступных функций для написания скриптов:
-
-Функция | Примечания
---- | ---
-`TriggerServerEvent("eventName", "data")` | Запускает событие в серверной среде lua, оба параметра являются строками.
-`TriggerClientEvent("eventName", "data")` | Запускает событие в локальной среде lua, оба параметра — строки. Хорошо подходит для связи между плагинами.
-`AddEventHandler("eventName", Function)` | Добавляет 2-й параметр в таблицу, который будет вызываться при получении `eventName` (локально или с сервера). `Function` получит 1 параметр — строку, содержащую данные события.
-
-# Фрагменты кода
-
-Например, для анализа чата используйте включенное событие `ChatMessageIncluded` следующим образом:
-
+Чтобы читать чат, используйте встроенное событие `ChatMessageReceived`:
 ```lua
 local function chatReceived(msg) -- Receive event with parameters
     print("chat received: "..msg)
-    local i = string.find(s, ":") -- Find where our first ':' is, used to separate the sender and message
+    local i = string.find(msg, ":") -- Find where our first ':' is, used to separate the sender and message
     if i == nil then
         print("error parsing message: separator could not be found!")
         return -- Could not find separator, cancel function
