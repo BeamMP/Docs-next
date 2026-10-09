@@ -1,38 +1,53 @@
-# Wie erstelle ich Ausnahmen für Windows Defender Firewall und Antivirus?
+---
+description: "Ausnahmen in der Windows Defender Firewall und im Virenschutz erstellen, damit Launcher und Server von BeamMP nicht blockiert werden: erst Firewall-Regeln, dann eine Virenschutz-Ausnahme."
+---
+# Defender-/Firewall-Ausnahmen
 
-:::: info
-Bevor Änderungen an der Firewall vorgenommen werden, sollte sichergestellt werden, dass das aktive Netzwerk in den Windows Netzwerk-Einstellungen als "privat" gekennzeichnet ist (vorausgesetzt, das Netzwerk ist tatsächlich ein privates).
+Diese Anleitung zeigt, wie du in der Windows Defender Firewall und im Virenschutz Ausnahmen für den BeamMP-Launcher und den Server erstellst.
 
-::: danger ACHTUNG:
-**Firewall-/Defender-Ausnahmen stellen ein Sicherheitsrisiko dar**.
+Bevor du die Firewall änderst, stelle sicher, dass dein Netzwerk in den Windows-Netzwerkeinstellungen auf **Privat** gesetzt ist, falls du dich in einem privaten Netzwerk befindest.
 
-Es wird vorausgesetzt, dass der/die Leser*in die Risiken versteht, die mit dem Deaktivieren des Virenschutzes für ein Programm und dem Öffnen von Firewall-Ports in seinem/ihrem Heimnetzwerk einhergehen. BeamMP kann für keine daraus resultierenden Schäden jeglicher Art zur Verantwortung gezogen werden.
+::: danger Ausnahmen sind ein Risiko
+Wenn du Ausnahmen erstellst, verstehst du die Risiken, die entstehen, wenn du Programme auf deinem Computer zulässt und Ports in deinem Heimnetzwerk für die Öffentlichkeit öffnest. Du verzichtest daher darauf, BeamMP für jegliche Schäden verantwortlich zu machen, die dir oder deinem Haushalt entstehen könnten.
 
-Für externe, auf dieser Webseite verlinkte Inhalte wird keine Haftung übernommen.
+Für Inhalte auf extern verlinkten Diensten oder Websites übernehmen wir keine Verantwortung.
 :::
-::::
 
-## 1. Firewall-Ausnahme für den BeamMP-Launcher
+## Dem Launcher den Zugriff durch die Firewall erlauben
 
-1. Öffne die `Windows Defender Firewall mit erweiterten Einstellungen` .
-2. Klicke im Fenster auf `Eingehend` , um die Registerkarte „Eingehende Ausschlüsse“ zu öffnen.
-3. Klicke oben rechts auf `Regel erstellen` um eine neue Ausnahme zu erstellen.
-4. Wähle `Programm` aus, um einen programmspezifischen Ausschluss zu erstellen.
-5. Gebe den vollständigen Pfad zu `BeamMP-Launcher.exe` ein. Standardmäßig wäre dies `%appdata%\BeamMP-Launcher\BeamMP-Launcher.exe` ohne Anführungszeichen.
-6. Stelle sicher, dass die Verbindung zugelassen ist
-7. Gebe der Ausnahme einen Namen (z. B. „BeamMP-Launcher“) und speichere diese.
-8. Starte deinen PC neu.
+1. Öffne **Windows Defender Firewall mit erweiterter Sicherheit**.
+2. Klicke auf **Eingehende Regeln**.
+3. Klicke oben rechts auf **Neue Regel**.
+4. Wähle **Programm**, um eine Regel für ein Programm zu erstellen.
+5. Gib den vollständigen Pfad zu `BeamMP-Launcher.exe` ein. Standardmäßig ist das `%appdata%\BeamMP-Launcher\BeamMP-Launcher.exe`, ohne Anführungszeichen.
+6. Wähle, die Verbindung zuzulassen.
+7. Gib der Regel einen Namen, zum Beispiel „BeamMP-Launcher“, und speichere sie.
+8. Starte deinen Computer neu.
 
-## 2. Antivirus-Ausschluss für den BeamMP-Launcher.
+## Dem Server den Zugriff durch die Firewall erlauben
 
-1. Öffne die `Windows Security` -App.
-2. Klicke auf das erste Element `Virus und Bedrohungsschutz` .
-3. Klicke im Unter-menü auf `Einstellungen verwalten`.
-4. Scrolle nach unten, um zur Registerkarte `Asschlüsse` zu navigieren.
-5. Klicke dort auf „Ausschluss hinzufügen“ und wähle  `Prozess` aus.
-6. Gieb `BeamMP-Launcher.exe` in das Feld ein und speichere es.
-7. Starte deinen PC neu.
+1. Öffne **Windows Defender Firewall mit erweiterter Sicherheit**.
+2. Klicke auf **Eingehende Regeln**.
+3. Klicke oben rechts auf **Neue Regel**.
+4. Wähle **Port**, um eine Regel für einen Port zu erstellen.
+5. Gib denselben Port ein wie in deiner `ServerConfig.toml`.
+6. Gib den vollständigen Pfad zu `BeamMP-Server.exe` ein. Das ist der Ort, an den du die Datei nach dem Download gelegt hast.
+7. Wähle, die Verbindung zuzulassen.
+8. Gib der Regel einen Namen, zum Beispiel „BeamMP-Server“, und speichere sie.
+9. Starte deinen Computer neu.
+
+## Eine Virenschutz-Ausnahme hinzufügen
+
+Das gilt für den Launcher und den Server.
+
+1. Öffne die App **Windows-Sicherheit**.
+2. Klicke auf **Viren- & Bedrohungsschutz**.
+3. Klicke unter **Einstellungen für Viren- & Bedrohungsschutz** auf **Einstellungen verwalten**.
+4. Scrolle nach unten zu **Ausschlüsse**.
+5. Klicke auf **Ausschlüsse hinzufügen oder entfernen**, dann auf **Ausschluss hinzufügen** und wähle **Prozess**.
+6. Gib `BeamMP-Launcher.exe` oder `BeamMP-Server.exe` ein und speichere es.
+7. Starte deinen Computer neu.
 
 ## Immer noch Probleme?
 
-Öffne einen Thread im [Forum](https://forum.beammp.com) oder auf unserem [Discord-Server](https://discord.gg/beammp) im `#support` Kanal.
+Eröffne einen Thread im [Forum](https://forum.beammp.com) oder frag im Kanal `#support` auf dem [Discord-Server](https://discord.gg/beammp).
