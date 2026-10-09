@@ -1,77 +1,65 @@
-# Premiers pas
-
-Pour commencer à développer pour BeamMP, vous aurez besoin au minimum de :
-
-- BeamNG.drive, installé localement
-- BeamMP, installé localement ; au moins le lanceur, et éventuellement aussi le serveur
-- Git, installé localement, et un compte GitHub.com
-- Un éditeur de code, par exemple VSCode ou notepad++
-
 ---
-# Différences entre le mod, le lanceur et le serveur
-
-BeamMP se divise en trois parties principales :
-
-- Le mod est chargé par BeamNG, comme n'importe quel mod de véhicule ou d'interface pour le jeu. Sa fonction principale est d'établir une connexion locale avec le lanceur et d'afficher les éléments de l'interface multijoueur. Il est principalement écrit en Lua, avec un peu de JavaScript, HTML et CSS pour les éléments d'interface. Son dépôt est [https://github.com/BeamMP/BeamMP](https://github.com/BeamMP/BeamMP)
-- La fonction principale du lanceur est d'établir une connexion permanente avec le mod puis, le moment venu, une connexion avec le serveur choisi, et de gérer la connexion de l'utilisateur au backend de BeamMP. Il est écrit en C++, précompilé par BeamMP et disponible sur [https://github.com/BeamMP/BeamMP-Launcher](https://github.com/BeamMP/BeamMP-Launcher)
-- Le serveur établit les connexions entre un ou plusieurs lanceurs et envoie des « heartbeats » au backend de BeamMP, en lui fournissant des informations telles que l'IP, le port, la version, le nombre de joueurs, etc. Il gère et exécute également les plugins Lua côté serveur. Il est écrit en C++, précompilé par BeamMP pour plusieurs systèmes d'exploitation et architectures de processeur, et disponible sur [https://github.com/BeamMP/BeamMP-Server](https://github.com/BeamMP/BeamMP-Server)
-
+description: "Configurez un environnement de développement pour le mod BeamMP : un dossier mods décompressé, le mode développeur du lanceur, un dépôt cloné, un serveur local et comment contribuer."
 ---
-# Mise en place d'un environnement de développement pour travailler sur le mod
+# Configuration de l’environnement de développement
+
+Cette page explique comment configurer votre ordinateur pour travailler sur le mod BeamMP et comment exécuter un serveur local. Pour comprendre comment le mod, le lanceur et le serveur s'articulent, consultez [Développeurs](/fr/developers/).
+
+## Ce qu'il vous faut
+
+- BeamNG.drive, installé localement.
+- BeamMP, installé localement : au moins le lanceur, et aussi le serveur si vous voulez tester avec un serveur.
+- Git, installé localement, et un compte GitHub.
+- Un éditeur de code, par exemple VSCode ou Notepad++.
 
 ## Utiliser un dossier décompressé pour BeamNG
 
-Pour travailler efficacement sur des mods dans BeamNG, il est conseillé d'utiliser un dossier `unpacked` (décompressé) plutôt que de recréer des zips après chaque modification.
+Pour travailler efficacement sur des mods, utilisez un dossier `unpacked` (décompressé) plutôt que de créer un zip après chaque modification.
 
-Ouvrez le dossier utilisateur de BeamNG en accédant à `%appdata%/Local/BeamNG.drive/0.xx/mods`, où `xx` correspond à la version la plus récente de BeamNG.
-Créez un dossier nommé `unpacked` dans le dossier `mods`.
+1. Ouvrez le dossier utilisateur de BeamNG à l'emplacement `%appdata%/Local/BeamNG.drive/0.xx/mods`, où `xx` correspond à la version la plus récente de BeamNG.
+2. Créez un dossier nommé `unpacked` dans `mods`.
 
-Vous trouverez plus d'informations sur le dossier utilisateur sur [https://documentation.beamng.com/support/userfolder/](https://documentation.beamng.com/support/userfolder/)
+Vous trouverez plus d'informations sur le dossier utilisateur dans la [documentation de BeamNG](https://documentation.beamng.com/support/userfolder/).
 
-## Activer le mode développeur dans le lanceur BeamMP
+## Activer le mode développeur dans le lanceur
 
-Pour éviter que la mise à jour automatique ne supprime votre clone git local, il faut la désactiver avec `--no-download`.
-Si vous ne souhaitez pas non plus que le lanceur démarre BeamNG, et que vous voulez voir les messages de débogage, il est conseillé d'utiliser `--dev`.
+La mise à jour automatique supprimerait votre clone git local : désactivez-la avec `--no-download`. Si vous ne souhaitez pas non plus que le lanceur démarre BeamNG, et que vous voulez voir les messages de débogage, utilisez `--dev`.
 
-| Argument                              | Remarque                                   |
-|:--------------------------------------|:-------------------------------------------|
-| `--help` ou `-h`                      | Affiche la liste d'arguments suivante |
-| `--port <port>` ou `-p`               | Remplace le port d'écoute par défaut par `<port>`. Il doit également être configuré en jeu |
-| `--verbose` ou `-v`                   | Mode verbeux, affiche les messages de débogage |
-| `--no-download`                       | Ne télécharge pas et n'installe pas le mod Lua BeamMP |
-| `--no-update`                         | N'applique pas les mises à jour du lanceur (vous devez le mettre à jour manuellement) |
-| `--no-launch`                         | Ne lance pas le jeu (vous devez le lancer manuellement) |
-| `--dev`                               | Mode développeur, équivalent à --verbose --no-download --no-launch --no-update |
-| `--game <args...>` ou `-- <args...>`  | Transmet des arguments au jeu |
+| Argument | Ce qu'il fait |
+|---|---|
+| `--help` ou `-h` | Affiche cette liste d'arguments |
+| `--port <port>` ou `-p` | Remplace le port d'écoute par défaut par `<port>`. Il doit également être défini dans le jeu |
+| `--verbose` ou `-v` | Mode verbeux : affiche les messages de débogage |
+| `--no-download` | Ne télécharge pas et n'installe pas le mod Lua BeamMP |
+| `--no-update` | N'applique pas les mises à jour du lanceur : vous devez le mettre à jour manuellement |
+| `--no-launch` | Ne lance pas le jeu : vous devez le démarrer vous-même |
+| `--dev` | Mode développeur : équivalent à `--verbose --no-download --no-launch --no-update` |
+| `--game <args...>` ou `-- <args...>` | Transmet des arguments au jeu |
 
 ## Cloner le dépôt BeamMP dans le dossier unpacked
 
-Bien que vous puissiez copier manuellement les fichiers du mod BeamMP depuis notre dépôt GitHub, il est vivement recommandé d'utiliser un système de gestion de versions comme git.
-Commencez par créer un fork de [https://github.com/BeamMP/BeamMP](https://github.com/BeamMP/BeamMP)
+Vous pouvez copier manuellement les fichiers du mod depuis notre dépôt GitHub, mais un système de gestion de versions comme git est bien préférable.
 
-Le plus efficace est de cloner le dépôt directement dans le dossier `unpacked`.
+1. Créez un fork de [BeamMP/BeamMP](https://github.com/BeamMP/BeamMP).
+2. Clonez-le directement dans le dossier `unpacked`. Dans PowerShell ou CMD ouvert dans ce dossier, exécutez :
+   ```bash
+   git clone https://github.com/yourName/BeamMP
+   ```
+3. Dans le dossier utilisateur, assurez-vous qu'il ne reste aucun dossier `multiplayer` dans `mods` et qu'il y a désormais `unpacked/beammp`.
+4. Essayez le mode développeur. Démarrez le lanceur, puis démarrez BeamNG manuellement. Une fois en jeu, assurez-vous que BeamMP est le seul mod actif. Vous pouvez utiliser BeamMP comme d'habitude.
 
-Avec `git`, exécutez `git clone https://github.com/yourName/BeamMP` depuis une fenêtre PowerShell ou CMD ouverte dans le dossier `unpacked`.
-Dans le dossier utilisateur, assurez-vous qu'il ne reste aucun dossier `multiplayer` dans `mods` et qu'il y a désormais `unpacked/beammp`.
+Avec un éditeur de code, vous pouvez désormais modifier le code directement dans le dossier `unpacked`. Rechargez le Lua en jeu avec `Ctrl` + `L`, et appuyez aussi sur `F5` si vous avez modifié l'interface.
 
-Essayez maintenant le mode développeur. Démarrez le lanceur BeamMP, démarrez BeamNG manuellement et, une fois en jeu, assurez-vous que BeamMP est le seul mod actif.
-Vous devriez pouvoir utiliser BeamMP comme d'habitude.
+## Configurer un serveur local
 
-À l'aide d'un éditeur de code, vous pouvez désormais ajouter ou modifier du code directement dans le dossier `unpacked`.
-Vous pouvez ensuite tester vos modifications en rechargeant le Lua en jeu avec `Ctrl+L` (et `F5` si vous avez modifié l'interface).
+Un serveur local est utile lorsque vous travaillez sur BeamMP. Suivez [Héberger un serveur](/fr/server-owners/host-a-server) en ignorant les deux premières étapes (la redirection de port et l'AuthKey) si vous vous connectez uniquement en local.
 
-Une fois satisfait de vos modifications, vous pouvez les valider (commit) avec git. Consultez [le site Git-SCM](https://git-scm.com/doc) pour des tutoriels et de la documentation sur l'utilisation de Git. Dès que vos modifications sont validées et poussées (vers votre fork), vous pouvez créer une pull request.
+Dans `ServerConfig.toml`, définissez le serveur comme privé et utilisez n'importe quelle chaîne comme `AuthKey`.
 
-N'hésitez pas à poser vos questions dans le canal #scripting de notre [Discord](https://discord.gg/beammp) si vous rencontrez des difficultés.
+## Contribuer avec vos modifications
 
----
-# Mise en place d'un serveur local
+Lorsque vous êtes satisfait de vos modifications, validez-les (commit) avec git. Le [site Git-SCM](https://git-scm.com/doc) propose des tutoriels et de la documentation. Une fois vos modifications validées et poussées (push) vers votre fork, vous pouvez créer une pull request.
 
-Lorsque vous travaillez sur BeamMP, il peut être utile d'utiliser un serveur local. Vous pouvez suivre l'[installation générale du serveur](/fr/server-owners/host-a-server) en omettant les deux premières étapes pour des connexions purement locales.
+Pour le format du code, le format des messages de commit et les pratiques de développement en général, consultez le fichier `CONTRIBUTING.md` de chaque dépôt. Le fichier `README.md` de chaque dépôt contient généralement les étapes de compilation des projets compilés.
 
-Définissez le serveur comme privé dans le fichier `serverConfig.toml` et utilisez n'importe quelle chaîne de caractères comme `AuthKey`.
-
----
-# Directives de contribution
-
-Pour plus de détails sur le format du code, le format des messages de commit, les bonnes pratiques générales de développement, etc., consultez le fichier `CONTRIBUTING.md` présent dans chaque dépôt. Ce fichier contient des informations plus détaillées sur la manière de contribuer. Le fichier `README.md` de chaque dépôt contient généralement aussi les étapes de compilation (pour les projets compilés).
+Si vous rencontrez des problèmes, posez votre question dans le canal `#scripting` de notre [serveur Discord](https://discord.gg/beammp).
