@@ -1,59 +1,42 @@
----
-layout: home
+::: warning Diese Seite befindet sich im Aufbau!
+An dieser Seite wird aktiv gearbeitet.
 
-hero:
-  name: BeamMP Dokumentation
-  text: Alles was du wissen musst
-  tagline: Komplette Anleitungen für Spieler, Serverbetreiber und Entwickler
-  image:
-    light: /assets/core/beammp_dark.png
-    dark: /assets/core/beammp_light.png
-    alt: BeamMP
-  actions:
-    - theme: brand
-      text: Erste Schritte
-      link: /de/game/getting-started
-    - theme: alt
-      text: View on GitHub
-      link: https://github.com/beammp/docs
+Du möchtest helfen? Dann klicke bitte rechts auf das Symbol mit dem Blatt und dem Stift!
 
-features:
-  - icon: 🎮
-    title: Für Spieler
-    details: Erfahren Sie, wie Sie BeamMP installieren, sich mit Servern verbinden und das Beste aus Ihrem Multiplayer-Erlebnis herausholen
-    link: /de/game/getting-started
-  - icon: 🖥️
-    title: Für Serverbetreiber
-    details: Richten Sie Ihren eigenen BeamMP-Server ein und verwalten Sie ihn mit unseren umfassenden Leitfäden und Fehlerbehebungsressourcen
-    link: /de/server/create-a-server
-  - icon: 💻
-    title: Für Entwickler
-    details: Erstellen Sie Mods, Ressourcen und UI-Apps mit detaillierter API-Dokumentation und Codebeispielen
-    link: /de/guides/index
-  - icon: ❓
-    title: FAQ
-    details: Finden Sie schnelle Antworten auf häufig gestellte Fragen zu Setup, Fehlerbehebung und Best Practices
-    link: /de/FAQ/player-faq
-  - icon: 📋
-    title: Gemeinschaftsregeln
-    details: Erfahren Sie mehr über unsere Community-Richtlinien und wie Sie Probleme melden oder Entscheidungen anfechten können
-    link: /de/community/rules
-  - icon: 🔗
-    title: Gemeinschaft
-    details: Treten Sie unserem Discord bei, folgen Sie auf sozialen Medien und verbinden Sie sich mit anderen BeamMP-Spielern und Entwicklern
-    link: /de/community/index
----
+Das ist auf jeder Seite möglich.
+:::
 
-## Für Serverbesitzer
+# Mod-/Im-Spiel-Scripting-Referenz
 
-Du möchtest deinen eigenen BeamMP-Server erstellen? Unsere umfassende Anleitung [hier](/de/server-owners/host-a-server) führt dich durch den Prozess und stellt sicher, dass du alle notwendigen Werkzeuge und Kenntnisse für die effiziente Konfiguration deines Servers zur Verfügung hast.
+Mit BeamMP kannst du auch eigene clientseitige Plugins erstellen. Wir stellen dir einige Funktionen zur Verfügung, mit denen du über den Server mit anderen Multiplayer-Mods und anderen Spielern kommunizieren kannst.
 
-## Für Entwickler
+# Funktionen
 
-Erfahre alles Wissenswerte zur Erstellung von Ressourcen für den BeamMP-Server in unserer [Anleitung zur Ressourcenentwicklung](/de/developers/mod-and-resource-creation).
+Liste der verfügbaren Funktionen für das Scripting:
 
-Aufregende Updates stehen bevor, einschließlich einer brandneuen Homepage, die entwickelt wurde, um dein Browsing-Erlebnis zu verbessern. Bleib dran für weitere Neuigkeiten! :slight_smile:
+| Funktion                                  | Hinweise                                                                                                                                                                                |
+|-------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `TriggerServerEvent("eventName", "data")` | Löst ein Event in der Server-Lua-Umgebung aus, beide Parameter sind Strings.                                                                                                            |
+| `TriggerClientEvent("eventName", "data")` | Löst ein Event in der lokalen Lua-Umgebung aus, beide Parameter sind Strings. Gut geeignet für die Kommunikation zwischen Plugins.                                                      |
+| `AddEventHandler("eventName", Function)`  | Fügt den 2. Parameter der Tabelle hinzu, damit er aufgerufen wird, wenn `eventName` empfangen wird (lokal oder vom Server). `Function` erhält 1 Parameter, einen String mit den Event-Daten. |
 
-## Community Regeln
+# Code-Snippets
 
-Lies dir die [Community-Regeln](https://docs.beammp.com/community/rules/) von BeamMP durch und informiere dich darüber, wie du gegen Bans Einspruch einlegen kannst.
+Um zum Beispiel den Chat auszuwerten, verwende das mitgelieferte Event `ChatMessageIncluded` wie folgt:
+```lua
+local function chatReceived(msg) -- Receive event with parameters
+    print("chat received: "..msg)
+    local i = string.find(s, ":") -- Find where our first ':' is, used to separate the sender and message
+    if i == nil then
+        print("error parsing message: separator could not be found!")
+        return -- Could not find separator, cancel function
+    end
+    print("index of separator: "..tostring(i))
+    local sender = string.sub(msg, 1, i-1) -- Substring our input to separate its 2 parts
+    local message = string.sub(msg, i+1, -1)  -- Do whatever you want to with the message
+    print("sender: " .. sender)
+    print("message: ".. message)
+end
+
+AddEventHandler("ChatMessageReceived", chatReceived) -- Add our event handler to the list managed by BeamMP
+```

@@ -1,59 +1,259 @@
----
-layout: home
+::: warning Diese Seite befindet sich im Aufbau!
+An dieser Seite wird aktiv gearbeitet.
 
-hero:
-  name: BeamMP Dokumentation
-  text: Alles was du wissen musst
-  tagline: Komplette Anleitungen für Spieler, Serverbetreiber und Entwickler
-  image:
-    light: /assets/core/beammp_dark.png
-    dark: /assets/core/beammp_light.png
-    alt: BeamMP
-  actions:
-    - theme: brand
-      text: Erste Schritte
-      link: /de/game/getting-started
-    - theme: alt
-      text: View on GitHub
-      link: https://github.com/beammp/docs
+Du möchtest helfen? Dann klicke bitte rechts auf das Symbol mit dem Blatt und dem Stift!
 
-features:
-  - icon: 🎮
-    title: Für Spieler
-    details: Erfahren Sie, wie Sie BeamMP installieren, sich mit Servern verbinden und das Beste aus Ihrem Multiplayer-Erlebnis herausholen
-    link: /de/game/getting-started
-  - icon: 🖥️
-    title: Für Serverbetreiber
-    details: Richten Sie Ihren eigenen BeamMP-Server ein und verwalten Sie ihn mit unseren umfassenden Leitfäden und Fehlerbehebungsressourcen
-    link: /de/server/create-a-server
-  - icon: 💻
-    title: Für Entwickler
-    details: Erstellen Sie Mods, Ressourcen und UI-Apps mit detaillierter API-Dokumentation und Codebeispielen
-    link: /de/guides/index
-  - icon: ❓
-    title: FAQ
-    details: Finden Sie schnelle Antworten auf häufig gestellte Fragen zu Setup, Fehlerbehebung und Best Practices
-    link: /de/FAQ/player-faq
-  - icon: 📋
-    title: Gemeinschaftsregeln
-    details: Erfahren Sie mehr über unsere Community-Richtlinien und wie Sie Probleme melden oder Entscheidungen anfechten können
-    link: /de/community/rules
-  - icon: 🔗
-    title: Gemeinschaft
-    details: Treten Sie unserem Discord bei, folgen Sie auf sozialen Medien und verbinden Sie sich mit anderen BeamMP-Spielern und Entwicklern
-    link: /de/community/index
----
+Das ist auf jeder Seite möglich.
+:::
+    
+# BeamNG.drive CSS-Code-Snippets
 
-## Für Serverbesitzer
+## Häufig verwendete Variablen
 
-Du möchtest deinen eigenen BeamMP-Server erstellen? Unsere umfassende Anleitung [hier](/de/server-owners/host-a-server) führt dich durch den Prozess und stellt sicher, dass du alle notwendigen Werkzeuge und Kenntnisse für die effiziente Konfiguration deines Servers zur Verfügung hast.
+:::: tabs
 
-## Für Entwickler
+== BeamNG CEF Orange
+```css
+var(--bng-orange) /*Common orange*/
+var(--bng-orange-shade1) /*70% opacity*/
+var(--bng-orange-shade2) /*40% opacity*/
+var(--bng-orange-shade1opaque)
+var(--bng-orange-shade2opaque)
+```
+== Monochrom
+```css
+--- Monochrome
+var(--bng-black-8) /*80% opacity (duplicate --bng-black-o8)*/
+var(--bng-black-6) /*60% opacity (duplicate --bng-black-o6)*/
+var(--bng-black-4) /*40% opacity (duplicate --bng-black-o4)*/
+var(--bng-black-2) /*20% opacity (duplicate --bng-black-o2)*/
 
-Erfahre alles Wissenswerte zur Erstellung von Ressourcen für den BeamMP-Server in unserer [Anleitung zur Ressourcenentwicklung](/de/developers/mod-and-resource-creation).
+var(--dark-neutral-grey)
+var(--neutral-grey)
+var(--light-neutral-grey)
+var(--dark-grey)
+var(--dark-grey-alpha) /*80% opacity*/
 
-Aufregende Updates stehen bevor, einschließlich einer brandneuen Homepage, die entwickelt wurde, um dein Browsing-Erlebnis zu verbessern. Bleib dran für weitere Neuigkeiten! :slight_smile:
+var(--black-1) /*70% opacity*/
+var(--black-2) /*40% opacity (duplicate --bng-black-o4)*/
 
-## Community Regeln
+var(--white-1) /*80% opacity*/
+var(--white-2) /*40% opacity*/
+var(--white-3) /*20% opacity*/
+```
+== BeamNG-Vue-UI-Farbpalette
 
-Lies dir die [Community-Regeln](https://docs.beammp.com/community/rules/) von BeamMP durch und informiere dich darüber, wie du gegen Bans Einspruch einlegen kannst.
+Bei allen Variablen kannst du `-rgb` an das Ende des Variablennamens anhängen, um die rohen Rot-, Grün- und Blauwerte zu erhalten. Verwende -rgb zum Beispiel so: `rgba(var(--bng-orange-500-rgb), 0.5)` für bng-orange-500 mit 50 % Deckkraft.
+
+::: tabs
+
+== Add Red
+```css
+var(--bng-add-red-50)
+var(--bng-add-red-100)
+var(--bng-add-red-200)
+var(--bng-add-red-300)
+var(--bng-add-red-400)
+var(--bng-add-red-500)
+var(--bng-add-red-550)
+var(--bng-add-red-600)
+var(--bng-add-red-650)
+var(--bng-add-red-700)
+var(--bng-add-red-750)
+var(--bng-add-red-800)
+var(--bng-add-red-850)
+var(--bng-add-red-900)
+```
+== Orange
+```css
+var(--bng-orange-50)
+var(--bng-orange-100)
+var(--bng-orange-200)
+var(--bng-orange-300)
+var(--bng-orange-400)
+var(--bng-orange-500)
+var(--bng-orange-550)
+var(--bng-orange-600)
+var(--bng-orange-650)
+var(--bng-orange-700)
+var(--bng-orange-750)
+var(--bng-orange-800)
+var(--bng-orange-850)
+var(--bng-orange-900)
+```
+== Ter Peach
+```css
+var(--bng-ter-peach-50)
+var(--bng-ter-peach-100)
+var(--bng-ter-peach-200)
+var(--bng-ter-peach-300)
+var(--bng-ter-peach-400)
+var(--bng-ter-peach-500)
+var(--bng-ter-peach-550)
+var(--bng-ter-peach-600)
+var(--bng-ter-peach-650)
+var(--bng-ter-peach-700)
+var(--bng-ter-peach-750)
+var(--bng-ter-peach-800)
+var(--bng-ter-peach-850)
+var(--bng-ter-peach-900)
+```
+== Ter Yellow
+```css
+var(--bng-ter-yellow-50)
+var(--bng-ter-yellow-100)
+var(--bng-ter-yellow-200)
+var(--bng-ter-yellow-300)
+var(--bng-ter-yellow-400)
+var(--bng-ter-yellow-500)
+var(--bng-ter-yellow-550)
+var(--bng-ter-yellow-600)
+var(--bng-ter-yellow-650)
+var(--bng-ter-yellow-700)
+var(--bng-ter-yellow-750)
+var(--bng-ter-yellow-800)
+var(--bng-ter-yellow-850)
+var(--bng-ter-yellow-900)
+```
+== Add Green
+```css
+var(--bng-add-green-50)
+var(--bng-add-green-100)
+var(--bng-add-green-200)
+var(--bng-add-green-300)
+var(--bng-add-green-400)
+var(--bng-add-green-500)
+var(--bng-add-green-550)
+var(--bng-add-green-600)
+var(--bng-add-green-650)
+var(--bng-add-green-700)
+var(--bng-add-green-750)
+var(--bng-add-green-800)
+var(--bng-add-green-850)
+var(--bng-add-green-900)
+```
+== Baby Blue
+```css
+var(--bng-add-babyblue-50)
+var(--bng-add-babyblue-100)
+var(--bng-add-babyblue-200)
+var(--bng-add-babyblue-300)
+var(--bng-add-babyblue-400)
+var(--bng-add-babyblue-500)
+var(--bng-add-babyblue-550)
+var(--bng-add-babyblue-600)
+var(--bng-add-babyblue-650)
+var(--bng-add-babyblue-700)
+var(--bng-add-babyblue-750)
+var(--bng-add-babyblue-800)
+var(--bng-add-babyblue-850)
+var(--bng-add-babyblue-900)
+```
+== Add Blue
+```css
+var(--bng-add-blue-50)
+var(--bng-add-blue-100)
+var(--bng-add-blue-200)
+var(--bng-add-blue-300)
+var(--bng-add-blue-400)
+var(--bng-add-blue-500)
+var(--bng-add-blue-550)
+var(--bng-add-blue-600)
+var(--bng-add-blue-650)
+var(--bng-add-blue-700)
+var(--bng-add-blue-750)
+var(--bng-add-blue-800)
+var(--bng-add-blue-850)
+var(--bng-add-blue-900)
+```
+== Indigo Blue
+```css
+var(--bng-add-indigoblue-50)
+var(--bng-add-indigoblue-100)
+var(--bng-add-indigoblue-200)
+var(--bng-add-indigoblue-300)
+var(--bng-add-indigoblue-400)
+var(--bng-add-indigoblue-500)
+var(--bng-add-indigoblue-550)
+var(--bng-add-indigoblue-600)
+var(--bng-add-indigoblue-650)
+var(--bng-add-indigoblue-700)
+var(--bng-add-indigoblue-750)
+var(--bng-add-indigoblue-800)
+var(--bng-add-indigoblue-850)
+var(--bng-add-indigoblue-900)
+```
+== Add Magenta
+```css
+var(--bng-add-magenta-50)
+var(--bng-add-magenta-100)
+var(--bng-add-magenta-200)
+var(--bng-add-magenta-300)
+var(--bng-add-magenta-400)
+var(--bng-add-magenta-500)
+var(--bng-add-magenta-550)
+var(--bng-add-magenta-600)
+var(--bng-add-magenta-650)
+var(--bng-add-magenta-700)
+var(--bng-add-magenta-750)
+var(--bng-add-magenta-800)
+var(--bng-add-magenta-850)
+var(--bng-add-magenta-900)
+```
+== Ter Blue Gray
+```css
+var(--bng-ter-blue-gray-50)
+var(--bng-ter-blue-gray-100)
+var(--bng-ter-blue-gray-200)
+var(--bng-ter-blue-gray-300)
+var(--bng-ter-blue-gray-400)
+var(--bng-ter-blue-gray-500)
+var(--bng-ter-blue-gray-550)
+var(--bng-ter-blue-gray-600)
+var(--bng-ter-blue-gray-650)
+var(--bng-ter-blue-gray-700)
+var(--bng-ter-blue-gray-750)
+var(--bng-ter-blue-gray-800)
+var(--bng-ter-blue-gray-850)
+var(--bng-ter-blue-gray-900)
+```
+== Cool Gray
+```css
+var(--bng-cool-gray-50)
+var(--bng-cool-gray-100)
+var(--bng-cool-gray-200)
+var(--bng-cool-gray-300)
+var(--bng-cool-gray-400)
+var(--bng-cool-gray-500)
+var(--bng-cool-gray-550)
+var(--bng-cool-gray-600)
+var(--bng-cool-gray-650)
+var(--bng-cool-gray-700)
+var(--bng-cool-gray-750)
+var(--bng-cool-gray-800)
+var(--bng-cool-gray-850)
+var(--bng-cool-gray-900)
+```
+== Sonstige
+```css
+var(--bng-off-black) /*Used in Vue for buttons and some headers*/
+var(--bng-off-white) /*Used in Vue for interactable elements*/
+var(--bng-off-white-brighter) /*Used in Vue for headers*/
+```
+:::
+
+== Zusätzliche Farbvorlagen
+```css
+var(--bng-filter-orange) /*Filter preset to force SVGs to use bng-orange*/
+var(--bng-black-o8) /*80% opacity*/
+var(--bng-black-o6) /*60% opacity*/
+var(--bng-black-o4) /*40% opacity*/
+var(--bng-black-o2) /*20% opacity*/
+```
+== Vorlagen für Eckenrundung
+```css
+var(--bng-corners-1) /*0.25rem*/
+var(--bng-corners-2) /*0.50rem*/
+var(--bng-corners-3) /*1.00rem*/
+```
+::::
