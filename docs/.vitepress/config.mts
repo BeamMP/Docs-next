@@ -338,6 +338,17 @@ export default defineConfig({
     ['script', { defer: "true", src: 'https://analytics.beammp.com/api/script.js', 'data-site-id': '632c87f003fc', async: "true" }]
   ],
   lastUpdated: true,
+  // Many links still point at the old MkDocs file layout, so dead links do not
+  // fail the build for now. `npm run check` sets DOCS_REPORT_LINKS=1 so each one
+  // is printed, with its page, and counted against the saved baseline.
+  ignoreDeadLinks: process.env.DOCS_REPORT_LINKS
+    ? [
+        (link: string, source: string) => {
+          console.log(`Found dead link ${link} in file ${source}`)
+          return true
+        },
+      ]
+    : true,
   locales: {
     root: makeLocale('root', 'English', 'en', '/en/'),
     de: makeLocale('de', 'Deutsch', 'de', '/de/'),
