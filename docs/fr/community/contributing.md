@@ -1,63 +1,40 @@
-# Contribuer à la documentation de BeamMP
+---
+description: "Aidez à améliorer la documentation de BeamMP : modifiez une page sur GitHub, prévisualisez vos changements en local, suivez le guide de style et découvrez ce qui se passe après une pull request."
+---
+# Contribution
 
-BeamMP utilise [Material for MkDocs](https://squidfunk.github.io/mkdocs-material) comme thème pour sa documentation. Material for MkDocs est un thème conçu pour [MkDocs](https://www.mkdocs.org). Vous pouvez consulter la documentation officielle de ces deux projets sur leurs sites respectifs.
+Vous pouvez aider à améliorer cette documentation en corrigeant une erreur, en ajoutant ce qui manque ou en écrivant une page. Cette page explique comment faire.
 
-## Pour commencer
+## Avant d'écrire
 
-Vous pouvez contribuer à la documentation de deux façons différentes :
+Lisez le [guide de style](https://github.com/__repo__/blob/main/STYLE_GUIDE.md). Il explique comment une page doit se lire, quand utiliser chaque type de bloc, et comment écrire les images et les liens.
 
-### 1. Modifier directement les fichiers Markdown
+Les pages en anglais font référence. Modifiez la page anglaise, et les autres langues suivent. Pour aider à traduire, consultez [Traduction](#translating).
 
-La modification directe des fichiers Markdown est la méthode la plus rapide pour effectuer de petites corrections, comme des fautes de frappe, des erreurs grammaticales ou de petits ajouts de contenu.
+## Modifier une page sur GitHub
 
-Cette méthode nécessite toutefois une certaine connaissance du format Markdown, car vous devez comprendre l'impact de vos modifications sur la documentation finale.
+C'est le moyen le plus rapide pour les fautes d'orthographe, de grammaire et les petits ajouts. Il nécessite quelques connaissances de Markdown.
 
-Si vous choisissez cette méthode, suivez les étapes suivantes :
+1. Cliquez sur **Edit this page** en bas de la page que vous souhaitez modifier.
+2. Faites un fork du projet sur votre propre compte GitHub.
+3. Effectuez vos modifications.
+4. Validez-les (commit) dans votre fork.
+5. Ouvrez une pull request vers [@repo@](https://github.com/__repo__).
 
-1. Cliquez sur **Edit** sur la page que vous souhaitez modifier.
-2. Faites un **fork** du dépôt et ajoutez-le à votre propre compte GitHub.
-3. Effectuez les modifications que vous jugez nécessaires.
-4. Vérifiez les modifications apportées par votre fork.
-5. Créez une **Pull Request** afin de proposer vos changements au dépôt principal : [@repo@ sur GitHub](https://github.com/__repo__).
+## Prévisualiser vos changements en local
 
-Une fois votre Pull Request créée, un membre de l'équipe de modération de BeamMP examinera vos modifications.
+Pour toute modification plus importante, prévisualisez vos changements pendant que vous écrivez.
 
-Les changements pourront être :
+1. Faites un fork du projet et clonez votre fork.
+2. Installez [Node.js](https://nodejs.org) 22 ou une version plus récente, puis exécutez `npm install`.
+3. Exécutez `npm run dev` et ouvrez l'adresse affichée. La page se met à jour au fil de vos modifications.
+4. Effectuez vos modifications, puis exécutez `npm test` et `npm run check`. La vérification détecte les liens morts, les blocs non fermés, les images manquantes et les pages qui ne s'affichent pas.
+5. Validez dans votre fork et ouvrez une pull request.
 
-* **acceptés directement** ;
-* **modifiés à votre demande** avant d'être acceptés.
+## Et ensuite
 
-Si des modifications supplémentaires sont demandées, vous pourrez les effectuer directement sur votre branche. La Pull Request sera alors réexaminée.
+Un membre de la Mod Team de BeamMP examine votre pull request, puis l'approuve ou demande des modifications. Une fois les modifications effectuées, nous l'examinons de nouveau. Dès qu'elle est fusionnée, elle est déployée automatiquement.
 
-Une fois les changements approuvés et fusionnés, ils seront automatiquement déployés grâce au système d'intégration continue.
+## Traduction {#translating}
 
-### 2. Modifier la documentation avec un aperçu en direct
-
-Cette méthode est similaire à la première, mais elle vous permet de **visualiser vos modifications en temps réel** avant de les proposer.
-
-1. Cliquez sur **Edit** sur la page que vous souhaitez modifier.
-2. Faites un **fork** du dépôt et ajoutez-le à votre compte GitHub.
-3. Clonez votre fork du projet sur votre ordinateur.
-4. Configurez **Material for MkDocs** en suivant le guide officiel : [Guide d'installation de Material for MkDocs](https://squidfunk.github.io/mkdocs-material/getting-started/).
-5. Exécutez la commande suivante pour démarrer le serveur de développement avec rechargement automatique :
-
-```bash
-mkdocs serve
-```
-
-6. Effectuez les modifications que vous souhaitez apporter.
-7. Vérifiez le résultat directement dans votre navigateur.
-8. Une fois satisfait, créez une **Pull Request** vers le dépôt principal : [@repo@ sur GitHub](https://github.com/__repo__).
-
-Cette méthode est particulièrement recommandée pour les modifications importantes ou lorsqu'une page contient beaucoup de formatage Markdown, de code ou de composants Material for MkDocs.
-
-## Structure du projet
-
-L'organisation générale du projet est la suivante :
-
-```text
-mkdocs.yml    # Fichier de configuration de MkDocs.
-docs/
-    index.md  # Page d'accueil de la documentation.
-    ...       # Autres pages Markdown, images et fichiers.
-```
+La documentation est traduite dans plusieurs langues à l'aide de [GitLocalize](https://gitlocalize.com/repo/9180). GitLocalize peut afficher un paragraphe comme « non traduit » alors qu'il l'est déjà : vérifiez donc qu'une page n'est pas déjà traduite avant de la modifier.

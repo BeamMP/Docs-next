@@ -1,37 +1,38 @@
 ---
 sidebar: false
+description: "Où trouver la communauté BeamMP : le forum, Discord, YouTube, X, Reddit, Bluesky et d'autres réseaux sociaux, et où lire les règles de la communauté."
 ---
+# Communauté
 
-# Bienvenue dans l'espace communautaire de BeamMP !
-![BeamMP Multicolor-White](../../assets/content/BeamMP-Multi-WhtLtr-crop.png){.only-dark width="450"}
-![BeamMP Multicolor-Black](../../assets/content/BeamMP-Multi-BlkLtr-crop.png){.only-light width="450"}
+![Logo BeamMP](../../assets/content/BeamMP-Multi-WhtLtr-crop.png){.only-dark width="450"}
+![Logo BeamMP](../../assets/content/BeamMP-Multi-BlkLtr-crop.png){.only-light width="450"}
 
-## Nos réseaux sociaux
+BeamMP est une communauté de joueurs, de propriétaires de serveurs et de développeurs. Voici où nous trouver.
 
-::: warning {{''}}
-**Forum BeamMP** — [https://forum.beammp.com](https://forum.beammp.com)
-:::
+## Discutez avec nous
 
-::: quote {{''}}
-**X (Twitter)** — [https://x.com/BeamMPOfficial](https://x.com/BeamMPOfficial)
-:::
+- [Forum](https://forum.beammp.com) : questions, guides, annonces de serveurs et sujets d'assistance.
+- [Discord](https://discord.gg/beammp) : discussions, le canal `#support` et les tickets d'assistance pour les serveurs.
 
-::: danger {{''}}
-**YouTube** — [https://www.youtube.com/@BeamMPOfficial](https://www.youtube.com/@BeamMPOfficial)
-:::
+## Suivez-nous
 
-::: warning {{''}}
-**Patreon** — [https://www.patreon.com/c/BeamMP](https://www.patreon.com/c/BeamMP)
-:::
+- [YouTube](https://www.youtube.com/@BeamMPOfficial)
+- [X](https://x.com/BeamMPOfficial)
+- [Bluesky](https://bsky.app/profile/beammp.com)
+- [Reddit](https://www.reddit.com/r/BeamMP)
+- [Twitch](https://www.twitch.tv/beammpofficial)
+- [Instagram](https://www.instagram.com/beammpofficial)
+- [TikTok](https://www.tiktok.com/@beammpofficial)
+- [Facebook](https://www.facebook.com/BeamMPTeam)
 
-::: note {{''}}
-**Discord** — [https://discord.com/invite/beammp](https://discord.com/invite/beammp)
-:::
+## Soutenez le projet
 
-::: info {{''}}
-**BlueSky** — [https://bsky.app/profile/beammpofficial.bsky.social](https://bsky.app/profile/beammpofficial.bsky.social)
-:::
+Les soutiens sur [Patreon](https://www.patreon.com/c/BeamMP) bénéficient d'un accès anticipé et de clés de serveur supplémentaires. Consultez la [FAQ du joueur](/fr/players/faq) pour savoir comment cela fonctionne.
+
+## Construisez avec nous
+
+Le code est sur [GitHub](https://github.com/BeamMP). Pour aider sur cette documentation, consultez la page [Contribution](/fr/community/contributing).
 
 ## Nos règles
 
-Vous pouvez consulter nos règles [ici](rules.md).
+Veuillez lire les [règles de la communauté](/fr/community/rules) avant de participer.

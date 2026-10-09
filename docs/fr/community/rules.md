@@ -1,5 +1,6 @@
 ---
 sidebar: false
+description: "Les règles de la communauté BeamMP, qui s'appliquent sur Discord, sur le forum et en jeu, ainsi que les règles propres à Discord."
 ---
 # Règles de la communauté BeamMP
 
