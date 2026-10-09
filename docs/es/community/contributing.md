@@ -1,46 +1,40 @@
-# Contribuir a la documentación de BeamMP
+---
+description: "Ayuda a mejorar la documentación de BeamMP: edita una página en GitHub, previsualiza tus cambios, sigue la guía de estilo y mira qué pasa tras abrir un pull request."
+---
+# Contribuir
 
-BeamMP usa [Material for MkDocs](https://squidfunk.github.io/mkdocs-material) como tema. Es un tema para [MkDocs](https://www.mkdocs.org).
-La documentación completa se encuentra en sus respectivos sitios web.
+Puedes ayudar a mejorar esta documentación corrigiendo un error, añadiendo algo que falta o escribiendo una página. Esta página explica cómo.
 
-## Primeros pasos
+## Antes de escribir
 
-Para contribuir a esta documentación puedes seguir uno de los dos enfoques que se describen a continuación:
+Lee la [guía de estilo](https://github.com/__repo__/blob/main/STYLE_GUIDE.md). Explica cómo debe leerse una página, cuándo usar cada recuadro y cómo escribir imágenes y enlaces.
 
-### 1. Editar directamente los archivos Markdown
+Las páginas en inglés son la referencia. Cambia la página en inglés y los demás idiomas la seguirán. Para ayudar con la traducción, consulta [Traducir](#translating).
 
-Editar directamente los archivos Markdown es el enfoque más rápido y el más adecuado para ediciones puntuales, como correcciones ortográficas o gramaticales, o nuevos fragmentos de contenido. 
-Eso sí, este enfoque requiere conocimientos previos de Markdown, ya que necesitarás entender qué resultado producirá tu contribución.
+## Editar una página en GitHub
 
-Si quieres seguir este enfoque, sigue estos pasos:
+Es la forma más rápida para correcciones ortográficas y gramaticales y pequeñas adiciones. Requiere algunos conocimientos de Markdown.
 
-1. Haz clic en editar en la página que quieras modificar.
+1. Haz clic en **Editar esta página** al final de la página que quieras cambiar.
 2. Haz un fork del proyecto en tu propia cuenta de GitHub.
-3. Realiza los cambios que consideres oportunos.
+3. Realiza tus cambios.
 4. Haz commit de tus cambios en tu fork.
-5. Abre un pull request contra nuestro repositorio [aquí](https://github.com/__repo__).
+5. Abre un pull request contra [@repo@](https://github.com/__repo__).
 
-Una vez creado tu pull request, un miembro del equipo de moderación de mods de BeamMP lo revisará y lo aprobará o solicitará algunos cambios.
-Si se solicitaron cambios y ya los has completado, volveremos a revisar tu pull request.
-Después, tus cambios se fusionarán en el repositorio y se desplegarán automáticamente como parte de nuestra integración continua.
+## Previsualizar tus cambios en local
 
-### 2. Editar con vista previa en directo
+Para cualquier cosa más grande, previsualiza tus cambios mientras escribes.
 
-Editar nuestra documentación de esta forma sigue un enfoque similar al de la opción 1, pero te permite previsualizar tus cambios.
+1. Haz un fork del proyecto y clona tu fork.
+2. Instala [Node.js](https://nodejs.org) 22 o posterior y luego ejecuta `npm install`.
+3. Ejecuta `npm run dev` y abre la dirección que muestra. La página se actualiza a medida que editas.
+4. Realiza tus cambios y luego ejecuta `npm test` y `npm run check`. La comprobación detecta enlaces rotos, recuadros sin cerrar, imágenes que faltan y páginas que no se muestran.
+5. Haz commit en tu fork y abre un pull request.
 
-1. Haz clic en editar en la página que quieras modificar.
-2. Haz un fork del proyecto en tu propia cuenta de GitHub.
-3. Clona el proyecto en local.
-4. Configura Material for MkDocs siguiendo su guía [aquí](https://squidfunk.github.io/mkdocs-material/getting-started/)
-5. Ejecuta `mkdocs serve` desde la carpeta donde clonaste el fork para iniciar el servidor de documentación con recarga automática.
-6. Realiza los cambios que consideres oportunos.
-7. Haz commit de tus cambios en tu fork.
-8. Abre un pull request contra nuestro repositorio [aquí](https://github.com/__repo__).
+## Qué ocurre después
 
+Un miembro del equipo de moderación de mods de BeamMP revisa tu pull request y lo aprueba o solicita cambios. Cuando hayas hecho los cambios, lo revisamos de nuevo. Una vez fusionado, se despliega automáticamente.
 
-## Estructura del proyecto
+## Traducir {#translating}
 
-    mkdocs.yml    # El archivo de configuración.
-    docs/
-        index.md  # La página de inicio de la documentación.
-        ...       # Otras páginas Markdown, imágenes y otros archivos.
+La documentación se traduce a varios idiomas con [GitLocalize](https://gitlocalize.com/repo/9180). GitLocalize puede mostrar un párrafo como «sin traducir» cuando en realidad ya lo está, así que comprueba que una página no esté ya traducida antes de cambiarla.

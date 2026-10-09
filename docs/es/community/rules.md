@@ -1,5 +1,6 @@
 ---
 sidebar: false
+description: "Las normas de la comunidad de BeamMP, que se aplican en Discord, en el foro y dentro del juego, y las normas específicas de Discord."
 ---
 # Normas de la comunidad de BeamMP
 
@@ -19,7 +20,7 @@ El Staff de BeamMP no está obligado a moderar de forma estricta según estas no
 8. No hablar de política <span class="info-tooltip" title="Esto incluye hablar de acontecimientos mundiales pasados o actuales ajenos a BeamMP/BeamNG o a los videojuegos en general. Existen lugares adecuados para debatir estos temas, pero BeamMP no es uno de ellos.">ⓘ</span>
 9. No promocionar contenido ajeno a BeamMP/BeamNG <span class="info-tooltip" title="Esto incluye comunidades ajenas a BeamMP, canales de redes sociales u otros enlaces externos.  Se aplica tanto a las publicaciones dentro de la comunidad de BeamMP como al envío de DM no solicitados a otros usuarios con fines de publicidad personal.">ⓘ</span>
 10. No hacerse pasar por el Staff <span class="info-tooltip" title="Esto incluye afirmar que se es miembro del staff de BeamMP o que se tienen las capacidades propias de un miembro del staff. También incluye la imitación de miembros del staff.">ⓘ</span>
-11. No explotar fallos <span class="info-tooltip" title="Esto incluye aprovechar cualquier error u omisión para obtener beneficio personal o para perjudicar la experiencia de los demás.">ⓘ</span>
+11. No aprovecharse de fallos <span class="info-tooltip" title="Esto incluye aprovecharse de cualquier error u omisión para obtener beneficio personal o para perjudicar la experiencia de los demás.">ⓘ</span>
 12. Está estrictamente prohibido compartir AuthKeys y usar cuentas secundarias para aumentar el número de claves por encima de la cantidad gratuita asignada.
 13. Cumple todos los términos del servicio aplicables <span class="info-tooltip" title="Esto es importante, ya que restricciones como la edad mínima de Discord (13+) también deben cumplirse para usar nuestro servidor de Discord.">ⓘ</span>
 14. Respeta a todo el mundo <span class="info-tooltip" title="Esto debería ser obvio, pero debes respetar a todas las personas que te rodean y actuar en consecuencia.">ⓘ</span>
