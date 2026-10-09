@@ -283,6 +283,7 @@ const legacyRewritePairs: Record<string, string> = {
   'server/port-forwarding': 'server-owners/port-forwarding',
   'server/server-maintenance': 'server-owners/maintenance',
   'server/error-codes': 'server-owners/error-codes',
+  'game/error-codes': 'troubleshooting/error-codes',
 
   'FAQ/player-faq': 'players/faq',
   'FAQ/Clearing-mods': 'players/mod-safety',
