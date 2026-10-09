@@ -1,0 +1,142 @@
+/*
+ * BeamMP design tokens.
+ *
+ * The colour, radius and brand values are the ones beammp.com and accounts.beammp.com use
+ * (Website/src/style.css, shadcn "neutral" set in oklch), and the forum theme mirrors the
+ * same orange, radius and translucent header. Keep them identical so the sites read as one.
+ * Everything below the token blocks maps them onto VitePress's own variables.
+ */
+
+:root {
+  /* Brand */
+  --beammp-orange: #f36d24;
+  --beammp-orange-hover: #dc5f1b;
+  --beammp-white: #ffffff;
+  --beammp-black: #000000;
+  --beammp-gray: #333333;
+  --beammp-green: #1d9749;
+  --beammp-blue: #4470b6;
+  --beammp-neutral: #6b7280;
+  --beammp-purple: #8b6fd6;
+  --beammp-teal: #2a9d9d;
+  /* Orange text on white is only ~3:1; links in the light theme use a deeper orange (~5:1). */
+  --beammp-link: #c2490d;
+  --beammp-link-hover: #9f3a08;
+
+  --radius: 0.625rem;
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  /* shadcn neutral set, light */
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.13 0.028 261.692);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.13 0.028 261.692);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.13 0.028 261.692);
+  --primary: oklch(0.21 0.034 264.665);
+  --primary-foreground: oklch(0.985 0.002 247.839);
+  --secondary: oklch(0.967 0.003 264.542);
+  --secondary-foreground: oklch(0.21 0.034 264.665);
+  --muted: oklch(0.967 0.003 264.542);
+  --muted-foreground: oklch(0.551 0.027 264.364);
+  --accent: oklch(0.967 0.003 264.542);
+  --accent-foreground: oklch(0.21 0.034 264.665);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.928 0.006 264.531);
+  --input: oklch(0.928 0.006 264.531);
+  --ring: oklch(0.707 0.022 261.325);
+  --sidebar: oklch(0.985 0.002 247.839);
+
+  /* The look of beammp.com's page sections and header */
+  --bm-surface: oklch(0.985 0.002 247.839);
+  --bm-header-bg: color-mix(in oklab, var(--background) 80%, transparent);
+  --bm-shadow: 0 1px 2px rgb(0 0 0 / 0.06), 0 1px 3px rgb(0 0 0 / 0.08);
+  --bm-shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+.dark {
+  --beammp-neutral: #9ca3af;
+  --beammp-purple: #a78bfa;
+  --beammp-teal: #5ec4c4;
+  --beammp-link: var(--beammp-orange);
+  --beammp-link-hover: #ff8a4a;
+
+  --background: oklch(0.13 0.028 261.692);
+  --foreground: oklch(0.985 0.002 247.839);
+  --card: oklch(0.21 0.034 264.665);
+  --card-foreground: oklch(0.985 0.002 247.839);
+  --popover: oklch(0.21 0.034 264.665);
+  --popover-foreground: oklch(0.985 0.002 247.839);
+  --primary: oklch(0.928 0.006 264.531);
+  --primary-foreground: oklch(0.21 0.034 264.665);
+  --secondary: oklch(0.278 0.033 256.848);
+  --secondary-foreground: oklch(0.985 0.002 247.839);
+  --muted: oklch(0.278 0.033 256.848);
+  --muted-foreground: oklch(0.707 0.022 261.325);
+  --accent: oklch(0.278 0.033 256.848);
+  --accent-foreground: oklch(0.985 0.002 247.839);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.551 0.027 264.364);
+  --sidebar: oklch(0.21 0.034 264.665);
+
+  --bm-surface: color-mix(in oklab, var(--card) 45%, var(--background));
+  --bm-header-bg: color-mix(in oklab, oklch(0.205 0 0) 70%, transparent);
+  --bm-shadow: 0 1px 2px rgb(0 0 0 / 0.4);
+  --bm-shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.5), 0 4px 6px -4px rgb(0 0 0 / 0.5);
+}
+
+/* ---- Map the tokens onto VitePress ---- */
+:root {
+  /* System fonts, as on the Website (Tailwind's default stack) */
+  --vp-font-family-base: ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  --vp-font-family-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+
+  --vp-c-bg: var(--background);
+  --vp-c-bg-alt: var(--background);
+  --vp-c-bg-elv: var(--popover);
+  --vp-c-bg-soft: var(--secondary);
+  --vp-c-bg-mute: var(--muted);
+  --vp-c-text-1: var(--foreground);
+  --vp-c-text-2: var(--muted-foreground);
+  --vp-c-text-3: color-mix(in oklab, var(--muted-foreground) 78%, var(--background));
+  --vp-c-border: var(--border);
+  --vp-c-divider: var(--border);
+  --vp-c-gutter: var(--border);
+
+  --vp-c-brand-1: var(--beammp-link);
+  --vp-c-brand-2: var(--beammp-link-hover);
+  --vp-c-brand-3: var(--beammp-orange);
+  --vp-c-brand-soft: color-mix(in srgb, var(--beammp-orange) 14%, transparent);
+
+  --vp-button-brand-bg: var(--beammp-orange);
+  --vp-button-brand-hover-bg: var(--beammp-orange-hover);
+  --vp-button-brand-active-bg: var(--beammp-orange-hover);
+  --vp-button-brand-text: var(--beammp-white);
+  --vp-button-brand-border: transparent;
+  --vp-button-alt-bg: var(--secondary);
+  --vp-button-alt-hover-bg: var(--muted);
+  --vp-button-alt-text: var(--foreground);
+
+  --vp-custom-block-tip-border: var(--beammp-blue);
+  --vp-custom-block-warning-border: var(--beammp-orange);
+  --vp-custom-block-danger-border: var(--destructive);
+
+  --vp-nav-height: 64px;
+  --vp-nav-bg-color: var(--bm-header-bg);
+  --vp-sidebar-bg-color: var(--background);
+  --vp-layout-max-width: 1440px;
+
+  --vp-home-hero-name-color: transparent;
+  --vp-home-hero-name-background: linear-gradient(90deg, var(--beammp-orange), var(--destructive));
+  --vp-home-hero-image-background-image: none;
+  --vp-home-hero-image-filter: none;
+}
+
+.dark {
+  --vp-c-brand-soft: color-mix(in srgb, var(--beammp-orange) 20%, transparent);
+}

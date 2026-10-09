@@ -1,0 +1,460 @@
+/*
+ * Layout and look of the docs, matched to beammp.com: a sticky translucent header with a
+ * hairline border, neutral surfaces, orange accents, rounded cards, orange-to-red buttons.
+ * Colours and radii come from tokens.css.
+ */
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+/* ------------------------------------------------------------------ header */
+
+.VPNavBar,
+.VPNavBar:not(.home),
+.VPNavBar.home.top {
+  background-color: var(--bm-header-bg) !important;
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+
+/* The bar itself carries the translucent background; the inner row must not add a second layer. */
+.VPNavBar .content-body {
+  background-color: transparent !important;
+}
+
+/* The hairline runs the full width, like the Website's header border. */
+.VPNavBar .divider {
+  padding-left: 0 !important;
+}
+
+.VPNavBar .divider-line,
+.VPNavBar.home.top .divider-line {
+  background-color: var(--border) !important;
+}
+
+.VPNavBarTitle .title {
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.VPNavBarMenuLink,
+.VPNavBarMenuGroup .button {
+  border-radius: var(--radius-md);
+  font-weight: 500;
+}
+
+.VPNavBarMenuLink:hover,
+.VPNavBarMenuGroup:hover .button {
+  background-color: var(--accent);
+}
+
+.VPNavBarMenuLink.active {
+  color: var(--vp-c-brand-1);
+}
+
+/* The search box gets the Website's bordered, rounded look (on a phone it is just an icon). */
+@media (min-width: 768px) {
+  .VPNavBarSearchButton {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    background-color: var(--secondary);
+  }
+}
+
+.VPSwitchAppearance,
+.VPNavBarAppearance .VPSwitch {
+  border-radius: 999px;
+}
+
+.VPMenu {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--bm-shadow-lg);
+  background-color: var(--popover);
+}
+
+/*
+ * The eight top-level links need 900px or more (more again in German, French or Russian), next
+ * to the logo column (as wide as the sidebar), search, language and theme. They pushed the
+ * language and theme switchers off the screen at every width up to 1920px. The sidebar lists
+ * the same sections, and a phone still gets the full menu in the drawer, so the bar keeps to
+ * what beammp.com's header has: the logo, search, language and theme.
+ */
+@media (min-width: 768px) {
+  .VPNavBarMenu {
+    display: none !important;
+  }
+}
+
+/* ----------------------------------------------------------------- sidebar */
+
+.VPSidebar {
+  border-right: 1px solid var(--border);
+  background-color: var(--vp-sidebar-bg-color);
+}
+
+.VPSidebarItem.level-0 > .item > .text,
+.VPSidebarItem.level-0 > .item > .link > .text {
+  font-size: 0.8rem;
+  letter-spacing: 0.02em;
+}
+
+.VPSidebarItem .link {
+  border-radius: var(--radius-md);
+  padding-left: 8px;
+  padding-right: 8px;
+  margin-left: -8px;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.VPSidebarItem .link:hover {
+  background-color: var(--accent);
+}
+
+.VPSidebarItem.is-active > .item > .link {
+  background-color: var(--vp-c-brand-soft);
+}
+
+.VPSidebarItem.is-active > .item > .link .text {
+  color: var(--vp-c-brand-1);
+  font-weight: 600;
+}
+
+/* ------------------------------------------------------------ page content */
+
+/* The default 688px column leaves wide screens mostly empty; 800px is still a comfortable line length. */
+@media (min-width: 1280px) {
+  .VPDoc .container {
+    max-width: 1104px !important;
+  }
+
+  .VPDoc.has-aside .content {
+    max-width: 864px !important;
+  }
+
+  .VPDoc .content-container,
+  .VPDoc.has-aside .content-container {
+    max-width: 800px !important;
+  }
+}
+
+.vp-doc {
+  line-height: 1.7;
+  overflow-wrap: break-word;
+}
+
+.vp-doc h1 {
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.2;
+}
+
+.vp-doc h2,
+.vp-doc h3 {
+  letter-spacing: -0.015em;
+}
+
+.vp-doc h2 {
+  border-top-color: var(--border);
+}
+
+.vp-doc a {
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+
+.vp-doc a:hover {
+  color: var(--vp-c-brand-2);
+}
+
+.vp-doc blockquote {
+  border-left-color: var(--beammp-orange);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+}
+
+.vp-doc img {
+  border-radius: var(--radius-md);
+}
+
+.vp-doc hr {
+  border-top-color: var(--border);
+}
+
+/* Code: surfaces from the tokens, with the same hairline border as cards. */
+:root {
+  --vp-code-block-bg: color-mix(in oklab, var(--secondary) 55%, var(--background));
+  --vp-code-bg: var(--secondary);
+  --vp-code-color: var(--foreground);
+}
+
+.dark {
+  --vp-code-block-bg: var(--card);
+  --vp-code-bg: var(--secondary);
+}
+
+.vp-doc div[class*='language-'] {
+  border: 1px solid var(--border);
+}
+
+.vp-doc :not(pre, h1, h2, h3, h4, h5, h6) > code {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 0.875em;
+}
+
+/* Tables: rounded, bordered, and they scroll sideways instead of widening the page. */
+.vp-doc table {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.vp-doc th,
+.vp-doc td {
+  border: 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.vp-doc tr:last-child td {
+  border-bottom: 0;
+}
+
+.vp-doc tr {
+  background-color: transparent;
+}
+
+.vp-doc tr:nth-child(2n) {
+  background-color: color-mix(in oklab, var(--secondary) 45%, transparent);
+}
+
+.vp-doc th {
+  background-color: var(--secondary);
+}
+
+/* Previous / next */
+.VPDocFooter .pager-link {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background-color: var(--card);
+  transition: border-color 0.15s ease;
+}
+
+.VPDocFooter .pager-link:hover {
+  border-color: var(--beammp-orange);
+}
+
+.VPDocFooter .edit-link-button,
+.VPDocFooter .last-updated {
+  color: var(--vp-c-text-2);
+}
+
+/* The "On this page" outline */
+.VPDocAsideOutline .outline-link.active {
+  color: var(--vp-c-brand-1);
+}
+
+.VPDocAsideOutline .outline-marker {
+  background-color: var(--beammp-orange);
+}
+
+/* ------------------------------------------------------------------ buttons */
+
+.VPButton {
+  border-radius: var(--radius-lg);
+  font-weight: 600;
+  transition: filter 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.VPButton.brand {
+  border: 0;
+  color: #fff;
+  background-image: linear-gradient(90deg, var(--beammp-orange), var(--destructive));
+  box-shadow: var(--bm-shadow-lg);
+}
+
+.VPButton.brand:hover {
+  color: #fff;
+  filter: brightness(1.08);
+}
+
+.VPButton.alt {
+  border: 1px solid var(--border);
+  background-color: color-mix(in oklab, var(--secondary) 70%, transparent);
+  color: var(--foreground);
+}
+
+.VPButton.alt:hover {
+  background-color: var(--accent);
+  border-color: color-mix(in oklab, var(--foreground) 25%, var(--border));
+}
+
+.VPButton.medium {
+  padding: 0 24px;
+  line-height: 44px;
+  font-size: 0.95rem;
+}
+
+/* --------------------------------------------------------------- home page */
+
+.VPHome {
+  margin-bottom: 0;
+}
+
+.VPHero .name,
+.VPHero .text {
+  letter-spacing: -0.03em;
+}
+
+.VPHero .name {
+  font-weight: 800;
+}
+
+.VPHero .tagline {
+  color: var(--vp-c-text-2);
+}
+
+:root {
+  --vp-home-hero-image-background-image: radial-gradient(circle, color-mix(in srgb, var(--beammp-orange) 38%, transparent) 0%, transparent 68%);
+  --vp-home-hero-image-filter: blur(48px);
+}
+
+.VPHero .image-src {
+  max-width: min(100%, 360px);
+  height: auto;
+}
+
+.VPFeatures .item {
+  padding: 8px;
+}
+
+.VPFeature {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  background-color: var(--bm-surface);
+  box-shadow: var(--bm-shadow);
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+
+.VPFeature:hover {
+  border-color: color-mix(in oklab, var(--beammp-orange) 55%, var(--border));
+  transform: translateY(-2px);
+}
+
+.VPFeature .box {
+  padding: 24px;
+}
+
+.VPFeature .box > .VPImage {
+  box-sizing: content-box;
+  display: block;
+  width: 24px !important;
+  height: 24px !important;
+  padding: 10px;
+  margin-bottom: 16px;
+  border-radius: var(--radius-md);
+  background-color: color-mix(in srgb, var(--beammp-orange) 14%, transparent);
+}
+
+/* An emoji or text icon, if a page still uses one */
+.VPFeature .icon {
+  width: 44px;
+  height: 44px;
+  margin-bottom: 16px;
+  border-radius: var(--radius-md);
+  background-color: color-mix(in srgb, var(--beammp-orange) 14%, transparent);
+}
+
+.VPFeature .title {
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.VPFeature .details {
+  color: var(--vp-c-text-2);
+}
+
+/* ---------------------------------------------------------------- footer */
+
+.bm-footer {
+  border-top: 1px solid var(--border);
+  background-color: color-mix(in oklab, var(--secondary) 30%, var(--background));
+}
+
+.bm-footer__social-link:hover,
+.bm-footer__legal-link:hover {
+  color: var(--vp-c-brand-1);
+}
+
+/* ------------------------------------------------------- small screens */
+
+@media (max-width: 767px) {
+  /* A wide table scrolls sideways; its columns keep a readable width instead of being squeezed to a word a line. */
+  .vp-doc th,
+  .vp-doc td {
+    min-width: 9rem;
+  }
+
+  /* A picture the page sized to a share of the width is full width on a phone. */
+  .vp-doc figure[style*='width'] {
+    width: 100% !important;
+  }
+
+  .VPFeature .box {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 479px) {
+  .VPHero .name {
+    font-size: 2.25rem;
+    line-height: 1.15;
+  }
+
+  .VPHero .text {
+    font-size: 1.6rem;
+    line-height: 1.2;
+  }
+
+  .VPHero .actions {
+    gap: 10px;
+  }
+
+  .VPButton.medium {
+    padding: 0 18px;
+  }
+
+  .bm-footer__inner {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+}
+
+/* Very wide screens: let the page use the room, and keep text lines readable. */
+@media (min-width: 1700px) {
+  :root {
+    --vp-layout-max-width: 1600px;
+  }
+}
+
+/* Respect people who ask for less motion. */
+@media (prefers-reduced-motion: reduce) {
+  .VPFeature,
+  .VPButton,
+  .VPSidebarItem .link {
+    transition: none;
+  }
+
+  .VPFeature:hover {
+    transform: none;
+  }
+}
