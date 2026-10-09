@@ -381,6 +381,13 @@ export default defineConfig({
 
       md.use(...makeContainer('note', 'NOTE'))
       md.use(...makeContainer('quote', 'QUOTE'))
+      // MkDocs box types VitePress does not have. The pages use them, and an
+      // unregistered `::: type` would show as plain text.
+      md.use(...makeContainer('question', 'QUESTION'))
+      md.use(...makeContainer('success', 'SUCCESS'))
+      md.use(...makeContainer('failure', 'FAILURE'))
+      md.use(...makeContainer('bug', 'BUG'))
+      md.use(...makeContainer('example', 'EXAMPLE'))
     },
   },
   sitemap: {

@@ -8,6 +8,8 @@
   --beammp-green: #1D9749;
   --beammp-blue: #4470B6;
   --beammp-neutral: #6B7280;
+  --beammp-purple: #8B6FD6;
+  --beammp-teal: #2A9D9D;
 
   /* Radius scale */
   --radius: 0.5rem;
@@ -98,6 +100,8 @@
 
 .dark {
   --beammp-neutral: #9CA3AF;
+  --beammp-purple: #A78BFA;
+  --beammp-teal: #5EC4C4;
   --background: 0 0% 7%;
   --foreground: 0 0% 96%;
   --card: 0 0% 10%;
@@ -323,6 +327,113 @@
   background-color: var(--beammp-neutral);
   -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z'/%3E%3C/svg%3E");
   mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z'/%3E%3C/svg%3E");
+}
+
+/* ---- box types MkDocs had and VitePress does not (registered in config.mts) ---- */
+
+/* ---- question ---- */
+.vp-doc .custom-block.question {
+  border-color: var(--beammp-purple);
+  background-color: color-mix(in srgb, var(--beammp-purple) 5%, transparent);
+}
+
+.vp-doc .custom-block.question .custom-block-title {
+  background-color: color-mix(in srgb, var(--beammp-purple) 14%, transparent);
+  color: var(--beammp-purple);
+}
+
+.vp-doc .custom-block.question .custom-block-title::before {
+  background-color: var(--beammp-purple);
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M11 18h2v-2h-2v2zm1-16C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14c-2.21 0-4 1.79-4 4h2c0-1.1.9-2 2-2s2 .9 2 2c0 2-3 1.75-3 5h2c0-2.25 3-2.5 3-5 0-2.21-1.79-4-4-4z'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M11 18h2v-2h-2v2zm1-16C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14c-2.21 0-4 1.79-4 4h2c0-1.1.9-2 2-2s2 .9 2 2c0 2-3 1.75-3 5h2c0-2.25 3-2.5 3-5 0-2.21-1.79-4-4-4z'/%3E%3C/svg%3E");
+}
+
+/* ---- success ---- */
+.vp-doc .custom-block.success {
+  border-color: var(--beammp-green);
+  background-color: color-mix(in srgb, var(--beammp-green) 5%, transparent);
+}
+
+.vp-doc .custom-block.success .custom-block-title {
+  background-color: color-mix(in srgb, var(--beammp-green) 14%, transparent);
+  color: var(--beammp-green);
+}
+
+.vp-doc .custom-block.success .custom-block-title::before {
+  background-color: var(--beammp-green);
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M16.59 7.58L10 14.17l-3.59-3.58L5 12l5 5 8-8zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M16.59 7.58L10 14.17l-3.59-3.58L5 12l5 5 8-8zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z'/%3E%3C/svg%3E");
+}
+
+/* ---- failure ---- */
+.vp-doc .custom-block.failure {
+  border-color: hsl(var(--destructive));
+  background-color: color-mix(in srgb, hsl(var(--destructive)) 5%, transparent);
+}
+
+.vp-doc .custom-block.failure .custom-block-title {
+  background-color: color-mix(in srgb, hsl(var(--destructive)) 14%, transparent);
+  color: hsl(var(--destructive));
+}
+
+.vp-doc .custom-block.failure .custom-block-title::before {
+  background-color: hsl(var(--destructive));
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm3.59-13L12 10.59 8.41 7 7 8.41 10.59 12 7 15.59 8.41 17 12 13.41 15.59 17 17 15.59 13.41 12 17 8.41z'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm3.59-13L12 10.59 8.41 7 7 8.41 10.59 12 7 15.59 8.41 17 12 13.41 15.59 17 17 15.59 13.41 12 17 8.41z'/%3E%3C/svg%3E");
+}
+
+/* ---- bug ---- */
+.vp-doc .custom-block.bug {
+  border-color: hsl(var(--destructive));
+  background-color: color-mix(in srgb, hsl(var(--destructive)) 5%, transparent);
+}
+
+.vp-doc .custom-block.bug .custom-block-title {
+  background-color: color-mix(in srgb, hsl(var(--destructive)) 14%, transparent);
+  color: hsl(var(--destructive));
+}
+
+.vp-doc .custom-block.bug .custom-block-title::before {
+  background-color: hsl(var(--destructive));
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M20 8h-2.81a5.985 5.985 0 0 0-1.82-1.96L17 4.41 15.59 3l-2.17 2.17a5.9 5.9 0 0 0-2.83 0L8.41 3 7 4.41l1.62 1.63C7.88 6.55 7.26 7.22 6.81 8H4v2h2.09c-.05.33-.09.66-.09 1v1H4v2h2v1c0 .34.04.67.09 1H4v2h2.81c1.04 1.79 2.97 3 5.19 3s4.15-1.21 5.19-3H20v-2h-2.09c.05-.33.09-.66.09-1v-1h2v-2h-2v-1c0-.34-.04-.67-.09-1H20V8zm-6 8h-4v-2h4v2zm0-4h-4v-2h4v2z'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M20 8h-2.81a5.985 5.985 0 0 0-1.82-1.96L17 4.41 15.59 3l-2.17 2.17a5.9 5.9 0 0 0-2.83 0L8.41 3 7 4.41l1.62 1.63C7.88 6.55 7.26 7.22 6.81 8H4v2h2.09c-.05.33-.09.66-.09 1v1H4v2h2v1c0 .34.04.67.09 1H4v2h2.81c1.04 1.79 2.97 3 5.19 3s4.15-1.21 5.19-3H20v-2h-2.09c.05-.33.09-.66.09-1v-1h2v-2h-2v-1c0-.34-.04-.67-.09-1H20V8zm-6 8h-4v-2h4v2zm0-4h-4v-2h4v2z'/%3E%3C/svg%3E");
+}
+
+/* ---- example ---- */
+.vp-doc .custom-block.example {
+  border-color: var(--beammp-teal);
+  background-color: color-mix(in srgb, var(--beammp-teal) 5%, transparent);
+}
+
+.vp-doc .custom-block.example .custom-block-title {
+  background-color: color-mix(in srgb, var(--beammp-teal) 14%, transparent);
+  color: var(--beammp-teal);
+}
+
+.vp-doc .custom-block.example .custom-block-title::before {
+  background-color: var(--beammp-teal);
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 4h14v-2H7v2zm0 4h14v-2H7v2zM7 7v2h14V7H7z'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 4h14v-2H7v2zm0 4h14v-2H7v2zM7 7v2h14V7H7z'/%3E%3C/svg%3E");
+}
+
+/* ---- light and dark images (MkDocs wrote `#only-dark`; the converter writes a class) ---- */
+.vp-doc img.only-dark {
+  display: none;
+}
+
+.dark .vp-doc img.only-dark {
+  display: inline;
+}
+
+.dark .vp-doc img.only-light {
+  display: none;
+}
+
+/* ---- the info icon after a rule, with its explanation as a tooltip ---- */
+.vp-doc .info-tooltip {
+  margin-left: 0.3em;
+  color: var(--vp-c-text-3);
+  cursor: help;
 }
 
 .bm-footer {
