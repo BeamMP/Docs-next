@@ -2,6 +2,7 @@ import { defineConfig, type DefaultTheme } from 'vitepress'
 import { tabsMarkdownPlugin } from 'vitepress-plugin-tabs'
 import fs from 'node:fs'
 import path from 'node:path'
+import { fileURLToPath } from 'node:url'
 import { redirectPage, redirectPlan } from '../../scripts/lib/redirects.mjs'
 import { describePage, pageHead } from '../../scripts/lib/seo.mjs'
 import { HOSTNAME, REPO, REPO_NAME_PLACEHOLDER, REPO_PLACEHOLDER } from './site'
@@ -57,8 +58,25 @@ const localizeLink = (locale: LocaleKey, link?: string) => {
   return `${localeBasePath[locale]}${link === '/' ? '' : link.replace(/^\//, '')}`
 }
 
+const docsDir = fileURLToPath(new URL('../', import.meta.url))
+
+// A page that is not translated yet is left out of that language's menus, instead of linking to a
+// page that is not there. The English page is the master, and a new one shows in every language as
+// soon as it is translated.
+const pageExists = (locale: LocaleKey, link: string) => {
+  const rel = link.replace(/^\//, '')
+  const file = rel === '' || rel.endsWith('/') ? `${rel}index` : rel
+  return fs.existsSync(path.join(docsDir, locale === 'root' ? 'en' : locale, `${file}.md`))
+}
+
 const localizeItems = (locale: LocaleKey, items: NavItem[]): DefaultTheme.NavItem[] => {
-  return items.map((item) => {
+  return items
+    .filter((item) => {
+      if (item.items) return true
+      if (item.link && !item.link.startsWith('http')) return pageExists(locale, item.link)
+      return true
+    })
+    .map((item) => {
     const localized: Record<string, unknown> = {
       text: translations[locale][item.text] ?? item.text
     }
@@ -73,100 +91,8 @@ const localizeItems = (locale: LocaleKey, items: NavItem[]): DefaultTheme.NavIte
 
     return localized as unknown as DefaultTheme.NavItem
   })
+    .filter((item) => !('items' in item && Array.isArray(item.items) && item.items.length === 0 && !('link' in item)))
 }
-
-const legacyBaseNav: NavItem[] = [
-  { text: 'Home', link: '/' },
-  {
-    text: 'Support',
-    items: [
-      { text: 'Playing BeamMP', link: '/game/getting-started' },
-      { text: 'Running a BeamMP-Server', link: '/server/create-a-server' },
-      { text: 'Mod & Resource Creation', link: '/guides/mod-creation/server/getting-started' }
-    ]
-  },
-  {
-    text: 'FAQ',
-    items: [
-      { text: 'How to check for CGNAT?', link: '/FAQ/How-to-check-for-CGNAT' },
-      { text: 'Where can I find my IP address?', link: '/FAQ/where-to-find-my-IP' },
-      { text: 'How to remove mods?', link: '/FAQ/Clearing-mods' },
-      { text: 'Manually updating the Launcher', link: '/FAQ/Update-launcher' },
-      { text: 'Changing the Launcher port', link: '/FAQ/Change-launcher-port' },
-      { text: 'Creating Exclusions (Defender)', link: '/FAQ/Defender-exclusions' },
-      { text: 'Player FAQ', link: '/FAQ/player-faq' },
-      { text: 'Game FAQ', link: '/FAQ/game-faq' },
-      { text: 'Server FAQ', link: '/FAQ/server-faq' }
-    ]
-  },
-  {
-    text: 'Development Guides',
-    items: [
-      { text: 'Development Environment Setup', link: '/guides/beammp-dev/beammp-dev' },
-      {
-        text: 'Mod Creation',
-        items: [{ text: 'Client Scripting Reference', link: '/scripting/mod-reference' }]
-      },
-      {
-        text: 'Resource Creation',
-        items: [{ text: 'Server Resources', link: '/guides/mod-creation/server/getting-started' }]
-      },
-      {
-        text: 'Scripting Reference',
-        items: [
-          { text: 'Mod (In-Game)', link: '/scripting/mod-reference' },
-          {
-            text: 'Server',
-            link: '/scripting/server/latest-server-reference',
-            items: [
-              { text: 'Version 3.X (Latest)', link: '/scripting/server/latest-server-reference' },
-              { text: 'Version 2.X (Deprecated)', link: '/scripting/server/v2-server-reference' }
-            ]
-          }
-        ]
-      }
-    ]
-  },
-  {
-    text: 'BeamNG Documentation',
-    items: [
-      {
-        text: 'Content Development',
-        items: [
-          { text: 'Introduction', link: '/beamng/dev/index' },
-          {
-            text: 'Programming',
-            items: [
-              { text: 'UI Apps (HTML)', link: '/beamng/dev/modding/ui-apps' },
-              { text: 'ImGui Window Tutorial', link: '/beamng/dev/modding/imgui-window-tutorial' },
-              { text: 'Lua Mods (Scripts)', link: '/beamng/dev/modding/lua-mods' }
-            ]
-          },
-          {
-            text: 'Content',
-            items: [
-              { text: 'Maps', link: '/beamng/dev/content/maps' },
-              { text: 'Props', link: '/beamng/dev/content/props' },
-              { text: 'Vehicles', link: '/beamng/dev/content/vehicles' }
-            ]
-          }
-        ]
-      },
-      { text: 'Lua Code Snippets', link: '/beamng/lua-snippets' },
-      { text: 'CSS Code Snippets', link: '/beamng/css-snippets' },
-      { text: 'ImGui Code Snippets', link: '/beamng/imgui-snippets' },
-      { text: 'CEF Code Snippets', link: '/beamng/cef-snippets' }
-    ]
-  },
-  {
-    text: 'Community',
-    items: [
-      { text: 'General Information', link: '/community/index' },
-      { text: 'Rules', link: '/community/rules' },
-      { text: 'Contributing', link: '/contributing' }
-    ]
-  }
-]
 
 const baseNav: NavItem[] = [
   { text: 'Home', link: '/' },
@@ -195,6 +121,7 @@ const baseNav: NavItem[] = [
       { text: 'Server Setup on VPS', link: '/server-owners/setup-vps' },
       { text: 'Port Forwarding', link: '/server-owners/port-forwarding' },
       { text: 'Check for CGNAT', link: '/server-owners/cgnat' },
+      { text: 'Server Configuration', link: '/server-owners/configuration' },
       { text: 'Server Maintenance', link: '/server-owners/maintenance' },
       { text: 'Server FAQ', link: '/server-owners/faq' },
       { text: 'Server Manual', link: '/server-owners/manual' },
@@ -371,6 +298,8 @@ export default defineConfig({
     ['script', { defer: "true", src: 'https://analytics.beammp.com/api/script.js', 'data-site-id': '632c87f003fc', async: "true" }]
   ],
   lastUpdated: true,
+  // Parts included into other pages (<!--@include: ./_parts/x.md-->) are not pages of their own.
+  srcExclude: ['**/_parts/**'],
   // Many links still point at the old MkDocs file layout, so dead links do not
   // fail the build for now. `npm run check` sets DOCS_REPORT_LINKS=1 so each one
   // is printed, with its page, and counted against the saved baseline.

@@ -89,7 +89,10 @@ test('every image a page points to with a relative path exists, in exactly that 
   for (const file of pages()) {
     for (const url of imageUrls(fs.readFileSync(file, 'utf8'))) {
       if (url.startsWith('/')) continue
-      const target = path.relative(root, path.resolve(path.dirname(file), url)).split(path.sep).join('/')
+      // A file in a `_parts` folder is included into the pages beside it, and its images are
+      // written as seen from those pages, so read them from the folder above.
+      const base = path.basename(path.dirname(file)) === '_parts' ? path.dirname(path.dirname(file)) : path.dirname(file)
+      const target = path.relative(root, path.resolve(base, url)).split(path.sep).join('/')
       if (!existsExactCase(root, target)) missing.push(`${path.relative(docsDir, file)}: ${url}`)
     }
   }

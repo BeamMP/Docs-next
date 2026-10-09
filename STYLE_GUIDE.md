@@ -95,6 +95,12 @@ box. Give a box a title only if it adds something ("Windows only"); otherwise le
   `-dark` and `{.only-dark}`. Crop to the relevant part.
 - Never a screenshot containing someone's name, IP address, key or account details.
 
+## Shared parts
+
+When the same steps belong on two pages (getting an AuthKey is on both server setup pages), write them once in a
+`_parts` folder next to the pages and include them: `<!--@include: ./_parts/authkey.md-->`. A part is not a
+page of its own. Write its images and links as they should look from the pages that include it.
+
 ## Links
 
 - Link to other docs pages with the full path, no extension: `[Port forwarding](/en/server-owners/port-forwarding)`.
@@ -126,6 +132,8 @@ Every page is translated into six languages, by people and tools that see one se
 - No sentence that depends on a picture or on the sentence before it.
 - Put what must not change (names, code, settings) in `code` or bold so it is clear.
 - Do not edit a translated page for facts: change the English page, and the translation follows.
+- A new English page shows in another language's menus only once that language has the page, so
+  nobody is sent to a page that is not there. Until then that language keeps its old page, if it has one.
 
 ## What the build checks
 
