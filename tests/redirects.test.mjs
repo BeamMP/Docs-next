@@ -4,7 +4,7 @@
 
 import test from 'node:test'
 import assert from 'node:assert/strict'
-import { redirectPage, redirectPlan, servedUrl } from '../scripts/lib/redirects.mjs'
+import { englishRootPlan, redirectPage, redirectPlan, servedUrl } from '../scripts/lib/redirects.mjs'
 
 const PAGES = [
   'en/index.md',
@@ -66,4 +66,17 @@ test('the redirect page keeps the anchor and escapes the address', () => {
   assert.match(html, /location\.replace\("\/en\/x\.html" \+ location\.hash\)/)
   assert.match(html, /<link rel="canonical" href="\/en\/x\.html">/)
   assert.doesNotMatch(redirectPage('/a"><script>'), /"><script>/)
+})
+
+test('an old English address, which had no language folder, gets a redirect page at that same address', () => {
+  const plan = englishRootPlan(['/server/create-a-server/', '/community/rules/', '/community/', '/de/server/create-a-server/', '/gone/page/', '/'], ['en/server-owners/host-a-server.md', 'en/community/rules.md', 'en/community/index.md'], { 'en/server/create-a-server.md': 'en/server-owners/host-a-server.md' })
+  assert.equal(plan.get('server/create-a-server/index.html'), '/en/server-owners/host-a-server.html')
+  assert.equal(plan.get('community/rules/index.html'), '/en/community/rules.html')
+  assert.equal(plan.get('community/index.html'), '/en/community/')
+  assert.equal(plan.size, 3, 'a translated address, a page that does not exist and the root are left alone')
+})
+
+test('an old English folder address is answered by the index page that moved', () => {
+  const plan = englishRootPlan(['/guides/'], ['en/developers/index.md'], { 'en/guides/index.md': 'en/developers/index.md' })
+  assert.equal(plan.get('guides/index.html'), '/en/developers/')
 })

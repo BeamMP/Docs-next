@@ -12,6 +12,7 @@
  * that does not exist (an untranslated page goes to its English version).
  */
 
+const LANGUAGES = ['en', 'de', 'es', 'fr', 'it', 'ru', 'zh']
 const noExt = (file) => file.replace(/\.md$/, '')
 const isIndex = (file) => /(^|\/)index$/.test(file)
 
@@ -44,6 +45,29 @@ export function redirectPlan(pages, moved = {}) {
     const source = noExt(from)
     add(source + '.html', servedUrl(target))
     if (!isIndex(source)) add(source + '/index.html', servedUrl(target))
+  }
+  return plan
+}
+
+/**
+ * MkDocs served English at the root, with no language folder: `/server/create-a-server/`. This site
+ * keeps English under `/en/`, so each old English address gets a redirect page at that root address.
+ * `oldAddresses` are the old site's paths, `pages` the page list, `moved` as for `redirectPlan`.
+ * `Map { 'server/create-a-server/index.html' => '/en/server-owners/host-a-server.html', ... }`
+ */
+export function englishRootPlan(oldAddresses, pages, moved = {}) {
+  const real = new Set(pages.map((page) => noExt(page) + '.html'))
+  const plan = new Map()
+  for (const address of oldAddresses) {
+    if (!address.startsWith('/') || LANGUAGES.includes(address.split('/')[1])) continue
+    const rel = decodeURIComponent(address).replace(/^\/+|\/+$/g, '')
+    if (!rel) continue
+    // `/guides/` was the page guides/index, so a moved index page answers for its folder too
+    const movedTo = moved[`en/${rel}.md`] ?? moved[`en/${rel}/index.md`]
+    let target = movedTo ? noExt(movedTo) : `en/${rel}`
+    if (!real.has(target + '.html')) target = `en/${rel}/index`
+    if (!real.has(target + '.html')) continue
+    plan.set(`${rel}/index.html`, servedUrl(target))
   }
   return plan
 }

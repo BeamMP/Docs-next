@@ -3,12 +3,11 @@
  * site replaces it, or every link anyone has shared or bookmarked breaks.
  * scripts/old-addresses.txt is that site's sitemap, as paths. MkDocs served English at the
  * root and the other languages under their code, so `/server/create-a-server/` is English.
+ * Both forms need a page or redirect page at exactly that address.
  */
 
 import fs from 'node:fs'
 import path from 'node:path'
-
-const LANGUAGE_FOLDERS = ['en', 'de', 'es', 'fr', 'it', 'ru', 'zh']
 
 /** True if a built site has something at this address (a page, or a redirect page). */
 export function resolvesInBuild(distDir, address) {
@@ -17,13 +16,13 @@ export function resolvesInBuild(distDir, address) {
   return fs.existsSync(file + '.html') || fs.existsSync(path.join(file, 'index.html')) || fs.existsSync(file)
 }
 
-/** The old addresses that lead nowhere in the build. */
+/**
+ * The old addresses that lead nowhere in the build. An address is checked as it is: the old English
+ * `/server/create-a-server/` needs a page or redirect page at that very address, not just somewhere
+ * under `/en/`, because that is what a visitor with the old link requests.
+ */
 export function findMissingOldAddresses(distDir, addresses) {
-  return addresses.filter((address) => {
-    const first = address.split('/')[1]
-    const site = LANGUAGE_FOLDERS.includes(first) ? address : '/en' + address
-    return !resolvesInBuild(distDir, site) && !resolvesInBuild(distDir, address)
-  })
+  return addresses.filter((address) => !resolvesInBuild(distDir, address))
 }
 
 export function readOldAddresses(file) {

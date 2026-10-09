@@ -19,13 +19,14 @@ function build(files) {
   return dir
 }
 
-test('an English address without a language prefix is found under /en, a translated one under its code', () => {
-  const dist = build(['en/server/create-a-server/index.html', 'de/FAQ/game-faq/index.html', 'en/index.html'])
+test('an address is found only where a visitor requests it, English at the root and the others under their code', () => {
+  const dist = build(['server/create-a-server/index.html', 'de/FAQ/game-faq/index.html', 'index.html', 'en/only-here/index.html'])
   assert.deepEqual(findMissingOldAddresses(dist, ['/server/create-a-server/', '/de/FAQ/game-faq/', '/']), [])
+  assert.deepEqual(findMissingOldAddresses(dist, ['/only-here/']), ['/only-here/'], 'a page under /en/ does not answer the old root address')
 })
 
 test('an address with a space or an encoded space is matched, and a missing one is reported', () => {
-  const dist = build(['en/API documentation/Client-Side/index.html'])
+  const dist = build(['API documentation/Client-Side/index.html'])
   assert.deepEqual(findMissingOldAddresses(dist, ['/API%20documentation/Client-Side/', '/gone/page/']), ['/gone/page/'])
 })
 

@@ -3,7 +3,7 @@ import { tabsMarkdownPlugin } from 'vitepress-plugin-tabs'
 import fs from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { redirectPage, redirectPlan } from '../../scripts/lib/redirects.mjs'
+import { englishRootPlan, redirectPage, redirectPlan } from '../../scripts/lib/redirects.mjs'
 import { describePage, pageHead } from '../../scripts/lib/seo.mjs'
 import { HOSTNAME, REPO, REPO_NAME_PLACEHOLDER, REPO_PLACEHOLDER } from './site'
 import container from 'markdown-it-container'
@@ -348,8 +348,16 @@ export default defineConfig({
     })
   },
   buildEnd(siteConfig) {
-    for (const [file, to] of redirectPlan(siteConfig.pages, movedByLocale)) {
+    const plan = redirectPlan(siteConfig.pages, movedByLocale)
+    // The old site's English addresses had no /en/ folder; each one gets a page at the same address.
+    const oldAddresses = path.resolve(siteConfig.srcDir, '..', 'scripts', 'old-addresses.txt')
+    if (fs.existsSync(oldAddresses)) {
+      const addresses = fs.readFileSync(oldAddresses, 'utf8').split('\n').filter(Boolean)
+      for (const [file, to] of englishRootPlan(addresses, siteConfig.pages, movedByLocale)) plan.set(file, to)
+    }
+    for (const [file, to] of plan) {
       const target = path.join(siteConfig.outDir, file)
+      if (fs.existsSync(target)) continue
       fs.mkdirSync(path.dirname(target), { recursive: true })
       fs.writeFileSync(target, redirectPage(to))
     }
