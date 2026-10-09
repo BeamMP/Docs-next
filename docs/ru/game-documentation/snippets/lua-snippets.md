@@ -1,61 +1,381 @@
----
-layout: home
+::: warning Сайт находится в разработке!
+Над этим сайтом ведётся активная работа.
 
-hero:
-  name: Документация BeamMP
-  text: Всё, что вам нужно знать
-  tagline: Полные руководства для игроков, владельцев серверов и разработчиков
-  image:
-    light: /assets/core/beammp_dark.png
-    dark: /assets/core/beammp_light.png
-    alt: BeamMP
-  actions:
-    - theme: brand
-      text: Начало работы
-      link: /ru/game/getting-started
-    - theme: alt
-      text: Посмотреть на GitHub
-      link: https://github.com/beammp/docs
+Думаете, что можете помочь? Нажмите на значок карандаша справа на странице!
 
-features:
-  - icon: 🎮
-    title: Для Игроков
-    details: Узнайте, как установить BeamMP, подключиться к серверам и получить максимум от вашего многопользовательского опыта
-    link: /ru/game/getting-started
-  - icon: 🖥️
-    title: Для Владельцев Серверов
-    details: Установите и управляйте своим собственным сервером BeamMP с помощью наших полных руководств и ресурсов по устранению неполадок
-    link: /ru/server/create-a-server
-  - icon: 💻
-    title: Для Разработчиков
-    details: Создавайте моды, ресурсы и UI-приложения с подробной документацией API и примерами кода
-    link: /ru/guides/index
-  - icon: ❓
-    title: Часто Задаваемые Вопросы
-    details: Найдите быстрые ответы на часто задаваемые вопросы о настройке, устранении неполадок и лучших практиках
-    link: /ru/FAQ/player-faq
-  - icon: 📋
-    title: Правила Сообщества
-    details: Узнайте о наших рекомендациях сообщества и как сообщать о проблемах или оспаривать решения
-    link: /ru/community/rules
-  - icon: 🔗
-    title: Сообщество
-    details: Присоединитесь к нашему Discord, следите за нами в социальных сетях и общайтесь с другими игроками и разработчиками BeamMP
-    link: /ru/community/index
----
+Это можно сделать на любой странице.
+:::
+    
+# Фрагменты кода Lua для BeamNG.drive
 
-Впервые в BeamMP? Ознакомьтесь с нашей страницей [Начало работы](/ru/get-started/), которая поможет вам быстро начать и получить максимум от игры по сети. По общим вопросам и проблемам, пожалуйста, ознакомьтесь с [Часто задаваемыми вопросами игроков](/ru/players/faq).
+## Мир
 
-## Для владельцев серверов
+### Отрисовка маркера и обнаружение транспорта
 
-Думаете о создании собственного сервера BeamMP? Наше подробное [руководство](/ru/server-owners/host-a-server) проведет вас через весь процесс, гарантируя, что у вас будут все инструменты и знания для эффективной настройки сервера.
+Маркеры на карте — один из лучших способов показать игроку, что в этом месте можно с чем-то взаимодействовать.
 
-## Для разработчиков
+Отрисовать маркер довольно просто. Вот пример того, как отрисовывается маркер автобусного маршрута:
+```lua
+  local function createBusMarker(markerName)
+    local marker =  createObject('TSStatic')
+    marker:setField('shapeName', 0, "art/shapes/interface/position_marker.dae")
+    marker:setPosition(vec3(0, 0, 0))
+    marker.scale = vec3(1, 1, 1)
+    marker:setField('rotation', 0, '1 0 0 0')
+    marker.useInstanceRenderData = true
+    marker:setField('instanceColor', 0, '1 1 1 0')
+    marker:setField('collisionType', 0, "Collision Mesh")
+    marker:setField('decalType', 0, "Collision Mesh")
+    marker:setField('playAmbient', 0, "1")
+    marker:setField('allowPlayerStep', 0, "1")
+    marker:setField('canSave', 0, "0")
+    marker:setField('canSaveDynamicFields', 0, "1")
+    marker:setField('renderNormals', 0, "0")
+    marker:setField('meshCulling', 0, "0")
+    marker:setField('originSort', 0, "0")
+    marker:setField('forceDetail', 0, "-1")
+    marker.canSave = false
+    marker:registerObject(markerName)
+    scenetree.MissionGroup:addObject(marker)
+    return marker
+  end
 
-Откройте для себя тонкости создания ресурсов для сервера BeamMP в нашем [Руководстве по разработке ресурсов](/ru/developers/mod-and-resource-creation) .
+  -- this can then be called in a loop to setup your markers. 
+  -- NOTE: You should only do this once as part of your setup and not called on each frame.
+  if #markers == 0 then
+    for k,v in pairs(nameMarkers) do
+      local mk = scenetree.findObject(v)
+      if mk == nil then
+        log('I', logTag,'Creating marker '..tostring(v))
+        mk = createBusMarker(v)
+        ScenarioObjectsGroup:addObject(mk.obj)
+      end
+      table.insert(markers, mk)
+    end
+  end
+```
+А вот пример собственного маркера из [BeamNG-FuelStations](https://github.com/BeamMP/BeamNG-FuelStations/tree/master):
+```lua
+  local stations = [
+    { "location": [ -778.813,  485.973, 23.46 ], "type":"gas" },
+    { "location": [  617.164, -192.107, 53.2  ], "type":"ev"  },
+  ]
 
-На горизонте нас ждут захватывающие обновления, включая совершенно новую домашнюю страницу, разработанную для улучшения вашего опыта просмотра. Оставайтесь с нами, чтобы узнать больше! :slight_smile:
+  local function IsEntityInsideArea(pos1, pos2, radius)
+    return pos1:distance(pos2) < radius
+  end
 
-## Правила Cообщества
+  local onUpdate = function (dt)
+    for k, spot in pairs(stations) do -- loop through all spots on the current map
+      local bottomPos = vec3(spot.location[1], spot.location[2], spot.location[3])
+      local topPos = bottomPos + vec3(0,0,2) -- offset vec to get top position (2m tall)
 
-Ознакомьтесь с [Правилами Cообщества](https://docs.beammp.com/community/rules/) BeamMP и узнайте, как обжаловать блокировку.
+      local spotInRange = false -- is this spot in range? used for color
+      local spotCompatible = false -- is this spot compatible?
+
+      if activeVeh then -- we have a car and its ours (if in mp)
+        local vehPos = activeVeh:getPosition()
+
+        spotInRange = IsEntityInsideArea(vec3(vehPos.x, vehPos.y,vehPos.z), bottomPos, 1.5)
+
+        spotCompatible = activeFuelType == "any" or spot.type == "any" or activeFuelType == spot.type
+      end
+
+      local spotColor = (spotInRange and spotCompatible) and activeColorMap[spot.type] or inactiveColorMap[spot.type] or ColorF(1,1,1,0.5)
+
+      debugDrawer:drawCylinder(bottomPos:toPoint3F(), topPos:toPoint3F(), 1, spotColor) --bottom, top, radius, color
+    end
+  end
+```
+## Пользовательский интерфейс
+
+### Всплывающие уведомления в правом верхнем углу экрана
+
+<figure class="image image_resized" style="width:75%">
+
+  ![image](https://github.com/StanleyDudek/Docs/assets/49531350/c8a87842-b95a-4eca-84dc-93072ecc9158)
+
+</figure>
+```lua
+--guihooks.trigger('toastrMsg', {type, title, msg, config = {timeOut}}) 
+guihooks.trigger('toastrMsg', {type = "info", title = "Info Message:", msg = "Info Message Text Here", config = {timeOut = 5000}}) 
+guihooks.trigger('toastrMsg', {type = "warning", title = "Warning Message:", msg = "Warning Message Text Here", config = {timeOut = 5000}}) 
+guihooks.trigger('toastrMsg', {type = "error", title = "Error Message:", msg = "Error Message Text Here", config = {timeOut = 5000}}) 
+```
+### Сообщения в левом верхнем углу экрана (по умолчанию в приложении «Messages»)
+
+Для этого требуется UI-приложение «Messages» или «Messages & Tasks». Значки можно найти в `ui\ui-vue\src\assets\fonts\bngIcons\svg\`
+
+<figure class="image image_resized" style="width:75%">
+
+  ![image](https://github.com/StanleyDudek/Docs/assets/49531350/6baef813-50cb-43c3-9c59-0de550b014b6)
+
+</figure>
+```lua
+--guihooks.trigger('Message', {msg, ttl, category, icon})
+--ui_message(msg, ttl, category, icon)
+guihooks.trigger('Message', {msg = "Message Text Here", ttl = 5.0, category = "arrow_upward", icon = "arrow_upward"}) 
+guihooks.trigger('Message', {msg = "Message Text Here", ttl = 5.0, category = "arrow_downward", icon = "arrow_downward"}) 
+guihooks.trigger('Message', {msg = "Message Text Here", ttl = 5.0, category = "flag", icon = "flag"}) 
+guihooks.trigger('Message', {msg = "Message Text Here", ttl = 5.0, category = "check", icon = "check"}) 
+guihooks.trigger('Message', {msg = "Message Text Here", ttl = 5.0, category = "check_circle", icon = "check_circle"}) 
+guihooks.trigger('Message', {msg = "Message Text Here", ttl = 5.0, category = "warning", icon = "warning"}) 
+guihooks.trigger('Message', {msg = "Message Text Here", ttl = 5.0, category = "error", icon = "error"}) 
+guihooks.trigger('Message', {msg = "Message Text Here", ttl = 5.0, category = "directions_car", icon = "directions_car"}) 
+guihooks.trigger('Message', {msg = "Message Text Here", ttl = 5.0, category = "star", icon = "star"}) 
+guihooks.trigger('Message', {msg = "Message Text Here", ttl = 5.0, category = "timeline", icon = "timeline"}) 
+guihooks.trigger('Message', {msg = "Message Text Here", ttl = 5.0, category = "save", icon = "save"}) 
+guihooks.trigger('Message', {msg = "Message Text Here", ttl = 5.0, category = "settings", icon = "settings"}) 
+```
+### Крупное или мелкое кратковременное сообщение по центру экрана
+
+<figure class="image image_resized" style="width:75%">
+
+  ![image](https://github.com/StanleyDudek/Docs/assets/49531350/d0cf754f-83f8-4d15-9159-27350da127de)
+
+</figure>
+
+<figure class="image image_resized" style="width:75%">
+
+  ![image](https://github.com/StanleyDudek/Docs/assets/49531350/1df6fc9b-756f-484e-b8d9-5df346dc4c26)
+
+</figure>
+```lua
+--guihooks.trigger('ScenarioFlashMessage', {{msg, ttl, sound, big}} ) -- requires RaceCountdown ui app
+guihooks.trigger('ScenarioFlashMessage', {{"Message", 5.0, 0, true}} ) 
+guihooks.trigger('ScenarioFlashMessage', {{"Message Text Here", 5.0, 0, false}} ) 
+
+--countdown example, when all executed at once, the items are queued and will follow eachother after the previous ttl expires
+guihooks.trigger('ScenarioFlashMessage', {{"3", 1.0, "Engine.Audio.playOnce('AudioGui', 'event:UI_Countdown1')", true}}) 
+guihooks.trigger('ScenarioFlashMessage', {{"2", 1.0, "Engine.Audio.playOnce('AudioGui', 'event:UI_Countdown2')", true}}) 
+guihooks.trigger('ScenarioFlashMessage', {{"1", 1.0, "Engine.Audio.playOnce('AudioGui', 'event:UI_Countdown3')", true}}) 
+guihooks.trigger('ScenarioFlashMessage', {{"GO!", 3.0, "Engine.Audio.playOnce('AudioGui', 'event:UI_CountdownGo')", true}}) 
+
+--another sound example
+guihooks.trigger('ScenarioFlashMessage', {{"Teleported!", 3.0, "Engine.Audio.playOnce('AudioGui', 'event:UI_Checkpoint')", false}}) 
+```
+### Постоянное сообщение среднего размера по центру экрана
+
+Для этого требуется UI-приложение «Race Realtime Display».
+
+<figure class="image image_resized" style="width:75%">
+
+  ![image](https://github.com/StanleyDudek/Docs/assets/49531350/6290e018-6b3d-4674-98f2-34282a723258)
+
+</figure>
+```lua
+--guihooks.trigger('ScenarioRealtimeDisplay', {msg = msg} ) -- requires Race Realtime Display ui app
+guihooks.trigger('ScenarioRealtimeDisplay', {msg = "Message Text Here"} )
+--these messages persist, clear with a blank string
+--if you are running live data, this is a good one to update rapidly (think timers, distance calcs, et cetera)
+guihooks.trigger('ScenarioRealtimeDisplay', {msg = ""} )
+```
+### Диалог подтверждения
+
+ConfirmationDialog — простое всплывающее окно не более чем с двумя кнопками.
+```lua
+-- Open a ConfirmationDialog with a title, body text, and up to two buttons
+guihooks.trigger("ConfirmationDialogOpen",
+    "Example Title",
+    "Example Body Text",
+    "Okay",
+    "", --gelua. empty string
+    "Cancel",
+    "" --gelua
+)
+
+-- Close any open ConfirmationDialog with the provided title
+guihooks.trigger("ConfirmationDialogClose", "Example Title")
+```
+<figure class="image image_resized" style="width:75%">
+
+  ![Пример ConfirmationDialog](../../../assets/content/ConfirmationDialog.png)
+
+</figure>
+
+Чтобы кнопка отобразилась, оба её поля должны быть строками.
+
+Если задана кнопка «ОК», нажатие действия *OK / основное действие* равнозначно нажатию кнопки «ОК».
+
+Если задана кнопка «Отмена», нажатие действия *Меню* равнозначно нажатию кнопки «Отмена».
+
+Поддерживается HTML, который можно использовать, например, для добавления изображений и значков.
+
+Можно показать сразу несколько диалогов — они будут отображаться по очереди.
+
+::: bug
+Если не указать ни одной кнопки, игрок не сможет закрыть диалог без использования консоли.
+:::
+
+::: bug
+Элементы SDF приложения Minimap UI остаются видимыми, пока открыт ConfirmationDialog.
+
+В качестве обходного решения можно скрыть UI-приложения командой `#!lua guihooks.trigger('ShowApps', false)`.
+:::
+
+<figure class="image image_resized" style="width:75%">
+
+  ![ConfirmationDialog, используемый в системе кика за неактивность](../../../assets/content/ConfirmationDialog_Example.png)
+
+</figure>
+
+### introPopupTutorial
+
+introPopupTutorial — гибко настраиваемое всплывающее окно, которое в основном задаётся встроенным HTML. Обычно его загружают из отдельного HTML-файла, расположенного в `/gameplay/tutorials/pages/*/content.html`.
+```lua
+guihooks.trigger("introPopupTutorial", {
+    {
+        content = readFile("/gameplay/tutorials/pages/template/content.html"):gsub("\r\n",""),
+        flavour = "onlyOk"
+    }
+})
+
+guihooks.trigger("introPopupClose")
+```
+<figure class="image image_resized" style="width:75%">
+
+  ![Фрагмент introPopupTutorial в BeamNG.drive](../../../assets/content/introPopupTutorial.png)
+
+</figure>
+
+Параметр `flavour` определяет, какие кнопки отображаются. Существует четыре варианта:
+
+* `withLogbook`
+    * Кнопки: «Журнал карьеры», «ОК»
+* `onlyOk`
+    * Кнопки: «ОК»
+* `onlyLogbook`
+    * Кнопки: «Журнал карьеры»
+* `noButtons`
+    * Без кнопок
+
+::: warning
+Если на странице используется вариант noButtons и в содержимое страницы не добавлен JavaScript для закрытия окна, интерфейс зависнет. В этом варианте страницы не объединяются в одно окно. Использовать этот вариант не рекомендуется.
+:::
+
+Если передано несколько страниц или хук срабатывает несколько раз, страницы объединяются в одном всплывающем окне. Если хук срабатывает, пока открыто introPopup, или когда уже был вызван introPopup другого типа, новое окно показывается отдельно после закрытия текущего.
+
+### introPopupCareer
+
+introPopupCareer — простое в использовании, но гибкое всплывающее окно, которое при необходимости поддерживает встроенный HTML.
+
+Варианты (flavour) определяют, какие кнопки отображаются и каково соотношение сторон изображения по умолчанию. Существует четыре варианта:
+
+* `default`
+  * Соотношение сторон изображения по умолчанию: 16x9
+  * Кнопки: «Позже», «ОК»
+* `welcome`
+  * Соотношение сторон изображения по умолчанию: 16x9
+  * Кнопки: «Журнал карьеры», «ОК»
+* `branch-info`
+  * Соотношение сторон изображения по умолчанию: 16x9
+  * Кнопки: «Журнал карьеры», «ОК»
+* `garage`
+  * Кнопки: «Позже», «ОК»
+```lua
+guihooks.trigger("introPopupCareer", {
+    {
+        title   = "Example title",
+        text    = "Example text",
+        image   = "/gameplay/tutorials/pages/template/image.jpg",
+        ratio   = "16x9",
+        flavour = "default"
+    }
+})
+
+guihooks.trigger("introPopupClose")
+```
+<figure class="image image_resized" style="width:75%">
+
+  ![Фрагмент introPopupCareer в BeamNG.drive](../../../assets/content/introPopupCareer.png)
+
+</figure>
+
+Если передано несколько страниц или хук срабатывает несколько раз, страницы объединяются в одном всплывающем окне. Если хук срабатывает, пока открыто introPopup, или когда уже был вызван introPopup другого типа, новое окно показывается отдельно после закрытия текущего.
+
+::: bug
+У размытия фона есть минимальная высота, поэтому у окон с коротким содержимым под окном остаётся лишнее размытие. Есть два основных обходных решения:
+
+* Повторять `\n` и завершить `#!html <div />`, пока окно не закроет размытие
+* Указать пустой или несуществующий путь в `image` и подбирать соотношение сторон, пока окно не закроет размытие
+:::
+
+### introPopupMission
+
+introPopupMission почти идентичен introPopupCareer, но кнопки нужно задавать самостоятельно, а не выбирать готовый набор.
+
+Стили кнопок составляются как *bng-button-*`style`. Встроенные стили кнопок:
+
+* `main` — оранжевая
+* `secondary` — голубая
+* `attention` — красная
+* `white` — белая
+* `link`  — полупрозрачная
+* `outline` — с оранжевым контуром
+```lua
+guihooks.trigger('introPopupMission', {
+    title   = "introPopupMission title",
+    text    = "introPopupMission description",
+    image   = "/gameplay/tutorials/pages/template/image.jpg",
+    ratio   = "16x9",
+    buttons = {
+        { default=true,  class="main",      label="main button",      clickLua="" },
+        { default=false, class="secondary", label="secondary button", clickLua="" },
+        { default=false, class="attention", label="attention button", clickLua="" },
+        { default=false, class="white",     label="white button",     clickLua="" },
+        { default=false, class="link",      label="link button",      clickLua="" },
+        { default=false, class="outline",   label="outline button",   clickLua="" }
+    }
+})
+
+guihooks.trigger("introPopupClose")
+```
+<figure class="image image_resized" style="width:75%">
+
+  ![Фрагмент introPopupMission в BeamNG.drive](../../../assets/content/introPopupMission.png)
+
+</figure>
+
+Если передано несколько страниц или хук срабатывает несколько раз, страницы объединяются в одном всплывающем окне. Если хук срабатывает, пока открыто introPopup, или когда уже был вызван introPopup другого типа, новое окно показывается отдельно после закрытия текущего.
+
+::: bug
+У размытия фона есть минимальная высота, поэтому у окон с коротким содержимым под окном остаётся лишнее размытие. Есть два основных обходных решения:
+
+* Повторять `\n` и завершить `#!html <div />`, пока окно не закроет размытие
+* Указать пустой или несуществующий путь в `image` и подбирать соотношение сторон, пока окно не закроет размытие
+:::
+
+### Dialogue
+
+Dialogue используется в кампании *A Rocky Start* для показа информации о миссии. Это всплывающее окно по центру экрана с вертикальным выравниванием и фиксированной компоновкой. Встроенный HTML не поддерживается.
+```lua
+ui_missionInfo.openDialogue({
+    title    = "Dialogue title",
+    type     = "Custom", -- isn't actually displayed
+    typeName = "typeName",
+    data     = {
+        {label = "objective",  value = "reward"}
+        -- add more...
+    },
+    buttons  = {
+        {action = "accept", text = "Accept",  cmd = ""},
+        {action = 'decline',text = "Decline", cmd = ""}
+        -- add more...
+    }
+})
+
+ui_missionInfo.closeDialogue()
+```
+<figure class="image image_resized" style="width:75%">
+
+  ![Фрагмент Dialogue в BeamNG.drive](../../../assets/content/Dialogue.png)
+
+</figure>
+
+Одновременно можно показать только один Dialogue. Любой уже открытый Dialogue заменяется.
+
+::: info
+Для закрытия диалога необходимо вызвать `#!lua ui_missionInfo.closeDialogue()`.
+
+Убедитесь, что вы вызываете эту функцию при нажатии любой кнопки.
+:::

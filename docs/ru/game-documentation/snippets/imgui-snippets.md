@@ -1,61 +1,70 @@
----
-layout: home
+::: warning Сайт находится в разработке!
 
-hero:
-  name: Документация BeamMP
-  text: Всё, что вам нужно знать
-  tagline: Полные руководства для игроков, владельцев серверов и разработчиков
-  image:
-    light: /assets/core/beammp_dark.png
-    dark: /assets/core/beammp_light.png
-    alt: BeamMP
-  actions:
-    - theme: brand
-      text: Начало работы
-      link: /ru/game/getting-started
-    - theme: alt
-      text: Посмотреть на GitHub
-      link: https://github.com/beammp/docs
+Над этим сайтом ведётся активная работа.
 
-features:
-  - icon: 🎮
-    title: Для Игроков
-    details: Узнайте, как установить BeamMP, подключиться к серверам и получить максимум от вашего многопользовательского опыта
-    link: /ru/game/getting-started
-  - icon: 🖥️
-    title: Для Владельцев Серверов
-    details: Установите и управляйте своим собственным сервером BeamMP с помощью наших полных руководств и ресурсов по устранению неполадок
-    link: /ru/server/create-a-server
-  - icon: 💻
-    title: Для Разработчиков
-    details: Создавайте моды, ресурсы и UI-приложения с подробной документацией API и примерами кода
-    link: /ru/guides/index
-  - icon: ❓
-    title: Часто Задаваемые Вопросы
-    details: Найдите быстрые ответы на часто задаваемые вопросы о настройке, устранении неполадок и лучших практиках
-    link: /ru/FAQ/player-faq
-  - icon: 📋
-    title: Правила Сообщества
-    details: Узнайте о наших рекомендациях сообщества и как сообщать о проблемах или оспаривать решения
-    link: /ru/community/rules
-  - icon: 🔗
-    title: Сообщество
-    details: Присоединитесь к нашему Discord, следите за нами в социальных сетях и общайтесь с другими игроками и разработчиками BeamMP
-    link: /ru/community/index
----
+Думаете, что можете помочь? Нажмите на значок карандаша справа на странице!
 
-Впервые в BeamMP? Ознакомьтесь с нашей страницей [Начало работы](/ru/get-started/), которая поможет вам быстро начать и получить максимум от игры по сети. По общим вопросам и проблемам, пожалуйста, ознакомьтесь с [Часто задаваемыми вопросами игроков](/ru/players/faq).
+Это можно сделать на любой странице.
+:::
 
-## Для владельцев серверов
+# Фрагменты кода ImGui для BeamNG.drive
 
-Думаете о создании собственного сервера BeamMP? Наше подробное [руководство](/ru/server-owners/host-a-server) проведет вас через весь процесс, гарантируя, что у вас будут все инструменты и знания для эффективной настройки сервера.
+## Настройка
 
-## Для разработчиков
+### Настройка ImGui
+```lua
+local im = ui_imgui
+```
+### Настройка окна
+```lua
+im.SetNextWindowSize(im.ImVec2(366, 100), im.Cond_FirstUseEver)
+```
+### Создание окна
+```lua
+im.Begin("Window Title") -- Create window
+im.End()
+```
+## Общее
 
-Откройте для себя тонкости создания ресурсов для сервера BeamMP в нашем [Руководстве по разработке ресурсов](/ru/developers/mod-and-resource-creation) .
+::: tabs
 
-На горизонте нас ждут захватывающие обновления, включая совершенно новую домашнюю страницу, разработанную для улучшения вашего опыта просмотра. Оставайтесь с нами, чтобы узнать больше! :slight_smile:
+== Базовое форматирование
+```lua
+im.Text("")
+im.TextWrapped("") -- automatic word wrap
+im.TextColored(im.ImVec4(0,1,0,1), "") -- R,G,B,A
+im.TextDisabled("") -- predefined style for disabled text
 
-## Правила Cообщества
+im.LabelText("", "")
+im.BulletText("") -- Bullet point with text
+im.SeparatorText("") -- Separator with centered text
 
-Ознакомьтесь с [Правилами Cообщества](https://docs.beammp.com/community/rules/) BeamMP и узнайте, как обжаловать блокировку.
+im.Separator() -- might want a NewLine before these
+im.SameLine() -- horizontally append the following element to the previous element
+im.NewLine()
+
+im.Spacing() -- small padding
+im.Indent()
+im.Unindent()
+```
+== Поля ввода
+```lua
+im.Button("", im.ImVec2(0,0)) -- 0 = fit to content
+im.SmallButton("") -- Fit to content and slightly less padding
+im.ArrowButton("", 0) -- arg 1: string is not actually used? arg 2: 0 = left, 1 = right, 2 = up, 3 = down
+im.InvisibleButton("", im.ImVec2(0,0), ...) -- used for imgui cursor positioning?
+
+im.Checkbox("", im.BoolPtr(false))
+
+im.RadioButton1("", im.BoolPtr(false))
+im.RadioButton2("", im.IntPtr(), 0) -- arg. 3: 0 or 1 for disabled or enabled
+```
+== Другое
+```lua
+im.Bullet()
+
+im.ProgressBar(0.5, im.ImVec2(0,0), "") -- arg 2: 0 for default width and/or height
+
+im.TextUnformatted("", "") -- Second argument seems to crash the game
+```
+:::
