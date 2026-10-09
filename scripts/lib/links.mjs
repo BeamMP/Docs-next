@@ -16,7 +16,7 @@ import { splitLines } from './checks.mjs'
 
 /** `[['game/getting-started', 'get-started/index'], ...]` from the config text. */
 export function readRewritePairs(configText) {
-  const start = configText.indexOf('const legacyRewritePairs')
+  const start = configText.indexOf('const movedPages')
   if (start < 0) return []
   const rest = configText.slice(start)
   const block = rest.slice(0, rest.indexOf('\n}\n'))

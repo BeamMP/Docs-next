@@ -184,6 +184,7 @@ const baseNav: NavItem[] = [
       { text: 'Gameplay Basics', link: '/players/gameplay-basics' },
       { text: 'Multiplayer Settings', link: '/players/multiplayer-settings' },
       { text: 'Player FAQ', link: '/players/faq' },
+      { text: 'Game FAQ', link: '/players/game-faq' },
       { text: 'Mod Safety', link: '/players/mod-safety' }
     ]
   },
@@ -191,10 +192,12 @@ const baseNav: NavItem[] = [
     text: 'Server Owners',
     items: [
       { text: 'Host a Server', link: '/server-owners/host-a-server' },
+      { text: 'Server Setup on VPS', link: '/server-owners/setup-vps' },
       { text: 'Port Forwarding', link: '/server-owners/port-forwarding' },
       { text: 'Check for CGNAT', link: '/server-owners/cgnat' },
       { text: 'Server Maintenance', link: '/server-owners/maintenance' },
       { text: 'Server FAQ', link: '/server-owners/faq' },
+      { text: 'Server Manual', link: '/server-owners/manual' },
       { text: 'Server Error Codes', link: '/server-owners/error-codes' }
     ]
   },
@@ -255,6 +258,7 @@ const baseNav: NavItem[] = [
     items: [
       { text: 'Launcher Update Issues', link: '/troubleshooting/launcher-update' },
       { text: 'Connection / Networking Issues', link: '/troubleshooting/connection-networking' },
+      { text: 'Changing the Launcher Port', link: '/troubleshooting/launcher-port' },
       { text: 'Defender / Firewall Exclusions', link: '/troubleshooting/defender-exclusions' },
       { text: 'Error Codes', link: '/troubleshooting/error-codes' }
     ]
@@ -286,16 +290,17 @@ const localeSidebar = (locale: LocaleKey) => localizeItems(locale, navByLocale(l
 
 const docsLocales = ['en', 'de', 'fr', 'es', 'it', 'ru', 'zh'] as const
 
-const legacyRewritePairs: Record<string, string> = {
+// Where each page of the MkDocs site is now. The files live at their final paths; this table keeps
+// the old addresses working (a small redirect page is written for each, see buildEnd) and lets the
+// link repair tool follow a link that still names an old path.
+const movedPages: Record<string, string> = {
   'game/getting-started': 'get-started/index',
   'game/multiplayer-settings': 'players/multiplayer-settings',
-
   'server/create-a-server': 'server-owners/host-a-server',
   'server/port-forwarding': 'server-owners/port-forwarding',
   'server/server-maintenance': 'server-owners/maintenance',
   'server/error-codes': 'server-owners/error-codes',
   'game/error-codes': 'troubleshooting/error-codes',
-
   'FAQ/player-faq': 'players/faq',
   'FAQ/Clearing-mods': 'players/mod-safety',
   'FAQ/server-faq': 'server-owners/faq',
@@ -303,15 +308,12 @@ const legacyRewritePairs: Record<string, string> = {
   'FAQ/Update-launcher': 'troubleshooting/launcher-update',
   'FAQ/where-to-find-my-IP': 'troubleshooting/connection-networking',
   'FAQ/Defender-exclusions': 'troubleshooting/defender-exclusions',
-
   'guides/index': 'developers/index',
   'guides/beammp-dev/beammp-dev': 'developers/dev-environment-setup',
   'guides/mod-creation/server/getting-started': 'developers/mod-and-resource-creation',
-
   'scripting/mod-reference': 'developers/beammp-scripting/mod-in-game',
   'scripting/server/latest-server-reference': 'developers/beammp-scripting/server/latest',
   'scripting/server/v2-server-reference': 'developers/beammp-scripting/server/legacy-v2',
-
   'beamng/dev/index': 'game-documentation/content-development/index',
   'beamng/dev/content/maps': 'game-documentation/content-development/maps',
   'beamng/dev/content/props': 'game-documentation/content-development/props',
@@ -323,12 +325,28 @@ const legacyRewritePairs: Record<string, string> = {
   'beamng/css-snippets': 'game-documentation/snippets/css-snippets',
   'beamng/imgui-snippets': 'game-documentation/snippets/imgui-snippets',
   'beamng/cef-snippets': 'game-documentation/snippets/cef-snippets',
-
-  'contributing': 'community/contributing'
+  'contributing': 'community/contributing',
+  'FAQ/Change-launcher-port': 'troubleshooting/launcher-port',
+  'FAQ/game-faq': 'players/game-faq',
+  'server/manual': 'server-owners/manual',
+  'server/setup-vps': 'server-owners/setup-vps',
+  'API documentation/Client-Side': 'developers/beammp-scripting/mod-in-game',
+  'API documentation/Server-Side': 'developers/beammp-scripting/server/latest',
+  'beamng/dev/modding/imgui-windows': 'game-documentation/programming/imgui',
+  'beamng/index': 'game-documentation/index',
+  'FAQ/How-to-deactivate-mods': 'players/mod-safety',
+  'FAQ/march-28-outage': 'community/index',
+  'beamng/snippets': 'game-documentation/snippets/lua-snippets',
+  'game/tailoring': 'game-documentation/index',
+  'support/error-codes': 'troubleshooting/error-codes',
+  'support/game-faq': 'players/game-faq',
+  'support/player-faq': 'players/faq',
+  'support/server-faq': 'server-owners/faq'
 }
 
-const rewrites = docsLocales.reduce<Record<string, string>>((acc, locale) => {
-  for (const [from, to] of Object.entries(legacyRewritePairs)) {
+// The same table, for every language, as `en/old/path.md` -> `en/new/path.md`.
+const movedByLocale = docsLocales.reduce<Record<string, string>>((acc, locale) => {
+  for (const [from, to] of Object.entries(movedPages)) {
     acc[`${locale}/${from}.md`] = `${locale}/${to}.md`
   }
   return acc
@@ -373,8 +391,7 @@ export default defineConfig({
     ru: makeLocale('ru', 'Pусский', 'ru', '/ru/'),
     zh: makeLocale('zh', '中文', 'zh', '/zh/')
   },
-  rewrites,
-  // GitHub Pages cannot redirect, so the old MkDocs addresses get a small page that sends the visitor on.
+  // GitHub Pages cannot redirect, so the old MkDocs addresses (movedPages) get a small page that sends the visitor on.
   // The "View on GitHub" button on each home page names the repository by placeholder, and a page
   // with no description of its own takes one from its first paragraph (for search results and
   // for the card a shared link shows).
@@ -412,7 +429,7 @@ export default defineConfig({
     })
   },
   buildEnd(siteConfig) {
-    for (const [file, to] of redirectPlan(siteConfig.pages, siteConfig.rewrites.map)) {
+    for (const [file, to] of redirectPlan(siteConfig.pages, movedByLocale)) {
       const target = path.join(siteConfig.outDir, file)
       fs.mkdirSync(path.dirname(target), { recursive: true })
       fs.writeFileSync(target, redirectPage(to))

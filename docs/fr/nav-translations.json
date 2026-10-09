@@ -73,5 +73,7 @@
   "Defender / Firewall Exclusions": "Exclusions Defender / pare-feu",
   "General Information": "Informations générales",
   "Rules": "Règles",
-  "More": "Plus"
+  "More": "Plus",
+  "Server Setup on VPS": "Configuration du serveur sur un VPS",
+  "Changing the Launcher Port": "Changer le port du lanceur"
 }

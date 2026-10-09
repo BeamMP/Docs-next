@@ -40,7 +40,7 @@ Wir übernehmen keine Verantwortung für Inhalte auf extern verlinkten Diensten 
 
 Es wird daher empfohlen, einen Server bei einem unserer Partnerdienste zu hosten!
 
-*Bitte lese [diese Anleitung zur Portweiterleitung](/de/server-owners/port-forwarding)*
+*Bitte lese [diese Anleitung zur Portweiterleitung](port-forwarding.md)*
 ::::
 
 #### Partner Hosting Services (bezahlt):

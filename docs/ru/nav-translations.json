@@ -73,5 +73,7 @@
   "Defender / Firewall Exclusions": "Исключения Defender / брандмауэра",
   "General Information": "Общая информация",
   "Rules": "Правила",
-  "More": "Ещё"
+  "More": "Ещё",
+  "Server Setup on VPS": "Настройка сервера на VPS",
+  "Changing the Launcher Port": "Изменение порта лаунчера"
 }

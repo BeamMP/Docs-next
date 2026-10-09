@@ -21,6 +21,6 @@ Potrebbero volerci fino a 4 ore per la sincronizzazione tra Patreon e BeamMP. Se
 
 ## Ho altre domande
 
-Se la tua domanda o problema riguarda il gioco o come giocare, guarda le [FAQ del gioco](/it/FAQ/game-faq).
+Se la tua domanda o problema riguarda il gioco o come giocare, guarda le [FAQ del gioco](/it/players/game-faq).
 Se la tua domanda o problema riguarda la gestione del server, guarda le [FAQ del server](/it/server-owners/faq).
 In alternativa puoi consultare il nostro [forum](https://forum.beammp.com/c/faq/35) dove puoi trovare domande e risposte dalla comunità.

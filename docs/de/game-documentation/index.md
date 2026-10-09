@@ -8,4 +8,4 @@ Diese Dokumentation ist inoffiziell und wurde vom BeamMP Mod Team und der BeamNG
 
 ## Ausschnitte
 
-Hilfreiche Code-Ausschnitte finden Sie hier: [Snippets](/de/beamng/snippets)
+Hilfreiche Code-Ausschnitte finden Sie hier: [Snippets](/de/game-documentation/snippets/lua-snippets)

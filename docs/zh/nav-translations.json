@@ -73,5 +73,7 @@
   "Defender / Firewall Exclusions": "Defender / 防火墙排除项",
   "General Information": "一般信息",
   "Rules": "规则",
-  "More": "更多"
+  "More": "更多",
+  "Server Setup on VPS": "在 VPS 上设置服务器",
+  "Changing the Launcher Port": "更改启动器端口"
 }

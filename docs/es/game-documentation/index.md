@@ -8,4 +8,4 @@ Esta documentación es extraoficial y es producida por el Equipo de Mods de Beam
 
 ## Fragmentos de Código
 
-Fragmentos de Códigos que pueden resultar útiles pueden ser encontrados en: [Snippets](/es/beamng/snippets)
+Fragmentos de Códigos que pueden resultar útiles pueden ser encontrados en: [Snippets](/es/game-documentation/snippets/lua-snippets)

@@ -7,4 +7,4 @@ Questa documentazione non è ufficiale, ma è realizzata dal team di BeamMP e da
 
 ## Snippet
 
-Degli snippet di codice possono essere trovati qui: [Snippets](/it/beamng/snippets)
+Degli snippet di codice possono essere trovati qui: [Snippets](/it/game-documentation/snippets/lua-snippets)

@@ -27,7 +27,7 @@ const FILES = [
 const index = buildIndex(FILES, PAIRS, undefined, ['FAQ/game-faq'])
 
 test('the config table of moved pages is read', () => {
-  const config = "const legacyRewritePairs: Record<string, string> = {\n  'game/getting-started': 'get-started/index',\n  'FAQ/player-faq': 'players/faq'\n}\n"
+  const config = "const movedPages: Record<string, string> = {\n  'game/getting-started': 'get-started/index',\n  'FAQ/player-faq': 'players/faq'\n}\n"
   assert.deepEqual(readRewritePairs(config), [['game/getting-started', 'get-started/index'], ['FAQ/player-faq', 'players/faq']])
   assert.deepEqual(readRewritePairs('nothing here'), [])
 })
