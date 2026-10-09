@@ -1,39 +1,36 @@
-# Cómo Empezar
-
 ---
-
-## **Antes de empezar**
-
-BeamMP sólo es compatible con copias legítimas (de Steam) del juego. Las copias "Crackeadas" no están soportadas.
-
+description: "Respuestas a las dudas sobre la cuenta de BeamMP: vincular Discord, conseguir el acceso anticipado y recibir tus ventajas de Patreon."
 ---
+# Preguntas frecuentes del jugador
 
-## **Instalación**
+Dudas sobre tu cuenta de BeamMP y sobre cómo apoyar el proyecto. Si tienes preguntas sobre cómo jugar, consulta las [Preguntas frecuentes del juego](/es/players/game-faq).
 
-BeamMP sólo es compatible de forma nativa con Windows, por ahora.
+## Vincular tu cuenta de Discord
 
-### **Instalación en Windows**
+### ¿Cómo vinculo mi cuenta de Discord?
 
-1. Ve a [beammp.com](https://beammp.com/) y haz clic en el botón de "Download client".
-2. Extrae el archivo `BeamMP_Installer.zip`.
-3. Inicia `BeamMP_Installer.exe` y sigue las instrucciones.
-4. El icono del 'Launcher' de BeamMP debería aparecer en tu escritorio. Si no, simplemente busca "BeamMP" en la barra de búsqueda de Windows.
-5. Una vez el 'launcher' se haya iniciado, deberías ver una ventana de terminal, poco después BeamNG.drive debería inciarse automáticamente **no** cierres la ventana de terminal.
-6. Una vez BeamNG se inicie, en el menú principal, haz clic en el botón `Multijugador` para iniciar el multijugador.
-7. Se te pedirá que inicies sesión o juegues como invitado (no todos los servidores permiten invitados). Puedes crear una cuenta en nuestro [foro](https://forum.beammp.com) e iniciar sesión en BeamMP con las mismas credenciales.
-8. Selecciona cualquier servidor que te guste y presiona `Conectarse`. ¡Disfruta!
+Vincular tus cuentas de Discord y de BeamMP es una función nueva. Ve a las [preferencias de cuenta del foro](https://forum.beammp.com/my/preferences/account) y conecta tu cuenta de Discord en **Associated Accounts**. Solo se ve cuando la autenticación en dos pasos (2FA) está desactivada en el foro.
 
-Nota: *Si te estás uniendo a un mapa con múltiples vehículos cargados, tardarás más de lo esperado en unirte.*
+## Acceso anticipado y Patreon
 
-### **Instalación en Linux**
+### ¿Cómo consigo el acceso anticipado?
 
-Consulte la [documentación en inglés](https://docs.beammp.com/game/getting-started/#2b-linux-installation).
+Consigues el acceso anticipado, que incluye la etiqueta de nombre morada y otras ventajas, apoyándonos económicamente. Puedes comprar un nivel en [Patreon](https://patreon.com/BeamMP), hacer una donación o impulsar (boost) el servidor de Discord.
 
----
+- Donar **x** US$ te da **x** claves de servidor adicionales, además de las ventajas del acceso anticipado.
+- Impulsar el servidor de Discord te da 5 claves de servidor adicionales en total (no 5 por cada impulso), además de las ventajas del acceso anticipado.
 
-## **Problemas Conocidos**
+### Me he suscrito en Patreon. ¿Cómo consigo mis ventajas?
 
-- Si no ves el botón de "Multijugador". Asegúrate de que el mod de BeamMP está activado en el "Gestor de Modificaciones" y prueba presionando CTRL + L.
-- También es importante que BeamMP sea el **único** mod activado en el "Gestor de Modificaciones", ya que sino esto puede provocar problemas.
+Recibes tus ventajas automáticamente si haces las dos cosas siguientes:
 
-Si necesitas más ayuda con la instalación, crea un 'post' en nuestro  [foro](https://forum.beammp.com) o pregunta en nuestro [Servidor de Discord](https://discord.gg/beammp).
+1. Vincula tu cuenta de Discord en [Patreon](https://www.patreon.com/settings/apps/discord), para recibir los roles y el acceso en el servidor de Discord.
+2. Usa en Patreon la misma dirección de correo electrónico que en tu cuenta de BeamMP del [foro](https://forum.beammp.com/).
+
+La sincronización del sistema puede tardar unas horas, a veces hasta 12. Si has hecho las dos cosas y pasadas 12 horas sigues sin tus ventajas, ponte en contacto con el soporte de BeamMP.
+
+## Tengo más preguntas
+
+- Sobre el juego o cómo jugar: las [Preguntas frecuentes del juego](/es/players/game-faq).
+- Sobre cómo alojar un servidor: las [Preguntas frecuentes del servidor](/es/server-owners/faq).
+- Cualquier otra cosa: las [preguntas frecuentes del foro](https://forum.beammp.com/c/faq/35), donde la comunidad puede hacer preguntas y recibir respuestas.
