@@ -1,30 +1,22 @@
-::: warning Ce site est en cours de construction !
-Ce site est actuellement en cours de développement.
-
-Vous pensez pouvoir contribuer ? Cliquez simplement sur l'icône en forme de crayon située à droite de la page !
-
-Vous pouvez également contribuer à n'importe quelle autre page.
-:::
-
-# Créer une fenêtre ImGui
+---
+description: "Créez une fenêtre ImGui de base dans BeamNG.drive avec Lua : préparer ImGui, afficher la fenêtre à chaque image, ajouter du texte et un bouton, et l'afficher ou la masquer."
+---
+# Tutoriel de fenêtre ImGui
 
 Cette page explique comment créer une fenêtre ImGui de base.
 
-## Préparation
+## Préparer ImGui
 
-Avant d'utiliser ImGui, une petite préparation est nécessaire :
-
+Avant d'utiliser ImGui, une petite préparation est nécessaire :
 ```lua
 local im = ui_imgui -- shortcut to prevent lookups all the time. should help with optimization
 local imguiExampleWindowOpen = im.BoolPtr(true)
 ```
-
 `imguiExampleWindowOpen` servira à déterminer quand cette fenêtre d'exemple doit être affichée.
 
-## Affichage de la fenêtre
+## Afficher la fenêtre
 
-Les fenêtres ImGui et leur contenu doivent être recréés à chaque image (frame) où elles doivent être affichées. Il faut donc une fonction de type `onUpdate` pour utiliser ImGui.
-
+Les fenêtres ImGui et leur contenu doivent être recréés à chaque image où elles doivent être affichées. Il faut donc une fonction de type onUpdate pour utiliser ImGui.
 ```lua
 local function onUpdate()
 	if worldReadyState == 2 then
@@ -35,17 +27,15 @@ local function onUpdate()
 end
 M.onUpdate = onUpdate
 ```
-
 Cela exécute une fonction qui crée la fenêtre de cet exemple, tant que le niveau est entièrement chargé et que la fenêtre d'exemple doit être affichée.
 
 ## Contenu de la fenêtre
 
-Si vous découvrez ImGui, considérez-le comme un lointain cousin du HTML :
+Si vous découvrez l'écriture d'ImGui, considérez-le comme un lointain cousin du HTML :
 
 * `im.SetNextWindowSize(im.ImVec2(x, y), im.Cond_FirstUseEver)` définit la taille de votre fenêtre si elle n'a pas encore été définie
 * `im.Begin()` et `im.End()` correspondent à vos balises `<body>` et `</body>`
 * `im.Text()` correspond à votre `<p></p>`
-
 ```lua
 local buttonPresses = 0
 
@@ -67,25 +57,18 @@ local function imguiExample()
 	im.End() -- complete our "canvas" so it can be drawn
 end
 ```
-
-Vous pouvez ajouter la fonction suivante pour afficher ou masquer facilement la fenêtre :
-
+Vous pouvez ajouter la fonction suivante pour afficher ou masquer facilement la fenêtre :
 ```lua
 local function toggleExampleImgui()
 	imguiExampleWindowOpen[0] = not imguiExampleWindowOpen[0]
 end
 ```
-
 ## Résultat
 
-<figure class="image image_resized" style="width:100%">
+![BeamNG.drive avec une petite fenêtre en haut à gauche intitulée « Hello World, I am a window », contenant le texte « Hello World, I am text. », un bouton nommé « The Hello World Button » et la ligne « The Hello World Button has not been pressed. ».](../../../assets/content/imguiExample.png)
 
-  ![L'exemple de code ImGui affiché en jeu](../../../assets/content/imguiExample.png)
+Lorsque vous appuyez sur **The Hello World Button**, le texte situé en dessous change pour indiquer le nombre de fois où le bouton a été pressé.
 
-</figure>
-
-Lorsque vous appuyez sur le bouton « The Hello World Button », le compteur situé en dessous se met à jour et affiche le nombre de fois où ce bouton a été pressé.
-
-## Téléchargement
+## Télécharger l'exemple
 
 Ce tutoriel est presque entièrement basé sur le mod d'exemple ImGui de [StanleyDudek](https://github.com/StanleyDudek). Vous pouvez télécharger ce mod d'exemple [ici](/assets/content/imguiExample.zip).

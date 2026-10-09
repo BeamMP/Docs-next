@@ -1,29 +1,24 @@
-::: warning Ce site est en cours de construction !
-Ce site est actuellement en cours de développement.
+---
+description: "Créez une application UI pour BeamNG.drive : les quatre fichiers nécessaires, un exemple complet en HTML, JavaScript, Lua, CSS et JSON, et les fonctions fournies par le jeu."
+---
+# Applications UI (HTML)
 
-Vous pensez pouvoir contribuer ? Cliquez simplement sur l'icône en forme de crayon située à droite de la page !
-
-Vous pouvez également contribuer à n'importe quelle autre page.
-:::
-
-# Création d'une UI-App
-
-Pour créer une UI-App, vous aurez besoin de quelques connaissances du framework AngularJS. La documentation principale se trouve ici : [Documentation AngularJS](https://docs.angularjs.org/guide)
+Pour créer une application UI, vous avez besoin de quelques connaissances du framework AngularJS. Sa documentation est le [guide AngularJS](https://docs.angularjs.org/guide).
 
 ## Structure des fichiers
 
-Une UI-App a besoin de quatre fichiers importants pour fonctionner :
-- app.js | Contient le code principal utilisé par l'UI-App ([documentation Javascript](https://developer.mozilla.org/fr/docs/Web/JavaScript))
-- app.html | Le code qui affiche votre application ([documentation HTML](https://developer.mozilla.org/fr/docs/Web/HTML))
-- app.json | Contient les informations de l'UI-App
+Une application UI a besoin de quatre fichiers importants pour fonctionner :
+- app.js | Contient le code principal utilisé par l'application UI [documentation Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+- app.html | Le code qui affiche votre application [documentation HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
+- app.json | Contient les informations de l'application UI
 - app.png | Le fichier image affiché dans le sélecteur d'applications
 
-### Style d'une UI-App
-Nous recommandons d'utiliser la balise ``<style>`` pour styliser votre application. Un fichier .css fonctionne aussi, mais vous ne pourrez pas voir les modifications en temps réel.
+### Mettre en forme votre application
+Nous recommandons d'utiliser la balise ``<style>`` pour mettre en forme votre application. Un fichier .css fonctionne aussi, mais vous ne pourrez pas voir les modifications en temps réel.
 
 ## Exemple
 
-Cet exemple provient de DanielW, merci à lui.
+Cet exemple est de DanielW. Merci à lui.
 
 ui\modules\apps\ExampleApp\app.html
 ```html
@@ -126,7 +121,7 @@ angular.module('beamng.apps')
 Notez l'utilisation de <b>$scope</b>. C'est très important, car vous devez définir vos variables et vos fonctions dans <b>$scope</b> pour pouvoir y accéder depuis le <b>HTML</b>, dans n'importe quelle balise <b>ng-*</b>.
 Ainsi, dans cet exemple, une fois la fonction ``sendMessage()`` exécutée depuis le <b>HTML</b>, le message est envoyé à un fichier Lua situé dans le dossier des extensions du mod, et la fonction ``modifyMessage()`` de ce fichier Lua est exécutée.
 
-Voici un exemple de ce à quoi pourrait ressembler le côté Lua :
+Voici un exemple de ce à quoi pourrait ressembler le côté Lua :
 ```lua
 local function modifyMessage(message)
     message = message .. " [Modified!]"
@@ -206,8 +201,7 @@ M.modifyMessage            = modifyMessage
 
 return M
 ```
-
-Notez qu'il est très important de renvoyer la variable M (le module) avec les fonctions nécessaires à l'intérieur !
+Notez qu'il est très important de renvoyer la variable M (le module) avec les fonctions nécessaires à l'intérieur !
 Par exemple, sans la ligne ``M.modifyMessage = modifyMessage``, la fonction ``bngApi.engineLua('extensions.exampleMod.modifyMessage("' + $scope.message + '")')`` ne pourra pas trouver la fonction modifyMessage().
 
 
@@ -228,7 +222,6 @@ ui\modules\apps\ExampleApp\app.css
     padding: 0;
 }
 ```
-
 ui\modules\apps\ExampleApp\app.json
 ```json
 {
@@ -253,22 +246,17 @@ ui\modules\apps\ExampleApp\app.json
 ```
 La directive doit être identique à celle du fichier <b>Javascript</b>.
 
-
-
-
-# Fonctions Javascript fournies par BeamNG pour les UI-Apps
-
+## Fonctions JavaScript fournies par BeamNG pour les applications UI
 ```js
 bngApi.engineLua("lua_path.function()")
 ```
 Utile pour exécuter une fonction Lua, avec ou sans arguments.
 
-# Fonctions Lua fournies par BeamNG pour les UI-Apps
-
+## Fonctions Lua fournies par BeamNG pour les applications UI
 ```lua
 guihooks.trigger("EventName", Payload)
 ```
 La charge utile peut être de n'importe quel type, mais il vaut mieux la garder sous forme de tableau / objet ou de chaîne de caractères pour ne pas la perdre.
 
-<b>IMPORTANT</b> : il arrive que le nom d'événement que vous utilisez soit déjà utilisé en interne par autre chose et cause des problèmes. Par exemple, si votre application s'appelle Nickel, il est recommandé de préfixer chacun de vos événements Angular, par exemple NKEventName au lieu de EventName.
+<b>IMPORTANT</b> : il arrive que le nom d'événement que vous utilisez soit déjà utilisé en interne par autre chose et cause des problèmes. Par exemple, si votre application s'appelle Nickel, il est recommandé de préfixer chacun de vos événements Angular, par exemple NKEventName au lieu de EventName.
 
