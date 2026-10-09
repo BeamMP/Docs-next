@@ -63,38 +63,48 @@ You will need a [Discord](https://discord.com) account for this step. This is ne
 Login with Discord to the [Keymaster](https://keymaster.beammp.com).
 From the Keymaster homepage click on "Keys" on the left of the screen:
 
-<figure markdown>
+<figure>
+
   ![](../../assets/content/keymaster_homepage.png)
+
 </figure>
 
 #### 2.2. Creating a key
 
 To create your key, click on the green "+" button in the top right. 
 
-<figure markdown>
+<figure>
+
   ![](../../assets/content/keymaster_new_key.png)
+
 </figure>
 
 #### 2.3. Filling out the key information
 
 Next, fill out the Server Name field (this is just the keys name and not the actual name of the server on the list), then click "Create". Example:
 
-<figure class="image image_resized" style="width:44.84%;" markdown>
+<figure class="image image_resized" style="width:44.84%;">
+
   ![](../../assets/content/keymaster_server_name.png)
+
 </figure>
 
 It should, in the end, look something like this:
 
-<figure markdown>
+<figure>
+
   ![](../../assets/content/keymaster_key_done.png)
+
 </figure>
 
 #### 2.4. Copying the key
 
 Now copy the text in the “Key” field, in this example that is `3173a2e-6az0-4542-a3p0-ddqq5ff95558` and hold onto it for the next step. You can do this by clicking the clipboard on the right of the key:
 
-<figure markdown>
+<figure>
+
   ![](../../assets/content/keymaster_copy_key.png)
+
 </figure>
 
 ::: warning
@@ -119,7 +129,7 @@ Vehicle mods and map mods are different to install, but both require you to put 
 ::: warning
 Mods can be, and/or become incompatible with BeamNG, BeamMP or even other mods. Start removing mods if you are encountering issues.
 Should you receive a "done" or "start" message when trying to join your server after adding mods, you likely added an incompatible or broken mod to your server.
-Mod incompatibilities can also occur between 2 or more mods. If you have client mods installed, check [this guide](../../FAQ/How-to-deactivate-mods.md) about removing mods from your game.
+Mod incompatibilities can also occur between 2 or more mods. If you have client mods installed, check [this guide](/en/players/mod-safety) about removing mods from your game.
 :::
 
 #### 4.1 General Mods

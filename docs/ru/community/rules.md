@@ -31,7 +31,7 @@
 4. Вышеуказанное правило распространяется на игорные Сервисы/Веб-сайты.
 5. Не Используйте Чрезмерный Звук <span class="info-tooltip" title="Excessively using soundboards, playing loud music or other uses of audio channels to intentionally agitate or target others is prohibited.">ⓘ</span>
 6. Не Спамьте Входами/Выходами <span class="info-tooltip" title="Most users will have sound effects enabled, do not join and leave voice-chats rapidly.">ⓘ</span>
-7. Не Приставайте к Другим (`@'ing`) :material-information-outline:{ title="Это включает в себя повторные просьбы к другим дать ответ после того, как вас проигнорировали или сказали "нет"." }
+7. Не Приставайте к Другим (`@'ing`) <span class="info-tooltip" title="Это включает в себя повторные просьбы к другим дать ответ после того, как вас проигнорировали или сказали &quot;нет&quot;.">ⓘ</span>
 8. Держите команды для ботов в предназначенных для этого каналах.
 9. Никакой Ролевой Игры <span class="info-tooltip" title="Это сделано для предотвращения проблем, возникающих из-за отсутствия контекста, или для предотвращения обхода пользователями определенных правил.">ⓘ</span>
 10. Не просите пользователей обращаться к вам в личные сообщения за помощью. Все вопросы, связанные с поддержкой, обсуждайте в специальном разделе поддержки на сервере BeamMP в Discord.

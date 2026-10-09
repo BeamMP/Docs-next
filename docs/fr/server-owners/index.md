@@ -26,22 +26,22 @@ La configuration comprend les étapes suivantes, vous devez toutes les suivre.
 
 ### **1. Redirection de port**
 
-::: info
+:::: info
 Si vous êtes sur un VPS (Virtual Private Server), un Rootserver, ou si vous prévoyez d'héberger ce serveur localement (avec des joueurs dans la même maison que vous), vous pouvez sauter cette étape.
 Cette étape est nécessaire si vous voulez que quelqu'un **en dehors** de votre foyer rejoigne votre serveur hébergé localement (en dehors de votre réseau local).
-:::
 
-! !! danger ":material-scale-balance: AVERTISSEMENT :"
-
+::: danger AVERTISSEMENT :
 **Le transfert de port est un risque**.
 
 En transférant des ports, vous comprenez les risques liés à l'ouverture au public des ports de votre réseau domestique et vous annulez donc le droit de tenir BeamMP pour responsable de **tous** les dommages qui pourraient survenir à vous ou à votre foyer.
 
 Nous ne sommes pas responsables du contenu des services ou sites web externes.
+:::
 
 Il est donc recommandé d'héberger un serveur avec l'un de nos services partenaires !
 
 *Veuillez consulter [ce guide sur la façon de rediriger un port](/fr/server-owners/port-forwarding)*.
+::::
 
 #### Services d'hébergement partenaires (payants) :
 
@@ -80,29 +80,49 @@ Vous aurez besoin d'un compte [Discord](https://discord.com) pour cette étape. 
 
 Connectez-vous à [Keymaster](https://beammp.com/keymaster) via Discord. Depuis la page d'accueil de Keymaster, cliquez sur « Clés » à gauche de l'écran :
 
-<figure markdown="">   ![](../../assets/content/keymaster_homepage.png) </figure>
+<figure>
+
+![](../../assets/content/keymaster_homepage.png)
+
+</figure>
 
 #### 2.2. Création d'une clé
 
 Pour créer votre clé, cliquez sur le bouton vert "+" en haut à droite.
 
-<figure markdown="">   ![](../../assets/content/keymaster_new_key.png) </figure>
+<figure>
+
+![](../../assets/content/keymaster_new_key.png)
+
+</figure>
 
 #### 2.3. Remplir les informations clés
 
 Ensuite, remplissez le champ Nom du serveur (il s'agit uniquement du nom de la clé, et non du nom réel du serveur dans la liste), puis cliquez sur « Créer ». Exemple :
 
-<figure class="image image_resized" style="width:44.84%;" markdown="">   ![](../../assets/content/keymaster_server_name.png) </figure>
+<figure class="image image_resized" style="width:44.84%;">
+
+![](../../assets/content/keymaster_server_name.png)
+
+</figure>
 
 Cela devrait, au final, ressembler à ceci :
 
-<figure markdown="">   ![](../../assets/content/keymaster_key_done.png) </figure>
+<figure>
+
+![](../../assets/content/keymaster_key_done.png)
+
+</figure>
 
 #### 2.4. Copie de la clé
 
 Copiez maintenant le texte dans le champ « Clé », dans cet exemple : `3173a2e-6az0-4542-a3p0-ddqq5ff95558` et conservez-le pour l'étape suivante. Pour ce faire, cliquez sur le presse-papiers à droite de la clé :
 
-<figure markdown="">   ![](../../assets/content/keymaster_copy_key.png) </figure>
+<figure>
+
+![](../../assets/content/keymaster_copy_key.png)
+
+</figure>
 
 ### **3. Installation**
 
@@ -148,7 +168,11 @@ D'autres distributions, outre celles disposant déjà d'un binaire [,](https://g
 
 Après avoir exécuté le serveur une fois, il devrait avoir créé des fichiers et probablement généré une ou deux erreurs. Ceci est dû au fait que nous n'avons pas encore terminé. Votre dossier devrait contenir les fichiers suivants :
 
-<figure markdown="">   ![](../../assets/content/after-running-once.png) </figure>
+<figure>
+
+![](../../assets/content/after-running-once.png)
+
+</figure>
 
 Ils s'appellent « ServerConfig.toml », « Server.log » et « BeamMP-Server.exe » ! (Selon vos paramètres, les extensions [.toml] [.log] [.exe] pourraient ne pas s'afficher.)
 

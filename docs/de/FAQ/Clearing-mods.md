@@ -2,15 +2,14 @@
 
 In BeamMP stellt der Server, mit dem du dich verbindest, die notwendigen Mods bereit. Diese werden beim Verbinden automatisch heruntergeladen und aktiviert. Sind lokale Mods installiert und aktiviert, funktioniert BeamMP oft nicht richtig, selbst wenn du nur einen zusätzlichen Mod neben BeamMP hast.
 
-::: warning
+:::: warning
+Entferne alle Mods, die du im Ordner BeamNG.Drive\content\ oder in Unterordnern abgelegt hast. Dieser Speicherort ist NICHT für die Installation von Mods vorgesehen und kann zu Problemen führen, wie in der Datei `DO_NOT_INSTALL_MODS_HERE.txt` im selben Verzeichnis beschrieben.
 
-    Entferne alle Mods, die du im Ordner BeamNG.Drive\content\ oder in Unterordnern abgelegt hast. Dieser Speicherort ist NICHT für die Installation von Mods vorgesehen und kann zu Problemen führen, wie in der Datei `DO_NOT_INSTALL_MODS_HERE.txt` im selben Verzeichnis beschrieben.
-
-    ::: quote "DO_NOT_INSTALL_MODS_HERE.txt"
-
-        Kopiere KEINE Mods in diesen Ordner: Dies kann zu beschädigten Mods, einer langsameren Installation von Updates, einem beschädigten Mod-Manager, einem beschädigten abgesicherten Modus und anderen Problemen führen.
-    :::
+::: quote DO_NOT_INSTALL_MODS_HERE.txt
+Kopiere KEINE Mods in diesen Ordner: Dies kann zu beschädigten Mods, einer langsameren Installation von Updates, einem beschädigten Mod-Manager, einem beschädigten abgesicherten Modus und anderen Problemen führen.
 :::
+::::
+
 ## Wie deaktiviere/entferne ich meine Mods?
 
 Es gibt drei Möglichkeiten, mögliche Probleme bei der Verwendung von BeamMP zu lösen.
