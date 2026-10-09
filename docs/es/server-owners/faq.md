@@ -1,42 +1,43 @@
-# Preguntas frecuentes y problemas conocidos
-Lista de preguntas habituales y errores conocidos.
-
 ---
-## **Servidor**
-
+description: "Respuestas a las dudas habituales sobre los servidores de BeamMP: cómo montar uno, Linux, requisitos del sistema, jugadores que no pueden unirse y cómo informar de errores o de una AuthKey comprometida."
 ---
-### **¿Cómo puedo configurar mi propio servidor?**
+# Preguntas frecuentes del servidor
 
-Toda la información para configurar tu propio servidor se encuentra [aquí](https://docs.beammp.com/server/create-a-server/).
+Preguntas habituales y problemas conocidos sobre cómo ejecutar un servidor de BeamMP.
 
----
-### **¿Se puede crear un servidor con Linux?**
+## Configuración
 
-Ofrecemos binarios para muchas distribuciones de Linux [aquí](https://github.com/BeamMP/BeamMP-Server/releases/latest). 
-Si no hay binarios para tu sistema operativo o distribución, puedes compilarlo tú mismo descargando el código fuente desde nuestro [GitHub](https://github.com/BeamMP/BeamMP-Server); encontrarás un tutorial [aquí](https://github.com/BeamMP/BeamMP-Server#build-instructions).
+### ¿Cómo puedo configurar mi propio servidor?
 
----
-### **¿Cuáles son los requisitos mínimos del sistema para ejecutar un servidor de BeamMP?**
+Todo lo que necesitas está en [Alojar un servidor](/es/server-owners/host-a-server), o en [Configuración del servidor en un VPS](/es/server-owners/setup-vps) si usas una empresa de alojamiento.
 
-- RAM: más de 50 MiB utilizables (sin contar lo que consume el sistema operativo)
-- CPU: >1 GHz, preferiblemente multinúcleo
-- SO: Windows, Linux (en teoría cualquier sistema POSIX)
-- GPU: ninguna
-- Disco: 10 MiB + mods/plugins
-- Ancho de banda: 5-10 Mb/s de subida
+### ¿Se puede ejecutar un servidor en Linux?
 
----
-## **Los jugadores ajenos a mi red no pueden unirse a mi servidor autoalojado**
+Sí. Ofrecemos binarios para muchas distribuciones de Linux en la [página de la última versión](https://github.com/BeamMP/BeamMP-Server/releases/latest). Si no hay ninguno para tu distribución, puedes compilarlo a partir del código fuente en [GitHub](https://github.com/BeamMP/BeamMP-Server). Las [instrucciones de compilación](https://github.com/BeamMP/BeamMP-Server#build-instructions) explican cómo.
 
-Lee la guía de redirección de puertos, disponible [aquí](https://docs.beammp.com/server/port-forwarding/). A continuación tienes un breve resumen de los pasos más importantes.
-Si otros jugadores que intentan conectarse a tu servidor reciben el código de error 10060, 10061 o 10038 en su launcher de BeamMP, deberías revisar lo siguiente:
+### ¿Cuáles son los requisitos mínimos del sistema?
 
-- Redirige el puerto 30814 (o el que hayas configurado en tu ServerConfig.toml), tanto para el protocolo TCP como para UDP.
-- Permite BeamMP a través del Firewall de Windows, tanto para conexiones entrantes como salientes. Desactivar el firewall normalmente NO funciona.
-- Asegúrate de que no estás usando una VPN (puede causar problemas).
-- Asegúrate de que el servidor está realmente en ejecución, sin errores ni advertencias.
+| | Requisito |
+|---|---|
+| RAM | 50 MiB o más utilizables, sin contar el sistema operativo |
+| CPU | Más de 1 GHz, preferiblemente multinúcleo |
+| SO | Windows o Linux (en teoría, cualquier sistema POSIX) |
+| GPU | Ninguna |
+| Disco | 10 MiB más los mods y plugins |
+| Ancho de banda | 5-10 Mb/s de subida |
 
-Puedes comprobar si has redirigido los puertos correctamente con CheckBeamMP mientras el servidor está en ejecución.
+## Los jugadores no pueden unirse
+
+### Los jugadores ajenos a mi red no pueden unirse a mi servidor autoalojado
+
+Si otros jugadores reciben el código de error 10060, 10061 o 10038 en su Launcher, comprueba lo siguiente. La guía completa es [Redirección de puertos](/es/server-owners/port-forwarding).
+
+- Redirige el puerto 30814, o el que hayas configurado en `ServerConfig.toml`, tanto para TCP como para UDP.
+- Permite BeamMP a través del Firewall de Windows, tanto para conexiones entrantes como salientes. Desactivar el firewall normalmente **no** funciona.
+- Asegúrate de que no estás usando una VPN. Puede causar problemas.
+- Asegúrate de que el servidor está en ejecución, sin errores ni advertencias.
+
+Mientras el servidor está en ejecución, puedes comprobar si el puerto está redirigido con CheckBeamMP:
 
 <form action="https://check.beammp.com/api/v2/beammp" method="get" target="_blank">
   <label for="ip">Dirección IP:</label>
@@ -46,44 +47,18 @@ Puedes comprobar si has redirigido los puertos correctamente con CheckBeamMP mie
   <input type="submit" value="CheckBeamMP">
 </form>
 
-Notas:
+Algunos proveedores de internet no ofrecen una dirección IPv4 dedicada (CGNAT), así que puede que la redirección de puertos no funcione aunque tu router la ofrezca. Consulta [Comprobar CGNAT](/es/server-owners/cgnat). No es posible redirigir puertos con una conexión móvil (4G o 5G).
 
-- Algunos proveedores de internet no ofrecen direcciones IPv4 dedicadas a tu conexión (CGNAT), por lo que puede que no sea posible redirigir puertos, aunque la opción esté disponible en el router.
-- No es posible redirigir puertos si usas una conexión a internet móvil (4G/5G).
+### Veo mi servidor en la lista, pero yo no puedo unirme
 
----
-### **Veo mi servidor autoalojado en la lista de servidores, pero yo no puedo unirme**
+Si el servidor se ejecuta en el mismo ordenador que el juego, únete con **Conexión directa**, usando la dirección IP `127.0.0.1` y el puerto de tu servidor.
 
-Si el servidor se ejecuta en el mismo equipo que el juego, tú tienes que unirte mediante Conexión directa, con la IP 127.0.0.1 y el puerto de tu servidor.
-Para poder unirte a tu propio servidor autoalojado desde la lista de servidores, tu router tiene que ser compatible con NAT loopback, una función que no muchos routers domésticos admiten.
+Para unirte a tu propio servidor autoalojado a través de la lista de servidores, tu router tiene que ser compatible con NAT loopback. No muchos routers domésticos lo son.
 
----
-## **Varios**
+## Otras preguntas
 
----
-### **¿Dónde puedo encontrar el código?**
+<!--@include: ../_parts/faq-code-and-bugs.md-->
 
-Todo el código fuente está disponible en nuestro [GitHub](https://github.com/BeamMP).
-Antes de hacer nada, ten en cuenta que el código está sujeto a nuestros [Términos de uso](https://forum.beammp.com/t/terms-of-use-v1-0/43) y a las siguientes licencias:
+### Mi AuthKey se ha visto comprometida, ¿qué debo hacer?
 
-|   Código   | Licencia                                                                   |
-|------------|:--------------------------------------------------------------------------:|
-| Servidor   | [LICENSE](https://github.com/BeamMP/BeamMP-Server/blob/master/LICENSE)     |
-| Launcher   | [LICENSE](https://github.com/BeamMP/BeamMP-Launcher/blob/master/README.md) |
-| Lua del cliente | [LICENSE](https://github.com/BeamMP/BeamMP/blob/development/LICENSE.md) |
-
----
-### **He encontrado un error o una vulnerabilidad, ¿qué debo hacer?**
-
-Si el problema está relacionado con el código y sabes usar GitHub, crea un nuevo "Issue" en el repositorio correspondiente de nuestro [GitHub](https://github.com/BeamMP). Usamos un flujo de trabajo basado en issues, así que, aunque ya tengas una solución para el error, te recomendamos abrir un nuevo "Issue" y después enviar un "Pull Request" que lo resuelva. Encontrarás más información sobre cómo contribuir [aquí](https://github.com/BeamMP/BeamMP/blob/development/CONTRIBUTING.md).
-
-Si no tienes una cuenta de GitHub o no sabes usarlo, puedes ponerte en contacto con nosotros de las siguientes maneras:
-
-- Si no se trata de algo sensible, puedes crear una publicación en nuestro [foro de BeamMP](https://forum.beammp.com) o informar de ello en nuestro [Discord oficial](https://discord.gg/beammp).
-- Si la información es sensible, puedes informar directamente a un miembro del Staff en nuestro [Discord](https://discord.gg/beammp).
-
----
-
-### **Mi AuthKey se ha visto comprometida, ¿qué debo hacer?**
-
-Si crees que una de tus AuthKeys se ha visto comprometida, crea un ticket de **Account Support** a través de nuestro [Discord](https://discord.gg/beammp).
+Si crees que una de tus AuthKeys se ha visto comprometida, crea un ticket de **Account Support** en [Discord](https://discord.gg/beammp).
