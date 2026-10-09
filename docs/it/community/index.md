@@ -1,17 +1,38 @@
 ---
 sidebar: false
+description: "Dove trovare la community di BeamMP: il forum, Discord, YouTube, X, Reddit, Bluesky e gli altri canali social, e dove leggere le regole della community."
 ---
-::: warning Questo sito è ancora in costruzione
-Questo sito è in fase di lavorazione.
+# Comunità
 
-Pensi di poter aiutare? Puoi farlo cliccando sulla pagina con la matita in alto a destra!
+![Logo di BeamMP](../../assets/content/BeamMP-Multi-WhtLtr-crop.png){.only-dark width="450"}
+![Logo di BeamMP](../../assets/content/BeamMP-Multi-BlkLtr-crop.png){.only-light width="450"}
 
-Puoi contribuire a qualsiasi pagina.
-:::
+BeamMP è una community di giocatori, proprietari di server e sviluppatori. Qui puoi trovarci.
 
-# Benvenuto nell'area dedicata alla comunità di BeamMP
+## Parla con noi
 
-## Introduzione
+- [Forum](https://forum.beammp.com): domande, guide, annunci sui server e thread di supporto.
+- [Discord](https://discord.gg/beammp): chat, il canale `#support` e ticket di supporto per i server.
+
+## Seguici
+
+- [YouTube](https://www.youtube.com/@BeamMPOfficial)
+- [X](https://x.com/BeamMPOfficial)
+- [Bluesky](https://bsky.app/profile/beammp.com)
+- [Reddit](https://www.reddit.com/r/BeamMP)
+- [Twitch](https://www.twitch.tv/beammpofficial)
+- [Instagram](https://www.instagram.com/beammpofficial)
+- [TikTok](https://www.tiktok.com/@beammpofficial)
+- [Facebook](https://www.facebook.com/BeamMPTeam)
+
+## Sostieni il progetto
+
+Chi sostiene il progetto su [Patreon](https://www.patreon.com/c/BeamMP) ottiene l'accesso anticipato e chiavi server extra. Consulta le [FAQ del giocatore](/it/players/faq) per scoprire come funziona.
+
+## Costruisci con noi
+
+Il codice è su [GitHub](https://github.com/BeamMP). Per aiutare con questa documentazione, consulta [Contribuire](/it/community/contributing).
 
 ## Le nostre regole
-Le nostre regole possono essere trovate [qui](rules.md).
+
+Leggi le [regole della community](/it/community/rules) prima di partecipare.
