@@ -1,50 +1,53 @@
-# Come creare esclusioni in Windows Defender Firewall e nell'antivirus?
+---
+description: "Crea esclusioni in Windows Defender Firewall e nell'antivirus perché il Launcher e il server di BeamMP non vengano bloccati: prima le regole del firewall, poi un'esclusione antivirus."
+---
+# Esclusioni Defender / Firewall
 
-:::: info
-Prima di modificare il firewall, assicurati che la tua rete sia impostata come privata nelle impostazioni di rete di Windows (supponendo che tu ti trovi in una rete privata).
+Questa guida mostra come creare esclusioni in Windows Defender Firewall e nell'antivirus per il Launcher e il server di BeamMP.
 
-::: danger LIMITAZIONE DI RESPONSABILITÀ:
-**Le esclusioni del firewall / di Defender comportano dei rischi**.
+Prima di modificare il firewall, se ti trovi in una rete privata, assicurati che la tua rete sia impostata come **privata** nelle impostazioni di rete di Windows.
 
-Creando delle esclusioni, sei consapevole dei rischi legati al consentire l'accesso ai programmi sul tuo PC e all'aprire le porte della tua rete domestica al pubblico, e di conseguenza rinunci al diritto di ritenere BeamMP responsabile di **qualsiasi** danno che potrebbe derivare a te o al tuo nucleo familiare.
+::: danger Le esclusioni comportano dei rischi
+Creando delle esclusioni, sei consapevole dei rischi legati al consentire l'accesso ai programmi sul tuo computer e all'aprire le porte della tua rete domestica al pubblico. Di conseguenza rinunci al diritto di ritenere BeamMP responsabile di qualsiasi danno che potrebbe derivare a te o al tuo nucleo familiare.
 
 Non ci assumiamo alcuna responsabilità per i contenuti di servizi o siti web esterni collegati.
 :::
-::::
 
-## 1. Esclusione nel Defender Firewall per BeamMP-Launcher.
+## Consenti al Launcher di passare attraverso il firewall
 
-1. Apri `Windows Defender Firewall con sicurezza avanzata`.
-2. Nella finestra, fai clic su `Regole connessioni in entrata` per aprire la scheda delle esclusioni in entrata.
-3. Fai clic su `Nuova regola` in alto a destra per creare una nuova esclusione.
-4. Seleziona `Programma` per creare un'esclusione specifica per un programma.
-5. Inserisci il percorso completo di `BeamMP-Launcher.exe`. Quello predefinito è `%appdata%\BeamMP-Launcher\BeamMP-Launcher.exe` (senza virgolette).
-6. Assicurati di consentire la connessione
-7. Assegna un nome all'esclusione (ad esempio "BeamMP-Launcher") e salvala.
-9. Riavvia il PC.
+1. Apri **Windows Defender Firewall con sicurezza avanzata**.
+2. Fai clic su **Regole connessioni in entrata**.
+3. Fai clic su **Nuova regola** in alto a destra.
+4. Seleziona **Programma** per creare una regola per un programma.
+5. Inserisci il percorso completo di `BeamMP-Launcher.exe`. Quello predefinito è `%appdata%\BeamMP-Launcher\BeamMP-Launcher.exe`, senza virgolette.
+6. Scegli di consentire la connessione.
+7. Assegna un nome alla regola, ad esempio "BeamMP-Launcher", e salvala.
+8. Riavvia il computer.
 
-## 1.1 Esclusione nel Defender Firewall per BeamMP-Server.
+## Consenti al server di passare attraverso il firewall
 
-1. Apri `Windows Defender Firewall con sicurezza avanzata`.
-2. Nella finestra, fai clic su `Regole connessioni in entrata` per aprire la scheda delle esclusioni in entrata.
-3. Fai clic su `Nuova regola` in alto a destra per creare una nuova esclusione.
-4. Seleziona `Porta` per creare un'esclusione specifica per una porta.
-5. Inserisci la stessa porta indicata in ServerConfig.toml.
+1. Apri **Windows Defender Firewall con sicurezza avanzata**.
+2. Fai clic su **Regole connessioni in entrata**.
+3. Fai clic su **Nuova regola** in alto a destra.
+4. Seleziona **Porta** per creare una regola per una porta.
+5. Inserisci la stessa porta indicata nel tuo `ServerConfig.toml`.
 6. Inserisci il percorso completo di `BeamMP-Server.exe`. Il file si trova dove l'hai posizionato dopo averlo scaricato.
-7. Assicurati di consentire la connessione
-8. Assegna un nome all'esclusione (ad esempio "BeamMP-Server") e salvala.
-9. Riavvia il PC.
+7. Scegli di consentire la connessione.
+8. Assegna un nome alla regola, ad esempio "BeamMP-Server", e salvala.
+9. Riavvia il computer.
 
-## 2. Esclusione nell'antivirus Defender per BeamMP-Launcher/Server.
+## Aggiungi un'esclusione nell'antivirus
 
-1. Apri l'app `Sicurezza di Windows`.
-2. Fai clic sulla prima voce, `Protezione da virus e minacce`.
-3. Fai clic su `Gestisci impostazioni` sotto "Impostazioni di Protezione da virus e minacce".
-4. Scorri fino alla sezione `Esclusioni`.
-5. Lì, fai clic su "Aggiungi un'esclusione" e seleziona `Processo`.
-6. Inserisci `BeamMP-Launcher.exe` o `BeamMP-Server.exe` nel campo e salva.
-7. Riavvia il PC.
+Vale sia per il Launcher sia per il server.
+
+1. Apri l'app **Sicurezza di Windows**.
+2. Fai clic su **Protezione da virus e minacce**.
+3. Sotto **Impostazioni di Protezione da virus e minacce**, fai clic su **Gestisci impostazioni**.
+4. Scorri fino a **Esclusioni**.
+5. Fai clic su **Aggiungi o rimuovi esclusioni**, poi su **Aggiungi un'esclusione** e seleziona **Processo**.
+6. Inserisci `BeamMP-Launcher.exe` o `BeamMP-Server.exe` e salva.
+7. Riavvia il computer.
 
 ## Hai ancora problemi?
 
-Apri una discussione sul [Forum](https://forum.beammp.com) o sul nostro [server Discord](https://discord.gg/beammp) nel canale `#support`.
+Apri una discussione sul [forum](https://forum.beammp.com), oppure chiedi nel canale `#support` del [server Discord](https://discord.gg/beammp).

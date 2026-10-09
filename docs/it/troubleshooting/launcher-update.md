@@ -1,20 +1,19 @@
-# Problema
+---
+description: "Aggiorna a mano il Launcher di BeamMP su Windows quando non riesce ad aggiornarsi da solo o mostra una schermata vuota: scarica l'ultimo Launcher e sostituisci quello vecchio."
+---
+# Problemi di aggiornamento del Launcher
 
-Il Launcher non riesce ad aggiornarsi o mostra una schermata vuota?
-Questa breve guida spiega come aggiornare manualmente il Launcher.
+Il Launcher non riesce ad aggiornarsi o mostra una schermata vuota? Questa guida spiega come aggiornarlo a mano.
 
-::: note
-Prima di continuare, dovresti aver già usato o installato BeamMP tramite l'installer fornito dal [nostro sito web](https://beammp.com).
-:::
+Prima di seguirla, dovresti aver già installato BeamMP con l'installer disponibile sul [nostro sito web](https://beammp.com).
 
-# Scaricare e installare un nuovo Launcher
+## Installa un nuovo Launcher
 
-1. Scarica direttamente l'ultimo Launcher da [GitHub](https://github.com/BeamMP/BeamMP-Launcher/releases/latest/download/BeamMP-Launcher.exe).
-2. Vai alla cartella di BeamMP-Launcher.exe. Per impostazione predefinita, questa cartella si trova in ```C:\Users\<username>\AppData\Roaming\``` . Sostituisci `<username>` con il nome utente del tuo account Windows.
-Se hai installato BeamMP altrove, ad esempio in ```D:\BeamMP-Launcher```, inserisci il Launcher nella rispettiva cartella BeamMP-Launcher.
-4. Se necessario, sostituisci il Launcher esistente con quello nuovo nella cartella BeamMP-Launcher.
-5. Avvia BeamMP-Launcher come al solito per verificare se funziona.
+1. Scarica l'ultimo Launcher direttamente da [GitHub](https://github.com/BeamMP/BeamMP-Launcher/releases/latest/download/BeamMP-Launcher.exe).
+2. Vai alla cartella che contiene `BeamMP-Launcher.exe`. Per impostazione predefinita è `C:\Users\<username>\AppData\Roaming\`. Sostituisci `<username>` con il nome utente del tuo account Windows. Se hai installato BeamMP altrove, ad esempio in `D:\BeamMP-Launcher`, usa quella cartella.
+3. Sostituisci il Launcher esistente nella cartella BeamMP-Launcher con quello nuovo.
+4. Avvia il Launcher come al solito e verifica che funzioni.
 
 ## Hai ancora problemi?
+
 Crea un ticket di supporto sul nostro [server Discord](https://discord.gg/BeamMP).
-Tag: Launcher, download,

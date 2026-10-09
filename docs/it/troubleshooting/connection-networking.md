@@ -1,15 +1,25 @@
-# Come posso trovare l'IP del mio server?
+---
+description: "Risolvi i problemi di connessione a BeamMP: trova l'indirizzo IP del tuo server, verifica con CheckBeamMP che la porta sia aperta e controlla se sei dietro un CGNAT."
+---
+# Problemi di connessione / rete
 
-## Per i server ospitati su VPS
-Se ospiti un server con uno dei nostri servizi di hosting partner, l'IP è riportato nella rispettiva interfaccia di gestione del server.
-Puoi trovare l'IP dei tuoi server anche sul sito [Keymaster](https://keymaster.beammp.com/login).
+Usa questa pagina quando tu o i tuoi giocatori non riuscite a connettervi a un server BeamMP.
 
-## Per i server ospitati a casa
-Per i server ospitati a casa, apri [whatsmyip.org](https://whatsmyip.org) in un browser.
-Verrà mostrato l'indirizzo IPv4 pubblico con cui sei raggiungibile da Internet.
+## Trova l'indirizzo IP del tuo server
 
-Nota che 127.0.0.1 è l'indirizzo localhost e può essere usato solo da te, se il server è ospitato sullo stesso computer.
-Se hai ancora problemi di connessione con il tuo server ospitato a casa, controlla anche il [port forwarding](https://docs.beammp.com/server/port-forwarding/) e usa CheckBeamMP
+### Un server presso un'azienda di hosting
+
+L'indirizzo IP è riportato nell'interfaccia di gestione del server dell'azienda di hosting. Puoi trovare l'indirizzo IP dei tuoi server anche sul sito [Keymaster](https://keymaster.beammp.com/login).
+
+### Un server a casa
+
+Apri [whatsmyip.org](https://whatsmyip.org) in un browser. Mostra l'indirizzo IPv4 pubblico con cui sei visibile da Internet.
+
+`127.0.0.1` è l'indirizzo localhost. Solo tu puoi usarlo, e solo se il server è in esecuzione sullo stesso computer del gioco.
+
+## Verifica che la tua porta sia aperta
+
+Se hai ancora problemi di connessione con un server ospitato a casa, controlla il [reindirizzamento delle porte](/it/server-owners/port-forwarding), poi provalo con CheckBeamMP mentre il server è in esecuzione:
 
 <form action="https://check.beammp.com/api/v2/beammp" method="get" target="_blank">
   <label for="ip">Indirizzo IP:</label>
@@ -19,8 +29,12 @@ Se hai ancora problemi di connessione con il tuo server ospitato a casa, control
   <input type="submit" value="CheckBeamMP">
 </form>
 
-## Come verificare la presenza di CGNAT?
-Dai un'occhiata a [questa pagina](https://docs.beammp.com/FAQ/How-to-check-for-CGNAT/) per stabilire se puoi ospitare un server a casa oppure no.
+## Verifica la presenza di CGNAT
 
+Alcuni provider Internet rendono difficile reindirizzare le porte. [Verifica la presenza di CGNAT](/it/server-owners/cgnat) per scoprire se puoi ospitare un server a casa.
 
-Tag: IP, Server, Connessione non riuscita, 10060/10061
+## Altri problemi di connessione
+
+- Il Launcher mostra i codici di errore 10060 o 10061: consulta i [Codici di errore](/it/troubleshooting/error-codes).
+- Il Launcher non si connette al gioco: consulta [Cambiare la porta del Launcher](/it/troubleshooting/launcher-port).
+- Un firewall o un antivirus potrebbe bloccare BeamMP: consulta [Esclusioni Defender / Firewall](/it/troubleshooting/defender-exclusions).
