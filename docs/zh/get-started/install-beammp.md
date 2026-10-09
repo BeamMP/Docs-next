@@ -1,176 +1,147 @@
-# 入门
+---
+description: "在 Windows 上使用安装程序安装 BeamMP，或在 Linux 上自行编译 BeamMP 启动器（可使用或不使用 Proton）。"
+---
+# 安装 BeamMP
 
-## **1. 兼容性**
-
-BeamMP与Windows和Linux完全兼容，与MacOS的兼容性正在研究中。然而，Linux和MacOS都是次要平台，这意味着bug在所难免。
+你需要 BeamMP 启动器。在 Windows 上，安装程序会为你完成安装；在 Linux 上，你需要自己编译。
 
 ::: warning
-BeamMP将无法与盗版或过时版本的BeamNG.drive一起工作。
-BeamMP支持团队不提供盗版/过期副本问题的支持。
+BeamMP 无法在盗版或过时的 BeamNG.drive 上运行。
 :::
-```
 
----
+## 在 Windows 上安装
 
-## **2. 安装**
+1. 前往 [beammp.com](https://beammp.com/)，点击 **Download Now**。
+2. 运行 `BeamMP_Installer.exe`，并按照提示操作。
+3. BeamMP 启动器的图标会出现在你的桌面上。如果没有出现，请在 Windows 搜索栏中搜索“BeamMP”。
 
-### **2a. Windows 安装**
+下一步：[加入你的第一个服务器](/zh/get-started/join-first-server)。
 
-::: note
+## 在 Linux 上安装 {#install-on-linux}
 
-截至 2026 年 4 月 1 日，Windows Defender SmartScreen 会将该 MSI 安装程序识别为“未知应用”。
+Linux 目前还没有安装程序，所以你需要自己编译启动器。你需要对如何编译应用程序有基本的了解。
 
-若要跳过此警告，请点击“更多信息”，然后点击“仍要运行”。
-```
+### 安装编译工具
 
-1. 前往 [beammp.com](https://beammp.com/) 然后点击“下载”按钮
-2. 运行 `BeamMP_Installer.msi`安装程序并按照提示进行操作。
-3. BeamMP启动器的图标应该会出现在您的桌面上。如果没有出现，只需在 Windows 搜索栏中搜索“BeamMP”即可。
+安装基本的开发工具。在大多数系统上，它们都包含在某个软件包中：
 
-::: note
-当你加载到一个有多个车辆的地图时，它可能需要比预期更长的时间才能加入。
+| 系统 | 命令 |
+|---|---|
+| Debian、Ubuntu | `sudo apt install build-essential` |
+| Fedora | `sudo dnf install cmake gcc gcc-c++ make perl perl-IPC-Cmd perl-FindBin perl-File-Compare perl-File-Copy kernel-headers kernel-devel` |
+| Arch | `sudo pacman -S base-devel` |
+| openSUSE | `zypper in -t pattern devel-basis` |
+| SteamOS (Arch) | `sudo pacman -S base-devel linux-api-headers glibc libconfig` |
+
+::: info SteamOS
+安装软件包之前，请先运行 `sudo steamos-readonly disable`，安装完成后再将其重新启用。
 :::
-```
 
-### **2b. Linux 安装**
+### 获取 vcpkg
 
-目前您需要自己编译Launcher。为了做到这一点，您需要对如何编译应用程序有一个基本的了解。
+克隆 `vcpkg`，对其执行引导脚本，并将其加入你的 `PATH`：
 
-确保你已经安装了基本的开发工具，通常可以在包中找到，例如：
+1. 克隆它：
+   ```bash
+   git clone https://github.com/microsoft/vcpkg.git
+   ```
+2. 执行引导脚本：
+   ```bash
+   ./vcpkg/bootstrap-vcpkg.sh
+   ```
+3. 将它加入你的 `PATH`：
+   ```bash
+   export VCPKG_ROOT="$(pwd)/vcpkg"
+   export PATH=$VCPKG_ROOT:$PATH
+   ```
+### 编译启动器 {#build-the-launcher}
 
-- Debian/Ubuntu: `sudo apt install build-essential`
-- Fedora: `sudo dnf install cmake gcc gcc-c++ make perl perl-IPC-Cmd perl-FindBin perl-File-Compare perl-File-Copy kernel-headers kernel-devel`
-- Arch: `sudo pacman -S base-devel`
-- openSUSE: `zypper in -t pattern devel-basis`
-- SteamOS (Arch): `sudo pacman -S base-devel linux-api-headers glibc libconfig` (You also need to do `sudo steamos-readonly disable` but make sure to enable it again after installing the packages)
+1. 克隆 [BeamMP-Launcher](https://github.com/BeamMP/BeamMP-Launcher) 仓库，然后进入该目录：
+   ```bash
+   git clone https://github.com/BeamMP/BeamMP-Launcher.git
+   cd BeamMP-Launcher
+   ```
+   如果你以前没有克隆过仓库，请参阅 GitHub 的[克隆仓库](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository)指南。
 
-克隆 `vcpkg` 仓库，执行引导脚本并加入系统路径
+2. 检出[最新发布版本](https://github.com/BeamMP/BeamMP-Launcher/releases/latest)的标签。如果最新版本是 `v2.8.0`，请运行：
+   ```bash
+   git checkout v2.8.0
+   ```
+3. 在项目的根目录中，配置编译：
+   ```bash
+   cmake . -B bin -DCMAKE_TOOLCHAIN_FILE=$VCPKG_ROOT/scripts/buildsystems/vcpkg.cmake -DVCPKG_TARGET_TRIPLET=x64-linux
+   ```
+4. 开始编译：
+   ```bash
+   cmake --build bin --parallel
+   ```
+5. 将编译好的应用程序从 `bin` 中移出，放到它自己的文件夹里，并从该文件夹运行：
+   ```bash
+   mkdir -p ~/beammp-launcher
+   cp bin/BeamMP-Launcher ~/beammp-launcher/
+   cd ~/beammp-launcher
+   ./BeamMP-Launcher
+   ```
+原生 Linux 版启动器会启动，并使用原生 Linux 版 BeamNG.drive。
 
-1.
-
-```bash
-git clone https://github.com/microsoft/vcpkg.git
-```
-
-1.
-
-```bash
-./vcpkg/bootstrap-vcpkg.sh
-```
-
-1.
-
-```bash
-export VCPKG_ROOT="$(pwd)/vcpkg"
-export PATH=$VCPKG_ROOT:$PATH
-```
-
-使用`git`将BeamMP-Launcher仓库克隆至本地，操作示例如下：`git clone https://github.com/BeamMP/BeamMP-Launcher.git`。[查看GitHub仓库克隆操作完整指南](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository)
-
-如果你使用了我们提供的示例克隆命令，你可以使用以下命令进入项目的根目录：  <br>`cd BeamMP-Launcher`
-
-查看用于 [最新发布版本](https://github.com/BeamMP/BeamMP-Launcher/releases/latest) 的标签（Tag）。例如，如果最新版本使用的是 `v2.8.0`，则执行命令：`git checkout v2.8.0`
-
-在项目的根目录中，
-
-1.
-
-```cmake
-cmake . -B bin -DCMAKE_TOOLCHAIN_FILE=$VCPKG_ROOT/scripts/buildsystems/vcpkg.cmake -DVCPKG_TARGET_TRIPLET=x64-linux
-```
-
-1.
-
-```cmake
-cmake --build bin --parallel
-```
-
-::: note
-如果在编译时内存耗尽，可以提交——parallel指令，由于只在一个CPU线程上编译，它将使用更少的RAM。
+::: tip 内存不足？
+去掉 `--parallel`。这样编译只会使用一个 CPU 线程，占用的内存也更少。
 :::
-```
 
-::: note
+::: info 调试版本
+如果不加 `-DCMAKE_BUILD_TYPE=Release`，编译出来的就是调试版本。它的体积更大，但不存在启动器只能连接一次服务器的 bug。
+:::
 
-通过不指定‘ -DCMAKE_BUILD_TYPE=Release ’，您正在编译一个调试版本，该版本的文件大小较大，但不包含launcher-can-only-connect-to- server-once错误
-```
-
-:::注意 "Fedora 用户" 如果 vcpkg 在编译 OpenSSL 时因内核头文件（kernel headers）错误而失败，请确保已安装所有依赖项: `bash sudo dnf install kernel-headers kernel-devel gcc gcc-c++ make perl ` 然后清理 vcpkg 缓存：`bash rm -rf $VCPKG_ROOT/buildtrees/openssl `最后重新运行 cmake 配置命令。
-
-将已编译完成的应用程序从`/bin`移出，放到它自己的文件夹中，然后从该文件夹运行它：
-
+::: details Fedora：vcpkg 在编译 OpenSSL 时失败
+如果 vcpkg 在编译 OpenSSL 时因内核头文件错误而失败，请确保已安装以下依赖项：
 ```bash
-mkdir -p ~/beammp-launcher
-cp bin/BeamMP-Launcher ~/beammp-launcher/
-cd ~/beammp-launcher
-./BeamMP-Launcher
+sudo dnf install kernel-headers kernel-devel gcc gcc-c++ make perl
 ```
-
-原生的 Linux 版 BeamMP 启动器将会启动，并使用原生的 Linux 版 BeamNG.drive。
-
-### **2c. 在Proton兼容层上游玩BeamNG.drive**
-
-若您需要在Proton环境运行BeamNG.drive时同步使用原生Linux版BeamMP启动器，可通过以下方案实现：
-
-使用`--no-launch`参数运行BeamMP-Launcher（此参数将阻止启动器唤起原生Linux版BeamNG.drive）。更多启动器参数详解请参阅[开发环境配置指南](/zh/developers/dev-environment-setup)
-
-将Proton-BeamNG.drive的用户文件夹路径指向Linux-BeamNG.drive的位置（因原生Linux版BeamMP-Launcher当前仅支持向Linux-BeamNG.drive用户文件夹写入数据）
-
-例如，您可以通过创建符号链接实现该配置
-
-- 记录Linux-BeamNG.drive用户文件夹路径（通常位于`~/.local/share/BeamNG.drive`），并将其重命名为类似`BeamNG.drive_old`的名称
-- 记录Proton-BeamNG.drive用户文件夹路径（通常位于`~/.local/share/Steam/steamapps/compatdata/284160/pfx/drive_c/users/steamuser/AppData/Local/BeamNG.drive`）
-- 建立双端用户文件夹的符号链接桥接 `ln -s ~/.local/share/Steam/steamapps/compatdata/284160/pfx/drive_c/users/steamuser/AppData/Local/BeamNG.drive ~/.local/share`
-
-当用户文件夹间符号链接就绪且启动器完成编译后，可通过调整Steam启动参数实现：既让Steam通过Proton运行游戏，又能自动触发启动器执行。请前往Steam库中该游戏的属性设置界面，替换原版游戏启动参数为下方配置模板：
-
-- `~/BeamMP/BeamMP-Launcher --no-launch & %command% ; killall BeamMP-Launcher`
-
-请注意：此配置默认假设您已将编译完成的启动器二进制文件存放于`/home/user/BeamMP/`。请根据实际二进制文件存放路径调整配置，且每次启动器版本更新时需切换至官方Git仓库对应分支重新执行编译流程。
-
-::: 提示 "安装表情符号字体实现文本内嵌表情"
-
-```
-若需在服务器列表（作为服务器自定义名称组成部分）或游戏内聊天中显示表情符号，您需部署包含表情符号的字形库。例如，可通过安装Windows Segoe UI 表情符号字体的 Linux 移植版实现。
-```
-
-### **2d. 更新启动器**
-
-如果您已经构建了启动器并想要对其进行更新：
-
+然后清理 vcpkg 缓存，并重新运行配置命令：
 ```bash
-export VCPKG_ROOT="$(pwd)/vcpkg"
-cd BeamMP-Launcher
-git fetch --tags
+rm -rf $VCPKG_ROOT/buildtrees/openssl
 ```
+:::
 
-检出用于 [最新发布版本](https://github.com/BeamMP/BeamMP-Launcher/releases/latest) 的标签。例如，如果最新版本使用的是 `v2.8.0`，则执行 `git checkout v2.8.0`。
+### 通过 Proton 运行 BeamNG.drive
 
-```
-cmake . -B bin -DCMAKE_TOOLCHAIN_FILE=$VCPKG_ROOT/scripts/buildsystems/vcpkg.cmake -DVCPKG_TARGET_TRIPLET=x64-linux
-cmake --build bin --parallel
-cp bin/BeamMP-Launcher ~/beammp-launcher/
-cd ~/beammp-launcher
-./BeamMP-Launcher
-```
+你可以将原生 Linux 版启动器与通过 Proton 运行的 BeamNG.drive 搭配使用。
 
----
+1. 使用 `--no-launch` 启动启动器，这样它就不会启动原生 Linux 版 BeamNG.drive。更多启动器参数请参阅[开发环境设置](/zh/developers/dev-environment-setup)页面。
+2. 让 Proton 版游戏使用 Linux 版游戏的用户文件夹，因为原生启动器只会写入该文件夹。可以用符号链接来实现：
+   1. 找到 Linux 版 BeamNG.drive 的用户文件夹，通常是 `~/.local/share/BeamNG/BeamNG.drive`，并将其重命名，例如改为 `BeamNG.drive_old`。
+   2. 找到 Proton 版 BeamNG.drive 的用户文件夹，通常是 `~/.local/share/Steam/steamapps/compatdata/284160/pfx/drive_c/users/steamuser/AppData/Local/BeamNG/BeamNG.drive`。
+   3. 将两者链接起来：
+      ```bash
+      ln -s ~/.local/share/Steam/steamapps/compatdata/284160/pfx/drive_c/users/steamuser/AppData/Local/BeamNG/BeamNG.drive ~/.local/share/BeamNG
+      ```
+3. 在 Steam 中打开游戏的**属性**，并将启动选项替换为：
+   ```bash
+   ~/BeamMP/BeamMP-Launcher --no-launch & %command% ; killall BeamMP-Launcher
+   ```
+   这样 Steam 在启动游戏的同时就会启动启动器。
 
-## **3. 使用BeamMP**
+请把 `~/BeamMP/` 改成你存放所编译启动器的文件夹。每次启动器发布新版本时，你都必须从正确的 git 标签重新编译启动器。
 
-1. 启动程序后，您应该会看到一个终端窗口。紧接着，标准的 BeamNG 启动程序也会随之启动。**请勿**关闭该终端窗口。
-2. 在 BeamNG.drive 的主菜单中，点击 `Repository（仓库）` 按钮，并检查确认 `multiplayerbeammp` 是 **唯一** 启用的插件（Mod）。
-3. 返回主菜单，点击“More..”和“多人模式”按钮开始多人模式。
-4. 系统将提示您登录或以访客身份游玩（并非所有服务器都允许访客）。您可以在我们的[论坛](https://forum.beammp.com)上创建一个帐户，然后使用相同的凭据登录BeamMP。
-5. 选择您感兴趣的任何服务器，然后点击`连接` 。尽情享受吧！
+::: tip 名称和聊天中的表情符号
+要在服务器列表的服务器名称以及游戏内聊天中显示表情符号，你需要一款包含表情符号的字体。一个可行的选择是 [Windows Segoe UI 表情符号字体的 Linux 移植版](https://github.com/mrbvrz/segoe-ui-linux)。
+:::
 
----
+### 在 Linux 上更新启动器
 
-## **4. 已知问题**
-
-- 当前原生Linux版BeamMP启动器存在单会话限制：成功连接服务器并断开后需重启启动器。可通过热重载方案实现不关闭游戏进程的快速重启
-- 若未显示多人游戏按钮，请确认以下操作：<br>检查BeamMP模组是否已安装并在模组管理器中启用<br>尝试执行热重载快捷键 Ctrl + L
-- 任何类型的vpn都可能导致连接问题。
-- 如果启动器报告任何错误，请阅读[FAQ](https://forum.beammp.com/c/faq/35)。
-
-如果启动器报告任何错误，请阅读[FAQ](https://forum.beammp.com)。
+1. 进入启动器文件夹，并获取新的标签：
+   ```bash
+   export VCPKG_ROOT="$(pwd)/vcpkg"
+   cd BeamMP-Launcher
+   git fetch --tags
+   ```
+2. 与[编译启动器](#build-the-launcher)时一样，检出[最新发布版本](https://github.com/BeamMP/BeamMP-Launcher/releases/latest)的标签。
+3. 重新编译，并将其复制到你的启动器文件夹：
+   ```bash
+   cmake . -B bin -DCMAKE_TOOLCHAIN_FILE=$VCPKG_ROOT/scripts/buildsystems/vcpkg.cmake -DVCPKG_TARGET_TRIPLET=x64-linux
+   cmake --build bin --parallel
+   cp bin/BeamMP-Launcher ~/beammp-launcher/
+   cd ~/beammp-launcher
+   ./BeamMP-Launcher
+   ```
+下一步：[加入你的第一个服务器](/zh/get-started/join-first-server)。
