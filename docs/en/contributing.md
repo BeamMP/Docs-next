@@ -18,7 +18,7 @@ If this is the approach you wish to take then please follow these steps:
 2. Fork the project into your own GitHub account.
 3. Make the changes you see fit.
 4. Commit your changes to your fork.
-5. Raise a pull request against our repository [here](https://github.com/BeamMP/Docs-next).
+5. Raise a pull request against our repository [here](https://github.com/__repo__).
 
 Once you have created your pull request one of the BeamMP Mod Team will review your Pull Request and either approve it or request some changes.
 If changes were requested and you have completed them we will re-review your Pull Request.
@@ -35,7 +35,7 @@ Editing our docs this way will still take a similar approach as in option 1 howe
 5. Run `mkdocs serve` to start the live-reloading docs server from where you cloned the fork to.
 6. Make the changes that you see fit.
 7. Commit your changes to your fork.
-8. Raise a pull request against our repository [here](https://github.com/BeamMP/Docs-next).
+8. Raise a pull request against our repository [here](https://github.com/__repo__).
 
 
 ## Project layout

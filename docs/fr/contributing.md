@@ -18,7 +18,7 @@ Si vous choisissez cette méthode, suivez les étapes suivantes :
 2. Faites un **fork** du dépôt et ajoutez-le à votre propre compte GitHub.
 3. Effectuez les modifications que vous jugez nécessaires.
 4. Vérifiez les modifications apportées par votre fork.
-5. Créez une **Pull Request** afin de proposer vos changements au dépôt principal : [BeamMP/Docs-next sur GitHub](https://github.com/BeamMP/Docs-next).
+5. Créez une **Pull Request** afin de proposer vos changements au dépôt principal : [@repo@ sur GitHub](https://github.com/__repo__).
 
 Une fois votre Pull Request créée, un membre de l'équipe de modération de BeamMP examinera vos modifications.
 
@@ -47,7 +47,7 @@ mkdocs serve
 
 6. Effectuez les modifications que vous souhaitez apporter.
 7. Vérifiez le résultat directement dans votre navigateur.
-8. Une fois satisfait, créez une **Pull Request** vers le dépôt principal : [BeamMP/Docs-next sur GitHub](https://github.com/BeamMP/Docs-next).
+8. Une fois satisfait, créez une **Pull Request** vers le dépôt principal : [@repo@ sur GitHub](https://github.com/__repo__).
 
 Cette méthode est particulièrement recommandée pour les modifications importantes ou lorsqu'une page contient beaucoup de formatage Markdown, de code ou de composants Material for MkDocs.
 

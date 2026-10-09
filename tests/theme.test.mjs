@@ -35,3 +35,22 @@ test('the top menu is dropped below 1280px and the controls move into the "..." 
   assert.match(css, /@media \(min-width: 768px\) and \(max-width: 1279px\) \{\s*\.VPNavBarMenu \{\s*display: none !important;/)
   assert.match(css, /@media \(min-width: 1280px\) and \(max-width: 1699px\) \{\s*\.VPNavBarExtra \{\s*display: block !important;/)
 })
+
+test('the repository is named in one place, site.ts, and nowhere else in the site', () => {
+  const docs = path.join(themeDir, '..', '..')
+  const found = []
+  const walk = (dir) => {
+    for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+      const full = path.join(dir, entry.name)
+      if (entry.isDirectory()) {
+        if (!['dist', 'cache', 'node_modules', 'public'].includes(entry.name)) walk(full)
+      } else if (/\.(md|mts|ts|vue|json)$/.test(entry.name) && entry.name !== 'site.ts') {
+        const text = fs.readFileSync(full, 'utf8')
+        if (/github\.com\/beammp\/docs/i.test(text) || /BeamMP\/Docs(-next)?(?![\w-])/.test(text)) found.push(path.relative(docs, full))
+      }
+    }
+  }
+  walk(docs)
+  assert.deepEqual(found, [], 'write https://github.com/__repo__ or @repo@ instead, so site.ts is the only place to change')
+  assert.match(fs.readFileSync(path.join(themeDir, '..', 'site.ts'), 'utf8'), /export const REPO = '[\w-]+\/[\w-]+'/)
+})

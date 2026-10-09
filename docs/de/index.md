@@ -15,7 +15,7 @@ hero:
       link: /de/get-started/index
     - theme: alt
       text: View on GitHub
-      link: https://github.com/BeamMP/Docs-next
+      link: https://github.com/__repo__
 
 features:
   - icon:

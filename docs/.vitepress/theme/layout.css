@@ -487,3 +487,80 @@ body {
     transform: none;
   }
 }
+
+/* ------------------------------------------------- repository card in the header */
+
+.bm-repo {
+  display: none;
+  align-items: center;
+  gap: 10px;
+  margin-left: 12px;
+  padding: 4px 8px;
+  border-radius: var(--radius-md);
+  color: var(--foreground);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background-color 0.15s ease;
+}
+
+.bm-repo:hover {
+  background-color: var(--accent);
+}
+
+.bm-repo__mark {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+}
+
+.bm-repo__text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+}
+
+.bm-repo__name {
+  font-size: 13.5px;
+  font-weight: 600;
+}
+
+.bm-repo__facts {
+  display: flex;
+  gap: 10px;
+  font-size: 12px;
+  color: var(--vp-c-text-2);
+}
+
+.bm-repo__fact {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.bm-repo__fact svg {
+  width: 13px;
+  height: 13px;
+}
+
+/* From tablet width the card is in the header, in full: the top menu is out of the way there. */
+@media (min-width: 768px) {
+  .bm-repo {
+    display: inline-flex;
+  }
+}
+
+/* On a phone it is a row in the menu drawer, with the language and appearance rows. */
+.bm-repo--screen {
+  display: flex !important;
+  margin: 16px 0 0;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background-color: var(--bm-surface);
+}
+
+@media (min-width: 768px) {
+  .bm-repo--screen {
+    display: none !important;
+  }
+}

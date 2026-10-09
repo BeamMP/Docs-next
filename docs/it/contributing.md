@@ -18,7 +18,7 @@ Se questo metodo fa per te, segui questi passi:
 2. Fai una fork del progetto sul tuo account GitHub personale.
 3. Fai le modifiche che vuoi.
 4. Fai commit dei cambiamenti sulla tua fork.
-5. Apri una pull request sul nostro repo [qui](https://github.com/BeamMP/Docs-next).
+5. Apri una pull request sul nostro repo [qui](https://github.com/__repo__).
 
 Una volta creata la pull request, qualcuno del team di BeamMP la controllerà e potrà approvarla o richiedere delle modifiche.
 Nel caso fossero richieste delle correzioni, a seguito del loro completamento ri-controlleremo la pull request.
@@ -35,7 +35,7 @@ La modifica della documentazione in questo modo è molto simile all'opzione 1, m
 5. Esegui `mkdocs serve` per avviare il server per visualizzare l'anteprima live da dove hai clonato la fork.
 6. Fai le modifiche che vuoi.
 7. Fai commit dei cambiamenti sulla tua fork.
-8. Apri una pull request sul nostro repo [qui](https://github.com/BeamMP/Docs-next).
+8. Apri una pull request sul nostro repo [qui](https://github.com/__repo__).
 
 
 ## Layout del progetto

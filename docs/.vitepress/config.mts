@@ -3,6 +3,7 @@ import { tabsMarkdownPlugin } from 'vitepress-plugin-tabs'
 import fs from 'node:fs'
 import path from 'node:path'
 import { redirectPage, redirectPlan } from '../../scripts/lib/redirects.mjs'
+import { HOSTNAME, REPO, REPO_NAME_PLACEHOLDER, REPO_PLACEHOLDER } from './site'
 import container from 'markdown-it-container'
 import type Token from 'markdown-it/lib/token.mjs'
 import enTranslations from '../en/nav-translations.json'
@@ -373,6 +374,15 @@ export default defineConfig({
   },
   rewrites,
   // GitHub Pages cannot redirect, so the old MkDocs addresses get a small page that sends the visitor on.
+  // The "View on GitHub" button on each home page names the repository by placeholder.
+  transformPageData(pageData) {
+    const actions = pageData.frontmatter?.hero?.actions
+    if (Array.isArray(actions)) {
+      for (const action of actions) {
+        if (typeof action.link === 'string') action.link = action.link.replace(REPO_PLACEHOLDER, REPO)
+      }
+    }
+  },
   buildEnd(siteConfig) {
     for (const [file, to] of redirectPlan(siteConfig.pages, siteConfig.rewrites.map)) {
       const target = path.join(siteConfig.outDir, file)
@@ -383,6 +393,21 @@ export default defineConfig({
   markdown: {
     config(md) {
       md.use(tabsMarkdownPlugin)
+
+      // A page writes https://github.com/__repo__ for a link to the repository and @repo@ for its
+      // name; both are filled in from site.ts.
+      md.core.ruler.push('repo-placeholder', (state) => {
+        for (const block of state.tokens) {
+          for (const token of block.children ?? []) {
+            if (token.type === 'link_open') {
+              const href = token.attrGet('href')
+              if (href && href.includes(REPO_PLACEHOLDER)) token.attrSet('href', href.replace(REPO_PLACEHOLDER, REPO))
+            } else if (token.type === 'text' && token.content.includes(REPO_NAME_PLACEHOLDER)) {
+              token.content = token.content.replaceAll(REPO_NAME_PLACEHOLDER, REPO)
+            }
+          }
+        }
+      })
 
       const makeContainer = (type: string, defaultTitle: string) => [
         container,
@@ -414,11 +439,12 @@ export default defineConfig({
   sitemap: {
     // Where the site is served: docs.beammp.dev while this is the preview, and
     // docs.beammp.com once it replaces the live docs.
-    hostname: process.env.DOCS_HOSTNAME || 'https://docs.beammp.dev'
+    hostname: HOSTNAME
   },
   themeConfig: {
+    repo: REPO,
     editLink: {
-      pattern: 'https://github.com/BeamMP/Docs-next/edit/main/docs/:path'
+      pattern: `https://github.com/${REPO}/edit/main/docs/:path`
     },
     logo: {
       light: '/assets/core/beammp_dark.png',

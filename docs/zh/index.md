@@ -15,7 +15,7 @@ hero:
       link: /zh/get-started/index
     - theme: alt
       text: 在 GitHub 上查看
-      link: https://github.com/BeamMP/Docs-next
+      link: https://github.com/__repo__
 
 features:
   - icon:
