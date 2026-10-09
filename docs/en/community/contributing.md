@@ -1,48 +1,40 @@
-# Contributing to the BeamMP Docs
+---
+description: "Help improve the BeamMP docs: edit a page on GitHub, preview your changes locally, follow the style guide, and what happens when you open a pull request."
+---
+# Contributing
 
-BeamMP is using [Material for MkDocs](https://squidfunk.github.io/mkdocs-material) as its theme. This is a theme for [MkDocs](https://www.mkdocs.org).
-Full documentation can be found at their respective sites.
+You can help improve these docs by fixing a mistake, adding something missing, or writing a page. This page shows how.
 
-## Getting Started
+## Before you write
 
-To help contribute to these docs you can take one of two approaches as set out below:
+Read the [style guide](https://github.com/__repo__/blob/main/STYLE_GUIDE.md). It says how a page should read, when to use each box, and how to write images and links.
 
-### 1. Edit the raw markdown files
+The English pages are the master. Change the English page, and the other languages follow. To help translate, see [Translating](#translating).
 
-Editing the raw markdown files is the fastest approach and best for quick edits such as spelling, grammar or new snippets of content. 
-This approach does require a prior knowledge of markdown however as you will need to understand what your contribution will produce.
+## Edit a page on GitHub
 
-If this is the approach you wish to take then please follow these steps:
+This is the fastest way for spelling, grammar and small additions. It needs some knowledge of Markdown.
 
-1. Click edit on the page you wish to edit.
+1. Click **Edit this page** at the bottom of the page you want to change.
 2. Fork the project into your own GitHub account.
-3. Make the changes you see fit.
-4. Commit your changes to your fork.
-5. Raise a pull request against our repository [here](https://github.com/__repo__).
+3. Make your changes.
+4. Commit them to your fork.
+5. Open a pull request against [@repo@](https://github.com/__repo__).
 
-Please follow the [style guide](https://github.com/__repo__/blob/main/STYLE_GUIDE.md) when you write or change a page.
+## Preview your changes locally
 
-Once you have created your pull request one of the BeamMP Mod Team will review your Pull Request and either approve it or request some changes.
-If changes were requested and you have completed them we will re-review your Pull Request.
-Then your changes will be merged into the repository and automatically deployed as part of our continuous integration.
+For anything bigger, preview your changes as you write.
 
-### 2. Make edits with live preview
+1. Fork the project and clone your fork.
+2. Install [Node.js](https://nodejs.org) 22 or newer, then run `npm install`.
+3. Run `npm run dev` and open the address it prints. The page updates as you edit.
+4. Make your changes, then run `npm test` and `npm run check`. The check finds dead links, unclosed boxes, missing images and pages that do not render.
+5. Commit to your fork and open a pull request.
 
-Editing our docs this way will still take a similar approach as in option 1 however you will be able to preview your changes this way.
+## What happens next
 
-1. Click edit on the page you wish to edit.
-2. Fork the project into your own GitHub account.
-3. Clone the project locally.
-4. Setup Material for MkDocs according to their guide [here](https://squidfunk.github.io/mkdocs-material/getting-started/)
-5. Run `mkdocs serve` to start the live-reloading docs server from where you cloned the fork to.
-6. Make the changes that you see fit.
-7. Commit your changes to your fork.
-8. Raise a pull request against our repository [here](https://github.com/__repo__).
+A member of the BeamMP Mod Team reviews your pull request, and either approves it or asks for changes. When you have made the changes, we review it again. Once it is merged, it is deployed automatically.
 
+## Translating
 
-## Project layout
-
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+The docs are translated into several languages, using [GitLocalize](https://gitlocalize.com/repo/9180). GitLocalize can show a paragraph as "not translated" when it already is, so check that a page is not already translated before you change it.
