@@ -30,7 +30,7 @@ test('the docs folder is called docs on disk, as git and the config say', () => 
 
 test('there are pages to check, in all seven languages', () => {
   const found = pages()
-  assert.ok(found.length > 300, `only ${found.length} pages found`)
+  assert.ok(found.length > 250, `only ${found.length} pages found`)
   for (const language of ['en', 'de', 'es', 'fr', 'it', 'ru', 'zh']) {
     assert.ok(found.some((file) => path.relative(docsDir, file).startsWith(language + path.sep)), language)
   }

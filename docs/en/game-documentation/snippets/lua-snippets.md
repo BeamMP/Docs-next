@@ -1,12 +1,9 @@
-::: warning This site is under construction!
-This site is being actively worked on. 
+---
+description: "Ready-to-use BeamNG.drive Lua snippets: draw a marker, detect vehicles, and show toast, message, flash and confirmation dialogs and tutorial popups."
+---
+# Lua Code Snippets
 
-Feel you could help? Please do by clicking on the page with a pencil on the right!
-
-This can be done any page too.
-:::
-    
-# BeamNG.drive Lua Code Snippets
+Snippets for BeamNG.drive that you can copy and adapt.
 
 ## World
 

@@ -1,16 +1,11 @@
-::: warning This site is under construction!
-This site is being actively worked on. 
+---
+description: "Create a basic ImGui window in BeamNG.drive with Lua: set up ImGui, render the window every frame, add text and a button, and toggle it."
+---
+# ImGui Window Tutorial
 
-Feel you could help? Please do by clicking on the page with a pencil on the right!
+This page shows how to create a basic ImGui window.
 
-This can be done any page too.
-:::
-    
-# Creating an ImGui Window
-
-This page covers how to create a basic ImGui window.
-
-## Setup
+## Set up ImGui
 
 Before using ImGui, some setup is required:
 
@@ -21,7 +16,7 @@ local imguiExampleWindowOpen = im.BoolPtr(true)
 
 `imguiExampleWindowOpen` will be used to determine when this example window should be rendered.
 
-## Window Rendering
+## Render the window
 
 ImGui windows and their contents must be recreated for every frame they should be displayed. This means that some form of onUpdate function is necessary to use ImGui.
 
@@ -38,7 +33,7 @@ M.onUpdate = onUpdate
 
 This will run a function to create this example's window, so long as the level is fully loaded, and that the example window should be displaying.
 
-## Window Content
+## Window content
 
 If you're new to writing ImGui, think of it as a distant cousin of HTML:
 
@@ -78,14 +73,10 @@ end
 
 ## Result
 
-<figure class="image image_resized" style="width:100%">
+![BeamNG.drive with a small window in the top left titled "Hello World, I am a window", with the text "Hello World, I am text.", a button called "The Hello World Button" and the line "The Hello World Button has not been pressed."](../../../assets/content/imguiExample.png)
 
-  ![The ImGui example code demonstrated ingame](../../../assets/content/imguiExample.png)
+When you press **The Hello World Button**, the text below it changes to show how many times it has been pressed.
 
-</figure>
-
-When the The Hello World Button button is pressed, the counter below it will update to display the amount of times the The Hello World Button button has been pressed.
-
-## Download
+## Download the example
 
 This tutorial is almost entirely based off of [StanleyDudek](https://github.com/StanleyDudek)'s ImGui example mod. You can download this example mod [here](/assets/content/imguiExample.zip).

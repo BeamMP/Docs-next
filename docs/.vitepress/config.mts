@@ -160,24 +160,14 @@ const baseNav: NavItem[] = [
             text: 'Programming',
             items: [
               { text: 'UI Apps (HTML)', link: '/game-documentation/programming/ui-apps-html-cef' },
-              { text: 'ImGui Window Tutorial', link: '/game-documentation/programming/imgui' },
-              { text: 'Lua Mods (Scripts)', link: '/game-documentation/programming/lua' }
-            ]
-          },
-          {
-            text: 'Content',
-            items: [
-              { text: 'Maps', link: '/game-documentation/content-development/maps' },
-              { text: 'Props', link: '/game-documentation/content-development/props' },
-              { text: 'Vehicles', link: '/game-documentation/content-development/vehicles' }
+              { text: 'ImGui Window Tutorial', link: '/game-documentation/programming/imgui' }
             ]
           }
         ]
       },
       { text: 'Lua Code Snippets', link: '/game-documentation/snippets/lua-snippets' },
       { text: 'CSS Code Snippets', link: '/game-documentation/snippets/css-snippets' },
-      { text: 'ImGui Code Snippets', link: '/game-documentation/snippets/imgui-snippets' },
-      { text: 'CEF Code Snippets', link: '/game-documentation/snippets/cef-snippets' }
+      { text: 'ImGui Code Snippets', link: '/game-documentation/snippets/imgui-snippets' }
     ]
   },
   {
@@ -242,16 +232,16 @@ const movedPages: Record<string, string> = {
   'scripting/server/latest-server-reference': 'developers/beammp-scripting/server/latest',
   'scripting/server/v2-server-reference': 'developers/beammp-scripting/server/legacy-v2',
   'beamng/dev/index': 'game-documentation/content-development/index',
-  'beamng/dev/content/maps': 'game-documentation/content-development/maps',
-  'beamng/dev/content/props': 'game-documentation/content-development/props',
-  'beamng/dev/content/vehicles': 'game-documentation/content-development/vehicles',
+  'beamng/dev/content/maps': 'game-documentation/content-development/index',
+  'beamng/dev/content/props': 'game-documentation/content-development/index',
+  'beamng/dev/content/vehicles': 'game-documentation/content-development/index',
   'beamng/dev/modding/ui-apps': 'game-documentation/programming/ui-apps-html-cef',
-  'beamng/dev/modding/lua-mods': 'game-documentation/programming/lua',
+  'beamng/dev/modding/lua-mods': 'game-documentation/index',
   'beamng/dev/modding/imgui-window-tutorial': 'game-documentation/programming/imgui',
   'beamng/lua-snippets': 'game-documentation/snippets/lua-snippets',
   'beamng/css-snippets': 'game-documentation/snippets/css-snippets',
   'beamng/imgui-snippets': 'game-documentation/snippets/imgui-snippets',
-  'beamng/cef-snippets': 'game-documentation/snippets/cef-snippets',
+  'beamng/cef-snippets': 'game-documentation/index',
   'contributing': 'community/contributing',
   'FAQ/Change-launcher-port': 'troubleshooting/launcher-port',
   'FAQ/game-faq': 'players/game-faq',

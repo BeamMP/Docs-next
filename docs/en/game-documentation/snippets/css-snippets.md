@@ -1,12 +1,9 @@
-::: warning This site is under construction!
-This site is being actively worked on. 
+---
+description: "BeamNG.drive CSS snippets for UI apps: common variables and ready-made styles you can copy."
+---
+# CSS Code Snippets
 
-Feel you could help? Please do by clicking on the page with a pencil on the right!
-
-This can be done any page too.
-:::
-    
-# BeamNG.drive CSS Code Snippets
+Snippets for BeamNG.drive that you can copy and adapt.
 
 ## Common variables
 

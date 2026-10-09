@@ -1,29 +1,24 @@
-::: warning This site is under construction!
-This site is being actively worked on. 
+---
+description: "Make a BeamNG.drive UI app: the four files it needs, a complete example with HTML, JavaScript, Lua, CSS and JSON, and the functions the game provides."
+---
+# UI Apps (HTML)
 
-Feel you could help? Please do by clicking on the page with a pencil on the right!
-
-This can be done any page too.
-:::
-    
-# UI-App Creation
-
-In order to make a UI-App you will need some knowledge of the AngularJS framework, the main documentation can be found here: [AngularJS docs](https://docs.angularjs.org/guide)
+To make a UI app you need some knowledge of the AngularJS framework. Its documentation is the [AngularJS guide](https://docs.angularjs.org/guide).
 
 ## File structure
 
 A UI-App needs four important files to work:
 - app.js | Contains the main code used by the UI-App [Javascript docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
-- app.html | The code that displays your app [Html docs](https://developer.mozilla.org/fr/docs/Web/HTML)
+- app.html | The code that displays your app [HTML docs](https://developer.mozilla.org/en-US/docs/Web/HTML)
 - app.json | Contains the information of the UI-App
 - app.png | The image file showing in the app selector
 
-### UI-App style
+### Styling your app
 We recommend using the ``<style>`` tag to style your app, a .css file will work, but you will not be able to see the changes in real-time.
 
 ## Example
 
-This example is from DanielW Thanks to him
+This example is by DanielW. Thank you to him.
 
 ui\modules\apps\ExampleApp\app.html
 ```html
@@ -253,17 +248,14 @@ ui\modules\apps\ExampleApp\app.json
 ```
 The directive needs to be the same as in the <b>Javascript</b> file
 
-
-
-
-# Javascript functions provided by BeamNG for UI-Apps
+## JavaScript functions provided by BeamNG for UI apps
 
 ```js
 bngApi.engineLua("lua_path.function()")
 ```
 Useful to run a lua function with or without arguments
 
-# Lua functions provided by BeamNG for UI-Apps
+## Lua functions provided by BeamNG for UI apps
 
 ```lua
 guihooks.trigger("EventName", Payload)

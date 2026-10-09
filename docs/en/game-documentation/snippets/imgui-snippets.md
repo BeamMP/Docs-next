@@ -1,13 +1,9 @@
-::: warning This site is under construction!
+---
+description: "BeamNG.drive ImGui snippets: set up a window, format text and use common controls, ready to copy."
+---
+# ImGui Code Snippets
 
-This site is being actively worked on. 
-
-Feel you could help? Please do by clicking on the page with a pencil on the right!
-
-This can be done any page too.
-:::
-
-# BeamNG.drive ImGui Code Snippets
+Snippets for BeamNG.drive that you can copy and adapt.
 
 ## Setup
 
