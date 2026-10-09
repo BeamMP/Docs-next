@@ -1,22 +1,36 @@
-# FAQ joueurs
+---
+description: "Réponses aux questions sur le compte BeamMP : lier Discord, obtenir l'accès anticipé et recevoir vos avantages Patreon."
+---
+# FAQ du joueur
 
-## Comment lier mon compte Discord ?
+Questions sur votre compte BeamMP et sur le soutien au projet. Pour les questions sur le jeu, consultez la [FAQ du jeu](/fr/players/game-faq).
 
-Lier vos comptes Discord et BeamMP est une nouvelle fonctionnalité de BeamMP. Pour cela, envoyez un message `!link` » au bot [BeamMP Accounts](https://discordapp.com/channels/@me/1201234743568634026/) . Ce dernier vous enverra un lien pour vous connecter à votre compte BeamMP. Connectez-vous simplement à votre compte BeamMP ; vous recevrez alors un second message vous informant que vos comptes ont bien été liés. 🎉
+## Lier votre compte Discord
 
-## omment avoir accès à l'accès anticipé (early access)?
+### Comment lier mon compte Discord ?
 
-L'accès anticipé (avec le badge violet et d'autres avantages) est disponible en nous soutenant financièrement sur [Patreon](https://patreon.com/BeamMP) : achat d'un niveau, don ou boost du serveur Discord. Un don de **x** $ US équivaut à **x** clés de serveur supplémentaires, avantages EA inclus. Le boost vous donne 4 clés de serveur supplémentaires en plus des avantages EA.
+Lier vos comptes Discord et BeamMP est une nouvelle fonctionnalité. Rendez-vous dans les [préférences de votre compte du forum](https://forum.beammp.com/my/preferences/account) et connectez votre compte Discord sous **Associated Accounts**. Cette option n'est visible que lorsque l'authentification à deux facteurs (2FA) est désactivée sur le forum.
 
-## Je me suis abonné sur Patreon. Comment bénéficier de mes avantages ?
+## Accès anticipé et Patreon
 
-Veuillez vous assurer de faire ce qui suit pour recevoir automatiquement vos avantages :
+### Comment obtenir l'accès anticipé ?
 
-1. Liez votre compte Discord sur Patreon pour recevoir le rôle et l'accès dans le serveur Discord.
-2. Veuillez vous assurer d'utiliser la même adresse e-mail sur Patreon que celle que vous utilisez pour votre compte BeamMP sur le [Forum](https://forum.beammp.com/) .
+Vous obtenez l'accès anticipé (early access), y compris le pseudo violet et d'autres avantages, en nous soutenant financièrement. Vous pouvez acheter un niveau sur [Patreon](https://patreon.com/BeamMP), faire un don ou booster le serveur Discord.
 
-Veuillez patienter, la synchronisation du système peut prendre quelques heures, parfois jusqu'à 12 heures. Si vous n'avez pas reçu vos avantages après 12 heures et que vous avez suivi les étapes ci-dessus, veuillez contacter l'assistance BeamMP.
+- Un don de **x** $ US vous donne **x** clés de serveur supplémentaires, en plus des avantages de l'accès anticipé.
+- Booster le serveur Discord vous donne 5 clés de serveur supplémentaires au total (et non 5 par boost), en plus des avantages de l'accès anticipé.
 
-## J'ai d'autres questions !
+### Je me suis abonné sur Patreon. Comment recevoir mes avantages ?
 
-Si votre question ou votre problème concerne le jeu ou le fonctionnement, veuillez consulter la [FAQ du jeu](/fr/players/game-faq) . Si votre question ou votre problème concerne l'utilisation d'un serveur, veuillez consulter la [FAQ du serveur](/fr/server-owners/faq) . Sinon, consultez les [forums](https://forum.beammp.com/c/faq/35) où la communauté peut poser des questions et obtenir des réponses.
+Vous recevez automatiquement vos avantages si vous faites les deux choses suivantes :
+
+1. Liez votre compte Discord sur [Patreon](https://www.patreon.com/settings/apps/discord), afin de recevoir les rôles et l'accès sur le serveur Discord.
+2. Utilisez sur Patreon la même adresse e-mail que celle de votre compte BeamMP sur le [forum](https://forum.beammp.com/).
+
+La synchronisation du système peut prendre quelques heures, parfois jusqu'à 12. Si vous avez fait les deux et que vous n'avez toujours pas vos avantages au bout de 12 heures, contactez le support de BeamMP.
+
+## J'ai d'autres questions
+
+- Sur le jeu ou la façon de jouer : la [FAQ du jeu](/fr/players/game-faq).
+- Sur l'hébergement d'un serveur : la [FAQ du serveur](/fr/server-owners/faq).
+- Pour tout le reste : la [FAQ du forum](https://forum.beammp.com/c/faq/35), où la communauté peut poser des questions et obtenir des réponses.
