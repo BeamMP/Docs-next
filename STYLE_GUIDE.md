@@ -27,7 +27,7 @@ the reader knows how to play BeamNG.drive and nothing else.
 
 ```markdown
 ---
-description: One or two sentences, up to 160 characters, saying what the page helps you do.
+description: "One or two sentences, up to 160 characters, saying what the page helps you do."
 ---
 # Forward ports for your server
 
@@ -42,7 +42,8 @@ One sentence saying who this is for and what they will have at the end.
    "Introduction", "Overview" or "Guide" as a title on its own.
 2. **A `description:`** in the front matter on every page. It is what search results and the card a
    shared link shows (Discord, Slack) display, so write it for a stranger. Without one, the first
-   paragraph is used, which is usually not as good.
+   paragraph is used, which is usually not as good. Put it in double quotes: a colon inside an
+   unquoted description breaks the page.
 3. **An opening sentence** under the title: who it is for and what they get.
 4. **Headings** `##` and `###` only, in sentence case ("Forward the port", not "Forward The
    Port"). Do not skip levels. Do not number headings by hand; number the steps in a list.
@@ -69,7 +70,8 @@ Use a box only when the reader could get hurt or lose time by missing it.
 | `::: question Title` | A short question and answer inside a longer page |
 
 `note`, `quote`, `success`, `failure`, `bug` and `example` exist but are rare: ask whether a plain
-sentence works first. A page with more than three boxes has too many. Never put a step inside a
+sentence works first. A page with more than three boxes has too many. The exception is a reference page that lists many
+items, such as the settings page, where each item can be a `::: details` entry. Never put a step inside a
 box. Give a box a title only if it adds something ("Windows only"); otherwise leave it out.
 
 ## Code, commands and names
