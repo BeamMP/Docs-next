@@ -26,15 +26,13 @@ Das Aufsetzen besteht aus folgenden Schritten. Du solltest alle davon durchgehen
 
 ### **1. Port Weiterleitung**
 
-::: info
-
-```
+:::: info
 Wenn du einen VPS (Virtual Private Server), einen Rootserver nutzt oder planst, diesen Server lokal zu hosten (mit Spielern im selben Haus wie du), kannst du diesen Schritt überspringen.
 Dieser Schritt ist notwendig, wenn, jemand **außerhalb** des Haushalts einem selbst gehosteten Server beitreten soll (außerhalb Ihres lokalen Netzwerks).
 
-::: danger ":material-scale-balance: HAFTUNGSAUSSCHLUSS:"
-
+::: danger HAFTUNGSAUSSCHLUSS:
 **Portweiterleitung birgt Risiken.**
+:::
 
 Mit der Portweiterleitung erklären Sie sich mit den Risiken einverstanden, Ports in Ihrem Heimnetzwerk für die Öffentlichkeit zu öffnen, und verzichten daher auf das Recht, BeamMP für **jegliche** Schäden haftbar zu machen, die Ihnen oder Ihrem Haushalt entstehen könnten.
 
@@ -43,7 +41,7 @@ Wir übernehmen keine Verantwortung für Inhalte auf extern verlinkten Diensten 
 Es wird daher empfohlen, einen Server bei einem unserer Partnerdienste zu hosten!
 
 *Bitte lese [diese Anleitung zur Portweiterleitung](port-forwarding.md)*
-```
+::::
 
 #### Partner Hosting Services (bezahlt):
 
@@ -74,11 +72,9 @@ Eine detailliertere Anleitung findest du unter [dieser Dokumentationsseite](http
 
 Der Authentifizierungsschlüssel, auch “Authentication Key” oder “AuthKey” genannt, ist nötig, um einen Öffentlichen Server zu erstellen. Für einen privaten Server benötigst du nicht zwingend einen offiziellen Schlüssel, jedoch darf das Feld in der Konfigurationsdatei nicht leer gelassen werden. Du hast eine limitierte Anzahl an Schlüssel. Ein Schlüssel kann nur für einen Server auf einmal verwendet werden, also kannst du nicht 2 Server mitdemselben Schlüssel starten. Mehr Schlüssel können durch das Unterstützen des Projektes erworben werden. Lies [diesen Artikel](https://docs.beammp.com/support/player-faq/) für mehr Informationen.
 
-::: warning "WARNUNG"
-
-```
-  TEILE ODER ZEIGE DEN SCHLÜSSEL NICHT. BEHANDLE IHN WIE EIN PASSWORT.
-```
+::: warning WARNUNG
+TEILE ODER ZEIGE DEN SCHLÜSSEL NICHT. BEHANDLE IHN WIE EIN PASSWORT.
+:::
 
 Um einen Schlüssel zu erwerben ist ein [Discord](https://discord.com) Konto erforderlich. Das ist wichtig um gegen Spam zu schützen.
 
@@ -188,11 +184,9 @@ ResourceFolder = "Resources"
 ```
 
 ::: info
-
-```
-  Dies ist deine Konfigurationsdatei. Sie verwendet das Format TOML. Weitere Informationen zu dieser Datei und den Variablen findest du im Abschnitt [Serverwartung](server-maintenance.md).
-  Der Server wird **NICHT** in der Serverliste angezeigt, solange `Private = true` eingestellt ist. _Wenn_ er in der Liste angezeigt werden soll, setze die Einstellung auf **`Private = false`**.
-```
+Dies ist deine Konfigurationsdatei. Sie verwendet das Format TOML. Weitere Informationen zu dieser Datei und den Variablen findest du im Abschnitt [Serverwartung](server-maintenance.md).
+Der Server wird **NICHT** in der Serverliste angezeigt, solange `Private = true` eingestellt ist. _Wenn_ er in der Liste angezeigt werden soll, setze die Einstellung auf **`Private = false`**.
+:::
 
 Fürs Erste ist nur das Feld `AuthKey` relevant. Zwischen den Anführungszeichen `''` fügt man den AuthKey ein, den du im ersten Schritt kopiert hast.
 
@@ -217,11 +211,9 @@ Nun führe den Server erneut aus und sieh nach, ob weitere `[ERROR]` oder `[WARN
 Fahrzeug- und Karten-Mods werden unterschiedlich installiert, müssen aber beide im Serverordner ( `Resources/Client` ) abgelegt werden. Ziehe einfach die gewünschten Mods in diesen Ordner.
 
 ::: warning
-
-```
-  Solltest du beim Versuch, deinem Server nach dem Hinzufügen von Mods beizutreten, die Meldung „Fertig“ oder „Start“ erhalten, hast du wahrscheinlich eine inkompatible oder fehlerhafte Mod dem Server hinzugefügt.
-  Inkompatibilitäten zwischen zwei oder mehr Mods können ebenfalls auftreten. Falls du Client-Mods installiert hast, lies bitte [diese Anleitung](../../FAQ/How-to-deactivate-mods.md) zum Entfernen von Mods aus deinem Spiel.
-```
+Solltest du beim Versuch, deinem Server nach dem Hinzufügen von Mods beizutreten, die Meldung „Fertig“ oder „Start“ erhalten, hast du wahrscheinlich eine inkompatible oder fehlerhafte Mod dem Server hinzugefügt.
+Inkompatibilitäten zwischen zwei oder mehr Mods können ebenfalls auftreten. Falls du Client-Mods installiert hast, lies bitte [diese Anleitung](../../FAQ/How-to-deactivate-mods.md) zum Entfernen von Mods aus deinem Spiel.
+:::
 
 #### 5.2 Allgemeine Mods
 
@@ -279,16 +271,14 @@ Gib unten die öffentliche IPv4-Adresse und den Port des Servers ein und klicke 
   <input type="submit" value="CheckBeamMP">
 </form>
 
-::: warning "Ich möchte einen VPN wie RadminVPN, Hamachi oder ähnlich verwenden"
+:::: warning Ich möchte einen VPN wie RadminVPN, Hamachi oder ähnlich verwenden
+BeamMP unterstützt diese VPNs nicht, weil diese oft Probleme verursachen. Eines davon ist das blockieren von UDP Verkehr. Um dies zu beheben, siehe Sektion 1.
 
-```
-  BeamMP unterstützt diese VPNs nicht, weil diese oft Probleme verursachen. Eines davon ist das blockieren von UDP Verkehr. Um dies zu beheben, siehe Sektion 1.
-
-  ::: question "Aber warum hat es vorher funktioniert?"
-
-    Das passiert, weil die Entwickler dieser Applikationen updaten und Änderungen implementiere, über welche BeamMP keine Kontroll hat.
-     Es liegt an den Entwicklern diesen Applikationen, um Support für spezifische Fälle wie eines BeamMP-Servers zu unterstützen.
-```
+::: question Aber warum hat es vorher funktioniert?
+Das passiert, weil die Entwickler dieser Applikationen updaten und Änderungen implementiere, über welche BeamMP keine Kontroll hat.
+ Es liegt an den Entwicklern diesen Applikationen, um Support für spezifische Fälle wie eines BeamMP-Servers zu unterstützen.
+:::
+::::
 
 ## Immer noch Probleme?
 

@@ -1,12 +1,10 @@
-!!! warning "Ce site est en cours de construction !"
-
-```
+::: warning Ce site est en cours de construction !
 Ce site est actuellement en cours de développement.
 
 Vous pensez pouvoir aider ? N'hésitez pas à le faire en cliquant sur l'icône représentant un crayon à droite de la page !
 
 Cela est possible sur **n'importe quelle page**.
-```
+:::
 
 # Référence du scripting des mods / en jeu
 

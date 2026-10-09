@@ -17,29 +17,29 @@ Getting a server up and running is a process of a few steps! If you run into any
 
 Please make sure to read the [LICENSE](https://raw.githubusercontent.com/BeamMP/BeamMP-Server/master/LICENSE) of the server before use.
 
-!!! Info
-
-    Hosting a server using a VPS, does not require any firewall or port forwarding changes to your router.
+::: info
+Hosting a server using a VPS, does not require any firewall or port forwarding changes to your router.
+:::
 
 If you haven't chosen a VPS to host your server on yet, check out our **Partnered Hosting Services (paid)**:
 
-??? Abstract "Partnered hosting services"
-
-    * [Horizon Hosting](https://hrzn.link/beammp)
-    * [RackGenius](https://rackgeni.us/beammp-plans)
-    * [Connect Hosting](https://connecthosting.net/beammp)
-    * [Assetto Hosting](https://assettohosting.com/en/games/beamng)
-    * [ZAP-Hosting](https://zap-hosting.com/itsbeammp)
-    * [HostHavoc](https://hosthavoc.com/)
-    * [PedalHost](https://pedal.host/)
-    * [Vyper Hosting](https://vyperhosting.com/r/beammp)
-    * [BisectHosting](https://www.bisecthosting.com/beammp-server-hosting)
-    * [Four Seasons Hosting](https://fourseasonshosting.com)
-    * [Vertuo Hosting](https://vertuohosting.com)
-    * [Winheberg](https://winheberg.fr/offres/gaming/beammp?lang=en)
-    * [Wabbanode](https://wabbanode.com/partner/beammp)
-    * [Iceline Hosting](https://iceline-hosting.com/games/beammp)
-    (We take no responsibility for any content on any externally linked services or websites.)
+::: details Partnered hosting services
+* [Horizon Hosting](https://hrzn.link/beammp)
+* [RackGenius](https://rackgeni.us/beammp-plans)
+* [Connect Hosting](https://connecthosting.net/beammp)
+* [Assetto Hosting](https://assettohosting.com/en/games/beamng)
+* [ZAP-Hosting](https://zap-hosting.com/itsbeammp)
+* [HostHavoc](https://hosthavoc.com/)
+* [PedalHost](https://pedal.host/)
+* [Vyper Hosting](https://vyperhosting.com/r/beammp)
+* [BisectHosting](https://www.bisecthosting.com/beammp-server-hosting)
+* [Four Seasons Hosting](https://fourseasonshosting.com)
+* [Vertuo Hosting](https://vertuohosting.com)
+* [Winheberg](https://winheberg.fr/offres/gaming/beammp?lang=en)
+* [Wabbanode](https://wabbanode.com/partner/beammp)
+* [Iceline Hosting](https://iceline-hosting.com/games/beammp)
+(We take no responsibility for any content on any externally linked services or websites.)
+:::
 
 ### **1. Setting up the VPS**
 
@@ -52,9 +52,9 @@ The “Authentication Key”, often called “AuthKey”, is necessary for makin
 You have a limited number of keys. One key can be used on one server at a time, so you cannot start two servers at the same time with the same key.
 More keys can be obtained by supporting the project. Read [this article](https://docs.beammp.com/support/player-faq/) for more information.
 
-!!! warning
-
-    DO NOT EVER SHARE THIS KEY OR SHOW IT TO ANYONE. TREAT THIS LIKE A PASSWORD.
+::: warning
+DO NOT EVER SHARE THIS KEY OR SHOW IT TO ANYONE. TREAT THIS LIKE A PASSWORD.
+:::
 
 You will need a [Discord](https://discord.com) account for this step. This is necessary to prevent spam.
 
@@ -97,9 +97,9 @@ Now copy the text in the “Key” field, in this example that is `3173a2e-6az0-
   ![](../../assets/content/keymaster_copy_key.png)
 </figure>
 
-!!! warning
-
-    You will not be able to edit the ServerConfig.toml file directly in the File Manager. This is intentional to enforce e.g. player limits by the hosting company.
+::: warning
+You will not be able to edit the ServerConfig.toml file directly in the File Manager. This is intentional to enforce e.g. player limits by the hosting company.
+:::
 
 ### **3. Populating the fields**
 
@@ -116,11 +116,11 @@ Now run your server, and see if it spits out any more `[ERROR]` or `[WARN]` mess
 You may add mods to your server using the provided file manager.
 Vehicle mods and map mods are different to install, but both require you to put them in your server's (`Resources/Client`) folder. Simply slide any mod you want to add in that folder.
 
-!!! warning
-
-    Mods can be, and/or become incompatible with BeamNG, BeamMP or even other mods. Start removing mods if you are encountering issues.
-    Should you receive a "done" or "start" message when trying to join your server after adding mods, you likely added an incompatible or broken mod to your server.
-    Mod incompatibilities can also occur between 2 or more mods. If you have client mods installed, check [this guide](../../FAQ/How-to-deactivate-mods.md) about removing mods from your game.
+::: warning
+Mods can be, and/or become incompatible with BeamNG, BeamMP or even other mods. Start removing mods if you are encountering issues.
+Should you receive a "done" or "start" message when trying to join your server after adding mods, you likely added an incompatible or broken mod to your server.
+Mod incompatibilities can also occur between 2 or more mods. If you have client mods installed, check [this guide](../../FAQ/How-to-deactivate-mods.md) about removing mods from your game.
+:::
 
 #### 4.1 General Mods
 

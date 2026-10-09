@@ -18,3 +18,4 @@ Code | Description | Solution possible
 10065 | Hôte non joignable | Pas d'Internet ou mauvaise redirection de port, veuillez vous référer aux [étapes de ce guide](create-a-server.md#1-port-forwarding) .
 
 ::: note Pour tout autre code ne figurant pas dans cette liste, vous pouvez vous référer à [https://learn.microsoft.com/en-us/windows/win32/winsock/windows-sockets-error-codes-2](https://learn.microsoft.com/en-us/windows/win32/winsock/windows-sockets-error-codes-2) si vous savez un peu comment fonctionnent les réseaux / sockets.
+:::

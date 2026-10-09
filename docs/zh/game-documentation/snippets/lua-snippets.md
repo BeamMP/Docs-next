@@ -1,11 +1,9 @@
-::: warning "本页面正在建设中！"
-
-```
+::: warning 本页面正在建设中！
 本站点目前正处于积极开发与维护阶段。
 
 觉得您可以提供帮助？请点击页面右侧的铅笔图标参与编辑！
 此操作适用于站内的任何页面。
-```
+:::
 
 # BeamNG.drive Lua Code 的片段
 
@@ -200,18 +198,14 @@ guihooks.trigger("ConfirmationDialogClose", "示例标题")
 可以同时显示多个，并将按顺序排列显示。
 
 ::: bug
-
-```
 如果不提供任何按钮，玩家将无法在不使用控制台的情况下关闭或退出该对话框。
-```
+:::
 
 ::: bug
-
-```
 当 ConfirmationDialog（确认对话框）处于活动状态时，迷你地图UI应用的 SDF 部分仍然保持可见。
 
 可以使用 `#!lua guihooks.trigger('ShowApps', false)` 隐藏 UI 应用，作为一种临时解决方案。
-```
+:::
 
 <figure class="image image_resized" style="width:75%" markdown="">   ![确认对话框用于挂机踢出系统](../../assets/content/ConfirmationDialog_Example.png) </figure>
 
@@ -244,10 +238,8 @@ guihooks.trigger("introPopupClose")
     - 不提供任何按钮
 
 ::: warning
-
-```
 如果在页面中使用noButtons类型，且页面内容中没有提供额外的 JavaScript 来关闭该弹出窗口，则会导致游戏出现Softlock。在此类型下，多个页面不会合并到同一个弹出窗口中。因此，不建议使用此类型。
-```
+:::
 
 如果提供了多个页面，或者该Hook被多次触发，这些页面将合并到同一个弹出窗口中。<br>如果在一个 introPopup 处于活动状态时触发该钩子，或者已经触发了另一种不同类型的 introPopup，则它会在当前窗口关闭后，在一个独立的弹出窗口中显示。
 
@@ -288,13 +280,11 @@ guihooks.trigger("introPopupClose")
 如果提供了多个页面，或者该Hook被多次触发，这些页面将被合并到同一个弹出窗口中。<br>如果在一个introPopup处于活动状态时触发了该钩子，或者已经触发了另一种不同类型的introPopup，那么它将在当前窗口关闭后，通过一个独立的弹出窗口进行显示。
 
 ::: bug
-
-```
 背景模糊具有最小高度限制，这会导致内容较少的弹出窗口在其窗口下方出现多余的模糊区域。目前主要有两种解决方法：
 
 * 重复输入 `\n`（换行符）并在结尾添加 `#!html <div />`，直到窗口遮住模糊区域。
 * 使用空路径或缺失的 `image` 路径，并调整长宽比（Aspect Ratio），直到窗口遮住模糊区域。
-```
+:::
 
 ### introPopupMission
 
@@ -333,13 +323,11 @@ guihooks.trigger("introPopupClose")
 如果提供了多个页面，或者该Hook被多次触发，这些页面将合并到同一个弹出窗口中。<br>如果在一个introPopup处于活动状态时触发了该钩子，或者已经触发了另一种不同类型的 introPopup，则它会在当前窗口关闭后，通过一个独立的弹出窗口进行显示。
 
 ::: bug
-
-```
 背景模糊具有最小高度限制，这会导致内容较少的弹出窗口在其窗口下方出现多余的模糊区域。目前主要有两种解决方法：
 
 * 重复输入 `\n`（换行符）并在结尾添加 `#!html <div />`，直到窗口拉长并遮住模糊区域。
 * 使用空路径或缺失的 `image`（图像）路径，并调整长宽比（Aspect Ratio），直到窗口覆盖住模糊区域。
-```
+:::
 
 ### 对话窗口
 

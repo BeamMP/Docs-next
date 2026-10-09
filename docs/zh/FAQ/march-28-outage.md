@@ -4,7 +4,9 @@
 
 **最后更新于2026年4月1日**
 
-=== 我需要帮助！我的 BeamMP 启动器无法运行！<br>请尝试重新安装 BeamMP 启动器。具体操作步骤如下：<br><br>1. 访问 [beammp.com](https://beammp.com/)<br>2. 点击 *Download Now（立即下载）*<br>3. 运行安装程序并按照提示进行操作
+::: tabs
+
+== 我需要帮助！我的 BeamMP 启动器无法运行！<br>请尝试重新安装 BeamMP 启动器。具体操作步骤如下：<br><br>1. 访问 [beammp.com](https://beammp.com/)<br>2. 点击 *Download Now（立即下载）*<br>3. 运行安装程序并按照提示进行操作
 
 ```
 ::: 注意
@@ -14,7 +16,10 @@
 若要跳过此警告，请点击 *更多信息*，然后点击 *仍要运行*。
 ```
 
-=== 我需要帮助！我的授权密钥 (authkey) 失效了！<br><br>截至 2026 年 4 月 1 日，Keymaster 和认证系统处于离线状态。这意味着您的 authkeys 将无法正常工作。若要解决此问题，请按照以下步骤操作：<br><br>1. 打开您的 ``ServerConfig.toml`` 文件，或任何存放服务器配置的地方。<br>2. 将 ``Private`` 设置为 ``true``。设置后应如下所示：``Private = true``。<br>3. 这应该能解决 authkey 的失效问题。
+== 我需要帮助！我的授权密钥 (authkey) 失效了！<br><br>截至 2026 年 4 月 1 日，Keymaster 和认证系统处于离线状态。这意味着您的 authkeys 将无法正常工作。若要解决此问题，请按照以下步骤操作：<br><br>1. 打开您的 ``ServerConfig.toml`` 文件，或任何存放服务器配置的地方。<br>2. 将 ``Private`` 设置为 ``true``。设置后应如下所示：``Private = true``。<br>3. 这应该能解决 authkey 的失效问题。
+
+
+:::
 
 ::: note
 

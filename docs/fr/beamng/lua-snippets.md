@@ -1,25 +1,21 @@
-!!! warning "Ce site est en cours de construction !"
-
-```
+::: warning Ce site est en cours de construction !
 Ce site est actuellement en cours de développement.
 
 Vous pensez pouvoir contribuer ? N'hésitez pas à le faire en cliquant sur l'icône en forme de crayon située à droite de la page !
 
 Vous pouvez également proposer des modifications sur n'importe quelle page.
-```
+:::
 
 
 # Extraits de code Lua pour BeamNG.drive
 
-!!! warning "Ce site est en cours de construction !"
-
-```
+::: warning Ce site est en cours de construction !
 Ce site est actuellement en cours de développement.
 
 Vous pensez pouvoir aider ? N'hésitez pas à le faire en cliquant sur l'icône représentant un crayon à droite de la page !
 
 Vous pouvez le faire sur n'importe quelle page.
-```
+:::
 
 ## Monde
 
@@ -361,19 +357,15 @@ Le HTML est pris en charge et peut notamment être utilisé pour ajouter des ima
 
 Plusieurs dialogues peuvent être affichés ; ils seront alors affichés **les uns après les autres**.
 
-!!! bug
-
-```
+::: bug
 Ne fournir aucun bouton empêche le joueur de quitter la boîte de dialogue sans utiliser la console.
-```
+:::
 
-!!! bug
-
-```
+::: bug
 Les éléments SDF de l'application UI Minimap restent visibles lorsqu'une ConfirmationDialog est active.
 
 Une solution de contournement consiste à utiliser :
-```
+:::
 
 ```lua
 guihooks.trigger('ShowApps', false)
@@ -417,13 +409,11 @@ Il existe quatre variantes :
 | `onlyLogbook` | Career Logbook     |
 | `noButtons`   | Aucun bouton       |
 
-!!! warning
-
-```
+::: warning
 Avec la variante `noButtons`, si aucun JavaScript supplémentaire n'est présent dans la page pour fermer la fenêtre, le joueur peut rester bloqué.
 
 Les pages ne sont pas regroupées dans une seule fenêtre avec cette variante. Son utilisation n'est donc pas recommandée.
-```
+:::
 
 Si plusieurs pages sont fournies, ou si le hook est appelé plusieurs fois, les pages sont regroupées dans la même fenêtre.
 
@@ -478,11 +468,9 @@ Comme avec `introPopupTutorial`, plusieurs pages peuvent être regroupées dans 
 
 Si un popup est déjà actif, un nouveau popup sera affiché après la fermeture du précédent.
 
-!!! bug
-
-```
+::: bug
 Le flou d'arrière-plan possède une hauteur minimale. Les fenêtres contenant peu de contenu peuvent donc avoir une zone de flou inutilement grande sous leur fenêtre.
-```
+:::
 
 Deux solutions de contournement principales existent :
 
@@ -571,11 +559,9 @@ guihooks.trigger("introPopupClose")
 
 Comme pour les autres types de popup, plusieurs pages peuvent être regroupées dans la même fenêtre.
 
-!!! bug
-
-```
+::: bug
 Le flou d'arrière-plan possède une hauteur minimale, ce qui peut provoquer une zone de flou excessive sous les petites fenêtres.
-```
+:::
 
 Les deux solutions de contournement sont :
 
@@ -630,11 +616,9 @@ Un seul **Dialogue** peut être affiché à la fois.
 
 Tout dialogue déjà ouvert sera remplacé.
 
-!!! info
-
-```
+::: info
 Vous devez utiliser :
-```
+:::
 
 ```lua
 ui_missionInfo.closeDialogue()

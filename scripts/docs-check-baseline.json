@@ -2,16 +2,8 @@
  "docs/de/FAQ/Clearing-mods.md": {
   "indented-container": 1
  },
- "docs/de/FAQ/Defender-exclusions.md": {
-  "unclosed-container": 1
- },
  "docs/de/FAQ/How-to-check-for-CGNAT.md": {
-  "dead-link": 1,
-  "unclosed-container": 2
- },
- "docs/de/FAQ/How-to-deactivate-mods.md": {
-  "indented-container": 1,
-  "unclosed-container": 2
+  "dead-link": 1
  },
  "docs/de/FAQ/game-faq.md": {
   "dead-link": 1
@@ -19,14 +11,8 @@
  "docs/de/FAQ/where-to-find-my-IP.md": {
   "dead-link": 1
  },
- "docs/de/community/index.md": {
-  "mkdocs-front-matter": 1,
-  "mkdocs-theme-image": 1
- },
  "docs/de/community/rules.md": {
-  "dead-link": 1,
-  "mkdocs-front-matter": 1,
-  "mkdocs-icon": 22
+  "dead-link": 1
  },
  "docs/de/developers/beammp-scripting/index.md": {
   "dead-link": 2
@@ -64,29 +50,11 @@
  "docs/de/game-documentation/snippets/lua-snippets.md": {
   "dead-link": 2
  },
- "docs/de/game/getting-started.md": {
-  "unclosed-container": 5
- },
- "docs/de/get-started/index.md": {
-  "unclosed-container": 5
- },
- "docs/de/get-started/install-beammp.md": {
-  "unclosed-container": 5
- },
- "docs/de/get-started/join-first-server.md": {
-  "unclosed-container": 5
- },
- "docs/de/get-started/multiplayer-settings-quickstart.md": {
-  "unclosed-container": 5
- },
  "docs/de/index.md": {
   "dead-link": 2
  },
  "docs/de/players/faq.md": {
   "dead-link": 2
- },
- "docs/de/players/gameplay-basics.md": {
-  "unclosed-container": 5
  },
  "docs/de/players/index.md": {
   "dead-link": 2
@@ -94,55 +62,38 @@
  "docs/de/players/mod-safety.md": {
   "indented-container": 1
  },
- "docs/de/players/multiplayer-settings.md": {
-  "unclosed-container": 5
- },
  "docs/de/server-owners/cgnat.md": {
-  "dead-link": 1,
-  "unclosed-container": 2
+  "dead-link": 1
  },
  "docs/de/server-owners/error-codes.md": {
-  "dead-link": 3,
-  "unclosed-container": 1
+  "dead-link": 3
  },
  "docs/de/server-owners/host-a-server.md": {
-  "dead-link": 3,
-  "unclosed-container": 5
+  "dead-link": 5
  },
  "docs/de/server-owners/index.md": {
-  "dead-link": 3,
-  "unclosed-container": 5
+  "dead-link": 5
  },
  "docs/de/server-owners/maintenance.md": {
   "dead-link": 1
  },
  "docs/de/server-owners/port-forwarding.md": {
   "dead-link": 1,
-  "indented-container": 1,
   "mkdocs-grid-cards": 1,
-  "mkdocs-icon": 6,
-  "unclosed-container": 3
+  "mkdocs-icon": 5
  },
  "docs/de/server/create-a-server.md": {
-  "unclosed-container": 5
- },
- "docs/de/server/error-codes.md": {
-  "unclosed-container": 1
+  "dead-link": 1
  },
  "docs/de/server/port-forwarding.md": {
-  "indented-container": 1,
   "mkdocs-grid-cards": 1,
-  "mkdocs-icon": 6,
-  "unclosed-container": 3
+  "mkdocs-icon": 5
  },
  "docs/de/support/game-faq.md": {
   "dead-link": 1
  },
  "docs/de/troubleshooting/connection-networking.md": {
   "dead-link": 1
- },
- "docs/de/troubleshooting/defender-exclusions.md": {
-  "unclosed-container": 1
  },
  "docs/de/troubleshooting/index.md": {
   "dead-link": 1
@@ -151,123 +102,22 @@
   "dead-link": 1
  },
  "docs/en/FAQ/Clearing-mods.md": {
-  "indented-container": 1,
-  "mkdocs-collapsible": 2
- },
- "docs/en/FAQ/Defender-exclusions.md": {
-  "indented-container": 1,
-  "mkdocs-icon": 1,
-  "unclosed-container": 1
+  "indented-container": 1
  },
  "docs/en/FAQ/How-to-check-for-CGNAT.md": {
-  "dead-link": 1,
-  "unclosed-container": 2
- },
- "docs/en/FAQ/Update-launcher.md": {
-  "unclosed-container": 1
+  "dead-link": 1
  },
  "docs/en/FAQ/game-faq.md": {
   "dead-link": 1
  },
- "docs/en/beamng/cef-snippets.md": {
-  "unclosed-container": 1
- },
- "docs/en/beamng/css-snippets.md": {
-  "mkdocs-tabs": 17,
-  "render-error": 5,
-  "unclosed-container": 1
- },
- "docs/en/beamng/dev/content/maps.md": {
-  "unclosed-container": 1
- },
- "docs/en/beamng/dev/content/props.md": {
-  "unclosed-container": 1
- },
- "docs/en/beamng/dev/content/vehicles.md": {
-  "unclosed-container": 1
- },
- "docs/en/beamng/dev/modding/imgui-window-tutorial.md": {
-  "unclosed-container": 1
- },
- "docs/en/beamng/dev/modding/imgui-windows.md": {
-  "mkdocs-admonition": 1
- },
- "docs/en/beamng/dev/modding/lua-mods.md": {
-  "mkdocs-admonition": 1
- },
- "docs/en/beamng/dev/modding/ui-apps.md": {
-  "mkdocs-admonition": 1
- },
- "docs/en/beamng/imgui-snippets.md": {
-  "mkdocs-tabs": 3
- },
- "docs/en/beamng/lua-snippets.md": {
-  "unclosed-container": 7
- },
- "docs/en/community/index.md": {
-  "mkdocs-front-matter": 1,
-  "mkdocs-theme-image": 2
- },
  "docs/en/community/rules.md": {
-  "dead-link": 1,
-  "mkdocs-front-matter": 1,
-  "mkdocs-icon": 22,
-  "unclosed-container": 2
- },
- "docs/en/developers/beammp-scripting/mod-in-game.md": {
-  "unclosed-container": 1
- },
- "docs/en/developers/beammp-scripting/server/latest.md": {
-  "unclosed-container": 1
- },
- "docs/en/developers/beammp-scripting/server/legacy-v2.md": {
-  "unclosed-container": 2
+  "dead-link": 1
  },
  "docs/en/developers/dev-environment-setup.md": {
   "dead-link": 1
  },
- "docs/en/developers/index.md": {
-  "unclosed-container": 1
- },
  "docs/en/developers/mod-and-resource-creation.md": {
   "dead-link": 2
- },
- "docs/en/game-documentation/content-development/maps.md": {
-  "unclosed-container": 1
- },
- "docs/en/game-documentation/content-development/props.md": {
-  "unclosed-container": 1
- },
- "docs/en/game-documentation/content-development/vehicles.md": {
-  "unclosed-container": 1
- },
- "docs/en/game-documentation/programming/imgui.md": {
-  "unclosed-container": 1
- },
- "docs/en/game-documentation/snippets/cef-snippets.md": {
-  "unclosed-container": 1
- },
- "docs/en/game-documentation/snippets/css-snippets.md": {
-  "mkdocs-tabs": 17,
-  "render-error": 5,
-  "unclosed-container": 1
- },
- "docs/en/game-documentation/snippets/imgui-snippets.md": {
-  "mkdocs-tabs": 3
- },
- "docs/en/game-documentation/snippets/lua-snippets.md": {
-  "unclosed-container": 7
- },
- "docs/en/game/multiplayer-settings.md": {
-  "indented-container": 7,
-  "mkdocs-collapsible": 36
- },
- "docs/en/get-started/multiplayer-settings-quickstart.md": {
-  "indented-container": 7,
-  "mkdocs-collapsible": 36
- },
- "docs/en/guides/index.md": {
-  "unclosed-container": 1
  },
  "docs/en/guides/mod-creation/server/getting-started.md": {
   "dead-link": 1
@@ -275,35 +125,14 @@
  "docs/en/players/faq.md": {
   "dead-link": 2
  },
- "docs/en/players/mod-safety.md": {
-  "unclosed-container": 1
- },
- "docs/en/players/multiplayer-settings.md": {
-  "indented-container": 7,
-  "mkdocs-collapsible": 35
- },
- "docs/en/scripting/mod-reference.md": {
-  "unclosed-container": 1
- },
- "docs/en/scripting/server/latest-server-reference.md": {
-  "unclosed-container": 1
- },
- "docs/en/scripting/server/v2-server-reference.md": {
-  "unclosed-container": 2
- },
  "docs/en/server-owners/cgnat.md": {
-  "dead-link": 1,
-  "unclosed-container": 2
+  "dead-link": 1
  },
  "docs/en/server-owners/error-codes.md": {
-  "dead-link": 3,
-  "unclosed-container": 1
+  "dead-link": 3
  },
  "docs/en/server-owners/host-a-server.md": {
-  "dead-link": 3,
-  "indented-container": 2,
-  "mkdocs-icon": 1,
-  "unclosed-container": 5
+  "dead-link": 5
  },
  "docs/en/server-owners/maintenance.md": {
   "dead-link": 1
@@ -311,55 +140,20 @@
  "docs/en/server-owners/port-forwarding.md": {
   "dead-link": 1,
   "mkdocs-grid-cards": 1,
-  "mkdocs-icon": 6,
-  "unclosed-container": 6
+  "mkdocs-icon": 5
  },
  "docs/en/server/create-a-server.md": {
-  "indented-container": 2,
-  "mkdocs-icon": 1,
-  "unclosed-container": 5
- },
- "docs/en/server/error-codes.md": {
-  "unclosed-container": 1
+  "dead-link": 1
  },
  "docs/en/server/port-forwarding.md": {
   "mkdocs-grid-cards": 1,
-  "mkdocs-icon": 6,
-  "unclosed-container": 6
- },
- "docs/en/server/server-maintenance.md": {
-  "mkdocs-tabs": 11
+  "mkdocs-icon": 5
  },
  "docs/en/server/setup-vps.md": {
-  "mkdocs-admonition": 4,
-  "mkdocs-collapsible": 1
- },
- "docs/en/troubleshooting/defender-exclusions.md": {
-  "indented-container": 1,
-  "mkdocs-icon": 1,
-  "unclosed-container": 1
+  "dead-link": 1
  },
  "docs/en/troubleshooting/error-codes.md": {
-  "dead-link": 3,
-  "unclosed-container": 1
- },
- "docs/en/troubleshooting/launcher-update.md": {
-  "unclosed-container": 1
- },
- "docs/es/beamng/dev/content/maps.md": {
-  "unclosed-container": 1
- },
- "docs/es/beamng/dev/content/props.md": {
-  "unclosed-container": 1
- },
- "docs/es/beamng/dev/content/vehicles.md": {
-  "unclosed-container": 1
- },
- "docs/es/beamng/dev/index.md": {
-  "unclosed-container": 1
- },
- "docs/es/beamng/snippets.md": {
-  "unclosed-container": 1
+  "dead-link": 3
  },
  "docs/es/community/contributing.md": {
   "dead-link": 2
@@ -370,12 +164,6 @@
  "docs/es/community/rules.md": {
   "dead-link": 2
  },
- "docs/es/developers/beammp-scripting/index.md": {
-  "unclosed-container": 1
- },
- "docs/es/developers/beammp-scripting/mod-in-game.md": {
-  "unclosed-container": 1
- },
  "docs/es/developers/beammp-scripting/server/latest.md": {
   "dead-link": 4
  },
@@ -384,24 +172,6 @@
  },
  "docs/es/developers/dev-environment-setup.md": {
   "dead-link": 2
- },
- "docs/es/developers/index.md": {
-  "unclosed-container": 1
- },
- "docs/es/developers/mod-and-resource-creation.md": {
-  "unclosed-container": 1
- },
- "docs/es/game-documentation/content-development/index.md": {
-  "unclosed-container": 1
- },
- "docs/es/game-documentation/content-development/maps.md": {
-  "unclosed-container": 1
- },
- "docs/es/game-documentation/content-development/props.md": {
-  "unclosed-container": 1
- },
- "docs/es/game-documentation/content-development/vehicles.md": {
-  "unclosed-container": 1
  },
  "docs/es/game-documentation/index.md": {
   "dead-link": 1
@@ -421,20 +191,8 @@
  "docs/es/game/getting-started.md": {
   "dead-link": 1
  },
- "docs/es/game/tailoring.md": {
-  "unclosed-container": 1
- },
- "docs/es/guides/index.md": {
-  "unclosed-container": 1
- },
- "docs/es/guides/mod-creation/server/getting-started.md": {
-  "unclosed-container": 1
- },
  "docs/es/index.md": {
   "dead-link": 4
- },
- "docs/es/scripting/mod-reference.md": {
-  "unclosed-container": 1
  },
  "docs/es/server-owners/cgnat.md": {
   "dead-link": 2
@@ -469,45 +227,11 @@
  "docs/es/troubleshooting/launcher-update.md": {
   "dead-link": 2
  },
- "docs/fr/FAQ/Clearing-mods.md": {
-  "unclosed-container": 3
- },
  "docs/fr/FAQ/How-to-check-for-CGNAT.md": {
-  "dead-link": 1,
-  "unclosed-container": 2
- },
- "docs/fr/FAQ/How-to-deactivate-mods.md": {
-  "unclosed-container": 3
+  "dead-link": 1
  },
  "docs/fr/FAQ/game-faq.md": {
   "dead-link": 1
- },
- "docs/fr/beamng/cef-snippets.md": {
-  "mkdocs-admonition": 1
- },
- "docs/fr/beamng/css-snippets.md": {
-  "mkdocs-admonition": 1,
-  "mkdocs-tabs": 17
- },
- "docs/fr/beamng/dev/index.md": {
-  "unclosed-container": 1
- },
- "docs/fr/beamng/imgui-snippets.md": {
-  "mkdocs-admonition": 1,
-  "mkdocs-tabs": 3
- },
- "docs/fr/beamng/lua-snippets.md": {
-  "mkdocs-admonition": 8
- },
- "docs/fr/beamng/snippets.md": {
-  "unclosed-container": 1
- },
- "docs/fr/community/index.md": {
-  "mkdocs-front-matter": 1,
-  "mkdocs-theme-image": 2
- },
- "docs/fr/developers/beammp-scripting/index.md": {
-  "unclosed-container": 1
  },
  "docs/fr/developers/beammp-scripting/mod-in-game.md": {
   "dead-link": 2
@@ -518,12 +242,6 @@
  "docs/fr/developers/beammp-scripting/server/legacy-v2.md": {
   "dead-link": 2
  },
- "docs/fr/developers/index.md": {
-  "unclosed-container": 1
- },
- "docs/fr/game-documentation/content-development/index.md": {
-  "unclosed-container": 1
- },
  "docs/fr/game-documentation/content-development/maps.md": {
   "dead-link": 2
  },
@@ -532,9 +250,6 @@
  },
  "docs/fr/game-documentation/content-development/vehicles.md": {
   "dead-link": 2
- },
- "docs/fr/game-documentation/index.md": {
-  "unclosed-container": 1
  },
  "docs/fr/game-documentation/programming/imgui.md": {
   "dead-link": 2
@@ -558,31 +273,22 @@
   "dead-link": 2
  },
  "docs/fr/game/getting-started.md": {
-  "dead-link": 1,
-  "unclosed-container": 5
+  "dead-link": 1
  },
  "docs/fr/get-started/index.md": {
-  "dead-link": 1,
-  "unclosed-container": 5
+  "dead-link": 1
  },
  "docs/fr/get-started/install-beammp.md": {
-  "dead-link": 1,
-  "unclosed-container": 5
+  "dead-link": 1
  },
  "docs/fr/get-started/join-first-server.md": {
-  "dead-link": 1,
-  "unclosed-container": 5
+  "dead-link": 1
  },
  "docs/fr/get-started/multiplayer-settings-quickstart.md": {
-  "dead-link": 1,
-  "unclosed-container": 5
- },
- "docs/fr/guides/index.md": {
-  "unclosed-container": 1
+  "dead-link": 1
  },
  "docs/fr/guides/mod-creation/server/getting-started.md": {
-  "dead-link": 2,
-  "mkdocs-admonition": 1
+  "dead-link": 2
  },
  "docs/fr/index.md": {
   "dead-link": 2
@@ -591,55 +297,37 @@
   "dead-link": 2
  },
  "docs/fr/players/gameplay-basics.md": {
-  "dead-link": 1,
-  "unclosed-container": 5
+  "dead-link": 1
  },
  "docs/fr/players/index.md": {
   "dead-link": 2
  },
- "docs/fr/players/mod-safety.md": {
-  "unclosed-container": 3
- },
  "docs/fr/players/multiplayer-settings.md": {
-  "dead-link": 1,
-  "unclosed-container": 5
- },
- "docs/fr/scripting/mod-reference.md": {
-  "mkdocs-admonition": 1
+  "dead-link": 1
  },
  "docs/fr/server-owners/cgnat.md": {
-  "dead-link": 1,
-  "unclosed-container": 2
+  "dead-link": 1
  },
  "docs/fr/server-owners/error-codes.md": {
-  "dead-link": 3,
-  "unclosed-container": 1
+  "dead-link": 3
  },
  "docs/fr/server-owners/host-a-server.md": {
   "dead-link": 4,
-  "mkdocs-icon": 1,
-  "unclosed-container": 6
+  "mkdocs-icon": 1
  },
  "docs/fr/server-owners/index.md": {
   "dead-link": 4,
-  "mkdocs-icon": 1,
-  "unclosed-container": 6
+  "mkdocs-icon": 1
  },
  "docs/fr/server-owners/maintenance.md": {
   "dead-link": 1
  },
- "docs/fr/server/create-a-server.md": {
-  "mkdocs-admonition": 2,
-  "unclosed-container": 5
- },
  "docs/fr/server/port-forwarding.md": {
-  "mkdocs-admonition": 6,
   "mkdocs-grid-cards": 1,
   "mkdocs-icon": 5
  },
  "docs/fr/server/setup-vps.md": {
-  "mkdocs-admonition": 4,
-  "mkdocs-collapsible": 1
+  "dead-link": 1
  },
  "docs/fr/support/game-faq.md": {
   "dead-link": 1
@@ -647,61 +335,14 @@
  "docs/fr/troubleshooting/index.md": {
   "dead-link": 1
  },
- "docs/it/beamng/dev/content/maps.md": {
-  "unclosed-container": 1
- },
- "docs/it/beamng/dev/content/props.md": {
-  "unclosed-container": 1
- },
- "docs/it/beamng/dev/content/vehicles.md": {
-  "unclosed-container": 1
- },
- "docs/it/beamng/dev/index.md": {
-  "unclosed-container": 1
- },
- "docs/it/beamng/snippets.md": {
-  "unclosed-container": 1
- },
- "docs/it/community/index.md": {
-  "mkdocs-front-matter": 1,
-  "unclosed-container": 1
- },
  "docs/it/community/rules.md": {
-  "dead-link": 1,
-  "mkdocs-front-matter": 1,
-  "mkdocs-icon": 22,
-  "unclosed-container": 2
- },
- "docs/it/developers/beammp-scripting/index.md": {
-  "unclosed-container": 1
- },
- "docs/it/developers/beammp-scripting/mod-in-game.md": {
-  "unclosed-container": 1
+  "dead-link": 1
  },
  "docs/it/developers/beammp-scripting/server/legacy-v2.md": {
   "dead-link": 2
  },
  "docs/it/developers/dev-environment-setup.md": {
-  "dead-link": 1,
-  "unclosed-container": 1
- },
- "docs/it/developers/index.md": {
-  "unclosed-container": 1
- },
- "docs/it/developers/mod-and-resource-creation.md": {
-  "unclosed-container": 1
- },
- "docs/it/game-documentation/content-development/index.md": {
-  "unclosed-container": 1
- },
- "docs/it/game-documentation/content-development/maps.md": {
-  "unclosed-container": 1
- },
- "docs/it/game-documentation/content-development/props.md": {
-  "unclosed-container": 1
- },
- "docs/it/game-documentation/content-development/vehicles.md": {
-  "unclosed-container": 1
+  "dead-link": 1
  },
  "docs/it/game-documentation/index.md": {
   "dead-link": 1
@@ -721,15 +362,6 @@
  "docs/it/game/getting-started.md": {
   "dead-link": 1
  },
- "docs/it/guides/beammp-dev/beammp-dev.md": {
-  "unclosed-container": 1
- },
- "docs/it/guides/index.md": {
-  "unclosed-container": 1
- },
- "docs/it/guides/mod-creation/server/getting-started.md": {
-  "unclosed-container": 1
- },
  "docs/it/index.md": {
   "dead-link": 2
  },
@@ -742,119 +374,36 @@
  "docs/it/players/mod-safety.md": {
   "dead-link": 2
  },
- "docs/it/scripting/mod-reference.md": {
-  "unclosed-container": 1
- },
  "docs/it/server-owners/error-codes.md": {
-  "dead-link": 3,
-  "unclosed-container": 1
+  "dead-link": 3
  },
  "docs/it/server-owners/host-a-server.md": {
-  "dead-link": 4,
-  "mkdocs-icon": 1,
-  "unclosed-container": 1
+  "dead-link": 4
  },
  "docs/it/server-owners/index.md": {
-  "dead-link": 4,
-  "mkdocs-icon": 1,
-  "unclosed-container": 1
+  "dead-link": 4
  },
  "docs/it/server-owners/maintenance.md": {
   "dead-link": 1
  },
- "docs/it/server/create-a-server.md": {
-  "mkdocs-icon": 1,
-  "unclosed-container": 1
- },
- "docs/it/server/error-codes.md": {
-  "unclosed-container": 1
- },
  "docs/navigation-structure-proposal.md": {
   "dead-link": 13
  },
- "docs/ru/FAQ/Defender-exclusions.md": {
-  "unclosed-container": 1
- },
  "docs/ru/FAQ/How-to-check-for-CGNAT.md": {
-  "dead-link": 1,
-  "unclosed-container": 1
- },
- "docs/ru/FAQ/How-to-deactivate-mods.md": {
-  "unclosed-container": 2
- },
- "docs/ru/FAQ/Update-launcher.md": {
-  "unclosed-container": 1
+  "dead-link": 1
  },
  "docs/ru/FAQ/game-faq.md": {
   "dead-link": 1
  },
- "docs/ru/FAQ/march-28-outage.md": {
-  "mkdocs-tabs": 2
- },
- "docs/ru/beamng/cef-snippets.md": {
-  "unclosed-container": 1
- },
- "docs/ru/beamng/dev/content/maps.md": {
-  "unclosed-container": 1
- },
- "docs/ru/beamng/dev/content/props.md": {
-  "unclosed-container": 1
- },
- "docs/ru/beamng/dev/content/vehicles.md": {
-  "unclosed-container": 1
- },
- "docs/ru/beamng/dev/index.md": {
-  "unclosed-container": 1
- },
- "docs/ru/community/index.md": {
-  "mkdocs-front-matter": 1,
-  "mkdocs-theme-image": 1
- },
  "docs/ru/community/rules.md": {
   "dead-link": 1,
-  "mkdocs-front-matter": 1,
-  "mkdocs-icon": 22,
-  "unclosed-container": 2
- },
- "docs/ru/developers/beammp-scripting/index.md": {
-  "unclosed-container": 1
- },
- "docs/ru/developers/beammp-scripting/mod-in-game.md": {
-  "unclosed-container": 1
- },
- "docs/ru/developers/beammp-scripting/server/latest.md": {
-  "unclosed-container": 1
- },
- "docs/ru/developers/beammp-scripting/server/legacy-v2.md": {
-  "unclosed-container": 1
+  "mkdocs-icon": 1
  },
  "docs/ru/developers/dev-environment-setup.md": {
   "dead-link": 1
  },
- "docs/ru/developers/index.md": {
-  "unclosed-container": 1
- },
  "docs/ru/developers/mod-and-resource-creation.md": {
-  "dead-link": 2,
-  "unclosed-container": 1
- },
- "docs/ru/game-documentation/content-development/index.md": {
-  "unclosed-container": 1
- },
- "docs/ru/game-documentation/content-development/maps.md": {
-  "unclosed-container": 1
- },
- "docs/ru/game-documentation/content-development/props.md": {
-  "unclosed-container": 1
- },
- "docs/ru/game-documentation/content-development/vehicles.md": {
-  "unclosed-container": 1
- },
- "docs/ru/game-documentation/index.md": {
-  "unclosed-container": 1
- },
- "docs/ru/game-documentation/snippets/cef-snippets.md": {
-  "unclosed-container": 1
+  "dead-link": 2
  },
  "docs/ru/game-documentation/snippets/css-snippets.md": {
   "dead-link": 4
@@ -865,30 +414,8 @@
  "docs/ru/game-documentation/snippets/lua-snippets.md": {
   "dead-link": 4
  },
- "docs/ru/game/getting-started.md": {
-  "unclosed-container": 1
- },
- "docs/ru/game/multiplayer-settings.md": {
-  "mkdocs-collapsible": 34
- },
- "docs/ru/get-started/index.md": {
-  "unclosed-container": 1
- },
- "docs/ru/get-started/install-beammp.md": {
-  "unclosed-container": 1
- },
- "docs/ru/get-started/join-first-server.md": {
-  "unclosed-container": 1
- },
- "docs/ru/get-started/multiplayer-settings-quickstart.md": {
-  "mkdocs-collapsible": 34
- },
- "docs/ru/guides/index.md": {
-  "unclosed-container": 1
- },
  "docs/ru/guides/mod-creation/server/getting-started.md": {
-  "dead-link": 1,
-  "unclosed-container": 1
+  "dead-link": 1
  },
  "docs/ru/index.md": {
   "dead-link": 4
@@ -896,42 +423,23 @@
  "docs/ru/players/faq.md": {
   "dead-link": 2
  },
- "docs/ru/players/gameplay-basics.md": {
-  "unclosed-container": 1
- },
  "docs/ru/players/index.md": {
   "dead-link": 2
  },
  "docs/ru/players/mod-safety.md": {
   "dead-link": 2
  },
- "docs/ru/players/multiplayer-settings.md": {
-  "mkdocs-collapsible": 34
- },
- "docs/ru/scripting/mod-reference.md": {
-  "unclosed-container": 1
- },
- "docs/ru/scripting/server/latest-server-reference.md": {
-  "unclosed-container": 1
- },
- "docs/ru/scripting/server/v2-server-reference.md": {
-  "unclosed-container": 1
- },
  "docs/ru/server-owners/cgnat.md": {
-  "dead-link": 1,
-  "unclosed-container": 1
+  "dead-link": 1
  },
  "docs/ru/server-owners/error-codes.md": {
-  "dead-link": 3,
-  "unclosed-container": 1
+  "dead-link": 3
  },
  "docs/ru/server-owners/host-a-server.md": {
-  "dead-link": 3,
-  "unclosed-container": 1
+  "dead-link": 3
  },
  "docs/ru/server-owners/index.md": {
-  "dead-link": 3,
-  "unclosed-container": 1
+  "dead-link": 3
  },
  "docs/ru/server-owners/maintenance.md": {
   "dead-link": 1
@@ -939,100 +447,26 @@
  "docs/ru/server-owners/port-forwarding.md": {
   "dead-link": 1,
   "mkdocs-grid-cards": 1,
-  "mkdocs-icon": 6,
-  "unclosed-container": 4
- },
- "docs/ru/server/create-a-server.md": {
-  "unclosed-container": 1
- },
- "docs/ru/server/error-codes.md": {
-  "unclosed-container": 1
+  "mkdocs-icon": 5
  },
  "docs/ru/server/port-forwarding.md": {
   "mkdocs-grid-cards": 1,
-  "mkdocs-icon": 6,
-  "unclosed-container": 4
- },
- "docs/ru/troubleshooting/defender-exclusions.md": {
-  "unclosed-container": 1
+  "mkdocs-icon": 5
  },
  "docs/ru/troubleshooting/index.md": {
   "dead-link": 1
  },
- "docs/ru/troubleshooting/launcher-update.md": {
-  "unclosed-container": 1
- },
- "docs/zh/FAQ/Clearing-mods.md": {
-  "unclosed-container": 2
- },
- "docs/zh/FAQ/Defender-exclusions.md": {
-  "unclosed-container": 1
- },
  "docs/zh/FAQ/How-to-check-for-CGNAT.md": {
-  "dead-link": 1,
-  "unclosed-container": 2
- },
- "docs/zh/FAQ/How-to-deactivate-mods.md": {
-  "unclosed-container": 2
- },
- "docs/zh/FAQ/Update-launcher.md": {
-  "unclosed-container": 1
+  "dead-link": 1
  },
  "docs/zh/FAQ/game-faq.md": {
   "dead-link": 1
  },
- "docs/zh/FAQ/march-28-outage.md": {
-  "mkdocs-tabs": 2
- },
- "docs/zh/beamng/cef-snippets.md": {
-  "unclosed-container": 1
- },
- "docs/zh/beamng/css-snippets.md": {
-  "mkdocs-tabs": 13,
-  "render-error": 17,
-  "unclosed-container": 1
- },
- "docs/zh/beamng/dev/modding/imgui-window-tutorial.md": {
-  "unclosed-container": 1
- },
- "docs/zh/beamng/imgui-snippets.md": {
-  "mkdocs-tabs": 1,
-  "render-error": 3,
-  "unclosed-container": 1
- },
- "docs/zh/beamng/lua-snippets.md": {
-  "unclosed-container": 6
- },
- "docs/zh/beamng/snippets.md": {
-  "unclosed-container": 6
- },
- "docs/zh/community/index.md": {
-  "mkdocs-front-matter": 1,
-  "mkdocs-theme-image": 1,
-  "unclosed-container": 6
- },
  "docs/zh/community/rules.md": {
-  "dead-link": 1,
-  "mkdocs-front-matter": 1,
-  "mkdocs-icon": 22
- },
- "docs/zh/developers/beammp-scripting/index.md": {
-  "unclosed-container": 1
- },
- "docs/zh/developers/beammp-scripting/mod-in-game.md": {
-  "unclosed-container": 1
- },
- "docs/zh/developers/beammp-scripting/server/latest.md": {
-  "unclosed-container": 1
- },
- "docs/zh/developers/beammp-scripting/server/legacy-v2.md": {
-  "unclosed-container": 2
+  "dead-link": 1
  },
  "docs/zh/developers/dev-environment-setup.md": {
   "dead-link": 1
- },
- "docs/zh/developers/index.md": {
-  "unclosed-container": 1
  },
  "docs/zh/developers/mod-and-resource-creation.md": {
   "dead-link": 2
@@ -1049,46 +483,6 @@
  "docs/zh/game-documentation/index.md": {
   "dead-link": 1
  },
- "docs/zh/game-documentation/programming/imgui.md": {
-  "unclosed-container": 1
- },
- "docs/zh/game-documentation/snippets/cef-snippets.md": {
-  "unclosed-container": 1
- },
- "docs/zh/game-documentation/snippets/css-snippets.md": {
-  "mkdocs-tabs": 9,
-  "render-error": 13,
-  "unclosed-container": 1
- },
- "docs/zh/game-documentation/snippets/imgui-snippets.md": {
-  "mkdocs-tabs": 1,
-  "render-error": 3,
-  "unclosed-container": 1
- },
- "docs/zh/game-documentation/snippets/lua-snippets.md": {
-  "unclosed-container": 6
- },
- "docs/zh/game/getting-started.md": {
-  "unclosed-container": 3
- },
- "docs/zh/game/multiplayer-settings.md": {
-  "unclosed-container": 3
- },
- "docs/zh/get-started/index.md": {
-  "unclosed-container": 3
- },
- "docs/zh/get-started/install-beammp.md": {
-  "unclosed-container": 3
- },
- "docs/zh/get-started/join-first-server.md": {
-  "unclosed-container": 3
- },
- "docs/zh/get-started/multiplayer-settings-quickstart.md": {
-  "unclosed-container": 3
- },
- "docs/zh/guides/index.md": {
-  "unclosed-container": 1
- },
  "docs/zh/guides/mod-creation/server/getting-started.md": {
   "dead-link": 1
  },
@@ -1098,42 +492,20 @@
  "docs/zh/players/faq.md": {
   "dead-link": 2
  },
- "docs/zh/players/gameplay-basics.md": {
-  "unclosed-container": 3
- },
  "docs/zh/players/index.md": {
   "dead-link": 2
  },
- "docs/zh/players/mod-safety.md": {
-  "unclosed-container": 2
- },
- "docs/zh/players/multiplayer-settings.md": {
-  "unclosed-container": 3
- },
- "docs/zh/scripting/mod-reference.md": {
-  "unclosed-container": 1
- },
- "docs/zh/scripting/server/latest-server-reference.md": {
-  "unclosed-container": 1
- },
- "docs/zh/scripting/server/v2-server-reference.md": {
-  "unclosed-container": 2
- },
  "docs/zh/server-owners/cgnat.md": {
-  "dead-link": 1,
-  "unclosed-container": 2
+  "dead-link": 1
  },
  "docs/zh/server-owners/error-codes.md": {
-  "dead-link": 3,
-  "unclosed-container": 1
+  "dead-link": 3
  },
  "docs/zh/server-owners/host-a-server.md": {
-  "dead-link": 3,
-  "unclosed-container": 3
+  "dead-link": 4
  },
  "docs/zh/server-owners/index.md": {
-  "dead-link": 3,
-  "unclosed-container": 3
+  "dead-link": 4
  },
  "docs/zh/server-owners/maintenance.md": {
   "dead-link": 1
@@ -1141,27 +513,13 @@
  "docs/zh/server-owners/port-forwarding.md": {
   "dead-link": 1,
   "mkdocs-grid-cards": 1,
-  "mkdocs-icon": 6,
-  "unclosed-container": 4
- },
- "docs/zh/server/create-a-server.md": {
-  "unclosed-container": 3
- },
- "docs/zh/server/error-codes.md": {
-  "unclosed-container": 1
+  "mkdocs-icon": 5
  },
  "docs/zh/server/port-forwarding.md": {
   "mkdocs-grid-cards": 1,
-  "mkdocs-icon": 6,
-  "unclosed-container": 4
- },
- "docs/zh/troubleshooting/defender-exclusions.md": {
-  "unclosed-container": 1
+  "mkdocs-icon": 5
  },
  "docs/zh/troubleshooting/index.md": {
   "dead-link": 1
- },
- "docs/zh/troubleshooting/launcher-update.md": {
-  "unclosed-container": 1
  }
 }

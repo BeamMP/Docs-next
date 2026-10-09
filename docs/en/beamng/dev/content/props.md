@@ -1,10 +1,10 @@
-::: warning "This site is under construction!"
+::: warning This site is under construction!
+This site is being actively worked on. 
 
-    This site is being actively worked on. 
-    
-    Feel you could help? Please do by clicking on the page with a pencil on the right!
+Feel you could help? Please do by clicking on the page with a pencil on the right!
 
-    This can be done any page too.
+This can be done any page too.
+:::
 
 # BeamNG.drive Prop Creation
 

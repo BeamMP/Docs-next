@@ -1,12 +1,10 @@
-::: warning "Этот сайт находится в стадии разработки!"
-
-```
+::: warning Этот сайт находится в стадии разработки!
 This site is being actively worked on.
 
 Feel you could help? Please do by clicking on the page with a pencil on the right!
 
 This can be done any page too.
-```
+:::
 
 # Справочник по Модам/Внутриигровым Скриптам
 

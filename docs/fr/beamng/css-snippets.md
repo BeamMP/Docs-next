@@ -1,20 +1,19 @@
-!!! warning "Ce site est en cours de construction !"
-
-```
+::: warning Ce site est en cours de construction !
 Ce site est actuellement en cours de développement.
 
 Vous pensez pouvoir contribuer ? Cliquez simplement sur l'icône en forme de crayon située à droite de la page !
 
 Vous pouvez également contribuer à n'importe quelle autre page.
-```
+:::
 
 # Extraits de code CSS pour BeamNG.drive
 
 ## Variables courantes
 
-=== "Orange CEF de BeamNG"
+::: tabs
 
-````
+== Orange CEF de BeamNG
+
 ```css
 var(--bng-orange) /* Orange principale */
 var(--bng-orange-shade1) /* 70 % d'opacité */
@@ -22,11 +21,9 @@ var(--bng-orange-shade2) /* 40 % d'opacité */
 var(--bng-orange-shade1opaque)
 var(--bng-orange-shade2opaque)
 ```
-````
 
-=== "Monochrome"
+== Monochrome
 
-````
 ```css
 --- Monochrome
 var(--bng-black-8) /* 80 % d'opacité (équivalent à --bng-black-o8) */
@@ -47,15 +44,13 @@ var(--white-1) /* 80 % d'opacité */
 var(--white-2) /* 40 % d'opacité */
 var(--white-3) /* 20 % d'opacité */
 ```
-````
 
-=== "Palette de couleurs de l'interface Vue de BeamNG"
+== Palette de couleurs de l'interface Vue de BeamNG
 
 Toutes ces variables permettent d'ajouter `-rgb` à la fin de leur nom afin d'obtenir directement les valeurs rouge, vert et bleu. Par exemple, `rgba(var(--bng-orange-500-rgb), 0.5)` permet d'utiliser `bng-orange-500` avec une opacité de 50 %.
 
-=== "Rouge additionnel"
+== Rouge additionnel
 
-````
 ```css
 var(--bng-add-red-50)
 var(--bng-add-red-100)
@@ -72,11 +67,9 @@ var(--bng-add-red-800)
 var(--bng-add-red-850)
 var(--bng-add-red-900)
 ```
-````
 
-=== "Orange"
+== Orange
 
-````
 ```css
 var(--bng-orange-50)
 var(--bng-orange-100)
@@ -93,11 +86,9 @@ var(--bng-orange-800)
 var(--bng-orange-850)
 var(--bng-orange-900)
 ```
-````
 
-=== "Pêche secondaire"
+== Pêche secondaire
 
-````
 ```css
 var(--bng-ter-peach-50)
 var(--bng-ter-peach-100)
@@ -114,11 +105,9 @@ var(--bng-ter-peach-800)
 var(--bng-ter-peach-850)
 var(--bng-ter-peach-900)
 ```
-````
 
-=== "Jaune secondaire"
+== Jaune secondaire
 
-````
 ```css
 var(--bng-ter-yellow-50)
 var(--bng-ter-yellow-100)
@@ -135,11 +124,9 @@ var(--bng-ter-yellow-800)
 var(--bng-ter-yellow-850)
 var(--bng-ter-yellow-900)
 ```
-````
 
-=== "Vert additionnel"
+== Vert additionnel
 
-````
 ```css
 var(--bng-add-green-50)
 var(--bng-add-green-100)
@@ -156,11 +143,9 @@ var(--bng-add-green-800)
 var(--bng-add-green-850)
 var(--bng-add-green-900)
 ```
-````
 
-=== "Bleu ciel"
+== Bleu ciel
 
-````
 ```css
 var(--bng-add-babyblue-50)
 var(--bng-add-babyblue-100)
@@ -177,11 +162,9 @@ var(--bng-add-babyblue-800)
 var(--bng-add-babyblue-850)
 var(--bng-add-babyblue-900)
 ```
-````
 
-=== "Bleu additionnel"
+== Bleu additionnel
 
-````
 ```css
 var(--bng-add-blue-50)
 var(--bng-add-blue-100)
@@ -198,11 +181,9 @@ var(--bng-add-blue-800)
 var(--bng-add-blue-850)
 var(--bng-add-blue-900)
 ```
-````
 
-=== "Bleu indigo"
+== Bleu indigo
 
-````
 ```css
 var(--bng-add-indigoblue-50)
 var(--bng-add-indigoblue-100)
@@ -219,11 +200,9 @@ var(--bng-add-indigoblue-800)
 var(--bng-add-indigoblue-850)
 var(--bng-add-indigoblue-900)
 ```
-````
 
-=== "Magenta additionnel"
+== Magenta additionnel
 
-````
 ```css
 var(--bng-add-magenta-50)
 var(--bng-add-magenta-100)
@@ -240,11 +219,9 @@ var(--bng-add-magenta-800)
 var(--bng-add-magenta-850)
 var(--bng-add-magenta-900)
 ```
-````
 
-=== "Bleu-gris secondaire"
+== Bleu-gris secondaire
 
-````
 ```css
 var(--bng-ter-blue-gray-50)
 var(--bng-ter-blue-gray-100)
@@ -261,11 +238,9 @@ var(--bng-ter-blue-gray-800)
 var(--bng-ter-blue-gray-850)
 var(--bng-ter-blue-gray-900)
 ```
-````
 
-=== "Gris froid"
+== Gris froid
 
-````
 ```css
 var(--bng-cool-gray-50)
 var(--bng-cool-gray-100)
@@ -282,21 +257,17 @@ var(--bng-cool-gray-800)
 var(--bng-cool-gray-850)
 var(--bng-cool-gray-900)
 ```
-````
 
-=== "Autres"
+== Autres
 
-````
 ```css
 var(--bng-off-black) /* Utilisé dans Vue pour les boutons et certains en-têtes */
 var(--bng-off-white) /* Utilisé dans Vue pour les éléments interactifs */
 var(--bng-off-white-brighter) /* Utilisé dans Vue pour les en-têtes */
 ```
-````
 
-=== "Préréglages de couleurs supplémentaires"
+== Préréglages de couleurs supplémentaires
 
-````
 ```css
 var(--bng-filter-orange) /* Préréglage de filtre pour forcer les SVG à utiliser bng-orange */
 var(--bng-black-o8) /* 80 % d'opacité */
@@ -304,14 +275,13 @@ var(--bng-black-o6) /* 60 % d'opacité */
 var(--bng-black-o4) /* 40 % d'opacité */
 var(--bng-black-o2) /* 20 % d'opacité */
 ```
-````
 
-=== "Préréglages d'arrondi des coins"
+== Préréglages d'arrondi des coins
 
-````
 ```css
 var(--bng-corners-1) /* 0,25 rem */
 var(--bng-corners-2) /* 0,50 rem */
 var(--bng-corners-3) /* 1,00 rem */
 ```
-````
+
+:::

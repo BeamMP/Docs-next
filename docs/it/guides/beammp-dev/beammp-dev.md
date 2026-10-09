@@ -1,10 +1,10 @@
-::: warning "Questo sito è in costruzione!"
+::: warning Questo sito è in costruzione!
+Questo sito è attualmente in fase di lavorazione.
 
-    Questo sito è attualmente in fase di lavorazione.
+Pensate di poter aiutare? Per favore, fatelo cliccando sulla pagina con una matita a destra!
 
-    Pensate di poter aiutare? Per favore, fatelo cliccando sulla pagina con una matita a destra!
-
-    Questo può essere fatto anche su qualsiasi altra pagina.
+Questo può essere fatto anche su qualsiasi altra pagina.
+:::
 
 # Per iniziare
 

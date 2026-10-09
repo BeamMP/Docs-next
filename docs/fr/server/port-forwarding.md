@@ -1,8 +1,6 @@
 # Redirection de ports
 
-!!! danger " AVERTISSEMENT :"
-
-```
+::: danger AVERTISSEMENT :
 **La redirection de ports comporte des risques.**
 
 En configurant une redirection de ports, vous reconnaissez les risques liés à l’ouverture de ports sur votre réseau domestique et renoncez à engager la responsabilité de BeamMP pour **tout dommage pouvant survenir à vous-même ou à votre foyer**.
@@ -10,13 +8,11 @@ En configurant une redirection de ports, vous reconnaissez les risques liés à 
 Nous déclinons toute responsabilité concernant le contenu des services ou sites web externes vers lesquels ces liens redirigent.
 
 <u>**Si vous ne comprenez pas ce guide, nous vous recommandons d’utiliser l’un de nos partenaires.**</u>
-```
+:::
 
-!!! warning
-
-```
+::: warning
 Vérifiez que votre routeur n’est pas exclusivement compatible avec les connexions 4G/5G. S’il s’agit d’un modèle hybride, veillez à sélectionner l’adaptateur connecté par câble à l’étape 3 de ce guide.
-```
+:::
 
 ## Comment configurer une redirection de ports
 
@@ -121,11 +117,9 @@ Voici quelques exemples d’adresses IPv4 locales que vous devriez retrouver sur
 **Masque de sous-réseau** (généralement `255.255.255.0`)
 **Passerelle par défaut** (généralement `192.168.0.1` ou `192.168.1.1`)
 
-!!! info "À noter"
-
-```
+::: info À noter
 BeamMP ne prend actuellement pas en charge l’IPv6 pour l’hébergement d’un serveur.
-```
+:::
 
 #### 1.2. Modifier les paramètres de l’adaptateur
 
@@ -226,9 +220,7 @@ Si votre routeur distingue les **ports internes** et **externes**, utilisez le m
 
 BeamMP utilise par défaut le port **30814** en **TCP et UDP**, sauf si vous avez modifié ce paramètre dans votre [fichier `ServerConfig.toml`](create-a-server.md#4-configuration).
 
-!!! info "À noter"
-
-```
+::: info À noter
 Le port par défaut est **30814**, mais vous pouvez choisir n’importe quel autre port compris entre `1025` et `65534`.
 
 Si vous choisissez un autre port, notez-le soigneusement. Vous devez également rediriger ce port en **TCP et en UDP**.
@@ -236,7 +228,7 @@ Si vous choisissez un autre port, notez-le soigneusement. Vous devez également 
 Il est recommandé de conserver le port par défaut, car il est très peu probable qu’un autre service de votre PC l’utilise.
 
 Si vous hébergez plusieurs serveurs sur la même machine, chaque serveur doit utiliser un port différent. Par exemple : serveur 1 sur `30814`, serveur 2 sur `30815`, etc.
-```
+:::
 
 Certains routeurs nécessitent la création de deux règles distinctes, une pour **UDP** et une pour **TCP**. D’autres permettent de sélectionner les deux protocoles dans une seule règle.
 
@@ -266,19 +258,15 @@ Vous pouvez ensuite utiliser le lien suivant en remplaçant `IP` par votre adres
 
 [https://check.beammp.com/api/v2/beammp/ip/port](https://check.beammp.com/api/v2/beammp/ip/port)
 
-!!! success "status: ok"
-
-```
+::: success status: ok
 Si vous obtenez le résultat ci-dessus, vous pouvez désormais rejoindre votre serveur.
 
 Il existe deux façons de vous connecter : directement avec les informations que vous avez saisies dans CheckBeamMP ou, si votre serveur est configuré comme public, via la liste des serveurs.
 
 Comme vous hébergez le serveur sur votre propre réseau, utilisez `127.0.0.1` (*localhost*) si le serveur est exécuté sur le même PC que celui sur lequel vous jouez. Sinon, utilisez l’adresse IPv4 locale de la machine qui héberge le serveur.
-```
+:::
 
-!!! failure "status: error"
-
-```
+::: failure status: error
 Si la connexion échoue complètement, votre fournisseur d’accès à Internet utilise peut-être un **CGNAT (Carrier-Grade Network Address Translation)**.
 
 Pour plus d’informations, consultez [« Comment vérifier si vous êtes derrière un CGNAT ? »](../FAQ/How-to-check-for-CGNAT.md).
@@ -286,4 +274,4 @@ Pour plus d’informations, consultez [« Comment vérifier si vous êtes derri�
 Vous pouvez également ouvrir un **ticket d’assistance serveur** sur notre [serveur Discord](https://discord.gg/beammp), dans le canal `#support`. Un membre de notre équipe pourra alors vous aider.
 
 Si seul le TCP fonctionne tandis que l’UDP échoue, vérifiez à nouveau les règles de votre pare-feu et de redirection de ports.
-```
+:::

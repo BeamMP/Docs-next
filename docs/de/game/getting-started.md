@@ -4,10 +4,10 @@
 
 BeamMP ist vollständig kompatibel mit Windows und Linux, an der Kompatibilität mit MacOS noch wird gearbeitet. Da es sich bei Linux und MacOS jedoch um sekundäre Plattformen handelt, sind Fehler zu erwarten.
 
-::: warning "Warnung"
-
-    BeamMP funktioniert nicht mit Raubkopien oder veralteten Versionen von BeamNG.drive.
-    Das BeamMP-Support Team bietet keinen Support für Probleme mit Raubkopien / veralteten Kopien.
+::: warning Warnung
+BeamMP funktioniert nicht mit Raubkopien oder veralteten Versionen von BeamNG.drive.
+Das BeamMP-Support Team bietet keinen Support für Probleme mit Raubkopien / veralteten Kopien.
+:::
 
 ## **2. Installation**
 
@@ -77,24 +77,25 @@ cmake . -B bin -DCMAKE_TOOLCHAIN_FILE=$VCPKG_ROOT/scripts/buildsystems/vcpkg.cma
 cmake --build bin --parallel
 ```
 
-:::note ""
+::: note
+Sollte dir während des Erstellens der RAM ausgehen, kannst du die Anweisung --parallel weglassen. Dann wird weniger RAM verwendet, da das Erstellen nur auf einem CPU-Thread erfolgt.
+:::
 
-    Sollte dir während des Erstellens der RAM ausgehen, kannst du die Anweisung --parallel weglassen. Dann wird weniger RAM verwendet, da das Erstellen nur auf einem CPU-Thread erfolgt.
+::: note
+Wenn du -DCMAKE_BUILD_TYPE=Release nicht spezifizierst, erstellst du eine Debug-Version, die zwar eine größere Dateigröße hat, aber nicht den Fehler „Launcher kann sich nur einmal mit einem Server verbinden" enthält.
+:::
 
-:::note ""
-
-    Wenn du -DCMAKE_BUILD_TYPE=Release nicht spezifizierst, erstellst du eine Debug-Version, die zwar eine größere Dateigröße hat, aber nicht den Fehler „Launcher kann sich nur einmal mit einem Server verbinden" enthält.
-
-:::note "Fedora Benutzer"
-    Wenn vcpkg während der OpenSSL-Kompilierung aufgrund von Kernel-Header-Fehlern fehlschlägt, stelle sicher, dass alle Abhängigkeiten installiert sind:
-    ```bash
-    sudo dnf install kernel-headers kernel-devel gcc gcc-c++ make perl
-    ```
-    Bereinige dann den vcpkg-Cache:
-    ```bash
-    rm -rf $VCPKG_ROOT/buildtrees/openssl
-    ```
-    Und wiederhole den cmake-Konfigurationsbefehl (Schritt 1).
+::: note Fedora Benutzer
+Wenn vcpkg während der OpenSSL-Kompilierung aufgrund von Kernel-Header-Fehlern fehlschlägt, stelle sicher, dass alle Abhängigkeiten installiert sind:
+```bash
+sudo dnf install kernel-headers kernel-devel gcc gcc-c++ make perl
+```
+Bereinige dann den vcpkg-Cache:
+```bash
+rm -rf $VCPKG_ROOT/buildtrees/openssl
+```
+Und wiederhole den cmake-Konfigurationsbefehl (Schritt 1).
+:::
 
 Verschiebe die fertige Anwendung aus dem `/bin` Ordner in einen eigenen Ordner und führe sie von dort aus aus:
 ```bash
@@ -126,11 +127,11 @@ Wenn der symbolische Link zwischen den Benutzerordnern und dem kompilierten Laun
 
 Beachte, dass hierbei davon ausgegangen wird, dass die Binärdatei des Launchers, die Sie zuvor kompiliert wurde, in `/home/user/BeamMP/` abgelegt wurde. Ändere diese daher so, dass sie mit der Stelle übereinstimmt, an der du die fertige Binärdatei abgelegt hast. Außerdem musst du  den Launcher jedes Mal mit dem richtigen Git-Zweig neu kompilieren, wenn ein Launcher-Update veröffentlicht wird.
 
-::: tip "Hinzufügen von emoji-font um in-text emojis zu erhalten"
+::: tip Hinzufügen von emoji-font um in-text emojis zu erhalten
+Damit Emojis entweder in der Serverliste (als Teil eines benutzerdefinierten Servernamens) oder im Ingame-Chat angezeigt werden, benötigst du eine Schriftart, die Emojis enthält.
 
-    Damit Emojis entweder in der Serverliste (als Teil eines benutzerdefinierten Servernamens) oder im Ingame-Chat angezeigt werden, benötigst du eine Schriftart, die Emojis enthält.
-
-    Dies kann beispielsweise durch Hinzufügen des [Linux-Ports der Windows Segoe-UI-Emoji-Schriftart](https://github.com/mrbvrz/segoe-ui-linux) erfolgen.
+Dies kann beispielsweise durch Hinzufügen des [Linux-Ports der Windows Segoe-UI-Emoji-Schriftart](https://github.com/mrbvrz/segoe-ui-linux) erfolgen.
+:::
 
 ---
 

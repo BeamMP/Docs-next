@@ -18,5 +18,5 @@
 10065 | Хост недостижим | Нет интернета или плохая переадресация портов, пожалуйста, следуйте [инструкциям руководства](create-a-server.md#1-port-forwarding) .
 
 ::: note
-
 Если вы немного знаете, как работают сети / сокеты, для любого другого кода, не указанного в этом списке, вы можете обратиться к [https://learn.microsoft.com/en-us/windows/win32/winsock/windows-sockets-error-codes-2](https://learn.microsoft.com/en-us/windows/win32/winsock/windows-sockets-error-codes-2) .
+:::

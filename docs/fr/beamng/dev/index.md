@@ -1,6 +1,6 @@
-::: warning "Ce site est en construction !"
-
+::: warning Ce site est en construction !
 Ce site est en cours de développement actif.
+:::
 
 Vous souhaitez nous aider ? Cliquez sur la page avec un crayon à droite !
 

@@ -5,10 +5,10 @@
 BeamMP est entièrement compatible avec Windows et Linux, la compatibilité avec MacOS est en cours de développement. 
 Cependant, puisque Linux et MacOS sont des systèmes d'opération secondaire plusieurs problèmes (bug) sont à prévoir.
 
-:::warning "Attention"
-
-    Aucune version piratée ou dépassée de BeamNG.drive ne sera compatible avec BeamMP.
-    L'équipe de support de BeamMP ne fournit aucun soutien pour les versions piratées ou défectueuses.
+::: warning Attention
+Aucune version piratée ou dépassée de BeamNG.drive ne sera compatible avec BeamMP.
+L'équipe de support de BeamMP ne fournit aucun soutien pour les versions piratées ou défectueuses.
+:::
 
 ## **2. Installation**
 
@@ -23,9 +23,9 @@ Cependant, puisque Linux et MacOS sont des systèmes d'opération secondaire plu
 8. On va vous demander si vous voulez vous connecter ou si vous voulez jouer en teant qu'invité (guest) (Certains serveurs bloque les joueur invités (guest)). Vous pouvez créer un compte sur notre [forum](https://forum.beammp.com) et vous connecter à BeamMP avec les mêmes informations par la suite.
 9. Choisissez n'importe quel serveur de votre choix et appuyer sur `Connect`. Amusez-vous!
 
-:::note
-
-      Lorsque vous vous connectez à un serveur avec plusieurs joueurs et/ou véhicules, les temps de chargement peuvent être prolongés.
+::: note
+Lorsque vous vous connectez à un serveur avec plusieurs joueurs et/ou véhicules, les temps de chargement peuvent être prolongés.
+:::
 
 ### **2b. Installation sur Linux**
 
@@ -58,14 +58,14 @@ cmake . -B bin -DCMAKE_TOOLCHAIN_FILE=~/vcpkg/scripts/buildsystems/vcpkg.cmake -
 cmake --build bin --parallel
 ```
 
-:::note ""
+::: note
+Si vous manquer de RAM lorsque vous construisez, vous pouvez ignorer --parallel instruction, cela va utiliser moin s de RAM puisque la construction n'utilisera qu'un fil (thread) du CPU.
+:::
 
-      Si vous manquer de RAM lorsque vous construisez, vous pouvez ignorer --parallel instruction, cela va utiliser moin s de RAM puisque la construction n'utilisera qu'un fil (thread) du CPU.
-
-:::note ""
-
-      Si vous ne spécifiez pas `-DCMAKE_BUILD_TYPE=Release`, vous allez construire la version debug qui est plus volumineuse, mais ne contient pas le problème (bug):
-      launcher-can-only-connect-to-a-server-once (Lanceur-peut-se-connecter-seulement-unefois-à-un-serveur)
+::: note
+Si vous ne spécifiez pas `-DCMAKE_BUILD_TYPE=Release`, vous allez construire la version debug qui est plus volumineuse, mais ne contient pas le problème (bug):
+launcher-can-only-connect-to-a-server-once (Lanceur-peut-se-connecter-seulement-unefois-à-un-serveur)
+:::
 
 Déplacez l'application terminée en dehors du dossier `/bin` vers son propre dossier et executer l'application à partir de là.
 
@@ -91,11 +91,11 @@ Avec le symlink configuré antre le lanceur compilé et les userfolders, vous po
 
 Notez que ceci assume que vous avez mis, les binairies du lanceur que vous avez compilé plus tôt, dans `/home/user/BeamMP/`, donc changez l'emplacement pour qu'il corresponde à où vous avez mis les binairies terminées et vous allez avoir besoin de recompiler le lanceur avec la bonne branche git à chaque fois qu'une nouvelle mise à jour sera disponible.
 
-::: tip "Ajoutez une police d'écriture pour les emojis pour avoir les emojis en jeu"
+::: tip Ajoutez une police d'écriture pour les emojis pour avoir les emojis en jeu
+Pour avoir accès aux emojis soit dans la liste des serveurs (certains serveurs utilisent des emojis dans leur nom personalisé), soit dans le chat en jeu, vous avez besoin d'une police d'écriture qui contient certains emojis.
 
-    Pour avoir accès aux emojis soit dans la liste des serveurs (certains serveurs utilisent des emojis dans leur nom personalisé), soit dans le chat en jeu, vous avez besoin d'une police d'écriture qui contient certains emojis.
-
-    Cela peut être fait, par exemple, en ajoutant le [Linux-port of the Windows Segoe-UI emoji font](https://github.com/mrbvrz/segoe-ui-linux)
+Cela peut être fait, par exemple, en ajoutant le [Linux-port of the Windows Segoe-UI emoji font](https://github.com/mrbvrz/segoe-ui-linux)
+:::
 
 ---
 

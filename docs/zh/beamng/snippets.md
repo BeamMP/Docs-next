@@ -1,4 +1,4 @@
-::: warning "该网站正在建设当中！"
+::: warning 该网站正在建设当中！
 
 ```
 该网站仍在积极开发中。
@@ -200,18 +200,14 @@ guihooks.trigger("ConfirmationDialogClose", "Example Title")
 可以同时显示多个，并将按顺序依次呈现。
 
 ::: bug
-
-```
 不提供任何按钮会导致玩家在不使用控制台的情况下无法退出该对话框。
-```
+:::
 
 ::: bug
-
-```
 当 **ConfirmationDialog**（确认对话框）处于活动状态时，小地图 (Minimap) UI 插件的 **SDF 部分** 依然保持可见。
 
 可以使用 `#!lua guihooks.trigger('ShowApps', false)` 隐藏 UI 插件，作为一种临时性的补救方案。
-```
+:::
 
 <figure class="image image_resized" style="width:75%" markdown="">   ![ConfirmationDialog被用于挂机踢出系统的示例](../../assets/content/ConfirmationDialog_Example.png) </figure>
 
@@ -244,10 +240,8 @@ Flavours控制显示的按钮类型。共有四种预设模式：
     - Provides no buttons
 
 ::: warning
-
-```
 当页面使用noButtons模式时，如果页面内容中未提供用于关闭弹出窗口的额外 JavaScript 代码，则会导致软锁定。在这种模式下，多个页面不会合并到同一个弹出窗口中。因此，不建议使用该模式。
-```
+:::
 
 如果提供了多个页面，或者该hook被多次触发，这些页面将合并到同一个弹出窗口中。<br>如果在introPopup处于活动状态时触发钩子，或者已经触发了另一种类型的introPopup，则新内容将在现有弹出窗口关闭后，以独立的弹出窗口形式显示。
 
@@ -288,13 +282,11 @@ guihooks.trigger("introPopupClose")
 如果提供了多个页面，或者该hook被多次触发，这些页面将合并到同一个弹出窗口中。<br>如果在introPopup处于活动状态时触发了hook，或者已经触发了另一种类型的introPopup，则新内容将在当前弹出窗口关闭后，以独立的弹出窗口形式显示。
 
 ::: bug
-
-```
 背景模糊具有最小高度限制，这会导致内容较短的弹出窗口下方出现多余的模糊区域。目前主要有两种规避方案：
 
 * 重复输入 `\n` 并以 `#!html <div />` 结尾，直到窗口完全覆盖模糊区域。
 * 使用空路径或缺失的 `image` 路径，并调整宽高比（Aspect Ratio），直到窗口覆盖模糊区域。
-```
+:::
 
 #### introPopupMission
 
@@ -333,13 +325,11 @@ guihooks.trigger("introPopupClose")
 如果提供了多个页面，或者该hook被多次触发，这些页面将合并到同一个弹出窗口中。<br>如果在introPopup处于活动状态时触发了hook，或者已经触发了另一种类型的introPopup，则新内容将在当前弹出窗口关闭后，以独立的弹出窗口形式显示。
 
 ::: bug
-
-```
 背景模糊具有最小高度限制，这会导致内容较短的弹出窗口在其窗口下方出现多余的模糊区域。目前主要有两种规避方案：
 
 * 重复使用 `\n` 并以 `#!html <div />` 结尾，直到窗口高度足以覆盖模糊区域。
 * 使用空路径或缺失的 `image` 路径，并调整宽高比（Aspect Ratio），直到窗口完全覆盖模糊区域。
-```
+:::
 
 #### Dialogue
 
@@ -369,12 +359,10 @@ ui_missionInfo.closeDialogue()
 同时只能显示一个Dialogue。任何现有的Dialogue都会被直接覆盖。
 
 ::: info
-
-```
 `#!lua ui_missionInfo.closeDialogue()` 必须使用该函数来关闭对话框。
 
 请确保在按下任何按钮时都调用此函数。
-```
+:::
 
 ## IMGUI代码片段
 

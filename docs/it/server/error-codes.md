@@ -18,5 +18,6 @@ Questa pagina contiene tutti i possibili errori del server.
 | 10065  | Host non raggiungibile           | Nessuna connessione ad internet oppure port forward non corretto, guarda la [guida di installazione](create-a-server.md#1-port-forwarding). |
 
 ::: note
-	Altri codici non riportati in tabella sono disponibili qui <https://learn.microsoft.com/en-us/windows/win32/winsock/windows-sockets-error-codes-2> se sai un po' come funzionano le reti e i socket.
+Altri codici non riportati in tabella sono disponibili qui <https://learn.microsoft.com/en-us/windows/win32/winsock/windows-sockets-error-codes-2> se sai un po' come funzionano le reti e i socket.
+:::
 

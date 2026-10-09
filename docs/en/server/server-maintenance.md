@@ -95,87 +95,91 @@ You can add multiple tags separated by comma `Tags = "Events,Offroad,lang:englis
 
 You can choose from the following list:
 
-=== "Age/Content"
+::: tabs
 
-    - `Mature/18+`
+== Age/Content
 
-=== "Gameplay Types"
+- `Mature/18+`
 
-    - `Freeroam`
-    - `Roleplay`
-    - `Economy`
-    - `Traffic`
-    - `Challenge`
-    - `Drift`
+== Gameplay Types
 
-=== "Racing Categories"
+- `Freeroam`
+- `Roleplay`
+- `Economy`
+- `Traffic`
+- `Challenge`
+- `Drift`
 
-    - `Racing`
-    - `Racing:NASCAR`
-    - `Racing:Track`
-    - `Racing:Drag`
-    - `Racing:Rally`
-    - `Touge`
+== Racing Categories
 
-=== "Off-Roading"
+- `Racing`
+- `Racing:NASCAR`
+- `Racing:Track`
+- `Racing:Drag`
+- `Racing:Rally`
+- `Touge`
 
-    - `Offroad`
-    - `Crawling`
-    - `Rally`
-    - `Dakar`
+== Off-Roading
 
-=== "Destruction Events"
+- `Offroad`
+- `Crawling`
+- `Rally`
+- `Dakar`
 
-    - `Derby`
-    - `Arena`
+== Destruction Events
 
-=== "Weather and Time Conditions"
+- `Derby`
+- `Arena`
 
-    - `Snow/Ice`
-    - `Rain`
-    - `Night`
-    - `Weather`
+== Weather and Time Conditions
 
-=== "Gamemodes"
+- `Snow/Ice`
+- `Rain`
+- `Night`
+- `Weather`
 
-    - `Gamemode`
-    - `Gamemode:Racing`
-    - `Gamemode:Rally`
-    - `Gamemode:Drag`
-    - `Gamemode:Derby`
-    - `Gamemode:Infection`
-    - `Gamemode:Cops-Robbers`
-    - `Gamemode:Delivery`
-    - `Gamemode:Sumo`
+== Gamemodes
 
-=== "Community and Events"
+- `Gamemode`
+- `Gamemode:Racing`
+- `Gamemode:Rally`
+- `Gamemode:Drag`
+- `Gamemode:Derby`
+- `Gamemode:Infection`
+- `Gamemode:Cops-Robbers`
+- `Gamemode:Delivery`
+- `Gamemode:Sumo`
 
-    - `Scenarios`
-    - `Events`
-    - `Leaderboard`
+== Community and Events
 
-=== "Mods"
+- `Scenarios`
+- `Events`
+- `Leaderboard`
 
-    - `Modded`
-    - `Mod:BeamPaint`
-    - `Mod:BeamJoy`
-    - `Mod:CEI`
+== Mods
 
-=== "Languages"
+- `Modded`
+- `Mod:BeamPaint`
+- `Mod:BeamJoy`
+- `Mod:CEI`
 
-    - `Lang:English`
-    - `Lang:Russian`
-    - `Lang:French`
-    - `Lang:Spanish`
-    - `Lang:Portuguese`
-    - `Lang:German`
-    - `Lang:Polish`
-    - `Lang:Arabic`
+== Languages
 
-=== "Other"
+- `Lang:English`
+- `Lang:Russian`
+- `Lang:French`
+- `Lang:Spanish`
+- `Lang:Portuguese`
+- `Lang:German`
+- `Lang:Polish`
+- `Lang:Arabic`
 
-    - `Vanilla`
-    - `Moderated`
+== Other
+
+- `Vanilla`
+- `Moderated`
+
+:::
 
 
 Should a tag be missing from this list, you can submit a request for it to be added [here](https://forum.beammp.com/t/introducing-server-tags/1320081)

@@ -1,4 +1,4 @@
-::: warning "Diese Seite befindet sich im Aufbau!"
+::: warning Diese Seite befindet sich im Aufbau!
 
     An dieser Seite wird aktiv gearbeitet.
 

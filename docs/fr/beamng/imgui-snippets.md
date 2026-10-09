@@ -1,12 +1,10 @@
-!!! warning "Ce site est en cours de construction !"
-
-```
+::: warning Ce site est en cours de construction !
 Ce site est actuellement en cours de développement.
 
 Vous pensez pouvoir contribuer ? N'hésitez pas à le faire en cliquant sur l'icône en forme de crayon située à droite de la page !
 
 Vous pouvez également proposer des modifications sur n'importe quelle page.
-```
+:::
 
 # Extraits de code ImGui pour BeamNG.drive
 
@@ -33,7 +31,9 @@ im.End()
 
 ## Général
 
-=== "Formatage de base"
+::: tabs
+
+== Formatage de base
 
 ```lua
 im.Text("")
@@ -54,7 +54,7 @@ im.Indent() -- Augmente l'indentation
 im.Unindent() -- Réduit l'indentation
 ```
 
-=== "Champs de saisie"
+== Champs de saisie
 
 ```lua
 im.Button("", im.ImVec2(0,0)) -- 0 = s'adapte au contenu
@@ -72,7 +72,7 @@ im.RadioButton2("", im.IntPtr(), 0)
 -- arg 3 : 0 ou 1 pour désactivé ou activé
 ```
 
-=== "Autres"
+== Autres
 
 ```lua
 im.Bullet()
@@ -87,3 +87,5 @@ im.ProgressBar(
 im.TextUnformatted("", "")
 -- Le deuxième argument semble provoquer un crash du jeu
 ```
+
+:::

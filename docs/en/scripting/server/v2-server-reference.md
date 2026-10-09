@@ -1,17 +1,17 @@
-::: warning "This site is under construction!"
+::: warning This site is under construction!
+This site is being actively worked on. 
 
-    This site is being actively worked on. 
-    
-    Feel you could help? Please do by clicking on the page with a pencil on the right!
+Feel you could help? Please do by clicking on the page with a pencil on the right!
 
-    This can be done any page too.
+This can be done any page too.
+:::
 
 # Server Scripting Reference
 ## Server Version 2.X
 ::: warning
-
-    BeamMP server version 2.X is now unsupported. This documentation is provided as a reference only.
-    Please update to the latest version for maintenance and support.
+BeamMP server version 2.X is now unsupported. This documentation is provided as a reference only.
+Please update to the latest version for maintenance and support.
+:::
 ---
 
 > This is 2.x scripting. Only refer to this if your server is old/outdated (version 2.x.x). For the latest documentation see [here](https://docs.beammp.com/scripting/server/latest-server-reference).

@@ -29,13 +29,13 @@ La configurazione consiste di pochi passi che sono obbligatori da seguire.
 Questo passo è necessario se vuoi che qualcuno all'esterno della tua casa ("all'esterno del tuo network locale o LAN") possa accedere al server.
 
 ####
-::: danger ":material-scale-balance: LIMITAZIONE DI RESPONSABILITA':"
-	
-    **Port forward è rischioso**
+::: danger LIMITAZIONE DI RESPONSABILITA':
+**Port forward è rischioso**
 
-    Facendo il port forwarding sei a conoscenza dei rischi legati ad aprire le porte del tuo network di casa al pubblico e di conseguenza sollevi BeamMP da ogni responsabilità di danni che potrebbero succedere a te o al tuo ambiente domestico.
+Facendo il port forwarding sei a conoscenza dei rischi legati ad aprire le porte del tuo network di casa al pubblico e di conseguenza sollevi BeamMP da ogni responsabilità di danni che potrebbero succedere a te o al tuo ambiente domestico.
 
-    Non ci assumiamo alcuna responsabilità per i contenuti presenti su pagine esterne dei servizi presentati.
+Non ci assumiamo alcuna responsabilità per i contenuti presenti su pagine esterne dei servizi presentati.
+:::
 
 È consigliato affidarsi a uno dei nostri partner per l'hosting del server!
 

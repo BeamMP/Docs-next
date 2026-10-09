@@ -1,10 +1,10 @@
-::: warning "This site is under construction!"
+::: warning This site is under construction!
+This site is being actively worked on. 
 
-    This site is being actively worked on. 
-    
-    Feel you could help? Please do by clicking on the page with a pencil on the right!
+Feel you could help? Please do by clicking on the page with a pencil on the right!
 
-    This can be done any page too.
+This can be done any page too.
+:::
     
 # BeamNG.drive Lua Code Snippets
 
@@ -206,14 +206,14 @@ HTML is supported and can be used to add images/icons, for example.
 Multiple can be displayed at once, displayed sequentially.
 
 ::: bug
-
-    Providing no buttons prevents the player from escaping the dialog without using the console.
+Providing no buttons prevents the player from escaping the dialog without using the console.
+:::
 
 ::: bug
+The SDF parts of the Minimap UI app remain visible while a ConfirmationDialog is active.
 
-    The SDF parts of the Minimap UI app remain visible while a ConfirmationDialog is active.
-
-    `#!lua guihooks.trigger('ShowApps', false)` to hide UI apps can be used as a hacky workaround.
+`#!lua guihooks.trigger('ShowApps', false)` to hide UI apps can be used as a hacky workaround.
+:::
 
 <figure class="image image_resized" style="width:75%" markdown>
   ![ConfirmationDialog being used for an inactivity kick system](../../assets/content/ConfirmationDialog_Example.png)
@@ -250,8 +250,8 @@ guihooks.trigger("introPopupClose")
     * Provides no buttons
 
 ::: warning
-
-    When using the noButtons flavour on the page, providing no extra JavaScript in the page content to close the popup causes a softlock. Pages are not combined into one popup in this flavour. It is not recommended to use this flavour.
+When using the noButtons flavour on the page, providing no extra JavaScript in the page content to close the popup causes a softlock. Pages are not combined into one popup in this flavour. It is not recommended to use this flavour.
+:::
 
 If multiple pages are provided, or the hook is triggered multiple times, then the pages are combined into the same popup. If the hook is triggered while a introPopup is active, or when a different introPopup type has already been triggered, then it is displayed in a separate popup after the existing popup is closed.
 
@@ -294,11 +294,11 @@ guihooks.trigger("introPopupClose")
 If multiple pages are provided, or the hook is triggered multiple times, then the pages are combined into the same popup. If the hook is triggered while a introPopup is active, or when a different introPopup type has already been triggered, then it is displayed in a separate popup after the existing popup is closed.
 
 ::: bug
+The background blur has a minimum height, causing popups with short content to have excess blur below its window. Two main workarounds exist:
 
-    The background blur has a minimum height, causing popups with short content to have excess blur below its window. Two main workarounds exist:
-
-    * Repeat `\n` and end with `#!html <div />` until the window covers the blur
-    * Use an empty or missing `image` path and adjust the aspect ratio until the window covers the blur
+* Repeat `\n` and end with `#!html <div />` until the window covers the blur
+* Use an empty or missing `image` path and adjust the aspect ratio until the window covers the blur
+:::
 
 ### introPopupMission
 
@@ -339,11 +339,11 @@ guihooks.trigger("introPopupClose")
 If multiple pages are provided, or the hook is triggered multiple times, then the pages are combined into the same popup. If the hook is triggered while a introPopup is active, or when a different introPopup type has already been triggered, then it is displayed in a separate popup after the existing popup is closed.
 
 ::: bug
+The background blur has a minimum height, causing popups with short content to have excess blur below its window. Two main workarounds exist:
 
-    The background blur has a minimum height, causing popups with short content to have excess blur below its window. Two main workarounds exist:
-
-    * Repeat `\n` and end with `#!html <div />` until the window covers the blur
-    * Use an empty or missing `image` path and adjust the aspect ratio until the window covers the blur
+* Repeat `\n` and end with `#!html <div />` until the window covers the blur
+* Use an empty or missing `image` path and adjust the aspect ratio until the window covers the blur
+:::
 
 ### Dialogue
 
@@ -375,7 +375,7 @@ ui_missionInfo.closeDialogue()
 Only one Dialogue can be displayed at once. Any existing Dialogue is overridden.
 
 ::: info
+`#!lua ui_missionInfo.closeDialogue()` must be used to close a dialogue.
 
-    `#!lua ui_missionInfo.closeDialogue()` must be used to close a dialogue.
-
-    Make sure you call this function when any button is pressed.
+Make sure you call this function when any button is pressed.
+:::

@@ -5,9 +5,9 @@
 BeamMP与Windows和Linux完全兼容，与MacOS的兼容性正在研究中。然而，Linux和MacOS都是次要平台，这意味着bug在所难免。
 
 ::: warning
-
 BeamMP将无法与盗版或过时版本的BeamNG.drive一起工作。
 BeamMP支持团队不提供盗版/过期副本问题的支持。
+:::
 ```
 
 ---
@@ -28,8 +28,8 @@ BeamMP支持团队不提供盗版/过期副本问题的支持。
 3. BeamMP启动器的图标应该会出现在您的桌面上。如果没有出现，只需在 Windows 搜索栏中搜索“BeamMP”即可。
 
 ::: note
-
 当你加载到一个有多个车辆的地图时，它可能需要比预期更长的时间才能加入。
+:::
 ```
 
 ### **2b. Linux 安装**
@@ -86,8 +86,8 @@ cmake --build bin --parallel
 ```
 
 ::: note
-
 如果在编译时内存耗尽，可以提交——parallel指令，由于只在一个CPU线程上编译，它将使用更少的RAM。
+:::
 ```
 
 ::: note

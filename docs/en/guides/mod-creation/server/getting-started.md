@@ -31,7 +31,7 @@ The Client folder contains the zip files that are sent to a client, which then w
 Any other files in the Client folder will cause an error on server startup, but apart from that will be ignored by the server.
 The modScript.lua will be read by BeamNG and instructs the game which plugin to load.
 
-:::example ""
+::: example
 [Download the examplePlugin.zip](../../../../assets/content/ResourcesForExamplePlugin.zip)
 :::
 

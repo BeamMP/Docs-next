@@ -20,17 +20,13 @@ La mise en place d’un serveur se fait en quelques étapes. Si vous rencontrez 
 
 Avant toute utilisation, veuillez lire la [licence](https://raw.githubusercontent.com/BeamMP/BeamMP-Server/master/LICENSE) du serveur.
 
-!!! Info
-
-```
+::: info
 L’utilisation d’un VPS pour héberger votre serveur ne nécessite aucune modification du pare-feu ou de la redirection de ports de votre routeur.
-```
+:::
 
 Si vous n’avez pas encore choisi de VPS pour héberger votre serveur, vous pouvez consulter nos **services d’hébergement partenaires (payants)** :
 
-??? Abstract "Services d’hébergement partenaires"
-
-```
+::: details Services d’hébergement partenaires
 * [Horizon Hosting](https://hrzn.link/beammp)
 * [RackGenius](https://rackgeni.us/beammp-plans)
 * [Connect Hosting](https://connecthosting.net/beammp)
@@ -47,7 +43,7 @@ Si vous n’avez pas encore choisi de VPS pour héberger votre serveur, vous pou
 * [Iceline Hosting](https://iceline-hosting.com/games/beammp)
 
 (Nous déclinons toute responsabilité concernant le contenu des services ou sites web externes vers lesquels ces liens redirigent.)
-```
+:::
 
 ### **1. Configurer le VPS**
 
@@ -63,11 +59,9 @@ Le nombre de clés dont vous disposez est limité. Une même clé ne peut être 
 
 Vous pouvez obtenir davantage de clés en soutenant le projet. Consultez [cet article](https://docs.beammp.com/support/player-faq/) pour plus d’informations.
 
-!!! warning
-
-```
+::: warning
 **NE PARTAGEZ JAMAIS CETTE CLÉ ET NE LA MONTREZ À PERSONNE. TRAITEZ-LA COMME UN MOT DE PASSE.**
-```
+:::
 
 Vous aurez besoin d’un compte [Discord](https://discord.com) pour cette étape. Cela permet notamment de limiter le spam.
 
@@ -115,11 +109,9 @@ Vous pouvez la copier en cliquant sur l’icône en forme de presse-papiers situ
   ![](../../assets/content/keymaster_copy_key.png)
 </figure>
 
-!!! warning
-
-```
+::: warning
 Vous ne pourrez pas modifier directement le fichier `ServerConfig.toml` depuis le gestionnaire de fichiers. Cette restriction est intentionnelle afin de permettre à l’hébergeur d’imposer certaines limites, comme le nombre maximal de joueurs.
-```
+:::
 
 ### **3. Renseigner les champs**
 
@@ -141,15 +133,13 @@ Vous pouvez ajouter des mods à votre serveur à l’aide du gestionnaire de fic
 
 L’installation des mods de véhicules et des cartes diffère, mais ils doivent tous deux être placés dans le dossier `Resources/Client` de votre serveur. Il vous suffit de glisser-déposer le mod souhaité dans ce dossier.
 
-!!! warning
-
-```
+::: warning
 Les mods peuvent être incompatibles avec BeamNG, BeamMP ou d’autres mods, et peuvent également le devenir à la suite de mises à jour. Si vous rencontrez des problèmes, commencez par retirer les mods récemment ajoutés.
 
 Si vous recevez un message **« done »** ou **« start »** lorsque vous essayez de rejoindre votre serveur après avoir ajouté des mods, il est probable que vous ayez installé un mod incompatible ou défectueux.
 
 Des conflits peuvent également survenir entre deux ou plusieurs mods. Si vous avez installé des mods côté client, consultez [ce guide](../../FAQ/How-to-deactivate-mods.md) pour savoir comment les supprimer de votre jeu.
-```
+:::
 
 #### **4.1. Mods généraux**
 

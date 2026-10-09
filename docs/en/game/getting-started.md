@@ -80,11 +80,11 @@ cmake --build bin --parallel
 Should you run out of RAM while building, you can ommit the --parallel instruction, it will then use less RAM due to building only on one CPU thread.
 :::
 
-:::note ""
+::: note
 By not specifying `-DCMAKE_BUILD_TYPE=Release` you are building a debug version, which is larger in filesize but does not contain the launcher-can-only-connect-to-a-server-once bug
 :::
 
-:::note Fedora Users
+::: note Fedora Users
 If vcpkg fails during OpenSSL compilation with kernel headers errors, ensure all dependencies are installed:
 ```bash
 sudo dnf install kernel-headers kernel-devel gcc gcc-c++ make perl
@@ -126,7 +126,7 @@ With the symlink in place between the userfolders and the launcher compiled, you
 
 Note that this assumes you put the launcher's binary you compiled earlier into `/home/user/BeamMP/`, so change it to match where you put the finished binary, and you will need to re-compile the launcher with the correct git branch each time a launcher update is released.
 
-::: tip "Adding an emoji-font to get in-text emojis"
+::: tip Adding an emoji-font to get in-text emojis
 In order to get emojis to show up in either the serverlist (As part of a servers customised name) or in the ingame chat, you need to have a font that contains emojis.
 
 This can be done for example by adding the [Linux-port of the Windows Segoe-UI emoji font](https://github.com/mrbvrz/segoe-ui-linux)

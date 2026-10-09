@@ -2,253 +2,253 @@
 
 ## **1. General**
 
-::: setting "Show advanced options"
+::: details Show advanced options
 If enabled, you will see all multiplayer settings
 If disabled, you will see only basic multiplayer settings
 :::
 
-??? setting "Enable config cloning protection"
+::: details Enable config cloning protection
+If enabled, your spawned vehicle config will be protected from other players saving it
 
-    If enabled, your spawned vehicle config will be protected from other players saving it
+If disabled, your spawned vehicle config can be saved by other players
+:::
 
-    If disabled, your spawned vehicle config can be saved by other players
+:::: details Disable pausing caused by instabilities
+If enabled, physics instabilities will not cause your game to pause
 
-??? setting "Disable pausing caused by instabilities"
+If disabled, physics instabilities will cause your game to pause
 
-    If enabled, physics instabilities will not cause your game to pause
+::: note
+Its advised to leave disabled, since repeated instabilities can cause the game to crash
+:::
+::::
 
-    If disabled, physics instabilities will cause your game to pause
+::: details Use simplified vehicles when available
+If enabled, the game will replace vehicles of other players with their simplified versions (from AI traffic) if available
 
-    ::: note ""
+If disabled, the game will use the intended vehicle models
+:::
 
-        Its advised to leave disabled, since repeated instabilities can cause the game to crash
+:::: details New chat menu
+If enabled, the ingame chat will be displayed in an [IMGUI](https://github.com/ocornut/imgui) window, that for example can be dragged out of the game onto another monitor
 
-??? setting "Use simplified vehicles when available"
+If disabled, the ingame chat will be displayed in the UI app
 
-    If enabled, the game will replace vehicles of other players with their simplified versions (from AI traffic) if available
+::: note
+Dragging IMGUI windows out of the main game window can cause performance issues, as well as trick screen recording software into recording the chat window instead of the main game window
+:::
+::::
 
-    If disabled, the game will use the intended vehicle models
+::: details Enable vehicle position smoothing
+If enabled, beamMP will use an algorithm to smooth vehicle position updates to regular intervalls. Can be beneficial between players with high ping or when a connection experiences a high package drop rate
 
-??? setting "New chat menu"
+If disabled, beamMP will update vehicle locations as they are received
+:::
 
-    If enabled, the ingame chat will be displayed in an [IMGUI](https://github.com/ocornut/imgui) window, that for example can be dragged out of the game onto another monitor
+::: details Skip the mod security warning popusp
+If enabled, the mod security popup will not be shown when trying to connect to a server with mods
 
-    If disabled, the ingame chat will be displayed in the UI app
+If disabled, the mod security popup will be shown whenever you connect to a server with mods
+:::
 
-    ::: note ""
+::: details Enable player vehicle update/edit queuing
+If enabled, other players vehicle spawns and edits will be put into a queue. See the section `2. Event queue` for further details
 
-        Dragging IMGUI windows out of the main game window can cause performance issues, as well as trick screen recording software into recording the chat window instead of the main game window
+If disabled, other players vehicle spawns and edits will be loaded by the game instantly
+:::
 
-??? setting "Enable vehicle position smoothing"
+::: details Enable automatic part sync
+If enabled, your vehicles parts will automatically be synced to other players after a few seconds
 
-    If enabled, beamMP will use an algorithm to smooth vehicle position updates to regular intervalls. Can be beneficial between players with high ping or when a connection experiences a high package drop rate
+If disbaled, you need to click the part sync button in the part picker in order to send a sync out to other players
+:::
 
-    If disabled, beamMP will update vehicle locations as they are received
+::: details Disable switching to other players vehicles
+If enabled, tabbing trough vehicles will skip other players vehicles
 
-??? setting "Skip the mod security warning popusp"
+If disabled, tabbing trough vehicles will cycle over every spawned vehicle
+:::
 
-    If enabled, the mod security popup will not be shown when trying to connect to a server with mods
+:::: details Fade out vehicles as they get closer
+If enabled, other vehicles will fade out as they get closer
 
-    If disabled, the mod security popup will be shown whenever you connect to a server with mods
+If disbaled, other vehicles will stay fully visible regardless of distance
 
-??? setting "Enable player vehicle update/edit queuing"
+::: note
+This only affects the visible 3d mesh of a vehicle, not its physics node-beam-mesh. In order to also disable physics, you need to enable `Simplified collision physics` in the Gameplay settings
+:::
+::::
 
-    If enabled, other players vehicle spawns and edits will be put into a queue. See the section `2. Event queue` for further details
+::: details Show the player ID`s
+If enabled, the ingame playerlist will have an additional row showing each players ID. Useful for development or moderation
 
-    If disabled, other players vehicle spawns and edits will be loaded by the game instantly
+If disabled, the ingame playerlist will only show the rows for playername and ping
+:::
 
-??? setting "Enable automatic part sync"
+::: details Allow the serverlist to refresh ingame
+If enabled, the serverlist will update in regular intervalls while playing. This can cause lag spikes
 
-    If enabled, your vehicles parts will automatically be synced to other players after a few seconds
-
-    If disbaled, you need to click the part sync button in the part picker in order to send a sync out to other players
-
-??? setting "Disable switching to other players vehicles"
-
-    If enabled, tabbing trough vehicles will skip other players vehicles
-
-    If disabled, tabbing trough vehicles will cycle over every spawned vehicle
-
-??? setting "Fade out vehicles as they get closer"
-
-    If enabled, other vehicles will fade out as they get closer
-
-    If disbaled, other vehicles will stay fully visible regardless of distance
-
-    ::: note ""
-
-        This only affects the visible 3d mesh of a vehicle, not its physics node-beam-mesh. In order to also disable physics, you need to enable `Simplified collision physics` in the Gameplay settings
-
-??? setting "Show the player ID`s"
-
-    If enabled, the ingame playerlist will have an additional row showing each players ID. Useful for development or moderation
-
-    If disabled, the ingame playerlist will only show the rows for playername and ping
-
-??? setting "Allow the serverlist to refresh ingame"
-
-    If enabled, the serverlist will update in regular intervalls while playing. This can cause lag spikes
-
-    If disabled, the serverlist will only update once you open the main menu
+If disabled, the serverlist will only update once you open the main menu
+:::
 
 ## **2. Event queue**
 
-??? setting "Highlight queued players"
+::: details Highlight queued players
+If enabled, players with a queued event will be highlighted in the ingame playerlist
 
-    If enabled, players with a queued event will be highlighted in the ingame playerlist
+If disabled, players will not be individually highlighted
+:::
 
-    If disabled, players will not be individually highlighted
+::: details Apply vehicle changes with
+If set to `Left mouse button`, clicking on a players name in the playerlist using the left mouse button will load the queued events. Clicking with the right mouse button will spectate said player
 
-??? setting "Apply vehicle changes with"
+If set to `Right mouse button`, clicking on a players name in the playerlist using the right mouse button will load the queued events. Clicking with the left mouse button will spectate said player
+:::
 
-    If set to `Left mouse button`, clicking on a players name in the playerlist using the left mouse button will load the queued events. Clicking with the right mouse button will spectate said player
+::: details Automatically apply queued vehicle changes
+If enabled, the queued events will be automatically loaded once you've been going under the speed treshold for the amount of time set as the timeout
 
-    If set to `Right mouse button`, clicking on a players name in the playerlist using the right mouse button will load the queued events. Clicking with the left mouse button will spectate said player
+If disabled, the queued events will only load manually, by clicking on either the `Events` button at the top of the screen or on a players name in the playerlist
+:::
 
-??? setting "Automatically apply queued vehicle changes"
+::: details Queue apply speed treshold
+This setpoint defines the speed treshold of the automatic event queue loading. Your vehicle has to be slower than this for longer than `Queue apply timeout` in order to load the queued events
+:::
 
-    If enabled, the queued events will be automatically loaded once you've been going under the speed treshold for the amount of time set as the timeout
+::: details Queue apply timeout
+This setpoint defines the time delay of the automatic event queue loading. Your vehicle has to be slower than `Queue apply speed treshold` for this time in order to load the queued events
+:::
 
-    If disabled, the queued events will only load manually, by clicking on either the `Events` button at the top of the screen or on a players name in the playerlist
+::: details Skip queue if spectating others
+If enabled, an event will instantly load if you are spectating another player
 
-??? setting "Queue apply speed treshold"
+If disabled, an event will be queued just like it would when focused on your own vehicle
+:::
 
-    This setpoint defines the speed treshold of the automatic event queue loading. Your vehicle has to be slower than this for longer than `Queue apply timeout` in order to load the queued events
+::: details Don't queue Unicycles (Snowmen/Beamlings)
+If enabled, an event concerning a snowmen/beamling will be loaded instantly
 
-??? setting "Queue apply timeout"
-
-    This setpoint defines the time delay of the automatic event queue loading. Your vehicle has to be slower than `Queue apply speed treshold` for this time in order to load the queued events
-
-??? setting "Skip queue if spectating others"
-
-    If enabled, an event will instantly load if you are spectating another player
-
-    If disabled, an event will be queued just like it would when focused on your own vehicle
-
-??? setting "Don't queue Unicycles (Snowmen/Beamlings)"
-
-    If enabled, an event concerning a snowmen/beamling will be loaded instantly
-
-    If disabled, snowmen/beamlings will be queued just like other vehicles
+If disabled, snowmen/beamlings will be queued just like other vehicles
+:::
 
 ## **3. Set default Unicycle**
 
-??? setting "Default Unicycle config"
+::: details Default Unicycle config
+This setpoint defines the unicycle variant to be loaded by default. You can choose between premade configs and your own should you have saved custom unicycle configs
+:::
 
-    This setpoint defines the unicycle variant to be loaded by default. You can choose between premade configs and your own should you have saved custom unicycle configs
+::: details Automatically save your last used Unicycle
+If enabled, your last used unicycle will be automatically saved and reloaded once you spawn it again
 
-??? setting "Automatically save your last used Unicycle"
-
-    If enabled, your last used unicycle will be automatically saved and reloaded once you spawn it again
-
-    If disabled, your default unicycle config will spawn every time
+If disabled, your default unicycle config will spawn every time
+:::
 
 ## **4. Blobs**
 
-??? setting "Enable blobs for unspawned vehicles"
+::: details Enable blobs for unspawned vehicles
+If enabled, you will see a placeholder orb, or blob, in place of an unspawned vehicle
 
-    If enabled, you will see a placeholder orb, or blob, in place of an unspawned vehicle
+If disabled, an unspawned vehicle will be invisible
+:::
 
-    If disabled, an unspawned vehicle will be invisible
+:::: details Tune colors
+::: details Visible
+If enabled, a blob will be drawn, using the color below
 
-??? setting "Tune colors"
+If disabled, no blob will be drawn for the specified function
+:::
 
-    ??? setting "Visible"
+::: details RGB HEX values
+Queued vehicle: The color a blob will use if a vehicle is queued for spawning. Standard value #FF6400
 
-        If enabled, a blob will be drawn, using the color below
+Illegal vehicle: The color a blob will use if a vehicle is illegal, for example trough a mod that was sideloaded. Standard value #000000
 
-        If disabled, no blob will be drawn for the specified function
-
-    ??? setting "RGB HEX values"
-
-        Queued vehicle: The color a blob will use if a vehicle is queued for spawning. Standard value #FF6400
-
-        Illegal vehicle: The color a blob will use if a vehicle is illegal, for example trough a mod that was sideloaded. Standard value #000000
-
-        Deleted vehicle: The color a blob will use if a vehicle was deleted by the user. Standard value #333333
+Deleted vehicle: The color a blob will use if a vehicle was deleted by the user. Standard value #333333
+:::
+::::
 
 ## **5. Nametags**
 
-??? setting "Hide player nametags"
+::: details Hide player nametags
+If enabled, player nametags will not be drawn
 
-    If enabled, player nametags will not be drawn
+If disabled, player nametags will be drawn according to their vehicles relative position
+:::
 
-    If disabled, player nametags will be drawn according to their vehicles relative position
+::: details Show distance from other players
+If enabled, the nametag will be prepended by the distance to the respective vehicle
 
-??? setting "Show distance from other players"
+If disabled, no additional distance will be shown in the nametag
+:::
 
-    If enabled, the nametag will be prepended by the distance to the respective vehicle
+::: details Fade nametags in/out
+If enabled, a nametag will be faded in/out according to `Fade distance` and `Invert nametag fade direction`
 
-    If disabled, no additional distance will be shown in the nametag
+If disabled, anametag will be drawn at standard opacity regardless of distance to the respective vehicle
+:::
 
-??? setting "Fade nametags in/out"
+:::: details Fade distance/Invert nametag fade direction
+::: details Fade out
+Nametags are getting less visible the further away a player is
 
-    If enabled, a nametag will be faded in/out according to `Fade distance` and `Invert nametag fade direction`
+`Fade distance` defines the distance at which a nametag will be drawn at minimal opacity
+:::
 
-    If disabled, anametag will be drawn at standard opacity regardless of distance to the respective vehicle
+::: details Fade in
+Nametags are getting more visible the further away a player is
 
-??? setting "Fade distance/Invert nametag fade direction"
+`Fade distance` defines the distance at which a nametag will be drawn at maximal opacity
+:::
+::::
 
-    ::: setting "Fade out"
+::: details Don't fully hide nametags
+If enabled, a nametag can not get fully invisible, it will retain a minimal opacity regardless of distance
 
-        Nametags are getting less visible the further away a player is
+If disabled, nametags can get fully invisble
+:::
 
-        `Fade distance` defines the distance at which a nametag will be drawn at minimal opacity
+::: details Shorten nametag and role tags
+If enabled, `Nametag length limit` will truncate nametags and roles to the set limit of characters
 
-    ::: setting "Fade in"
+If disabled, nametag and role tags will be shown at full length
+:::
 
-        Nametags are getting more visible the further away a player is
+::: details Show spectators' nametag under vehicle nametags
+If enabled, a spectators name will be added underneath a players nametag
 
-        `Fade distance` defines the distance at which a nametag will be drawn at maximal opacity
+If disabled, no spectator names will be added to nametags
+:::
 
-??? setting "Don't fully hide nametags"
+::: details Same color for spectator nametags
+If enabled, a spectators name will always be surrounded by a grey background
 
-    If enabled, a nametag can not get fully invisible, it will retain a minimal opacity regardless of distance
-
-    If disabled, nametags can get fully invisble
-
-??? setting "Shorten nametag and role tags"
-
-    If enabled, `Nametag length limit` will truncate nametags and roles to the set limit of characters
-
-    If disabled, nametag and role tags will be shown at full length
-
-??? setting "Show spectators' nametag under vehicle nametags"
-
-    If enabled, a spectators name will be added underneath a players nametag
-
-    If disabled, no spectator names will be added to nametags
-
-??? setting "Same color for spectator nametags"
-
-    If enabled, a spectators name will always be surrounded by a grey background
-
-    If disabled, a spectators name will be surrounded by a colored background, reflecting the spectators role
+If disabled, a spectators name will be surrounded by a colored background, reflecting the spectators role
+:::
 
 ## **6. Others**
 
-??? setting "Show network activity in the console"
+:::: details Show network activity in the console
+If enabled, the beamMP network activity will be shown in the console
 
-    If enabled, the beamMP network activity will be shown in the console
+If disabled, no further network activity will be shown in the console
 
-    If disabled, no further network activity will be shown in the console
+::: danger
+Be careful with this setting, since all the console output gets also written into the log files
 
-    ::: danger ""
+They can grow by hundreds of MB in minutes with this setting enabled
+:::
+::::
 
-        Be careful with this setting, since all the console output gets also written into the log files
-        
-        They can grow by hundreds of MB in minutes with this setting enabled
+:::: details Launcher port
+This setpoint defines the port used for communicating with the launcher
 
-??? setting "Launcher port"
+Should only be changed if the standard port 4444 can not be used
 
-    This setpoint defines the port used for communicating with the launcher
+Dont forget to also change it on the launcher side, by modifying `launcher.cfg`
 
-    Should only be changed if the standard port 4444 can not be used
+::: tip
+The port specified is only the first of two, the second port being used is directly following, set port + 1
 
-    Dont forget to also change it on the launcher side, by modifying `launcher.cfg`
-
-    ::: tip ""
-
-        The port specified is only the first of two, the second port being used is directly following, set port + 1
-
-        The first port carries core network pakets, the second game network pakets, both over TCP
+The first port carries core network pakets, the second game network pakets, both over TCP
+:::
+::::

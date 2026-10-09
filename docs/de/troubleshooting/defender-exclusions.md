@@ -1,6 +1,7 @@
 # Wie erstelle ich Ausnahmen für Windows Defender Firewall und Antivirus?
 
 ::: info
+:::
 
 ```
 Bevor Änderungen an der Firewall vorgenommen werden, sollte sichergestellt werden, dass das aktive Netzwerk in den Windows Netzwerk-Einstellungen als "privat" gekennzeichnet ist (vorausgesetzt, das Netzwerk ist tatsächlich ein privates).

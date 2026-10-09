@@ -19,11 +19,11 @@ Mettre en place un serveur se fait en quelques étapes !
 
 Veuillez vous assurer d’avoir lu la [LICENCE](https://raw.githubusercontent.com/BeamMP/BeamMP-Server/master/LICENSE) du serveur avant toute utilisation.
 
-!!! note
-             
-    Remarque : *Le serveur prend uniquement en charge l’IPv4. Si vous ne savez pas quelle version vous utilisez, vous pouvez consulter votre adresse IP sur [whatsmyip.org](https://www.whatsmyip.org/)*. Si celle-ci contient deux-points (`_:_`), il s’agit d’une adresse* ***IPv6***. Dans ce cas, vérifiez auprès de votre fournisseur d’accès à Internet si vous disposez également d’une adresse IPv4. 
-    
-    Vous pouvez également demander de l’aide à une personne ayant des connaissances en informatique. La prise en charge de l’IPv6 est prévue ultérieurement.
+::: note
+Remarque : *Le serveur prend uniquement en charge l’IPv4. Si vous ne savez pas quelle version vous utilisez, vous pouvez consulter votre adresse IP sur [whatsmyip.org](https://www.whatsmyip.org/)*. Si celle-ci contient deux-points (`_:_`), il s’agit d’une adresse* ***IPv6***. Dans ce cas, vérifiez auprès de votre fournisseur d’accès à Internet si vous disposez également d’une adresse IPv4. 
+
+Vous pouvez également demander de l’aide à une personne ayant des connaissances en informatique. La prise en charge de l’IPv6 est prévue ultérieurement.
+:::
 
 
 
@@ -34,12 +34,13 @@ La configuration se déroule en plusieurs étapes, qui doivent toutes être suiv
 ### **1. Redirection de port**
 
 ::: info
+Si vous utilisez un VPS (Virtual Private Server), un serveur dédié avec accès root, ou si vous prévoyez d’héberger le serveur uniquement en local, avec des joueurs connectés depuis le même domicile que vous, vous pouvez passer cette étape.
 
-    Si vous utilisez un VPS (Virtual Private Server), un serveur dédié avec accès root, ou si vous prévoyez d’héberger le serveur uniquement en local, avec des joueurs connectés depuis le même domicile que vous, vous pouvez passer cette étape.
+Cette étape est uniquement nécessaire si vous souhaitez permettre à des joueurs extérieurs à votre domicile de rejoindre votre serveur hébergé localement, c’est-à-dire depuis l’extérieur de votre réseau local.
+:::
 
-    Cette étape est uniquement nécessaire si vous souhaitez permettre à des joueurs extérieurs à votre domicile de rejoindre votre serveur hébergé localement, c’est-à-dire depuis l’extérieur de votre réseau local.
-
-!!! danger " AVERTISSEMENT :"
+::: danger AVERTISSEMENT :
+:::
 
 **Le transfert de port est un risque**.
 
@@ -86,8 +87,8 @@ Vous pouvez obtenir des clés supplémentaires en soutenant le projet. Pour plus
 
 
 ::: warning
-
-     NE PARTAGEZ JAMAIS CETTE CLÉ ET NE LA MONTREZ À PERSONNE. TRAITEZ CECI COMME UN MOT DE PASSE.
+NE PARTAGEZ JAMAIS CETTE CLÉ ET NE LA MONTREZ À PERSONNE. TRAITEZ CECI COMME UN MOT DE PASSE.
+:::
 
 Vous aurez besoin d'un compte [Discord](https://discord.com/register) pour cette étape. Ceci est indispensable pour éviter le spam.
 
@@ -234,8 +235,8 @@ L’installation des mods de véhicules et de cartes est différente, mais ils d
 
 
 ::: warning
-
 Si vous recevez un message « terminé » ou « démarrer » lorsque vous essayez de rejoindre votre serveur après avoir ajouté des mods, il est probable que vous ayez installé un mod incompatible ou défectueux.
+:::
 
 Des conflits peuvent également survenir entre deux ou plusieurs mods. Si vous avez installé des mods côté client, consultez ce guide pour savoir comment les supprimer de votre jeu.
 
@@ -317,13 +318,13 @@ Saisissez l’adresse IPv4 publique et le port de votre serveur ci-dessous, puis
 </form>
 ```
 
-::: warning "Je souhaite utiliser un VPN tel que RadminVPN, Hamachi ou similaire."
-
+::: warning Je souhaite utiliser un VPN tel que RadminVPN, Hamachi ou similaire.
 BeamMP ne prend pas en charge ces VPN, car ils peuvent fréquemment provoquer des problèmes, notamment en empêchant le transfert du trafic UDP. Pour résoudre ce problème, consultez la section 1.
+:::
 
-::: question "Mais pourquoi cela fonctionnait-il auparavant ?"
-
+::: question Mais pourquoi cela fonctionnait-il auparavant ?
 Cela peut s’expliquer par des mises à jour ou des modifications apportées par les développeurs de ces applications, sur lesquelles BeamMP n’a aucun contrôle.
+:::
 
 Il appartient aux développeurs de ces applications d’assurer la compatibilité avec des cas d’utilisation spécifiques, comme l’hébergement d’un serveur BeamMP.
 
