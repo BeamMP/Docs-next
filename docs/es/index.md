@@ -12,33 +12,39 @@ hero:
   actions:
     - theme: brand
       text: Comenzar
-      link: /es/game/getting-started
+      link: /es/get-started/index
     - theme: alt
       text: Ver en GitHub
       link: https://github.com/BeamMP/Docs-next
 
 features:
-  - icon: 🎮
+  - icon:
+      src: /assets/icons/players.svg
     title: Para Jugadores
     details: Aprende cómo instalar BeamMP, conectarte a servidores y aprovechar al máximo tu experiencia multijugador
-    link: /es/game/getting-started
-  - icon: 🖥️
+    link: /es/get-started/index
+  - icon:
+      src: /assets/icons/server.svg
     title: Para Propietarios de Servidores
     details: Configura y administra tu propio servidor BeamMP con nuestras guías completas y recursos de solución de problemas
-    link: /es/server/create-a-server
-  - icon: 💻
+    link: /es/server-owners/host-a-server
+  - icon:
+      src: /assets/icons/developers.svg
     title: Para Desarrolladores
     details: Crea mods, recursos y aplicaciones de interfaz de usuario con documentación detallada de API y ejemplos de código
-    link: /es/guides/index
-  - icon: ❓
+    link: /es/developers/index
+  - icon:
+      src: /assets/icons/faq.svg
     title: Preguntas Frecuentes
     details: Encuentra respuestas rápidas a preguntas frecuentes sobre configuración, solución de problemas y mejores prácticas
-    link: /es/FAQ/player-faq
-  - icon: 📋
+    link: /es/players/faq
+  - icon:
+      src: /assets/icons/rules.svg
     title: Reglas de la Comunidad
     details: Aprende sobre nuestras directrices de la comunidad y cómo reportar problemas o apelar decisiones
     link: /es/community/rules
-  - icon: 🔗
+  - icon:
+      src: /assets/icons/community.svg
     title: Comunidad
     details: Únete a nuestro Discord, síguenos en redes sociales y conecta con otros jugadores y desarrolladores de BeamMP
     link: /es/community/index
