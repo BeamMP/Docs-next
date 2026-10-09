@@ -3,6 +3,7 @@ import { tabsMarkdownPlugin } from 'vitepress-plugin-tabs'
 import fs from 'node:fs'
 import path from 'node:path'
 import { redirectPage, redirectPlan } from '../../scripts/lib/redirects.mjs'
+import { describePage, pageHead } from '../../scripts/lib/seo.mjs'
 import { HOSTNAME, REPO, REPO_NAME_PLACEHOLDER, REPO_PLACEHOLDER } from './site'
 import container from 'markdown-it-container'
 import type Token from 'markdown-it/lib/token.mjs'
@@ -374,14 +375,41 @@ export default defineConfig({
   },
   rewrites,
   // GitHub Pages cannot redirect, so the old MkDocs addresses get a small page that sends the visitor on.
-  // The "View on GitHub" button on each home page names the repository by placeholder.
-  transformPageData(pageData) {
-    const actions = pageData.frontmatter?.hero?.actions
-    if (Array.isArray(actions)) {
-      for (const action of actions) {
+  // The "View on GitHub" button on each home page names the repository by placeholder, and a page
+  // with no description of its own takes one from its first paragraph (for search results and
+  // for the card a shared link shows).
+  transformPageData(pageData, { siteConfig }) {
+    const hero = pageData.frontmatter?.hero
+    if (Array.isArray(hero?.actions)) {
+      for (const action of hero.actions) {
         if (typeof action.link === 'string') action.link = action.link.replace(REPO_PLACEHOLDER, REPO)
       }
     }
+    if (!pageData.description) {
+      let description: string = hero?.tagline || ''
+      if (!description && pageData.filePath) {
+        try {
+          description = describePage(fs.readFileSync(path.join(siteConfig.srcDir, pageData.filePath), 'utf8'))
+        } catch {
+          /* a page with no readable source keeps the site description */
+        }
+      }
+      pageData.description = description
+    }
+  },
+  // What a shared link (Discord, Slack, X) shows: title, description, picture, site name.
+  transformHead({ pageData, siteConfig }) {
+    return pageHead({
+      title: pageData.frontmatter?.hero?.name || pageData.title || siteConfig.site.title,
+      description: pageData.description,
+      relativePath: pageData.relativePath,
+      hostname: HOSTNAME,
+      siteName: siteConfig.site.title,
+      siteDescription: siteConfig.site.description,
+      image: '/assets/core/social-card.png',
+      imageAlt: 'BeamMP Documentation',
+      themeColor: '#f36d24'
+    })
   },
   buildEnd(siteConfig) {
     for (const [file, to] of redirectPlan(siteConfig.pages, siteConfig.rewrites.map)) {
