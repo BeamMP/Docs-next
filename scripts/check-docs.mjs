@@ -27,6 +27,7 @@ import { spawnSync } from 'node:child_process'
 import { fileURLToPath } from 'node:url'
 import { RULES, countByRule, findProblems } from './lib/checks.mjs'
 import { findMissingAssets } from './lib/assets.mjs'
+import { findMissingOldAddresses, readOldAddresses } from './lib/oldaddresses.mjs'
 import { buildSnapshot, compareToBaseline, parseDeadLinks, parseRenderErrors, sortSnapshot, totalsByRule } from './lib/baseline.mjs'
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
@@ -131,6 +132,7 @@ for (const [file, message] of Object.entries(failures)) {
 let links = []
 let renderErrors = []
 let missingAssets = []
+let missingOldAddresses = []
 if (!skipLinks) {
   console.log('Building the site to find dead links and rendering errors...')
   const build = buildReport()
@@ -143,6 +145,14 @@ if (!skipLinks) {
   links = parseDeadLinks(build.output)
   renderErrors = parseRenderErrors(build.output, pages.map(pageName))
   missingAssets = findMissingAssets(path.join(docsDir, '.vitepress', 'dist')).map(({ page, url }) => ({ file: 'docs/' + page.replace(/\.html$/, '.md'), url }))
+  missingOldAddresses = findMissingOldAddresses(path.join(docsDir, '.vitepress', 'dist'), readOldAddresses(path.join(root, 'scripts', 'old-addresses.txt')))
+}
+
+if (missingOldAddresses.length) {
+  console.error(`\n${missingOldAddresses.length} address(es) of the live MkDocs site lead nowhere in this build:\n`)
+  for (const address of missingOldAddresses.slice(0, 40)) console.error('  ' + address)
+  console.error('\nAdd the page to movedPages in docs/.vitepress/config.mts so its old address redirects.')
+  process.exit(1)
 }
 
 const current = buildSnapshot(pageCounts, links, renderErrors, missingAssets)
