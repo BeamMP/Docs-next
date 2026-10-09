@@ -1,41 +1,42 @@
-如何检查CGNAT？
+---
+description: "查明你的网络是否处于 CGNAT 之后。即使转发了端口，CGNAT 也会让玩家无法加入你在家托管的 BeamMP 服务器。"
+---
+# 检查 CGNAT
 
-## 问题
+你的防火墙排除项和端口转发规则都已正确设置，却仍然没有人能加入你在家托管的服务器？你可能处于 CGNAT 之后。
 
-所有防火墙规则和端口转发规则设置正确，但没有人可以加入您的家庭托管服务器？
+如果你使用的是托管服务并且遇到连接问题，请联系服务商。如果你想使用 VPS，或者无法在家托管，请参阅[合作托管服务](/zh/server-owners/host-a-server#partnered-hosting-services)。
 
-如果您有连接问题，并且您正在使用托管服务，请联系他们寻求帮助。如果您想使用VPS或无法在家中托管服务器，请查看我们的[合作托管服务列表](/zh/server-owners/host-a-server#partnered-hosting-services-paid)（服务器设置文档）。
+## 什么是 CGNAT？
 
-# CGNAT是什么？
+运营商级 NAT（Carrier-grade NAT，CGNAT）是部分网络运营商采用的一种方案，它会让你很难把端口转发到家里。关于它是什么，以及它为什么会给在家托管带来问题，请参阅[维基百科上的运营商级 NAT](https://en.wikipedia.org/wiki/Carrier-grade_NAT)。
 
-有关CGNAT是什么以及在尝试在家中托管服务器时为什么会出现问题的详细解释，请查看[这个页面](https://en.wikipedia.org/wiki/Carrier-grade_NAT)。
+## 检查 CGNAT
 
-# 怎么检查CGNAT?
+### 方法 1：跟踪路由
 
-## 方法 1:
+1. 打开命令提示符并运行：
+   ```text
+   tracert -4 beammp.com
+   ```
+   它会列出一系列网络跳数。请等待它完成，最多可能需要 30 跳。
+2. 第一跳是你的路由器、调制解调器或网关，不同设备各不相同。请查看它之后的前几个 IP 地址。
+3. 如果第一跳之后出现多个介于 `100.64.x.x` 和 `100.127.x.x` 之间的地址，或以 `10.` 开头的地址，那么你很可能处于 CGNAT 之后。
 
-打开命令提示符，运行`tracert -4 beammp.com`。这将输出一系列网络跳数。等待操作完成（可能需要30跳）。检查路由器/调制解调器/网关IP后的前几个IP地址。如果有多个IP地址在`100.64.x.x`—`100.127.x。X `或`10.xx.xx。xx`出现在第一跳之后，您很可能在CGNAT后面。
+本地网络的官方地址范围是 `10.0.0.x`、`192.168.x.x` 和 `172.16.x.x`。
 
-::: note
-第一跳将是你的路由器/调制解调器/网关，不同的设备不同。
-本地网络的官方范围如下：‘ ’ 10.0.0。Xxx ' ' - ' ' 192.168.xxx. Xxx。Xxx ' ' - ' ' ' 172.16.xxx.xxx ' ‘ ’
-:::
+### 方法 2：比较 IP 地址
 
-## 方法 2:
+在路由器的界面上找到 WAN IP 地址，并将其与 [whatsmyip.org](https://whatsmyip.org) 上显示的地址进行比较。如果两者**不**相同，那么你处于 CGNAT 之后。
 
-在路由器的接口上查找WAN IP。将其与发布在例如https://whatsmyip.org上的IP进行比较。如果它们不一样，你就落后于CGNAT。
+## 如果你处于 CGNAT 之后
 
-## 方法 3/解决方案:
-
-请致电互联网服务提供商寻求帮助。根据您的ISP，他们可能不提供专用的*动态* IP地址。请记住，静态IP不是必需的。
+请致电你的互联网服务提供商（ISP）寻求帮助。根据 ISP 的不同，他们可能不提供专用的动态 IP 地址。不一定需要静态 IP。
 
 ::: warning
-互联网服务提供商可能只提供专用IP地址作为**付费选项**。
-请检查我们的合作托管服务的价格，因为他们可能比这个费用便宜！
+ISP 可能只把专用 IP 地址作为**付费选项**提供。请将价格与我们的合作托管服务比较一下：后者可能更便宜。
 :::
 
-非CGNAT网络的示例：
+下面是一个没有处于 CGNAT 之后的网络示例：
 
-![图像](https://github.com/user-attachments/assets/fee21a50-cbb0-4322-9c26-d9f04f88ae37)
-
-标签: Server, 10060 10061, CGNAT, Connection Failed, Port Forward, Firewall
+![未处于 CGNAT 之后的连接的网络示意图](https://github.com/user-attachments/assets/fee21a50-cbb0-4322-9c26-d9f04f88ae37)

@@ -1,89 +1,64 @@
-# 常见问题和已知问题
-
-常见问题和已知bug列表。
-
 ---
-
-## **服务器**
-
+description: "BeamMP 服务器常见问题解答：搭建服务器、Linux、系统要求、玩家无法加入，以及报告 bug 或 AuthKey 泄露。"
 ---
+# 服务器常见问题
 
-### **我怎么设置自己的服务器**
+关于运行 BeamMP 服务器的常见问题和已知问题。
 
-设置您自己的服务器的所有信息可以在[中找到](https://docs.beammp.com/server/create-a-server/)。
+## 设置
 
----
+### 我如何设置自己的服务器？
 
-### **服务器端兼容LINUX吗？**
+你需要的一切都在[搭建服务器](/zh/server-owners/host-a-server)中；如果你使用托管公司，请参阅[在 VPS 上设置服务器](/zh/server-owners/setup-vps)。
 
-我们在这里提供了许多Linux发行版的二进制文件[。如果您的操作系统/发行版没有二进制文件，您可以通过在](https://github.com/BeamMP/BeamMP-Server/releases/latest)[GitHub](https://github.com/BeamMP/BeamMP-Server)上下载源代码来自己编译它，教程可以在中找到[。](https://github.com/BeamMP/BeamMP-Server#build-instructions)
+### 我可以在 Linux 上运行服务器吗？
 
----
+可以。我们在[最新发布页面](https://github.com/BeamMP/BeamMP-Server/releases/latest)上提供了许多 Linux 发行版的二进制文件。如果没有适用于你的发行版的版本，你可以从 [GitHub](https://github.com/BeamMP/BeamMP-Server) 上的源代码自行编译。[编译说明](https://github.com/BeamMP/BeamMP-Server#build-instructions)介绍了具体方法。
 
-### **运行BeamMP服务器的最低系统要求是什么？**
+### 最低系统要求是什么？
 
-- 内存: 50+ MiB可用（不计算操作系统开销）
-- CPU: &gt;1GHz, 最好是多核
-- 操作系统： Windows、Linux（理论上兼容所有POSIX系统）
-- GPU: 不需要
-- 硬盘：10 MiB + 模组/插件
-- 带宽：上传5 ~ 10m /s
+| | 要求 |
+|---|---|
+| 内存 | 50 MiB 或更多可用内存，不含操作系统 |
+| CPU | 高于 1 GHz，最好是多核 |
+| 操作系统 | Windows 或 Linux（理论上任何 POSIX 系统均可） |
+| GPU | 不需要 |
+| 磁盘 | 10 MiB，外加模组和插件 |
+| 带宽 | 5–10 Mb/s 上传 |
 
----
+## 玩家无法加入
 
-## **局域网外的玩家无法加入我的自托管服务器**
+### 我网络以外的玩家无法加入我自己托管的服务器
 
-请查阅[此处](https://docs.beammp.com/server/port-forwarding/)提供的端口转发指南，下文为其关键步骤摘要。若其他玩家通过BeamMP启动器连接您的服务器时出现错误代码10060、10061或10038，请按以下流程排查：
+如果其他玩家在启动器中收到错误代码 10060、10061 或 10038，请检查以下内容。完整的指南是[端口转发](/zh/server-owners/port-forwarding)。
 
-- 转发端口30814（或在ServerConfig.toml中配置的其他端口），需同时开放TCP与UDP协议。
-- 请在Windows防火墙中为BeamMP放行入站与出站连接，直接关闭防火墙通常无法解决问题。
-- 确认你现在没有在使用VPN (这可能是问题的原因).
-- 确保服务器确实在运行，没有任何错误或警告。
+- 转发端口 30814，或你在 `ServerConfig.toml` 中设置的端口，TCP 和 UDP 都要转发。
+- 允许 BeamMP 通过 Windows 防火墙，入站和出站连接都要允许。关闭防火墙通常**不**管用。
+- 确认你没有使用 VPN。它可能会引发问题。
+- 确认服务器正在运行，且没有错误或警告。
 
-您可以在服务器运行时使用CheckBeamMP检查您是否成功地进行了端口转发。
+服务器运行期间，你可以使用 CheckBeamMP 测试端口是否已转发：
 
 <form action="https://check.beammp.com/api/v2/beammp" method="get" target="_blank">
-  <label for="ip">IP地址:</label>
+  <label for="ip">IP address:</label>
   <input type="text" id="ip" name="ip"><br>
-  <label for="port">端口:</label>
+  <label for="port">Port:</label>
   <input type="text" id="port" name="port"><br>
   <input type="submit" value="CheckBeamMP">
 </form>
 
-注意:
+有些互联网服务提供商不会给你分配专用的 IPv4 地址（CGNAT），因此即使你的路由器提供端口转发，它也可能无法生效。请参阅[检查 CGNAT](/zh/server-owners/cgnat)。在移动（4G 或 5G）连接上无法进行端口转发。
 
-- 一些互联网提供商不为您的连接（CGNAT）提供专用的IPv4地址，因此端口转发可能不成功，尽管它在路由器中是可以的。
-- 如果你使用的是移动（4G/5G）互联网连接，端口转发是不可能的。
+### 我能在列表中看到自己的服务器，但自己加入不了
 
----
+如果服务器与游戏运行在同一台电脑上，请使用 **Direct Connect** 加入，使用 IP 地址 `127.0.0.1` 和你服务器的端口。
 
-### **我可以在服务器列表中看到我的自托管服务器，但我不能自己加入它**
+要通过服务器列表加入你自己托管的服务器，你的路由器必须支持 NAT 回环。没有多少家用路由器支持。
 
-若服务器与游戏运行于同一台设备，您需通过在直接连接中输入IP地址 127.0.0.1 和服务器端口来加入。若要通过服务器列表加入自托管服务器，您的路由器需支持NAT环回功能，但多数家用路由器未提供此功能。
+## 其他问题
 
----
+<!--@include: ../_parts/faq-code-and-bugs.md-->
 
-## **其他**
+### 我的 AuthKey 泄露了，该怎么办？
 
----
-
-### **我在哪里可以找到源码？**
-
-所有源代码都可以在我们的[GitHub](https://github.com/BeamMP)上找到。在做任何事情之前，请记住代码受我们的[使用条款](https://forum.beammp.com/t/terms-of-use-v1-0/43)和许可的约束：
-
-代码 | 许可证
---- | :-:
-服务器 | [许可证](https://github.com/BeamMP/BeamMP-Server/blob/master/LICENSE)
-启动器 | [许可证](https://github.com/BeamMP/BeamMP-Launcher/blob/master/README.md)
-客户端 Lua | [许可证](https://github.com/BeamMP/BeamMP/blob/development/LICENSE.md)
-
----
-
-### **我发现了一个bug或漏洞，我应该怎么做？**
-
-如果问题与代码相关，并且您知道如何使用Github，请在[ Github ](https://github.com/BeamMP)上的适当存储库中创建一个新的“issue”。我们使用基于问题的工作流程，所以即使你已经修复了bug，也可以考虑打开一个新的“Issue”，然后请求一个“Pull Request”来解决你的“问题”。更多关于贡献的信息可以在[中找到](https://github.com/BeamMP/BeamMP/blob/development/CONTRIBUTING.md)。
-
-如果您没有GitHub帐户或者您不知道如何使用GitHub，您可以通过以下方式与我们联系：
-
-- 如果问题不涉及隐私或安全，您可以在我们的[BeamMP论坛](https://forum.beammp.com)发帖反馈，或前往[官方Discord服务器](https://discord.gg/beammp)提交报告。
-- 如果信息敏感，您可以直接向我们的[Discord](https://discord.gg/beammp)上的工作人员报告问题。
+如果你认为自己的某个 AuthKey 已经泄露，请在 [Discord](https://discord.gg/beammp) 上创建一个 **Account Support** 工单。
