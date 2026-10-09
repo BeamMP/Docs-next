@@ -20,6 +20,6 @@ Beachte, dass 127.0.0.1 die Localhost Adresse ist und nur von dir verwendet werd
 
 ## Wie prüft man auf CGNAT?
 
-Schau dir [diese Seite](../How-to-check-for-CGNAT/) an, um festzustellen, ob du einen Server daheim hosten kannst oder nicht.
+Schau dir [diese Seite](/de/server-owners/cgnat) an, um festzustellen, ob du einen Server daheim hosten kannst oder nicht.
 
 Tags: IP, Server, Connection Failed, 10060/10061

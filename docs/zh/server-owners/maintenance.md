@@ -4,7 +4,7 @@
 
 ## 怎么安装
 
-有关安装说明，请查看 [服务器安装](create-a-server.md).
+有关安装说明，请查看 [服务器安装](/zh/server-owners/host-a-server).
 
 ## ServerConfig文件
 

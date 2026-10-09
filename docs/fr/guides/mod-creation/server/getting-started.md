@@ -59,7 +59,7 @@ function onPlayerAuth(player_name, role, isGuest, identifiers)
 end
 ```
 
-`onPlayerAuth` est déclenché dès qu'un joueur tente de rejoindre le serveur. Consultez également [`onPlayerAuth` dans la référence du scripting](../../../scripting/server/latest-server-reference/#onplayerauth).
+`onPlayerAuth` est déclenché dès qu'un joueur tente de rejoindre le serveur. Consultez également [`onPlayerAuth` dans la référence du scripting](/fr/developers/beammp-scripting/server/latest#onplayerauth).
 
 Voici un autre exemple utilisant `onPlayerAuth`. Celui-ci refuse les joueurs invités en leur envoyant un message qui sera ensuite affiché dans le jeu :
 
@@ -71,7 +71,7 @@ function onPlayerAuth(playerName, playerRole, isGuest, identifiers)
 end
 ```
 
-Vous trouverez davantage d'informations sur les fonctions côté serveur fournies par BeamMP dans la [référence du serveur](../../../scripting/server/latest-server-reference.md).
+Vous trouverez davantage d'informations sur les fonctions côté serveur fournies par BeamMP dans la [référence du serveur](/fr/developers/beammp-scripting/server/latest).
 
 ## Lua côté client
 

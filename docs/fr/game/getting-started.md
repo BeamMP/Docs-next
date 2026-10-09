@@ -75,7 +75,7 @@ La version native à linux du lanceur BeamMP va se lancer et va lancer la versio
 
 Vous souhaitez utiliser la version native à linux de BeamMP et Beamng via proton? Vous pouvez le faire en suivant les étapes ci-dessous:
 
-Exécutez le lancer BeamMP avec la commande suivante ` --no-launch` (Ceci va empêcher le lanceur de lancer la version native à linux de beamNG.drive). Plus d'informations peut être retrouvée dans la [Configuration de l'environnement de développement](../guides/beammp-dev/beammp-dev.md)
+Exécutez le lancer BeamMP avec la commande suivante ` --no-launch` (Ceci va empêcher le lanceur de lancer la version native à linux de beamNG.drive). Plus d'informations peut être retrouvée dans la [Configuration de l'environnement de développement](/fr/developers/dev-environment-setup)
 
 Changez l'emplacement du userfolder de Proton-BeamNG.drive pour l'emplacement de Linux-BeamNG.drive (puisque la version native à linux du lanceur BeamMP écrit, pour le momant, que dans le Linux-BeamNG.drive userfolder)
 

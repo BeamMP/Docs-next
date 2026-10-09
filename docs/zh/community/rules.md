@@ -20,7 +20,7 @@
 14. 尊重每个人：<span class="info-tooltip" title="有些话不该说出口，你需要尊重你周围的每个人，并相应地行动。">ⓘ</span>
 15. 关注类别或频道的主题。：<span class="info-tooltip" title="这应该不说出来，但要保持你的内容在你发布的区域的主题上。例如，支持应该帮助人们或在寻求支持时使用。">ⓘ</span>
 16. 不要使用过多的大写锁定或表情符号：<span class="info-tooltip" title="用户应该避免使用过多的大写符号或表情符号/表情符号，以免混淆手头的重点。">ⓘ</span>
-17. 在支持区域发布之前，请检查[BeamMP FAQ](../../support/player-faq.md) &amp; [BeamMP社区FAQ](https://forum.beammp.com/c/faq/35)。
+17. 在支持区域发布之前，请检查[BeamMP FAQ](/zh/players/faq) &amp; [BeamMP社区FAQ](https://forum.beammp.com/c/faq/35)。
 
 ## Discord 规则
 

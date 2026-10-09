@@ -12,7 +12,7 @@ Servers are an integral part of BeamMP; players are connected to each other thro
 
 You can make private servers, which only people you invite can join, or public servers, which will show in our official server list.
 
-Getting a server up and running is a process of a few steps! If you run into any issues, feel free to ask on our [Forum](https://forum.beammp.com) or on our [Discord server](https://discord.gg/beammp) in the `#support` channel. Also refer to the [Server Maintenance](server-maintenance.md) section for more info.
+Getting a server up and running is a process of a few steps! If you run into any issues, feel free to ask on our [Forum](https://forum.beammp.com) or on our [Discord server](https://discord.gg/beammp) in the `#support` channel. Also refer to the [Server Maintenance](/en/server-owners/maintenance) section for more info.
 
 Please make sure to read the [LICENSE](https://raw.githubusercontent.com/BeamMP/BeamMP-Server/master/LICENSE) of the server before use.
 
@@ -193,7 +193,7 @@ ResourceFolder = "Resources"
 ```
 
 ::: info
-This is your configuration file. It uses a format called TOML. Refer to the [Server Maintenance](server-maintenance.md) section for more info on this file and the variables.
+This is your configuration file. It uses a format called TOML. Refer to the [Server Maintenance](/en/server-owners/maintenance) section for more info on this file and the variables.
 Your server will **NOT** show in the server list as long as `Private = true`. _If_ you want it to show in the list, set that to **`Private = false`**.
 :::
 
@@ -203,7 +203,7 @@ For our example key, it should then look like this:
 ```TOML
 AuthKey = '3173a2e-6az0-4542-a3p0-ddqq5ff95558'
 ```
-Give your server a name, too, in the `Name` field. You can format this with colors and more, please refer to [this section on Name customization](server-maintenance.md#customize-the-look-of-your-server-name) in the server maintenance page.
+Give your server a name, too, in the `Name` field. You can format this with colors and more, please refer to [this section on Name customization](/en/server-owners/maintenance#customize-the-look-of-your-server-name) in the server maintenance page.
 
 If you picked a different **Port** other than **30814**, make sure to replace it here under `Port`.
 
@@ -228,7 +228,7 @@ If you only wanted to add modded vehicles, you simply put the zip file of the mo
 
 #### 5.3 Maps
 
-All default maps (maps which aren't mods) work out-of-the-box and do not have to be installed. You simply change the `Map` setting in the `ServerConfig.toml` file to any of [these](server-maintenance.md#all-vanilla-maps-names). For any other modded maps, do this:
+All default maps (maps which aren't mods) work out-of-the-box and do not have to be installed. You simply change the `Map` setting in the `ServerConfig.toml` file to any of [these](/en/server-owners/maintenance#all-vanilla-maps-names). For any other modded maps, do this:
 
 1.  Put your map's `.zip` file in your server's (`Resources/Client`) folder.
 2.  Next, have a look inside the map's zip file (don't extract it) and open the `levels` folder. In this folder there should be simply one other folder with the name of the map, for example “myawesomedriftmap2021”. Make sure to copy or remember this name _exactly as it is written in that folder's name._

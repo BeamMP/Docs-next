@@ -14,7 +14,7 @@ Server sind ein integraler Teil von BeamMP. Spieler verbinden sich darüber. Die
 
 Du kannst einen privaten Server erstellen, welcher nur zugänglich für vertraute Personen ist, oder einen öffentlichen Server, der in der Serverliste aufscheint.
 
-Einen Server einzurichten ist ein Prozess von ein paar Schritten! Wenn du Probleme hast, Frage im [Forum](https://forum.beammp.com) oder auf unserem [Discord server](https://discord.gg/beammp) im `#support` Kanal. Siehe auch [Server Wartung](server-maintenance.md) für mehr Informationen.
+Einen Server einzurichten ist ein Prozess von ein paar Schritten! Wenn du Probleme hast, Frage im [Forum](https://forum.beammp.com) oder auf unserem [Discord server](https://discord.gg/beammp) im `#support` Kanal. Siehe auch [Server Wartung](/de/server-owners/maintenance) für mehr Informationen.
 
 Lies dir die [LICENSE](https://raw.githubusercontent.com/BeamMP/BeamMP-Server/master/LICENSE) des Servers vorher durch!
 
@@ -184,7 +184,7 @@ ResourceFolder = "Resources"
 ```
 
 ::: info
-Dies ist deine Konfigurationsdatei. Sie verwendet das Format TOML. Weitere Informationen zu dieser Datei und den Variablen findest du im Abschnitt [Serverwartung](server-maintenance.md).
+Dies ist deine Konfigurationsdatei. Sie verwendet das Format TOML. Weitere Informationen zu dieser Datei und den Variablen findest du im Abschnitt [Serverwartung](/de/server-owners/maintenance).
 Der Server wird **NICHT** in der Serverliste angezeigt, solange `Private = true` eingestellt ist. _Wenn_ er in der Liste angezeigt werden soll, setze die Einstellung auf **`Private = false`**.
 :::
 
@@ -196,7 +196,7 @@ Für unser Beispiel sollte der Eintrag so aussehen:
 AuthKey = '3173a2e-6az0-4542-a3p0-ddqq5ff95558'
 ```
 
-Gib dem Server im Feld `Name` ebenfalls einen Namen. Du kannst diesen mit Farben und weiteren Optionen formatieren. Weitere Informationen findest du [im Abschnitt „Namensanpassung“](server-maintenance.md#customize-the-look-of-your-server-name) auf der Serververwaltungsseite.
+Gib dem Server im Feld `Name` ebenfalls einen Namen. Du kannst diesen mit Farben und weiteren Optionen formatieren. Weitere Informationen findest du [im Abschnitt „Namensanpassung“](/de/server-owners/maintenance#customize-the-look-of-your-server-name) auf der Serververwaltungsseite.
 
 Wenn du einen anderen **Port** als **30814** ausgewählt hast, achte darauf, ihn hier unter `Port` zu ersetzen.
 
@@ -212,7 +212,7 @@ Fahrzeug- und Karten-Mods werden unterschiedlich installiert, müssen aber beide
 
 ::: warning
 Solltest du beim Versuch, deinem Server nach dem Hinzufügen von Mods beizutreten, die Meldung „Fertig“ oder „Start“ erhalten, hast du wahrscheinlich eine inkompatible oder fehlerhafte Mod dem Server hinzugefügt.
-Inkompatibilitäten zwischen zwei oder mehr Mods können ebenfalls auftreten. Falls du Client-Mods installiert hast, lies bitte [diese Anleitung](../../FAQ/How-to-deactivate-mods.md) zum Entfernen von Mods aus deinem Spiel.
+Inkompatibilitäten zwischen zwei oder mehr Mods können ebenfalls auftreten. Falls du Client-Mods installiert hast, lies bitte [diese Anleitung](/de/FAQ/How-to-deactivate-mods) zum Entfernen von Mods aus deinem Spiel.
 :::
 
 #### 5.2 Allgemeine Mods
@@ -221,7 +221,7 @@ Wenn du nur modifizierte Fahrzeuge hinzufügen möchtest, lege die Zip-Datei der
 
 #### 5.3 Karten
 
-Alle Standardkarten (Karten, die keine Mods sind) funktionieren sofort und müssen nicht installiert werden. Ändere einfach die `Map` in der Datei `ServerConfig.toml` auf eine der [folgenden Optionen](server-maintenance.md#all-vanilla-maps-names) . Für alle anderen modifizierten Karten gehe wie folgt vor:
+Alle Standardkarten (Karten, die keine Mods sind) funktionieren sofort und müssen nicht installiert werden. Ändere einfach die `Map` in der Datei `ServerConfig.toml` auf eine der [folgenden Optionen](/de/server-owners/maintenance#all-vanilla-maps-names) . Für alle anderen modifizierten Karten gehe wie folgt vor:
 
 1. Legen die `.zip` Datei der Karte in den Ordner `Resources/Client` des Servers.
 2. Sieh dir als Nächstes in die Zip-Datei der Karte (entpacke sie nicht) und öffne den Ordner „ `levels` “. In diesem Ordner sollte sich lediglich ein weiterer Ordner mit dem Namen der Karte befinden, zum Beispiel „myawesomedriftmap2021“. Achte darauf, diesen Namen *genau so zu kopieren oder zu merken, wie er im Namen dieses Ordners geschrieben ist.*

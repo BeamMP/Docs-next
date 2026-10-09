@@ -4,7 +4,7 @@ How to check for CGNAT?
 All Firewall exclusions and Port forwarding rules are set up correctly, yet nobody can join your home-hosted Server?
 
 If you have connection problems and you are using a Hosting-Service, contact them for assistance. If you want to use a VPS or cannot host a server at home, take a look at our
-[list of Partnered hosting services](../../server/create-a-server/#partnered-hosting-services-paid) (Server setup documentation).
+[list of Partnered hosting services](/en/server-owners/host-a-server#partnered-hosting-services-paid) (Server setup documentation).
 
 # What even is CGNAT?
 

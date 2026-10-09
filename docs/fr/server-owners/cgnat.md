@@ -4,7 +4,7 @@ Comment vérifier CGNAT ?
 
 Toutes les exclusions de pare-feu et les règles de redirection de port sont correctement configurées, mais personne ne peut rejoindre votre serveur hébergé à domicile ?
 
-Si vous rencontrez des problèmes de connexion et que vous utilisez un hébergeur, contactez-le pour obtenir de l'aide. Si vous souhaitez utiliser un VPS ou ne pouvez pas héberger de serveur chez vous, consultez notre [liste de services d'hébergement partenaires](../../server/create-a-server/#partnered-hosting-services-paid) (documentation de configuration du serveur).
+Si vous rencontrez des problèmes de connexion et que vous utilisez un hébergeur, contactez-le pour obtenir de l'aide. Si vous souhaitez utiliser un VPS ou ne pouvez pas héberger de serveur chez vous, consultez notre [liste de services d'hébergement partenaires](/fr/server-owners/host-a-server#partnered-hosting-services-paid) (documentation de configuration du serveur).
 
 # Qu'est-ce que CGNAT ?
 

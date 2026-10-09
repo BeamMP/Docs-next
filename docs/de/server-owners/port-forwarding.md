@@ -183,7 +183,7 @@ Suche den Abschnitt zur Portweiterleitung in der Weboberfläche deines Routers. 
 
 Sobald du den Bereich für die Portweiterleitung gefunden hast, kannst du die erforderlichen Informationen eingeben. Dein Router bietet dir die Möglichkeit, die weiterzuleitenden Ports und die Ziel-IP-Adresse für diese Portweiterleitung einzugeben. Wenn dein Router sowohl interne als auch externe Ports angibt, achte darauf, dass diese identisch sind.
 
-BeamMP erfordert sowohl UDP- als auch TCP-Port 30814 (es sei denn, du hast diesen in deiner [ServerConfig.toml](create-a-server.md#4-configuration) geändert).
+BeamMP erfordert sowohl UDP- als auch TCP-Port 30814 (es sei denn, du hast diesen in deiner [ServerConfig.toml](/de/server-owners/host-a-server#4-configuration) geändert).
 
 ::: info Hinweis
 

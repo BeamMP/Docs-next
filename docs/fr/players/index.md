@@ -19,4 +19,4 @@ Veuillez patienter, la synchronisation du système peut prendre quelques heures,
 
 ## J'ai d'autres questions !
 
-Si votre question ou votre problème concerne le jeu ou le fonctionnement, veuillez consulter la [FAQ du jeu](game-faq.md) . Si votre question ou votre problème concerne l'utilisation d'un serveur, veuillez consulter la [FAQ du serveur](server-faq.md) . Sinon, consultez les [forums](https://forum.beammp.com/c/faq/35) où la communauté peut poser des questions et obtenir des réponses.
+Si votre question ou votre problème concerne le jeu ou le fonctionnement, veuillez consulter la [FAQ du jeu](/fr/FAQ/game-faq) . Si votre question ou votre problème concerne l'utilisation d'un serveur, veuillez consulter la [FAQ du serveur](/fr/server-owners/faq) . Sinon, consultez les [forums](https://forum.beammp.com/c/faq/35) où la communauté peut poser des questions et obtenir des réponses.

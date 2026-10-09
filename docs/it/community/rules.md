@@ -24,7 +24,7 @@ I moderatori non sono strettamente legati a queste regole e applicano queste ult
 13. Rispettare le altre persone<span class="info-tooltip" title="È inutile dire che alla base della comunità c'è il rispetto reciproco.">ⓘ</span>
 14. Attieniti all'argomento del canale<span class="info-tooltip" title="Non mandare messaggi non pertinenti al canale in cui ti trovi, ad esempio il canale di supporto deve essere usato solo nel caso in cui si richieda supporto tecnico.">ⓘ</span>
 15. No uso eccessivo di MAIUSCOLO o reazioni/emote<span class="info-tooltip" title="Gli utenti devono astenersi dall'utilizzare un numero eccessivo di maiuscole o di emoji/reazioni per non disperdere l'attenzione dal punto in questione.">ⓘ</span>
-16. Prima di chiedere aiuto nei canali di supporto, guarda le [FAQ di BeamMP](../../support/player-faq.md) e le [FAQ della comunità](https://forum.beammp.com/c/faq/35).
+16. Prima di chiedere aiuto nei canali di supporto, guarda le [FAQ di BeamMP](/it/support/player-faq) e le [FAQ della comunità](https://forum.beammp.com/c/faq/35).
 
 ## Regole specifiche al server Discord
 

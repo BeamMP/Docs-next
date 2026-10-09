@@ -51,7 +51,7 @@ function onPlayerAuth(player_name, role, isGuest, identifiers)
 end
 ```
 
-`onPlayerAuth` срабатывает, как только игрок хочет присоединиться, см. также [onPlayerAuth в справочнике по скриптам](../../../scripting/server/latest-server-reference/#onplayerauth)
+`onPlayerAuth` срабатывает, как только игрок хочет присоединиться, см. также [onPlayerAuth в справочнике по скриптам](/ru/developers/beammp-scripting/server/latest#onplayerauth)
 
 Еще один пример использования onPlayerAuth, но он запретит гостям присоединяться к серверу, отправив клиенту ответное сообщение, которое затем будет показано игроку:
 

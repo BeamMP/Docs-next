@@ -22,7 +22,7 @@ BeamMP 无法在盗版或旧版本的 BeamNG.drive 上运行。包括但不限�
 
 ### **BeamMP 可以在 Linux 上运行吗？**
 
-客户端在Linux上不被官方支持。但是，您可以查看我们的[指南来了解如何在Linux上使用BeamMP](../../game/getting-started.md#2b-linux)。
+客户端在Linux上不被官方支持。但是，您可以查看我们的[指南来了解如何在Linux上使用BeamMP](/zh/get-started/#2b-linux)。
 
 ---
 

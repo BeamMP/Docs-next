@@ -50,7 +50,7 @@ function onPlayerAuth(player_name, role, isGuest, identifiers)
 end
 ```
 
-`onPlayerAuth`会在玩家尝试加入时触发，详细信息请参考脚本文档中的[onPlayerAuth条目](../../../scripting/server/latest-server-reference/#onplayerauth)
+`onPlayerAuth`会在玩家尝试加入时触发，详细信息请参考脚本文档中的[onPlayerAuth条目](/zh/developers/beammp-scripting/server/latest#onplayerauth)
 
 以下是使用onPlayerAuth的另一个示例，该示例将通过向客户端返回信息来禁止游客加入服务器，返回的信息会直接显示给玩家：
 

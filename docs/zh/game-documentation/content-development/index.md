@@ -43,15 +43,15 @@ features:
     link: /zh/community/index
 ---
 
-首次体验BeamMP联机模组？请访问我们的[新手启航指南](../game/getting-started.md)，助您迅速完成配置部署，畅享多人模式下的高拟真驾驶盛宴。若遇基础性问题，建议优先查阅[玩家常见问题解答](../FAQ/player-faq.md)中的故障排查方案
+首次体验BeamMP联机模组？请访问我们的[新手启航指南](/zh/get-started/)，助您迅速完成配置部署，畅享多人模式下的高拟真驾驶盛宴。若遇基础性问题，建议优先查阅[玩家常见问题解答](/zh/players/faq)中的故障排查方案
 
 ## 对于服主
 
-考虑创建专属BeamMP服务器？我们的[完整指南](../server/create-a-server.md)将逐步指导您完成整个流程，确保您掌握所需工具和知识，助您高效搭建服务器
+考虑创建专属BeamMP服务器？我们的[完整指南](/zh/server-owners/host-a-server)将逐步指导您完成整个流程，确保您掌握所需工具和知识，助您高效搭建服务器
 
 ## 对于开发者
 
-想要了解如何为BeamMP服务器创建资源？请查看我们的[资源开发指南](../guides/mod-creation/server/getting-started.md)，获取完整的功能实现指引。
+想要了解如何为BeamMP服务器创建资源？请查看我们的[资源开发指南](/zh/developers/mod-and-resource-creation)，获取完整的功能实现指引。
 
 令人兴奋的更新即将推出，包括旨在增强您的浏览体验的全新主页。请继续关注！:slight_smile:
 

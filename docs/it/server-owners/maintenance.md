@@ -4,7 +4,7 @@ Guide e suggerimenti per come configurare e mantenere al meglio il Server BeamMP
 
 ## Come installare
 
-Per delle istruzioni dettagliate, per favore guarda [la nostra guida](create-a-server.md).
+Per delle istruzioni dettagliate, per favore guarda [la nostra guida](/it/server-owners/host-a-server).
 
 ## Il file ServerConfig
 

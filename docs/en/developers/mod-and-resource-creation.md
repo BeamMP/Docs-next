@@ -56,7 +56,7 @@ function onPlayerAuth(player_name, role, isGuest, identifiers)
 end
 ```
 
-`onPlayerAuth` gets triggered as soon as a player wants to join, also see [onPlayerAuth in the scripting reference](../../../scripting/server/latest-server-reference/#onplayerauth)
+`onPlayerAuth` gets triggered as soon as a player wants to join, also see [onPlayerAuth in the scripting reference](/en/developers/beammp-scripting/server/latest#onplayerauth)
 
 Another example using onPlayerAuth, but this will deny guests from joining the server by sending the client a message back, which will then be shown to the player:
 
@@ -68,7 +68,7 @@ function onPlayerAuth(playerName, playerRole, isGuest, identifiers)
 end
 ```
 
-Further info on serverside functions provided by BeamMP can be found in the [latest server reference](../../../scripting/server/latest-server-reference.md)
+Further info on serverside functions provided by BeamMP can be found in the [latest server reference](/en/developers/beammp-scripting/server/latest)
 
 ## Clientside lua
 

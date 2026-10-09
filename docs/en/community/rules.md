@@ -25,7 +25,7 @@ BeamMP Staff are not bound to moderate strictly by these rules and may operate a
 14. Respect Everyone <span class="info-tooltip" title="This should go unsaid, but you need to have respect for everyone around you and act accordingly.">ⓘ</span>
 15. Keep to the topic of the category or channel. <span class="info-tooltip" title="This should go unsaid, but keep your content on the topic of the area that you are posting within. E.g. support should helping people or used when seeking support.">ⓘ</span>
 16. No excessive CAPS LOCK or Reactions/Emojis <span class="info-tooltip" title="Users should refrain from using excessive caps or emojis/reactions as not to obscure the point at hand.">ⓘ</span>
-17. Check the [BeamMP FAQ](../../support/player-faq.md) & [BeamMP Community FAQ](https://forum.beammp.com/c/faq/35) before posting in support areas.
+17. Check the [BeamMP FAQ](/en/players/faq) & [BeamMP Community FAQ](https://forum.beammp.com/c/faq/35) before posting in support areas.
 
 ## Discord Rules
 

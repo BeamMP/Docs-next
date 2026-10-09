@@ -7,4 +7,4 @@ Questa documentazione non è ufficiale, ma è realizzata dal team di BeamMP e da
 
 ## Snippet
 
-Degli snippet di codice possono essere trovati qui: [Snippets](snippets.md)
+Degli snippet di codice possono essere trovati qui: [Snippets](/it/beamng/snippets)

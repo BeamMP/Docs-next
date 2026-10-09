@@ -2,143 +2,24 @@
  "docs/de/FAQ/Clearing-mods.md": {
   "indented-container": 1
  },
- "docs/de/FAQ/How-to-check-for-CGNAT.md": {
-  "dead-link": 1
- },
- "docs/de/FAQ/game-faq.md": {
-  "dead-link": 1
- },
- "docs/de/FAQ/where-to-find-my-IP.md": {
-  "dead-link": 1
- },
- "docs/de/community/rules.md": {
-  "dead-link": 1
- },
- "docs/de/developers/beammp-scripting/index.md": {
-  "dead-link": 2
- },
- "docs/de/developers/beammp-scripting/mod-in-game.md": {
-  "dead-link": 2
- },
- "docs/de/developers/beammp-scripting/server/latest.md": {
-  "dead-link": 2
- },
- "docs/de/developers/beammp-scripting/server/legacy-v2.md": {
-  "dead-link": 2
- },
- "docs/de/developers/dev-environment-setup.md": {
-  "dead-link": 1
- },
- "docs/de/developers/index.md": {
-  "dead-link": 1
- },
- "docs/de/developers/mod-and-resource-creation.md": {
-  "dead-link": 1
- },
- "docs/de/game-documentation/index.md": {
-  "dead-link": 1
- },
- "docs/de/game-documentation/snippets/cef-snippets.md": {
-  "dead-link": 2
- },
- "docs/de/game-documentation/snippets/css-snippets.md": {
-  "dead-link": 2
- },
- "docs/de/game-documentation/snippets/imgui-snippets.md": {
-  "dead-link": 2
- },
- "docs/de/game-documentation/snippets/lua-snippets.md": {
-  "dead-link": 2
- },
- "docs/de/index.md": {
-  "dead-link": 2
- },
- "docs/de/players/faq.md": {
-  "dead-link": 2
- },
- "docs/de/players/index.md": {
-  "dead-link": 2
- },
  "docs/de/players/mod-safety.md": {
   "indented-container": 1
  },
- "docs/de/server-owners/cgnat.md": {
-  "dead-link": 1
- },
- "docs/de/server-owners/error-codes.md": {
-  "dead-link": 3
- },
- "docs/de/server-owners/host-a-server.md": {
-  "dead-link": 5
- },
- "docs/de/server-owners/index.md": {
-  "dead-link": 5
- },
- "docs/de/server-owners/maintenance.md": {
-  "dead-link": 1
- },
  "docs/de/server-owners/port-forwarding.md": {
-  "dead-link": 1,
   "mkdocs-grid-cards": 1,
   "mkdocs-icon": 5
- },
- "docs/de/server/create-a-server.md": {
-  "dead-link": 1
  },
  "docs/de/server/port-forwarding.md": {
   "mkdocs-grid-cards": 1,
   "mkdocs-icon": 5
  },
- "docs/de/support/game-faq.md": {
-  "dead-link": 1
- },
- "docs/de/troubleshooting/connection-networking.md": {
-  "dead-link": 1
- },
- "docs/de/troubleshooting/index.md": {
-  "dead-link": 1
- },
- "docs/de/troubleshooting/launcher-update.md": {
-  "dead-link": 1
- },
  "docs/en/FAQ/Clearing-mods.md": {
   "indented-container": 1
  },
- "docs/en/FAQ/How-to-check-for-CGNAT.md": {
-  "dead-link": 1
- },
- "docs/en/FAQ/game-faq.md": {
-  "dead-link": 1
- },
- "docs/en/community/rules.md": {
-  "dead-link": 1
- },
- "docs/en/developers/dev-environment-setup.md": {
-  "dead-link": 1
- },
- "docs/en/developers/mod-and-resource-creation.md": {
-  "dead-link": 2
- },
- "docs/en/guides/mod-creation/server/getting-started.md": {
-  "dead-link": 1
- },
- "docs/en/players/faq.md": {
-  "dead-link": 2
- },
- "docs/en/server-owners/cgnat.md": {
-  "dead-link": 1
- },
- "docs/en/server-owners/error-codes.md": {
-  "dead-link": 3
- },
  "docs/en/server-owners/host-a-server.md": {
-  "dead-link": 5
- },
- "docs/en/server-owners/maintenance.md": {
   "dead-link": 1
  },
  "docs/en/server-owners/port-forwarding.md": {
-  "dead-link": 1,
   "mkdocs-grid-cards": 1,
   "mkdocs-icon": 5
  },
@@ -152,300 +33,23 @@
  "docs/en/server/setup-vps.md": {
   "dead-link": 1
  },
- "docs/en/troubleshooting/error-codes.md": {
-  "dead-link": 3
- },
- "docs/es/community/contributing.md": {
-  "dead-link": 2
- },
- "docs/es/community/index.md": {
-  "dead-link": 2
- },
- "docs/es/community/rules.md": {
-  "dead-link": 2
- },
- "docs/es/developers/beammp-scripting/server/latest.md": {
-  "dead-link": 4
- },
- "docs/es/developers/beammp-scripting/server/legacy-v2.md": {
-  "dead-link": 4
- },
- "docs/es/developers/dev-environment-setup.md": {
-  "dead-link": 2
- },
- "docs/es/game-documentation/index.md": {
-  "dead-link": 1
- },
- "docs/es/game-documentation/snippets/cef-snippets.md": {
-  "dead-link": 4
- },
- "docs/es/game-documentation/snippets/css-snippets.md": {
-  "dead-link": 4
- },
- "docs/es/game-documentation/snippets/imgui-snippets.md": {
-  "dead-link": 4
- },
- "docs/es/game-documentation/snippets/lua-snippets.md": {
-  "dead-link": 4
- },
- "docs/es/game/getting-started.md": {
-  "dead-link": 1
- },
- "docs/es/index.md": {
-  "dead-link": 4
- },
- "docs/es/server-owners/cgnat.md": {
-  "dead-link": 2
- },
- "docs/es/server-owners/error-codes.md": {
-  "dead-link": 2
- },
- "docs/es/server-owners/faq.md": {
-  "dead-link": 2
- },
- "docs/es/server-owners/host-a-server.md": {
-  "dead-link": 2
- },
- "docs/es/server-owners/index.md": {
-  "dead-link": 2
- },
- "docs/es/server-owners/maintenance.md": {
-  "dead-link": 2
- },
- "docs/es/server-owners/port-forwarding.md": {
-  "dead-link": 2
- },
- "docs/es/troubleshooting/connection-networking.md": {
-  "dead-link": 2
- },
- "docs/es/troubleshooting/defender-exclusions.md": {
-  "dead-link": 2
- },
- "docs/es/troubleshooting/index.md": {
-  "dead-link": 2
- },
- "docs/es/troubleshooting/launcher-update.md": {
-  "dead-link": 2
- },
- "docs/fr/FAQ/How-to-check-for-CGNAT.md": {
-  "dead-link": 1
- },
- "docs/fr/FAQ/game-faq.md": {
-  "dead-link": 1
- },
- "docs/fr/developers/beammp-scripting/mod-in-game.md": {
-  "dead-link": 2
- },
- "docs/fr/developers/beammp-scripting/server/latest.md": {
-  "dead-link": 2
- },
- "docs/fr/developers/beammp-scripting/server/legacy-v2.md": {
-  "dead-link": 2
- },
- "docs/fr/game-documentation/content-development/maps.md": {
-  "dead-link": 2
- },
- "docs/fr/game-documentation/content-development/props.md": {
-  "dead-link": 2
- },
- "docs/fr/game-documentation/content-development/vehicles.md": {
-  "dead-link": 2
- },
- "docs/fr/game-documentation/programming/imgui.md": {
-  "dead-link": 2
- },
- "docs/fr/game-documentation/programming/lua.md": {
-  "dead-link": 2
- },
- "docs/fr/game-documentation/programming/ui-apps-html-cef.md": {
-  "dead-link": 2
- },
- "docs/fr/game-documentation/snippets/cef-snippets.md": {
-  "dead-link": 2
- },
- "docs/fr/game-documentation/snippets/css-snippets.md": {
-  "dead-link": 2
- },
- "docs/fr/game-documentation/snippets/imgui-snippets.md": {
-  "dead-link": 2
- },
- "docs/fr/game-documentation/snippets/lua-snippets.md": {
-  "dead-link": 2
- },
- "docs/fr/game/getting-started.md": {
-  "dead-link": 1
- },
- "docs/fr/get-started/index.md": {
-  "dead-link": 1
- },
- "docs/fr/get-started/install-beammp.md": {
-  "dead-link": 1
- },
- "docs/fr/get-started/join-first-server.md": {
-  "dead-link": 1
- },
- "docs/fr/get-started/multiplayer-settings-quickstart.md": {
-  "dead-link": 1
- },
- "docs/fr/guides/mod-creation/server/getting-started.md": {
-  "dead-link": 2
- },
- "docs/fr/index.md": {
-  "dead-link": 2
- },
- "docs/fr/players/faq.md": {
-  "dead-link": 2
- },
- "docs/fr/players/gameplay-basics.md": {
-  "dead-link": 1
- },
- "docs/fr/players/index.md": {
-  "dead-link": 2
- },
- "docs/fr/players/multiplayer-settings.md": {
-  "dead-link": 1
- },
- "docs/fr/server-owners/cgnat.md": {
-  "dead-link": 1
- },
- "docs/fr/server-owners/error-codes.md": {
-  "dead-link": 3
- },
  "docs/fr/server-owners/host-a-server.md": {
-  "dead-link": 4,
   "mkdocs-icon": 1
  },
  "docs/fr/server-owners/index.md": {
-  "dead-link": 4,
   "mkdocs-icon": 1
- },
- "docs/fr/server-owners/maintenance.md": {
-  "dead-link": 1
  },
  "docs/fr/server/port-forwarding.md": {
   "mkdocs-grid-cards": 1,
   "mkdocs-icon": 5
  },
- "docs/fr/server/setup-vps.md": {
-  "dead-link": 1
- },
- "docs/fr/support/game-faq.md": {
-  "dead-link": 1
- },
- "docs/fr/troubleshooting/index.md": {
-  "dead-link": 1
- },
- "docs/it/community/rules.md": {
-  "dead-link": 1
- },
- "docs/it/developers/beammp-scripting/server/legacy-v2.md": {
-  "dead-link": 2
- },
- "docs/it/developers/dev-environment-setup.md": {
-  "dead-link": 1
- },
- "docs/it/game-documentation/index.md": {
-  "dead-link": 1
- },
- "docs/it/game-documentation/snippets/cef-snippets.md": {
-  "dead-link": 2
- },
- "docs/it/game-documentation/snippets/css-snippets.md": {
-  "dead-link": 2
- },
- "docs/it/game-documentation/snippets/imgui-snippets.md": {
-  "dead-link": 2
- },
- "docs/it/game-documentation/snippets/lua-snippets.md": {
-  "dead-link": 2
- },
- "docs/it/game/getting-started.md": {
-  "dead-link": 1
- },
- "docs/it/index.md": {
-  "dead-link": 2
- },
- "docs/it/players/faq.md": {
-  "dead-link": 2
- },
- "docs/it/players/index.md": {
-  "dead-link": 2
- },
- "docs/it/players/mod-safety.md": {
-  "dead-link": 2
- },
- "docs/it/server-owners/error-codes.md": {
-  "dead-link": 3
- },
- "docs/it/server-owners/host-a-server.md": {
-  "dead-link": 4
- },
- "docs/it/server-owners/index.md": {
-  "dead-link": 4
- },
- "docs/it/server-owners/maintenance.md": {
-  "dead-link": 1
- },
  "docs/navigation-structure-proposal.md": {
   "dead-link": 13
  },
- "docs/ru/FAQ/How-to-check-for-CGNAT.md": {
-  "dead-link": 1
- },
- "docs/ru/FAQ/game-faq.md": {
-  "dead-link": 1
- },
  "docs/ru/community/rules.md": {
-  "dead-link": 1,
   "mkdocs-icon": 1
  },
- "docs/ru/developers/dev-environment-setup.md": {
-  "dead-link": 1
- },
- "docs/ru/developers/mod-and-resource-creation.md": {
-  "dead-link": 2
- },
- "docs/ru/game-documentation/snippets/css-snippets.md": {
-  "dead-link": 4
- },
- "docs/ru/game-documentation/snippets/imgui-snippets.md": {
-  "dead-link": 4
- },
- "docs/ru/game-documentation/snippets/lua-snippets.md": {
-  "dead-link": 4
- },
- "docs/ru/guides/mod-creation/server/getting-started.md": {
-  "dead-link": 1
- },
- "docs/ru/index.md": {
-  "dead-link": 4
- },
- "docs/ru/players/faq.md": {
-  "dead-link": 2
- },
- "docs/ru/players/index.md": {
-  "dead-link": 2
- },
- "docs/ru/players/mod-safety.md": {
-  "dead-link": 2
- },
- "docs/ru/server-owners/cgnat.md": {
-  "dead-link": 1
- },
- "docs/ru/server-owners/error-codes.md": {
-  "dead-link": 3
- },
- "docs/ru/server-owners/host-a-server.md": {
-  "dead-link": 3
- },
- "docs/ru/server-owners/index.md": {
-  "dead-link": 3
- },
- "docs/ru/server-owners/maintenance.md": {
-  "dead-link": 1
- },
  "docs/ru/server-owners/port-forwarding.md": {
-  "dead-link": 1,
   "mkdocs-grid-cards": 1,
   "mkdocs-icon": 5
  },
@@ -453,73 +57,12 @@
   "mkdocs-grid-cards": 1,
   "mkdocs-icon": 5
  },
- "docs/ru/troubleshooting/index.md": {
-  "dead-link": 1
- },
- "docs/zh/FAQ/How-to-check-for-CGNAT.md": {
-  "dead-link": 1
- },
- "docs/zh/FAQ/game-faq.md": {
-  "dead-link": 1
- },
- "docs/zh/community/rules.md": {
-  "dead-link": 1
- },
- "docs/zh/developers/dev-environment-setup.md": {
-  "dead-link": 1
- },
- "docs/zh/developers/mod-and-resource-creation.md": {
-  "dead-link": 2
- },
- "docs/zh/game-documentation/content-development/index.md": {
-  "dead-link": 4
- },
- "docs/zh/game-documentation/content-development/maps.md": {
-  "dead-link": 4
- },
- "docs/zh/game-documentation/content-development/props.md": {
-  "dead-link": 4
- },
- "docs/zh/game-documentation/index.md": {
-  "dead-link": 1
- },
- "docs/zh/guides/mod-creation/server/getting-started.md": {
-  "dead-link": 1
- },
- "docs/zh/index.md": {
-  "dead-link": 4
- },
- "docs/zh/players/faq.md": {
-  "dead-link": 2
- },
- "docs/zh/players/index.md": {
-  "dead-link": 2
- },
- "docs/zh/server-owners/cgnat.md": {
-  "dead-link": 1
- },
- "docs/zh/server-owners/error-codes.md": {
-  "dead-link": 3
- },
- "docs/zh/server-owners/host-a-server.md": {
-  "dead-link": 4
- },
- "docs/zh/server-owners/index.md": {
-  "dead-link": 4
- },
- "docs/zh/server-owners/maintenance.md": {
-  "dead-link": 1
- },
  "docs/zh/server-owners/port-forwarding.md": {
-  "dead-link": 1,
   "mkdocs-grid-cards": 1,
   "mkdocs-icon": 5
  },
  "docs/zh/server/port-forwarding.md": {
   "mkdocs-grid-cards": 1,
   "mkdocs-icon": 5
- },
- "docs/zh/troubleshooting/index.md": {
-  "dead-link": 1
  }
 }

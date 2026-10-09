@@ -18,7 +18,7 @@ L'équipe de soutient de BeamMP n'offre pas de soutient pour les versions pirat�
 ---
 ### **Est-ce que BeamMP fonction sur linux?**
 
-Le client n'est pas officiellement supporté sur linux, cependant, vous pouvez suivre notre [guide qui explique comment utiliser BeamMP sur Linux](../../game/getting-started.md#2b-installation-sur-linux)
+Le client n'est pas officiellement supporté sur linux, cependant, vous pouvez suivre notre [guide qui explique comment utiliser BeamMP sur Linux](/fr/get-started/#2b-installation-sur-linux)
 
 ---
 ### **Pourquoi le lanceur est détecté comme un virus par mon antivuris ou par Windows Defender**

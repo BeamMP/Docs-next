@@ -212,7 +212,7 @@ Fahrzeug- und Karten-Mods werden unterschiedlich installiert, müssen aber beide
 
 ::: warning
 Solltest du beim Versuch, deinem Server nach dem Hinzufügen von Mods beizutreten, die Meldung „Fertig“ oder „Start“ erhalten, hast du wahrscheinlich eine inkompatible oder fehlerhafte Mod dem Server hinzugefügt.
-Inkompatibilitäten zwischen zwei oder mehr Mods können ebenfalls auftreten. Falls du Client-Mods installiert hast, lies bitte [diese Anleitung](../../FAQ/How-to-deactivate-mods.md) zum Entfernen von Mods aus deinem Spiel.
+Inkompatibilitäten zwischen zwei oder mehr Mods können ebenfalls auftreten. Falls du Client-Mods installiert hast, lies bitte [diese Anleitung](/de/FAQ/How-to-deactivate-mods) zum Entfernen von Mods aus deinem Spiel.
 :::
 
 #### 5.2 Allgemeine Mods

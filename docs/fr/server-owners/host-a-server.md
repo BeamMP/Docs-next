@@ -14,7 +14,7 @@ Les serveurs font partie intégrante de BeamMP ; les joueurs sont connectés les
 
 Vous pouvez créer des serveurs privés, auxquels seules les personnes que vous invitez peuvent accéder, ou des serveurs publics, qui apparaîtront dans notre liste officielle de serveurs.
 
-Mettre en place un serveur se fait en quelques étapes ! Si vous rencontrez des problèmes, n'hésitez pas à nous contacter sur notre [forum](https://forum.beammp.com) ou sur notre [serveur Discord](https://discord.gg/beammp) dans le canal `#support` . Consultez également la section [Maintenance du serveur](server-maintenance.md) pour plus d'informations.
+Mettre en place un serveur se fait en quelques étapes ! Si vous rencontrez des problèmes, n'hésitez pas à nous contacter sur notre [forum](https://forum.beammp.com) ou sur notre [serveur Discord](https://discord.gg/beammp) dans le canal `#support` . Consultez également la section [Maintenance du serveur](/fr/server-owners/maintenance) pour plus d'informations.
 
 Veuillez vous assurer de lire la[LICENCE](https://raw.githubusercontent.com/BeamMP/BeamMP-Server/master/LICENSE) du serveur avant utilisation.
 
@@ -170,7 +170,7 @@ Private = false
 ResourceFolder = 'Resources'
 ```
 
-Il s'agit de votre fichier de configuration. Il utilise un format appelé TOML. Consultez la section [« Maintenance du serveur »](server-maintenance.md) pour plus d'informations sur ce fichier.
+Il s'agit de votre fichier de configuration. Il utilise un format appelé TOML. Consultez la section [« Maintenance du serveur »](/fr/server-owners/maintenance) pour plus d'informations sur ce fichier.
 
 Pour l'instant, seul le champ `AuthKey` nous intéresse. Collez entre les guillemets `''` que vous avez copié à la première étape.
 
@@ -180,7 +180,7 @@ Pour notre exemple de clé, cela devrait alors ressembler à ceci :
 AuthKey = '3173a2e-6az0-4542-a3p0-ddqq5ff95558'
 ```
 
-Donnez également un nom à votre serveur dans le champ `Name` . Vous pouvez le personnaliser avec des couleurs et d'autres options. Consultez [la section « Personnalisation du nom »](server-maintenance.md#customize-the-look-of-your-server-name) de la page de maintenance du serveur.
+Donnez également un nom à votre serveur dans le champ `Name` . Vous pouvez le personnaliser avec des couleurs et d'autres options. Consultez [la section « Personnalisation du nom »](/fr/server-owners/maintenance#customize-the-look-of-your-server-name) de la page de maintenance du serveur.
 
 Si vous avez choisi un **port** différent de **30814** , assurez-vous de le remplacer ici sous `Port` .
 
@@ -209,7 +209,7 @@ Si vous souhaitez uniquement ajouter des véhicules moddés, placez simplement l
 
 #### 5.3 Cartes
 
-Toutes les cartes par défaut (hors mods) sont prêtes à l'emploi et ne nécessitent aucune installation. Il suffit de modifier le paramètre `Map` du fichier `ServerConfig.toml` pour choisir l'une de [ces options](server-maintenance.md#all-vanilla-maps-names) . Pour les autres cartes moddées, procédez comme suit :
+Toutes les cartes par défaut (hors mods) sont prêtes à l'emploi et ne nécessitent aucune installation. Il suffit de modifier le paramètre `Map` du fichier `ServerConfig.toml` pour choisir l'une de [ces options](/fr/server-owners/maintenance#all-vanilla-maps-names) . Pour les autres cartes moddées, procédez comme suit :
 
 1. Placez le fichier `.zip` de votre carte dans le dossier ( `Resources/Client` ) de votre serveur.
 2. Ensuite, consultez le fichier zip de la carte (sans l'extraire) et ouvrez le dossier `levels` . Ce dossier devrait contenir un autre dossier portant le nom de la carte, par exemple « myawesomedriftmap2021 ». Assurez-vous de copier ou de mémoriser ce nom *tel qu'il figure dans le dossier.*

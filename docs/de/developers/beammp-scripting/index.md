@@ -45,11 +45,11 @@ features:
 
 ## Für Serverbesitzer
 
-Du möchtest deinen eigenen BeamMP-Server erstellen? Unsere umfassende Anleitung [hier](../server/create-a-server.md) führt dich durch den Prozess und stellt sicher, dass du alle notwendigen Werkzeuge und Kenntnisse für die effiziente Konfiguration deines Servers zur Verfügung hast.
+Du möchtest deinen eigenen BeamMP-Server erstellen? Unsere umfassende Anleitung [hier](/de/server-owners/host-a-server) führt dich durch den Prozess und stellt sicher, dass du alle notwendigen Werkzeuge und Kenntnisse für die effiziente Konfiguration deines Servers zur Verfügung hast.
 
 ## Für Entwickler
 
-Erfahre alles Wissenswerte zur Erstellung von Ressourcen für den BeamMP-Server in unserer [Anleitung zur Ressourcenentwicklung](../guides/mod-creation/server/getting-started.md).
+Erfahre alles Wissenswerte zur Erstellung von Ressourcen für den BeamMP-Server in unserer [Anleitung zur Ressourcenentwicklung](/de/developers/mod-and-resource-creation).
 
 Aufregende Updates stehen bevor, einschließlich einer brandneuen Homepage, die entwickelt wurde, um dein Browsing-Erlebnis zu verbessern. Bleib dran für weitere Neuigkeiten! :slight_smile:
 

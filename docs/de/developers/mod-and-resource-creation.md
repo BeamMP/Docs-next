@@ -49,7 +49,7 @@ Du möchtest deinen eigenen BeamMP-Server erstellen? Unsere umfassende Anleitung
 
 ## Für Entwickler
 
-Erfahre alles Wissenswerte zur Erstellung von Ressourcen für den BeamMP-Server in unserer [Anleitung zur Ressourcenentwicklung](../guides/mod-creation/server/getting-started.md).
+Erfahre alles Wissenswerte zur Erstellung von Ressourcen für den BeamMP-Server in unserer [Anleitung zur Ressourcenentwicklung](/de/developers/mod-and-resource-creation).
 
 Aufregende Updates stehen bevor, einschließlich einer brandneuen Homepage, die entwickelt wurde, um dein Browsing-Erlebnis zu verbessern. Bleib dran für weitere Neuigkeiten! :slight_smile:
 

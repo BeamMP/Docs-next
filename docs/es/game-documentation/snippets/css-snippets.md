@@ -43,14 +43,14 @@ features:
     link: /es/community/index
 ---
 
-¿Nuevo en BeamMP? Échale un vistazo [Cómo Empezar](../game/getting-started.md) para ayudarte a tocar la carretera y hacer la mayoría de tus aventuras en multijugador. Para preguntas generales y problemas, por favor échale un ojo a [Players FAQ](../support/player-faq.md).
+¿Nuevo en BeamMP? Échale un vistazo [Cómo Empezar](/es/get-started/) para ayudarte a tocar la carretera y hacer la mayoría de tus aventuras en multijugador. Para preguntas generales y problemas, por favor échale un ojo a [Players FAQ](/es/players/faq).
 
 ## Para Propietarios de Servidor
 
-¿Pensando en crear tu propio servidor de BeamMP? Nuestra [guía comprensiva](../server/create-a-server.md) te ayudará a través del proceso, asegurándose de que tengas todas las herramientas y conocimientos necesarios para para configurar tu servidor eficientemente.
+¿Pensando en crear tu propio servidor de BeamMP? Nuestra [guía comprensiva](/es/server-owners/host-a-server) te ayudará a través del proceso, asegurándose de que tengas todas las herramientas y conocimientos necesarios para para configurar tu servidor eficientemente.
 
 ## Para Desarrolladores
 
-Descubre los entresijos de la creación de recursos para los Servidores de BeamMP en nuestra [Guía de Desarrollo de Recursos](../guides/mod-creation/server/getting-started.md).
+Descubre los entresijos de la creación de recursos para los Servidores de BeamMP en nuestra [Guía de Desarrollo de Recursos](/es/developers/mod-and-resource-creation).
 
 Emocionantes actualizaciones están en camino, incluyendo una nueva página de inicio diseñada para mejorar tu experiencia de navegación. ¡Mantente al tanto para más novedades! :slight_smile:

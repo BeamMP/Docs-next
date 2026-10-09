@@ -179,7 +179,7 @@ admin | password
 
 找到路由器的端口转发设置后，即可开始输入必要信息。路由器会提供输入区域用于填写需要转发的端口号以及对应的目标IP地址。若路由器同时显示内部端口和外部端口选项，请确保填写相同的端口号以保持一致。
 
-BeamMP 需要同时开放 UDP 和 TCP 协议的 30814 端口（除非您已在 [ServerConfig.toml](create-a-server.md#4-configuration) 配置文件中修改过此端口）。
+BeamMP 需要同时开放 UDP 和 TCP 协议的 30814 端口（除非您已在 [ServerConfig.toml](/zh/server-owners/host-a-server#4-configuration) 配置文件中修改过此端口）。
 
 ::: info 注意
 

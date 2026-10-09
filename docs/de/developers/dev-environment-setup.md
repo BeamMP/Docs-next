@@ -64,7 +64,7 @@ Wenn du auf Probleme stößt, kannst du jederzeit im #scripting-Kanal in unserem
 
 # Einrichten eines lokalen Servers
 
-Beim Arbeiten mit BeamMP kann es von Vorteil sein, einen lokalen Server zu verwenden. Du kannst die allgemeine [Serverinstallation](../../server/create-a-server.md) durchführen und dabei die ersten beiden Schritte für rein lokale Verbindungen überspringen.
+Beim Arbeiten mit BeamMP kann es von Vorteil sein, einen lokalen Server zu verwenden. Du kannst die allgemeine [Serverinstallation](/de/server-owners/host-a-server) durchführen und dabei die ersten beiden Schritte für rein lokale Verbindungen überspringen.
 
 Setze den Server in der `serverConfig.toml` auf privat und verwende dabei eine beliebige Zeichenfolge als `AuthKey` .
 

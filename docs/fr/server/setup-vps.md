@@ -138,7 +138,7 @@ Les mods peuvent être incompatibles avec BeamNG, BeamMP ou d’autres mods, et 
 
 Si vous recevez un message **« done »** ou **« start »** lorsque vous essayez de rejoindre votre serveur après avoir ajouté des mods, il est probable que vous ayez installé un mod incompatible ou défectueux.
 
-Des conflits peuvent également survenir entre deux ou plusieurs mods. Si vous avez installé des mods côté client, consultez [ce guide](../../FAQ/How-to-deactivate-mods.md) pour savoir comment les supprimer de votre jeu.
+Des conflits peuvent également survenir entre deux ou plusieurs mods. Si vous avez installé des mods côté client, consultez [ce guide](/fr/FAQ/How-to-deactivate-mods) pour savoir comment les supprimer de votre jeu.
 :::
 
 #### **4.1. Mods généraux**

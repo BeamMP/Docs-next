@@ -4,7 +4,7 @@
 
 所有防火墙规则和端口转发规则设置正确，但没有人可以加入您的家庭托管服务器？
 
-如果您有连接问题，并且您正在使用托管服务，请联系他们寻求帮助。如果您想使用VPS或无法在家中托管服务器，请查看我们的[合作托管服务列表](../../server/create-a-server/#partnered-hosting-services-paid)（服务器设置文档）。
+如果您有连接问题，并且您正在使用托管服务，请联系他们寻求帮助。如果您想使用VPS或无法在家中托管服务器，请查看我们的[合作托管服务列表](/zh/server-owners/host-a-server#partnered-hosting-services-paid)（服务器设置文档）。
 
 # CGNAT是什么？
 

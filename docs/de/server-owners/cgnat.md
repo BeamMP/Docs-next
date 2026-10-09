@@ -4,7 +4,7 @@ Wie prüfe ich auf ein CGNAT?
 
 Alle Firewall Ausschlüsse und Port Weiterleitungsregeln sind korrekt eingerichtet, jedoch kann niemand deinem heim-gehosteten Server beitreten?
 
-Wenn du Verbindungsprobleme hast und einen Hosting Anbieter verwendest, kontaktiere diesen für Hilfe. Wenn du einen VPS verwenden möchtest oder keinen Server zuhause hosten kannst, sieh dir die [Liste unserer Hosting Partner](../../server/create-a-server/#partner-hosting-services-bezahlt) an.
+Wenn du Verbindungsprobleme hast und einen Hosting Anbieter verwendest, kontaktiere diesen für Hilfe. Wenn du einen VPS verwenden möchtest oder keinen Server zuhause hosten kannst, sieh dir die [Liste unserer Hosting Partner](/de/server-owners/host-a-server#partner-hosting-services-bezahlt) an.
 
 # Was ist CGNAT überhaupt?
 

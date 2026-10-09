@@ -64,7 +64,7 @@ BeamMP分为三个主要部分：
 
 # 设置本地服务器
 
-在使用BeamMP时，使用本地服务器可能是有益的。您可以遵循常规的[服务器安装](../../server/create-a-server.md)，同时省略纯本地连接的前两个步骤。
+在使用BeamMP时，使用本地服务器可能是有益的。您可以遵循常规的[服务器安装](/zh/server-owners/host-a-server)，同时省略纯本地连接的前两个步骤。
 
 在`serverConfig`中将服务器设置为私有。使用任意字符串作为`AuthKey`。
 
