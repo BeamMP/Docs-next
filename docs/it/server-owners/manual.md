@@ -1,88 +1,141 @@
-# Manuale d'uso del server
+---
+description: "Riferimento sul comportamento del server BeamMP: cosa legge dall'ambiente, la cartella Resources, variabili d'ambiente, argomenti da riga di comando e limiti del backend."
+---
+# Manuale del server
 
-# Contesto
+Questa pagina è il riferimento su come si comporta il server BeamMP. Per configurarne uno, vedi [Ospitare un server](/it/server-owners/host-a-server). Per le impostazioni di `ServerConfig.toml`, vedi [Configurazione del server](/it/server-owners/configuration).
 
-Il server è influenzato dallo stato di diversi parametri esterni:
+## Cosa influenza il server
 
-- La cartella "Resources"
-- L'ENV (il contesto del processo)
-- Gli argomenti da linea di comando
+Il server è influenzato dallo stato di questi parametri esterni:
+
+- La cartella `Resources`
+- L'ambiente (le variabili d'ambiente del processo)
+- Gli argomenti da riga di comando
 - Il file `ServerConfig.toml`
-- La cartella di lavoro
+- La directory di lavoro
 
-## Cartella "Resources"
+## Cartella Resources
 
-La cartella "Resources" è creata al primo avvio del server, insieme alle sottocartelle "Client" e "Server".
-La cartella "Server" accetta altre cartelle al suo interno, ognuna contenente almeno un file `.lua`. Ciascuna delle cartelle nella cartella "Server" è considerato un "Plugin". I file `.lua` contenuti nel livello di cartelle più alto all'interno del plugin a seguito di una modifica sono ricaricati durante l'esecuzione.
-La cartella "Client" accetta *solo* file `.zip` che sono caricati all'avvio del server e non mutano durante l'esecuzione.
+All'avvio il server crea la cartella `Resources`, con le sottocartelle `Client` e `Server`.
 
-## ENV
+- `Server` contiene cartelle, ciascuna con almeno un file `.lua`. Ogni cartella è un "plugin". I file `.lua` al livello principale di un plugin vengono ricaricati a caldo quando cambiano.
+- `Client` contiene solo file `.zip`. Vengono caricati all'avvio del server e si presume che non cambino mentre è in esecuzione.
+
+## Variabili d'ambiente
 
 ### Impostazioni generali
 
-Con la versione v3.2.0, il server BeamMP accetta variabili di contesto, che **prevalgono** sulle impostazioni contenute nel file `ServerConfig.toml`. Tutte le variabili che esistono nella sezione "General" seguono la convenzione [PascalCase](https://it.wikipedia.org/wiki/Notazione_a_cammello), le variabili di contesto sono IN_MAIUSCOLO e con il prefisso `BEAMMP_`. Per esempio il campo `MaxPlayers` convertito IN_MAIUSCOLO diventa `MAX_PLAYERS` (si noti il `_` all'inizio di una nuova parola) e con il prefisso diventa `BEAMMP_MAX_PLAYERS`. Questa formattazione è seguita per tutte le impostazioni della sezione "General". Esistono le seguenti variabili ENV:
+Dalla release del server v3.2.0, il server accetta variabili d'ambiente che **sostituiscono** le impostazioni di `ServerConfig.toml`. Ogni impostazione ne ha una. I nomi delle impostazioni sono in PascalCase. La variabile è il nome in TUTTE_MAIUSCOLE, con un trattino basso all'inizio di ogni nuova parola e il prefisso `BEAMMP_`. Per esempio, `MaxPlayers` diventa `MAX_PLAYERS` e, con il prefisso, `BEAMMP_MAX_PLAYERS`. Esistono queste variabili ("Da" indica la prima release del server che legge ciascuna di esse):
 
-- `BEAMMP_DEBUG`
-- `BEAMMP_PRIVATE`
-- `BEAMMP_PORT`
-- `BEAMMP_MAX_CARS`
-- `BEAMMP_MAX_PLAYERS`
-- `BEAMMP_MAP`
-- `BEAMMP_NAME`
-- `BEAMMP_DESCRIPTION`
-- `BEAMMP_TAGS`
-- `BEAMMP_RESOURCE_FOLDER`
-- `BEAMMP_AUTH_KEY`
-- `BEAMMP_LOG_CHAT`
+| Variabile | Impostazione | Da |
+|---|---|---|
+| `BEAMMP_DEBUG` | `Debug` | v3.2.0 |
+| `BEAMMP_PRIVATE` | `Private` | v3.2.0 |
+| `BEAMMP_PORT` | `Port` | v3.2.0 |
+| `BEAMMP_MAX_CARS` | `MaxCars` | v3.2.0 |
+| `BEAMMP_MAX_PLAYERS` | `MaxPlayers` | v3.2.0 |
+| `BEAMMP_MAP` | `Map` | v3.2.0 |
+| `BEAMMP_NAME` | `Name` | v3.2.0 |
+| `BEAMMP_DESCRIPTION` | `Description` | v3.2.0 |
+| `BEAMMP_TAGS` | `Tags` | v3.2.0 |
+| `BEAMMP_RESOURCE_FOLDER` | `ResourceFolder` | v3.2.0 |
+| `BEAMMP_AUTH_KEY` | `AuthKey` | v3.2.0 |
+| `BEAMMP_LOG_CHAT` | `LogChat` | v3.2.0 |
+| `BEAMMP_ALLOW_GUESTS` | `AllowGuests` | v3.5.0 |
+| `BEAMMP_INFORMATION_PACKET` | `InformationPacket` | v3.7.0 |
+| `BEAMMP_IM_SCARED_OF_UPDATES` | `ImScaredOfUpdates` (la sezione `[Misc]`) | v3.8.2 |
+| `BEAMMP_UPDATE_REMINDER_TIME` | `UpdateReminderTime` (la sezione `[Misc]`) | v3.8.2 |
+| `BEAMMP_IP` | `IP` | v3.8.3 |
 
-Qualsiasi variabile di contesto corrispondente a un parametro di configurazione che è una stringa o un numero, deve essere una stringa, ad esempio `BEAMMP_NAME="Cool Server"`, `BEAMMP_NAME=Server1`, `BEAMMP_PORT=12345`.
-Le variabili di contesto che corrispondono a un parametro di configurazione che è booleano (true/false, on/off) devono essere `true` o `1` (entrambi significano ON), o qualsiasi altro valore (significa OFF).
+Per le impostazioni che sono stringhe o numeri, il valore è una stringa, per esempio `BEAMMP_NAME="Cool Server"`, `BEAMMP_NAME=Server1` o `BEAMMP_PORT=12345`.
 
-### Impostazioni per i provider
+Per le impostazioni vero o falso (attivo o disattivo), il valore `true` o `1` significa attivo. Qualsiasi altro valore significa disattivo.
 
-Queste variabili di contesto permettono ai fornitori di host (e altri utenti con un gran numero di server), qui denominati "providers", di sovrascrivere alcune impostazioni specifiche per i provider.
+### Impostazioni del provider
+
+Queste variabili permettono ai provider di hosting, e a chi gestisce molti server, di sostituire le impostazioni specifiche del provider.
 
 #### `BEAMMP_PROVIDER_PORT_ENV` (da v3.3.0)
 
-Quando non è una stringa vuota, questa variabile rimpiazza `BEAMMP_PORT` con un'altra in modo tale da poter leggere la variabile da un ENV esistente. Per esempio Pterodactyl può esporre `SERVER_PORT` come un ENV. Per usarla con il server BeamMP si dovrebbe scrivere `BEAMMP_PORT=${SERVER_PORT}`, che è macchinoso.
+Se impostata su una stringa non vuota, indica il nome di un'altra variabile da cui leggere la porta, al posto di `BEAMMP_PORT`. Per esempio, Pterodactyl può esporre la porta come `SERVER_PORT`. Potresti impostare `BEAMMP_PORT=${SERVER_PORT}`, ma è più semplice impostare `BEAMMP_PROVIDER_PORT_ENV="SERVER_PORT"`: il server leggerà la sua porta dalla variabile `SERVER_PORT`.
 
-Ora invece si può usare `BEAMMP_PROVIDER_PORT_ENV="SERVER_PORT"`, che fa leggere al server la porta dalla variabile ENV `SERVER_PORT`.
+#### `BEAMMP_PROVIDER_IP_ENV` (da v3.8.4)
+
+Se impostata su una stringa non vuota, indica il nome di un'altra variabile da cui leggere l'indirizzo IP, al posto di `BEAMMP_IP`. Funziona come `BEAMMP_PROVIDER_PORT_ENV`.
 
 #### `BEAMMP_PROVIDER_DISABLE_CONFIG` (da v3.3.0)
 
-Se impostata a `1` oppure `true`, il file `ServerConfig.toml` **non è generato** e **non è letto** se esiste. La `BEAMMP_AUTH_KEY` deve essere impostata per far funzionare il server.
+Se impostata su `1` o `true`, `ServerConfig.toml` **non viene generato** e, se esiste, **non viene letto**. Devi impostare `BEAMMP_AUTH_KEY` perché il server funzioni.
 
 #### `BEAMMP_PROVIDER_UPDATE_MESSAGE` (da v3.2.2)
 
-Quando non è una stringa vuota, questa variabile rimpiazza l'intero messaggio per l'aggiornamento, che di default è "NEW VERSION IS OUT! Please update to the new..." ecc.
-È **OBBLIGATORIO** che il tuo messaggio contenga da qualche parte `{}`, che il server poi sostituirà con il numero della nuova versione. Per esempio, il tuo messaggio per l'aggiornamento può essere così:
+Se impostata su una stringa non vuota, sostituisce l'intero messaggio di aggiornamento, che per impostazione predefinita inizia con "NEW VERSION IS OUT! Please update to the new…".
+
+Il tuo messaggio **deve** contenere `{}` in qualche punto. Il server lo sostituisce con il numero della nuova versione. Per esempio:
 ```sh
-BEAMMP_PROVIDER_UPDATE_MESSAGE="Una NUOVA VERSIONE di BeamMP-Server è stata rilasciata: {}! Per favore segui questa guida per aggiornare: https://example.com/update-guide"
+BEAMMP_PROVIDER_UPDATE_MESSAGE="NEW VERSION of the BeamMP-Server has been released: {}! Please follow the update guide here: https://example.com/update-guide"
 ```
-Che risulterà in un messaggio così:
+Questo produce un messaggio di aggiornamento come:
+```text
+NEW VERSION of the BeamMP-Server has been released: v5.0.2! Please follow the update guide here: https://example.com/update-guide
 ```
-Una NUOVA VERSIONE di BeamMP-Server è stata rilasciata: v5.0.2! Per favore segui questa guida per aggiornare: https://example.com/update-guide
-```
+Spiega chiaramente agli utenti che devono aggiornare e come farlo.
 
-Per favore assicurati di rendere chiaro agli utenti che devono aggiornare il server e spiega loro come farlo.
+#### `BEAMMP_PROVIDER_DISABLE_MP_SET` (da v3.9.2)
 
-## Argomenti da linea di comando
+Se impostata su `1` o `true`, i plugin Lua non possono modificare le impostazioni del server con `MP.Set`. Un plugin che ci prova riceve un errore che indica che la chiamata è stata bloccata dal provider del tuo server.
 
-Avvia il server BeamMP con l'argomento `--help` per scoprirne di più. Ad esempio: `./BeamMP-Server --help`.
+#### `BEAMMP_MAX_CONCURRENT_CONNECTIONS` (da v3.9.2)
+
+Imposta il numero massimo di connessioni che il server gestisce contemporaneamente. È un numero intero da 1 a 128 e il valore predefinito è 10. Un valore fuori intervallo, o che non è un numero, viene ignorato con un avviso.
+
+## Argomenti da riga di comando
+
+Avvia il server con `--help` per vederli: `./BeamMP-Server --help`. Gli argomenti sono:
+
+| Argomento | Cosa fa |
+|---|---|
+| `--help` | Mostra l'aiuto ed esce |
+| `--version` | Stampa la versione del server ed esce |
+| `--port=1234` | Imposta la porta TCP e UDP su cui il server resta in ascolto. Ha la precedenza sull'ambiente e su `ServerConfig.toml` |
+| `--config=/path/to/ServerConfig.toml` | Il percorso, assoluto o relativo, del file di configurazione del server, compreso il nome del file. Metti tra virgolette un percorso con spazi |
+| `--working-directory=/path/to/folder` | Imposta la directory di lavoro del server. Tutti i percorsi, compreso quello in `--config`, sono relativi a essa |
+
+Per esempio, `BeamMP-Server --config=../MyWestCoastServerConfig.toml` avvia il server con il file di configurazione che si trova una cartella più in alto.
+
+## Comandi della console
+
+Digita questi comandi nella console del server:
+
+| Comando | Cosa fa |
+|---|---|
+| `help` | Mostra i comandi |
+| `exit` | Spegne il server |
+| `kick <name> [reason]` | Espelle un giocatore, con un motivo facoltativo |
+| `list` | Elenca tutti i giocatori e le informazioni su di loro |
+| `say <message>` | Invia il messaggio a tutti i giocatori in chat |
+| `lua [state id]` | Passa a Lua, facoltativamente nello stato con quell'id |
+| `settings [command]` | Imposta o legge le impostazioni del server. Esegui `settings help` per saperne di più |
+| `status` | Mostra come sta andando il server |
+| `clear` | Pulisce la finestra della console |
+| `version` | Mostra la versione del server |
+| `protectmod <name> <value>` | Imposta se una mod è protetta. Il valore è `true` o `false` |
+| `reloadmods` | Ricarica tutte le mod dalla cartella `Resources/Client` |
 
 ## ServerConfig.toml
 
-Questo file è generato al primo avvio. I commenti all'interno del file sono il modo migliore e più aggiornato per capire che cosa faccia ogni impostazione.
+Il server genera questo file al primo avvio. I commenti all'interno del file sono la spiegazione più aggiornata di ogni impostazione.
 
-## Cartella di lavoro
+## Directory di lavoro
 
-La cartella di lavoro del server, e non la posizione dell'eseguibile del server, è il fattore decisivo per la generazione di `ServerConfig.toml`, dei file di log e della cartella "Resources".
+La directory di lavoro del server, e non la posizione dell'eseguibile del server, decide dove vengono generati `ServerConfig.toml`, i file di log e la cartella `Resources`.
 
-# Limitazioni
+## Limiti
 
-Le seguenti limitazioni sono imposte dal backend e riguardano il server:
+Il backend di BeamMP applica questi limiti ai server:
 
-- Il nome del server è limitato a 250 caratteri.
-- La descrizione del server è limitata a 1000 caratteri.
-- La mappa è limitata a 100 caratteri.
-- I tag sono limitati a 100 caratteri.
+- Name: 250 caratteri
+- Description: 1000 caratteri
+- Map: 100 caratteri
+- Tags: 100 caratteri

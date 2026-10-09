@@ -1,269 +1,203 @@
-# Installazione del server
-
-## **Creazione del server**
-Basi per la creazione di un server
-
 ---
-### **Introduzione**
+description: "Ospita un server BeamMP a casa: reindirizza la porta, consenti il server nel firewall, ottieni una AuthKey, installalo e configuralo, aggiungi mod e fai entrare i giocatori."
+---
+# Ospitare un server
 
-**Creare un server casalingo è gratuito, ma usare a un VPS è più facile e più sicuro**
+Questa guida spiega come ospitare un server BeamMP a casa, sul tuo computer Windows o Linux. Se usi una società di hosting o un VPS con un pannello di gestione, segui invece [Configurazione del server su un VPS](/it/server-owners/setup-vps). Un server casalingo è gratuito. Un VPS è più semplice e più sicuro.
 
-I server sono una parte integrante di BeamMP, tutti i giocatori sono connessi tra loro attraverso il server. I server possono funzionare nativamente su Windows e Linux.
+## Prima di iniziare
 
-Puoi creare server privati, ai quali si possono connettere solo persone che inviti, o server pubblici, che saranno visibili sulla nostra ufficiale lista di server.
+I server sono una parte fondamentale di BeamMP: i giocatori si connettono tra loro attraverso il server. Puoi creare un server privato, al quale possono entrare solo le persone che inviti, oppure un server pubblico, che compare nella lista ufficiale dei server.
 
-Per far funzionare correttamente un server è necessario seguire alcuni passi! È abbastanza semplice, ma se hai dei problemi, chiedi pure sul nostro [Forum](https://forum.beammp.com) o sul nostro [server Discord](https://discord.gg/beammp) nel canale `#support`. Fai anche riferimento alla sezione di [Manutenzione Server](/it/server-owners/maintenance) per ulteriori informazioni.
+Leggi la [LICENSE](https://raw.githubusercontent.com/BeamMP/BeamMP-Server/master/LICENSE) del server prima di usarlo.
 
-Assicurati di aver letto e compreso la [LICENZA](https://raw.githubusercontent.com/BeamMP/BeamMP-Server/master/LICENSE) del server prima dell'uso.
+Il server supporta solo IPv4. Se non sai quale hai, guarda l'indirizzo IP mostrato su [whatsmyip.org](https://www.whatsmyip.org/). Se contiene dei due punti, è IPv6. In tal caso, scopri se hai anche un indirizzo IPv4, chiedendolo al tuo ISP o a qualcuno che se ne intende di reti. Il supporto per IPv6 è in programma.
 
-Nota: *Il server supporta esclusivamente indirizzi IPv4. Se non sai che tipo di indirizzo usi, visita il sito* [*whatsmyip.org*](https://www.whatsmyip.org/) *- se l'indirizzo contiene* `_:_` *due punti, è di tipo **IPv6**. In tal caso devi investigare più a fondo e capire se hai a disposizione anche un indirizzo IPv4. Per far ciò puoi telefonare al tuo ISP chiedendo informazioni a riguardo, o chiedi a qualcuno che se ne intende che conosci. Il supporto per gli indirizzi IPv6 è in programma.*
+Se hai problemi, chiedi sul [forum](https://forum.beammp.com) o nel canale `#support` del [server Discord](https://discord.gg/beammp). [Configurazione del server](/it/server-owners/configuration) approfondisce le impostazioni del server.
 
-## Configurare il server
+## Reindirizzare la porta {#forward-the-port}
 
-La configurazione consiste di pochi passi che sono obbligatori da seguire.
+I giocatori esterni alla tua casa possono entrare nel tuo server ospitato a casa solo se reindirizzi una porta sul tuo router. Salta questo passaggio se usi un VPS o un rootserver, oppure se tutti quelli che giocano sono dentro casa tua (la tua rete locale).
 
-### 1. Port forwarding
+::: danger Il port forwarding comporta dei rischi
+Facendo il port forwarding sei consapevole dei rischi legati all'apertura delle porte della tua rete domestica al pubblico e, di conseguenza, rinunci al diritto di ritenere BeamMP responsabile di qualsiasi danno che potrebbe derivare a te o al tuo nucleo familiare.
 
-*Se stai utilizzando un VPS (Virtual Private Server) o un Rootserver, puoi generalmente saltare questo passo. Se non sei sicuro di cosa sia un VPS o Rootserver, non lo stai usando.*
-
-Questo passo è necessario se vuoi che qualcuno all'esterno della tua casa ("all'esterno del tuo network locale o LAN") possa accedere al server.
-
-####
-::: danger LIMITAZIONE DI RESPONSABILITA':
-**Port forward è rischioso**
-
-Facendo il port forwarding sei a conoscenza dei rischi legati ad aprire le porte del tuo network di casa al pubblico e di conseguenza sollevi BeamMP da ogni responsabilità di danni che potrebbero succedere a te o al tuo ambiente domestico.
-
-Non ci assumiamo alcuna responsabilità per i contenuti presenti su pagine esterne dei servizi presentati.
+Non ci assumiamo alcuna responsabilità per i contenuti di servizi o siti web esterni collegati.
 :::
 
-È consigliato affidarsi a uno dei nostri partner per l'hosting del server!
+Ospitare con uno dei nostri servizi partner evita questo rischio. Per reindirizzare tu stesso una porta, segui la [guida al port forwarding](/it/server-owners/port-forwarding).
 
-#### Servizi a pagamento:
+## Servizi di hosting partner {#partnered-hosting-services}
 
-* [Horizon Hosting](https://hrzn.link/beammp)
-* [Snakecraft Hosting](https://schost.us/beammp-plans)
-* [Connect Hosting](https://connecthosting.net/beammp)
-* [Assetto Hosting](https://assettohosting.com/en/games/beamng)
-* [WinHeberg](https://winheberg.fr/offres/gaming/beammp?lang=en)
-* [Zap Hosting](https://zap-hosting.com/en/beammp-server-hosting/)
-* [HostHavoc](https://hosthavoc.com/)
-* [PedalHost](https://pedal.host/)
+Questi servizi sono a pagamento:
 
-*NOTA: se se sceglie di acquistare il server da uno dei partner, il passo di Port Forwarding è superfluo.*
+<!--@include: ./_parts/partners.md-->
 
-Per effettuare il port forwarding, affidarsi [a questa guida esterna](https://www.aranzulla.it/come-aprire-le-porte-del-router-31808.html).
+## Consentire il server nel firewall {#allow-the-server-through-your-firewall}
 
-#### 1.1 Firewall
+A seconda della tua configurazione, potresti dover far passare il server BeamMP attraverso il firewall. Succede su Windows, dove disattivare il firewall di solito **non** funziona, e su molti server Linux preinstallati.
 
-A seconda della tua configurazione, potresti dover aggiungere BeamMP-Server alle regole del tuo firewall. Questo è il caso di Windows (spegnere il firewall di solito **non** funziona) e su molti server Linux pre-configurati.
+Consenti al server BeamMP di passare attraverso il firewall **sia per le connessioni in entrata sia per quelle in uscita** e **sia per TCP sia per UDP**. Se il tuo firewall chiede invece una porta, usa la porta che hai reindirizzato, di solito la 30814.
 
-Qui, come nel caso del port forwarding, devi permettere il traffico **sia in entrata sia in uscita** e sia **TCP** sia **UDP** di BeamMP-Server attraverso il firewall. Se invece il tuo firewall richiede una porta, usa la stessa utilizzata nel passo precedente ("1. Port forwarding").
+Per una guida dettagliata, vedi [Esclusioni Defender / Firewall](/it/troubleshooting/defender-exclusions).
 
-Se hai dei problemi, chiedi pure sul nostro [Forum](https://forum.beammp.com) o sul nostro [server Discord](https://discord.gg/beammp) nel canale `#support`.
+<!--@include: ./_parts/authkey.md-->
 
-### 2. Ottenere una chiave di autenticazione
+## Installare il server
 
-La chiave di autenticazione, spesso chiamata "AuthKey", è necessaria per creare un server **pubblico**, ma è **consigliato** usarla anche per i server privati.
+Il server BeamMP è disponibile per Windows e Linux.
 
-Ti servirà un account [Discord](https://discord.com) per questo passo. Discord è necessario per evitare problemi di spam.
+### Installazione su Windows
 
-#### 2.1. Accedere alla pagina delle chiavi
+Reindirizza prima la tua porta. Senza di essa, nessuno fuori da casa tua potrà entrare.
 
-Fai il login con Discord al [Keymaster](https://beammp.com/keymaster).
-Dalla homepage del Keymaster, clicca su "Keys" a sinistra dello schermo:
+1. Installa i [Visual C++ Redistributables](https://aka.ms/vs/17/release/vc_redist.x64.exe). Il server ne ha bisogno per funzionare.
+2. Scarica il server da [beammp.com](https://www.beammp.com/). Otterrai un eseguibile chiamato più o meno `BeamMP-Server.exe`.
+3. Crea una cartella in un punto a tua scelta e mettici dentro `BeamMP-Server.exe`. È qui che vivrà il tuo server.
+4. Avvia il server una volta con un doppio clic. Genera i file di cui ha bisogno. Quando vedi del testo, chiudilo. Ora hai un file `ServerConfig.toml` accanto a `BeamMP-Server.exe`.
+5. Facoltativo: per un accesso rapido in seguito, crea un collegamento sul desktop con **Clic con il tasto destro** > **Invia a** > **Desktop (crea collegamento)**.
 
-<figure>
+### Installazione su Linux
 
-  ![](../../assets/content/keymaster_homepage.png)
+#### Usa la nostra build (consigliato)
 
-</figure>
+Funziona su tutte le distribuzioni per cui forniamo i binari, elencate nella [pagina dell'ultima release](https://github.com/BeamMP/BeamMP-Server/releases/latest). Per un'altra distribuzione o architettura, vedi [Compilare dal codice sorgente](#build-from-source).
 
-#### 2.2. Creare una chiave
+1. Installa le dipendenze elencate nelle [dipendenze di runtime](https://github.com/BeamMP/BeamMP-Server#runtime-dependencies).
+2. Vai su [beammp.com](https://beammp.com/) e clicca su **Download Server**. Verrai portato alla pagina delle release del server su GitHub.
+3. Scarica la versione per la tua distribuzione. In questa guida la chiamiamo `BeamMP-Server-xxx`, dove `xxx` è la versione per la tua distribuzione.
+4. Crea una cartella in un punto a tua scelta e mettici dentro `BeamMP-Server-xxx`. Per ora puoi ignorare gli altri file scaricati. È qui che vivrà il tuo server.
+5. Apri un terminale in quella cartella ed esegui `chmod +x BeamMP-Server-xxx`, così hai il permesso di avviarlo.
+6. Avvia il server una volta con `./BeamMP-Server-xxx`. Genera i file di cui ha bisogno. Quando vedi del testo, chiudilo. Ora hai un file `ServerConfig.toml` accanto a `BeamMP-Server-xxx`.
+7. Facoltativo, ma caldamente consigliato: crea un utente chiamato `beammpserver` (o simile) e avvia il server solo con quell'utente. Non eseguire il server come root, con `sudo` o con il tuo utente personale.
 
-Per creare una chiave clicca il "+" verde presente in alto a destra.
+#### Compilare dal codice sorgente {#build-from-source}
 
-<figure>
+Probabilmente funzionano anche altre distribuzioni, ma non sono supportate ufficialmente. Per compilare il server da solo, scarica il codice sorgente da [GitHub](https://github.com/BeamMP/BeamMP-Server) e segui le [istruzioni di compilazione](https://github.com/BeamMP/BeamMP-Server#build-instructions). Alla fine, avvia il server una volta con `./BeamMP-Server`.
 
-  ![](../../assets/content/keymaster_new_key.png)
+## Configurare il server {#configure-the-server}
 
-</figure>
+Quando hai avviato il server una volta, ha creato alcuni file e probabilmente ha stampato un errore o due. È normale, perché non è ancora configurato. La tua cartella ora contiene questi file:
 
-#### 2.3. Compilare i dati per la chiave
+![La cartella del server con ServerConfig.toml, Server.log e BeamMP-Server.exe](../../assets/content/after-running-once.png)
 
-Inserisci il nome del server (questo è solo il nome per la chiave, non è il nome vero e proprio del server), poi clicca "Create", ad esempio:
+Sono `ServerConfig.toml`, `Server.log` e `BeamMP-Server.exe`. A seconda delle tue impostazioni, potresti non vedere le estensioni `.toml`, `.log` e `.exe`.
 
-<figure class="image image_resized" style="width:44.84%;">
-
-  ![](../../assets/content/keymaster_server_name.png)
-
-</figure>
-
-Il risultato dovrebbe essere simile a questo:
-
-<figure>
-
-  ![](../../assets/content/keymaster_key_done.png)
-
-</figure>
-
-**NON CONDIVIDERE MAI QUESTA CHIAVE. TRATTALA COME UNA PASSWORD**
-
-Hai un numero limitato di chiavi. Puoi utilizzare una chiave su un server per volta, quindi non puoi far partire due server con la stessa chiave nello stesso momento.
-
-#### 2.4. Copiare la chiave
-
-Copia il testo del campo "key", in questo esempio è `3173a2e-6az0-4542-a3p0-ddqq5ff95558` e tienilo pronto per il passo successivo. Puoi fare questo cliccando l'icona a destra della chiave:
-
-<figure>
-
-  ![](../../assets/content/keymaster_copy_key.png)
-
-</figure>
-
-### 3. Installazione
-
-Il BeamMP-Server è disponibile per Windows e Linux. Le prossime due sezioni sono dedicate all'installazione su Windows e Linux rispettivamente.
-
-#### 3.a Installazione su Windows
-
-Per l'installazione su Linux, salta alla sezione succesiva.
-
-Ricordati di fare il port forwarding, altrimenti il tuo server non sarà raggiungibile al pubblico!
-
-1. Assicurati di aver installato i [Visual C++ Redistributables](https://aka.ms/vs/17/release/vc_redist.x64.exe), necessari per eseguire il server.
-2. Scarica l'eseguibile del server da [beammp.com](https://www.beammp.com/). Dovresti trovarti con un file chiamato `BeamMP-Server.exe`.
-3. Una volta scaricato, crea una cartella dove desideri e sposta al suo interno `BeamMP-Server.exe`. Qui è dove il server risiederà.
-4. Avvia il server cliccandoci due volte. Questo genererà tutti i files necessari e quando vedi del testo sul terminale, puoi chiuderlo. Dovresti vedere questo file chiamato `ServerConfig.toml` nella stessa cartella di `BeamMP-Server.exe`.
-5. (opzionale) Per accedere velocemente al server, crea un collegamento al desktop **cliccando col tasto destro** su `BeamMP-Server.exe` &gt; **Invia a** &gt; **Desktop (crea collegamento)**.
-
-Passare ora al punto "4. Configurazione".
-
-#### 3.b Installazione su Linux
-
-##### Utilizzando la build precompilata (consigliato)
-
-Questo passo è valido per tutte le distribuzioni Linux per cui offriamo i files binari [qui](https://github.com/BeamMP/BeamMP-Server/releases/latest). Se usi una distribuzione o architettura differente, salta al passo "Compilazione file sorgente".
-
-1. Assicurati di avere installato tutte le dipendenze che sono elencate [qui](https://github.com/BeamMP/BeamMP-Server#runtime-dependencies).
-2. Vai su [beammp.com](https://www.beammp.com/) e clicca il pulsante "Download server", sarai reindirizzato alla pagina Github delle release del server.
-3. Scarica la versione corretta per la tua distribuzione. Per semplicità sarà chiamata `BeamMP-Server-xxx` durante la guida, dove `xxx` è la versione per la distribuzione che stai usando.
-4. Una volta scaricato, crea una cartella dove desideri e sposta al suo interno `BeamMP-Server-xxx`. Qui è dove il server risiederà.
-5. Apri un terminale, naviga alla cartella dove si trova `BeamMP-Server-xxx` e incolla il comando `chmod +x BeamMP-Server-xxx`. Questo farà in modo che si abbiano i permessi per eseguire il server.
-6. Avvia il server con il comando `./BeamMP-Server-xxx`. Questo genererà tutti i files necessari e quando vedi del testo sul terminale, puoi chiuderlo. Dovresti vedere questo file chiamato `ServerConfig.toml` nella stessa cartella di `BeamMP-Server-xxx`.
-7. (opzionale) È consigliato creare un utente chiamato `beammpserver` (o simile), siccome **non** raccomandiamo di eseguire il server come root, sudo o con il proprio utente personale. Dovresti poi rendere possibile l'esecuzione del server solo da questo utente.
-
-Passare ora al punto "4. Configurazione".
-
-##### Compilazione file sorgente
-
-È molto probabile, ma non è stato ufficialmente provato, che BeamMP-Server per Linux funzioni su distribuzioni differenti da quelle per cui offriamo i files binari [qui](https://github.com/BeamMP/BeamMP-Server/releases/latest). Se vuoi compilare i codice sorgente puoi farlo, scaricando il codice dal nostro [GitHub](https://github.com/BeamMP/BeamMP-Server), una guida si può trovare [qui](https://github.com/BeamMP/BeamMP-Server#build-instructions).
-
-Infine ricordati di eseguire il server con il comando `./BeamMP-Server-xxx`, dopodiché vai al passo successivo.
-
-### 4. Configurazione
-
-Dopo che il server è stato avviato almeno una volta, dovrebbe aver creato diversi files e mostrato un paio di errori; questo perché manca ancora qualcosa. La tua cartella dovrebbe contenere questi files:
-
-<figure>
-
-  ![](../../assets/content/after-running-once.png)
-
-</figure>
-
-Potrebbero chiamarsi `ServerConfig`, `Server` e `BeamMP-Server` senza estensioni, ma è corretto anche questo!
-
-Apri `ServerConfig.toml` con un editor di testo come `Blocco note`. Per fare ciò **click col tasto destro** &gt; **Apri con** &gt; **Blocco note** o un qualsiasi altro editor di testo.
-
-Dovresti vedere qualcosa di simile a questo:
-
-```TOML
+Apri `ServerConfig.toml` in un editor di testo come il Blocco note: **Clic con il tasto destro** > **Apri con…**, poi scegli l'editor. Un esempio di configurazione:
+```toml
 [General]
-AuthKey = ''
-Debug = false
-Description = 'BeamMP Default Description'
-Map = '/levels/gridmap_v2/info.json'
-MaxCars = 1
-MaxPlayers = 10
-Name = 'BeamMP Server'
 Port = 30814
-Private = false
-ResourceFolder = 'Resources'
+AuthKey = "auth-key"
+AllowGuests = false
+LogChat = false
+Debug = false
+IP = "::"
+Private = true
+InformationPacket = true
+Name = "Test Server"
+Tags = "Freeroam,Modded,Racing,Police"
+MaxCars = 2
+MaxPlayers = 10
+Map = "/levels/ks_nord/info.json"
+Description = "Total Random Beam MP Server"
+ResourceFolder = "Resources"
 ```
+Questo file usa il formato TOML. [Configurazione del server](/it/server-owners/configuration) descrive ogni impostazione.
 
-Questo è il tuo file di configurazione. Utilizza un formato chiamato TOML. Fai anche riferimento alla sezione di [Manutenzione Server](/it/server-owners/maintenance) per maggiori informazioni.
+1. Imposta `AuthKey` sulla chiave che hai copiato. Incollala tra le virgolette. Per la chiave dell'esempio appare così:
+   ```toml
+   AuthKey = '3173a2e-6az0-4542-a3p0-ddqq5ff95558'
+   ```
+2. Imposta `Name`, il nome del tuo server nella lista dei server. Puoi formattarlo con colori e altro: vedi [Personalizza l'aspetto del nome del tuo server](/it/server-owners/configuration#customize-the-look-of-your-server-name).
+3. Se hai scelto una porta diversa dalla 30814, impostala in `Port`.
+4. Il tuo server non compare nella lista dei server finché `Private = true`. Per farlo comparire, imposta `Private = false`.
 
-Per ora ci interessa soltanto il campo `AuthKey`. Incolla tra le virgolette `''` la chiave ottenuta nel passo "2. Ottenere una chiave di autenticazione".
+### Verifica che si avvii
 
-Per questo esempio, dovrà essere così:
-```TOML
-AuthKey = '3173a2e-6az0-4542-a3p0-ddqq5ff95558'
+Avvia di nuovo il server e cerca eventuali messaggi `[ERROR]` o `[WARN]`. Il server ora dovrebbe restare aperto. Poi aggiungi le mod, se le vuoi, e scopri come entrare.
+
+## Aggiungere mod
+
+Le mod di veicoli e quelle di mappe si installano in modo diverso, ma vanno entrambe nella cartella `Resources/Client` del tuo server. Metti il file `.zip` della mod in quella cartella.
+
+::: warning
+Le mod possono essere, o diventare, incompatibili con BeamNG, BeamMP o altre mod. Se hai problemi, inizia a rimuovere le mod. Se, dopo aver aggiunto delle mod, ricevi un messaggio "done" o "start" quando provi a entrare, probabilmente hai aggiunto una mod incompatibile o difettosa. Se hai delle mod client installate, vedi [Sicurezza mod](/it/players/mod-safety) per rimuoverle dal tuo gioco.
+:::
+
+### Mod di veicoli e altre mod
+
+Metti il file `.zip` della mod in `Resources/Client`. Chiunque entri la scarica automaticamente.
+
+### Mappe
+
+Le mappe vanilla funzionano senza installare nulla. Imposta `Map` in `ServerConfig.toml` su uno dei [percorsi delle mappe vanilla](/it/server-owners/configuration#all-vanilla-maps-names).
+
+Per una mappa moddata:
+
+1. Metti il file `.zip` della mappa in `Resources/Client`.
+2. Apri il file `.zip` senza estrarlo, poi apri la sua cartella `levels`. Contiene una cartella con il nome della mappa, per esempio `myawesomedriftmap2021`. Annota il nome esattamente come è scritto.
+3. In `ServerConfig.toml`, `Map` ha la forma `/levels/MAPNAME/info.json`, dove `MAPNAME` è probabilmente qualcosa come `gridmap_v2`. Sostituisci `MAPNAME` con il nome della cartella del punto 2. Deve terminare con `/info.json`. Per questo esempio:
+   ```toml
+   Map = '/levels/myawesomedriftmap2021/info.json'
+   ```
+Quando qualcuno entra, la mappa viene scaricata automaticamente e funziona.
+
+Se non funziona, installa la mappa in BeamNG.drive in singleplayer ed entraci. Apri la console con il tasto `~` (tilde). Su una tastiera non americana, trova l'azione **Toggle System Console** in **Options** > **Controls** > **Bindings**, nella sezione **General Debug**. Esegui `print(getMissionFilename())`. Mostra il nome da usare.
+
+### Proteggere le mod dal download
+
+Puoi ospitare contenuti protetti o con accesso limitato senza ridistribuirli. È adatto alle "mod a pagamento" o a un creatore di mod che vuole un accesso limitato ai suoi nuovi lavori.
+
+Per proteggere una mod, esegui questo nella console del server:
+```text
+protectmod <filename with .zip> <true/false>
 ```
-Dai anche un nome al tuo server tramite il campo `Name`. Puoi utilizzare colori e altri tipi di formattazione seguendo le indicazioni di [questa sezione](/it/server-owners/maintenance#personalizza-laspetto-del-nome-del-tuo-server) della pagina di manutenzione del server.
+I giocatori che entrano in un server con mod protette devono procurarsi il file da soli, per esempio dal creatore o da una piattaforma come Patreon, e metterlo nella cartella delle risorse del loro Launcher. Il Launcher li avvisa quando manca un file e il gioco mostra una notifica con il file mancante e come risolvere.
 
-Se hai scelto una **porta** differente da **30814** inseriscila al posto di quella predefinita in `Port`.
+## Fare entrare i giocatori
 
-**IMPORTANTE:** Il tuo server **non** sarà visibile sulla lista di server fintanto che `Private = true`. *Se* vuoi rendere visibile su tale lista il tuo server, metti **`Private = false`**.
+### Entrare nel tuo server
 
-### 5. Verifica di corretto funzionamento
+Che sia privato o pubblico, il modo in cui entri dipende da dove è in esecuzione:
 
-Avvia nuovamente il server e guarda se mostra altri messaggi con l'etichetta `[ERROR]`. La finestra deve rimanere aperta. A questo punto puoi avviare BeamMP utilizzando il BeamMP-Launcher e dovresti trovare il tuo server con il nome specificato nel file `ServerConfig.toml` nella lista dei server.
+- **Sullo stesso computer del gioco:** usa la connessione diretta. Clicca sulla scheda **Direct Connect** a sinistra della lista dei server, lascia i dati predefiniti (`127.0.0.1` e la tua porta) e clicca su **Connect**.
+- **Su un altro computer della tua rete locale:** connessione diretta con l'indirizzo IP locale di quel computer.
+- **Fuori da casa tua, per esempio su un VPS:** connessione diretta con l'indirizzo IP pubblico di quella macchina.
 
----
+### Server privato
 
-#### 5.1. Come aggiungere mod al tuo server
+Dai agli altri giocatori l'indirizzo IP pubblico del tuo server. Fai attenzione a con chi lo condividi. Per entrare, aprono la scheda **Direct Connect** in BeamMP e inseriscono il tuo indirizzo IP e la porta.
 
-Sia le mod dei veicoli che una mappa mod, vanno inserite nella cartella `Resources/Client` all'interno della cartella del server.
+### Server pubblico
 
-#### 5.2. Mod generiche
+Gli altri giocatori lo trovano nella lista dei server: digitano il suo nome e cliccano su **Connect**. Il nome è quello nel tuo `ServerConfig.toml`. Se non lo trovano, di' loro di disattivare i filtri di ricerca e di impostare la mappa su **Any**. Anche il sito [Keymaster](https://keymaster.beammp.com/) mostra l'indirizzo IP del tuo server.
 
-Se ti interessa aggiungere mod di veicoli, basta aggiungerle alla cartella `Resources/Client`. Verranno scaricate automaticamente da chiunque si connetta al server.
+### "Connection Failed!"
 
-#### 5.3. Mappe
+Se tu o un amico ricevete "Connection Failed!", guarda nella finestra del Launcher i codici come 10060, 10061 o 10030. Significano una di due cose: sei dietro un indirizzo IPv4 CGNAT, oppure qualcosa è andato storto in [Reindirizzare la porta](#forward-the-port) o in [Consentire il server nel firewall](#allow-the-server-through-your-firewall).
 
-Tutte le mappe ufficiali del gioco (quindi che non sono mod) non necessitano di essere installate, devi soltanto cambiare il valore del campo `Map` del file `ServerConfig.toml` con una di [queste stringhe](/it/server-owners/maintenance#tutti-i-nomi-delle-mappe-vanilla). Per mappe non ufficiali (mod), bisogna fare così:
+Per verificare la presenza di CGNAT, cerca l'indirizzo IP WAN nella pagina del tuo router e confrontalo con il tuo [IP pubblico](https://www.whatsmyip.org/). Se coincidono, non sei dietro un CGNAT. Vedi [Verifica CGNAT](/it/server-owners/cgnat). IPv6 non è ancora supportato.
 
-1. Inserire il file `.zip` della mappa nella cartella `Resources/Client` all'interno della cartella del server.
-2. Apri il file `.zip` della mappa senza estrarlo e naviga alla cartella `/levels/`. In questa cartella ce ne dovrebbe essere un'altra con il nome della mappa, ad esempio `myawesomedriftmap2021`. Copia o ricordati questo nome *esattamente come è scritto su tale cartella*.
-3. Apri il file `ServerConfig.toml`. Nel campo `Map` dovresti vedere il valore `/levels/MAPNAME/info.json`, dove `MAPNAME` è molto probabilmente `gridmap_v2`. Cambia `MAPNAME` col nome della cartella del passo precedente, per questo esempio `myawesomedriftmap2021`. Salvo rare eccezioni, tutte le mappe necessitano di avere `/info.json` alla fine. Dovresti ottenere qualcosa di simile:
+## Verifica che i giocatori possano raggiungere il tuo server
 
-```TOML
-Map = '/levels/myawesomedriftmap2021/info.json'
-```
+Inserisci l'indirizzo IPv4 pubblico e la porta del tuo server, poi clicca su **CheckBeamMP**:
 
-La mappa, come tutte le altre mod, verrà scaricata automaticamente da chiunque si connetta al server.
+<form action="https://check.beammp.com/api/v2/beammp" method="get" target="_blank">
+  <label for="ip">Indirizzo IP:</label>
+  <input type="text" id="ip" name="ip"><br>
+  <label for="port">Porta:</label>
+  <input type="text" id="port" name="port"><br>
+  <input type="submit" value="CheckBeamMP">
+</form>
 
-**Se la connessione non va a buon fine**, installa la mappa in BeamNG.drive (non multigiocatore) e caricala. Quando sei in gioco, apri la console con il tasto `ò` (se non utilizzi il layout Italiano è un tasto differente, guarda l'assegnazione di **Toggle System Console** in **Options &gt; Controls &gt; Bindings** nella sezione **General Debug**), ed esegui questo comando: `print(getMissionFilename())`. Otterrai così il corretto nome da utilizzare.
+## Usare una VPN
 
-Il tuo server con la mappa moddata è pronto!
+BeamMP non supporta le VPN come RadminVPN o Hamachi, perché spesso causano problemi. Uno di questi è che il traffico UDP non viene inoltrato. Per risolverlo, vedi [Reindirizzare la porta](#forward-the-port).
 
-### 6. Come connettersi a un server
+::: question Ma prima funzionava. Perché ora no?
+Gli sviluppatori di queste applicazioni aggiornano il loro software e fanno modifiche su cui BeamMP non ha alcun controllo. Spetta a loro supportare usi specifici come un server BeamMP.
+:::
 
-Come tu e altre persone possono connettersi al tuo server.
+## Hai ancora problemi?
 
-#### 6.a. Connettersi al proprio server
-
-Se sei il proprietario del server devi connetterti tramite connessione diretta, per fare questo, clicca il pulsante **Direct Connect** a sinistra della lista dei server. Lascia i parametri predefiniti (IP `127.0.0.1` e porta `30814`) e clicca `Connect`. Se il tuo server è in esecuzione all'esterno della tua LAN devi prima [trovare il suo IP](https://whatismyipaddress.com/) e poi connetterti direttamente.
-
-#### 6.b. Connessione di altre persone al proprio server privato
-
-Avviare il server. Devi condividere l'indirizzo IP e la porta del tuo server alle persone che vuoi che si connettano. Presta attenzione a chi condividi il tuo indirizzo IP! Per connettersi a un server privato clicca il pulsante **Direct Connect** a sinistra della lista dei server, dopodiché inserisci l'indirizzo IP e la porta del server.
-
-#### 6.c. Connessione di altre persone al proprio server pubblico
-
-Per connettersi a un server pubblico basta andare sulla lista dei server, cercare il nome del server e cliccare `Connect`. Se non sei sicuro del nome del server, è lo stesso che hai messo nel file `ServerConfig.toml`.
-Assicurarsi che i filtri di ricerca siano disabilitati e che la ricerca per mappa sia impostata su "Any".
-Puoi controllare il [Keymaster](https://beammp.com/keymaster) per recuperare l'indirizzo IP.
-
-Nel caso in cui si vede l'errore "Connection Failed!", controllare il launcher per dei codici come 10060, 10061, 10030.
-In questo caso siete sotto CGNAT o qualcosa è andato storto nel passo `1. Port forwarding` o `1.1 Firewall`.
-Per controllare se si è sotto CGNAT, confrontare l'indirizzo IP WAN dalla pagina del router con l'indirizzo IP visibile da [_whatsmyip.org_](https://www.whatsmyip.org/).
-IPv6 **non** è ancora supportato.
-
-#### 6.e. **[POTREBBE NON FUNZIONARE]** Connessione di altre persone al proprio server (Hamachi)
-
-Solo le persone nel tuo network di Hamachi possono connettersi al tuo server, non è necessario fare port forwarding in questo caso. Chi vuole connettersi, dopo essere entrato nel tuo network Hamachi, userà l'IP di Hamachi e la porta predefinita per eseguire una connessione diretta al tuo server. Per maggiori informazioni guarda la nostra guida per gli utenti [Hamachi](https://forum.beammp.com/t/tutorial-how-to-host-a-server-with-logmein-hamachi/52).
-
-## Hai ancora dei problemi?
-
-Apri un thread sul [Forum](https://forum.beammp.com) o sul nostro [server Discord](https://discord.gg/beammp) nel canale `#support`.
+Apri una discussione sul [forum](https://forum.beammp.com), oppure apri un **Server Support Ticket** nel canale `#support` del [server Discord](https://discord.gg/beammp).
