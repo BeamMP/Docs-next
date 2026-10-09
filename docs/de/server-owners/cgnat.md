@@ -1,41 +1,42 @@
-Wie prüfe ich auf ein CGNAT?
+---
+description: "Finde heraus, ob dein Internetanschluss hinter CGNAT liegt, was Spieler am Beitritt zu einem zu Hause gehosteten BeamMP-Server hindert, auch wenn Ports weitergeleitet sind."
+---
+# Auf CGNAT prüfen
 
-## Problem
+Deine Firewall-Ausnahmen und Portweiterleitungsregeln sind richtig eingerichtet, und trotzdem kann niemand deinem zu Hause gehosteten Server beitreten? Dann liegst du möglicherweise hinter einem CGNAT.
 
-Alle Firewall Ausschlüsse und Port Weiterleitungsregeln sind korrekt eingerichtet, jedoch kann niemand deinem heim-gehosteten Server beitreten?
+Wenn du einen Hosting-Dienst nutzt und Verbindungsprobleme hast, wende dich an ihn. Wenn du einen VPS möchtest oder nicht zu Hause hosten kannst, sieh dir die [Hosting-Partner](/de/server-owners/host-a-server#partnered-hosting-services) an.
 
-Wenn du Verbindungsprobleme hast und einen Hosting Anbieter verwendest, kontaktiere diesen für Hilfe. Wenn du einen VPS verwenden möchtest oder keinen Server zuhause hosten kannst, sieh dir die [Liste unserer Hosting Partner](/de/server-owners/host-a-server#partner-hosting-services-bezahlt) an.
+## Was ist CGNAT?
 
-# Was ist CGNAT überhaupt?
+Carrier-grade NAT (CGNAT) ist eine Technik, die manche Internetanbieter einsetzen und die es schwierig macht, Ports zu dir nach Hause weiterzuleiten. Eine ausführliche Erklärung, was es ist und warum es beim Hosting zu Hause ein Problem darstellt, findest du unter [Carrier-grade NAT auf Wikipedia](https://en.wikipedia.org/wiki/Carrier-grade_NAT).
 
-Für eine detaillierte Erklärung, was CGNAT ist und warum es dich am heim-hosting hindert, sieh dir [diese Seite](https://en.wikipedia.org/wiki/Carrier-grade_NAT) an.
+## Auf CGNAT prüfen
 
-# Wie prüfe ich auf CGNAT?
+### Methode 1: Die Route verfolgen
 
-## Methode 1:
+1. Öffne die Eingabeaufforderung und führe aus:
+   ```text
+   tracert -4 beammp.com
+   ```
+   Es wird eine Reihe von Netzwerk-Hops aufgelistet. Warte, bis der Vorgang abgeschlossen ist. Das kann bis zu 30 Hops dauern.
+2. Der erste Hop ist dein Router, Modem oder Gateway und unterscheidet sich von Gerät zu Gerät. Sieh dir die ersten IP-Adressen danach an.
+3. Wenn nach dem ersten Hop mehrere Adressen zwischen `100.64.x.x` und `100.127.x.x` oder Adressen, die mit `10.` beginnen, erscheinen, liegst du sehr wahrscheinlich hinter einem CGNAT.
 
-Öffne ein Command Prompt, führe `tracert -4 beammp.com` aus. Das wird eine Reihe von Netzwerk-Hops ausgeben. Warte, bis die Operation abgeschlossen ist (kann bis zu 30 Hops dauern). Prüfe die ersten paar IP Adressen nach deinem Router/Modem/Gateway. Wenn mehrere IP Adressen im Block `100.64.x.x`-`100.127.x.x` oder `10.xx.xx.xx` nach dem ersten Hop erscheinen, bist du sehr wahrscheinlich hinter einem CGNAT.
+Die offiziellen Bereiche für lokale Netzwerke sind `10.0.0.x`, `192.168.x.x` und `172.16.x.x`.
 
-::: note
-Der erste Hop wird dein Router/Modem/Gateway sein und kann sich zwischen Modellen unterscheiden.
-Die offiziellen Adressblöcke für lokale Netzwerke lauten wie folgt: ``10.0.0.xxx`` - ``192.168.xxx.xxx`` - ```172.16.xxx.xxx``
-:::
+### Methode 2: IP-Adressen vergleichen
 
-## Methode 2:
+Suche die WAN-IP-Adresse in der Oberfläche deines Routers und vergleiche sie mit der Adresse, die [whatsmyip.org](https://whatsmyip.org) anzeigt. Wenn sie **nicht** gleich sind, liegst du hinter einem CGNAT.
 
-Finde die WAN IP auf dem Web-Interface deines Routers. Vergleiche diese mit der IP auf https://whatsmyip.org . Wenn sie NICHT gleich sind, bist du hinter einem CGNAT.
+## Wenn du hinter einem CGNAT liegst
 
-## Methode 3/Lösung:
-
-Rufe deinen Internet Anbieter an für Hilfe. Abhängig von deinem Anbieter, bieten diese möglicherweise garkeine *dynamischen* IP Adressen an. Behalte im Kopf, dass eine statische IP nicht nötig ist.
+Ruf deinen Internetanbieter (ISP) an und bitte um Hilfe. Je nach Anbieter bieten sie möglicherweise keine dedizierten dynamischen IP-Adressen an. Eine statische IP ist nicht nötig.
 
 ::: warning
-Internet Anbieter bieten eine dedizierte IP Adresse eventuell nur als **bezahlte Option** an.
-Bitte prüfe die Preise unserer Hosting-Partner, weil diese billiger sein könnten als eine statische IP.
+Internetanbieter bieten eine dedizierte IP-Adresse eventuell nur als **kostenpflichtige Option** an. Vergleiche den Preis mit unseren Hosting-Partnern: Sie könnten günstiger sein.
 :::
 
-Beispiel eines nicht-CGNAT Netzwerks:
+Dies ist ein Beispiel für ein Netzwerk, das nicht hinter einem CGNAT liegt:
 
-![image](https://github.com/user-attachments/assets/fee21a50-cbb0-4322-9c26-d9f04f88ae37)
-
-Tags: Server, 10060 10061, CGNAT, Connection Failed, Port Forward, Firewall
+![Ein Netzwerkdiagramm einer Verbindung, die nicht hinter einem CGNAT liegt](https://github.com/user-attachments/assets/fee21a50-cbb0-4322-9c26-d9f04f88ae37)
