@@ -16,7 +16,7 @@ Wenn dies der Ansatz ist, den Sie wählen möchten, befolgen Sie bitte diese Sch
 2. Forken Sie das Projekt in Ihr eigenes GitHub-Konto.
 3. Nehmen Sie die Änderungen vor, die Sie für richtig halten.
 4. Übernehmen Sie Ihre Änderungen in Ihren Fork.
-5. Stellen Sie [hier](https://github.com/BeamMP/Docs) einen Pull-Request für unser Repository.
+5. Stellen Sie [hier](https://github.com/BeamMP/Docs-next) einen Pull-Request für unser Repository.
 
 Sobald Sie Ihren Pull-Request erstellt haben, wird jemand vom BeamMP-Mod-Team Ihren Pull-Request prüfen und ihn entweder genehmigen oder Änderungen anfordern. Wenn Änderungen angefordert wurden und Sie diese abgeschlossen haben, werden wir Ihren Pull-Request erneut prüfen. Anschließend werden Ihre Änderungen im Repository zusammengeführt und im Rahmen unserer kontinuierlichen Integration automatisch bereitgestellt.
 
@@ -31,7 +31,7 @@ Wenn Sie unsere Dokumentation auf diese Weise bearbeiten, erfolgt dies ähnlich 
 5. Führen Sie `mkdocs serve` aus, um den Live-Reload-Docs-Server von dort aus zu starten, wo Sie den Fork geklont haben.
 6. Nehmen Sie die Änderungen vor, die Sie für richtig halten.
 7. Übernehmen Sie Ihre Änderungen in Ihren Fork.
-8. Stellen Sie [hier](https://github.com/BeamMP/Docs) einen Pull-Request für unser Repository.
+8. Stellen Sie [hier](https://github.com/BeamMP/Docs-next) einen Pull-Request für unser Repository.
 
 ## Projektlayout
 

@@ -409,7 +409,7 @@ export default defineConfig({
   },
   themeConfig: {
     editLink: {
-      pattern: 'https://github.com/beammp/docs/edit/main/docs/:path'
+      pattern: 'https://github.com/BeamMP/Docs-next/edit/main/docs/:path'
     },
     logo: {
       light: '/assets/core/beammp_dark.png',

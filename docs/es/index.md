@@ -15,7 +15,7 @@ hero:
       link: /es/game/getting-started
     - theme: alt
       text: Ver en GitHub
-      link: https://github.com/beammp/docs
+      link: https://github.com/BeamMP/Docs-next
 
 features:
   - icon: 🎮

@@ -16,7 +16,7 @@ BeamMP使用[Material for MkDocs](https://squidfunk.github.io/mkdocs-material)�
 2. 将项目分叉（Fork）到您自己的 GitHub 帐户中。
 3. 做出您认为合适的更改。
 4. 将您的更改提交（Commit）到您的分支。
-5. [在此处](https://github.com/BeamMP/Docs)针对我们的存储库（Repository）提出拉取请求（Pull Request）。
+5. [在此处](https://github.com/BeamMP/Docs-next)针对我们的存储库（Repository）提出拉取请求（Pull Request）。
 
 创建拉取请求后，BeamMP模组团队之一将审查您的拉取请求并批准它或请求进行一些更改。如果请求进行更改并且您已完成更改，我们将重新审核您的 Pull 请求。然后，您的更改将合并到存储库中，并作为我们持续集成的一部分自动部署。
 
@@ -31,7 +31,7 @@ BeamMP使用[Material for MkDocs](https://squidfunk.github.io/mkdocs-material)�
 5. 运行`mkdocs serve`以从您的分叉所在的位置启动实时重新加载的文档服务器。
 6. 进行您认为合适的更改。
 7. 将您的更改提交（Commit）到您的分支。
-8. [在此处](https://github.com/BeamMP/Docs)针对我们的存储库（Repository）提出拉取请求（Pull Request）。
+8. [在此处](https://github.com/BeamMP/Docs-next)针对我们的存储库（Repository）提出拉取请求（Pull Request）。
 
 ## 项目布局
 

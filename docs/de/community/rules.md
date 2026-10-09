@@ -24,7 +24,7 @@ sidebar: false
 13. Respektiere jeden <span class="info-tooltip" title="Das sollte selbstverständlich sein, aber du musst Respekt vor allen Menschen um dich herum haben und dich entsprechend verhalten.">ⓘ</span>
 14. Bleibe beim Thema der Kategorie oder des Kanals. <span class="info-tooltip" title="Das sollte selbstverständlich sein, aber beschränke deine Inhalte auf das Thema des Bereichs, in dem gepostet wird. Beispielsweise sollte „Support“ Nutzern helfen oder verwendet werden, wenn du Unterstützung benötigst.">ⓘ</span>
 15. Keine übermäßige nutzung der FESTELLTASTE oder Reaktionen/Emojis <span class="info-tooltip" title="Benutzer sollten auf die Verwendung übermäßiger Großbuchstaben oder Emojis/Reaktionen verzichten, um den eigentlichen Punkt nicht zu verschleiern.">ⓘ</span>
-16. Lese die [BeamMP-FAQ](/de/support/player-faq) und [die BeamMP-Community-FAQ,](https://forum.beammp.com/c/faq/35) bevor du im Supportbereichen postest.
+16. Lese die [BeamMP-FAQ](/de/players/faq) und [die BeamMP-Community-FAQ,](https://forum.beammp.com/c/faq/35) bevor du im Supportbereichen postest.
 
 ## Discord-Regeln
 
