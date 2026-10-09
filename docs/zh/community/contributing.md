@@ -1,43 +1,40 @@
-# 为BeamMP文档做出贡献
+---
+description: "帮助改进 BeamMP 文档：在 GitHub 上编辑页面、在本地预览你的更改、遵循风格指南，以及提交拉取请求后会发生什么。"
+---
+# 参与贡献
 
-BeamMP使用[Material for MkDocs](https://squidfunk.github.io/mkdocs-material)作为其主题。这是一个[MkDocs](https://www.mkdocs.org)的主题。其完整文档可以在其各自的站点找到。
+你可以通过修正错误、补充缺失的内容或撰写新页面来帮助改进这些文档。本页介绍具体方法。
 
-## 入门
+## 动笔之前
 
-为了帮助为这些文档做出贡献，您可以采取以下两种方法之一：
+请阅读[风格指南](https://github.com/__repo__/blob/main/STYLE_GUIDE.md)。它说明了页面应该怎样写、每种提示框应在什么时候使用，以及如何书写图片和链接。
 
-### 1. 编辑原始Markdown文件
+英文页面是基准。修改英文页面后，其他语言会随之跟进。如果想参与翻译，请参阅[翻译](#translating)。
 
-编辑原始Markdown文件是最快的方法，也是快速编辑（例如拼写、语法或新内容片段）的最佳方法。这种方法确实需要事先了解Markdown知识，但是因为您需要了解您的贡献将有何影响。
+## 在 GitHub 上编辑页面
 
-如果您希望采用这种方法，请按照以下步骤操作：
+这是修改拼写、语法和做小幅补充的最快方法。它需要你具备一些 Markdown 知识。
 
-1. 单击您想编辑的页面上的编辑。
-2. 将项目分叉（Fork）到您自己的 GitHub 帐户中。
-3. 做出您认为合适的更改。
-4. 将您的更改提交（Commit）到您的分支。
-5. [在此处](https://github.com/__repo__)针对我们的存储库（Repository）提出拉取请求（Pull Request）。
+1. 点击你想修改的页面底部的 **Edit this page**。
+2. 将项目 Fork 到你自己的 GitHub 账号中。
+3. 进行你的更改。
+4. 将更改提交（commit）到你的 fork。
+5. 向 [@repo@](https://github.com/__repo__) 提交拉取请求（pull request）。
 
-创建拉取请求后，BeamMP模组团队之一将审查您的拉取请求并批准它或请求进行一些更改。如果请求进行更改并且您已完成更改，我们将重新审核您的 Pull 请求。然后，您的更改将合并到存储库中，并作为我们持续集成的一部分自动部署。
+## 在本地预览你的更改
 
-### 2. 通过实时预览进行编辑
+对于较大的修改，请在编写的同时预览你的更改。
 
-以这种方式编辑我们的文档仍将采用与选项 1 类似的方法，但您能以这种方式预览您的更改。
+1. Fork 本项目并克隆你的 fork。
+2. 安装 [Node.js](https://nodejs.org) 22 或更高版本，然后运行 `npm install`。
+3. 运行 `npm run dev`，并打开它输出的地址。你编辑时，页面会随之更新。
+4. 进行你的更改，然后运行 `npm test` 和 `npm run check`。检查会找出失效链接、未闭合的提示框、缺失的图片以及无法渲染的页面。
+5. 提交到你的 fork，并打开一个拉取请求。
 
-1. 单击您想编辑的页面上的编辑。
-2. 将项目分叉（Fork）到您自己的 GitHub 帐户中。
-3. 将项目复制（Clone）到本地。
-4. 根据[此处](https://squidfunk.github.io/mkdocs-material/getting-started/)的指南设置MkDocs素材
-5. 运行`mkdocs serve`以从您的分叉所在的位置启动实时重新加载的文档服务器。
-6. 进行您认为合适的更改。
-7. 将您的更改提交（Commit）到您的分支。
-8. [在此处](https://github.com/__repo__)针对我们的存储库（Repository）提出拉取请求（Pull Request）。
+## 接下来会发生什么
 
-## 项目布局
+BeamMP 模组团队（Mod Team）的成员会审核你的拉取请求，然后批准它，或要求你修改。待你完成修改后，我们会再次审核。合并之后，它会被自动部署。
 
-```
-mkdocs.yml    # The configuration file.
-docs/
-    index.md  # The documentation homepage.
-    ...       # Other markdown pages, images and other files.
-```
+## 翻译 {#translating}
+
+这些文档通过 [GitLocalize](https://gitlocalize.com/repo/9180) 翻译成多种语言。GitLocalize 有时会把已经翻译过的段落显示为“未翻译”，所以在修改某个页面之前，请先确认它是否已经翻译。
