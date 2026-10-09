@@ -6,7 +6,8 @@ hero:
   text: 你需要知道的一切
   tagline: 为玩家、服务器所有者和开发者提供的完整指南
   image:
-    src: /assets/core/beammp_dark.png
+    light: /assets/core/beammp_dark.png
+    dark: /assets/core/beammp_light.png
     alt: BeamMP
   actions:
     - theme: brand

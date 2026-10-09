@@ -6,7 +6,8 @@ hero:
   text: Всё, что вам нужно знать
   tagline: Полные руководства для игроков, владельцев серверов и разработчиков
   image:
-    src: /assets/core/beammp_dark.png
+    light: /assets/core/beammp_dark.png
+    dark: /assets/core/beammp_light.png
     alt: BeamMP
   actions:
     - theme: brand
