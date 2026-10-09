@@ -1,9 +1,13 @@
-# 创建多人模式
+---
+description: "创建 BeamMP 插件：Resources 文件夹的布局、服务器端 Lua 示例、客户端 Lua 扩展，以及用来加载它的 modScript.lua。"
+---
+# 模组与资源制作
 
-## 文件夹结构和基础文件
+本页介绍 BeamMP 插件的文件夹布局，以及它所需的每个文件的一个可运行的小示例。完整的函数和事件列表，请参阅[脚本参考](/zh/developers/beammp-scripting/)。
 
-基本的文件夹和文件结构应该是这样的：
+## 文件夹结构和文件基础
 
+文件夹和文件结构如下所示：
 ```
 Resources/
 ├─ Client/
@@ -20,19 +24,16 @@ Resources/
       └─ further_lua/
          └─ further.lua
 ```
+- 服务器端 Lua 是最低限度的要求。如果你想添加自定义事件，还至少需要一个客户端 Lua 文件和一个 `modScript.lua`。
+- `Server` 文件夹中，每个服务器端插件对应一个子文件夹。比较好的做法是只有一个主 Lua 文件，并把其他 Lua 文件放在子文件夹中。这并不是强制要求：如果有多个 Lua 文件，服务器会按字母顺序加载它们。
+- `Client` 文件夹存放会发送给客户端的 zip 文件，客户端会把它们作为模组加载。`Client` 中的任何其他文件都会在服务器启动时导致错误，除此之外会被忽略。
+- BeamNG 会读取 `modScript.lua`，它告诉游戏要加载哪个插件。
 
-服务器端lua是最基本的，如果您想添加自定义事件，您还至少需要一个客户端lua以及一个modscript.lua
+你可以下载一个示例：[examplePlugin.zip](/assets/content/ResourcesForExamplePlugin.zip)。
 
-Server目录需创建多个子文件夹存放各服务端模组。推荐只在根目录保留一个主Lua文件，新增的Lua文件可归类到对应子目录。实际使用中不必严格遵循此规范，若同一层级存在多个Lua文件时，服务器会按文件名称的字母表顺序自动加载。
+## 服务器端 Lua
 
-Client目录专门存放将发送给客户端的ZIP格式模组包，当客户端接收后会自动以模组形式加载。该目录若存在其他类型文件会导致服务器启动时报错（但不会阻断服务运行），不过这些无关文件仅会被服务端忽略。核心配置脚本modScript.lua由BeamNG游戏引擎解析，用于指引游戏加载指定插件模块。
-
-:::范例 "" [Download the examplePlugin.zip](/assets/content/ResourcesForExamplePlugin.zip)
-
-## 服务器端 lua
-
-更多完整示例可参考examplePlugin模块的实现，现提供一个基础调试示例，实例的功能是显示玩家身份标识
-
+示例插件中还有更多示例。下面是一个非常基础的示例，它会打印玩家的标识信息：
 ```lua
 function onInit() --runs when plugin is loaded
 
@@ -49,11 +50,9 @@ function onPlayerAuth(player_name, role, isGuest, identifiers)
 	print("onPlayerAuth: player_name: " .. player_name .. " | role: " .. role .. " | isGuest: " .. tostring(isGuest) .. " | identifiers: ip: " .. ip .. " - beammp: " .. beammp)
 end
 ```
+`onPlayerAuth` 会在玩家想要加入时立即运行。请参阅[脚本参考中的 onPlayerAuth](/zh/developers/beammp-scripting/server/latest#onplayerauth)。
 
-`onPlayerAuth`会在玩家尝试加入时触发，详细信息请参考脚本文档中的[onPlayerAuth条目](/zh/developers/beammp-scripting/server/latest#onplayerauth)
-
-以下是使用onPlayerAuth的另一个示例，该示例将通过向客户端返回信息来禁止游客加入服务器，返回的信息会直接显示给玩家：
-
+另一个示例使用 `onPlayerAuth` 来拒绝访客。你返回的消息会显示给玩家：
 ```lua
 function onPlayerAuth(playerName, playerRole, isGuest, identifiers)
   if isGuest then
@@ -61,13 +60,11 @@ function onPlayerAuth(playerName, playerRole, isGuest, identifiers)
   end
 end
 ```
+你可以在服务器上使用的更多函数，请参阅[最新版服务器参考](/zh/developers/beammp-scripting/server/latest)。
 
-关于BeamMP服务端函数的详细信息请查阅[最新版服务端技术文档](/zh/developers/beammp-scripting/server/latest)
+## 客户端 Lua
 
-## 客户端 lua
-
-该实现主要遵循[BeamNG扩展模块](https://documentation.beamng.com/modding/programming/extensions/)的技术规范。
-
+客户端 Lua 在很大程度上遵循 [BeamNG 扩展](https://documentation.beamng.com/modding/programming/extensions/)。下面的示例会在控制台中打印一条信息，表示插件已加载：
 ```lua
 local M = {}
 
@@ -78,22 +75,16 @@ end
 
 return M
 ```
-
-终端输出提示：examplePlugin已完成加载。
-
-建议查阅[BeamNG调试输出官方文档](https://documentation.beamng.com/modding/programming/debugging/#a-add-a-log)获取详细说明
+要进一步了解如何在 BeamNG Lua 中打印输出，请参阅 [BeamNG 关于调试输出的文档](https://documentation.beamng.com/modding/programming/debugging/#a-add-a-log)。
 
 ## modScript.lua
 
-通常只包含两行
-
+`modScript.lua` 通常只有两行：
 ```lua
 load('examplePlugin')
 setExtensionUnloadMode('examplePlugin', 'manual')
 ```
-
-如果你想在日志中看到你的modScript被BeamNG处理，你可以添加一个日志打印
-
+你可以添加一行日志，以便在日志中看到 BeamNG 何时处理了你的 `modScript.lua`：
 ```lua
 load('examplePlugin')
 setExtensionUnloadMode('examplePlugin', 'manual')

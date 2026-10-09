@@ -1,75 +1,65 @@
-# 开始
-
-为了开始开发BeamMP，你至少需要：
-
-- 安装在本地的BeamNG.drive
-- 安装在本地的BeamMP; 至少是启动器，另外还有服务器
-- 安装在本地的Git, 和一个 GitHub.com 账号
-- 一个代码编辑器, 例如VSCode或notepad++
-
 ---
-
-# 模组，启动器和服务器之间的区别
-
-BeamMP分为三个主要部分：
-
-- 该模组与游戏中的其他载具模组或界面模组相同，均通过BeamNG引擎加载运行。其核心功能包括与启动器建立本地通信链路，以及渲染多人联机界面组件。技术架构方面，主体逻辑采用Lua脚本语言实现，界面层则基于JavaScript、HTML与CSS的复合式开发框架进行构建。相关代码仓库详见[https://github.com/BeamMP/BeamMP](https://github.com/BeamMP/BeamMP)。
-- 本启动器核心功能集包括：与模组维持持续通信、在需要时建立目标服务器连接，以及通过BeamMP后端系统执行用户登录认证流程。该程序基于C++语言开发，部署前已由BeamMP团队完成预编译处理，完整源代码参见[https://github.com/BeamMP/BeamMP-Launcher](https://github.com/BeamMP/BeamMP-Launcher)。
-- 服务端核心功能涵盖：与多个启动器实例建立通信链路、向BeamMP后端系统发送"心跳"信号同步IP/端口/版本/玩家数量等运行参数，并管理与调度服务端Lua插件运行。底层架构基于C++语言实现，已由BeamMP针对多操作系统平台及CPU指令集进行预编译生成，完整源码仓库位于[https://github.com/BeamMP/BeamMP-Server](https://github.com/BeamMP/BeamMP-Server)。
-
+description: "为 BeamMP 模组搭建开发环境：未打包的 mods 文件夹、启动器的开发模式、克隆的仓库、本地服务器，以及如何贡献你的更改。"
 ---
+# 开发环境设置
 
-# 配置适用于模组开发的运行环境
+本页介绍如何设置你的电脑以便开发 BeamMP 模组，以及如何运行本地服务器。要了解模组、启动器和服务器如何协同工作，请参阅[开发者](/zh/developers/)。
 
-## 为BeamNG使用未打包文件
+## 你需要什么
 
-为实现BeamNG模组开发的高效迭代，建议开发者采用`非打包目录`的实时更新工作流模式，避免每次代码变更后执行重复的压缩打包操作。
+- 安装在本地的 BeamNG.drive。
+- 安装在本地的 BeamMP：至少要有启动器；如果你想用服务器进行测试，还需要服务器。
+- 安装在本地的 Git，以及一个 GitHub 账号。
+- 一个代码编辑器，例如 VSCode 或 Notepad++。
 
-请通过文件管理器访问BeamNG用户目录：`%appdata%/Local/BeamNG.drive/0.xx/mods`，其中`xx`对应当前最新的BeamNG版本号。在`mods`目录内创建名为`unpacked`的专用开发文件夹。
+## 为 BeamNG 使用未打包的文件夹
 
-有关用户目录的技术规范细则，请参阅BeamNG官方文档中心：[https://documentation.beamng.com/support/userfolder/](https://documentation.beamng.com/support/userfolder/)
+为了高效地开发模组，请使用 `unpacked` 文件夹，而不是每次修改后都打包一个 zip。
 
-## 在BeamMP启动器中启用开发模式
+1. 打开位于 `%appdata%/Local/BeamNG.drive/0.xx/mods` 的 BeamNG 用户文件夹，其中 `xx` 是最新的 BeamNG 版本。
+2. 在 `mods` 中创建一个名为 `unpacked` 的文件夹。
 
-为防止自动更新机制覆盖本地Git仓库副本，请通过添加运行参数`--no-download`强制停用该功能；若需同时禁止启动器自动运行BeamNG主程序，并获取实时调试日志，推荐配置方案为附加开发调试参数`--dev`。
+关于用户文件夹的更多信息，请参阅 [BeamNG 文档](https://documentation.beamng.com/support/userfolder/)。
 
-命令行参数 | 说明
-:-- | :--
-`--help` or `-h` | 该指令将输出下列标准化参数清单
-`--port <port>` or `-p` | 请将服务端默认监听端口修改为`<port>`，该项变更需同时在游戏客户端内进行同步配置。
-`--verbose` or `-v` | 详细日志模式，输出调试级系统信息
-`--no-download` | 强制禁用BeamMP Lua模组自动部署流程
-`--no-update` | 激活维护模式锁定更新通道（需采用手动升级方式）
-`--no-launch` | 强制解耦启动器与游戏进程链路（需进行独立启动流程）
-`--dev` | 开发者模式，与 --verbose --no-download --no-launch --no-update相同
-`--game <args...>` or `-- <args...>` | 实现运行参数向游戏进程的透传桥接
+## 在启动器中开启开发模式
 
-## 执行仓库克隆操作至目标解压目录
+自动更新会删除你本地的 git 克隆，所以请用 `--no-download` 将其关闭。如果你还不希望启动器启动 BeamNG，并且想看到调试输出，请使用 `--dev`。
 
-虽然您可手动从GitHub仓库(a0)https://github.com/BeamMP/BeamMP复制BeamMP模组文件，但强烈建议使用Git版本控制系统进行规范操作。请首先执行分叉(fork)操作。
+| 参数 | 作用 |
+|---|---|
+| `--help` 或 `-h` | 打印此参数列表 |
+| `--port <port>` 或 `-p` | 将默认监听端口更改为 `<port>`。游戏中也必须设置相同的端口 |
+| `--verbose` 或 `-v` | 详细模式：打印调试消息 |
+| `--no-download` | 跳过下载和安装 BeamMP Lua 模组 |
+| `--no-update` | 跳过应用启动器更新，因此你必须手动更新 |
+| `--no-launch` | 跳过启动游戏，因此你必须自己启动游戏 |
+| `--dev` | 开发者模式：等同于 `--verbose --no-download --no-launch --no-update` |
+| `--game <args...>` 或 `-- <args...>` | 将参数传递给游戏 |
 
-最有效的方式是直接将存储库克隆到`unpacked`文件夹中。
+## 将 BeamMP 仓库克隆到 unpacked 文件夹中
 
-在`git`环境配置下，请遵循以下部署流程：<br>从`解压根目录`启动PowerShell/CMD终端<br>执行克隆操作：`git clone https://github.com/yourName/BeamMP`
+你可以手动从我们的 GitHub 仓库复制模组文件，但使用 git 这样的源代码管理系统要好得多。
 
-现在试试开发模式吧。启动BeamMP启动器，手动启动BeamNG，一旦进入游戏，确保BeamMP是唯一有效的模组。你应该能够像往常一样使用BeamMP。
+1. 创建 [BeamMP/BeamMP](https://github.com/BeamMP/BeamMP) 的 fork。
+2. 直接将其克隆到 `unpacked` 文件夹中。在该文件夹中打开 PowerShell 或 CMD，然后运行：
+   ```bash
+   git clone https://github.com/yourName/BeamMP
+   ```
+3. 在用户文件夹中，确保 `mods` 里没有遗留的 `multiplayer` 文件夹，并且现在有 `unpacked/beammp`。
+4. 试试开发模式。先启动启动器，然后手动启动 BeamNG。进入游戏后，确保 BeamMP 是唯一启用的模组。你可以像往常一样使用 BeamMP。
 
-使用代码编辑器，您现在可以直接在`unpacked`文件夹中添加或更改代码。然后你可以通过按`Ctrl+L`重新加载Lua来尝试更改（如果你做了UI更改，则按`F5`）。
+现在，你可以用代码编辑器直接在 `unpacked` 文件夹中修改代码。在游戏中按 `Ctrl` + `L` 重新加载 Lua；如果你修改了界面，还要按 `F5`。
 
-一旦您对更改满意，就可以通过git提交它们。有关如何使用Git的教程和文档，请参阅Git- scm网站。一旦您的更改被提交并推送（到您的分支），您就可以发出拉取请求。
+## 设置本地服务器
 
-如果您遇到任何问题，请在[Discord](https://discord.gg/beammp)的#scripting频道中提问。
+本地服务器对开发 BeamMP 很有帮助。请按照[搭建服务器](/zh/server-owners/host-a-server)操作；如果你只在本地连接，可以省略前两步（端口转发和 AuthKey）。
 
----
+在 `ServerConfig.toml` 中，将服务器设置为私有，并使用任意字符串作为 `AuthKey`。
 
-# 设置本地服务器
+## 贡献你的更改
 
-在使用BeamMP时，使用本地服务器可能是有益的。您可以遵循常规的[服务器安装](/zh/server-owners/host-a-server)，同时省略纯本地连接的前两个步骤。
+当你对自己的更改满意时，用 git 提交它们。[Git-SCM 网站](https://git-scm.com/doc)上有教程和文档。把更改提交并推送到你的 fork 之后，你就可以发起拉取请求。
 
-在`serverConfig`中将服务器设置为私有。使用任意字符串作为`AuthKey`。
+关于代码格式、提交信息格式和一般的开发实践，请参阅每个仓库中的 `CONTRIBUTING.md` 文件。每个仓库中的 `README.md` 通常包含已编译项目的构建步骤。
 
----
-
-# 贡献指南
-
-有关代码格式、提交信息格式、通用开发最佳实践等详细信息，请参阅各仓库中的`CONTRIBUTING.md`文件。该文件包含更详细的贡献指南，各仓库中的`README.md`文件通常也会提供具体的构建步骤说明（针对需要编译的项目）。
+如果遇到问题，请到我们 [Discord 服务器](https://discord.gg/beammp)的 `#scripting` 频道提问。

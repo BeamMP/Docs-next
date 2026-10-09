@@ -1,33 +1,25 @@
-::: warning 这个网站正在建设中！
-这个网站正在积极建设中。
+---
+description: "BeamMP 游戏内（客户端）Lua 函数：TriggerServerEvent、TriggerClientEvent 和 AddEventHandler，并附有解析聊天消息的示例。"
+---
+# 游戏内模组脚本参考
 
-觉得你能帮上忙吗？请用铅笔在右侧点击页面！
+BeamMP 也允许你编写客户端插件。有几个函数可以让你与其他多人模式模组交流，也可以通过服务器与其他玩家交流。要设置插件，请参阅[模组与资源制作](/zh/developers/mod-and-resource-creation)。
 
-这也可以在任何页面上完成。
-:::
+## 函数
 
-# 模组/游戏内脚本参考
+| 函数 | 作用 |
+|---|---|
+| `TriggerServerEvent("eventName", "data")` | 在服务器的 Lua 环境中触发一个事件。两个参数都是字符串 |
+| `TriggerClientEvent("eventName", "data")` | 在本地 Lua 环境中触发一个事件。两个参数都是字符串。适合用于插件之间的通信 |
+| `AddEventHandler("eventName", Function)` | 添加 `Function`，当在本地或从服务器收到 `eventName` 时调用。`Function` 会得到一个参数：包含事件数据的字符串 |
 
-BeamMP允许您创建自己的客户端插件。我们提供了一些功能，你可以用它来与其他多人模式和其他玩家通过服务器进行通信。
+## 示例：读取聊天消息
 
-# 函数列表
-
-脚本可用函数列表：
-
-函数 | 说明
---- | ---
-`TriggerServerEvent("eventName", "data")` | 在服务器lua环境中触发事件，两个参数都是字符串。
-`TriggerClientEvent("eventName", "data")` | 在本地lua环境中触发事件，两个参数都是字符串。有利于插件之间的通信。
-`AddEventHandler("eventName", Function)` | 当`eventName`被接收时（本地或从服务器），`function`将获得1个参数，一个包含事件数据的字符串。
-
-# 代码片段
-
-例如，使用包含的`ChatMessageIncluded`事件解析聊天，如下所示：
-
+要读取聊天内容，请使用内置的 `ChatMessageReceived` 事件：
 ```lua
 local function chatReceived(msg) -- Receive event with parameters
     print("chat received: "..msg)
-    local i = string.find(s, ":") -- Find where our first ':' is, used to separate the sender and message
+    local i = string.find(msg, ":") -- Find where our first ':' is, used to separate the sender and message
     if i == nil then
         print("error parsing message: separator could not be found!")
         return -- Could not find separator, cancel function
