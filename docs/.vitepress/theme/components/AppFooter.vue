@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Github, Facebook, Instagram, createLucideIcon } from 'lucide-vue-next'
+import { Github, Facebook, Instagram, Twitch, createLucideIcon } from 'lucide-vue-next'
 
 const currentYear = new Date().getFullYear()
 
@@ -76,6 +76,7 @@ const socials = [
   { label: 'X', href: 'https://x.com/beammpofficial', icon: XIcon },
   { label: 'Reddit', href: 'https://www.reddit.com/r/BeamMP', icon: RedditIcon },
   { label: 'Bluesky', href: 'https://bsky.app/profile/beammp.com', icon: BlueskyIcon },
+  { label: 'Twitch', href: 'https://www.twitch.tv/beammpofficial', icon: Twitch },
   { label: 'Instagram', href: 'https://www.instagram.com/beammpofficial', icon: Instagram },
   { label: 'TikTok', href: 'https://www.tiktok.com/@beammpofficial', icon: TikTokIcon },
   { label: 'Facebook', href: 'https://www.facebook.com/BeamMPTeam', icon: Facebook }

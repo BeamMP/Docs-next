@@ -54,3 +54,20 @@ test('the baseline is valid, in a stable order, and only names pages that exist'
     for (const count of Object.values(baseline[file])) assert.ok(Number.isInteger(count) && count > 0, file)
   }
 })
+
+test('the footer links to every social account, Twitch and Bluesky included', () => {
+  const source = fs.readFileSync(path.join(docsDir, '.vitepress', 'theme', 'components', 'AppFooter.vue'), 'utf8')
+  const socials = [...source.matchAll(/label: '([^']+)', href: '([^']+)'/g)].map((m) => [m[1], m[2]])
+  assert.deepEqual(socials, [
+    ['GitHub', 'https://github.com/BeamMP'],
+    ['Discord', 'https://discord.gg/beammp'],
+    ['YouTube', 'https://www.youtube.com/@beammpofficial'],
+    ['X', 'https://x.com/beammpofficial'],
+    ['Reddit', 'https://www.reddit.com/r/BeamMP'],
+    ['Bluesky', 'https://bsky.app/profile/beammp.com'],
+    ['Twitch', 'https://www.twitch.tv/beammpofficial'],
+    ['Instagram', 'https://www.instagram.com/beammpofficial'],
+    ['TikTok', 'https://www.tiktok.com/@beammpofficial'],
+    ['Facebook', 'https://www.facebook.com/BeamMPTeam'],
+  ])
+})
