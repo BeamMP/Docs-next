@@ -1,64 +1,38 @@
-# F.A.Q.
-
-Liste der öfters auftretenden Fragen.
-
 ---
-
-## **Client**
-
+description: "Antworten auf häufige Spielerfragen zu BeamMP: Installation, raubkopierte oder modifizierte Kopien, Linux, Antivirus-Warnungen, schlechte Leistung und Fehler melden."
 ---
+# Spiel FAQ
 
-### **Wie installiere ich BeamMP?**
+Häufige Fragen zum Spielen von BeamMP. Fragen zu Konto, Patreon und Early Access findest du in der [Spieler-FAQ](/de/players/faq).
 
-Eine vollständige Anleitung zur Installation von BeamMP unter Windows findet man [hier](https://docs.beammp.com/game/getting-started/) .
+## Spielen
 
----
+### Wie installiere ich BeamMP?
 
-### **Funktioniert BeamMP mit raubkopierten/modifizierten Versionen von BeamNG?**
+Folge der Anleitung [BeamMP installieren](/de/get-started/install-beammp). Sie behandelt Windows und Linux.
 
-BeamMP funktioniert möglicherweise nicht mit Raubkopien oder veralteten Versionen von BeamNG.drive. Modifikationen, wie beispielsweise Mods von Drittanbietern, können zu Problemen mit BeamMP führen. (Siehe [„Mods entfernen“](https://github.com/Protogen187/Docs/blob/main/docs/en/FAQ/Clearing-mods.md) .) Das BeamMP-Supportteam kann keinen Support für Probleme im Zusammenhang mit Raubkopien, veralteten oder anderweitig modifizierten Versionen von BeamNG.drive leisten.
+### Funktioniert BeamMP mit raubkopierten oder modifizierten Versionen von BeamNG.drive?
 
----
+BeamMP funktioniert nicht mit raubkopierten oder veralteten Versionen von BeamNG.drive.
 
-### **Funktioniert BeamMP unter Linux?**
+Modifikationen, einschließlich Mods von Drittanbietern, können BeamMP stören. Wie du sie entfernst, steht unter [Mod-Sicherheit](/de/players/mod-safety).
 
-Der BeamMP-Launcher wird unter Linux nicht offiziell unterstützt. Du kannst jedoch unserer [Anleitung zur Verwendung von BeamMP unter Linux](/de/get-started/#2b-linux-installation) folgen.
+Das BeamMP-Support-Team kann bei Problemen mit raubkopierten, veralteten oder anderweitig modifizierten Versionen von BeamNG.drive nicht helfen.
 
----
+### Funktioniert BeamMP unter Linux?
 
-### **Warum wird der Launcher von meinem Antivirenprogramm oder Windows Defender als Virus erkannt?**
+Der Client wird unter Linux nicht offiziell unterstützt. Du kannst aber unserer Anleitung folgen, um [BeamMP unter Linux zu installieren](/de/get-started/install-beammp#install-on-linux).
 
-Manche Antivirenprogramme könnten BeamMP aufgrund von Netzwerkinteraktionen und anderen Faktoren als Bedrohung einstufen. Der Code enthält jedoch **keine Viren** . Den Code für Launcher, Server und Lua-Client findst du auf unserem [GitHub-Repository](https://github.com/BeamMP) .
+### Warum stuft mein Antivirenprogramm oder Windows Defender den Launcher als Bedrohung ein?
 
----
+Manche Antivirenprogramme stufen BeamMP unter anderem deshalb als Bedrohung ein, weil es das Netzwerk nutzt. Im gesamten Code sind **keine Viren** enthalten. Den Code für den Launcher, den Server und den Lua-Client findest du auf unserem [GitHub](https://github.com/BeamMP). Wenn du den Launcher zulassen musst, siehe [Defender-/Firewall-Ausnahmen](/de/troubleshooting/defender-exclusions).
 
-### **Ich habe schlechte Spiel Leistung, was soll ich tun?**
+### Meine Leistung ist schlecht. Was soll ich tun?
 
-Wir arbeiten hart daran, die Mehrspieler Erfahrung so Stabil wie möglich zu gestalten. Wenn du deine Grafik Einstellungen bereits heruntergesetzt hast, aber die Leistung immer noch eingeschränkt ist, versuche es auf Servern mit weniger Spieler. Das Spiel ist hauptsächlich CPU gebunden, wenn du mit mehreren Personen spielst, ältere CPUs (sogar quadcores) werden schon unter einer Hand voll an Spielern leiden. (Generelle Daumenregel: 1 Auto pro 1 CPU Thread)
+Wir arbeiten daran, den Multiplayer so stabil wie möglich zu machen. Wenn du deine Grafikeinstellungen bereits gesenkt hast und die Leistung trotzdem schlecht ist, probiere einen Server mit weniger Spielern.
 
----
+Wenn viele Leute spielen, ist das Spiel meist durch die CPU begrenzt. Ältere CPUs, selbst Quad-Cores, haben daher schon bei mehr als einer Handvoll Spieler Probleme. Als Faustregel gilt: ein Auto pro CPU-Thread.
 
-## **Verschiedenes**
+## Weitere Fragen
 
----
-
-### **Wo finde ich den Code?**
-
-Der gesamte Source Code kann auf unserem [GitHub](https://github.com/BeamMP) gefunden werden. Bevor du Änderungen vornimmst, beachte, dass der Code unseren [Nutzungsbedingungen](https://forum.beammp.com/t/terms-of-use-v1-0/43) und Lizenzen unterliegt:
-
-Code | Lizenz
---- | :-:
-Server | [LIZENZ](https://github.com/BeamMP/BeamMP-Server/blob/master/LICENSE)
-Launcher | [LIZENZ](https://github.com/BeamMP/BeamMP-Launcher/blob/master/LICENSE)
-Client Lua | [LIZENZ](https://github.com/BeamMP/BeamMP/blob/development/LICENSE)
-
----
-
-### **Ich habe einen Fehler oder einen Exploit gefunden, was soll ich tun?**
-
-Wenn das Problem etwas mit dem Code zu tun hat, öffne eine neue "Issue" in dem jeweiligen Repository auf unserer [GitHub](https://github.com/BeamMP) Seite. Wir nutzen einen issue-basierten Workflow. Also auch wenn du bereits einen Fix für den Bug hast, erstelle eine neue "Issue", dann einen "Pull Request" mit der Lösung für das Problem. Weitere Informationen, wie du beitragen kannst, findest du [hier](https://github.com/BeamMP/BeamMP/blob/development/CONTRIBUTING.md).
-
-Wenn du kein GitHub Konto hast, nicht weiß wie man GitHub verwendet, oder hast andere Fragen, kannst du gerne mit uns in Kontakt über folgende Wege treten:
-
-- Wenn es sich nicht um etwas Sensibles handelt, kannst du einen Beitrag in unserem [BeamMP-Forum](https://forum.beammp.com) erstellen, oder dies auf unserem [offiziellen Discord](https://discord.gg/beammp) melden.
-- Wenn die Informationen vertraulich sind, kannst du das Problem direkt einem Teammitglied auf unserem [Discord](https://discord.gg/beammp) melden.
+<!--@include: ../_parts/faq-code-and-bugs.md-->

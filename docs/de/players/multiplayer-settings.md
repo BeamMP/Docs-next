@@ -1,145 +1,260 @@
-# Erste Schritte
-
-## **1. Kompatibilität**
-
-BeamMP ist vollständig kompatibel mit Windows und Linux, an der Kompatibilität mit MacOS noch wird gearbeitet. Da es sich bei Linux und MacOS jedoch um sekundäre Plattformen handelt, sind Fehler zu erwarten.
-
-::: warning Warnung
-BeamMP funktioniert nicht mit Raubkopien oder veralteten Versionen von BeamNG.drive.
-Das BeamMP-Support Team bietet keinen Support für Probleme mit Raubkopien / veralteten Kopien.
-:::
-
-## **2. Installation**
-
-### **2a. Windows Installation**
-
-1. Öffne [beammp.com](https://beammp.com/) und klicke auf die Schaltfläche „Download Client“.
-2. Extrahiere das Archiv `BeamMP_Installer.zip` .
-3. Starte `BeamMP_Installer.exe` und folge den Anweisungen.
-4. Das BeamMP Launcher-Symbol sollte auf dem Desktop erscheinen. Wenn nicht, suchen Sie einfach in der Windows-Suchleiste nach „BeamMP“.
-5. Sobald der Launcher gestartet ist, sollte ein Terminalfenster angezeigt werden. Kurz darauf sollte BeamNG.drive automatisch starten. Schließe **das Terminalfenster nicht**.
-6. Klicke nach dem Start von BeamNG im Hauptmenü auf die Schaltfläche `Repository` und stelle sicher, dass `multiplayerbeammp` **der einzige** aktivierte Mod ist.
-7. Kehre zum Hauptmenü zurück und klicke auf die Schaltfläche „Multiplayer“, um den Multiplayer zu starten.
-8. Du wirst aufgefordert, dich anzumelden oder als Gast zu spielen (nicht alle Server erlauben Gäste). Du kannst in unserem [Forum](https://forum.beammp.com) ein Konto erstellen und dich dann mit denselben Anmeldeinformationen bei BeamMP anmelden.
-9. Wählen einen beliebigen Server aus und drücken `Connect` . Viel Spaß!
-
-::: note
-Wenn du in eine Sitzung mit mehreren bereits gespawnten Autos beitrittst, könnte das Laden eventuell etwas länger dauern.
-:::
-
-### **2b. Linux Installation**
-
-Derzeit musst du den Launcher selbst kompilieren (erstellen). Dazu benötigst du grundlegende Kenntnisse über den Prozess der Erstellung einer Anwendung (Kompilierung).
-
-Stelle sicher, dass grundlegende Entwicklungstools (Build-Tools) installiert sind, die oft in folgenden Paketen enthalten sind:
-
-- Debian: `sudo apt install build-essential`
-- Fedora: `sudo dnf install cmake gcc gcc-c++ make perl perl-IPC-Cmd perl-FindBin perl-File-Compare perl-File-Copy kernel-headers kernel-devel`
-- Arch: `sudo pacman -S base-devel`
-- openSUSE: `zypper in -t pattern devel-basis`
-- SteamOS (Arch): `sudo pacman -S base-devel linux-api-headers glibc libconfig` (Du musst auch `sudo steamos-readonly disable` ausführen, schalte es jedoch nach der Installation wieder ein)
-
-
-Klone vcpkg, initialisiere es und füge es zur PATH-Umgebungsvariable hinzu.
-
-1.
-```bash
-git clone https://github.com/microsoft/vcpkg.git
-```
-
-2.
-```bash
-./vcpkg/bootstrap-vcpkg.sh
-```
-
-3.
-```bash
-export VCPKG_ROOT="$(pwd)/vcpkg"
-export PATH=$VCPKG_ROOT:$PATH
-```
-
-
-Klone das BeamMP-Launcher-Repository mit `git` auf dein System, zum Beispiel:
-`git clone https://github.com/BeamMP/BeamMP-Launcher.git`
-[Weitere Informationen zum Klonen eines GitHub-Repos](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository)
-
-Wechsle zum neuesten "Tag" (Versionsstand). Lade das "Tag" herunter, das für die neueste Version verwendet wurde. Wenn beispielsweise v2.3.2 in der neuesten Version verwendet wird, führe im Repository-Ordner `git checkout v2.3.2` aus.
-
-Führe im Stammverzeichnis des Projekts folgende Schritte aus:
-
-1.
-```cmake
-cmake . -B bin -DCMAKE_TOOLCHAIN_FILE=$VCPKG_ROOT/scripts/buildsystems/vcpkg.cmake -DVCPKG_TARGET_TRIPLET=x64-linux
-```
-
-2.
-```cmake
-cmake --build bin --parallel
-```
-
-::: note
-Sollte dir während des Erstellens der RAM ausgehen, kannst du die Anweisung --parallel weglassen. Dann wird weniger RAM verwendet, da das Erstellen nur auf einem CPU-Thread erfolgt.
-:::
-
-::: note
-Wenn du -DCMAKE_BUILD_TYPE=Release nicht spezifizierst, erstellst du eine Debug-Version, die zwar eine größere Dateigröße hat, aber nicht den Fehler „Launcher kann sich nur einmal mit einem Server verbinden" enthält.
-:::
-
-::: note Fedora Benutzer
-Wenn vcpkg während der OpenSSL-Kompilierung aufgrund von Kernel-Header-Fehlern fehlschlägt, stelle sicher, dass alle Abhängigkeiten installiert sind:
-```bash
-sudo dnf install kernel-headers kernel-devel gcc gcc-c++ make perl
-```
-Bereinige dann den vcpkg-Cache:
-```bash
-rm -rf $VCPKG_ROOT/buildtrees/openssl
-```
-Und wiederhole den cmake-Konfigurationsbefehl (Schritt 1).
-:::
-
-Verschiebe die fertige Anwendung aus dem `/bin` Ordner in einen eigenen Ordner und führe sie von dort aus aus:
-```bash
-mkdir -p ~/beammp-launcher
-cp bin/BeamMP-Launcher ~/beammp-launcher/
-cd ~/beammp-launcher
-./BeamMP-Launcher
-```
-
-Der native Linux BeamMP-Launcher wird gestartet und verwendet das native Linux BeamNG.drive
-
-### **2c. Nutzung BeamNG.drive mit Proton**
-
-Wenn du den nativen Linux BeamMP-Launcher zusammen mit BeamNG.drive, das über Proton läuft, verwenden möchtest, kannst du dies folgendermassen tun:
-
-Starte den BeamMP-Launcher mit dem Argument `--no-launch` (dadurch wird verhindert, dass der Launcher das native Linux BeamNG.drive startet). Weitere Informationen zu den Launcher-Argumenten findest du im [Abschnitt „Einrichtung der Entwicklungsumgebung“.](/de/developers/dev-environment-setup)
-
-Ändere den Speicherort des Benutzerordners von Proton-BeamNG.drive in den Speicherort von Linux-BeamNG.drive (da der native Linux BeamMP-Launcher derzeit nur in den Benutzerordner des Linux-BeamNG.drive schreibt).
-
-Dies kann beispielsweise durch die Erstellung eines symbolischen Links erfolgen.
-
-- Notiere dir den Speicherort des Benutzerordners Linux-BeamNG.drive (dieser befindet sich normalerweise in `~/.local/share/BeamNG.drive` ) und benenne<br>ihn um, beispielsweise in `BeamNG.drive_old`
-- Notiere den Speicherort des Benutzerordners von Proton-BeamNG.drive (normalerweise zu finden unter `~/.local/share/Steam/steamapps/compatdata/284160/pfx/drive_c/users/steamuser/AppData/Local/BeamNG.drive `).
-- Erstelle einen symbolischen Link zwischen beiden Benutzerordnern, zum Beispiel: `ln -s ~/.local/share/Steam/steamapps/compatdata/284160/pfx/drive_c/users/steamuser/AppData/Local/BeamNG.drive ~/.local/share`
-
-Wenn der symbolische Link zwischen den Benutzerordnern und dem kompilierten Launcher vorhanden ist, kann Steam das Spiel über Proton ausführen lassen und gleichzeitig den Launcher automatisch mit dem folgenden Ersatz für die Startoptionen für das Standardspiel ausführen, die im Eigenschaftenfenster des Spiels in seinem Eintrag in Steam zu finden sind:
-
-- `~/BeamMP/BeamMP-Launcher --no-launch & %command% ; killall BeamMP-Launcher`
-
-Beachte, dass hierbei davon ausgegangen wird, dass die Binärdatei des Launchers, die Sie zuvor kompiliert wurde, in `/home/user/BeamMP/` abgelegt wurde. Ändere diese daher so, dass sie mit der Stelle übereinstimmt, an der du die fertige Binärdatei abgelegt hast. Außerdem musst du  den Launcher jedes Mal mit dem richtigen Git-Zweig neu kompilieren, wenn ein Launcher-Update veröffentlicht wird.
-
-::: tip Hinzufügen von emoji-font um in-text emojis zu erhalten
-Damit Emojis entweder in der Serverliste (als Teil eines benutzerdefinierten Servernamens) oder im Ingame-Chat angezeigt werden, benötigst du eine Schriftart, die Emojis enthält.
-
-Dies kann beispielsweise durch Hinzufügen des [Linux-Ports der Windows Segoe-UI-Emoji-Schriftart](https://github.com/mrbvrz/segoe-ui-linux) erfolgen.
-:::
-
 ---
+description: "Alle BeamMP-Multiplayer-Einstellungen erklärt: Allgemeines, die Ereigniswarteschlange, das Standard-Einrad, Blobs, Namensschilder und der Launcher-Port."
+---
+# Einstellungen anpassen
 
-## **3. Bekannte Probleme**
+Das sind die Einstellungen auf der Multiplayer-Einstellungsseite von BeamMP. Jede ist ein eingeklappter Eintrag: Öffne ihn, um zu sehen, was sie bewirkt, wenn sie an oder aus ist. Wenn du neu bist, beginne mit [Multiplayer-Einstellungen für den ersten Start](/de/get-started/multiplayer-settings-quickstart).
 
-- Der native Linux BeamMP-Launcher kann sich derzeit nur einmal mit einem Server verbinden, nach dem Trennen der Verbindung muss der Launcher neu gestartet werden. Dies ist möglich, ohne das Spiel zwischendurch schließen zu müssen.
-- Wenn die Schaltfläche „Multiplayer" nicht angezeigt wird, stelle sicher, dass der BeamMP-Mod im „Mod Manager" vorhanden und aktiviert ist, und drücke dann STRG + L.
-- VPNs jeglicher Art können Verbindungsprobleme verursachen.
-- Wenn der Launcher Fehler meldet, lies die [FAQ](https://forum.beammp.com/c/faq/35) .
+## Allgemeines
 
-Solltest du weitere Hilfe bei der Installation benötigen, kannst du einen Beitrag in unserem [Forum](https://forum.beammp.com) erstellen oder auf unserem [Discord-Server](https://discord.gg/beammp) nachfragen.
+::: details Show advanced options
+Wenn aktiviert, siehst du alle Multiplayer-Einstellungen
+
+Wenn deaktiviert, siehst du nur die grundlegenden Multiplayer-Einstellungen
+:::
+
+::: details Enable config cloning protection
+Wenn aktiviert, ist die Konfiguration deines gespawnten Fahrzeugs davor geschützt, von anderen Spielern gespeichert zu werden
+
+Wenn deaktiviert, kann die Konfiguration deines gespawnten Fahrzeugs von anderen Spielern gespeichert werden
+:::
+
+:::: details Disable pausing caused by instabilities
+Wenn aktiviert, lösen Physik-Instabilitäten keine Pause in deinem Spiel aus
+
+Wenn deaktiviert, lösen Physik-Instabilitäten eine Pause in deinem Spiel aus
+
+::: note
+Es wird empfohlen, die Einstellung deaktiviert zu lassen, da wiederholte Instabilitäten das Spiel zum Absturz bringen können
+:::
+::::
+
+::: details Use simplified vehicles when available
+Wenn aktiviert, ersetzt das Spiel die Fahrzeuge anderer Spieler durch ihre vereinfachten Versionen (aus dem KI-Verkehr), sofern vorhanden
+
+Wenn deaktiviert, verwendet das Spiel die vorgesehenen Fahrzeugmodelle
+:::
+
+:::: details New chat menu
+Wenn aktiviert, wird der Ingame-Chat in einem [IMGUI](https://github.com/ocornut/imgui)-Fenster angezeigt, das du zum Beispiel aus dem Spiel heraus auf einen anderen Monitor ziehen kannst
+
+Wenn deaktiviert, wird der Ingame-Chat in der UI-App angezeigt
+
+::: note
+Das Herausziehen von IMGUI-Fenstern aus dem Hauptfenster des Spiels kann Leistungsprobleme verursachen und Bildschirmaufnahme-Software dazu bringen, statt des Hauptfensters des Spiels das Chat-Fenster aufzunehmen
+:::
+::::
+
+::: details Enable vehicle position smoothing
+Wenn aktiviert, verwendet BeamMP einen Algorithmus, der Fahrzeugpositions-Updates in regelmäßigen Abständen glättet. Das kann bei Spielern mit hohem Ping oder bei einer Verbindung mit vielen verlorenen Paketen hilfreich sein
+
+Wenn deaktiviert, aktualisiert BeamMP die Fahrzeugpositionen so, wie sie empfangen werden
+:::
+
+::: details Skip the mod security warning popups
+Wenn aktiviert, wird das Mod-Sicherheits-Popup beim Verbinden mit einem Server mit Mods nicht angezeigt
+
+Wenn deaktiviert, wird das Mod-Sicherheits-Popup jedes Mal angezeigt, wenn du dich mit einem Server mit Mods verbindest
+:::
+
+::: details Enable player vehicle update/edit queuing
+Wenn aktiviert, werden die Fahrzeug-Spawns und -Änderungen anderer Spieler in eine Warteschlange eingereiht. Details findest du im Abschnitt [Ereigniswarteschlange](#event-queue)
+
+Wenn deaktiviert, werden die Fahrzeug-Spawns und -Änderungen anderer Spieler sofort vom Spiel geladen
+:::
+
+::: details Enable automatic part sync
+Wenn aktiviert, werden die Teile deiner Fahrzeuge nach ein paar Sekunden automatisch mit anderen Spielern synchronisiert
+
+Wenn deaktiviert, musst du in der Teileauswahl auf den Button für die Teile-Synchronisierung klicken, um die Synchronisierung an andere Spieler zu senden
+:::
+
+::: details Disable switching to other players' vehicles
+Wenn aktiviert, überspringt das Durchschalten der Fahrzeuge mit Tab die Fahrzeuge anderer Spieler
+
+Wenn deaktiviert, schaltet das Durchschalten mit Tab durch jedes gespawnte Fahrzeug
+:::
+
+:::: details Fade out vehicles as they get closer
+Wenn aktiviert, werden andere Fahrzeuge ausgeblendet, je näher sie kommen
+
+Wenn deaktiviert, bleiben andere Fahrzeuge unabhängig von der Entfernung vollständig sichtbar
+
+::: note
+Das betrifft nur das sichtbare 3D-Mesh eines Fahrzeugs, nicht sein Physik-Node-Beam-Mesh. Um auch die Physik zu deaktivieren, musst du in den Gameplay-Einstellungen `Simplified collision physics` aktivieren
+:::
+::::
+
+::: details Show the player IDs
+Wenn aktiviert, hat die Ingame-Spielerliste eine zusätzliche Spalte mit der ID jedes Spielers. Nützlich für die Entwicklung oder Moderation
+
+Wenn deaktiviert, zeigt die Ingame-Spielerliste nur die Spalten für Spielername und Ping
+:::
+
+::: details Allow the serverlist to refresh ingame
+Wenn aktiviert, wird die Serverliste während des Spielens in regelmäßigen Abständen aktualisiert. Das kann Lag-Spitzen verursachen
+
+Wenn deaktiviert, wird die Serverliste nur aktualisiert, wenn du das Hauptmenü öffnest
+:::
+
+## Ereigniswarteschlange {#event-queue}
+
+::: details Highlight queued players
+Wenn aktiviert, werden Spieler mit einem eingereihten Ereignis in der Ingame-Spielerliste hervorgehoben
+
+Wenn deaktiviert, werden Spieler nicht einzeln hervorgehoben
+:::
+
+::: details Apply vehicle changes with
+Bei `Left mouse button` lädt ein Klick mit der linken Maustaste auf den Namen eines Spielers in der Spielerliste die eingereihten Ereignisse. Ein Klick mit der rechten Maustaste lässt dich diesem Spieler zuschauen
+
+Bei `Right mouse button` lädt ein Klick mit der rechten Maustaste auf den Namen eines Spielers in der Spielerliste die eingereihten Ereignisse. Ein Klick mit der linken Maustaste lässt dich diesem Spieler zuschauen
+:::
+
+::: details Automatically apply queued vehicle changes
+Wenn aktiviert, werden die eingereihten Ereignisse automatisch geladen, sobald du für die als Timeout festgelegte Zeitspanne unter der Geschwindigkeitsschwelle geblieben bist
+
+Wenn deaktiviert, werden die eingereihten Ereignisse nur manuell geladen, indem du entweder auf den Button `Events` oben am Bildschirm oder auf den Namen eines Spielers in der Spielerliste klickst
+:::
+
+::: details Queue apply speed threshold
+Diese Einstellung legt die Geschwindigkeitsschwelle für das automatische Laden der Ereigniswarteschlange fest. Dein Fahrzeug muss länger als `Queue apply timeout` langsamer als dieser Wert sein, damit die eingereihten Ereignisse geladen werden
+:::
+
+::: details Queue apply timeout
+Diese Einstellung legt die Zeitverzögerung für das automatische Laden der Ereigniswarteschlange fest. Dein Fahrzeug muss für diese Zeit langsamer als `Queue apply speed threshold` sein, damit die eingereihten Ereignisse geladen werden
+:::
+
+::: details Skip queue if spectating others
+Wenn aktiviert, wird ein Ereignis sofort geladen, wenn du einem anderen Spieler zuschaust
+
+Wenn deaktiviert, wird ein Ereignis eingereiht, genau wie wenn du dein eigenes Fahrzeug steuerst
+:::
+
+::: details Don't queue Unicycles (Snowmen/Beamlings)
+Wenn aktiviert, wird ein Ereignis, das einen Schneemann bzw. ein Beamling betrifft, sofort geladen
+
+Wenn deaktiviert, werden Schneemänner bzw. Beamlings genau wie andere Fahrzeuge eingereiht
+:::
+
+## Standard-Einrad
+
+::: details Default Unicycle config
+Diese Einstellung legt fest, welche Einrad-Variante standardmäßig geladen wird. Du kannst zwischen vorgefertigten Konfigurationen und deinen eigenen wählen, falls du eigene Einrad-Konfigurationen gespeichert hast
+:::
+
+::: details Automatically save your last used Unicycle
+Wenn aktiviert, wird dein zuletzt verwendetes Einrad automatisch gespeichert und wieder geladen, sobald du es erneut spawnst
+
+Wenn deaktiviert, wird jedes Mal deine Standard-Einrad-Konfiguration gespawnt
+:::
+
+## Blobs
+
+::: details Enable blobs for unspawned vehicles
+Wenn aktiviert, siehst du anstelle eines nicht gespawnten Fahrzeugs eine Platzhalterkugel, einen sogenannten Blob
+
+Wenn deaktiviert, ist ein nicht gespawntes Fahrzeug unsichtbar
+:::
+
+:::: details Tune colors
+::: details Visible
+Wenn aktiviert, wird ein Blob in der unten angegebenen Farbe gezeichnet
+
+Wenn deaktiviert, wird für die angegebene Funktion kein Blob gezeichnet
+:::
+
+::: details RGB HEX values
+Queued vehicle: Die Farbe, die ein Blob verwendet, wenn ein Fahrzeug zum Spawnen eingereiht ist. Standardwert #FF6400
+
+Illegal vehicle: Die Farbe, die ein Blob verwendet, wenn ein Fahrzeug unzulässig ist, zum Beispiel durch einen Mod, der von außen eingeschleust wurde. Standardwert #000000
+
+Deleted vehicle: Die Farbe, die ein Blob verwendet, wenn ein Fahrzeug vom Benutzer gelöscht wurde. Standardwert #333333
+:::
+::::
+
+## Namensschilder
+
+::: details Hide player nametags
+Wenn aktiviert, werden die Namensschilder der Spieler nicht gezeichnet
+
+Wenn deaktiviert, werden die Namensschilder der Spieler entsprechend der relativen Position ihrer Fahrzeuge gezeichnet
+:::
+
+::: details Show distance from other players
+Wenn aktiviert, steht vor dem Namensschild die Entfernung zum jeweiligen Fahrzeug
+
+Wenn deaktiviert, wird keine zusätzliche Entfernung im Namensschild angezeigt
+:::
+
+::: details Fade nametags in/out
+Wenn aktiviert, wird ein Namensschild entsprechend `Fade distance` und `Invert nametag fade direction` ein- oder ausgeblendet
+
+Wenn deaktiviert, wird ein Namensschild unabhängig von der Entfernung zum jeweiligen Fahrzeug mit der Standard-Deckkraft gezeichnet
+:::
+
+:::: details Fade distance/Invert nametag fade direction
+::: details Fade out
+Namensschilder werden weniger sichtbar, je weiter ein Spieler entfernt ist
+
+`Fade distance` legt die Entfernung fest, bei der ein Namensschild mit minimaler Deckkraft gezeichnet wird
+:::
+
+::: details Fade in
+Namensschilder werden besser sichtbar, je weiter ein Spieler entfernt ist
+
+`Fade distance` legt die Entfernung fest, bei der ein Namensschild mit maximaler Deckkraft gezeichnet wird
+:::
+::::
+
+::: details Don't fully hide nametags
+Wenn aktiviert, kann ein Namensschild nicht vollständig unsichtbar werden, sondern behält unabhängig von der Entfernung eine minimale Deckkraft
+
+Wenn deaktiviert, können Namensschilder vollständig unsichtbar werden
+:::
+
+::: details Shorten nametag and role tags
+Wenn aktiviert, kürzt `Nametag length limit` Namensschilder und Rollen auf die festgelegte Anzahl von Zeichen
+
+Wenn deaktiviert, werden Namensschilder und Rollen-Tags in voller Länge angezeigt
+:::
+
+::: details Show spectators' nametag under vehicle nametags
+Wenn aktiviert, wird der Name eines Zuschauers unter dem Namensschild eines Spielers angefügt
+
+Wenn deaktiviert, werden keine Namen von Zuschauern zu den Namensschildern hinzugefügt
+:::
+
+::: details Same color for spectator nametags
+Wenn aktiviert, hat der Name eines Zuschauers immer einen grauen Hintergrund
+
+Wenn deaktiviert, hat der Name eines Zuschauers einen farbigen Hintergrund, der die Rolle des Zuschauers widerspiegelt
+:::
+
+## Weitere Einstellungen
+
+:::: details Show network activity in the console
+Wenn aktiviert, wird die Netzwerkaktivität von BeamMP in der Konsole angezeigt
+
+Wenn deaktiviert, wird keine weitere Netzwerkaktivität in der Konsole angezeigt
+
+::: danger
+Sei vorsichtig mit dieser Einstellung, denn die gesamte Konsolenausgabe wird auch in die Logdateien geschrieben
+
+Wenn die Einstellung aktiviert ist, können sie innerhalb weniger Minuten auf mehrere hundert MB anwachsen
+:::
+::::
+
+:::: details Launcher port
+Diese Einstellung legt den Port fest, der für die Kommunikation mit dem Launcher verwendet wird
+
+Sollte nur geändert werden, wenn der Standardport 4444 nicht verwendet werden kann
+
+Vergiss nicht, ihn auch auf der Launcher-Seite zu ändern, indem du die `launcher.cfg` anpasst
+
+::: tip
+Der angegebene Port ist nur der erste von zwei Ports. Der zweite verwendete Port folgt direkt darauf, also Port + 1
+
+Der erste Port überträgt zentrale Netzwerkpakete, der zweite Spiel-Netzwerkpakete, beide über TCP
+:::
+::::
