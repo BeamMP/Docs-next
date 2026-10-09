@@ -1,25 +1,40 @@
-# 我怎样才能找到我服务器的IP ？
+---
+description: "解决 BeamMP 连接问题：查找服务器的 IP 地址，用 CheckBeamMP 测试端口是否开放，并检查你是否处于 CGNAT 之后。"
+---
+# 连接 / 网络问题
 
-## 对于VPS托管服务器
+当你或你的玩家无法连接到 BeamMP 服务器时，请参阅本页。
 
-如果您使用的我们的合作托管服务之一的托管服务器，其IP地址将显示在对应服务商的服务器管理界面中。您还可以在[Keymaster](https://keymaster.beammp.com/login)网站上找到服务器的IP。
+## 查找服务器的 IP 地址
 
-## 对于家庭托管服务器
+### 托管公司的服务器
 
-对于家庭自托管服务器，请在浏览器中访问[whatsmyip.org](https://whatsmyip.org)，该网站将显示互联网访问您时所使用的公网IPv4地址。
+IP 地址会显示在托管公司的服务器管理界面中。你也可以在 [Keymaster](https://keymaster.beammp.com/login) 网站上找到你的服务器的 IP 地址。
 
-注意，127.0.0.1是本地主机地址，如果服务器托管在同一台计算机上，则只能由您自己使用。如果您与家庭托管服务器的连接仍然有问题，请检查[端口转发](https://docs.beammp.com/server/port-forwarding/)以及使用CheckBeamMP
+### 家中的服务器
+
+在浏览器中打开 [whatsmyip.org](https://whatsmyip.org)。它会显示互联网所看到的公网 IPv4 地址。
+
+`127.0.0.1` 是本地主机（localhost）地址。只有你自己可以使用它，而且只有在服务器与游戏运行在同一台电脑上时才行。
+
+## 测试端口是否开放
+
+如果你的家用服务器仍然有连接问题，请检查你的[端口转发](/zh/server-owners/port-forwarding)，然后在服务器运行时用 CheckBeamMP 进行测试：
 
 <form action="https://check.beammp.com/api/v2/beammp" method="get" target="_blank">
-  <label for="ip">IP地址:</label>
+  <label for="ip">IP 地址：</label>
   <input type="text" id="ip" name="ip"><br>
-  <label for="port">端口:</label>
+  <label for="port">端口：</label>
   <input type="text" id="port" name="port"><br>
   <input type="submit" value="CheckBeamMP">
 </form>
 
-## 怎么检查CGNAT?
+## 检查 CGNAT
 
-请查看[这个页面](https://docs.beammp.com/FAQ/How-to-check-for-CGNAT/)，以确定您是否可以在家中托管服务器。
+有些网络服务提供商（ISP）会让端口转发变得困难。请[检查 CGNAT](/zh/server-owners/cgnat)，看看你能否在家中搭建服务器。
 
-标签: IP, Server, Connection Failed, 10060/10061
+## 其他连接问题
+
+- 启动器显示错误代码 10060 或 10061：请参阅[错误代码](/zh/troubleshooting/error-codes)。
+- 启动器没有连接到游戏：请参阅[更改启动器端口](/zh/troubleshooting/launcher-port)。
+- 防火墙或杀毒软件可能正在拦截 BeamMP：请参阅 [Defender / 防火墙排除项](/zh/troubleshooting/defender-exclusions)。
