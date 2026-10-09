@@ -1,179 +1,174 @@
-# Getting Started
+---
+description: "Install BeamMP on Windows with the installer, or build the BeamMP Launcher yourself on Linux, with or without Proton."
+---
+# Install BeamMP
 
-## **1. Compatibility**
-
-BeamMP is fully compatible with Windows and Linux, compatibility with MacOS is being worked on.
-However, both Linux and MacOS are secondary platforms, this means bugs are to be expected.
+You need the BeamMP Launcher. On Windows an installer sets it up. On Linux you build it yourself.
 
 ::: warning
-BeamMP will not work with pirated or outdated versions of BeamNG.drive.
-The BeamMP support team does not offer support for issues with pirated / outdated copies.
-:::
----
-
-## **2. Installation**
-
-### **2a. Windows Installation**
-
-::: note
-As of April 1st, 2026, the MSI installer is an "unrecognized app" according to Windows Defender SmartScreen.
-
-To bypass this warning, click 'More info', then click 'Run anyway'.
+BeamMP does not work with pirated or outdated copies of BeamNG.drive.
 :::
 
-1. Go to [beammp.com](https://beammp.com/) and click the 'Download Now' button.
-2. Run the `BeamMP_Installer.msi` installer and follow the instructions.
-3. The BeamMP Launcher icon should appear on your desktop. If not, just search for “BeamMP” in the Windows search bar.
+## Install on Windows
 
-::: note
-As you are loading into a map with multiple vehicles spawned it might take longer than expected to join.
+1. Go to [beammp.com](https://beammp.com/) and click **Download Now**.
+2. Run `BeamMP_Installer.exe` and follow the instructions.
+3. The BeamMP Launcher icon appears on your desktop. If it does not, search for "BeamMP" in the Windows search bar.
+
+Next: [join your first server](/en/get-started/join-first-server).
+
+## Install on Linux
+
+There is no installer for Linux yet, so you build the Launcher yourself. You need a basic understanding of how to build an application.
+
+### Install the build tools
+
+Install the basic development tools. On most systems they are in a package:
+
+| System | Command |
+|---|---|
+| Debian, Ubuntu | `sudo apt install build-essential` |
+| Fedora | `sudo dnf install cmake gcc gcc-c++ make perl perl-IPC-Cmd perl-FindBin perl-File-Compare perl-File-Copy kernel-headers kernel-devel` |
+| Arch | `sudo pacman -S base-devel` |
+| openSUSE | `zypper in -t pattern devel-basis` |
+| SteamOS (Arch) | `sudo pacman -S base-devel linux-api-headers glibc libconfig` |
+
+::: info SteamOS
+Run `sudo steamos-readonly disable` before installing the packages, and turn it back on afterwards.
 :::
 
-### **2b. Linux Installation**
+### Get vcpkg
 
-Currently you need to build the Launcher yourself.
-In order to do this, you need a basic understanding of how to build an application.
+Clone `vcpkg`, bootstrap it and add it to your `PATH`:
 
-Make sure you have basic development tools installed, often found in packages, for example:
+1. Clone it:
 
-- Debian/Ubuntu: `sudo apt install build-essential`
-- Fedora: `sudo dnf install cmake gcc gcc-c++ make perl perl-IPC-Cmd perl-FindBin perl-File-Compare perl-File-Copy kernel-headers kernel-devel`
-- Arch: `sudo pacman -S base-devel`
-- openSUSE: `zypper in -t pattern devel-basis`
-- SteamOS (Arch): `sudo pacman -S base-devel linux-api-headers glibc libconfig` (You also need to do `sudo steamos-readonly disable` but make sure to enable it again after installing the packages)
+   ```bash
+   git clone https://github.com/microsoft/vcpkg.git
+   ```
 
+2. Bootstrap it:
 
-Clone `vcpkg`, bootstrap it and add it to PATH
+   ```bash
+   ./vcpkg/bootstrap-vcpkg.sh
+   ```
 
-1. 
-```bash
-git clone https://github.com/microsoft/vcpkg.git
-```
+3. Add it to your `PATH`:
 
-2. 
-```bash
-./vcpkg/bootstrap-vcpkg.sh
-```
+   ```bash
+   export VCPKG_ROOT="$(pwd)/vcpkg"
+   export PATH=$VCPKG_ROOT:$PATH
+   ```
 
-3. 
-```bash
-export VCPKG_ROOT="$(pwd)/vcpkg"
-export PATH=$VCPKG_ROOT:$PATH
-```
+### Build the Launcher
 
+1. Clone the [BeamMP-Launcher](https://github.com/BeamMP/BeamMP-Launcher) repository, then go into it:
 
-Clone the BeamMP-Launcher Repository to your system using `git`, for example:
-`git clone https://github.com/BeamMP/BeamMP-Launcher.git`
-[Additional information about cloning a GitHub Repo](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository)
+   ```bash
+   git clone https://github.com/BeamMP/BeamMP-Launcher.git
+   cd BeamMP-Launcher
+   ```
 
-If you've used the example clone command we provided, you can use `cd BeamMP-Launcher` to go to the project's root directory.
+   If you have not cloned a repository before, see GitHub's guide to [cloning a repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository).
 
-Checkout the tag that was used for the [latest release](https://github.com/BeamMP/BeamMP-Launcher/releases/latest). For example, if `v2.8.0` is used in the latest release, then do `git checkout v2.8.0`
+2. Check out the tag of the [latest release](https://github.com/BeamMP/BeamMP-Launcher/releases/latest). If the latest release is `v2.8.0`, run:
 
-In the root directory of the project,
+   ```bash
+   git checkout v2.8.0
+   ```
 
-1. 
-```cmake
-cmake . -B bin -DCMAKE_TOOLCHAIN_FILE=$VCPKG_ROOT/scripts/buildsystems/vcpkg.cmake -DVCPKG_TARGET_TRIPLET=x64-linux
-```
+3. In the project's root directory, configure the build:
 
-2. 
-```cmake
-cmake --build bin --parallel
-```
+   ```bash
+   cmake . -B bin -DCMAKE_TOOLCHAIN_FILE=$VCPKG_ROOT/scripts/buildsystems/vcpkg.cmake -DVCPKG_TARGET_TRIPLET=x64-linux
+   ```
 
-::: note
-Should you run out of RAM while building, you can ommit the --parallel instruction, it will then use less RAM due to building only on one CPU thread.
+4. Build it:
+
+   ```bash
+   cmake --build bin --parallel
+   ```
+
+5. Move the finished application out of `bin` into its own folder, and run it from there:
+
+   ```bash
+   mkdir -p ~/beammp-launcher
+   cp bin/BeamMP-Launcher ~/beammp-launcher/
+   cd ~/beammp-launcher
+   ./BeamMP-Launcher
+   ```
+
+The native Linux Launcher starts and uses the native Linux BeamNG.drive.
+
+::: tip Running out of RAM?
+Leave out `--parallel`. The build then uses one CPU thread and less RAM.
 :::
 
-::: note
-By not specifying `-DCMAKE_BUILD_TYPE=Release` you are building a debug version, which is larger in filesize but does not contain the launcher-can-only-connect-to-a-server-once bug
+::: info Debug build
+Without `-DCMAKE_BUILD_TYPE=Release` you build a debug version. It is larger, but it does not have the bug where the Launcher can only connect to a server once.
 :::
 
-::: note Fedora Users
-If vcpkg fails during OpenSSL compilation with kernel headers errors, ensure all dependencies are installed:
+::: details Fedora: vcpkg fails while building OpenSSL
+If vcpkg fails with kernel header errors during OpenSSL, make sure the dependencies are installed:
+
 ```bash
 sudo dnf install kernel-headers kernel-devel gcc gcc-c++ make perl
 ```
-Then clean the vcpkg cache:
+
+Then clear the vcpkg cache and run the configure command again:
+
 ```bash
 rm -rf $VCPKG_ROOT/buildtrees/openssl
 ```
-And retry the cmake configuration command.
 :::
 
-Move the finished application out of the `/bin` folder into its own folder and run it from there:
-```bash
-mkdir -p ~/beammp-launcher
-cp bin/BeamMP-Launcher ~/beammp-launcher/
-cd ~/beammp-launcher
-./BeamMP-Launcher
-```
+### Use BeamNG.drive through Proton
 
-The native Linux BeamMP-Launcher will start and use native Linux BeamNG.drive
+You can use the native Linux Launcher with BeamNG.drive running through Proton.
 
-### **2c. Using beamNG.drive with Proton**
+1. Start the Launcher with `--no-launch`, so it does not start the native Linux BeamNG.drive. More Launcher arguments are in the [Development Environment Setup](/en/developers/dev-environment-setup) page.
+2. Make the Proton game use the Linux game's user folder, because the native Launcher only writes to that one. A symlink does this:
+   1. Find the Linux BeamNG.drive user folder, usually `~/.local/share/BeamNG/BeamNG.drive`, and rename it, for example to `BeamNG.drive_old`.
+   2. Find the Proton BeamNG.drive user folder, usually `~/.local/share/Steam/steamapps/compatdata/284160/pfx/drive_c/users/steamuser/AppData/Local/BeamNG/BeamNG.drive`.
+   3. Link the two:
 
-Should you want to use the native linux BeamMP-Launcher together with BeamNG.drive running through Proton, you can do so:
+      ```bash
+      ln -s ~/.local/share/Steam/steamapps/compatdata/284160/pfx/drive_c/users/steamuser/AppData/Local/BeamNG/BeamNG.drive ~/.local/share/BeamNG
+      ```
 
-Run the BeamMP-Launcher using the argument ` --no-launch` (This will prevent the Launcher from starting native linux BeamNG.drive). Further information about launcher arguments can be found in the [Development Environment Setup](../developers/dev-environment-setup.md)
+3. In Steam, open the game's **Properties** and replace the launch options with:
 
-Change the userfolder location of Proton-BeamNG.drive to the location of Linux-BeamNG.drive (since the native linux BeamMP-Launcher currently only writes into the Linux-BeamNG.drive userfolder)
+   ```bash
+   ~/BeamMP/BeamMP-Launcher --no-launch & %command% ; killall BeamMP-Launcher
+   ```
 
-This can be done for example by creating a symlink
+   Steam then starts the Launcher with the game.
 
-- Note the Linux-BeamNG.drive userfolder location (this is usually found in `~/.local/share/BeamNG.drive`) and rename it, for example to `BeamNG.drive_old`
-- Note the Proton-BeamNG.drive userfolder location (this is usually found in `~/.local/share/Steam/steamapps/compatdata/284160/pfx/drive_c/users/steamuser/AppData/Local/BeamNG.drive`)
-- Create a symlink between both userfolders `ln -s ~/.local/share/Steam/steamapps/compatdata/284160/pfx/drive_c/users/steamuser/AppData/Local/BeamNG.drive ~/.local/share`
+Change `~/BeamMP/` to the folder where you put the Launcher you built. You must rebuild the Launcher from the right git tag each time a new Launcher release comes out.
 
-With the symlink in place between the userfolders and the launcher compiled, you can have Steam run the game via Proton, while also automatically executing the launcher with the following replacement for your launch options for the vanilla game, found in the game's Properties window in its entry in Steam:
-
-- `~/BeamMP/BeamMP-Launcher --no-launch & %command% ; killall BeamMP-Launcher`
-
-Note that this assumes you put the launcher's binary you compiled earlier into `/home/user/BeamMP/`, so change it to match where you put the finished binary, and you will need to re-compile the launcher with the correct git branch each time a launcher update is released.
-
-::: tip Adding an emoji-font to get in-text emojis
-In order to get emojis to show up in either the serverlist (As part of a servers customised name) or in the ingame chat, you need to have a font that contains emojis.
-
-This can be done for example by adding the [Linux-port of the Windows Segoe-UI emoji font](https://github.com/mrbvrz/segoe-ui-linux)
+::: tip Emoji in names and chat
+To show emoji in server names in the server list, and in the in-game chat, you need a font that has them. One option is the [Linux port of the Windows Segoe UI emoji font](https://github.com/mrbvrz/segoe-ui-linux).
 :::
 
-### **2d. Updating the Launcher**
+### Update the Launcher on Linux
 
-If you already built the launcher and want to update it:
+1. Go into the Launcher folder and fetch the new tags:
 
-```bash
-export VCPKG_ROOT="$(pwd)/vcpkg"
-cd BeamMP-Launcher
-git fetch --tags
-```
-Checkout the tag that was used for the [latest release](https://github.com/BeamMP/BeamMP-Launcher/releases/latest). For example, if `v2.8.0` is used in the latest release, then do `git checkout v2.8.0`
-```
-cmake . -B bin -DCMAKE_TOOLCHAIN_FILE=$VCPKG_ROOT/scripts/buildsystems/vcpkg.cmake -DVCPKG_TARGET_TRIPLET=x64-linux
-cmake --build bin --parallel
-cp bin/BeamMP-Launcher ~/beammp-launcher/
-cd ~/beammp-launcher
-./BeamMP-Launcher
-```
+   ```bash
+   export VCPKG_ROOT="$(pwd)/vcpkg"
+   cd BeamMP-Launcher
+   git fetch --tags
+   ```
 
+2. Check out the tag of the [latest release](https://github.com/BeamMP/BeamMP-Launcher/releases/latest), as in [Build the Launcher](#build-the-launcher).
+3. Build it again and copy it to your Launcher folder:
 
----
+   ```bash
+   cmake . -B bin -DCMAKE_TOOLCHAIN_FILE=$VCPKG_ROOT/scripts/buildsystems/vcpkg.cmake -DVCPKG_TARGET_TRIPLET=x64-linux
+   cmake --build bin --parallel
+   cp bin/BeamMP-Launcher ~/beammp-launcher/
+   cd ~/beammp-launcher
+   ./BeamMP-Launcher
+   ```
 
-## **3. Using BeamMP**
-
-1. Once you have started the launcher, you should see a terminal window. Shortly after, the standard BeamNG launcher should start. **Do not** close the terminal window.
-2. In the BeamNG.drive main menu, click the `Repository` button and check to make sure that `multiplayerbeammp` is **the only** enabled mod.
-3. Return to the main menu, click on 'More..' and the 'Multiplayer' button to start multiplayer.
-4. You will be prompted to login or play as a guest (not all servers will allow guests). You can create an account on our [forum](https://forum.beammp.com) and then login to BeamMP with the same credentials.
-5. Select any server you like, and press `Connect`. Enjoy!
-
----
-
-## **4. Known Issues**
-
-- The native linux BeamMP-Launcher currently can only connect to a server once, after disconnecting you need to restart the launcher. You can do that without closing the game inbetween
-- If you don’t see the “Multiplayer” button. Make sure that the BeamMP mod is present and activated in the “Mod Manager” then try pressing CTRL + L.
-- VPNs of any type may cause connection issues.
-- If the Launcher reports any errors, read the [FAQ](https://forum.beammp.com/c/faq/35).
-
-Should you need further help with installation, you are welcome to create a post on our [forum](https://forum.beammp.com) or ask on our [Discord server](https://discord.gg/beammp).
+Next: [join your first server](/en/get-started/join-first-server).
