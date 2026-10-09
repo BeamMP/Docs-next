@@ -225,7 +225,7 @@ const movedPages: Record<string, string> = {
   'game/multiplayer-settings': 'players/multiplayer-settings',
   'server/create-a-server': 'server-owners/host-a-server',
   'server/port-forwarding': 'server-owners/port-forwarding',
-  'server/server-maintenance': 'server-owners/maintenance',
+  'server/server-maintenance': 'server-owners/configuration',
   'server/error-codes': 'server-owners/error-codes',
   'game/error-codes': 'troubleshooting/error-codes',
   'FAQ/player-faq': 'players/faq',
