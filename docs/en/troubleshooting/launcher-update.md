@@ -1,20 +1,19 @@
-# Issue
+---
+description: "Update the BeamMP Launcher by hand on Windows when it cannot update itself or shows a blank screen: download the latest Launcher and replace the old one."
+---
+# Launcher Update Issues
 
-The Launcher can't update or shows a blank screen?
-This quick guide explains how to manually update the Launcher.
+The Launcher cannot update, or shows a blank screen? This guide shows how to update it by hand.
 
-::: note
-You should have already used or installed BeamMP using the installer provided by [our website](https://beammp.com) before continuing.
-:::
+You should already have installed BeamMP with the installer from [our website](https://beammp.com) before you follow it.
 
-# Downloading and installing a new Launcher
+## Install a new Launcher
 
-1. Download the latest Launcher from [GitHub](https://github.com/BeamMP/BeamMP-Launcher/releases/latest/download/BeamMP-Launcher.exe) directly.
-2. Head to the BeamMP-Launcher.exe directory. By default, this  folder is placed in ```C:\Users\<username>\AppData\Roaming\``` . Replace `<username>` with the username of your Windows user.
-If you have installed BeamMP elsewhere, for example ```D:\BeamMP-Launcher```, then place the Launcher in the respective BeamMP-Launcher folder.
-4. If applicable, replace the existing Launcher with the new one in the BeamMP-Launcher folder.
-5. Start the BeamMP-Launcher as usual to see if it works.
+1. Download the latest Launcher directly from [GitHub](https://github.com/BeamMP/BeamMP-Launcher/releases/latest/download/BeamMP-Launcher.exe).
+2. Go to the folder that holds `BeamMP-Launcher.exe`. By default it is `C:\Users\<username>\AppData\Roaming\`. Replace `<username>` with your Windows user name. If you installed BeamMP somewhere else, for example `D:\BeamMP-Launcher`, use that folder.
+3. Replace the existing Launcher in the BeamMP-Launcher folder with the new one.
+4. Start the Launcher as usual and check that it works.
 
-## Still facing issue?
-Create a support ticket on our [Discord Server](https://discord.gg/BeamMP).
-Tags: Launcher, download,
+## Still facing issues?
+
+Create a support ticket on our [Discord server](https://discord.gg/BeamMP).
