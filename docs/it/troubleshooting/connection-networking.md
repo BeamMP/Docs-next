@@ -1,55 +1,26 @@
----
-layout: home
+# Come posso trovare l'IP del mio server?
 
-hero:
-  name: Documentazione BeamMP
-  text: Tutto quello che devi sapere
-  tagline: Guide complete per giocatori, proprietari di server e sviluppatori
-  image:
-    light: /assets/core/beammp_dark.png
-    dark: /assets/core/beammp_light.png
-    alt: BeamMP
-  actions:
-    - theme: brand
-      text: Inizia
-      link: /it/game/getting-started
-    - theme: alt
-      text: Visualizza su GitHub
-      link: https://github.com/beammp/docs
+## Per i server ospitati su VPS
+Se ospiti un server con uno dei nostri servizi di hosting partner, l'IP è riportato nella rispettiva interfaccia di gestione del server.
+Puoi trovare l'IP dei tuoi server anche sul sito [Keymaster](https://keymaster.beammp.com/login).
 
-features:
-  - icon: 🎮
-    title: Per i Giocatori
-    details: Scopri come installare BeamMP, connettersi ai server e ottenere il massimo dalla tua esperienza multiplayer
-    link: /it/game/getting-started
-  - icon: 🖥️
-    title: Per i Proprietari di Server
-    details: Configura e gestisci il tuo server BeamMP con le nostre guide complete e risorse di risoluzione dei problemi
-    link: /it/server/create-a-server
-  - icon: 💻
-    title: Per gli Sviluppatori
-    details: Crea mod, risorse e app UI con documentazione API dettagliata ed esempi di codice
-    link: /it/guides/index
-  - icon: ❓
-    title: Domande Frequenti
-    details: Trova risposte rapide alle domande più frequenti su configurazione, risoluzione dei problemi e best practice
-    link: /it/FAQ/player-faq
-  - icon: 📋
-    title: Regole della Comunità
-    details: Scopri le nostre linee guida sulla comunità e come segnalare problemi o contestare decisioni
-    link: /it/community/rules
-  - icon: 🔗
-    title: Comunità
-    details: Unisciti al nostro Discord, seguici sui social media e connettiti con altri giocatori e sviluppatori BeamMP
-    link: /it/community/index
----
+## Per i server ospitati a casa
+Per i server ospitati a casa, apri [whatsmyip.org](https://whatsmyip.org) in un browser.
+Verrà mostrato l'indirizzo IPv4 pubblico con cui sei raggiungibile da Internet.
 
-## Per i Proprietari di Server
+Nota che 127.0.0.1 è l'indirizzo localhost e può essere usato solo da te, se il server è ospitato sullo stesso computer.
+Se hai ancora problemi di connessione con il tuo server ospitato a casa, controlla anche il [port forwarding](https://docs.beammp.com/server/port-forwarding/) e usa CheckBeamMP
 
-Stai pensando di creare il tuo server BeamMP? La nostra guida completa [qui](/it/server-owners/host-a-server) ti accompagnerà nel processo, assicurandoti di avere tutti gli strumenti e le conoscenze necessarie per configurare il tuo server in modo efficiente.
+<form action="https://check.beammp.com/api/v2/beammp" method="get" target="_blank">
+  <label for="ip">Indirizzo IP:</label>
+  <input type="text" id="ip" name="ip"><br>
+  <label for="port">Porta:</label>
+  <input type="text" id="port" name="port"><br>
+  <input type="submit" value="CheckBeamMP">
+</form>
 
-## Per gli Sviluppatori
+## Come verificare la presenza di CGNAT?
+Dai un'occhiata a [questa pagina](https://docs.beammp.com/FAQ/How-to-check-for-CGNAT/) per stabilire se puoi ospitare un server a casa oppure no.
 
-Esplora tutti i dettagli sulla creazione di risorse per il server BeamMP nella nostra [Guida allo Sviluppo delle Risorse](/it/developers/mod-and-resource-creation).
 
-Stiamo lavorando a entusiasmanti aggiornamenti, tra cui una nuova homepage progettata per migliorare la tua esperienza di navigazione. Resta sintonizzato per ulteriori novità! :slight_smile:
+Tag: IP, Server, Connessione non riuscita, 10060/10061

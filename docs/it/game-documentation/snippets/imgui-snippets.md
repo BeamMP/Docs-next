@@ -1,55 +1,70 @@
----
-layout: home
+::: warning Questo sito è in costruzione!
 
-hero:
-  name: Documentazione BeamMP
-  text: Tutto quello che devi sapere
-  tagline: Guide complete per giocatori, proprietari di server e sviluppatori
-  image:
-    light: /assets/core/beammp_dark.png
-    dark: /assets/core/beammp_light.png
-    alt: BeamMP
-  actions:
-    - theme: brand
-      text: Inizia
-      link: /it/game/getting-started
-    - theme: alt
-      text: Visualizza su GitHub
-      link: https://github.com/beammp/docs
+Questo sito è in fase di sviluppo attivo. 
 
-features:
-  - icon: 🎮
-    title: Per i Giocatori
-    details: Scopri come installare BeamMP, connettersi ai server e ottenere il massimo dalla tua esperienza multiplayer
-    link: /it/game/getting-started
-  - icon: 🖥️
-    title: Per i Proprietari di Server
-    details: Configura e gestisci il tuo server BeamMP con le nostre guide complete e risorse di risoluzione dei problemi
-    link: /it/server/create-a-server
-  - icon: 💻
-    title: Per gli Sviluppatori
-    details: Crea mod, risorse e app UI con documentazione API dettagliata ed esempi di codice
-    link: /it/guides/index
-  - icon: ❓
-    title: Domande Frequenti
-    details: Trova risposte rapide alle domande più frequenti su configurazione, risoluzione dei problemi e best practice
-    link: /it/FAQ/player-faq
-  - icon: 📋
-    title: Regole della Comunità
-    details: Scopri le nostre linee guida sulla comunità e come segnalare problemi o contestare decisioni
-    link: /it/community/rules
-  - icon: 🔗
-    title: Comunità
-    details: Unisciti al nostro Discord, seguici sui social media e connettiti con altri giocatori e sviluppatori BeamMP
-    link: /it/community/index
----
+Pensi di poter aiutare? Fallo cliccando sull'icona della matita nella pagina a destra!
 
-## Per i Proprietari di Server
+Si può fare su qualsiasi pagina.
+:::
 
-Stai pensando di creare il tuo server BeamMP? La nostra guida completa [qui](/it/server-owners/host-a-server) ti accompagnerà nel processo, assicurandoti di avere tutti gli strumenti e le conoscenze necessarie per configurare il tuo server in modo efficiente.
+# Snippet di codice ImGui per BeamNG.drive
 
-## Per gli Sviluppatori
+## Configurazione
 
-Esplora tutti i dettagli sulla creazione di risorse per il server BeamMP nella nostra [Guida allo Sviluppo delle Risorse](/it/developers/mod-and-resource-creation).
+### Configurare ImGui
+```lua
+local im = ui_imgui
+```
+### Configurare la finestra
+```lua
+im.SetNextWindowSize(im.ImVec2(366, 100), im.Cond_FirstUseEver)
+```
+### Creare la finestra
+```lua
+im.Begin("Window Title") -- Create window
+im.End()
+```
+## Generale
 
-Stiamo lavorando a entusiasmanti aggiornamenti, tra cui una nuova homepage progettata per migliorare la tua esperienza di navigazione. Resta sintonizzato per ulteriori novità! :slight_smile:
+::: tabs
+
+== Formattazione di base
+```lua
+im.Text("")
+im.TextWrapped("") -- automatic word wrap
+im.TextColored(im.ImVec4(0,1,0,1), "") -- R,G,B,A
+im.TextDisabled("") -- predefined style for disabled text
+
+im.LabelText("", "")
+im.BulletText("") -- Bullet point with text
+im.SeparatorText("") -- Separator with centered text
+
+im.Separator() -- might want a NewLine before these
+im.SameLine() -- horizontally append the following element to the previous element
+im.NewLine()
+
+im.Spacing() -- small padding
+im.Indent()
+im.Unindent()
+```
+== Input
+```lua
+im.Button("", im.ImVec2(0,0)) -- 0 = fit to content
+im.SmallButton("") -- Fit to content and slightly less padding
+im.ArrowButton("", 0) -- arg 1: string is not actually used? arg 2: 0 = left, 1 = right, 2 = up, 3 = down
+im.InvisibleButton("", im.ImVec2(0,0), ...) -- used for imgui cursor positioning?
+
+im.Checkbox("", im.BoolPtr(false))
+
+im.RadioButton1("", im.BoolPtr(false))
+im.RadioButton2("", im.IntPtr(), 0) -- arg. 3: 0 or 1 for disabled or enabled
+```
+== Altro
+```lua
+im.Bullet()
+
+im.ProgressBar(0.5, im.ImVec2(0,0), "") -- arg 2: 0 for default width and/or height
+
+im.TextUnformatted("", "") -- Second argument seems to crash the game
+```
+:::

@@ -1,55 +1,50 @@
----
-layout: home
+# Come creare esclusioni in Windows Defender Firewall e nell'antivirus?
 
-hero:
-  name: Documentazione BeamMP
-  text: Tutto quello che devi sapere
-  tagline: Guide complete per giocatori, proprietari di server e sviluppatori
-  image:
-    light: /assets/core/beammp_dark.png
-    dark: /assets/core/beammp_light.png
-    alt: BeamMP
-  actions:
-    - theme: brand
-      text: Inizia
-      link: /it/game/getting-started
-    - theme: alt
-      text: Visualizza su GitHub
-      link: https://github.com/beammp/docs
+:::: info
+Prima di modificare il firewall, assicurati che la tua rete sia impostata come privata nelle impostazioni di rete di Windows (supponendo che tu ti trovi in una rete privata).
 
-features:
-  - icon: 🎮
-    title: Per i Giocatori
-    details: Scopri come installare BeamMP, connettersi ai server e ottenere il massimo dalla tua esperienza multiplayer
-    link: /it/game/getting-started
-  - icon: 🖥️
-    title: Per i Proprietari di Server
-    details: Configura e gestisci il tuo server BeamMP con le nostre guide complete e risorse di risoluzione dei problemi
-    link: /it/server/create-a-server
-  - icon: 💻
-    title: Per gli Sviluppatori
-    details: Crea mod, risorse e app UI con documentazione API dettagliata ed esempi di codice
-    link: /it/guides/index
-  - icon: ❓
-    title: Domande Frequenti
-    details: Trova risposte rapide alle domande più frequenti su configurazione, risoluzione dei problemi e best practice
-    link: /it/FAQ/player-faq
-  - icon: 📋
-    title: Regole della Comunità
-    details: Scopri le nostre linee guida sulla comunità e come segnalare problemi o contestare decisioni
-    link: /it/community/rules
-  - icon: 🔗
-    title: Comunità
-    details: Unisciti al nostro Discord, seguici sui social media e connettiti con altri giocatori e sviluppatori BeamMP
-    link: /it/community/index
----
+::: danger LIMITAZIONE DI RESPONSABILITÀ:
+**Le esclusioni del firewall / di Defender comportano dei rischi**.
 
-## Per i Proprietari di Server
+Creando delle esclusioni, sei consapevole dei rischi legati al consentire l'accesso ai programmi sul tuo PC e all'aprire le porte della tua rete domestica al pubblico, e di conseguenza rinunci al diritto di ritenere BeamMP responsabile di **qualsiasi** danno che potrebbe derivare a te o al tuo nucleo familiare.
 
-Stai pensando di creare il tuo server BeamMP? La nostra guida completa [qui](/it/server-owners/host-a-server) ti accompagnerà nel processo, assicurandoti di avere tutti gli strumenti e le conoscenze necessarie per configurare il tuo server in modo efficiente.
+Non ci assumiamo alcuna responsabilità per i contenuti di servizi o siti web esterni collegati.
+:::
+::::
 
-## Per gli Sviluppatori
+## 1. Esclusione nel Defender Firewall per BeamMP-Launcher.
 
-Esplora tutti i dettagli sulla creazione di risorse per il server BeamMP nella nostra [Guida allo Sviluppo delle Risorse](/it/developers/mod-and-resource-creation).
+1. Apri `Windows Defender Firewall con sicurezza avanzata`.
+2. Nella finestra, fai clic su `Regole connessioni in entrata` per aprire la scheda delle esclusioni in entrata.
+3. Fai clic su `Nuova regola` in alto a destra per creare una nuova esclusione.
+4. Seleziona `Programma` per creare un'esclusione specifica per un programma.
+5. Inserisci il percorso completo di `BeamMP-Launcher.exe`. Quello predefinito è `%appdata%\BeamMP-Launcher\BeamMP-Launcher.exe` (senza virgolette).
+6. Assicurati di consentire la connessione
+7. Assegna un nome all'esclusione (ad esempio "BeamMP-Launcher") e salvala.
+9. Riavvia il PC.
 
-Stiamo lavorando a entusiasmanti aggiornamenti, tra cui una nuova homepage progettata per migliorare la tua esperienza di navigazione. Resta sintonizzato per ulteriori novità! :slight_smile:
+## 1.1 Esclusione nel Defender Firewall per BeamMP-Server.
+
+1. Apri `Windows Defender Firewall con sicurezza avanzata`.
+2. Nella finestra, fai clic su `Regole connessioni in entrata` per aprire la scheda delle esclusioni in entrata.
+3. Fai clic su `Nuova regola` in alto a destra per creare una nuova esclusione.
+4. Seleziona `Porta` per creare un'esclusione specifica per una porta.
+5. Inserisci la stessa porta indicata in ServerConfig.toml.
+6. Inserisci il percorso completo di `BeamMP-Server.exe`. Il file si trova dove l'hai posizionato dopo averlo scaricato.
+7. Assicurati di consentire la connessione
+8. Assegna un nome all'esclusione (ad esempio "BeamMP-Server") e salvala.
+9. Riavvia il PC.
+
+## 2. Esclusione nell'antivirus Defender per BeamMP-Launcher/Server.
+
+1. Apri l'app `Sicurezza di Windows`.
+2. Fai clic sulla prima voce, `Protezione da virus e minacce`.
+3. Fai clic su `Gestisci impostazioni` sotto "Impostazioni di Protezione da virus e minacce".
+4. Scorri fino alla sezione `Esclusioni`.
+5. Lì, fai clic su "Aggiungi un'esclusione" e seleziona `Processo`.
+6. Inserisci `BeamMP-Launcher.exe` o `BeamMP-Server.exe` nel campo e salva.
+7. Riavvia il PC.
+
+## Hai ancora problemi?
+
+Apri una discussione sul [Forum](https://forum.beammp.com) o sul nostro [server Discord](https://discord.gg/beammp) nel canale `#support`.
