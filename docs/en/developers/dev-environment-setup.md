@@ -1,77 +1,67 @@
-# Getting started
-
-In order to get started with development for BeamMP you will need at least:
-
-- BeamNG.drive, installed locally
-- BeamMP, installed locally; at least the launcher, additionally also the server
-- Git, installed locally, and a GitHub.com account
-- A code editor, for example VSCode or notepad++
-
 ---
-# Difference between mod, launcher and server
-
-BeamMP is split into three main parts:
-
-- The mod is loaded by BeamNG, like any other vehicle or UI mod for the game. Its main function is to establish a local connection with the launcher and to display the multiplayer UI elements. It's mostly written in Lua, with some JavaScript, HTML, and CSS for the UI elements. Its repo is [https://github.com/BeamMP/BeamMP](https://github.com/BeamMP/BeamMP)
-- The launcher's main function is to establish a constant connection to the mod, and once necessary, establish a connection to the chosen server, as well as handling user login with the BeamMP backend. It's written in C++, is precompiled by BeamMP and can be found at [https://github.com/BeamMP/BeamMP-Launcher](https://github.com/BeamMP/BeamMP-Launcher)
-- The server establishes connections between one or many launchers, as well as "heartbeating" to the BeamMP backend, providing information such as IP, port, version, number of players, etc. Additionally, it manages and runs server-side Lua plugins. It's written in C++, precompiled by BeamMP for a few different OS and CPU architectures, and can be found at [https://github.com/BeamMP/BeamMP-Server](https://github.com/BeamMP/BeamMP-Server)
-
+description: "Set up a development environment for the BeamMP mod: an unpacked mods folder, the Launcher's dev mode, a cloned repository, a local server and how to contribute."
 ---
-# Setting up a development environment to work on the mod
+# Development Environment Setup
 
-## Using an unpacked folder for BeamNG
+This page shows how to set up your computer to work on the BeamMP mod, and how to run a local server. To learn how the mod, Launcher and server fit together, see [Developers](/en/developers/).
 
-In order to efficiently work on mods in BeamNG, it is advised to use an `unpacked` folder, rather than packaging zips after every change.
+## What you need
 
-Open up the BeamNG userfolder by navigating to `%appdata%/Local/BeamNG.drive/0.xx/mods` where `xx` is the most recent BeamNG version.
-Create a folder called `unpacked` inside the `mods` folder.
+- BeamNG.drive, installed locally.
+- BeamMP, installed locally: at least the Launcher, and the server too if you want to test with one.
+- Git, installed locally, and a GitHub account.
+- A code editor, for example VSCode or Notepad++.
 
-Further information about the userfolder can be found at [https://documentation.beamng.com/support/userfolder/](https://documentation.beamng.com/support/userfolder/)
+## Use an unpacked folder for BeamNG
 
-## Enabling dev mode in the BeamMP launcher
+To work on mods efficiently, use an `unpacked` folder instead of packaging a zip after every change.
 
-In order to prevent auto-update deleting your local git clone, it's necessary to disable it, using `--no-download`.
-If you also don't want the launcher to start BeamNG, and would like to see debug prints, then using `--dev` is advised.
+1. Open the BeamNG user folder at `%appdata%/Local/BeamNG.drive/0.xx/mods`, where `xx` is the most recent BeamNG version.
+2. Create a folder called `unpacked` inside `mods`.
 
-| Argument                              | Note                                       |
-|:--------------------------------------|:-------------------------------------------|
-| `--help` or `-h`                      | Will print the following list of arguments |
-| `--port <port>` or `-p`               | Change the default listen port to `<port>`. This must be configured ingame too |
-| `--verbose` or `-v`                   | Verbose mode, prints debug messages |
-| `--no-download`                       | Skip downloading and installing the BeamMP Lua mod |
-| `--no-update`                         | Skip applying launcher updates (you must update manually) |
-| `--no-launch`                         | Skip launching the game (you must launch the game manually) |
-| `--dev`                               | Developer mode, same as --verbose --no-download --no-launch --no-update |
-| `--game <args...>` or `-- <args...>`  | Passes arguments to the game |
+More about the user folder is in the [BeamNG documentation](https://documentation.beamng.com/support/userfolder/).
 
-## Cloning the BeamMP repo into the unpacked folder
+## Turn on dev mode in the Launcher
 
-While you can manually copy the BeamMP mod files from our github repo, it is highly recommended to use a source-control system like git.
-First create a fork of [https://github.com/BeamMP/BeamMP](https://github.com/BeamMP/BeamMP)
+Auto-update would delete your local git clone, so turn it off with `--no-download`. If you also do not want the Launcher to start BeamNG, and you want to see debug prints, use `--dev`.
 
-Most efficient would be to clone the repo directly into the `unpacked` folder.
+| Argument | What it does |
+|---|---|
+| `--help` or `-h` | Prints this list of arguments |
+| `--port <port>` or `-p` | Changes the default listen port to `<port>`. It must be set in the game too |
+| `--verbose` or `-v` | Verbose mode: prints debug messages |
+| `--no-download` | Skips downloading and installing the BeamMP Lua mod |
+| `--no-update` | Skips applying Launcher updates, so you must update by hand |
+| `--no-launch` | Skips launching the game, so you must start it yourself |
+| `--dev` | Developer mode: the same as `--verbose --no-download --no-launch --no-update` |
+| `--game <args...>` or `-- <args...>` | Passes arguments to the game |
 
-For `git`, run `git clone https://github.com/yourName/BeamMP` from a PowerShell or CMD window started from the `unpacked` folder.
-While in the userfolder, make sure theres no `multiplayer` folder left in `mods` and that now there's `unpacked/beammp`.
+## Clone the BeamMP repository into the unpacked folder
 
-Now give the dev mode a try. Start the BeamMP launcher, start BeamNG manually, once ingame make sure that BeamMP is the only active mod.
-You should be able to use BeamMP as usual.
+You can copy the mod files from our GitHub repository by hand, but a source-control system such as git is much better.
 
-Using a code editor, you can now add or change code directly in the `unpacked` folder.
-You can then try the changes by reloading Lua ingame by pressing `Ctrl+L` (and `F5` if you made UI changes).
+1. Create a fork of [BeamMP/BeamMP](https://github.com/BeamMP/BeamMP).
+2. Clone it straight into the `unpacked` folder. In PowerShell or CMD opened in that folder, run:
 
-Once you're happy with your changes, you can commit them through git. See [the Git-SCM website](https://git-scm.com/doc) for tutorials and documentation on how to use Git. As soon as your changes are committed and pushed (to your fork), you can make a pull-request.
+   ```bash
+   git clone https://github.com/yourName/BeamMP
+   ```
 
-Feel free to ask in the #scripting channel in our [Discord](https://discord.gg/beammp) if you encounter any issues.
+3. In the user folder, make sure there is no `multiplayer` folder left in `mods`, and that there is now `unpacked/beammp`.
+4. Try dev mode. Start the Launcher, then start BeamNG manually. In the game, make sure BeamMP is the only active mod. You can use BeamMP as usual.
 
----
-# Setting up a local server
+With a code editor you can now change the code directly in the `unpacked` folder. Reload Lua in the game with `Ctrl` + `L`, and also press `F5` if you changed the UI.
 
-While working on BeamMP, it can be beneficial to use a local server. You can follow the general [server installation](/en/server-owners/host-a-server) while omitting the first two steps for purely local connections.
+## Set up a local server
 
-Set the server to private in the `serverConfig.toml` while using any string as the `AuthKey`.
+A local server helps when you work on BeamMP. Follow [Host a Server](/en/server-owners/host-a-server), leaving out the first two steps (port forwarding and the AuthKey) if you only connect locally.
 
----
-# Contribution Guidelines
+In `ServerConfig.toml`, set the server to private, and use any string as the `AuthKey`.
 
-For details on code format, commit message format, general development best practices, etc. please see the `CONTRIBUTING.md` file in each repo. This file contains more detailed information on how to contribute. The `README.md` in each repo usually contains build steps as well (for compiled projects).
+## Contribute your changes
+
+When you are happy with your changes, commit them with git. The [Git-SCM website](https://git-scm.com/doc) has tutorials and documentation. When your changes are committed and pushed to your fork, you can make a pull request.
+
+For code format, commit message format and general development practices, see the `CONTRIBUTING.md` file in each repository. The `README.md` in each repository usually has the build steps for compiled projects.
+
+If you run into problems, ask in the `#scripting` channel on our [Discord server](https://discord.gg/beammp).

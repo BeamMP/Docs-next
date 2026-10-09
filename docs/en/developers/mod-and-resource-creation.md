@@ -1,8 +1,13 @@
-# Multiplayer mod creation
+---
+description: "Create a BeamMP plugin: the Resources folder layout, a server-side Lua example, a client-side Lua extension and the modScript.lua that loads it."
+---
+# Mod & Resource Creation
+
+This page shows the folder layout of a BeamMP plugin, and a small working example of each file it needs. For the full lists of functions and events, see the [scripting references](/en/developers/beammp-scripting/).
 
 ## Folder structure and file basics
 
-The basic folder and file structure needs to look like this:
+The folder and file structure looks like this:
 
 ```
 Resources/
@@ -21,23 +26,16 @@ Resources/
          └─ further.lua
 ```
 
-The serverside lua is the bare minimum, if you want to add custom events, you also need at least a clientside lua as well as a modscript.lua
+- The server-side Lua is the bare minimum. To add custom events, you also need at least a client-side Lua file and a `modScript.lua`.
+- The `Server` folder holds one subfolder for each server-side plugin. It is good practice to have one main Lua file and put further Lua files in subfolders. You do not have to: the server loads Lua files in alphabetical order if there are several.
+- The `Client` folder holds the zip files that are sent to a client, which loads them as a mod. Any other file in `Client` causes an error when the server starts, and is otherwise ignored.
+- BeamNG reads `modScript.lua`, which tells the game which plugin to load.
 
-The Server folder must contain subfolders, one for each server-side mod.
-It is good practice to only have a single main lua file and add further lua files into subfolders.
-However, you are not required to do that, the server will load lua files in alphabetical order should there be multiple.
+You can download an example: [examplePlugin.zip](/assets/content/ResourcesForExamplePlugin.zip).
 
-The Client folder contains the zip files that are sent to a client, which then will load them as a mod.
-Any other files in the Client folder will cause an error on server startup, but apart from that will be ignored by the server.
-The modScript.lua will be read by BeamNG and instructs the game which plugin to load.
+## Server-side Lua
 
-::: example
-[Download the examplePlugin.zip](/assets/content/ResourcesForExamplePlugin.zip)
-:::
-
-## Serverside lua
-
-There's more examples in the examplePlugin, but heres a very basic one, printing a players identifiers:
+The example plugin has more examples. This is a very basic one that prints a player's identifiers:
 
 ```lua
 function onInit() --runs when plugin is loaded
@@ -56,9 +54,9 @@ function onPlayerAuth(player_name, role, isGuest, identifiers)
 end
 ```
 
-`onPlayerAuth` gets triggered as soon as a player wants to join, also see [onPlayerAuth in the scripting reference](/en/developers/beammp-scripting/server/latest#onplayerauth)
+`onPlayerAuth` runs as soon as a player wants to join. See [onPlayerAuth in the scripting reference](/en/developers/beammp-scripting/server/latest#onplayerauth).
 
-Another example using onPlayerAuth, but this will deny guests from joining the server by sending the client a message back, which will then be shown to the player:
+Another example uses `onPlayerAuth` to deny guests. The message you return is shown to the player:
 
 ```lua
 function onPlayerAuth(playerName, playerRole, isGuest, identifiers)
@@ -68,11 +66,11 @@ function onPlayerAuth(playerName, playerRole, isGuest, identifiers)
 end
 ```
 
-Further info on serverside functions provided by BeamMP can be found in the [latest server reference](/en/developers/beammp-scripting/server/latest)
+More functions you can use on the server are in the [latest server reference](/en/developers/beammp-scripting/server/latest).
 
-## Clientside lua
+## Client-side Lua
 
-This largely follows the [BeamNG extensions](https://documentation.beamng.com/modding/programming/extensions/)
+Client-side Lua largely follows [BeamNG extensions](https://documentation.beamng.com/modding/programming/extensions/). This example prints to the console that the plugin was loaded:
 
 ```lua
 local M = {}
@@ -84,29 +82,22 @@ end
 
 return M
 ```
-Prints to the console that the examplePlugin was loaded
 
-Refer to the [beamNG documentation on debug prints](https://documentation.beamng.com/modding/programming/debugging/#a-add-a-log) to learn more
+To learn more about printing from BeamNG Lua, see the [BeamNG documentation on debug prints](https://documentation.beamng.com/modding/programming/debugging/#a-add-a-log).
 
 ## modScript.lua
 
-Usually contains only two lines
+A `modScript.lua` usually has only two lines:
 
 ```lua
 load('examplePlugin')
 setExtensionUnloadMode('examplePlugin', 'manual')
 ```
 
-You can add a log print if you want to see in the logs when your modScript gets processed by BeamNG
+You can add a log line to see in the logs when BeamNG processes your `modScript.lua`:
 
 ```lua
 load('examplePlugin')
 setExtensionUnloadMode('examplePlugin', 'manual')
 log('I', 'modScript', "examplePlugin loaded")
 ```
-
-
-
-
-
-
