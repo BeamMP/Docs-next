@@ -1,43 +1,10 @@
-::: warning Questo sito è ancora in costruzione
-Questo sito è in fase di lavorazione.
+---
+description: "I riferimenti allo scripting di BeamMP: le funzioni della mod in gioco (lato client) e l'API dei plugin del server per la versione 3 e per la versione 2, deprecata."
+---
+# Scripting di BeamMP
 
-Pensi di poter aiutare? Puoi farlo cliccando sulla pagina con la matita in alto a destra!
+Riferimenti per le funzioni e gli eventi che puoi usare nel codice Lua di BeamMP. Per scrivere il tuo primo plugin, inizia da [Creazione di Mod e Risorse](/it/developers/mod-and-resource-creation).
 
-Puoi contribuire a qualsiasi pagina.
-:::
-
-# Riferimento per lo scripting lato client
-
-BeamMP ti permette di creare i tuoi personali plugin da eseguire lato client. Abbiamo creato delle funzioni che ti permettono di comunicare con altre mod legate al multiplayer e ad altri giocatori tramite il server.
-
-# Funzioni
-
-Lista di funzioni disponibili per gli script:
-
-| Funzione                                  | Note                                                                                                                                                                                                              |
-|-------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `TriggerServerEvent("eventName", "data")` | Scatena un evento nel contesto Lua lato server, entrambi i parametri sono stringhe.                                                                                                                               |
-| `TriggerClientEvent("eventName", "data")` | Scatena un evento nel contesto Lua lato client, entrambi i parametri sono stringhe. Buono da usare per la comunicazione tra plugin diversi.                                                                       |
-| `AddEventHandler("eventName", Function)`  | Aggiunge il secondo parametro alla tabella che viene invocata quando viene ricevuto `eventName` (sia localmente sia dal server), `Function` riceverà un (1) parametro, una stringa contenente i dati dell'evento. |
-
-# Esempi di codice
-
-Per esempio si può analizzare la chat usando il suo evento evento `ChatMessageIncluded`:
-
-```lua
-local function chatReceived(msg) -- Receive event with parameters
-    print("chat received: "..msg)
-    local i = string.find(s, ":") -- Find where our first ':' is, used to separate the sender and message
-    if i == nil then
-        print("error parsing message: separator could not be found!")
-        return -- Could not find separator, cancel function
-    end
-    print("index of separator: "..tostring(i))
-    local sender = string.sub(msg, 1, i-1) -- Substring our input to separate its 2 parts
-    local message = string.sub(msg, i+1, -1)  -- Do whatever you want to with the message
-    print("sender: " .. sender)
-    print("message: ".. message)
-end
-
-AddEventHandler("ChatMessageReceived", chatReceived) -- Add our event handler to the list managed by BeamMP
-```
+- [Mod (In gioco)](/it/developers/beammp-scripting/mod-in-game): funzioni per i plugin lato client.
+- [Server, versione 3 (più recente)](/it/developers/beammp-scripting/server/latest): il sistema di plugin del server.
+- [Server, versione 2 (deprecata)](/it/developers/beammp-scripting/server/legacy-v2): il vecchio sistema, non più supportato. Per i server ancora sulla versione 2.

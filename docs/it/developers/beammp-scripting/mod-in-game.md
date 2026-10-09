@@ -1,33 +1,25 @@
-::: warning Questo sito è ancora in costruzione
-Questo sito è in fase di lavorazione.
+---
+description: "Le funzioni Lua in gioco (lato client) di BeamMP: TriggerServerEvent, TriggerClientEvent e AddEventHandler, con un esempio che analizza i messaggi della chat."
+---
+# Riferimento allo scripting della mod (in gioco)
 
-Pensi di poter aiutare? Puoi farlo cliccando sulla pagina con la matita in alto a destra!
+BeamMP ti permette di scrivere anche plugin lato client. Alcune funzioni ti permettono di comunicare con altre mod multigiocatore e con gli altri giocatori tramite il server. Per configurare un plugin, consulta [Creazione di Mod e Risorse](/it/developers/mod-and-resource-creation).
 
-Puoi contribuire a qualsiasi pagina.
-:::
+## Funzioni
 
-# Riferimento per lo scripting lato client
+| Funzione | Cosa fa |
+|---|---|
+| `TriggerServerEvent("eventName", "data")` | Scatena un evento nell'ambiente Lua del server. Entrambi i parametri sono stringhe |
+| `TriggerClientEvent("eventName", "data")` | Scatena un evento nell'ambiente Lua locale. Entrambi i parametri sono stringhe. Utile per la comunicazione tra plugin |
+| `AddEventHandler("eventName", Function)` | Aggiunge `Function` per essere chiamata quando viene ricevuto `eventName`, in locale o dal server. `Function` riceve un parametro: una stringa con i dati dell'evento |
 
-BeamMP ti permette di creare i tuoi personali plugin da eseguire lato client. Abbiamo creato delle funzioni che ti permettono di comunicare con altre mod legate al multiplayer e ad altri giocatori tramite il server.
+## Esempio: leggere i messaggi della chat
 
-# Funzioni
-
-Lista di funzioni disponibili per gli script:
-
-| Funzione                                  | Note                                                                                                                                                                                                              |
-|-------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `TriggerServerEvent("eventName", "data")` | Scatena un evento nel contesto Lua lato server, entrambi i parametri sono stringhe.                                                                                                                               |
-| `TriggerClientEvent("eventName", "data")` | Scatena un evento nel contesto Lua lato client, entrambi i parametri sono stringhe. Buono da usare per la comunicazione tra plugin diversi.                                                                       |
-| `AddEventHandler("eventName", Function)`  | Aggiunge il secondo parametro alla tabella che viene invocata quando viene ricevuto `eventName` (sia localmente sia dal server), `Function` riceverà un (1) parametro, una stringa contenente i dati dell'evento. |
-
-# Esempi di codice
-
-Per esempio si può analizzare la chat usando il suo evento evento `ChatMessageIncluded`:
-
+Per leggere la chat, usa l'evento integrato `ChatMessageReceived`:
 ```lua
 local function chatReceived(msg) -- Receive event with parameters
     print("chat received: "..msg)
-    local i = string.find(s, ":") -- Find where our first ':' is, used to separate the sender and message
+    local i = string.find(msg, ":") -- Find where our first ':' is, used to separate the sender and message
     if i == nil then
         print("error parsing message: separator could not be found!")
         return -- Could not find separator, cancel function
