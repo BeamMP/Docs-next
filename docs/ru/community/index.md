@@ -1,45 +1,38 @@
-# Добро пожаловать в Сообщество BeamMP!
+---
+sidebar: false
+description: "Где найти сообщество BeamMP: форум, Discord, YouTube, X, Reddit, Bluesky и другие соцсети, а также где прочитать правила сообщества."
+---
+# Сообщество
 
-![BeamMP Multicolor-White](../../assets/content/BeamMP-Multi-WhtLtr-crop.png){.only-dark width="450"} ![BeamMP Multicolor-Black](../../assets/content/BeamMP-Multi-BlkLtr-crop.png){.only-light width="450"}
+![Логотип BeamMP](../../assets/content/BeamMP-Multi-WhtLtr-crop.png){.only-dark width="450"}
+![Логотип BeamMP](../../assets/content/BeamMP-Multi-BlkLtr-crop.png){.only-light width="450"}
 
-## Наши страницы в социальных сетях
+BeamMP — это сообщество игроков, владельцев серверов и разработчиков. Здесь вы можете нас найти.
 
-:::сбой ""
+## Общайтесь с нами
 
-```
-BeamMP Форум - [https://forum.beammp.com](https://forum.beammp.com)
-```
+- [Форум](https://forum.beammp.com): вопросы, руководства, анонсы серверов и темы поддержки.
+- [Discord](https://discord.gg/beammp): чат, канал `#support` и обращения в поддержку по серверам.
 
-:::цитата ""
+## Следите за нами
 
-```
-X (Twitter) - [https://x.com/BeamMPOfficial](https://x.com/BeamMPOfficial)
-```
+- [YouTube](https://www.youtube.com/@BeamMPOfficial)
+- [X](https://x.com/BeamMPOfficial)
+- [Bluesky](https://bsky.app/profile/beammp.com)
+- [Reddit](https://www.reddit.com/r/BeamMP)
+- [Twitch](https://www.twitch.tv/beammpofficial)
+- [Instagram](https://www.instagram.com/beammpofficial)
+- [TikTok](https://www.tiktok.com/@beammpofficial)
+- [Facebook](https://www.facebook.com/BeamMPTeam)
 
-:::опасность ""
+## Поддержите проект
 
-```
-YouTube - [https://www.youtube.com/@BeamMPOfficial](https://www.youtube.com/@BeamMPOfficial)
-```
+Подписчики [Patreon](https://www.patreon.com/c/BeamMP) получают ранний доступ и дополнительные ключи сервера. Как это работает, читайте в [FAQ для игроков](/ru/players/faq).
 
-:::внимание ""
+## Создавайте вместе с нами
 
-```
-Patreon - [https://www.patreon.com/c/BeamMP](https://www.patreon.com/c/BeamMP)
-```
-
-:::примечание ""
-
-```
-Discord - [https://discord.com/invite/beammp](https://discord.com/invite/beammp)
-```
-
-:::информация ""
-
-```
-BlueSky - [https://bsky.app/profile/beammpofficial.bsky.social](https://bsky.app/profile/beammpofficial.bsky.social)
-```
+Код находится на [GitHub](https://github.com/BeamMP). Чтобы помочь с этой документацией, см. [Участие](/ru/community/contributing).
 
 ## Наши правила
 
-Наши правила вы можете найти [здесь](rules.md)
+Пожалуйста, прочитайте [правила сообщества](/ru/community/rules), прежде чем присоединяться к общению.
