@@ -1,13 +1,9 @@
-::: warning Diese Seite befindet sich im Aufbau!
+---
+description: "ImGui-Snippets für BeamNG.drive: ein Fenster einrichten, Text formatieren und gängige Steuerelemente verwenden, zum Kopieren bereit."
+---
+# ImGui-Code-Snippets
 
-An dieser Seite wird aktiv gearbeitet.
-
-Du möchtest helfen? Dann klicke bitte rechts auf das Symbol mit dem Blatt und dem Stift!
-
-Das ist auf jeder Seite möglich.
-:::
-
-# BeamNG.drive ImGui-Code-Snippets
+Snippets für BeamNG.drive, die du kopieren und anpassen kannst.
 
 ## Einrichtung
 

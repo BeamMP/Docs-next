@@ -1,26 +1,26 @@
-# Erstellen einer UI-App
+---
+description: "Erstelle eine UI-App für BeamNG.drive: die vier nötigen Dateien, ein vollständiges Beispiel mit HTML, JavaScript, Lua, CSS und JSON sowie die vom Spiel bereitgestellten Funktionen."
+---
+# UI-Apps (HTML)
 
-Um eine UI-App zu erstellen, benötigst du einige Kenntnisse des AngularJS-Frameworks. Die Hauptdokumentation findest du hier: [AngularJS-Dokumente](https://docs.angularjs.org/guide)
+Um eine UI-App zu erstellen, brauchst du einige Kenntnisse des AngularJS-Frameworks. Die zugehörige Dokumentation ist der [AngularJS-Leitfaden](https://docs.angularjs.org/guide).
 
 ## Dateistruktur
 
-Eine UI-App braucht vier wichtige Dateien um zu funktionieren:
+Eine UI-App braucht vier wichtige Dateien, um zu funktionieren:
+- app.js | Enthält den Hauptcode der UI-App [Javascript docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+- app.html | Der Code, der deine App anzeigt [HTML docs](https://developer.mozilla.org/en-US/docs/Web/HTML)
+- app.json | Enthält die Informationen der UI-App
+- app.png | Die Bilddatei, die in der App-Auswahl angezeigt wird
 
-- app.js | Enthält den Hauptcode, welche die UI-App nutzt [Javascript docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
-- app.html | Der Code der deine App zeigt [Html docs](https://developer.mozilla.org/fr/docs/Web/HTML)
-- app.json | Enthält die Information der UI-App
-- app.png | Die Bild-Datei, welche im App-Selektor aufscheint
-
-### UI-App Style
-
-Wir empfehlen die Verwendung des `<style>` -Tags zum Stylen deiner  App. Eine CSS-Datei funktioniert zwar, aber du kannst die Änderungen nicht in Echtzeit sehen.
+### Deine App stylen
+Wir empfehlen, zum Stylen deiner App das ``<style>``-Tag zu verwenden. Eine .css-Datei funktioniert ebenfalls, aber du kannst die Änderungen dann nicht in Echtzeit sehen.
 
 ## Beispiel
 
-Dieses Beispiel ist von DanielW. Danke an ihn.
+Dieses Beispiel stammt von DanielW. Danke an ihn.
 
 ui\modules\apps\ExampleApp\app.html
-
 ```html
 <div style="width: 100%; height: 100%;" class="bngApp">
     <link type="text/css" rel="stylesheet" href="/ui/modules/apps/ExampleApp/app.css" />
@@ -51,15 +51,13 @@ ui\modules\apps\ExampleApp\app.html
                     <md-icon class="material-icons">delete</md-icon>
                 </md-button>
             </li>
-        </ul>
+        </ul>        
     </div>
 </div>
 ```
-
-Hier siehst du ein `<span>` -Tag, das den Gang deines Fahrzeugs anzeigt, eine Eingabe, die zum Senden einer Nachricht an die Funktion `sendMessage()` im Javascript verwendet wird und ein wiederholtes `<li>` -Tag, das <b>ng-repeat</b> für die Variable `messages` im Javascript verwendet.
+Hier siehst du ein ``<span>``-Tag, das den Gang deines Fahrzeugs anzeigt, eine Eingabe, die eine Nachricht an die Funktion ``sendMessage()`` im Javascript sendet, und ein wiederholtes ``<li>``-Tag, das <b>ng-repeat</b> auf die Variable ``messages`` im Javascript anwendet.
 
 ui\modules\apps\ExampleApp\app.js
-
 ```js
 angular.module('beamng.apps')
 .directive('exampleApp', [function() {
@@ -120,26 +118,23 @@ angular.module('beamng.apps')
     }
 }])
 ```
+Beachte die Verwendung von <b>$scope</b>. Das ist sehr wichtig, denn du musst deine Variablen und Funktionen innerhalb von <b>$scope</b> definieren, um vom <b>Html</b> aus in einem beliebigen <b>ng-*</b>-Tag darauf zugreifen zu können.
+In diesem Beispiel wird nach der Ausführung der Funktion ``sendMessage()`` aus dem <b>Html</b> die Nachricht an eine Lua-Datei im Extensions-Verzeichnis des Mods gesendet und die Funktion ``modifyMessage()`` in dieser Lua-Datei ausgeführt.
 
-Beachte die Verwendung von <b>$scope{/b0} . Dies ist sehr wichtig, da du deine Variablen und Funktionen innerhalb von {b1}$scope</b> definieren musst, um vom <b>HTML-Code</b> innerhalb eines <b>ng-*-</b> Tags darauf zugreifen zu können. In diesem Beispiel wird die Funktion `sendMessage()` nach der Ausführung vom <b>HTML-Code</b> an eine Lua-Datei im Erweiterungsverzeichnis des Mods gesendet und die Funktion `modifyMessage()` in dieser Lua-Datei ausgeführt.
-
-Ein Beispiel wie die LUA Seite aussehen könnte:
-
+Ein Beispiel, wie die Lua-Seite aussehen könnte:
 ```lua
 local function modifyMessage(message)
     message = message .. " [Modified!]"
     guihooks.trigger('MessageReady', message)
 end
 ```
+^ Das ist eine vereinfachte Version des Lua-Codes, die nur die Funktion zeigt
 
-^ Das ist eine vereinfachte Version der lua um die Funktionen zu zeigen
+Der Schwerpunkt liegt hier auf der Verwendung von <b>guihooks.trigger</b>, das ein mit ``$scope.$on()`` definiertes AngularJS-Event auslöst. Wie du ganz unten in der Javascript-Datei siehst, heißt das Event MessageReady und wird von der Funktion <b>guihooks.trigger</b> mit der Nachricht als Payload ausgeführt. Die Nachricht wird dann in die Variable ``$scope.messages`` eingefügt, damit sie vom li-Tag mit <b>ng-repeat</b> in der <b>Html</b>-Datei angezeigt wird.
 
-Der Schwerpunkt liegt hier auf der Verwendung von <b>guihooks.trigger</b> , das ein mit `$scope.$on()` definiertes AngularJS-Ereignis auslöst. Wie du ganz unten in der Javascript-Datei sehen kannst, heißt das Ereignis MessageReady und wird von der Funktion <b>guihooks.trigger</b> mit der Nachrichtennutzlast ausgeführt. Anschließend wird es in die Variable `$scope.messages` eingefügt, um vom li-Tag mit <b>ng-repeat</b> in der <b>HTML</b> -Datei angezeigt zu werden.
-
-Die vollständige Lua-Datei befindet sich unten
+Die vollständige Lua-Datei steht direkt darunter
 
 lua\ge\extensions\exampleMod.lua
-
 ```lua
 local M = {}
 
@@ -206,11 +201,11 @@ M.modifyMessage            = modifyMessage
 
 return M
 ```
+Beachte, dass es sehr wichtig ist, die Variable M (das Modul) mit den benötigten Funktionen zurückzugeben!
+Ohne die Zeile ``M.modifyMessage = modifyMessage`` kann die Funktion ``bngApi.engineLua('extensions.exampleMod.modifyMessage("' + $scope.message + '")')`` zum Beispiel die Funktion modifyMessage() nicht finden
 
-Beachte , dass es sehr wichtig ist, die Variable M (Modul) mit den benötigten Funktionen zurückzugeben! Ohne die Zeile `M.modifyMessage = modifyMessage` kann die Funktion `bngApi.engineLua('extensions.exampleMod.modifyMessage("' + $scope.message + '")')` die Funktion modifyMessage() nicht finden.
 
 ui\modules\apps\ExampleApp\app.css
-
 ```css
 #exampleAppContainer {
     width: 100%;
@@ -227,9 +222,7 @@ ui\modules\apps\ExampleApp\app.css
     padding: 0;
 }
 ```
-
 ui\modules\apps\ExampleApp\app.json
-
 ```json
 {
   "domElement": "<example-app></example-app>",
@@ -251,23 +244,19 @@ ui\modules\apps\ExampleApp\app.json
   "directive": "exampleApp"
 }
 ```
+Die Direktive muss dieselbe sein wie in der <b>Javascript</b>-Datei
 
-Die Direktive muss gleich wie in der <b>Javascript</b> Datei sein.
-
-# Javascript Funktionen bereitgestellt von BeamNG für UI-Apps
-
+## Von BeamNG bereitgestellte JavaScript-Funktionen für UI-Apps
 ```js
 bngApi.engineLua("lua_path.function()")
 ```
+Nützlich, um eine Lua-Funktion mit oder ohne Argumente auszuführen
 
-Hilfreich um eine lua Funktion ohne Argumente auszuführen.
-
-# Lua Funktionen bereitgestellt von BeamNG für UI-Apps
-
+## Von BeamNG bereitgestellte Lua-Funktionen für UI-Apps
 ```lua
 guihooks.trigger("EventName", Payload)
 ```
+Die Payload kann von beliebigem Typ sein, aber es ist besser, ein Array/Objekt oder einen String zu verwenden, damit sie nicht verloren geht.
 
-Die Nutzlast kann von beliebigem Typ sein, aber es ist besser, sie als Array/Objekt oder Zeichenfolge beizubehalten, damit sie nicht verloren geht.
+<b>WICHTIG</b>: Manchmal kommt es vor, dass der von dir verwendete Eventname intern bereits von etwas anderem verwendet wird und Probleme verursacht. Wenn deine App zum Beispiel Nickel heißt, ist es empfehlenswert, jedes deiner Angular-Events wie NKEventName statt EventName zu benennen
 
-<b>WICHTIG</b> : Manchmal kann es vorkommen, dass der von dir verwendete Ereignisname intern bereits von etwas anderem verwendet wird und Probleme verursacht. Wenn deine App beispielsweise Nickel heißt, kann es eine gute Entscheidung sein, jedes deiner Angular-Ereignisse wie NKEventName anstelle von EventName zu benennen.

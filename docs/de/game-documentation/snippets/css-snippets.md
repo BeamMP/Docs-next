@@ -1,12 +1,9 @@
-::: warning Diese Seite befindet sich im Aufbau!
-An dieser Seite wird aktiv gearbeitet.
+---
+description: "CSS-Snippets für BeamNG.drive-UI-Apps: häufig verwendete Variablen und fertige Stile zum Kopieren."
+---
+# CSS-Code-Snippets
 
-Du möchtest helfen? Dann klicke bitte rechts auf das Symbol mit dem Blatt und dem Stift!
-
-Das ist auf jeder Seite möglich.
-:::
-    
-# BeamNG.drive CSS-Code-Snippets
+Snippets für BeamNG.drive, die du kopieren und anpassen kannst.
 
 ## Häufig verwendete Variablen
 

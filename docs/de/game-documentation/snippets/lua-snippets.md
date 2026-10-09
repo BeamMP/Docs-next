@@ -1,12 +1,9 @@
-::: warning Diese Seite befindet sich im Aufbau!
-An dieser Seite wird aktiv gearbeitet.
+---
+description: "Fertige Lua-Snippets für BeamNG.drive: eine Markierung zeichnen, Fahrzeuge erkennen sowie Toast-, Nachrichten-, Einblendungs- und Bestätigungsdialoge und Tutorial-Popups anzeigen."
+---
+# Lua-Code-Snippets
 
-Du möchtest helfen? Dann klicke bitte rechts auf das Symbol mit dem Blatt und dem Stift!
-
-Das ist auf jeder Seite möglich.
-:::
-    
-# BeamNG.drive Lua-Code-Snippets
+Snippets für BeamNG.drive, die du kopieren und anpassen kannst.
 
 ## Welt
 
@@ -102,7 +99,7 @@ guihooks.trigger('toastrMsg', {type = "info", title = "Info Message:", msg = "In
 guihooks.trigger('toastrMsg', {type = "warning", title = "Warning Message:", msg = "Warning Message Text Here", config = {timeOut = 5000}}) 
 guihooks.trigger('toastrMsg', {type = "error", title = "Error Message:", msg = "Error Message Text Here", config = {timeOut = 5000}}) 
 ```
-### Nachrichtenbenachrichtigungen, standardmäßig oben links auf dem Bildschirm in der Nachrichten-App
+### Nachrichtenbenachrichtigungen, standardmäßig oben links auf dem Bildschirm in der Messages-App
 
 Dafür wird die UI-App „Messages“ oder „Messages & Tasks“ benötigt. Symbole findest du unter `ui\ui-vue\src\assets\fonts\bngIcons\svg\`
 
@@ -195,9 +192,9 @@ guihooks.trigger("ConfirmationDialogClose", "Example Title")
 
 Beide Felder einer Schaltfläche müssen Strings sein, damit die Schaltfläche angezeigt wird.
 
-Wenn die Schaltfläche „Okay“ angegeben ist, entspricht das Auslösen der Aktion *OK / Primäraktion* dem Drücken der Schaltfläche „Okay“.
+Wenn die Schaltfläche „Okay“ angegeben ist, entspricht das Auslösen der Aktion *OK / Primary action* dem Drücken der Schaltfläche „Okay“.
 
-Wenn die Schaltfläche „Cancel“ angegeben ist, entspricht das Auslösen der Aktion *Menü* dem Drücken der Schaltfläche „Cancel“.
+Wenn die Schaltfläche „Cancel“ angegeben ist, entspricht das Auslösen der Aktion *Menu* dem Drücken der Schaltfläche „Cancel“.
 
 HTML wird unterstützt und kann zum Beispiel verwendet werden, um Bilder oder Symbole einzufügen.
 
@@ -302,7 +299,7 @@ Die Hintergrundunschärfe hat eine Mindesthöhe, sodass bei Popups mit kurzem In
 
 ### introPopupMission
 
-introPopupMission ist fast identisch mit introPopupCareer, aber die Schaltflächen müssen definiert werden, anstatt eine Vorgabe auszuwählen.
+introPopupMission ist fast identisch mit introPopupCareer, aber die Schaltflächen müssen definiert werden, anstatt eine Vorgabe dafür auszuwählen.
 
 Schaltflächenstile werden zu *bng-button-*`style` zusammengesetzt. Die integrierten Schaltflächenstile sind:
 
