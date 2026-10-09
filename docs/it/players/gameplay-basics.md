@@ -1,33 +1,33 @@
-# Per iniziare
-
 ---
-## **Prima di iniziare**
-BeamMP è compatibile solo con versioni originali del gioco. Le versioni piratate non sono supportate.
-
+description: "Cosa vedi e puoi fare mentre giochi a BeamMP: elenco giocatori, nametag, chat, veicoli degli altri giocatori, spettatore e coda degli eventi."
 ---
-## **Installazione**
+# Nozioni base di gameplay
 
-BeamMP è nativamente compatibile solo con Windows al momento.
+Questa pagina spiega cosa cambia in BeamNG.drive quando giochi su un server BeamMP. Le impostazioni che stanno dietro a ogni funzione sono in [Impostazioni multigiocatore](/it/players/multiplayer-settings).
 
-### **Installazione su Windows**
-1. Vai su [beammp.com](https://beammp.com/) e clicca il pulsante "Download client".
-2. Estrai la cartella `BeamMP_Installer.zip`.
-3. Avvia `BeamMP_Installer.exe` e segui le istruzioni a schermo.
-4. L'icona di `BeamMP-Launcher` dovrebbe apparire sul tuo desktop. Se questo non fosse il caso cerca `BeamMP` nella barra di ricerca di Windows, dopodiché clicca il l'icona per avviarlo.
-5. Una volta avviato l'eseguibile vedrai un terminale e in seguito BeamNG si avvierà automaticamente. **Non** chiudere la finestra del terminale.
-6. Raggiunto il menù principale del gioco, clicca sul pulsante `Multiplayer` per giocare in multigiocatore.
-7. Prima di giocare, ti sarà richiesto di effettuare il login o di giocare come ospite (non tutti i server accettano giocatori ospiti). Puoi creare un account sul nostro [forum](https://forum.beammp.com) e poi usare le credenziali del forum per fare il login in gioco.
-8. Seleziona un server che ti piace e premi `Connect`.
+## L'elenco dei giocatori
 
-Nota: _Se ti connetti ad un server con molti giocatori potresti impiegare più tempo ad entrare in gioco._
+L'elenco dei giocatori in gioco mostra il nome e il ping di ciascun giocatore. Puoi mostrare anche l'ID di ogni giocatore, utile per lo staff del server. Cliccando sul nome di un giocatore lo osservi in modalità spettatore, oppure carichi le sue modifiche in coda: nelle impostazioni scegli quale tasto del mouse fa cosa.
 
-### **Installazione su Linux**
-Consultare la [documentazione in inglese](https://docs.beammp.com/game/getting-started/#2b-linux-installation).
+## Nametag
 
----
+Ogni giocatore ha un nametag sopra il proprio veicolo, che può includere un tag del ruolo. Puoi nascondere i nametag, mostrare la distanza da ogni giocatore e farli comparire o scomparire gradualmente in base alla distanza.
 
-## **Problemi noti**
-- Se il pulsante `Multiplayer` non è visibile, assicurarsi che la mod `multiplayerbeammp` sia l'unica attiva nel "Mod Manager" dopodiché premi `ctrl + L`.
-- Assicurarsi che la mod `multiplayerbeammp` sia l'unica attiva nel "Mod Manager", altrimenti potrebbero sorgere diversi problemi.
+## Chat
 
-Se hai dei problemi, chiedi pure sul nostro [Forum](https://forum.beammp.com) o sul nostro [server Discord](https://discord.gg/beammp) nel canale `#support`.
+La chat si trova in una finestra che puoi trascinare fuori dal gioco (il nuovo menu della chat) oppure nell'app UI.
+
+## I veicoli degli altri giocatori
+
+- I veicoli dei giocatori compaiono nel tuo gioco e le modifiche alle loro parti vengono sincronizzate con te. Puoi inviare agli altri le modifiche alle tue parti con il pulsante di sincronizzazione delle parti nel selettore delle parti, oppure farle inviare automaticamente.
+- Premi `Tab` per passare da un veicolo all'altro. Puoi saltare i veicoli degli altri giocatori.
+- Un veicolo che non è ancora comparso nel tuo gioco appare come una sfera segnaposto colorata, chiamata blob.
+- Per proteggere la tua creazione, attiva la protezione dalla clonazione delle configurazioni, così gli altri giocatori non possono salvare la configurazione del tuo veicolo.
+
+## La coda degli eventi
+
+Quando un altro giocatore fa comparire o modifica un veicolo, il tuo gioco può mettere la modifica in coda invece di caricarla subito, così un caricamento non interrompe la tua guida. Le modifiche in coda vengono caricate quando clicchi sul pulsante **Events** in alto sullo schermo, quando clicchi sul nome del giocatore, oppure automaticamente quando hai guidato abbastanza a lungo a bassa velocità. Vedi [le impostazioni della coda degli eventi](/it/players/multiplayer-settings#event-queue).
+
+## Server con mod
+
+Quando ti connetti a un server che ha delle mod, BeamMP mostra prima un avviso di sicurezza sulle mod. Leggi [Sicurezza mod](/it/players/mod-safety) prima di accettarlo.

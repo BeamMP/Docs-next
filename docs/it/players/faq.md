@@ -1,26 +1,36 @@
-# F.A.Q. per il giocatore
-
 ---
-## Come collego il mio account Discord?
+description: "Risposte alle domande sull'account BeamMP: collegare Discord, ottenere l'early access e ricevere i vantaggi di Patreon."
+---
+# FAQ del giocatore
 
-Puoi collegare il tuo account Discord a BeamMP mandando il messaggio `!link` al bot [BeamMP Accounts](https://discordapp.com/channels/@me/1201234743568634026/).
-Il bot ti risponderà con un link dove potrai fare login con il tuo account BeamMP. Una volta effettuato il login riceverai un secondo messaggio di conferma del collegamento. :tada:
+Domande sul tuo account BeamMP e sul sostegno al progetto. Per le domande su come giocare, consulta le [FAQ del gioco](/it/players/game-faq).
 
-## Come ottengo l'early access?
+## Collegare il tuo account Discord
 
-L'early access (che include la tag in gioco viola e altri vantaggi), si può ottenere facendo server boost al nostro server Discord, oppure supportandoci su [Patreon](https://patreon.com/BeamMP).
+### Come collego il mio account Discord?
 
-## Ho supportato tramite Patreon, come ottengo i benefici?
+Il collegamento tra gli account Discord e BeamMP è una novità. Vai nelle [preferenze dell'account sul forum](https://forum.beammp.com/my/preferences/account) e collega il tuo account Discord sotto **Associated Accounts**. L'opzione è visibile solo se sul forum l'autenticazione a due fattori (2FA) è disattivata.
 
-Effettua le seguenti operazioni per ottenere automaticamente i vantaggi dell'early access:
+## Early access e Patreon
 
-1. Collega il tuo account Discord con Patreon per ricevere i ruoli di early access nel nostro server Discord.
-2. Assicurati di aver usato la stessa email sia per Patreon sia per il tuo account [BeamMP](https://forum.beammp.com/).
+### Come ottengo l'early access?
 
-Potrebbero volerci fino a 4 ore per la sincronizzazione tra Patreon e BeamMP. Se dopo 12 ore non hai ancora ottenuto i benefici di Patreon e hai correttamente effettuato i passi precedenti, contatta il supporto di BeamMP.
+Ottieni l'early access, compreso il nametag viola e altri vantaggi, sostenendoci economicamente. Puoi acquistare un livello su [Patreon](https://patreon.com/BeamMP), fare una donazione oppure fare boost al server Discord.
+
+- Donando **x** US$ ottieni **x** chiavi server aggiuntive, oltre ai vantaggi dell'early access.
+- Facendo boost al server Discord ottieni 5 chiavi server aggiuntive in totale (non 5 per ogni boost), oltre ai vantaggi dell'early access.
+
+### Ho sottoscritto Patreon. Come ottengo i miei vantaggi?
+
+Ricevi i tuoi vantaggi automaticamente se fai entrambe queste cose:
+
+1. Collega il tuo account Discord su [Patreon](https://www.patreon.com/settings/apps/discord), per ricevere i ruoli e l'accesso nel server Discord.
+2. Usa su Patreon lo stesso indirizzo email del tuo account BeamMP sul [forum](https://forum.beammp.com/).
+
+La sincronizzazione del sistema può richiedere alcune ore, a volte fino a 12. Se hai fatto entrambe le cose e dopo 12 ore non hai ancora i vantaggi, contatta il supporto di BeamMP.
 
 ## Ho altre domande
 
-Se la tua domanda o problema riguarda il gioco o come giocare, guarda le [FAQ del gioco](/it/players/game-faq).
-Se la tua domanda o problema riguarda la gestione del server, guarda le [FAQ del server](/it/server-owners/faq).
-In alternativa puoi consultare il nostro [forum](https://forum.beammp.com/c/faq/35) dove puoi trovare domande e risposte dalla comunità.
+- Sul gioco o su come giocare: le [FAQ del gioco](/it/players/game-faq).
+- Sulla gestione di un server: le [FAQ del server](/it/server-owners/faq).
+- Qualsiasi altra cosa: le [FAQ del forum](https://forum.beammp.com/c/faq/35), dove la community può fare domande e ricevere risposte.

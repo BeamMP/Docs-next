@@ -1,26 +1,57 @@
-# F.A.Q. per il giocatore
-
 ---
-## Come collego il mio account Discord?
+description: "Perché le mod locali possono impedire a BeamMP di funzionare e quattro modi per risolvere: disattivare le mod, creare una nuova cartella utente, svuotare la cache del Launcher, pulire la cartella content."
+---
+# Sicurezza mod
 
-Puoi collegare il tuo account Discord a BeamMP mandando il messaggio `!link` al bot [BeamMP Accounts](https://discordapp.com/channels/@me/1201234743568634026/).
-Il bot ti risponderà con un link dove potrai fare login con il tuo account BeamMP. Una volta effettuato il login riceverai un secondo messaggio di conferma del collegamento. :tada:
+BeamMP può smettere di funzionare quando hai delle mod locali installate. Questa pagina spiega perché succede e come risolvere.
 
-## Come ottengo l'early access?
+## Perché devo disattivare o rimuovere le mie mod?
 
-L'early access (che include la tag in gioco viola e altri vantaggi), si può ottenere facendo server boost al nostro server Discord, oppure supportandoci su [Patreon](https://patreon.com/BeamMP).
+In BeamMP è il server a cui decidi di connetterti a fornire le mod necessarie. Vengono scaricate e attivate automaticamente al momento della connessione.
+Avere mod locali installate e attive spesso impedisce a BeamMP di funzionare correttamente, anche se hai una sola mod in più oltre a BeamMP.
 
-## Ho supportato tramite Patreon, come ottengo i benefici?
 
-Effettua le seguenti operazioni per ottenere automaticamente i vantaggi dell'early access:
+Ci sono quattro modi per risolvere i problemi causati dalle mod quando usi BeamMP.
 
-1. Collega il tuo account Discord con Patreon per ricevere i ruoli di early access nel nostro server Discord.
-2. Assicurati di aver usato la stessa email sia per Patreon sia per il tuo account [BeamMP](https://forum.beammp.com/).
+### Disattiva le mod
+Prima di entrare in un server, assicurati di non avere attiva nessuna mod oltre a 'multiplayerbeammp'.
+Se questo metodo non funziona, ad esempio il gioco si blocca / mostra una schermata nera, oppure hai ancora problemi, prova la soluzione successiva.
 
-Potrebbero volerci fino a 4 ore per la sincronizzazione tra Patreon e BeamMP. Se dopo 12 ore non hai ancora ottenuto i benefici di Patreon e hai correttamente effettuato i passi precedenti, contatta il supporto di BeamMP.
+### Crea una nuova cartella utente
 
-## Ho altre domande
+In questo modo il gioco ottiene una cartella utente pulita.
 
-Se la tua domanda o problema riguarda il gioco o come giocare, guarda le [FAQ del gioco](/it/players/game-faq).
-Se la tua domanda o problema riguarda la gestione del server, guarda le [FAQ del server](/it/server-owners/faq).
-In alternativa puoi consultare il nostro [forum](https://forum.beammp.com/c/faq/35) dove puoi trovare domande e risposte dalla comunità.
+1. Chiudi BeamNG.drive.
+2. Apri il launcher di BeamNG e clicca su **Manage User Folder**, poi su **Open user folder**.
+3. Rinomina la cartella `current`, ad esempio in `current_old`.
+
+![I tre passaggi: Manage User Folder nel launcher di BeamNG, Open user folder, poi la rinomina della cartella current](../../assets/content/new-userfolder.png)
+
+Al prossimo avvio il gioco crea una nuova cartella utente, pulita.
+
+::: warning Le mie impostazioni e configurazioni sono sparite! Come le ripristino?
+Se hai rinominato la cartella utente, hai costretto il gioco a creare una nuova cartella utente pulita. Puoi copiare le cartelle 'settings' e 'vehicles' dalla cartella che hai rinominato (ad esempio `current_old`) nella nuova cartella creata dal gioco.
+Assicurati che BeamNG.drive sia chiuso e sostituisci tutti gli elementi nella destinazione in cui copi le cartelle. A questo punto dovresti avere di nuovo tutte le configurazioni e le impostazioni com'erano prima.
+:::
+
+::: warning Fai attenzione quando rimetti file/cartelle nella nuova cartella utente.
+Se hai risolto dei problemi rinominando la cartella utente, rimettere i vecchi file potrebbe far ricomparire i problemi che avevi.
+:::
+
+
+
+Quando hai finito, avvia BeamNG.drive tramite il Launcher di BeamMP: nel repository dovresti avere 'multiplayerbeammp' come unica mod attiva, oltre al pulsante nel menu principale per entrare in BeamMP.
+Se hai ancora problemi a entrare in un server con mod, è probabile che quel server fornisca mod difettose o non aggiornate.
+
+### Svuota la cache del Launcher
+Per ripulire le mod in cache dalle cartelle di BeamMP, vai nella cartella in cui hai installato il Launcher di BeamMP. Per impostazione predefinita il percorso è 'C:\Users\AppData\BeamMP-Launcher\'. Al suo interno trovi una cartella 'Resources'.
+Eliminala per cancellare tutte le mod in cache. Può essere utile se ti serve più spazio sul disco o se vuoi eliminare le mod di BeamNG non aggiornate.
+
+### Rimuovi le mod dalla cartella content
+Se hai messo delle mod nella cartella content, devi rimuoverle.
+Per accedere alla cartella Beamng.drive\content\ e ripulirla da tutte le mod, apri la cartella in cui è installato BeamNG.drive.
+Fai clic destro sulla cartella `content` ed eliminala. Poi verifica i file del gioco tramite Steam o Epic Games. In questo modo vengono scaricati di nuovo i file di base.
+
+::: quote DO_NOT_INSTALL_MODS_HERE.txt
+Do NOT copy mods into this folder: it can lead to broken mods, slower installation of updates, a broken mod manager, broken Safe Mode and others.
+:::
