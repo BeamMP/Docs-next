@@ -1,54 +1,68 @@
-# BeamMP Docs README
+# BeamMP Docs
 
-Welcome to the BeamMP Docs GitHub Repository. We are glad you are here because this hopefully means you are looking to help the project out by contributing some of your time towards improving this! Please check out the below as this will help you get started.
+The BeamMP documentation site, built with [VitePress](https://vitepress.dev). We are glad you are here: this hopefully means you want to help improve the docs. Please read the below, as it will help you get started.
 
-# Contributing to the BeamMP Docs
+> [!NOTE]
+> **This repository is the VitePress rebuild of the docs**, previewed at <https://docs.beammp.dev>. The live site at <https://docs.beammp.com> is still built from [BeamMP/Docs](https://github.com/BeamMP/Docs) with MkDocs until this one replaces it. Content changes made there are merged in here regularly.
 
-BeamMP is using [Material for MkDocs](https://squidfunk.github.io/mkdocs-material) as its theme. This is a theme for [MkDocs](https://www.mkdocs.org).
-Full documentation can be found at their respective sites.
+## Contributing
 
-## Getting Started
+There are two ways to help.
 
-To help contribute to these docs you can take one of two approaches as set out below:
+### 1. Edit the Markdown files
 
-### 1. Edit the raw markdown files
+This is the fastest way for spelling, grammar and small additions.
 
-Editing the raw markdown files is the fastest approach and best for quick edits such as spelling, grammar or new snippets of content. 
-This approach does require a prior knowledge of markdown however as you will need to understand what your contribution will produce.
+1. Open the page you want to change under `docs/` and click edit.
+2. Fork the project into your own GitHub account and make your changes.
+3. Raise a pull request against this repository.
 
-If this is the approach you wish to take then please follow these steps:
+A member of the BeamMP Mod Team will review it. Once it is merged it is deployed automatically.
 
-1. Click edit on the page you wish to edit.
-2. Fork the project into your own GitHub account.
-3. Make the changes you see fit.
-4. Commit your changes to your fork.
-5. Raise a pull request against our repository [here](https://github.com/BeamMP/Docs).
+### 2. Edit with a live preview
 
-Once you have created your pull request one of the BeamMP Mod Team will review your Pull Request and either approve it or request some changes.
-If changes were requested and you have completed them we will re-review your Pull Request.
-Then your changes will be merged into the repository and automatically deployed as part of our continuous integration.
+1. Fork and clone the project.
+2. Install [Node.js](https://nodejs.org) 22 or newer, then run `npm install`.
+3. Run `npm run dev` and open the address it prints. The page updates as you edit.
+4. Make your changes, then run `npm test` and `npm run check` (see below).
+5. Commit to your fork and raise a pull request.
 
-### 2. Make edits with live preview
+## Writing pages
 
-Editing our docs this way will still take a similar approach as in option 1 however you will be able to preview your changes this way.
+Pages are Markdown, with VitePress extensions. The old MkDocs syntax does **not** work here.
 
-1. Click edit on the page you wish to edit.
-2. Fork the project into your own GitHub account.
-3. Clone the project locally.
-4. Setup Material for MkDocs according to their guide [here](https://squidfunk.github.io/mkdocs-material/getting-started/)
-5. Install the required plugins using the following command: `pip install mkdocs-material mkdocs-git-revision-date-localized-plugin "mkdocs-material[imaging]" mkdocs-static-i18n[material]`
-6. Run `mkdocs serve` to start the live-reloading docs server from where you cloned the fork to.
-7. Make the changes that you see fit.
-8. Commit your changes to your fork.
-9. Raise a pull request against our repository [here](https://github.com/BeamMP/Docs).
+| You want | Write this |
+|---|---|
+| A note, tip, warning or danger box | `::: warning` on one line, the text, then `:::` on its own line |
+| A box with a title | `::: tip My title` |
+| A collapsible section | `::: details Title` ... `:::` |
+| A less common box | `::: info`, `::: note` or `::: question` |
 
+Always close a box with `:::`. A box that is left open swallows the rest of the page.
+
+## Checks
+
+```bash
+npm test            # tests for the check tooling itself
+npm run check       # checks the pages, and fails if anything got worse
+```
+
+`npm run check` looks for MkDocs syntax that VitePress does not understand, boxes that are left open, pages that do not compile, and dead links. Many pages still have problems from the move to VitePress, so they are saved in `scripts/docs-check-baseline.json`. The check fails only when a page gets **worse** than its baseline. When you fix problems, run `npm run check:update-baseline` and commit the smaller file, so they stay fixed.
+
+The same checks run on every pull request.
+
+## Deployment
+
+Every push to `main` is built and published to GitHub Pages by `.github/workflows/deploy.yml`. Pull requests run the tests, the checks and a build, and do not publish.
 
 ## Project layout
 
-    mkdocs.yml    # The configuration file.
     docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+        .vitepress/   # Site configuration, navigation and theme.
+        en/ de/ ...   # The pages, one folder per language.
+        assets/       # Images and other files.
+    scripts/          # The check tooling and its baseline.
+    tests/            # Tests for the check tooling.
 
 ## Translations
 
