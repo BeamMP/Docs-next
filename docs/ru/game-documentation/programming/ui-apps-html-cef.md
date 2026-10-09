@@ -1,26 +1,26 @@
-# Создание UI-приложения
+---
+description: "Создание UI-приложения BeamNG.drive: четыре необходимых файла, полный пример на HTML, JavaScript, Lua, CSS и JSON, а также функции, которые предоставляет игра."
+---
+# UI-приложения (HTML)
 
-Для создания UI-приложения вам понадобятся некоторые знания фреймворка AngularJS, основную документацию можно найти здесь: [AngularJS docs](https://docs.angularjs.org/guide)
+Чтобы создать UI-приложение, нужно знать фреймворк AngularJS. Его документация — [руководство AngularJS](https://docs.angularjs.org/guide).
 
-## Структура файла
+## Структура файлов
 
-Для работы UI-приложения необходимы четыре важных файла:
+Для работы UI-приложения нужны четыре важных файла:
+- app.js | Содержит основной код UI-приложения [документация по Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+- app.html | Код, который отображает ваше приложение [документация по HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
+- app.json | Содержит информацию об UI-приложении
+- app.png | Файл изображения, который показывается в селекторе приложений
 
-- app.js | Содержит основной код, используемый [документацией UI-приложения Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
-- app.html | Код, который отображает [HTML-документы](https://developer.mozilla.org/fr/docs/Web/HTML) вашего приложения
-- app.json | Содержит информацию о UI-приложении
-- app.png | Файл изображения, отображаемый в селекторе приложений
-
-### Стиль UI-приложения
-
-Мы рекомендуем использовать тег `<style>` для стилизации вашего приложения. Файл .css тоже подойдет, но вы не сможете видеть изменения в режиме реального времени.
+### Стилизация приложения
+Мы рекомендуем стилизовать приложение с помощью тега ``<style>``. Файл .css тоже подойдёт, но вы не сможете видеть изменения в реальном времени.
 
 ## Пример
 
-Этот пример от DanielW. Отдельная ему благодарность
+Этот пример написал DanielW. Благодарим его.
 
 ui\modules\apps\ExampleApp\app.html
-
 ```html
 <div style="width: 100%; height: 100%;" class="bngApp">
     <link type="text/css" rel="stylesheet" href="/ui/modules/apps/ExampleApp/app.css" />
@@ -39,27 +39,25 @@ ui\modules\apps\ExampleApp\app.html
 
         <span style="display: block">Messages:</span>
 
-        <!-- Область прокрутки -->
+        <!-- Scroll Area -->
         <ul bng-nav-scroll style="margin: 0; padding: 0; overflow-y: auto; width: 100%; height: 100%; background-color: #37373740;">
 
-            <!-- Перебор сообщений и их отображение -->
+            <!-- Iterate over the messages and display them -->
             <li ng-repeat="message in messages track by $index" style="display: flex; align-items: center; height: 35px;">
                 <span style="padding: 0 0.2em; width: 100%;">{{ message }}</span>
         
-                <!-- Кнопка для удаления сообщения, вызывает функцию `deleteMessage` в `app.js` -->
+                <!-- Button to delete the message, this calls the `deleteMessage` function in `app.js` -->
                 <md-button md-no-ink class="md-icon-button md-warn" ng-click="deleteMessage($index)">
                     <md-icon class="material-icons">delete</md-icon>
                 </md-button>
             </li>
-        </ul>
+        </ul>        
     </div>
 </div>
 ```
-
-Здесь вы можете увидеть тег `<span>`, отображающий передачу вашего транспортного средства, входные данные, используемые для отправки сообщения функции `sendMessage()` в Javascript, и повторяющийся тег `<li>` использующий <b>ng-repeat</b> для переменной `messages`, расположенной в Javascript.
+Здесь вы видите тег ``<span>``, который показывает передачу вашего транспорта, поле ввода, с помощью которого сообщение отправляется в функцию ``sendMessage()`` в Javascript, и повторяющийся тег ``<li>``, использующий <b>ng-repeat</b> для переменной ``messages`` из Javascript
 
 ui\modules\apps\ExampleApp\app.js
-
 ```js
 angular.module('beamng.apps')
 .directive('exampleApp', [function() {
@@ -74,8 +72,7 @@ angular.module('beamng.apps')
             $scope.message  = ''
             $scope.messages = []
 
-            // Настраиваем потоки, которые нам нужны. Пока что нам нужна только информация о двигателе.
-            // Можно добавить больше, нужно будет просто поискать доступные потоки.
+            // Setup the streams we want. For now, we only want the engine information. You can add more, you'll just have to look around to find the different streams
             let steamList = ['engineInfo']
             StreamsManager.add(steamList)
 
@@ -83,16 +80,16 @@ angular.module('beamng.apps')
                 StreamsManager.remove(steamList)
             })
 
-            // Нужно ли вообще писать этот комментарий, объясняя, что делает эта функция?
-            // Ну, я писал комментарии для многих других вещей, даже когда это было не нужно. Пусть уж этот останется...
+            // Do I even need to put this comment here explaining what this function does?
+            // Well, I have done it for a lot of other things when they weren't needed. I'll leave this one be...
             $scope.$on('streamsUpdate', function(event, streams) {
-                if (!streams.engineInfo) // Ранний выход... Наверное, ты и без этого бесполезного комментария понял
+                if (!streams.engineInfo) // Early return... You probably noticed that without this useless comment though
                     return;
 
-                // `lua/vehicle/controller/vehicleController.lua:538` (или можно использовать console.log)
+                // `lua/vehicle/controller/vehicleController.lua:538` (or use console.log)
                 let gear = streams.engineInfo[5]
 
-                // Обновляем название передачи в HTML при необходимости
+                // Update the gear name in HTML if needed
                 if ($scope.gearName !== gear)
                     $scope.gearName = gear
             })
@@ -104,7 +101,7 @@ angular.module('beamng.apps')
                 if ($scope.message == '')
                     return
 
-                // Передаём сообщение в Lua-расширение, чтобы оно его изменило
+                // Forward the message to the Lua extension to modify it
                 bngApi.engineLua('extensions.exampleMod.modifyMessage("' + $scope.message + '")')
                 $scope.message = ''
             }
@@ -113,7 +110,7 @@ angular.module('beamng.apps')
                 $scope.messages.splice(idx, 1)
             }
 
-            // Функция `modifyMessage` вызовет этот хук с изменёнными данными
+            // The `modifyMessage` function will call this hook with the modified data
             $scope.$on('MessageReady', function(_, modifiedMessage) {
                 $scope.messages.push(modifiedMessage)
             });
@@ -121,97 +118,94 @@ angular.module('beamng.apps')
     }
 }])
 ```
-
-Обратите внимание на использование <b>$scope{/b0}. Это очень важно, поскольку вам нужно будет определить переменные и функции в {b1}$scope</b>, чтобы иметь возможность доступа к ним из <b>Html</b> внутри любого тега <b>ng-*</b>. Таким образом, в этом примере после выполнения функции `sendMessage()` из <b>Html</b> она отправит его в файл lua, расположенный в каталоге расширений мода, и выполнит функцию `modifyMessage()` внутри этого файла lua.
+Обратите внимание на использование <b>$scope</b>. Это очень важно: переменные и функции нужно определять внутри <b>$scope</b>, чтобы иметь к ним доступ из <b>Html</b> внутри любого тега <b>ng-*</b>.
+Так, в этом примере после выполнения функции ``sendMessage()`` из <b>Html</b> сообщение отправляется в lua-файл, расположенный в каталоге extensions мода, и в этом lua-файле выполняется функция ``modifyMessage()``.
 
 Пример того, как может выглядеть сторона lua:
-
 ```lua
 local function modifyMessage(message)
     message = message .. " [Modified!]"
     guihooks.trigger('MessageReady', message)
 end
 ```
+^ Это упрощённая версия lua, чтобы показать только саму функцию
 
-^ Это упрощенная версия lua, просто показывающая функцию.
+Главное здесь — использование <b>guihooks.trigger</b>, которая запускает событие AngularJS, определённое с помощью ``$scope.$on()``. Как видно в самом низу файла Javascript, событие называется MessageReady. Его выполняет функция <b>guihooks.trigger</b> с полезной нагрузкой в виде сообщения, после чего оно добавляется в переменную ``$scope.messages`` и отображается тегом li с <b>ng-repeat</b> в файле <b>Html</b>
 
-Основное внимание здесь уделяется использованию <b>guihooks.trigger</b>, который запускает событие AngularJS, определенное с помощью `$scope.$on()`. Как вы можете видеть в самом низу файла Javascript, событие называется MessageReady и будет выполнено функцией <b>guihooks.trigger</b> с полезной нагрузкой сообщения, а затем будет помещено в переменную `$scope.messages` для отображения тегом li с помощью <b>ng-repeat</b> в файле <b>Html</b>.
-
-Полный файл lua находится ниже
+Полный lua-файл приведён ниже
 
 lua\ge\extensions\exampleMod.lua
-
 ```lua
 local M = {}
 
 --[[
-	Это точка входа нашего расширения — именно её загружает игра из файла `modScript.lua`.
-	В файле modScript можно загружать больше расширений и помещать их в ту же директорию, что и этот файл.
+    This is the entry point of our extension, this is what the game loads from our `modScript.lua`.
+    In the modScript file, you can load more extensions and put them in the same directory as this file.
 
-	В этом файле мы будем взаимодействовать со следующими компонентами:
-	1. Наше расширение для автомобиля. Оно сообщает этому расширению, когда нужно отправить данные, и мы их отправляем. См. `vehicle/extensions/auto/exampleVehicleExtension.lua`
-	2. Ввод. См. `core/input/actions/myActions.json`. Когда привязанная клавиша нажата, вызывается `onActionKeyDown` (функция, экспортируемая ниже)
+    In this file, we will communicate with the following:
+      1. Our vehicle extension. That extension tells this extension when to send it data, and we send it. Take a look at `vehicle/extensions/auto/exampleVehicleExtension.lua`
+      2. Input. Take a look at `core/input/actions/myActions.json`. When the bounded key is pressed, it will call `onActionKeyDown` (a function we export below)
 ]]
 
--- Хуки игровых функций
+-- Game Function Hooks
 --------------------------------------------
 local function onExtensionLoaded()
-	log('D', "onExtensionLoaded", "Called")
+    log('D', "onExtensionLoaded", "Called")
 end
 
 local function onExtensionUnloaded()
-	log('D', "onExtensionUnloaded", "Called")
+    log('D', "onExtensionUnloaded", "Called")
 end
 
--- Пользовательские функции
+-- Custom Functions
 --------------------------------------------
 local function onActionKeyDown()
-	log('D', "onActionKeyDown", "Pressed!")
+    log('D', "onActionKeyDown", "Pressed!")
 end
 
 local function onVehicleExtensionLoaded(vehID)
-	log('D', "onVehicleExtensionLoaded", "Sending some data to the vehicle")
+    log('D', "onVehicleExtensionLoaded", "Sending some data to the vehicle")
 
-	local veh = be:getObjectByID(vehID) -- Если у вас нет ID, можно также использовать `be:getPlayerVehicle(0)`, чтобы получить текущий автомобиль.
-	if not veh then return end -- Обычная проверка на ошибки
+    local veh = be:getObjectByID(vehID) -- If you don't have the ID, you can also use `be:getPlayerVehicle(0)` to get the current vehicle.
+    if not veh then return end -- The usual error checking
 
-	local data = {
-		["name"] = "Daniel W"
-	}
+    local data = {
+        ["name"] = "Daniel W"
+    }
 
-	veh:queueLuaCommand("extensions.exampleVehicleExtension.onDataReceived('" .. jsonEncode(data) .. "')")
+    veh:queueLuaCommand("extensions.exampleVehicleExtension.onDataReceived('" .. jsonEncode(data) .. "')")
 end
 
 local function modifyMessage(message)
-	message = message .. " [Modified!]"
-	guihooks.trigger('MessageReady', message)
+    message = message .. " [Modified!]"
+    guihooks.trigger('MessageReady', message)
 end
 
--- Экспорт интерфейса
+-- Export Interface
 --------------------------------------------
-M.onExtensionLoaded = onExtensionLoaded
-M.onExtensionUnloaded = onExtensionUnloaded
+M.onExtensionLoaded        = onExtensionLoaded
+M.onExtensionUnloaded      = onExtensionUnloaded
 
-M.onActionKeyDown = onActionKeyDown
+M.onActionKeyDown          = onActionKeyDown
 M.onVehicleExtensionLoaded = onVehicleExtensionLoaded
-M.modifyMessage = modifyMessage
+M.modifyMessage            = modifyMessage
 
---[[ Другие функции могут включать:
-	- onPreRender(dtReal, dtSim, dtRaw)
-	- onUpdate(dtReal, dtSim, dtRaw)
-	- onClientPreStartMission(levelPath)
-	- onClientPostStartMission(levelPath)
+--[[ Other functions could include:
+      - onPreRender(dtReal, dtSim, dtRaw)
+      - onUpdate(dtReal, dtSim, dtRaw)
+      - onClientPreStartMission(levelPath)
+      - onClientPostStartMission(levelPath)
 
-	Чтобы найти все возможные функции, выполните поиск в `BeamNG.Drive/lua` по следующему выражению: `extensions.hook(`
+    To find all of these, search the following in `BeamNG.Drive/lua`: `extensions.hook(`
 --]]
 
 return M
 ```
+Обратите внимание: очень важно возвращать переменную M (модуль) с нужными функциями внутри!
+Например, без строки ``M.modifyMessage = modifyMessage`` функция ``bngApi.engineLua('extensions.exampleMod.modifyMessage("' + $scope.message + '")')`` не сможет найти функцию modifyMessage()
 
-Обратите внимание, что очень важно вернуть переменную M (модуль) с необходимыми функциями внутри! Например, без строки `M.modifyMessage = modifyMessage` функция `bngApi.engineLua('extensions.exampleMod.modifyMessage("' + $scope.message + '")')` не сможет найти функцию modifyMessage()
 
 ui\modules\apps\ExampleApp\app.css
-
 ```css
 #exampleAppContainer {
     width: 100%;
@@ -228,9 +222,7 @@ ui\modules\apps\ExampleApp\app.css
     padding: 0;
 }
 ```
-
 ui\modules\apps\ExampleApp\app.json
-
 ```json
 {
   "domElement": "<example-app></example-app>",
@@ -252,23 +244,18 @@ ui\modules\apps\ExampleApp\app.json
   "directive": "exampleApp"
 }
 ```
+Директива должна совпадать с директивой в файле <b>Javascript</b>
 
-Директива должна быть такой же, как в файле <b>Javascript</b>
-
-# Функции Javascript, предоставляемые BeamNG для UI-приложений
-
+## Функции JavaScript, которые BeamNG предоставляет для UI-приложений
 ```js
 bngApi.engineLua("lua_path.function()")
 ```
+Удобно для запуска функции lua с аргументами или без них
 
-Полезно для запуска функции lua с аргументами или без них
-
-# Функции Lua, предоставляемые BeamNG для UI-приложений
-
+## Функции Lua, которые BeamNG предоставляет для UI-приложений
 ```lua
 guihooks.trigger("EventName", Payload)
 ```
+Полезной нагрузкой могут быть данные любого типа, но лучше использовать массив / объект или строку, чтобы данные не потерялись.
 
-Полезная нагрузка может быть любого типа, но лучше хранить ее в виде массива/объекта или строки, чтобы она не потерялась.
-
-<b>ВАЖНО</b> : Иногда может случиться так, что имя события, которое вы используете, уже используется внутри чего-то другого, и это вызовет проблемы, поэтому, например, если ваше приложение называется Nickel, хорошей практикой будет называть каждое событие Angular как NKEventName вместо EventName.
+<b>ВАЖНО</b> : иногда имя события, которое вы используете, уже занято чем-то внутри игры и вызывает проблемы. Поэтому, например, если ваше приложение называется Nickel, хорошей практикой будет называть каждое своё событие Angular как NKEventName вместо EventName

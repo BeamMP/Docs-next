@@ -1,12 +1,9 @@
-::: warning Сайт находится в разработке!
-Над этим сайтом ведётся активная работа.
+---
+description: "Фрагменты CSS для UI-приложений BeamNG.drive: общие переменные и готовые стили, которые можно копировать."
+---
+# Фрагменты кода CSS
 
-Думаете, что можете помочь? Нажмите на значок карандаша справа на странице!
-
-Это можно сделать на любой странице.
-:::
-    
-# Фрагменты кода CSS для BeamNG.drive
+Фрагменты для BeamNG.drive, которые вы можете копировать и адаптировать.
 
 ## Общие переменные
 
@@ -20,7 +17,7 @@ var(--bng-orange-shade2) /*40% opacity*/
 var(--bng-orange-shade1opaque)
 var(--bng-orange-shade2opaque)
 ```
-== Monochrome
+== Монохромная
 ```css
 --- Monochrome
 var(--bng-black-8) /*80% opacity (duplicate --bng-black-o8)*/
@@ -41,9 +38,9 @@ var(--white-1) /*80% opacity*/
 var(--white-2) /*40% opacity*/
 var(--white-3) /*20% opacity*/
 ```
-== Цветовая палитра BeamNG Vue UI
+== BeamNG Vue UI Color Palette
 
-Ко всем этим переменным можно добавить `-rgb` в конец имени, чтобы получить необработанные значения красного, зелёного и синего. Используйте -rgb так: `rgba(var(--bng-orange-500-rgb), 0.5)` для bng-orange-500 с прозрачностью 50%.
+Ко всем этим переменным можно добавить `-rgb` в конец имени, чтобы получить необработанные значения красного, зелёного и синего. Используйте -rgb так: `rgba(var(--bng-orange-500-rgb), 0.5)` для bng-orange-500 с непрозрачностью 50%.
 
 ::: tabs
 
@@ -234,7 +231,7 @@ var(--bng-cool-gray-800)
 var(--bng-cool-gray-850)
 var(--bng-cool-gray-900)
 ```
-== Другие
+== Другое
 ```css
 var(--bng-off-black) /*Used in Vue for buttons and some headers*/
 var(--bng-off-white) /*Used in Vue for interactable elements*/
