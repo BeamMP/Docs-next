@@ -1,8 +1,10 @@
-# Error Codes
-
-This page contains all the error codes that the server may display.
-
 ---
+description: "What the error codes in the BeamMP server window mean, such as 10048 and 10060, and what to do about each."
+---
+# Server Error Codes
+
+This page lists the error codes the server can show, and what to do about each.
+
 
 | Code  | Description                                | Possible solution                                                                                                     |
 |-------|--------------------------------------------|-----------------------------------------------------------------------------------------------------------------------|
@@ -12,12 +14,10 @@ This page contains all the error codes that the server may display.
 | 10052 | Network reset                              | Happens if the network drops connection while a connection is being established. Retry the connection.                |
 | 10053 | Connection aborted                         | Caused by timeout or network error, retry the connection.                                                             |
 | 10054 | Connection reset by peer                   | A client has disconnected from your server.                                                                           |
-| 10060 | Connection timed out                       | There is an issue with your port forwarding, please refer to the [guide steps](/en/server-owners/host-a-server#1-port-forwarding). |
-| 10061 | Connection refused                         | There is an issue with your port forwarding, please refer to the [guide steps](/en/server-owners/host-a-server#1-port-forwarding). |
+| 10060 | Connection timed out                       | There is an issue with your port forwarding, please refer to the [port forwarding steps](/en/server-owners/host-a-server#forward-the-port). |
+| 10061 | Connection refused                         | There is an issue with your port forwarding, please refer to the [port forwarding steps](/en/server-owners/host-a-server#forward-the-port). |
 | 10064 | Host down                                  | Unlikely error, but it means that the host is down because either it's shutdown or ports were closed.                 |
-| 10065 | Host not reachable                         | No internet or bad port forwarding, please refer to the [guide steps](/en/server-owners/host-a-server#1-port-forwarding).          |
+| 10065 | Host not reachable                         | No internet or bad port forwarding, please refer to the [port forwarding steps](/en/server-owners/host-a-server#forward-the-port).          |
 
-::: note
-For any other code not in this list, you can refer to <https://learn.microsoft.com/en-us/windows/win32/winsock/windows-sockets-error-codes-2> if you know a bit how networks / sockets work.
-:::
+For a code that is not in this list, see the [Windows Sockets error codes](https://learn.microsoft.com/en-us/windows/win32/winsock/windows-sockets-error-codes-2), if you know a little about how networks and sockets work.
 

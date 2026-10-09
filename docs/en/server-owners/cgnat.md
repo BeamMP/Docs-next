@@ -1,40 +1,44 @@
-How to check for CGNAT?
-## Issue
+---
+description: "Find out if your internet connection is behind CGNAT, which stops players joining a home-hosted BeamMP server even when ports are forwarded."
+---
+# Check for CGNAT
 
-All Firewall exclusions and Port forwarding rules are set up correctly, yet nobody can join your home-hosted Server?
+Your firewall exclusions and port forwarding rules are set up correctly, and still nobody can join your home-hosted server? You may be behind a CGNAT.
 
-If you have connection problems and you are using a Hosting-Service, contact them for assistance. If you want to use a VPS or cannot host a server at home, take a look at our
-[list of Partnered hosting services](/en/server-owners/host-a-server#partnered-hosting-services-paid) (Server setup documentation).
+If you use a hosting service and have connection problems, contact them. If you want a VPS, or cannot host at home, see the [partnered hosting services](/en/server-owners/host-a-server#partnered-hosting-services).
 
-# What even is CGNAT?
+## What is CGNAT?
 
-For a detailed explanation, on what CGNAT is and why it's an issue when trying to host a server at home, take a look at [this page](https://en.wikipedia.org/wiki/Carrier-grade_NAT).
+Carrier-grade NAT (CGNAT) is a setup some internet providers use that makes it difficult to forward ports to your home. For a detailed explanation of what it is and why it is a problem for hosting at home, see [Carrier-grade NAT on Wikipedia](https://en.wikipedia.org/wiki/Carrier-grade_NAT).
 
-# How to check for CGNAT?
+## Check for CGNAT
 
-## Method 1:
-Open a command prompt, run ``tracert -4 beammp.com``. This will output a series of network hops. Wait for the operation to finish (may take up to 30 hops). Check the first few IP addresses after the IP of your Router/Modem/Gateway.
-If multiple IP addresses within the range of ``100.64.x.x``-``100.127.x.x`` or ``10.xx.xx.xx`` appear after the first hop, you are most likely behind a CGNAT.
+### Method 1: trace the route
 
-::: note
-The first hop will be your Router/Modem/Gateway and differs between Devices.
-The official ranges for local networks are as follows: ``10.0.0.xxx`` - ``192.168.xxx.xxx`` - ```172.16.xxx.xxx``
-:::
+1. Open a command prompt and run:
 
-## Method 2:
-Find out the WAN IP on your router by looking it up on its interface. Compare it to the IP posted on e.g. https://whatsmyip.org . If they are NOT the same, you are behind a CGNAT.
+   ```text
+   tracert -4 beammp.com
+   ```
 
-## Method 3/Solution:
-Call your Internet Service Provider for assistance.
-Depending on your ISP, they might not offer dedicated *dynamic* IP adresses. Keep in mind, that a static IP is not necessary.
+   It lists a series of network hops. Wait for it to finish, which can take up to 30 hops.
+2. The first hop is your router, modem or gateway, and differs between devices. Look at the first few IP addresses after it.
+3. If several addresses between `100.64.x.x` and `100.127.x.x`, or starting with `10.`, appear after the first hop, you are most likely behind a CGNAT.
+
+The official ranges for local networks are `10.0.0.x`, `192.168.x.x` and `172.16.x.x`.
+
+### Method 2: compare IP addresses
+
+Find the WAN IP address on your router's interface and compare it with the address shown on [whatsmyip.org](https://whatsmyip.org). If they are **not** the same, you are behind a CGNAT.
+
+## If you are behind a CGNAT
+
+Call your internet service provider (ISP) for help. Depending on the ISP, they may not offer dedicated dynamic IP addresses. A static IP is not necessary.
 
 ::: warning
-Internet Service Providers may only offer dedicated IP addresses as a **paid option**.
-Please check the prices of our partnered hosting services as they could be cheaper than this fee!
+ISPs may only offer a dedicated IP address as a **paid option**. Compare the price with our partnered hosting services: they may be cheaper.
 :::
 
-Example of a non-CGNAT Network:
+This is an example of a network that is not behind a CGNAT:
 
-![image](https://github.com/user-attachments/assets/fee21a50-cbb0-4322-9c26-d9f04f88ae37)
-
-Tags: Server, 10060 10061, CGNAT, Connection Failed, Port Forward, Firewall
+![A network diagram of a connection that is not behind a CGNAT](https://github.com/user-attachments/assets/fee21a50-cbb0-4322-9c26-d9f04f88ae37)

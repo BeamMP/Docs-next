@@ -1,170 +1,81 @@
+---
+description: "Set up a BeamMP server on a VPS or a hosting company's management panel: get an AuthKey, fill in the panel fields, add mods and let players join."
+---
 # Server Setup on VPS
 
-## **Setting up a server**
-Basics of setting up the server application
-This guide assumes you are hosting a server **on a VPS with a Management panel**
-For an in-depth guide regarding hosting a server at home, visit [How to create a aserver](https://docs.beammp.com/server/create-a-server/).
+This guide is for a server on a VPS, or at a hosting company, that has a management panel. To host at home instead, follow [Host a Server](/en/server-owners/host-a-server).
 
-### **Overview**
+Hosting with a VPS does not need any firewall or port forwarding changes on your router.
 
-**Creating a Home Server is free, hosting one with a VPS is easier and more secure**
+## Before you start
 
-Servers are an integral part of BeamMP; players are connected to each other through the server. They run natively on Windows and Linux.
+Servers are an integral part of BeamMP: players connect to each other through the server. You can make a private server, which only people you invite can join, or a public server, which shows in the official server list.
 
-You can make private servers, which only people you invite can join, or public servers, which will show in our official server list.
+Read the server's [LICENSE](https://raw.githubusercontent.com/BeamMP/BeamMP-Server/master/LICENSE) before you use it.
 
-Getting a server up and running is a process of a few steps! If you run into any issues, feel free to ask on our [Forum](https://forum.beammp.com) or on our [Discord server](https://discord.gg/beammp) in the `#support` channel. Also refer to the [Server Maintenance](/en/server-owners/maintenance) section for more info.
+If you run into problems, ask on the [forum](https://forum.beammp.com) or in the `#support` channel on the [Discord server](https://discord.gg/beammp). [Server Maintenance](/en/server-owners/maintenance) has more detail on the server's settings.
 
-Please make sure to read the [LICENSE](https://raw.githubusercontent.com/BeamMP/BeamMP-Server/master/LICENSE) of the server before use.
-
-::: info
-Hosting a server using a VPS, does not require any firewall or port forwarding changes to your router.
-:::
-
-If you haven't chosen a VPS to host your server on yet, check out our **Partnered Hosting Services (paid)**:
+If you have not chosen a VPS yet, look at our partnered hosting services. They are paid.
 
 ::: details Partnered hosting services
-* [Horizon Hosting](https://hrzn.link/beammp)
-* [RackGenius](https://rackgeni.us/beammp-plans)
-* [Connect Hosting](https://connecthosting.net/beammp)
-* [Assetto Hosting](https://assettohosting.com/en/games/beamng)
-* [ZAP-Hosting](https://zap-hosting.com/itsbeammp)
-* [HostHavoc](https://hosthavoc.com/)
-* [PedalHost](https://pedal.host/)
-* [Vyper Hosting](https://vyperhosting.com/r/beammp)
-* [BisectHosting](https://www.bisecthosting.com/beammp-server-hosting)
-* [Four Seasons Hosting](https://fourseasonshosting.com)
-* [Vertuo Hosting](https://vertuohosting.com)
-* [Winheberg](https://winheberg.fr/offres/gaming/beammp?lang=en)
-* [Wabbanode](https://wabbanode.com/partner/beammp)
-* [Iceline Hosting](https://iceline-hosting.com/games/beammp)
-(We take no responsibility for any content on any externally linked services or websites.)
+<!--@include: ./_parts/partners.md-->
 :::
 
-### **1. Setting up the VPS**
+## Set up the VPS
 
-First, you need to make sure that your Server management page is reachable.
-Once you verified that the Server is ready for operation, proceed to step 2.
+Make sure your server management page is reachable. When you have checked that the server is ready for operation, continue.
 
-### **2. Obtaining an Authentication Key**
+<!--@include: ./_parts/authkey.md-->
 
-The “Authentication Key”, often called “AuthKey”, is necessary for making a **public** server accessible by the serverlist. Though it is recommended to add the authkey to private servers as well.
-You have a limited number of keys. One key can be used on one server at a time, so you cannot start two servers at the same time with the same key.
-More keys can be obtained by supporting the project. Read [this article](https://docs.beammp.com/support/player-faq/) for more information.
+## Fill in the panel fields
+
+The hosting panel has some fields to fill in. Fields marked with `*` are mandatory.
+
+1. Paste your AuthKey into the **Authkey** field.
+2. Give your server a name and a description. You can format them with colors and more: see [Customize the look of your server name](/en/server-owners/maintenance#customize-the-look-of-your-server-name).
 
 ::: warning
-DO NOT EVER SHARE THIS KEY OR SHOW IT TO ANYONE. TREAT THIS LIKE A PASSWORD.
+You cannot edit `ServerConfig.toml` directly in the file manager. This is intentional, so that the hosting company can enforce limits such as the number of players.
 :::
 
-You will need a [Discord](https://discord.com) account for this step. This is necessary to prevent spam.
+### Check that it starts
 
-#### 2.1. Accessing the keys page
+Run your server and look for `[ERROR]` or `[WARN]` messages. The server should now stay up. Then add mods if you want them, and see how to join.
 
-Login with Discord to the [Keymaster](https://keymaster.beammp.com).
-From the Keymaster homepage click on "Keys" on the left of the screen:
+## Add mods
 
-<figure>
-
-  ![](../../assets/content/keymaster_homepage.png)
-
-</figure>
-
-#### 2.2. Creating a key
-
-To create your key, click on the green "+" button in the top right. 
-
-<figure>
-
-  ![](../../assets/content/keymaster_new_key.png)
-
-</figure>
-
-#### 2.3. Filling out the key information
-
-Next, fill out the Server Name field (this is just the keys name and not the actual name of the server on the list), then click "Create". Example:
-
-<figure class="image image_resized" style="width:44.84%;">
-
-  ![](../../assets/content/keymaster_server_name.png)
-
-</figure>
-
-It should, in the end, look something like this:
-
-<figure>
-
-  ![](../../assets/content/keymaster_key_done.png)
-
-</figure>
-
-#### 2.4. Copying the key
-
-Now copy the text in the “Key” field, in this example that is `3173a2e-6az0-4542-a3p0-ddqq5ff95558` and hold onto it for the next step. You can do this by clicking the clipboard on the right of the key:
-
-<figure>
-
-  ![](../../assets/content/keymaster_copy_key.png)
-
-</figure>
+You can add mods with the panel's file manager. Vehicle mods and map mods are installed differently, but both go in your server's `Resources/Client` folder. Put the mod's `.zip` file in that folder.
 
 ::: warning
-You will not be able to edit the ServerConfig.toml file directly in the File Manager. This is intentional to enforce e.g. player limits by the hosting company.
+Mods can be, or become, incompatible with BeamNG, BeamMP or other mods. If you have problems, start removing mods. If you get a "done" or "start" message when you try to join after adding mods, you probably added an incompatible or broken mod. If you have client mods installed, see [Mod Safety](/en/players/mod-safety) about removing them from your game.
 :::
 
-### **3. Populating the fields**
+### Vehicle and other mods
 
-The hosting panel will feature a few fields to enter something into. Some fields may be marked with "*", which means they are mandatory to fill out.
-With the authkey in your clipboard, find the "Authkey" field on the management panel to paste the key into.
-Give your Server a Name and description as well! For customization of such in the form of colors and more, refer to [this section on Name customization](/en/server-owners/maintenance#customize-the-look-of-your-server-name) on the maintenance page.
+Put the mod's `.zip` file in `Resources/Client`. Everyone who joins downloads it automatically.
 
-#### **3.1. Validation**
+### Maps
 
-Now run your server, and see if it spits out any more `[ERROR]` or `[WARN]` messages. The server should stay up now. In the following steps below you can find out how to join the server and add mods.
+The stock maps work without installing anything. Set the **Map** field in the management panel to one of the [stock map paths](/en/server-owners/maintenance#all-vanilla-maps-names).
 
-### **4. Adding mods to your server**
+For a modded map:
 
-You may add mods to your server using the provided file manager.
-Vehicle mods and map mods are different to install, but both require you to put them in your server's (`Resources/Client`) folder. Simply slide any mod you want to add in that folder.
+1. Put the map's `.zip` file in `Resources/Client`.
+2. Open the `.zip` without extracting it, then open its `levels` folder. It holds one folder named after the map, for example `myawesomedriftmap2021`. Note the name exactly as written.
+3. In the management panel, the **Map** field looks like `/levels/MAPNAME/info.json`, where `MAPNAME` is likely something like `gridmap_v2`. Replace `MAPNAME` with the folder name from step 2. It must end with `/info.json`. For this example: `/levels/myawesomedriftmap2021/info.json`.
 
-::: warning
-Mods can be, and/or become incompatible with BeamNG, BeamMP or even other mods. Start removing mods if you are encountering issues.
-Should you receive a "done" or "start" message when trying to join your server after adding mods, you likely added an incompatible or broken mod to your server.
-Mod incompatibilities can also occur between 2 or more mods. If you have client mods installed, check [this guide](/en/players/mod-safety) about removing mods from your game.
-:::
+When someone joins, the map downloads automatically and works.
 
-#### 4.1 General Mods
+If it does not work, install the map in singleplayer BeamNG.drive and enter it. Open the console with the `~` (tilde) key. On a non-US keyboard, find the **Toggle System Console** action under **Options** > **Controls** > **Bindings**, in the **General Debug** section. Run `print(getMissionFilename())`. It shows the name to use.
 
-If you only wanted to add modded vehicles, you simply put the zip file of the mod in the `Resources/Client` folder. They will automatically be downloaded by anyone who joins your server.
+## Let players join
 
-#### 4.2 Maps
+Players can direct connect to the server's public IP address and port, both found on the management panel. You can also find the IP address on the [Keymaster](https://keymaster.beammp.com/) website.
 
-All default maps (maps which aren't mods) work out-of-the-box and do not have to be installed. You simply change the `Map` path in the Map field of the management panel to any of [these](/en/server-owners/maintenance#all-vanilla-maps-names). For any other modded maps, do this:
+For a public server, players can instead open the server list, type the name of the server and click **Connect**. The name is the one you set. If they cannot find it, tell them to turn off the search filters and set the map to **Any**.
 
-1.  Place your map's `.zip` file in your server's (`Resources/Client`) folder.
-2.  Next, have a look inside the map's zip file (don't extract it) and open the `levels` folder. In this folder there should be simply one other folder with the name of the map, for example “myawesomedriftmap2021”. Make sure to copy or remember this name _exactly as it is written in that folder's name._
-3.  Open your management panel. In the `Map` field, you should see `/levels/MAPNAME/info.json`, where `MAPNAME` is likely something like `gridmap_v2`. You want to now replace this `MAPNAME` with the name of the folder from the last step, in that example it was `myawesomedriftmap2021`. In the end it should look like this (for this example) and _**should**_ have `/info.json` at the end.
-
-Now, when someone joins your server, it should download the map automatically and work as expected. 
-
-**If this does NOT work**, install the map in your singleplayer BeamNG.drive, launch it and enter the map. Then, open the Console by pressing the `~` (_tilde_) key (if you're on a non-US keyboard, look at the **Toggle System Console** action in the **Options > Controls > Bindings** menu, under the **General Debug** section), and run `print(getMissionFilename())`. This should then show you the name to use. 
-
-That's it! Your modded map should now be available to join!
-
-### **5. How to join your server**
-
-How you and other players can join your server.
-
-#### 6. Joining your own server (both private and public)
-
-You can direct connect to the pubblic IP and Port of the server, found on the management panel. The same IP and Port have to be entered by any other users trying to connect to this server.
-You can also check the [Keymaster](https://keymaster.beammp.com/) Website for the Servers IP Address.
-To join your public server they can simply go to the server list, type the name of the server, and click connect. If you are unsure of what your server name is, it will be the name you put in the `ServerConfig.toml`.
-Make sure search filters are disabled and the Map set to "Any" if you can't find it.
-
-Should you or your friends experience a "Connection Failed!" Error, check the Launcher Window for codes like 10060, 10061, 10030.
-This means the server is unreachable, or you entered incorrect parameters into the IP and Port field on your client.
-IPv6 Support is **NOT** yet implemented.
+If you or a friend gets "Connection Failed!", look in the Launcher window for codes such as 10060, 10061 or 10030. They mean the server cannot be reached, or the IP address and port entered on the client are wrong. IPv6 is not supported yet.
 
 ## Still facing issues?
 
-Open a Thread on the [Forum](https://forum.beammp.com) or file a **Server Support Ticket** on our [Discord server](https://discord.gg/beammp) in the `#support` channel.
+Open a thread on the [forum](https://forum.beammp.com), or file a **Server Support Ticket** in the `#support` channel on the [Discord server](https://discord.gg/beammp).

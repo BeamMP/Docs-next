@@ -1,3 +1,6 @@
+---
+description: "Forward the BeamMP port on your home router, step by step: set a static IP, log in to the router, create the rule and test it with CheckBeamMP."
+---
 # Port Forwarding
 
 ::: danger DISCLAIMER:
@@ -14,13 +17,13 @@ We take no responsibility for any content on any externally linked services or w
 Please make sure your Router is not a 4G/5G exclusive device. If it is a hybrid device, make sure to select the cable connected adapter later in section 3 of this guide!
 :::
 
-## How to set up port forwarding.
+## What you will do
 
 Creating a port forwarding rule involves a few detailed network terms. Be prepared to write down a few notes as you go through the process.
 
 There are 4 major steps in this guide.
 
-## A quick guide. (A more detailed guide is below)
+## Quick guide
 
 1. **Assign a static IP address to your computer or devices**
 
@@ -48,19 +51,19 @@ There are 4 major steps in this guide.
     <input type="submit" value="CheckBeamMP">
    </form>
 
-## The detailed guide
+## Detailed guide
 
-### 1. Assigning a static IP address
+### Assign a static IP address
 
-### Method 1: Set Up a Static IP Address Using DHCP reservations
+#### Method 1: use a DHCP reservation
 
 Another way to set a static IP address in your local network is to use your router's DHCP reservation feature. Not all routers have this feature, so this may not be an option for you. Please search the internet with the model of your router to find a manual. 
 
-If you have managed to do this, please skip directly to [step 2](port-forwarding.md#2-log-in-to-your-router)
+If you have managed to do this, skip to [Log in to your router](#log-in-to-your-router)
 
-### Method 2: Assign a static IP in Windows
+#### Method 2: set a static IP in Windows
 
-#### 1.1. Find your current IP Address, Gateway and DNS servers:
+##### Find your current IP address, gateway and DNS servers
 
 Before we can set up a static IP address, we need to know your current network settings. 
 You are going to want to write these down, so get a notepad window ready. 
@@ -73,7 +76,7 @@ Open up a command prompt. The 3 main ways are:
 
 <figure class="image image_resized" style="width:62%;">
 
-![](../../assets/content/win11-open-cmd.png)
+![The Windows Start menu with Command Prompt highlighted](../../assets/content/win11-open-cmd.png)
 
 </figure>
 
@@ -89,7 +92,7 @@ It is common to see many virtual adapters if you have either Hyper-V or Docker i
 
 <figure class="image image_resized" style="width:62%;">
 
-![](../../assets/content/win11-command-prompt-ipconfig-highlighted.png)
+![Command Prompt showing the output of ipconfig with the IPv4 address, subnet mask, default gateway and DNS servers highlighted](../../assets/content/win11-command-prompt-ipconfig-highlighted.png)
 
 </figure>
 
@@ -112,7 +115,7 @@ Default Gateway (most likely 192.168.0.1 or 192.168.1.1)
 BeamMP currently does not support IPv6 for hosting a server. 
 :::
 
-#### 1.2. Modify Adapter Settings
+##### Change the adapter settings
 
 Now we need to change the settings on your network adapter in order for your PC to keep the IP configuration it currently has. To get to the settings for your network, the fastest method is:
 
@@ -123,7 +126,7 @@ Now we need to change the settings on your network adapter in order for your PC 
 
 <figure class="image image_resized" style="width:62%;">
 
-![](../../assets/content/win11-start-menu-view-network-connections.png)
+![The Windows Start menu showing View network connections](../../assets/content/win11-start-menu-view-network-connections.png)
 
 </figure>
 
@@ -133,7 +136,7 @@ Look for any adapters that are not named "Hyper-V".
 
 <figure class="image image_resized" style="width:62%;">
 
-![](../../assets/content/win11-network-connections.png)
+![The Network Connections window with the Ethernet adapter](../../assets/content/win11-network-connections.png)
 
 </figure>
 
@@ -142,7 +145,7 @@ Right-click on your adapter and choose properties. If `Internet Protocol Version
 
 <figure class="image image_resized" style="width:62%;">
 
-![](../../assets/content/win11-ethernet-properties-highlighted.png)
+![The Ethernet properties window with the IPv4 entry highlighted](../../assets/content/win11-ethernet-properties-highlighted.png)
 
 </figure>
 
@@ -158,13 +161,13 @@ Alternatively, instead of using your DNS servers, you can use either the CloudFl
 
 <figure class="image image_resized" style="width:62%;">
 
-![](../../assets/content/win11-network-settings-static-ip.png)
+![The IPv4 properties window with the IP address, subnet mask, default gateway and DNS servers filled in](../../assets/content/win11-network-settings-static-ip.png)
 
 </figure>
 
 Click Ok, then click Ok again, and your adapter is now changed from DHCP to static. Surf the web to make sure that you still have internet connectivity. If you do not, then change your settings back to Obtain an IP address automatically and try the next method.
 
-### 2. Log in to your router
+### Log in to your router
 
 Now that you have a static IP address on your device, you are ready to forward the port for BeamMP!
 
@@ -188,9 +191,9 @@ Some of the most common factory usernames and passwords are listed here:
 
 Try various combinations of admin, password, and leaving the entries blank. *Where it says blank, try leaving the value blank.* 
 
-### 3. Create the forwarding rules!
+### Create the forwarding rules
 
-#### 3.1. Find the forwarding section
+#### Find the forwarding section
 
 Find the port forwarding section in your router web interface. Navigate around in your router by clicking the tabs or links at the top or left of each page. Most routers list the port forwarding section under Network, Advanced, or LAN. Look for the following keywords to help you find it:
 
@@ -202,12 +205,12 @@ Find the port forwarding section in your router web interface. Navigate around i
 - Advanced Setup/Settings
 - NAT
 
-#### 3.2. Enter in the details
+#### Enter the details
 
 Once you find your router's port forwarding section, you are ready to enter the necessary information.
 Your router will have a place to enter the ports to be forwarded and the destination IP address to point those forwarded ports. If your router lists both Internal and External ports, make them the same. 
 
-BeamMP requires both UDP and TCP port 30814 (Unless you have changed this in your [ServerConfig.toml](/en/server-owners/host-a-server#4-configuration)). 
+BeamMP requires both UDP and TCP port 30814 (Unless you have changed this in your [ServerConfig.toml](/en/server-owners/host-a-server#configure-the-server)). 
 
 ::: info Note
 While the default **Port** is **30814**, you can choose any other number greater than 1024 but less than 65535, but you need to note down what you picked if it's not 30814\. You need to forward both **TCP** and **UDP**.
@@ -217,11 +220,11 @@ It is recommended to stick to the default port as that one is very unlikely to b
 However, If you are hosting multiple servers on one machine, each server needs a different Port. Server 1: 30814, Server 2: 30815 for example.
 :::
 
-On some routers you may need to create 2 rules, one for UDP and one for TCP, whilst others are nice and allow you to do both with a single rule!
+On some routers you may need to create 2 rules, one for UDP and one for TCP, while others let you do both with a single rule!
 
 Most routers have a 'save' button, and some routers require a restart or reboot for the changes to take effect.
 
-### 4. Time to test!
+### Test the port
 
 There are a few different ways to test the connection.
 
@@ -247,7 +250,7 @@ Since you are hosting a server on-premise, use 127.0.0.1 (localhost) if the Serv
 :::
 
 ::: failure status: error
-If the connection fails entirely, your ISP could be using CGNAT (Carrier Grade Network Address Translation). For more details, please check [How to check for CGNAT?](./cgnat.md),
+If the connection fails entirely, your ISP could be using CGNAT (Carrier Grade Network Address Translation). For more details, see [Check for CGNAT](/en/server-owners/cgnat),
   or open a Server Support ticket on our [Discord server](https://discord.gg/beammp) in the `#support` channel and one of our staff will get to your ticket!
   Should you only see TCP working and UDP failing, check Firewall and Port forwarding rules again.
 :::
