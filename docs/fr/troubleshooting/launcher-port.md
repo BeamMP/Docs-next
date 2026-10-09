@@ -1,25 +1,24 @@
-# Problème
+---
+description: "Modifiez manuellement le port du lanceur BeamMP lorsqu'il ne se connecte pas au jeu : définissez le port dans les options de BeamNG et dans launcher.cfg."
+---
+# Changer le port du lanceur
 
-Le lanceur ne se connecte pas au jeu. Ce guide rapide explique comment modifier manuellement le port du lanceur.
+Le lanceur ne se connecte pas au jeu ? Ce guide explique comment modifier manuellement le port du lanceur. Le port doit être le même dans le jeu et dans le lanceur.
 
-# Changer le port manuellement
+1. Démarrez BeamNG.drive.
+2. Dans le menu principal, allez dans **Options**, puis dans **Multijoueur**.
+3. Activez **Afficher les options avancées**.
+4. Faites défiler jusqu'en bas.
+5. Dans **Port du lanceur**, remplacez le numéro par un autre, par exemple `4567`.
+6. Fermez BeamNG.drive.
+7. Faites un clic droit sur le raccourci du lanceur BeamMP et choisissez **Ouvrir l'emplacement du fichier**.
+8. Ouvrez `launcher.cfg` dans un éditeur de texte.
+9. Remplacez le numéro dans `"Port": 4444,` par le port que vous avez défini dans le jeu, ici `4567`.
+10. Enregistrez le fichier et fermez l'éditeur.
+11. Démarrez le lanceur.
 
-1. Démarrer BeamNG
-2. Dans le menu principal, allez dans Options, puis Multijoueur
-3. Dans les options multijoueurs, activez `Show advanced options`
-4. Faites défiler jusqu'en bas
-5. Dans `Launcher port` remplacez le numéro de port par un autre, par exemple 4567
-6. Fermer BeamNG
-7. Faites un clic droit sur le raccourci du lanceur BeamMP et sélectionnez `Open file location` dans le menu contextuel
-8. Ouvrez le fichier `launcher.cfg` dans un éditeur de texte
-9. Remplacez le numéro `"Port": 4444,` par celui que vous avez utilisé précédemment dans les options du jeu, dans cet exemple 4567
-10. Enregistrez les modifications et fermez l'éditeur de texte
-11. Démarrer le lanceur BeamMP
+Si la connexion ne fonctionne toujours pas, essayez un autre port. Tout numéro compris approximativement entre 2000 et 65535 est un port valide.
 
-Si la connexion persiste, réessayez avec un autre port. Un numéro compris entre 2000 et 65535 est un numéro de port valide.
+## Toujours des problèmes ?
 
-## Vous rencontrez toujours des problèmes ?
-
-Créez un ticket d'assistance sur notre [serveur Discord](https://discord.gg/BeamMP) .
-
-Tags: Launcher, Connection Failed, Port Number
+Créez un ticket d'assistance sur notre [serveur Discord](https://discord.gg/BeamMP).

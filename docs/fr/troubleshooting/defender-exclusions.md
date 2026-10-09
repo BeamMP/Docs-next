@@ -1,50 +1,53 @@
-# Comment créer des exclusions dans le pare-feu et l'antivirus Windows Defender ?
+---
+description: "Créez des exclusions dans le pare-feu et l'antivirus Windows Defender pour que le lanceur et le serveur BeamMP ne soient pas bloqués : règles de pare-feu, puis exclusion antivirus."
+---
+# Exclusions Defender / pare-feu
 
-:::: info
-Avant de modifier le pare-feu, assurez-vous que votre réseau est défini sur « privé » dans les paramètres réseau de Windows (si vous vous trouvez sur un réseau privé).
+Ce guide explique comment créer des exclusions dans le pare-feu et l'antivirus Windows Defender pour le lanceur et le serveur BeamMP.
 
-::: danger AVERTISSEMENT :
-**Les exclusions du pare-feu / de Defender représentent un risque**.
+Avant de modifier le pare-feu, assurez-vous que votre réseau est défini sur **privé** dans les paramètres réseau de Windows, si vous vous trouvez sur un réseau privé.
 
-En créant des exclusions, vous reconnaissez les risques liés à l'autorisation de programmes sur votre PC et à l'ouverture de ports de votre réseau domestique sur Internet, et vous renoncez donc à tout recours contre BeamMP pour **tout dommage** pouvant en résulter pour vous ou votre foyer.
+::: danger Les exclusions représentent un risque
+En créant des exclusions, vous reconnaissez les risques liés à l'autorisation de programmes sur votre ordinateur et à l'ouverture de ports de votre réseau domestique sur Internet. Vous renoncez donc à tout recours contre BeamMP pour tous les dommages pouvant en résulter pour vous ou votre foyer.
 
 Nous déclinons toute responsabilité quant au contenu des services ou sites web externes vers lesquels nous renvoyons.
 :::
-::::
 
-## 1. Exclusion du pare-feu Defender pour BeamMP-Launcher.
+## Autoriser le lanceur dans le pare-feu
 
-1. Ouvrez le `Windows Defender Firewall with advanced setting` (« Pare-feu Windows Defender avec fonctions avancées de sécurité »).
-2. Dans la fenêtre, cliquez sur `Inbound` (« Règles de trafic entrant ») pour ouvrir l'onglet des exclusions entrantes.
-3. Cliquez sur `Create new rule` (« Nouvelle règle… ») en haut à droite pour créer une nouvelle exclusion.
-4. Sélectionnez `Program` (« Programme ») pour créer une exclusion propre à un programme.
-5. Saisissez le chemin complet vers `BeamMP-Launcher.exe`. Par défaut, il s'agit de `%appdata%\BeamMP-Launcher\BeamMP-Launcher.exe` (sans guillemets).
-6. Veillez à autoriser la connexion.
-7. Donnez un nom à l'exclusion (par exemple « BeamMP-Launcher ») et enregistrez-la.
-9. Redémarrez votre PC.
+1. Ouvrez **Pare-feu Windows Defender avec fonctions avancées de sécurité** (Windows Defender Firewall with Advanced Security).
+2. Cliquez sur **Règles de trafic entrant** (Inbound Rules).
+3. Cliquez sur **Nouvelle règle…** (New Rule) en haut à droite.
+4. Sélectionnez **Programme** pour créer une règle pour un programme.
+5. Saisissez le chemin complet vers `BeamMP-Launcher.exe`. Par défaut, il s'agit de `%appdata%\BeamMP-Launcher\BeamMP-Launcher.exe`, sans guillemets.
+6. Choisissez d'autoriser la connexion.
+7. Donnez un nom à la règle, par exemple « BeamMP-Launcher », et enregistrez-la.
+8. Redémarrez votre ordinateur.
 
-## 1.1 Exclusion du pare-feu Defender pour BeamMP-Server.
+## Autoriser le serveur dans le pare-feu
 
-1. Ouvrez le `Windows Defender Firewall with advanced setting` (« Pare-feu Windows Defender avec fonctions avancées de sécurité »).
-2. Dans la fenêtre, cliquez sur `Inbound` (« Règles de trafic entrant ») pour ouvrir l'onglet des exclusions entrantes.
-3. Cliquez sur `Create new rule` (« Nouvelle règle… ») en haut à droite pour créer une nouvelle exclusion.
-4. Sélectionnez `Port` pour créer une exclusion propre à un port.
-5. Saisissez le même port que dans le fichier ServerConfig.toml.
-6. Saisissez le chemin complet vers `BeamMP-Server.exe`. Le fichier se trouve à l'endroit où vous l'avez placé après l'avoir téléchargé.
-7. Veillez à autoriser la connexion.
-8. Donnez un nom à l'exclusion (par exemple « BeamMP-Server ») et enregistrez-la.
-9. Redémarrez votre PC.
+1. Ouvrez **Pare-feu Windows Defender avec fonctions avancées de sécurité** (Windows Defender Firewall with Advanced Security).
+2. Cliquez sur **Règles de trafic entrant** (Inbound Rules).
+3. Cliquez sur **Nouvelle règle…** (New Rule) en haut à droite.
+4. Sélectionnez **Port** pour créer une règle pour un port.
+5. Saisissez le même port que dans votre `ServerConfig.toml`.
+6. Saisissez le chemin complet vers `BeamMP-Server.exe`. Il se trouve à l'endroit où vous avez placé le fichier après l'avoir téléchargé.
+7. Choisissez d'autoriser la connexion.
+8. Donnez un nom à la règle, par exemple « BeamMP-Server », et enregistrez-la.
+9. Redémarrez votre ordinateur.
 
-## 2. Exclusion de l'antivirus Defender pour BeamMP-Launcher/Server.
+## Ajouter une exclusion antivirus
 
-1. Ouvrez l'application `Windows Security` (« Sécurité Windows »).
-2. Cliquez sur le premier élément, `virus and threat protection` (« Protection contre les virus et menaces »).
-3. Cliquez sur `Manage settings` (« Gérer les paramètres ») sous « Paramètres de protection contre les virus et menaces ».
-4. Faites défiler la page jusqu'à la section `Exclusions`.
-5. Cliquez sur « Ajouter une exclusion » (« Add an exclusion ») et sélectionnez `process` (« Processus »).
-6. Saisissez `BeamMP-Launcher.exe` ou `BeamMP-Server.exe` dans le champ et enregistrez.
-7. Redémarrez votre PC.
+Cela s'applique au lanceur et au serveur.
+
+1. Ouvrez l'application **Sécurité Windows** (Windows Security).
+2. Cliquez sur **Protection contre les virus et menaces** (Virus & threat protection).
+3. Sous **Paramètres de protection contre les virus et menaces**, cliquez sur **Gérer les paramètres** (Manage settings).
+4. Faites défiler la page jusqu'à **Exclusions**.
+5. Cliquez sur **Ajouter ou supprimer des exclusions** (Add or remove exclusions), cliquez sur **Ajouter une exclusion** (Add an exclusion) et sélectionnez **Processus** (Process).
+6. Saisissez `BeamMP-Launcher.exe` ou `BeamMP-Server.exe` et enregistrez.
+7. Redémarrez votre ordinateur.
 
 ## Toujours des problèmes ?
 
-Ouvrez un sujet sur le [forum](https://forum.beammp.com) ou sur notre [serveur Discord](https://discord.gg/beammp), dans le canal `#support`.
+Ouvrez un sujet sur le [forum](https://forum.beammp.com), ou posez votre question dans le canal `#support` du [serveur Discord](https://discord.gg/beammp).
