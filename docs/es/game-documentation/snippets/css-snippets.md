@@ -1,14 +1,11 @@
-::: warning ¡Este sitio está en construcción!
-Se está trabajando activamente en este sitio. 
+---
+description: "Fragmentos CSS de BeamNG.drive para aplicaciones de IU: variables habituales y estilos listos que puedes copiar."
+---
+# Fragmentos de código CSS
 
-¿Crees que podrías ayudar? ¡Hazlo haciendo clic en la página con un lápiz de la derecha!
+Fragmentos para BeamNG.drive que puedes copiar y adaptar.
 
-Esto se puede hacer en cualquier página.
-:::
-
-# Fragmentos de código CSS de BeamNG.drive
-
-## Variables comunes
+## Variables habituales
 
 :::: tabs
 
@@ -43,7 +40,7 @@ var(--white-3) /*20% opacity*/
 ```
 == Paleta de colores de la IU Vue de BeamNG
 
-Todas admiten añadir `-rgb` al final del nombre de la variable para convertirlas en valores puros de rojo, verde y azul. Usa -rgb así: `rgba(var(--bng-orange-500-rgb), 0.5)` para bng-orange-500 con un 50 % de opacidad.
+Todas admiten añadir `-rgb` al final del nombre de la variable para convertirla en valores rojo, verde y azul sin procesar. Usa -rgb así: `rgba(var(--bng-orange-500-rgb), 0.5)` para bng-orange-500 con un 50 % de opacidad.
 
 ::: tabs
 
@@ -242,7 +239,7 @@ var(--bng-off-white-brighter) /*Used in Vue for headers*/
 ```
 :::
 
-== Preajustes de color adicionales
+== Ajustes de color adicionales
 ```css
 var(--bng-filter-orange) /*Filter preset to force SVGs to use bng-orange*/
 var(--bng-black-o8) /*80% opacity*/
@@ -250,7 +247,7 @@ var(--bng-black-o6) /*60% opacity*/
 var(--bng-black-o4) /*40% opacity*/
 var(--bng-black-o2) /*20% opacity*/
 ```
-== Preajustes de redondeo de esquinas
+== Ajustes de esquinas redondeadas
 ```css
 var(--bng-corners-1) /*0.25rem*/
 var(--bng-corners-2) /*0.50rem*/

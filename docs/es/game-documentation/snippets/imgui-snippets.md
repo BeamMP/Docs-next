@@ -1,13 +1,9 @@
-::: warning ¡Este sitio está en construcción!
+---
+description: "Fragmentos ImGui de BeamNG.drive: configura una ventana, da formato al texto y usa controles habituales, listos para copiar."
+---
+# Fragmentos de código ImGui
 
-Se está trabajando activamente en este sitio. 
-
-¿Crees que podrías ayudar? ¡Hazlo haciendo clic en la página con un lápiz de la derecha!
-
-Esto se puede hacer en cualquier página.
-:::
-
-# Fragmentos de código ImGui de BeamNG.drive
+Fragmentos para BeamNG.drive que puedes copiar y adaptar.
 
 ## Configuración
 

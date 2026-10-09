@@ -1,20 +1,17 @@
-::: warning ¡Este sitio está en construcción!
-Se está trabajando activamente en este sitio. 
+---
+description: "Fragmentos Lua de BeamNG.drive listos para usar: dibujar un marcador, detectar vehículos y mostrar notificaciones, mensajes, destellos, diálogos de confirmación y ventanas de tutorial."
+---
+# Fragmentos de código Lua
 
-¿Crees que podrías ayudar? ¡Hazlo haciendo clic en la página con un lápiz de la derecha!
-
-Esto se puede hacer en cualquier página.
-:::
-    
-# Fragmentos de código Lua de BeamNG.drive
+Fragmentos para BeamNG.drive que puedes copiar y adaptar.
 
 ## Mundo
 
 ### Dibujar un marcador y detectar vehículos
 
-Dibujar marcadores en el mapa puede ser una de las mejores formas de indicar al usuario que hay algún tipo de interacción que puede realizar allí.
+Dibujar marcadores en el mapa es una de las mejores formas de indicar al usuario que allí puede realizar algún tipo de interacción.
 
-Dibujar un marcador es bastante sencillo. Este es un ejemplo de cómo se dibuja el marcador de la ruta del autobús:
+Dibujar un marcador es bastante fácil. Este es un ejemplo de cómo se dibuja el marcador de la ruta de autobús:
 ```lua
   local function createBusMarker(markerName)
     local marker =  createObject('TSStatic')
@@ -89,7 +86,7 @@ Este es un ejemplo de marcador personalizado de [BeamNG-FuelStations](https://gi
 ```
 ## Interfaz de usuario
 
-### Notificaciones emergentes (toast), en la parte superior derecha de la pantalla
+### Notificaciones emergentes (toast), arriba a la derecha de la pantalla
 
 <figure class="image image_resized" style="width:75%">
 
@@ -102,9 +99,9 @@ guihooks.trigger('toastrMsg', {type = "info", title = "Info Message:", msg = "In
 guihooks.trigger('toastrMsg', {type = "warning", title = "Warning Message:", msg = "Warning Message Text Here", config = {timeOut = 5000}}) 
 guihooks.trigger('toastrMsg', {type = "error", title = "Error Message:", msg = "Error Message Text Here", config = {timeOut = 5000}}) 
 ```
-### Notificaciones de mensajes, en la parte superior izquierda de la pantalla por defecto, en la app Messages
+### Notificaciones de mensaje, arriba a la izquierda de la pantalla por defecto, en la app Messages
 
-Requiere la aplicación de IU 'Messages' o 'Messages & Tasks'. Los iconos se encuentran en `ui\ui-vue\src\assets\fonts\bngIcons\svg\`
+Requiere la app de IU 'Messages' o 'Messages & Tasks'. Los iconos se encuentran en `ui\ui-vue\src\assets\fonts\bngIcons\svg\`
 
 <figure class="image image_resized" style="width:75%">
 
@@ -154,9 +151,9 @@ guihooks.trigger('ScenarioFlashMessage', {{"GO!", 3.0, "Engine.Audio.playOnce('A
 --another sound example
 guihooks.trigger('ScenarioFlashMessage', {{"Teleported!", 3.0, "Engine.Audio.playOnce('AudioGui', 'event:UI_Checkpoint')", false}}) 
 ```
-### Indicador persistente de tamaño medio en el centro
+### Panel persistente de tamaño medio en el centro
 
-Requiere la aplicación de IU 'Race Realtime Display'.
+Requiere la app de IU 'Race Realtime Display'.
 
 <figure class="image image_resized" style="width:75%">
 
@@ -170,7 +167,7 @@ guihooks.trigger('ScenarioRealtimeDisplay', {msg = "Message Text Here"} )
 --if you are running live data, this is a good one to update rapidly (think timers, distance calcs, et cetera)
 guihooks.trigger('ScenarioRealtimeDisplay', {msg = ""} )
 ```
-### Cuadro de diálogo de confirmación
+### Diálogo de confirmación
 
 ConfirmationDialog es una ventana emergente sencilla con hasta dos botones.
 ```lua
@@ -193,24 +190,24 @@ guihooks.trigger("ConfirmationDialogClose", "Example Title")
 
 </figure>
 
-Ambos campos de un botón deben ser cadenas de texto para que el botón aparezca.
+Los dos campos de un botón deben ser cadenas de texto para que el botón aparezca.
 
 Si se proporciona el botón Okay, pulsar la acción *OK / Primary action* equivale a pulsar el botón Okay.
 
 Si se proporciona el botón Cancel, pulsar la acción *Menu* equivale a pulsar el botón Cancel.
 
-Se admite HTML, que puede usarse para añadir imágenes o iconos, por ejemplo.
+Se admite HTML, que se puede usar, por ejemplo, para añadir imágenes o iconos.
 
 Se pueden mostrar varios a la vez; se muestran de forma secuencial.
 
 ::: bug
-Si no se proporciona ningún botón, el jugador no puede salir del diálogo sin usar la consola.
+Si no se proporcionan botones, el jugador no puede salir del diálogo sin usar la consola.
 :::
 
 ::: bug
-Las partes SDF de la aplicación de IU Minimap permanecen visibles mientras hay un ConfirmationDialog activo.
+Las partes SDF de la app de IU Minimap siguen visibles mientras hay un ConfirmationDialog activo.
 
-Como solución provisional se puede usar `#!lua guihooks.trigger('ShowApps', false)` para ocultar las aplicaciones de IU.
+Como solución provisional se puede usar `#!lua guihooks.trigger('ShowApps', false)` para ocultar las apps de IU.
 :::
 
 <figure class="image image_resized" style="width:75%">
@@ -250,16 +247,16 @@ guihooks.trigger("introPopupClose")
     * No muestra ningún botón
 
 ::: warning
-Al usar la variante noButtons en la página, si no se incluye JavaScript adicional en el contenido de la página para cerrar la ventana emergente, el juego queda bloqueado (softlock). En esta variante, las páginas no se combinan en una sola ventana emergente. No se recomienda usar esta variante.
+Al usar la variante noButtons en la página, si el contenido de la página no incluye JavaScript adicional para cerrar la ventana emergente, el juego se bloquea sin remedio (softlock). En esta variante las páginas no se combinan en una sola ventana emergente. No se recomienda usar esta variante.
 :::
 
-Si se proporcionan varias páginas, o si el hook se activa varias veces, las páginas se combinan en la misma ventana emergente. Si el hook se activa mientras hay un introPopup activo, o cuando ya se ha activado un tipo diferente de introPopup, se muestra en una ventana emergente aparte después de cerrar la existente.
+Si se proporcionan varias páginas, o el hook se dispara varias veces, las páginas se combinan en la misma ventana emergente. Si el hook se dispara mientras hay un introPopup activo, o cuando ya se ha disparado otro tipo de introPopup, se muestra en una ventana emergente aparte después de que se cierre la existente.
 
 ### introPopupCareer
 
-introPopupCareer es una ventana emergente fácil de usar pero abierta, que admite incrustar HTML si es necesario.
+introPopupCareer es una ventana emergente fácil de usar pero abierta, que admite HTML incrustado si hace falta.
 
-Las variantes (flavours) controlan qué botones se muestran y la relación de aspecto predeterminada de la imagen. Existen cuatro variantes:
+Las variantes controlan qué botones se muestran y la relación de aspecto predeterminada de la imagen. Existen cuatro variantes:
 
 * `default`
   * Relación de aspecto predeterminada de la imagen: 16x9
@@ -291,18 +288,18 @@ guihooks.trigger("introPopupClose")
 
 </figure>
 
-Si se proporcionan varias páginas, o si el hook se activa varias veces, las páginas se combinan en la misma ventana emergente. Si el hook se activa mientras hay un introPopup activo, o cuando ya se ha activado un tipo diferente de introPopup, se muestra en una ventana emergente aparte después de cerrar la existente.
+Si se proporcionan varias páginas, o el hook se dispara varias veces, las páginas se combinan en la misma ventana emergente. Si el hook se dispara mientras hay un introPopup activo, o cuando ya se ha disparado otro tipo de introPopup, se muestra en una ventana emergente aparte después de que se cierre la existente.
 
 ::: bug
-El desenfoque del fondo tiene una altura mínima, lo que provoca que las ventanas emergentes con poco contenido tengan un exceso de desenfoque debajo de su ventana. Existen dos soluciones provisionales principales:
+El desenfoque de fondo tiene una altura mínima, por lo que las ventanas emergentes con poco contenido muestran un exceso de desenfoque debajo de su ventana. Existen dos soluciones provisionales principales:
 
-* Repetir `\n` y terminar con `#!html <div />` hasta que la ventana cubra el desenfoque
-* Usar una ruta de `image` vacía o inexistente y ajustar la relación de aspecto hasta que la ventana cubra el desenfoque
+* Repite `\n` y termina con `#!html <div />` hasta que la ventana cubra el desenfoque
+* Usa una ruta de `image` vacía o inexistente y ajusta la relación de aspecto hasta que la ventana cubra el desenfoque
 :::
 
 ### introPopupMission
 
-introPopupMission es casi idéntica a introPopupCareer, pero requiere definir los botones en lugar de elegir un preajuste de botones.
+introPopupMission es casi idéntico a introPopupCareer, pero hay que definir los botones en lugar de elegir un preajuste de botones.
 
 Los estilos de botón se combinan como *bng-button-*`style`. Los estilos de botón integrados son:
 
@@ -336,18 +333,18 @@ guihooks.trigger("introPopupClose")
 
 </figure>
 
-Si se proporcionan varias páginas, o si el hook se activa varias veces, las páginas se combinan en la misma ventana emergente. Si el hook se activa mientras hay un introPopup activo, o cuando ya se ha activado un tipo diferente de introPopup, se muestra en una ventana emergente aparte después de cerrar la existente.
+Si se proporcionan varias páginas, o el hook se dispara varias veces, las páginas se combinan en la misma ventana emergente. Si el hook se dispara mientras hay un introPopup activo, o cuando ya se ha disparado otro tipo de introPopup, se muestra en una ventana emergente aparte después de que se cierre la existente.
 
 ::: bug
-El desenfoque del fondo tiene una altura mínima, lo que provoca que las ventanas emergentes con poco contenido tengan un exceso de desenfoque debajo de su ventana. Existen dos soluciones provisionales principales:
+El desenfoque de fondo tiene una altura mínima, por lo que las ventanas emergentes con poco contenido muestran un exceso de desenfoque debajo de su ventana. Existen dos soluciones provisionales principales:
 
-* Repetir `\n` y terminar con `#!html <div />` hasta que la ventana cubra el desenfoque
-* Usar una ruta de `image` vacía o inexistente y ajustar la relación de aspecto hasta que la ventana cubra el desenfoque
+* Repite `\n` y termina con `#!html <div />` hasta que la ventana cubra el desenfoque
+* Usa una ruta de `image` vacía o inexistente y ajusta la relación de aspecto hasta que la ventana cubra el desenfoque
 :::
 
 ### Dialogue
 
-Dialogue se usa en la campaña *A Rocky Start* para mostrar información sobre una misión. Es una ventana emergente centrada y alineada verticalmente, con un diseño específico. No admite HTML incrustado.
+Dialogue se usa en la campaña *A Rocky Start* para mostrar información sobre una misión. Es una ventana emergente centrada y alineada verticalmente, con una disposición específica. No admite HTML incrustado.
 ```lua
 ui_missionInfo.openDialogue({
     title    = "Dialogue title",
