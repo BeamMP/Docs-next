@@ -1,18 +1,15 @@
-::: warning Questo sito è in costruzione!
-Questo sito è in fase di sviluppo attivo. 
+---
+description: "Snippet CSS per BeamNG.drive per le app UI: variabili comuni e stili già pronti che puoi copiare."
+---
+# Snippet di codice CSS
 
-Pensi di poter aiutare? Fallo cliccando sull'icona della matita nella pagina a destra!
-
-Si può fare su qualsiasi pagina.
-:::
-    
-# Snippet di codice CSS per BeamNG.drive
+Snippet per BeamNG.drive che puoi copiare e adattare.
 
 ## Variabili comuni
 
 :::: tabs
 
-== Arancione CEF di BeamNG
+== BeamNG CEF Orange
 ```css
 var(--bng-orange) /*Common orange*/
 var(--bng-orange-shade1) /*70% opacity*/
@@ -41,9 +38,9 @@ var(--white-1) /*80% opacity*/
 var(--white-2) /*40% opacity*/
 var(--white-3) /*20% opacity*/
 ```
-== Palette di colori dell'interfaccia Vue di BeamNG
+== BeamNG Vue UI Color Palette
 
-Tutte queste supportano l'aggiunta di `-rgb` alla fine del nome della variabile per convertirle in valori grezzi di rosso, verde e blu. Usa -rgb così: `rgba(var(--bng-orange-500-rgb), 0.5)` per ottenere bng-orange-500 con il 50% di opacità.
+Tutte queste supportano l'aggiunta di `-rgb` alla fine del nome della variabile per convertirle in valori grezzi di rosso, verde e blu. Usa -rgb così: `rgba(var(--bng-orange-500-rgb), 0.5)` per bng-orange-500 con il 50% di opacità.
 
 ::: tabs
 

@@ -1,13 +1,9 @@
-::: warning Questo sito è in costruzione!
+---
+description: "Snippet ImGui per BeamNG.drive: configura una finestra, formatta il testo e usa i controlli più comuni, pronti da copiare."
+---
+# Snippet di codice ImGui
 
-Questo sito è in fase di sviluppo attivo. 
-
-Pensi di poter aiutare? Fallo cliccando sull'icona della matita nella pagina a destra!
-
-Si può fare su qualsiasi pagina.
-:::
-
-# Snippet di codice ImGui per BeamNG.drive
+Snippet per BeamNG.drive che puoi copiare e adattare.
 
 ## Configurazione
 

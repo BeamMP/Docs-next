@@ -1,12 +1,9 @@
-::: warning Questo sito è in costruzione!
-Questo sito è in fase di sviluppo attivo. 
+---
+description: "Snippet Lua per BeamNG.drive pronti all'uso: disegna un marcatore, rileva i veicoli e mostra notifiche toast, messaggi, flash, dialoghi di conferma e popup tutorial."
+---
+# Snippet di codice Lua
 
-Pensi di poter aiutare? Fallo cliccando sull'icona della matita nella pagina a destra!
-
-Si può fare su qualsiasi pagina.
-:::
-    
-# Snippet di codice Lua per BeamNG.drive
+Snippet per BeamNG.drive che puoi copiare e adattare.
 
 ## Mondo
 
@@ -54,7 +51,7 @@ Disegnare un marcatore è abbastanza semplice. Ecco un esempio di come viene dis
     end
   end
 ```
-Ecco un esempio di marcatore personalizzato tratto da [BeamNG-FuelStations](https://github.com/BeamMP/BeamNG-FuelStations/tree/master):
+Ecco un esempio di marcatore personalizzato da [BeamNG-FuelStations](https://github.com/BeamMP/BeamNG-FuelStations/tree/master):
 ```lua
   local stations = [
     { "location": [ -778.813,  485.973, 23.46 ], "type":"gas" },
@@ -93,7 +90,7 @@ Ecco un esempio di marcatore personalizzato tratto da [BeamNG-FuelStations](http
 
 <figure class="image image_resized" style="width:75%">
 
-  ![image](https://github.com/StanleyDudek/Docs/assets/49531350/c8a87842-b95a-4eca-84dc-93072ecc9158)
+  ![immagine](https://github.com/StanleyDudek/Docs/assets/49531350/c8a87842-b95a-4eca-84dc-93072ecc9158)
 
 </figure>
 ```lua
@@ -102,13 +99,13 @@ guihooks.trigger('toastrMsg', {type = "info", title = "Info Message:", msg = "In
 guihooks.trigger('toastrMsg', {type = "warning", title = "Warning Message:", msg = "Warning Message Text Here", config = {timeOut = 5000}}) 
 guihooks.trigger('toastrMsg', {type = "error", title = "Error Message:", msg = "Error Message Text Here", config = {timeOut = 5000}}) 
 ```
-### Notifiche di messaggio, in alto a sinistra dello schermo per impostazione predefinita, nell'app Messages
+### Notifiche di messaggio, in alto a sinistra per impostazione predefinita nell'app Messages
 
-Richiede l'app UI "Messages" oppure "Messages & Tasks". Le icone si trovano in `ui\ui-vue\src\assets\fonts\bngIcons\svg\`
+Richiede l'app UI "Messages" o "Messages & Tasks". Le icone si trovano in `ui\ui-vue\src\assets\fonts\bngIcons\svg\`
 
 <figure class="image image_resized" style="width:75%">
 
-  ![image](https://github.com/StanleyDudek/Docs/assets/49531350/6baef813-50cb-43c3-9c59-0de550b014b6)
+  ![immagine](https://github.com/StanleyDudek/Docs/assets/49531350/6baef813-50cb-43c3-9c59-0de550b014b6)
 
 </figure>
 ```lua
@@ -127,17 +124,17 @@ guihooks.trigger('Message', {msg = "Message Text Here", ttl = 5.0, category = "t
 guihooks.trigger('Message', {msg = "Message Text Here", ttl = 5.0, category = "save", icon = "save"}) 
 guihooks.trigger('Message', {msg = "Message Text Here", ttl = 5.0, category = "settings", icon = "settings"}) 
 ```
-### Flash di visualizzazione al centro, grande o piccolo
+### Flash al centro, grande o piccolo
 
 <figure class="image image_resized" style="width:75%">
 
-  ![image](https://github.com/StanleyDudek/Docs/assets/49531350/d0cf754f-83f8-4d15-9159-27350da127de)
+  ![immagine](https://github.com/StanleyDudek/Docs/assets/49531350/d0cf754f-83f8-4d15-9159-27350da127de)
 
 </figure>
 
 <figure class="image image_resized" style="width:75%">
 
-  ![image](https://github.com/StanleyDudek/Docs/assets/49531350/1df6fc9b-756f-484e-b8d9-5df346dc4c26)
+  ![immagine](https://github.com/StanleyDudek/Docs/assets/49531350/1df6fc9b-756f-484e-b8d9-5df346dc4c26)
 
 </figure>
 ```lua
@@ -154,13 +151,13 @@ guihooks.trigger('ScenarioFlashMessage', {{"GO!", 3.0, "Engine.Audio.playOnce('A
 --another sound example
 guihooks.trigger('ScenarioFlashMessage', {{"Teleported!", 3.0, "Engine.Audio.playOnce('AudioGui', 'event:UI_Checkpoint')", false}}) 
 ```
-### Visualizzazione persistente di dimensioni medie al centro
+### Visualizzazione persistente al centro, di dimensioni medie
 
 Richiede l'app UI "Race Realtime Display".
 
 <figure class="image image_resized" style="width:75%">
 
-  ![image](https://github.com/StanleyDudek/Docs/assets/49531350/6290e018-6b3d-4674-98f2-34282a723258)
+  ![immagine](https://github.com/StanleyDudek/Docs/assets/49531350/6290e018-6b3d-4674-98f2-34282a723258)
 
 </figure>
 ```lua
@@ -170,7 +167,7 @@ guihooks.trigger('ScenarioRealtimeDisplay', {msg = "Message Text Here"} )
 --if you are running live data, this is a good one to update rapidly (think timers, distance calcs, et cetera)
 guihooks.trigger('ScenarioRealtimeDisplay', {msg = ""} )
 ```
-### Finestra di conferma
+### Dialogo di conferma
 
 ConfirmationDialog è un semplice popup con al massimo due pulsanti.
 ```lua
@@ -193,18 +190,18 @@ guihooks.trigger("ConfirmationDialogClose", "Example Title")
 
 </figure>
 
-Entrambi i campi di un pulsante devono essere stringhe affinché il pulsante compaia.
+Entrambi i campi di un pulsante devono essere stringhe, altrimenti il pulsante non compare.
 
-Se viene fornito il pulsante Okay, premere l'azione *OK / azione principale* equivale a premere il pulsante Okay.
+Se è presente il pulsante Okay, premere l'azione *OK / Primary action* equivale a premere il pulsante Okay.
 
-Se viene fornito il pulsante Cancel, premere l'azione *Menu* equivale a premere il pulsante Cancel.
+Se è presente il pulsante Cancel, premere l'azione *Menu* equivale a premere il pulsante Cancel.
 
-È supportato l'HTML, che può essere usato ad esempio per aggiungere immagini o icone.
+L'HTML è supportato e si può usare, ad esempio, per aggiungere immagini o icone.
 
-Se ne possono visualizzare più di una contemporaneamente: verranno mostrate in sequenza.
+Se ne possono mostrare più di uno contemporaneamente: vengono visualizzati in sequenza.
 
 ::: bug
-Se non viene fornito alcun pulsante, il giocatore non può uscire dalla finestra senza usare la console.
+Se non fornisci alcun pulsante, il giocatore non può uscire dal dialogo senza usare la console.
 :::
 
 ::: bug
@@ -215,13 +212,13 @@ Come soluzione di ripiego si può usare `#!lua guihooks.trigger('ShowApps', fals
 
 <figure class="image image_resized" style="width:75%">
 
-  ![ConfirmationDialog usato in un sistema di kick per inattività](../../../assets/content/ConfirmationDialog_Example.png)
+  ![ConfirmationDialog usato per un sistema di kick per inattività](../../../assets/content/ConfirmationDialog_Example.png)
 
 </figure>
 
 ### introPopupTutorial
 
-introPopupTutorial è un popup altamente personalizzabile, definito in gran parte con HTML incorporato. Lo standard è caricarlo da un file HTML indipendente situato in `/gameplay/tutorials/pages/*/content.html`.
+introPopupTutorial è un popup molto personalizzabile, definito in gran parte con HTML incorporato. Di norma lo si carica da un file HTML a sé stante, collocato in `/gameplay/tutorials/pages/*/content.html`.
 ```lua
 guihooks.trigger("introPopupTutorial", {
     {
@@ -234,11 +231,11 @@ guihooks.trigger("introPopupClose")
 ```
 <figure class="image image_resized" style="width:75%">
 
-  ![Lo snippet introPopupTutorial visualizzato in BeamNG.drive](../../../assets/content/introPopupTutorial.png)
+  ![Lo snippet introPopupTutorial mostrato in BeamNG.drive](../../../assets/content/introPopupTutorial.png)
 
 </figure>
 
-`flavour` controlla quali pulsanti vengono visualizzati. Esistono quattro varianti:
+`flavour` controlla quali pulsanti vengono mostrati. Esistono quattro flavour:
 
 * `withLogbook`
     * Pulsanti: Career Logbook, Okay
@@ -247,28 +244,28 @@ guihooks.trigger("introPopupClose")
 * `onlyLogbook`
     * Pulsanti: Career Logbook
 * `noButtons`
-    * Non fornisce alcun pulsante
+    * Non mostra alcun pulsante
 
 ::: warning
-Quando si usa la variante noButtons nella pagina, se il contenuto della pagina non include JavaScript aggiuntivo per chiudere il popup, il gioco si blocca. In questa variante le pagine non vengono combinate in un unico popup. L'uso di questa variante è sconsigliato.
+Se usi il flavour noButtons e nel contenuto della pagina non c'è JavaScript aggiuntivo per chiudere il popup, il gioco si blocca (softlock). In questo flavour le pagine non vengono unite in un unico popup. Non è consigliato usare questo flavour.
 :::
 
-Se vengono fornite più pagine, o se l'hook viene attivato più volte, le pagine vengono combinate nello stesso popup. Se l'hook viene attivato mentre un introPopup è attivo, o quando è già stato attivato un introPopup di tipo diverso, viene mostrato in un popup separato dopo la chiusura di quello esistente.
+Se vengono fornite più pagine, oppure l'hook viene scatenato più volte, le pagine vengono unite nello stesso popup. Se l'hook viene scatenato mentre un introPopup è attivo, o quando è già stato scatenato un introPopup di tipo diverso, viene mostrato in un popup separato dopo la chiusura di quello esistente.
 
 ### introPopupCareer
 
-introPopupCareer è un popup facile da usare ma flessibile, che supporta l'HTML incorporato, se necessario.
+introPopupCareer è un popup facile da usare ma flessibile, che supporta l'HTML incorporato, se serve.
 
-Le varianti (flavour) controllano quali pulsanti vengono visualizzati e il rapporto d'aspetto predefinito dell'immagine. Esistono quattro varianti:
+I flavour controllano quali pulsanti vengono mostrati e le proporzioni predefinite dell'immagine. Esistono quattro flavour:
 
 * `default`
-  * Rapporto d'aspetto predefinito dell'immagine: 16x9
+  * Proporzioni predefinite dell'immagine: 16x9
   * Pulsanti: Later, Okay
 * `welcome`
-  * Rapporto d'aspetto predefinito dell'immagine: 16x9
+  * Proporzioni predefinite dell'immagine: 16x9
   * Pulsanti: Career Logbook, Okay
 * `branch-info`
-  * Rapporto d'aspetto predefinito dell'immagine: 16x9
+  * Proporzioni predefinite dell'immagine: 16x9
   * Pulsanti: Career Logbook, Okay
 * `garage`
   * Pulsanti: Later, Okay
@@ -287,24 +284,24 @@ guihooks.trigger("introPopupClose")
 ```
 <figure class="image image_resized" style="width:75%">
 
-  ![Lo snippet introPopupCareer visualizzato in BeamNG.drive](../../../assets/content/introPopupCareer.png)
+  ![Lo snippet introPopupCareer mostrato in BeamNG.drive](../../../assets/content/introPopupCareer.png)
 
 </figure>
 
-Se vengono fornite più pagine, o se l'hook viene attivato più volte, le pagine vengono combinate nello stesso popup. Se l'hook viene attivato mentre un introPopup è attivo, o quando è già stato attivato un introPopup di tipo diverso, viene mostrato in un popup separato dopo la chiusura di quello esistente.
+Se vengono fornite più pagine, oppure l'hook viene scatenato più volte, le pagine vengono unite nello stesso popup. Se l'hook viene scatenato mentre un introPopup è attivo, o quando è già stato scatenato un introPopup di tipo diverso, viene mostrato in un popup separato dopo la chiusura di quello esistente.
 
 ::: bug
-La sfocatura dello sfondo ha un'altezza minima, per cui i popup con contenuto breve mostrano una sfocatura in eccesso sotto la finestra. Esistono due soluzioni di ripiego principali:
+La sfocatura dello sfondo ha un'altezza minima, quindi i popup con poco contenuto mostrano una sfocatura in eccesso sotto la loro finestra. Esistono due soluzioni di ripiego principali:
 
-* Ripetere `\n` e terminare con `#!html <div />` finché la finestra non copre la sfocatura
-* Usare un percorso `image` vuoto o mancante e regolare il rapporto d'aspetto finché la finestra non copre la sfocatura
+* Ripeti `\n` e termina con `#!html <div />` finché la finestra non copre la sfocatura
+* Usa un percorso `image` vuoto o mancante e regola le proporzioni finché la finestra non copre la sfocatura
 :::
 
 ### introPopupMission
 
-introPopupMission è quasi identico a introPopupCareer, ma richiede che i pulsanti vengano definiti anziché scegliere un preset di pulsanti.
+introPopupMission è quasi identico a introPopupCareer, ma i pulsanti vanno definiti invece di scegliere un preset.
 
-Gli stili dei pulsanti vengono combinati come *bng-button-*`style`. Gli stili di pulsante integrati sono:
+Gli stili dei pulsanti si compongono come *bng-button-*`style`. Gli stili di pulsante integrati sono:
 
 * `main` - arancione
 * `secondary` - ciano
@@ -332,22 +329,22 @@ guihooks.trigger("introPopupClose")
 ```
 <figure class="image image_resized" style="width:75%">
 
-  ![Lo snippet introPopupMission visualizzato in BeamNG.drive](../../../assets/content/introPopupMission.png)
+  ![Lo snippet introPopupMission mostrato in BeamNG.drive](../../../assets/content/introPopupMission.png)
 
 </figure>
 
-Se vengono fornite più pagine, o se l'hook viene attivato più volte, le pagine vengono combinate nello stesso popup. Se l'hook viene attivato mentre un introPopup è attivo, o quando è già stato attivato un introPopup di tipo diverso, viene mostrato in un popup separato dopo la chiusura di quello esistente.
+Se vengono fornite più pagine, oppure l'hook viene scatenato più volte, le pagine vengono unite nello stesso popup. Se l'hook viene scatenato mentre un introPopup è attivo, o quando è già stato scatenato un introPopup di tipo diverso, viene mostrato in un popup separato dopo la chiusura di quello esistente.
 
 ::: bug
-La sfocatura dello sfondo ha un'altezza minima, per cui i popup con contenuto breve mostrano una sfocatura in eccesso sotto la finestra. Esistono due soluzioni di ripiego principali:
+La sfocatura dello sfondo ha un'altezza minima, quindi i popup con poco contenuto mostrano una sfocatura in eccesso sotto la loro finestra. Esistono due soluzioni di ripiego principali:
 
-* Ripetere `\n` e terminare con `#!html <div />` finché la finestra non copre la sfocatura
-* Usare un percorso `image` vuoto o mancante e regolare il rapporto d'aspetto finché la finestra non copre la sfocatura
+* Ripeti `\n` e termina con `#!html <div />` finché la finestra non copre la sfocatura
+* Usa un percorso `image` vuoto o mancante e regola le proporzioni finché la finestra non copre la sfocatura
 :::
 
 ### Dialogue
 
-Dialogue viene usato nella campagna *A Rocky Start* per mostrare informazioni su una missione. È un popup centrato e allineato verticalmente, con un layout specifico. Non supporta l'HTML incorporato.
+Dialogue viene usato nella campagna *A Rocky Start* per mostrare informazioni su una missione. È un popup centrato, allineato verticalmente, con un layout specifico. Non supporta l'HTML incorporato.
 ```lua
 ui_missionInfo.openDialogue({
     title    = "Dialogue title",
@@ -368,14 +365,14 @@ ui_missionInfo.closeDialogue()
 ```
 <figure class="image image_resized" style="width:75%">
 
-  ![Lo snippet Dialogue visualizzato in BeamNG.drive](../../../assets/content/Dialogue.png)
+  ![Lo snippet Dialogue mostrato in BeamNG.drive](../../../assets/content/Dialogue.png)
 
 </figure>
 
-È possibile visualizzare un solo Dialogue alla volta. Qualsiasi Dialogue esistente viene sovrascritto.
+Si può mostrare un solo Dialogue alla volta. Qualsiasi Dialogue esistente viene sostituito.
 
 ::: info
 Per chiudere un dialogo si deve usare `#!lua ui_missionInfo.closeDialogue()`.
 
-Assicurati di chiamare questa funzione alla pressione di qualsiasi pulsante.
+Assicurati di chiamare questa funzione quando viene premuto un qualsiasi pulsante.
 :::
