@@ -1,5 +1,8 @@
 import { defineConfig, type DefaultTheme } from 'vitepress'
 import { tabsMarkdownPlugin } from 'vitepress-plugin-tabs'
+import fs from 'node:fs'
+import path from 'node:path'
+import { redirectPage, redirectPlan } from '../../scripts/lib/redirects.mjs'
 import container from 'markdown-it-container'
 import type Token from 'markdown-it/lib/token.mjs'
 import enTranslations from '../en/nav-translations.json'
@@ -359,6 +362,14 @@ export default defineConfig({
     zh: makeLocale('zh', '中文', 'zh', '/zh/')
   },
   rewrites,
+  // GitHub Pages cannot redirect, so the old MkDocs addresses get a small page that sends the visitor on.
+  buildEnd(siteConfig) {
+    for (const [file, to] of redirectPlan(siteConfig.pages, siteConfig.rewrites.map)) {
+      const target = path.join(siteConfig.outDir, file)
+      fs.mkdirSync(path.dirname(target), { recursive: true })
+      fs.writeFileSync(target, redirectPage(to))
+    }
+  },
   markdown: {
     config(md) {
       md.use(tabsMarkdownPlugin)
