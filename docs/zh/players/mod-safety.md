@@ -1,38 +1,57 @@
-## 为什么我需要停用我的模组 ？
+---
+description: "为什么本地模组会导致 BeamMP 无法使用，以及四种修复方法：停用模组、新建用户文件夹、清除启动器缓存、清理 content 文件夹。"
+---
+# 模组安全
 
-在BeamMP中，您决定连接的服务器提供了必要的模块。这些会在连接时被下载并自动启用。安装本地模组并启用通常会导致BeamMP不能正常工作，即使您除了BeamMP之外只有一个额外的模组。
+当你安装了本地模组时，BeamMP 可能无法正常工作。本页说明原因以及修复方法。
 
-::: warning
-移除你安装在BeamNG.Drive\content\或子文件夹的任何模组。这个位置不是用来安装mod的，可能会导致位于同一目录下的“DO_NOT_INSTALL_MODS_HERE.txt”文件中所述的问题。
+## 为什么我必须停用或移除我的模组？
 
-！！! 引用“DO_NOT_INSTALL_MODS_HERE.txt”
+在 BeamMP 中，你所连接的服务器会提供所需的模组。这些模组会在连接时自动下载并启用。
+安装并启用本地模组，往往会导致 BeamMP 无法正常工作，即使除了 BeamMP 之外你只多装了一个模组也一样。
 
-不要复制mod到这个文件夹：它会导致损坏的mod，更新的安装速度变慢，损坏的mod管理器，损坏的安全模式和其他。
+
+使用 BeamMP 时，有四种方法可以修复由模组引起的问题。
+
+### 停用模组
+在加入任何服务器之前，请确保除了 'multiplayerbeammp' 之外，没有启用其他任何模组。
+如果这个方法不起作用，例如游戏卡死或显示黑屏，或者你仍然有问题，请尝试下一种修复方法。
+
+### 新建用户文件夹
+
+这会为游戏提供一个干净的用户文件夹。
+
+1. 关闭 BeamNG.drive。
+2. 打开 BeamNG 启动程序，点击 **Manage User Folder**，然后点击 **Open user folder**。
+3. 重命名 `current` 文件夹，例如改为 `current_old`。
+
+![三个步骤：BeamNG 启动程序中的 Manage User Folder、Open user folder，然后重命名 current 文件夹](../../assets/content/new-userfolder.png)
+
+游戏下次启动时，会创建一个新的、干净的用户文件夹。
+
+::: warning 我的设置和配置不见了！我怎样才能恢复它们？
+如果你重命名了用户文件夹，就等于强制游戏创建了一个新的、干净的用户文件夹。你可以把被重命名的文件夹（例如 `current_old`）中的 'settings' 和 'vehicles' 文件夹复制到新创建的文件夹中。
+请确保 BeamNG.Drive 已关闭，并替换目标位置中的所有项目。这样你应该就能恢复所有配置和设置，与之前一模一样。
 :::
 
-## 我如何停用/删除我的模组 ？
+::: warning 将文件或文件夹移回新的用户文件夹时请务必小心。
+如果你是通过重命名用户文件夹解决了问题，那么把旧文件移回去，可能会使你之前遇到的问题再次出现。
+:::
 
-在使用BeamMP时，有3个选项可以解决可能出现的问题。
 
-### 1. 禁用模组
 
-在加入任何服务器之前，请确保除了启用“multiplayerbeammp”之外没有其他mod。如果游戏死机或者你仍然有问题，请参考下一个选项
+完成后，请通过 BeamMP 启动器启动 BeamNG.Drive，这时 'multiplayerbeammp' 应该是 Repository 中唯一可用的已启用模组，主菜单上也会有进入 BeamMP 的按钮。
+如果你在加入带有模组的服务器时仍然有问题，那很可能是它们提供了损坏或过时的模组。
 
-### 2. 创建一个新的用户文件夹
+### 清除启动器缓存
+要清理 BeamMP 目录中缓存的模组，请前往 BeamMP 启动器的安装位置。默认路径是 'C:\Users\AppData\BeamMP-Launcher\'。在其中你会找到一个 'Resources' 文件夹。
+删除该文件夹即可删除所有缓存的模组。如果你需要更多磁盘空间，或想清理过时的 BeamNG 模组，这会很有帮助。
 
-打开BeamNG.Drive的用户文件夹，并将`current`文件夹重命名为例如`current_old`。在重命名之前记得关闭BeamNG。![image](../../assets/content/new-userfolder.png)
+### 移除 content 文件夹中的模组
+如果你把模组放进了 content 文件夹，就应该将它们移除。
+要访问 Beamng.drive\content\ 文件夹并清理其中的所有模组，请打开 BeamNG.drive 的安装位置。
+右键点击 `content` 文件夹并将其删除。然后通过 Steam 或 Epic Games 验证游戏文件，这会重新下载基础文件。
 
-### 3. 从内容文件夹中删除模组。
-
-访问BeamNG.Drive\content\文件夹并删除文件夹中的任何模组，打开安装位置的BeamNG.Drive。右键单击`content`文件夹并删除它。继续通过Steam或Epic Games验证游戏文件。这将再次下载文件。
-
-完成后，通过BeamMP- launcher启动BeamNG，您应该将“multiplayerbeammp”作为模组管理器中唯一启用的mod，然后点击主菜单上的按钮进入BeamMP。如果你在加入mod服务器时仍然有问题，他们可能提供了损坏/未更新的mod。
-
-### 4. 清理BeamMP-Launcher缓存
-
-要从BeamMP目录中清除缓存的模组，请转到BeamMP- launcher的安装位置。默认情况下，路径为“C:\Users\AppData\BeamMP-Launcher”。在那里，你会发现一个“Resources”文件夹。删除这个文件夹来删除所有缓存的mod。如果您需要更多磁盘空间或想要删除过时的BeamNG模组，这将非常有用。
-
-::: question 我的设置和配置文件都不见了！ 我怎样才能恢复呢？
-如果你重命名了用户文件夹，你就会让游戏创建一个新的、干净的用户文件夹。你可以从你重命名的文件夹中复制“settings”和“vehicles”文件夹。‘ current_old ’)到它创建的新文件夹。
-确保BeamNG已关闭，并替换要复制文件夹到的位置中的所有要素。现在，您应该就会有与以前一样的所有配置和设置。
+::: quote DO_NOT_INSTALL_MODS_HERE.txt
+请勿将模组复制到此文件夹：这可能导致模组损坏、更新安装变慢、模组管理器损坏、安全模式损坏等问题。
 :::

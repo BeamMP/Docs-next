@@ -1,64 +1,38 @@
-# 常见问题解答
-
-常见问题列表。
-
 ---
-
-## **客户端**
-
+description: "关于 BeamMP 玩家常见问题的解答：安装、盗版或修改版游戏、Linux、杀毒软件警告、性能不佳以及报告 bug。"
 ---
+# 游戏常见问题
 
-### **如何安装 BeamMP？**
+关于游玩 BeamMP 的常见问题。关于账号、Patreon 和抢先体验的问题，请参阅[玩家常见问题](/zh/players/faq)。
 
-关于如何在Windows上安装BeamMP的完整指南，您可以在[这里](https://docs.beammp.com/game/getting-started/)找到它。
+## 游玩
 
----
+### 我如何安装 BeamMP？
 
-### **BeamMP可以运行在盗版或者修改版的BeamNG吗？**
+请按照[安装 BeamMP](/zh/get-started/install-beammp)操作。其中涵盖 Windows 和 Linux。
 
-BeamMP 无法在盗版或旧版本的 BeamNG.drive 上运行。包括但不限于第三方插件在内的修改可能会干扰 BeamMP 的正常运行（请参阅[如何清理插件](https://github.com/Protogen187/Docs/blob/main/docs/en/FAQ/Clearing-mods.md)）。<br>BeamMP 支持团队无法针对盗版、旧版本或其他经过修改的 BeamNG.drive 所产生的问题提供技术支持。
+### BeamMP 可以在盗版或修改版的 BeamNG.drive 上运行吗？
 
----
+BeamMP 无法在盗版或过时的 BeamNG.drive 上运行。
 
-### **BeamMP 可以在 Linux 上运行吗？**
+修改（包括第三方模组）可能会干扰 BeamMP。如何移除它们，请参阅[模组安全](/zh/players/mod-safety)。
 
-客户端在Linux上不被官方支持。但是，您可以查看我们的[指南来了解如何在Linux上使用BeamMP](/zh/get-started/#2b-linux)。
+BeamMP 支持团队无法帮助解决盗版、过时或经过其他修改的 BeamNG.drive 上的问题。
 
----
+### BeamMP 可以在 Linux 上运行吗？
 
-### **为什么启动器被我的杀毒软件或Windows Defender标记**
+客户端在 Linux 上不受官方支持。你可以参考我们的指南，在 Linux 上[安装 BeamMP](/zh/get-started/install-beammp#install-on-linux)。
 
-由于 BeamMP 需要与网络进行交互及其他因素，部分杀毒软件可能会将其标记为威胁。但请放心，所有代码中均不含任何病毒。启动器、服务器以及 Lua 客户端的源代码均可在我们的 [GitHub](https://github.com/BeamMP) 页面上找到。
+### 为什么我的杀毒软件或 Windows Defender 会把启动器标记出来？
 
----
+一些杀毒软件会将 BeamMP 标记为威胁，原因之一是它会使用网络。所有代码中都**没有病毒**。启动器、服务器和 Lua 客户端的代码都在我们的 [GitHub](https://github.com/BeamMP) 上。如果你需要允许启动器通过，请参阅 [Defender / 防火墙排除项](/zh/troubleshooting/defender-exclusions)。
 
-### **我的游戏性能很差，我该怎么办？**
+### 我的性能很差，我该怎么办？
 
-我们正在努力使多人游戏体验尽可能稳定。如果您已经降低了图形设置，但性能仍然很差，请考虑在玩家较少的服务器上进行游戏。当你和很多人一起玩游戏时，游戏主要是CPU受限的，所以旧的CPU（甚至是四核）在多人的情况下会受到影响。（一般经验法则：每个CPU线程1辆车）
+我们正在努力让多人模式尽可能稳定。如果你已经降低了图形设置，但性能仍然很差，请尝试玩家较少的服务器。
 
----
+当很多人一起游玩时，游戏主要受限于 CPU，因此较旧的 CPU（即使是四核）在玩家稍多时就会吃力。一般的经验法则是每个 CPU 线程对应一辆车。
 
-## **其他**
+## 其他问题
 
----
-
-### **我在哪里可以找到代码？**
-
-所有源代码都可以在我们的[GitHub](https://github.com/BeamMP)上找到。在进行任何更改之前，请记住代码受我们的[使用条款](https://forum.beammp.com/t/terms-of-use-v1-0/43)和许可的约束：
-
-代码 | 许可证
---- | :-:
-服务器 | [许可证](https://github.com/BeamMP/BeamMP-Server/blob/master/LICENSE)
-启动器 | [许可证](https://github.com/BeamMP/BeamMP-Launcher/blob/master/LICENSE)
-客户端 Lua | [许可证](https://github.com/BeamMP/BeamMP/blob/development/LICENSE)
-
----
-
-### **我发现了错误或漏洞，我该怎么办？**
-
-如果问题与代码相关，并且您知道如何使用Github，请在[ Github ](https://github.com/BeamMP)上的相应存储库中打开一个新的“issue”。我们使用基于问题的工作流程，所以即使你已经修复了bug，也要考虑打开一个新的“Issue”，然后打开一个包含问题解决方案的“Pull Request”。更多关于贡献的信息可以在[中找到](https://github.com/BeamMP/BeamMP/blob/development/CONTRIBUTING.md)。
-
-如果您没有GitHub帐户，或者您不知道如何使用GitHub，或者您有任何其他问题，您可以通过以下方式与我们联系：
-
-- 如果不是敏感内容，您可以在我们的[BeamMP 论坛](https://forum.beammp.com)上创建帖子，或者您可以在我们[的官方 Discord](https://discord.gg/beammp)上报告此问题。
-- 如果信息敏感，您可以直接向我们的[Discord](https://discord.gg/beammp)上的工作人员报告问题。
+<!--@include: ../_parts/faq-code-and-bugs.md-->
