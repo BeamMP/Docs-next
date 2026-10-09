@@ -245,7 +245,7 @@ https://check.beammp.com/api/v2/beammp/ip/port
 
 ::: success status: ok
 If you get the output above you can now join your server!
-There are 2 ways to join, either directly with the details you entered into Probably UP, or, if your server is set to 'public', through the server-list.
+There are 2 ways to join, either directly with the details you entered into CheckBeamMP, or, if your server is set to 'public', through the server-list.
 Since you are hosting a server on-premise, use 127.0.0.1 (localhost) if the Server is running on the same PC as you play, or the LAN IPv4 of the local machine that is running the server.
 :::
 

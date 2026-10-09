@@ -1379,7 +1379,7 @@ The data string begins with a unique vehicle identifier, which is the player's I
 Arguments: `player_id: number`, `vehicle_id: number`, `data: string`
 Cancellable: YES
 
-Triggered when a player edits or replaces their vehicle. The `data` argument contains the car's updated configuration as a json string but does **not** include positional or rotational data. You can use [MP.GetPositionRaw](#mpgetpositionrawpid-number-vid-number-tablestring) to get positional and rotational data.
+Triggered when a player edits or replaces their vehicle. The `data` argument contains the car's updated configuration as a json string but does **not** include positional or rotational data. You can use [MP.GetPositionRaw](#mp-getpositionraw-pid-number-vid-number-table-string) to get positional and rotational data.
 
 <details>
 
@@ -1591,7 +1591,7 @@ Triggered when a player deletes their vehicle.
 Arguments: `player_id: number`, `vehicle_id: number`, `data: string`
 Cancellable: NO
 
-Triggered when a player resets their vehicle. `data` is the car's updated position and rotation however does **not** include the vehicles configuration. You can use [MP.GetPlayerVehicles](#mpgetplayervehiclesplayer_id-number-table) to get the vehicles configuration.
+Triggered when a player resets their vehicle. `data` is the car's updated position and rotation however does **not** include the vehicles configuration. You can use [MP.GetPlayerVehicles](#mp-getplayervehicles-player-id-number-table) to get the vehicles configuration.
 
 #### `onFileChanged`
 
