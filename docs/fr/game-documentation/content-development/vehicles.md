@@ -1,55 +1,19 @@
----
-layout: home
+::: warning Ce site est en cours de construction !
+Ce site est actuellement en cours de développement.
 
-hero:
-  name: Documentation BeamMP
-  text: Tout ce que vous devez savoir
-  tagline: Guides complets pour les joueurs, propriétaires de serveurs et développeurs
-  image:
-    light: /assets/core/beammp_dark.png
-    dark: /assets/core/beammp_light.png
-    alt: BeamMP
-  actions:
-    - theme: brand
-      text: Commencer
-      link: /fr/game/getting-started
-    - theme: alt
-      text: View on GitHub
-      link: https://github.com/beammp/docs
+Vous pensez pouvoir contribuer ? Cliquez simplement sur l'icône en forme de crayon située à droite de la page !
 
-features:
-  - icon: 🎮
-    title: Pour les Joueurs
-    details: Apprenez comment installer BeamMP, vous connecter aux serveurs et tirer le meilleur parti de votre expérience multijoueur
-    link: /fr/game/getting-started
-  - icon: 🖥️
-    title: Pour les Propriétaires de Serveur
-    details: Configurez et gérez votre propre serveur BeamMP avec nos guides complets et ressources de dépannage
-    link: /fr/server/create-a-server
-  - icon: 💻
-    title: Pour les Développeurs
-    details: Créez des mods, des ressources et des applications UI avec la documentation API détaillée et des exemples de code
-    link: /fr/guides/index
-  - icon: ❓
-    title: FAQ
-    details: Trouvez des réponses rapides aux questions fréquemment posées sur la configuration, le dépannage et les meilleures pratiques
-    link: /fr/FAQ/player-faq
-  - icon: 📋
-    title: Règles de la Communauté
-    details: Découvrez nos directives communautaires et comment signaler des problèmes ou contester des décisions
-    link: /fr/community/rules
-  - icon: 🔗
-    title: Communauté
-    details: Rejoignez notre Discord, suivez-nous sur les réseaux sociaux et connectez-vous avec d'autres joueurs et développeurs BeamMP
-    link: /fr/community/index
----
+Vous pouvez également contribuer à n'importe quelle autre page.
+:::
 
-## Pour les Propriétaires de Serveur
+# Création de véhicules BeamNG.drive
 
-Vous envisagez de créer votre propre serveur BeamMP ? Notre guide [complet](/fr/server-owners/host-a-server) vous guidera à travers le processus. Veillez à ce que vous ayez tous les outils et connaissances nécessaires pour configurer votre serveur de manière efficace.
+...
 
-## Pour les Développeurs
+## Introduction
 
-Explorez tous les détails sur la création de ressources pour le serveur BeamMP dans notre [Guide de Développement de Ressources](/fr/developers/mod-and-resource-creation).
+...
 
-D'excitantes mises à jour sont à venir, notamment une toute nouvelle page d'accueil conçue pour améliorer votre expérience de navigation. Restez à l'écoute pour plus d'informations ! :slight_smile:
+## Premiers pas
+
+...
