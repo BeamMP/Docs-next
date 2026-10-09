@@ -1,208 +1,81 @@
-# Configuration d’un serveur sur VPS
+---
+description: "Configurez un serveur BeamMP sur un VPS ou dans le panneau de gestion d'un hébergeur : obtenez une AuthKey, remplissez les champs du panneau, ajoutez des mods et faites venir les joueurs."
+---
+# Configuration du serveur sur un VPS
 
-## **Configurer un serveur**
+Ce guide s'adresse à un serveur hébergé sur un VPS, ou chez un hébergeur, qui dispose d'un panneau de gestion. Pour héberger chez vous à la place, suivez [Héberger un serveur](/fr/server-owners/host-a-server).
 
-Les bases de la configuration de l’application serveur.
+Un hébergement sur VPS ne nécessite aucune modification du pare-feu ni aucune redirection de port sur votre routeur.
 
-Ce guide part du principe que vous hébergez un serveur **sur un VPS avec un panneau de gestion**.
+## Avant de commencer
 
-Pour obtenir un guide détaillé sur l’hébergement d’un serveur à domicile, consultez [Comment créer un serveur](https://docs.beammp.com/server/create-a-server/).
+Les serveurs font partie intégrante de BeamMP : les joueurs sont connectés les uns aux autres par l'intermédiaire du serveur. Vous pouvez créer un serveur privé, que seules les personnes que vous invitez peuvent rejoindre, ou un serveur public, qui apparaît dans la liste officielle des serveurs.
 
-### **Présentation**
+Lisez la [LICENCE](https://raw.githubusercontent.com/BeamMP/BeamMP-Server/master/LICENSE) du serveur avant de l'utiliser.
 
-**Créer un serveur à domicile est gratuit, tandis que l’utilisation d’un VPS est plus simple et plus sécurisée.**
+Si vous rencontrez des problèmes, posez vos questions sur le [forum](https://forum.beammp.com) ou dans le canal `#support` du [serveur Discord](https://discord.gg/beammp). La page [Configuration du serveur](/fr/server-owners/configuration) détaille les paramètres du serveur.
 
-Les serveurs sont un élément essentiel de BeamMP : ils permettent aux joueurs de se connecter les uns aux autres. Ils fonctionnent nativement sous Windows et Linux.
+Si vous n'avez pas encore choisi de VPS, consultez nos services d'hébergement partenaires. Ils sont payants.
 
-Vous pouvez créer des serveurs privés, accessibles uniquement aux personnes que vous invitez, ou des serveurs publics, qui apparaîtront dans notre liste officielle des serveurs.
-
-La mise en place d’un serveur se fait en quelques étapes. Si vous rencontrez un problème, n’hésitez pas à demander de l’aide sur notre [forum](https://forum.beammp.com) ou sur notre [serveur Discord](https://discord.gg/beammp), dans le canal `❔-support`. Consultez également la section [« Maintenance du serveur »](/fr/server-owners/maintenance) pour plus d’informations.
-
-Avant toute utilisation, veuillez lire la [licence](https://raw.githubusercontent.com/BeamMP/BeamMP-Server/master/LICENSE) du serveur.
-
-::: info
-L’utilisation d’un VPS pour héberger votre serveur ne nécessite aucune modification du pare-feu ou de la redirection de ports de votre routeur.
+::: details Services d'hébergement partenaires
+<!--@include: ./_parts/partners.md-->
 :::
 
-Si vous n’avez pas encore choisi de VPS pour héberger votre serveur, vous pouvez consulter nos **services d’hébergement partenaires (payants)** :
+## Préparer le VPS
 
-::: details Services d’hébergement partenaires
-* [Horizon Hosting](https://hrzn.link/beammp)
-* [RackGenius](https://rackgeni.us/beammp-plans)
-* [Connect Hosting](https://connecthosting.net/beammp)
-* [Assetto Hosting](https://assettohosting.com/en/games/beamng)
-* [ZAP-Hosting](https://zap-hosting.com/itsbeammp)
-* [HostHavoc](https://hosthavoc.com/)
-* [PedalHost](https://pedal.host/)
-* [Vyper Hosting](https://vyperhosting.com/r/beammp)
-* [BisectHosting](https://www.bisecthosting.com/beammp-server-hosting)
-* [Four Seasons Hosting](https://fourseasonshosting.com)
-* [Vertuo Hosting](https://vertuohosting.com)
-* [Winheberg](https://winheberg.fr/offres/gaming/beammp?lang=en)
-* [Wabbanode](https://wabbanode.com/partner/beammp)
-* [Iceline Hosting](https://iceline-hosting.com/games/beammp)
+Assurez-vous que la page de gestion de votre serveur est accessible. Une fois que vous avez vérifié que le serveur est prêt à fonctionner, continuez.
 
-(Nous déclinons toute responsabilité concernant le contenu des services ou sites web externes vers lesquels ces liens redirigent.)
-:::
+<!--@include: ./_parts/authkey.md-->
 
-### **1. Configurer le VPS**
+## Remplir les champs du panneau
 
-Commencez par vérifier que le panneau de gestion de votre serveur est accessible.
+Le panneau de l'hébergeur comporte des champs à remplir. Les champs marqués d'un `*` sont obligatoires.
 
-Une fois que vous avez vérifié que le serveur est prêt à fonctionner, passez à l’étape 2.
-
-### **2. Obtenir une clé d’authentification**
-
-La **clé d’authentification**, souvent appelée `AuthKey`, est nécessaire pour rendre un serveur **public** et permettre son affichage dans la liste des serveurs. Il est toutefois recommandé d’ajouter également une clé d’authentification aux serveurs privés.
-
-Le nombre de clés dont vous disposez est limité. Une même clé ne peut être utilisée que par un seul serveur à la fois : vous ne pouvez donc pas démarrer deux serveurs simultanément avec la même clé.
-
-Vous pouvez obtenir davantage de clés en soutenant le projet. Consultez [cet article](https://docs.beammp.com/support/player-faq/) pour plus d’informations.
+1. Collez votre AuthKey dans le champ **Authkey**.
+2. Donnez un nom et une description à votre serveur. Vous pouvez les mettre en forme avec des couleurs et plus encore : consultez [Personnaliser l'apparence du nom de votre serveur](/fr/server-owners/configuration#customize-the-look-of-your-server-name).
 
 ::: warning
-**NE PARTAGEZ JAMAIS CETTE CLÉ ET NE LA MONTREZ À PERSONNE. TRAITEZ-LA COMME UN MOT DE PASSE.**
+Vous ne pouvez pas modifier `ServerConfig.toml` directement dans le gestionnaire de fichiers. C'est voulu : cela permet à l'hébergeur d'imposer des limites, comme le nombre de joueurs.
 :::
 
-Vous aurez besoin d’un compte [Discord](https://discord.com) pour cette étape. Cela permet notamment de limiter le spam.
+### Vérifier qu'il démarre
 
-#### **2.1. Accéder à la page des clés**
+Lancez votre serveur et cherchez les messages `[ERROR]` ou `[WARN]`. Le serveur doit maintenant rester en marche. Ajoutez ensuite des mods si vous le souhaitez, puis voyez comment le rejoindre.
 
-Connectez-vous avec Discord à [Keymaster](https://keymaster.beammp.com).
+## Ajouter des mods
 
-Depuis la page d’accueil de Keymaster, cliquez sur **« Keys »** à gauche de l’écran :
-
-<figure>
-
-  ![](../../assets/content/keymaster_homepage.png)
-
-</figure>
-
-#### **2.2. Créer une clé**
-
-Pour créer une clé, cliquez sur le bouton vert **« + »** situé en haut à droite.
-
-<figure>
-
-  ![](../../assets/content/keymaster_new_key.png)
-
-</figure>
-
-#### **2.3. Renseigner les informations de la clé**
-
-Saisissez ensuite le nom du serveur dans le champ **« Server Name »**. Il s’agit uniquement du nom associé à la clé et non du nom réel de votre serveur dans la liste. Cliquez ensuite sur **« Create »**.
-
-Exemple :
-
-<figure class="image image_resized" style="width:44.84%;">
-
-  ![](../../assets/content/keymaster_server_name.png)
-
-</figure>
-
-Une fois la clé créée, vous devriez obtenir un résultat similaire à celui-ci :
-
-<figure>
-
-  ![](../../assets/content/keymaster_key_done.png)
-
-</figure>
-
-#### **2.4. Copier la clé**
-
-Copiez maintenant le contenu du champ **« Key »**. Dans cet exemple, il s’agit de `3173a2e-6az0-4542-a3p0-ddqq5ff95558`. Conservez cette clé pour l’étape suivante.
-
-Vous pouvez la copier en cliquant sur l’icône en forme de presse-papiers située à droite de la clé :
-
-<figure>
-
-  ![](../../assets/content/keymaster_copy_key.png)
-
-</figure>
+Vous pouvez ajouter des mods avec le gestionnaire de fichiers du panneau. Les mods de véhicules et les mods de cartes s'installent différemment, mais tous vont dans le dossier `Resources/Client` de votre serveur. Placez le fichier `.zip` du mod dans ce dossier.
 
 ::: warning
-Vous ne pourrez pas modifier directement le fichier `ServerConfig.toml` depuis le gestionnaire de fichiers. Cette restriction est intentionnelle afin de permettre à l’hébergeur d’imposer certaines limites, comme le nombre maximal de joueurs.
+Les mods peuvent être, ou devenir, incompatibles avec BeamNG, BeamMP ou d'autres mods. Si vous avez des problèmes, commencez à retirer des mods. Si vous obtenez un message « done » ou « start » en essayant de vous connecter après avoir ajouté des mods, vous avez probablement ajouté un mod incompatible ou défectueux. Si vous avez des mods côté client installés, consultez [Sécurité des mods](/fr/players/mod-safety) pour savoir comment les retirer de votre jeu.
 :::
 
-### **3. Renseigner les champs**
+### Mods de véhicules et autres mods
 
-Le panneau de gestion comporte plusieurs champs à remplir. Certains peuvent être marqués d’un **« * »**, ce qui signifie qu’ils sont obligatoires.
+Placez le fichier `.zip` du mod dans `Resources/Client`. Toutes les personnes qui se connectent le téléchargent automatiquement.
 
-Avec l’`AuthKey` copiée dans votre presse-papiers, recherchez le champ **« Authkey »** dans le panneau de gestion et collez-y la clé.
+### Cartes
 
-Donnez également un **nom** et une **description** à votre serveur. Pour personnaliser leur apparence, notamment avec des couleurs, consultez [la section « Personnalisation du nom »](/fr/server-owners/maintenance#customize-the-look-of-your-server-name) de la page consacrée à la maintenance du serveur.
+Les cartes d'origine fonctionnent sans rien installer. Définissez le champ **Map** du panneau de gestion avec l'un des [chemins des cartes d'origine](/fr/server-owners/configuration#all-vanilla-maps-names).
 
-#### **3.1. Vérification**
+Pour une carte moddée :
 
-Démarrez maintenant votre serveur et vérifiez si d’autres messages `[ERROR]` ou `[WARN]` apparaissent. Le serveur devrait désormais rester actif.
+1. Placez le fichier `.zip` de la carte dans `Resources/Client`.
+2. Ouvrez le `.zip` sans l'extraire, puis ouvrez son dossier `levels`. Il contient un dossier portant le nom de la carte, par exemple `myawesomedriftmap2021`. Notez ce nom exactement tel qu'il est écrit.
+3. Dans le panneau de gestion, le champ **Map** ressemble à `/levels/MAPNAME/info.json`, où `MAPNAME` est probablement quelque chose comme `gridmap_v2`. Remplacez `MAPNAME` par le nom du dossier de l'étape 2. Le chemin doit se terminer par `/info.json`. Pour cet exemple : `/levels/myawesomedriftmap2021/info.json`.
 
-Les étapes suivantes expliquent comment rejoindre votre serveur et y ajouter des mods.
+Lorsque quelqu'un se connecte, la carte se télécharge automatiquement et fonctionne.
 
-### **4. Ajouter des mods à votre serveur**
+Si cela ne fonctionne pas, installez la carte dans BeamNG.drive en solo et lancez-la. Ouvrez la console avec la touche `~` (tilde). Sur un clavier non américain, cherchez l'action **Toggle System Console** sous **Options** > **Controls** > **Bindings**, dans la section **General Debug**. Exécutez `print(getMissionFilename())`. Cela affiche le nom à utiliser.
 
-Vous pouvez ajouter des mods à votre serveur à l’aide du gestionnaire de fichiers fourni par votre hébergeur.
+## Faire venir les joueurs
 
-L’installation des mods de véhicules et des cartes diffère, mais ils doivent tous deux être placés dans le dossier `Resources/Client` de votre serveur. Il vous suffit de glisser-déposer le mod souhaité dans ce dossier.
+Les joueurs peuvent se connecter directement à l'adresse IP publique et au port du serveur, que vous trouverez tous deux dans le panneau de gestion. Vous pouvez aussi trouver l'adresse IP sur le site [Keymaster](https://keymaster.beammp.com/).
 
-::: warning
-Les mods peuvent être incompatibles avec BeamNG, BeamMP ou d’autres mods, et peuvent également le devenir à la suite de mises à jour. Si vous rencontrez des problèmes, commencez par retirer les mods récemment ajoutés.
+Pour un serveur public, les joueurs peuvent à la place ouvrir la liste des serveurs, saisir le nom du serveur et cliquer sur **Connect**. Le nom est celui que vous avez défini. S'ils ne le trouvent pas, dites-leur de désactiver les filtres de recherche et de régler la carte sur **Any**.
 
-Si vous recevez un message **« done »** ou **« start »** lorsque vous essayez de rejoindre votre serveur après avoir ajouté des mods, il est probable que vous ayez installé un mod incompatible ou défectueux.
+Si vous ou un ami obtenez « Connection Failed! », cherchez dans la fenêtre du lanceur des codes tels que 10060, 10061 ou 10030. Ils signifient que le serveur est injoignable, ou que l'adresse IP et le port saisis sur le client sont incorrects. L'IPv6 n'est pas encore prise en charge.
 
-Des conflits peuvent également survenir entre deux ou plusieurs mods. Si vous avez installé des mods côté client, consultez [ce guide](/fr/players/mod-safety) pour savoir comment les supprimer de votre jeu.
-:::
+## Toujours des problèmes ?
 
-#### **4.1. Mods généraux**
-
-Si vous souhaitez uniquement ajouter des mods de véhicules, placez simplement le fichier `.zip` du mod dans le dossier `Resources/Client`.
-
-Ils seront automatiquement téléchargés par les joueurs qui rejoignent votre serveur.
-
-#### **4.2. Cartes**
-
-Toutes les cartes par défaut (c’est-à-dire les cartes qui ne sont pas des mods) fonctionnent directement et ne nécessitent aucune installation. Il vous suffit de modifier le paramètre `Map` dans le panneau de gestion et de choisir l’une des [cartes disponibles](/fr/server-owners/maintenance#all-vanilla-maps-names).
-
-Pour les autres cartes modifiées, procédez comme suit :
-
-1. Placez le fichier `.zip` de votre carte dans le dossier `Resources/Client` de votre serveur.
-2. Ouvrez le fichier `.zip` de la carte **sans l’extraire**, puis ouvrez le dossier `levels`. Celui-ci doit contenir un seul autre dossier portant le nom de la carte, par exemple `myawesomedriftmap2021`. Copiez ou mémorisez ce nom **exactement comme il apparaît**.
-3. Ouvrez votre panneau de gestion. Dans le champ `Map`, vous devriez voir `/levels/MAPNAME/info.json`, où `MAPNAME` correspond probablement à un nom tel que `gridmap_v2`. Remplacez `MAPNAME` par le nom du dossier trouvé à l’étape précédente. Dans notre exemple, il s’agit de `myawesomedriftmap2021`.
-
-Le résultat devrait alors ressembler à l’exemple correspondant et **doit impérativement se terminer par** `/info.json`.
-
-Lorsqu’un joueur rejoindra votre serveur, la carte devrait désormais être téléchargée automatiquement et fonctionner normalement.
-
-**Si cela ne fonctionne pas**, installez la carte sur votre version locale de BeamNG.drive, lancez le jeu et chargez la carte concernée. Ouvrez ensuite la console en appuyant sur la touche `~` (*tilde*). Si vous utilisez un clavier non américain, recherchez l’action **« Basculer la console système »** dans **Options > Contrôles > Liaisons**, sous la section **« Débogage général »**.
-
-Dans la console, exécutez la commande suivante :
-
-`print(getMissionFilename())`
-
-Le nom à utiliser devrait alors s’afficher.
-
-Et voilà ! Votre carte modifiée devrait maintenant être disponible sur votre serveur !
-
-### **5. Comment rejoindre votre serveur**
-
-Découvrez comment vous et les autres joueurs pouvez rejoindre votre serveur.
-
-#### **5.1. Rejoindre votre propre serveur (privé ou public)**
-
-Vous pouvez vous connecter directement à l’adresse IP publique et au port de votre serveur, indiqués dans le panneau de gestion. Ces mêmes informations doivent être utilisées par les autres joueurs qui souhaitent se connecter à votre serveur.
-
-Vous pouvez également consulter [Keymaster](https://keymaster.beammp.com/) pour connaître l’adresse IP de votre serveur.
-
-Pour rejoindre votre serveur public, les joueurs peuvent simplement ouvrir la liste des serveurs, rechercher le nom de votre serveur, puis cliquer sur **« Se connecter »**.
-
-Si vous ne connaissez pas le nom exact de votre serveur, il s’agit de celui que vous avez défini dans `ServerConfig.toml`.
-
-Si votre serveur n’apparaît pas dans la liste, vérifiez que les filtres de recherche sont désactivés et que la carte est définie sur **« Tout »**.
-
-Si vous ou vos amis rencontrez l’erreur **« Échec de la connexion ! »**, vérifiez dans la fenêtre du lanceur si des codes tels que `10060`, `10061` ou `10030` apparaissent.
-
-Cela signifie généralement que le serveur est inaccessible ou que les informations saisies dans les champs d’adresse IP et de port sont incorrectes.
-
-La prise en charge d’IPv6 **n’est pas encore implémentée**.
-
-## Vous rencontrez toujours des problèmes ?
-
-Ouvrez un sujet sur le [forum](https://forum.beammp.com) ou créez un **ticket d’assistance serveur** sur notre [serveur Discord](https://discord.gg/beammp), dans le canal `❔-support`.
+Ouvrez un fil de discussion sur le [forum](https://forum.beammp.com), ou envoyez un **Server Support Ticket** dans le canal `#support` du [serveur Discord](https://discord.gg/beammp).

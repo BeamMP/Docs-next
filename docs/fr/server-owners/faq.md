@@ -1,83 +1,64 @@
-# FAQ et problèmes courants
-Listes de questions posées fréquemment et problèmes connus.
-
 ---
-## **Serveur**
-
+description: "Réponses aux questions courantes sur les serveurs BeamMP : installation, Linux, configuration minimale, joueurs qui ne peuvent pas se connecter, signalement de bugs ou d'une AuthKey compromise."
 ---
-### **Comment est-ce que je peux faire mon propre serveur?**
+# FAQ du serveur
 
-Toute l'information nécessaire pour créer votre propre serveur peut être retrouvée [ici](https://docs.beammp.com/server/create-a-server/).
+Questions fréquentes et problèmes connus concernant l'hébergement d'un serveur BeamMP.
 
----
-### **Est-ce que Linux peut être utilisé pour faire un serveur?**
+## Mise en place
 
-Nous fournissons les "binairies" pour plusieurs distributions de Linux [ici](https://github.com/BeamMP/BeamMP-Server/releases/latest). 
-Si aucune "binairies" n'est disponible pour votre système d'opération/distribution, vous pouvez les construires vous même en téléchargeant le code source depuis notre [GitHub](https://github.com/BeamMP/BeamMP-Server), un tutoriel peut être trouvé [ici](https://github.com/BeamMP/BeamMP-Server#build-instructions).
+### Comment puis-je créer mon propre serveur ?
 
----
-### **Quelles sont les spécifications minimales pour éxecuter le logiciel serveur de BeamMP?**
+Tout ce dont vous avez besoin se trouve dans [Héberger un serveur](/fr/server-owners/host-a-server), ou dans [Configuration du serveur sur un VPS](/fr/server-owners/setup-vps) si vous passez par un hébergeur.
 
-- RAM: 50+ MiB utilisable (sans compter la ram utilisé par le système d'opération)
-- CPU: >1GHz, préférablement multicore
-- OS: Windows, Linux (théoriquement n'importe quel POSIX)
-- GPU: Aucun
-- HDD: 10 MiB + Mods/Plugins
-- Bande passante: 5-10 Mb/s en téléversement
+### Puis-je faire tourner un serveur sous Linux ?
 
----
-## **Les joueurs en dehors de mon réseau local ne peuvent pas rejoindre mon serveur auto-hébergé**
+Oui. Nous fournissons des binaires pour de nombreuses distributions Linux sur la [page de la dernière version](https://github.com/BeamMP/BeamMP-Server/releases/latest). S'il n'y en a pas pour votre distribution, vous pouvez le compiler à partir des sources sur [GitHub](https://github.com/BeamMP/BeamMP-Server). Les [instructions de compilation](https://github.com/BeamMP/BeamMP-Server#build-instructions) expliquent comment faire.
 
-Lisez le guide (en anglais pour le moment, la version traduite s'envient) au sujet de la redirection de port disponible [ici](https://docs.beammp.com/server/port-forwarding/). Il y a un petit résumé des étapes les plus importantes ci-dessous.
-Si d'autres joueurs essaient de se connecter et qu'ils reçoivent un code d'erreur 10060, 10061 ou 10038 dans leur lanceur BeamMP, vous devriez suicre les étapes ci-dessous:
+### Quelle est la configuration minimale requise ?
 
-- Redirigez les deux protocol UDP et TCP du  port 30814 (ou le port que vous avez spécifié dans votre fichier ServerConfig.toml).
-- Authorisez BeamMP à passer au travers du parefeu Windows authorisez les connections entrantes et sortantes. En général, désactiver le parefeu **NE** fonctionnera **PAS**.
-- Assurez-vous que vous n'utilisez pas de VPN (Cela peut causer des problèmes).
-- Assurez-vous que le logiciel serveur est lancé et qu'il ne donne pas d'erreurs ni d'avertissements.
+| | Exigence |
+|---|---|
+| RAM | 50 Mio ou plus utilisables, sans compter le système d'exploitation |
+| CPU | Plus de 1 GHz, de préférence multicœur |
+| OS | Windows ou Linux (en théorie tout système POSIX) |
+| GPU | Aucun |
+| Disque | 10 Mio plus les mods et les plugins |
+| Bande passante | 5 à 10 Mb/s en envoi |
 
-Vous pouvez vérifier si vous avez correctement configuré la redirection de port en utilisant CheckBeamMP lorsque le serveur est lancé.
+## Les joueurs ne peuvent pas se connecter
+
+### Les joueurs extérieurs à mon réseau ne peuvent pas rejoindre mon serveur hébergé à domicile
+
+Si d'autres joueurs obtiennent le code d'erreur 10060, 10061 ou 10038 dans leur lanceur, vérifiez les points suivants. Le guide complet est [Redirection de port](/fr/server-owners/port-forwarding).
+
+- Redirigez le port 30814, ou le port que vous avez défini dans `ServerConfig.toml`, à la fois en TCP et en UDP.
+- Autorisez BeamMP dans le pare-feu Windows, pour les connexions entrantes et sortantes. Désactiver le pare-feu ne fonctionne généralement **pas**.
+- Assurez-vous de ne pas utiliser de VPN. Il peut causer des problèmes.
+- Assurez-vous que le serveur fonctionne, sans erreurs ni avertissements.
+
+Pendant que le serveur fonctionne, vous pouvez tester si le port est bien redirigé avec CheckBeamMP :
 
 <form action="https://check.beammp.com/api/v2/beammp" method="get" target="_blank">
-  <label for="ip">IP adress:</label>
+  <label for="ip">Adresse IP :</label>
   <input type="text" id="ip" name="ip"><br>
-  <label for="port">Port:</label>
+  <label for="port">Port :</label>
   <input type="text" id="port" name="port"><br>
   <input type="submit" value="CheckBeamMP">
 </form>
 
-Notes:
+Certains fournisseurs d'accès à Internet ne vous donnent pas d'adresse IPv4 dédiée (CGNAT) : la redirection de port peut alors ne pas fonctionner même si votre routeur la propose. Consultez [Vérifier le CGNAT](/fr/server-owners/cgnat). La redirection de port est impossible sur une connexion mobile (4G ou 5G).
 
-- Certains fournisseurs d'internet n'offre pas d'adresse ipv4 dédiée à votre connection (CGNAT), la redirection de port pourrait donc ne pas être possible même si l'option est disponible dans l'interface de votre routeur.
-- La redirection de port est impossible si vous utilisez une connection cellulaire (4G/5G).
+### Je vois mon serveur dans la liste, mais je n'arrive pas à le rejoindre moi-même
 
----
-### **Je peux voir mon serveur que j'auto-héberge, mais je ne peux pas m'y connecter**
+Si le serveur tourne sur le même ordinateur que le jeu, connectez-vous avec **Direct Connect**, en utilisant l'adresse IP `127.0.0.1` et le port de votre serveur.
 
-Si le serveur fonctionne sur le même ordinateur que le jeu, vous devez utiliser l'onglet "Direct connect" avec l'adresse ip 127.0.0.1 and le port du serveur pour vous connecter.
-Pour que vous puissiez vous connecter à votre serveur auto-hébergé via la liste des serveurs, votre routeur dois supporter le protocol NAT-loopback, une fonction très peu répandue dans les routeur de monsieur madame tout le monde.
+Pour rejoindre votre propre serveur hébergé à domicile via la liste des serveurs, votre routeur doit prendre en charge le NAT loopback. Peu de routeurs domestiques le font.
 
----
-## **Divers**
+## Autres questions
 
----
-### **Où est-ce que je peux trouver le code?**
+<!--@include: ../_parts/faq-code-and-bugs.md-->
 
-Le code source en entier peut être retouvé sur notre [GitHub](https://github.com/BeamMP).
-Avant de faire n'importe quel changement, souvenez-vous que le code est assujettit à nos  [Conditions d'utilisation](https://forum.beammp.com/t/terms-of-use-v1-0/43) et licenses:
+### Mon AuthKey a été compromise. Que dois-je faire ?
 
-|   Code     | License                                                                    |
-|------------|:--------------------------------------------------------------------------:|
-| Serveur     | [LICENSE](https://github.com/BeamMP/BeamMP-Server/blob/master/LICENSE)     |
-| Lanceur   | [LICENSE](https://github.com/BeamMP/BeamMP-Launcher/blob/master/LICENSE) |
-| Client Lua | [LICENSE](https://github.com/BeamMP/BeamMP/blob/development/LICENSE)    |
-
----
-### **J'ai trouvé un bug ou un exploit, que dois-je faire?**
-
-Si le problème est en lien avec le code et que vous savez utiliser Github, ouvrez une nouvelle "issue" (en anlgais) dans le répertoire approprié sur notre [GitHub](https://github.com/BeamMP). Nous utilisons un rythme de travail basée sur les "issue" donc même si vous avez une solution au problème, ouvrez une nouvelle "issue" et un "pull request" qui contient la solution au problème. PLus d'information sur comment contribuer peut être trouvé [ici](https://github.com/BeamMP/BeamMP/blob/development/CONTRIBUTING.md).
-
-Si vous n'avez pas de compte Github, ne savez pas comment utiliser Github ou si vous avez une n'importe quelle autre question, vous pouvez entrer en contact avec nous de ces deux façons:
-
-- Si c'est quelque chose qui n'est pas sensible/personel, vous pouvez créer un post sur notre [Forum BeamMP](https://forum.beammp.com) ou vous pouvez le signaler sur notre [Discord Officiel](https://discord.gg/beammp).
-- Si l'information est sensible/personelle, vous pouvez signaler le problème directement à un(e) membre de notre équipe (Staff) sur notre [Discord](https://discord.gg/beammp).
+Si vous pensez que l'une de vos AuthKeys est compromise, créez un ticket **Account Support** sur [Discord](https://discord.gg/beammp).

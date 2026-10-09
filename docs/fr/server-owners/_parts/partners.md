@@ -1,0 +1,16 @@
+- [Horizon Hosting](https://hrzn.link/beammp)
+- [RackGenius](https://rackgeni.us/beammp-plans)
+- [Connect Hosting](https://connecthosting.net/beammp)
+- [Assetto Hosting](https://assettohosting.com/en/games/beamng)
+- [ZAP-Hosting](https://zap-hosting.com/itsbeammp)
+- [HostHavoc](https://hosthavoc.com/)
+- [PedalHost](https://pedal.host/)
+- [Vyper Hosting](https://vyperhosting.com/r/beammp)
+- [BisectHosting](https://www.bisecthosting.com/beammp-server-hosting)
+- [Four Seasons Hosting](https://fourseasonshosting.com)
+- [Vertuo Hosting](https://vertuohosting.com)
+- [Winheberg](https://winheberg.fr/offres/gaming/beammp?lang=en)
+- [Wabbanode](https://wabbanode.com/partner/beammp)
+- [Iceline Hosting](https://iceline-hosting.com/games/beammp)
+
+Nous déclinons toute responsabilité quant au contenu des services ou sites externes vers lesquels pointent ces liens.

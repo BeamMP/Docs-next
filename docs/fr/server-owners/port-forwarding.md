@@ -1,244 +1,232 @@
-# Redirection de ports
+---
+description: "Redirigez le port BeamMP sur votre routeur domestique, étape par étape : adresse IP statique, connexion au routeur, création de la règle et test avec CheckBeamMP."
+---
+# Redirection de port
 
 ::: danger AVERTISSEMENT :
-**La redirection de ports comporte des risques.**
+**La redirection de port est un risque**.
 
-En configurant une redirection de ports, vous reconnaissez les risques liés à l’ouverture de ports sur votre réseau domestique et renoncez à engager la responsabilité de BeamMP pour **tout dommage pouvant survenir à vous-même ou à votre foyer**.
+En redirigeant un port, vous reconnaissez les risques liés à l'ouverture de ports de votre réseau domestique au public et renoncez donc à engager la responsabilité de BeamMP pour **tout dommage** pouvant survenir à vous-même ou à votre foyer.
 
-Nous déclinons toute responsabilité concernant le contenu des services ou sites web externes vers lesquels ces liens redirigent.
+Nous déclinons toute responsabilité quant au contenu des services ou sites externes vers lesquels pointent des liens.
 
-<u>**Si vous ne comprenez pas ce guide, nous vous recommandons d’utiliser l’un de nos partenaires.**</u>
+<u>**Si vous ne comprenez pas ce guide, envisagez d'utiliser l'un de nos partenaires.**</u>
 :::
 
 ::: warning
-Vérifiez que votre routeur n’est pas exclusivement compatible avec les connexions 4G/5G. S’il s’agit d’un modèle hybride, veillez à sélectionner l’adaptateur connecté par câble à l’étape 3 de ce guide.
+Vérifiez que votre routeur n'est pas un appareil exclusivement 4G/5G. S'il s'agit d'un appareil hybride, veillez à sélectionner l'adaptateur connecté par câble plus loin, à la section 3 de ce guide !
 :::
 
-## Comment configurer une redirection de ports
+## Ce que vous allez faire
 
-La création d’une règle de redirection de ports implique plusieurs notions de réseau. Préparez de quoi prendre quelques notes au fur et à mesure.
+Créer une règle de redirection de port fait appel à quelques notions de réseau détaillées. Préparez-vous à prendre quelques notes au fil de la procédure.
 
-Ce guide comporte **4 grandes étapes** :
+Ce guide comporte 4 grandes étapes.
 
 ## Guide rapide
 
-*(Un guide plus détaillé est disponible ci-dessous.)*
-
 1. **Attribuer une adresse IP statique à votre ordinateur ou à vos appareils**
 
-   Cette étape est nécessaire pour empêcher l’adresse IP de votre appareil de changer et de rendre la règle de redirection de ports inutilisable.
+   Cette étape est nécessaire pour empêcher l'adresse IP de votre appareil de changer et de rendre la règle de redirection de port inutilisable.
 
    [Consulter les informations concernant votre routeur](https://portforward.com/router.htm#1)
 
 2. **Se connecter à votre routeur**
 
-   Cela se fait généralement en trouvant l’adresse IP de la **passerelle par défaut**, que vous pouvez obtenir en exécutant `ipconfig` dans une invite de commandes, puis en saisissant cette adresse dans la barre d’adresse de votre navigateur.
+   Cela se fait généralement en trouvant l'adresse IP de la « passerelle par défaut » (Default Gateway), que vous obtenez en exécutant `ipconfig` dans une invite de commandes, puis en la saisissant dans la barre d'adresse d'un navigateur web.
 
 3. **Rediriger les ports vers votre ordinateur**
 
-   Trouvez la section dédiée à la redirection de ports dans l’interface web de votre routeur. Elle se trouve généralement dans les sections **Network**, **Advanced** ou **LAN**.
+   Trouvez la section de redirection de port dans l'interface web de votre routeur. La plupart des routeurs la placent sous Network, Advanced ou LAN.
 
-4. **Vérifier que la redirection fonctionne correctement**
+4. **Vérifier que votre port est bien redirigé**
 
-   Utilisez un outil tel que **CheckBeamMP** pour vérifier que votre règle fonctionne.
+   Utilisez un outil tel que CheckBeamMP pour vérifier que la règle fonctionne.
 
    <form action="https://check.beammp.com/api/v2/beammp" method="get" target="_blank">
-   <label for="ip">Adresse IP :</label>
-   <input type="text" id="ip" name="ip"><br>
-   <label for="port">Port :</label>
-   <input type="text" id="port" name="port"><br>
-   <input type="submit" value="CheckBeamMP">
+    <label for="ip">Adresse IP :</label>
+    <input type="text" id="ip" name="ip"><br>
+    <label for="port">Port :</label>
+    <input type="text" id="port" name="port"><br>
+    <input type="submit" value="CheckBeamMP">
    </form>
 
 ## Guide détaillé
 
-### 1. Attribuer une adresse IP statique
+### Attribuer une adresse IP statique
 
-### Méthode 1 : Configurer une adresse IP statique à l’aide d’une réservation DHCP
+#### Méthode 1 : utiliser une réservation DHCP
 
-Une autre méthode pour attribuer une adresse IP statique à votre appareil sur votre réseau local consiste à utiliser la fonction de **réservation DHCP** de votre routeur.
+Une autre façon de définir une adresse IP statique sur votre réseau local consiste à utiliser la fonction de réservation DHCP de votre routeur. Tous les routeurs ne proposent pas cette fonction, ce n'est donc peut-être pas une option pour vous. Recherchez sur Internet le modèle de votre routeur pour trouver son manuel. 
 
-Tous les routeurs ne proposent pas cette fonctionnalité. Recherchez donc le modèle de votre routeur sur Internet afin de consulter son manuel.
+Si vous y êtes parvenu, passez directement à [Se connecter à votre routeur](#log-in-to-your-router)
 
-Si vous avez réussi à configurer une réservation DHCP, passez directement à [l’étape 2](port-forwarding.md#2-log-in-to-your-router).
+#### Méthode 2 : définir une adresse IP statique sous Windows
 
-### Méthode 2 : Attribuer une adresse IP statique sous Windows
+##### Trouver votre adresse IP, votre passerelle et vos serveurs DNS actuels
 
-#### 1.1. Trouver votre adresse IP, votre passerelle et vos serveurs DNS actuels
+Avant de pouvoir configurer une adresse IP statique, nous devons connaître vos paramètres réseau actuels. 
+Vous allez devoir les noter : préparez donc une fenêtre de bloc-notes. 
+Pour cette étape, nous allons utiliser l'invite de commandes.
 
-Avant de configurer une adresse IP statique, vous devez connaître les paramètres réseau actuellement utilisés par votre ordinateur.
+Ouvrez une invite de commandes. Les 3 principales façons sont :
 
-Notez ces informations quelque part. Pour cette étape, nous allons utiliser l’invite de commandes.
+- Appuyez sur la touche Windows, commencez à saisir « cmd », puis appuyez sur Entrée lorsque « Invite de commandes » est en surbrillance.
 
-Ouvrez une invite de commandes. Vous pouvez notamment :
-
-* Appuyer sur la touche Windows, puis commencer à saisir `cmd` et appuyer sur Entrée lorsque **« Invite de commandes »** apparaît.
 
 <figure class="image image_resized" style="width:62%;">
 
-![](../../assets/content/win11-open-cmd.png)
+![Le menu Démarrer de Windows avec Invite de commandes en surbrillance](../../assets/content/win11-open-cmd.png)
 
 </figure>
 
-Une fois l’invite de commandes ouverte, exécutez la commande suivante :
-
-```text
+Une fois dans l'invite de commandes, exécutez la commande suivante :
+```
 ipconfig /all
 ```
-
-Vous verrez alors de nombreuses informations.
-
-Si votre ordinateur possède plusieurs adaptateurs réseau ou des adaptateurs virtuels, la liste peut être encore plus longue. Il est notamment courant d’avoir plusieurs adaptateurs virtuels lorsque **Hyper-V** ou **Docker** est installé.
+Vous verrez de nombreuses informations.
+Si vous avez des adaptateurs réseau virtuels ou plusieurs adaptateurs, vous en verrez encore davantage. 
+Il est courant de voir de nombreux adaptateurs virtuels si Hyper-V ou Docker est installé.
 
 <figure class="image image_resized" style="width:62%;">
 
-![](../../assets/content/win11-command-prompt-ipconfig-highlighted.png)
+![Invite de commandes affichant le résultat de ipconfig, avec l'adresse IPv4, le masque de sous-réseau, la passerelle par défaut et les serveurs DNS en surbrillance](../../assets/content/win11-command-prompt-ipconfig-highlighted.png)
 
 </figure>
 
-Il est recommandé d’utiliser une connexion réseau filaire pour l’ordinateur qui hébergera le serveur, même si une connexion sans fil fonctionnera également.
+Il est recommandé d'utiliser une connexion réseau filaire pour l'ordinateur qui fera tourner ce serveur, mais cela fonctionne aussi avec une connexion sans fil.
+Vous devez chercher dans cette liste un adaptateur qui dispose d'une connexion Internet active. Parcourez la liste et trouvez-en un auquel une passerelle par défaut est attribuée. 
+De nombreux adaptateurs virtuels n'ont pas de passerelle par défaut. 
 
-Recherchez dans cette liste un adaptateur disposant d’une connexion Internet active. Faites défiler la liste et trouvez celui qui possède une **passerelle par défaut**. De nombreux adaptateurs virtuels n’en possèdent pas.
+Voici des exemples d'adresses IPv4 locales, dont au moins un de vos adaptateurs devrait avoir une.
+Vous devrez noter les informations de votre adaptateur.
 
-Voici quelques exemples d’adresses IPv4 locales que vous devriez retrouver sur au moins un des adaptateurs :
+- 192.168.x.x
+- 10.x.x.x.
+- 172.16.x.x - 172.31.x.x
 
-* `192.168.x.x`
-* `10.x.x.x`
-* `172.16.x.x` à `172.31.x.x`
-
-**Masque de sous-réseau** (généralement `255.255.255.0`)
-**Passerelle par défaut** (généralement `192.168.0.1` ou `192.168.1.1`)
+Masque de sous-réseau (le plus souvent 255.255.255.0)
+</br>
+Passerelle par défaut (le plus souvent 192.168.0.1 ou 192.168.1.1)
 
 ::: info À noter
-BeamMP ne prend actuellement pas en charge l’IPv6 pour l’hébergement d’un serveur.
+BeamMP ne prend actuellement pas en charge l'IPv6 pour l'hébergement d'un serveur. 
 :::
 
-#### 1.2. Modifier les paramètres de l’adaptateur
+##### Modifier les paramètres de l'adaptateur
 
-Vous devez maintenant modifier les paramètres de votre adaptateur réseau afin que votre PC conserve la configuration IP qu’il utilise actuellement.
+Nous devons maintenant modifier les paramètres de votre adaptateur réseau pour que votre PC conserve la configuration IP qu'il utilise actuellement. Pour accéder aux paramètres de votre réseau, la méthode la plus rapide est la suivante :
 
-La méthode la plus rapide pour accéder aux paramètres réseau est la suivante :
+- Appuyez une fois sur la touche Windows
+- Saisissez « connexions réseau » jusqu'à ce que « Afficher les connexions réseau » apparaisse.
+- Appuyez sur la touche Entrée
 
-* Appuyez une fois sur la touche Windows.
-* Saisissez **« connexions réseau »** jusqu’à ce que **« Afficher les connexions réseau »** apparaisse.
-* Appuyez sur Entrée.
-
-<figure class="image image_resized" style="width:62%;">
-
-![](../../assets/content/win11-start-menu-view-network-connections.png)
-
-</figure>
-
-Vous devriez voir une liste des connexions réseau disponibles sur votre ordinateur.
-
-Si Hyper-V ou Docker est installé, cette liste peut contenir de nombreux adaptateurs. Recherchez un adaptateur qui **ne porte pas le nom « Hyper-V »**.
 
 <figure class="image image_resized" style="width:62%;">
 
-![](../../assets/content/win11-network-connections.png)
+![Le menu Démarrer de Windows affichant Afficher les connexions réseau](../../assets/content/win11-start-menu-view-network-connections.png)
 
 </figure>
 
-Faites un clic droit sur votre adaptateur et sélectionnez **Propriétés**. Si **« Protocole Internet version 4 »** n’est pas coché, il ne s’agit probablement pas du bon adaptateur. Essayez-en un autre.
+Vous devriez voir la liste des connexions réseau de votre ordinateur. 
+Si Hyper-V ou Docker est installé, il peut y en avoir beaucoup. 
+Cherchez les adaptateurs dont le nom n'est pas « Hyper-V ».
 
 <figure class="image image_resized" style="width:62%;">
 
-![](../../assets/content/win11-ethernet-properties-highlighted.png)
+![La fenêtre Connexions réseau avec l'adaptateur Ethernet](../../assets/content/win11-network-connections.png)
 
 </figure>
 
-Double-cliquez sur **« Protocole Internet version 4 »**. Remplacez **« Obtenir une adresse IP automatiquement »** par **« Utiliser l’adresse IP suivante »**.
 
-Renseignez les champs **Adresse IP**, **Masque de sous-réseau**, **Passerelle par défaut** et **Serveur DNS préféré** avec les informations obtenues précédemment grâce à `ipconfig /all`.
-
-Vous pouvez également utiliser les serveurs DNS de Cloudflare ou de Google :
-
-* **DNS Cloudflare :** `1.1.1.1`, `1.0.0.1`
-* **DNS Google :** `8.8.8.8`, `8.8.4.4`
+Faites un clic droit sur votre adaptateur et choisissez Propriétés. Si `Protocole Internet version 4 (TCP/IPv4)` n'est pas coché, il ne s'agit pas du bon adaptateur. Choisissez-en un autre.
 
 <figure class="image image_resized" style="width:62%;">
 
-![](../../assets/content/win11-network-settings-static-ip.png)
+![La fenêtre des propriétés d'Ethernet avec l'entrée IPv4 en surbrillance](../../assets/content/win11-ethernet-properties-highlighted.png)
 
 </figure>
 
-Cliquez sur **OK**, puis à nouveau sur **OK**. Votre adaptateur utilise désormais une adresse IP statique au lieu du DHCP.
+Double-cliquez sur `Protocole Internet version 4 (TCP/IPv4)`. Remplacez `Obtenir une adresse IP automatiquement` par `Utiliser l'adresse IP suivante`.
 
-Ouvrez quelques sites web afin de vérifier que votre connexion Internet fonctionne toujours. Si ce n’est pas le cas, rétablissez **« Obtenir une adresse IP automatiquement »** et essayez l’autre méthode.
+Renseignez l'adresse IP, le masque de sous-réseau, la passerelle par défaut et le serveur DNS préféré avec les informations de l'invite de commandes (ipconfig /all).
 
-### 2. Se connecter à votre routeur
+Vous pouvez aussi, au lieu d'utiliser vos propres serveurs DNS, utiliser ceux de Cloudflare ou de Google :
 
-Maintenant que votre appareil dispose d’une adresse IP statique, vous pouvez configurer la redirection de port pour BeamMP.
+- DNS Cloudflare : 1.1.1.1, 1.0.0.1
+- DNS Google : 8.8.8.8, 8.8.4.4
 
-Commencez par vous connecter à votre routeur. L’un des paramètres que vous avez notés précédemment est la **passerelle par défaut**. Il s’agit de l’adresse IP de votre routeur.
 
-La plupart des routeurs disposent d’une interface web locale permettant de gérer leurs paramètres. Pour y accéder :
+<figure class="image image_resized" style="width:62%;">
 
-* Ouvrez un navigateur web. Firefox, Chrome ou Edge devraient fonctionner.
-* Saisissez l’adresse IP de votre passerelle par défaut dans la barre d’adresse, par exemple `192.168.0.1` ou `192.168.1.1`, puis appuyez sur Entrée.
+![La fenêtre des propriétés IPv4 avec l'adresse IP, le masque de sous-réseau, la passerelle par défaut et les serveurs DNS renseignés](../../assets/content/win11-network-settings-static-ip.png)
 
-Vous devriez maintenant voir la page de connexion de votre routeur. Tous les routeurs ne nécessitent pas une authentification, mais la plupart en demandent une.
+</figure>
 
-Vous devez connaître le nom d’utilisateur et le mot de passe de votre routeur. Si vous ne vous êtes jamais connecté auparavant, ces identifiants correspondent probablement aux valeurs d’usine par défaut ou sont indiqués sur une étiquette apposée sur le routeur.
+Cliquez sur OK, puis de nouveau sur OK : votre adaptateur est maintenant passé du DHCP à une adresse statique. Naviguez sur le web pour vérifier que vous avez toujours une connexion Internet. Si ce n'est pas le cas, remettez vos paramètres sur Obtenir une adresse IP automatiquement et essayez la méthode suivante.
 
-Voici quelques identifiants d’usine courants :
+### Se connecter à votre routeur {#log-in-to-your-router}
 
-| Nom d’utilisateur | Mot de passe |
+Maintenant que votre appareil a une adresse IP statique, vous êtes prêt à rediriger le port pour BeamMP !
+
+Pour commencer, nous devons nous connecter à votre routeur. Plus tôt, l'un des paramètres que vous avez notés est votre passerelle par défaut. C'est l'adresse IP de votre routeur.
+
+La plupart des routeurs utilisent une page web hébergée localement pour leur gestion. Pour afficher le menu et les paramètres de votre routeur :
+
+- Ouvrez un navigateur web. Firefox, Chrome ou Edge conviennent très bien.
+- Dans la barre d'adresse, saisissez l'adresse IP de votre passerelle par défaut, par exemple 192.168.0.1 ou 192.168.1.1, puis appuyez sur Entrée
+
+Vous devriez maintenant voir l'écran de connexion de votre routeur. Tous les routeurs n'exigent pas de connexion, mais la plupart le font. Vous devez connaître le nom d'utilisateur et le mot de passe de votre routeur. Si vous ne vous êtes jamais connecté, ils sont très probablement réglés sur les valeurs d'usine ou, dans certains cas, inscrits sur un autocollant au dos de votre routeur.
+
+Voici quelques-uns des identifiants d'usine les plus courants :
+
+| Nom d'utilisateur | Mot de passe |
 | ----------------- | ------------ |
-| `admin`           | `admin`      |
-| `admin`           | `password`   |
-| *(vide)*          | `admin`      |
-| *(vide)*          | `password`   |
+| admin             | admin        |
+| admin             | password     |
+| {vide}            | admin        |
+| {vide}            | password     |
 
-Essayez différentes combinaisons avec `admin`, `password` ou en laissant les champs vides. *Lorsque « vide » est indiqué, laissez simplement le champ concerné vide.*
+Essayez différentes combinaisons de admin, password, et en laissant les champs vides. *Là où il est indiqué vide, essayez de laisser la valeur vide.* 
 
-### 3. Créer les règles de redirection
+### Créer les règles de redirection
 
-#### 3.1. Trouver la section dédiée à la redirection
+#### Trouver la section de redirection
 
-Trouvez la section consacrée à la redirection de ports dans l’interface web de votre routeur.
+Trouvez la section de redirection de port dans l'interface web de votre routeur. Parcourez le routeur en cliquant sur les onglets ou les liens en haut ou à gauche de chaque page. La plupart des routeurs placent la section de redirection de port sous Network, Advanced ou LAN. Cherchez les mots-clés suivants pour vous aider à la trouver :
 
-Parcourez les différents onglets ou liens situés en haut ou à gauche des pages de configuration. La section de redirection de ports se trouve généralement sous **Network**, **Advanced** ou **LAN**.
+- Port Forwarding
+- Forwarding
+- Port Range Forwarding
+- Virtual Servers
+- Apps & Gaming
+- Advanced Setup/Settings
+- NAT
 
-Les termes suivants peuvent vous aider à la trouver :
+#### Saisir les informations
 
-* **Port Forwarding**
-* **Forwarding**
-* **Port Range Forwarding**
-* **Virtual Servers**
-* **Apps & Gaming**
-* **Advanced Setup/Settings**
-* **NAT**
+Une fois la section de redirection de port de votre routeur trouvée, vous pouvez saisir les informations nécessaires.
+Votre routeur proposera un endroit où saisir les ports à rediriger et l'adresse IP de destination vers laquelle les diriger. Si votre routeur indique à la fois des ports internes et externes, donnez-leur la même valeur. 
 
-#### 3.2. Renseigner les informations
+BeamMP nécessite le port 30814 en UDP et en TCP (sauf si vous l'avez modifié dans votre [ServerConfig.toml](/fr/server-owners/host-a-server#configure-the-server)). 
 
-Une fois la section de redirection de ports trouvée, vous pouvez saisir les informations nécessaires.
-
-Votre routeur doit vous permettre d’indiquer les ports à rediriger ainsi que l’adresse IP de destination vers laquelle le trafic doit être envoyé.
-
-Si votre routeur distingue les **ports internes** et **externes**, utilisez le même numéro pour les deux.
-
-BeamMP utilise par défaut le port **30814** en **TCP et UDP**, sauf si vous avez modifié ce paramètre dans votre [fichier `ServerConfig.toml`](/fr/server-owners/host-a-server#4-configuration).
-
-::: info À noter
-Le port par défaut est **30814**, mais vous pouvez choisir n’importe quel autre port compris entre `1025` et `65534`.
-
-Si vous choisissez un autre port, notez-le soigneusement. Vous devez également rediriger ce port en **TCP et en UDP**.
-
-Il est recommandé de conserver le port par défaut, car il est très peu probable qu’un autre service de votre PC l’utilise.
-
-Si vous hébergez plusieurs serveurs sur la même machine, chaque serveur doit utiliser un port différent. Par exemple : serveur 1 sur `30814`, serveur 2 sur `30815`, etc.
+::: info Remarque
+Le **Port** par défaut est **30814**, mais vous pouvez choisir n'importe quel autre nombre supérieur à 1024 et inférieur à 65535 ; notez alors ce que vous avez choisi si ce n'est pas 30814\. Vous devez rediriger à la fois **TCP** et **UDP**.
+</br>
+Il est recommandé de garder le port par défaut, car il est très peu probable qu'il soit utilisé par un autre service sur votre PC.
+</br>
+Cependant, si vous hébergez plusieurs serveurs sur une même machine, chaque serveur a besoin d'un port différent. Serveur 1 : 30814, serveur 2 : 30815, par exemple.
 :::
 
-Certains routeurs nécessitent la création de deux règles distinctes, une pour **UDP** et une pour **TCP**. D’autres permettent de sélectionner les deux protocoles dans une seule règle.
+Sur certains routeurs, vous devrez peut-être créer 2 règles, une pour l'UDP et une pour le TCP, tandis que d'autres permettent de faire les deux avec une seule règle !
 
-La plupart des routeurs disposent d’un bouton **Enregistrer**, et certains nécessitent un redémarrage pour appliquer les modifications.
+La plupart des routeurs ont un bouton « save » (enregistrer), et certains exigent un redémarrage pour que les modifications prennent effet.
 
-### 4. Tester la connexion
+### Tester le port
 
-Il existe plusieurs façons de tester votre connexion.
+Il existe plusieurs façons de tester la connexion.
 
-Nous vous recommandons d’utiliser notre outil **CheckBeamMP**, car il vérifie spécifiquement les protocoles et les problèmes liés à BeamMP.
+Nous recommandons d'utiliser notre outil **CheckBeamMP**, car il teste les problèmes et protocoles propres à BeamMP.
 
 <form action="https://check.beammp.com/api/v2/beammp" method="get" target="_blank">
   <label for="ip">Adresse IP :</label>
@@ -248,30 +236,19 @@ Nous vous recommandons d’utiliser notre outil **CheckBeamMP**, car il vérifie
   <input type="submit" value="CheckBeamMP">
 </form>
 
-Vous devez renseigner votre **adresse IPv4 publique**. Il existe plusieurs façons de la trouver, notamment en utilisant [whatsmyip.org](https://whatsmyip.org/), un site qui affiche votre adresse IP publique.
+Pour cela, il faut connaître votre adresse IPv4 publique, ce qui peut aussi se faire de plusieurs façons. La principale consiste à utiliser le site [whatsmyip.org](https://whatsmyip.org/), un site simple qui affiche votre adresse IP publique. Vous cherchez une adresse IP au format xxx.xxx.xxx.xxx
 
-Recherchez une adresse au format :
-
-`xxx.xxx.xxx.xxx`
-
-Vous pouvez ensuite utiliser le lien suivant en remplaçant `IP` par votre adresse IPv4 publique et `port` par le port de votre serveur. Veillez à ne laisser aucun espace :
-
-[https://check.beammp.com/api/v2/beammp/ip/port](https://check.beammp.com/api/v2/beammp/ip/port)
+Rendez-vous sur le lien suivant en remplaçant « IP » par votre véritable adresse IPv4 et « Port » par le port de votre serveur. Veillez à ne laisser aucun espace.
+https://check.beammp.com/api/v2/beammp/ip/port
 
 ::: success status: ok
-Si vous obtenez le résultat ci-dessus, vous pouvez désormais rejoindre votre serveur.
-
-Il existe deux façons de vous connecter : directement avec les informations que vous avez saisies dans CheckBeamMP ou, si votre serveur est configuré comme public, via la liste des serveurs.
-
-Comme vous hébergez le serveur sur votre propre réseau, utilisez `127.0.0.1` (*localhost*) si le serveur est exécuté sur le même PC que celui sur lequel vous jouez. Sinon, utilisez l’adresse IPv4 locale de la machine qui héberge le serveur.
+Si vous obtenez le résultat ci-dessus, vous pouvez maintenant rejoindre votre serveur !
+Il y a 2 façons de le rejoindre : directement avec les informations que vous avez saisies dans CheckBeamMP, ou, si votre serveur est défini comme « public », via la liste des serveurs.
+Comme vous hébergez un serveur sur site, utilisez 127.0.0.1 (localhost) si le serveur tourne sur le même PC que celui sur lequel vous jouez, ou l'adresse IPv4 locale (LAN) de la machine qui fait tourner le serveur.
 :::
 
 ::: failure status: error
-Si la connexion échoue complètement, votre fournisseur d’accès à Internet utilise peut-être un **CGNAT (Carrier-Grade Network Address Translation)**.
-
-Pour plus d’informations, consultez [« Comment vérifier si vous êtes derrière un CGNAT ? »](/fr/server-owners/cgnat).
-
-Vous pouvez également ouvrir un **ticket d’assistance serveur** sur notre [serveur Discord](https://discord.gg/beammp), dans le canal `#support`. Un membre de notre équipe pourra alors vous aider.
-
-Si seul le TCP fonctionne tandis que l’UDP échoue, vérifiez à nouveau les règles de votre pare-feu et de redirection de ports.
+Si la connexion échoue complètement, votre FAI utilise peut-être le CGNAT (Carrier Grade Network Address Translation). Pour plus de détails, consultez [Vérifier le CGNAT](/fr/server-owners/cgnat),
+  ou ouvrez un ticket Server Support sur notre [serveur Discord](https://discord.gg/beammp), dans le canal `#support`, et l'un des membres de notre équipe s'occupera de votre ticket !
+  Si seul le TCP fonctionne et que l'UDP échoue, revérifiez les règles du pare-feu et de redirection de port.
 :::
