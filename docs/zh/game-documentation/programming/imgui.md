@@ -77,7 +77,7 @@ end
 
 ## 结果
 
-<figure class="image image_resized" style="width:100%" markdown="">   ![演示游戏内使用的 ImGui 示例代码](../../../../assets/content/imguiExample.png) </figure>
+<figure class="image image_resized" style="width:100%" markdown="">   ![演示游戏内使用的 ImGui 示例代码](../../../assets/content/imguiExample.png) </figure>
 
 当The Hello World Button按钮被按下时，其下方的计数器将更新，并显示The Hello World Button按钮被按下的次数。
 

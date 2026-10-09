@@ -26,6 +26,7 @@ import { createRequire } from 'node:module'
 import { spawnSync } from 'node:child_process'
 import { fileURLToPath } from 'node:url'
 import { RULES, countByRule, findProblems } from './lib/checks.mjs'
+import { findMissingAssets } from './lib/assets.mjs'
 import { buildSnapshot, compareToBaseline, parseDeadLinks, parseRenderErrors, sortSnapshot, totalsByRule } from './lib/baseline.mjs'
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
@@ -41,6 +42,7 @@ const EXTRA_RULES = {
   'does-not-compile': 'The page does not compile to valid Vue code, which breaks the whole build.',
   'dead-link': 'A link to a page that does not exist.',
   'render-error': 'VitePress printed an error while rendering the page, so part of it will not show.',
+  'missing-asset': 'The built page asks for an image, stylesheet or script that is not in the build, so it 404s on the live site.',
 }
 
 function listPages() {
@@ -128,6 +130,7 @@ for (const [file, message] of Object.entries(failures)) {
 
 let links = []
 let renderErrors = []
+let missingAssets = []
 if (!skipLinks) {
   console.log('Building the site to find dead links and rendering errors...')
   const build = buildReport()
@@ -139,9 +142,10 @@ if (!skipLinks) {
   }
   links = parseDeadLinks(build.output)
   renderErrors = parseRenderErrors(build.output, pages.map(pageName))
+  missingAssets = findMissingAssets(path.join(docsDir, '.vitepress', 'dist')).map(({ page, url }) => ({ file: 'docs/' + page.replace(/\.html$/, '.md'), url }))
 }
 
-const current = buildSnapshot(pageCounts, links, renderErrors)
+const current = buildSnapshot(pageCounts, links, renderErrors, missingAssets)
 
 if (updateBaseline) {
   // With --no-links the dead links and render errors are not known, so keep the ones already saved.
@@ -150,7 +154,7 @@ if (updateBaseline) {
     const old = JSON.parse(fs.readFileSync(baselinePath, 'utf8'))
     snapshot = JSON.parse(JSON.stringify(current))
     for (const [file, counts] of Object.entries(old)) {
-      for (const rule of ['dead-link', 'render-error']) {
+      for (const rule of ['dead-link', 'render-error', 'missing-asset']) {
         if (counts[rule]) {
           snapshot[file] = snapshot[file] || {}
           snapshot[file][rule] = counts[rule]
@@ -168,8 +172,8 @@ const baseline = fs.existsSync(baselinePath) ? JSON.parse(fs.readFileSync(baseli
 let { worse, better } = compareToBaseline(current, baseline)
 if (skipLinks) {
   // The build was skipped, so dead links and render errors cannot count as better or worse.
-  worse = worse.filter((entry) => !['dead-link', 'render-error'].includes(entry.rule))
-  better = better.filter((entry) => !['dead-link', 'render-error'].includes(entry.rule))
+  worse = worse.filter((entry) => !['dead-link', 'render-error', 'missing-asset'].includes(entry.rule))
+  better = better.filter((entry) => !['dead-link', 'render-error', 'missing-asset'].includes(entry.rule))
 }
 
 console.log('\nProblems found, by kind:')

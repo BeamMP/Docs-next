@@ -58,7 +58,7 @@ export function parseRenderErrors(output, pageNames) {
  * `{ "docs/en/x.md": { rule: count } }` from per-page problem counts and the
  * dead links per page. Dead links count under the rule `dead-link`.
  */
-export function buildSnapshot(pageCounts, deadLinks = [], renderErrors = []) {
+export function buildSnapshot(pageCounts, deadLinks = [], renderErrors = [], missingAssets = []) {
   const snapshot = {}
   for (const [file, counts] of Object.entries(pageCounts)) {
     if (Object.keys(counts).length) snapshot[file] = { ...counts }
@@ -70,6 +70,10 @@ export function buildSnapshot(pageCounts, deadLinks = [], renderErrors = []) {
   for (const { file } of renderErrors) {
     snapshot[file] = snapshot[file] || {}
     snapshot[file]['render-error'] = (snapshot[file]['render-error'] || 0) + 1
+  }
+  for (const { file } of missingAssets) {
+    snapshot[file] = snapshot[file] || {}
+    snapshot[file]['missing-asset'] = (snapshot[file]['missing-asset'] || 0) + 1
   }
   return sortSnapshot(snapshot)
 }

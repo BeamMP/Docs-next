@@ -185,7 +185,7 @@ guihooks.trigger("ConfirmationDialogOpen",
 guihooks.trigger("ConfirmationDialogClose", "示例标题")
 ```
 
-<figure class="image image_resized" style="width:75%" markdown="">   ![Example of a ConfirmationDialog](../../assets/content/ConfirmationDialog.png) </figure>
+<figure class="image image_resized" style="width:75%" markdown="">   ![Example of a ConfirmationDialog](../../../assets/content/ConfirmationDialog.png) </figure>
 
 按钮的两个字段都必须为字符串类型，按钮才会显示。
 
@@ -207,7 +207,7 @@ guihooks.trigger("ConfirmationDialogClose", "示例标题")
 可以使用 `#!lua guihooks.trigger('ShowApps', false)` 隐藏 UI 应用，作为一种临时解决方案。
 :::
 
-<figure class="image image_resized" style="width:75%" markdown="">   ![确认对话框用于挂机踢出系统](../../assets/content/ConfirmationDialog_Example.png) </figure>
+<figure class="image image_resized" style="width:75%" markdown="">   ![确认对话框用于挂机踢出系统](../../../assets/content/ConfirmationDialog_Example.png) </figure>
 
 ### introPopupTutorial
 
@@ -224,7 +224,7 @@ guihooks.trigger("introPopupTutorial", {
 guihooks.trigger("introPopupClose")
 ```
 
-<figure class="image image_resized" style="width:75%" markdown="">   ![在 BeamNG.drive 中显示的introPopupTutorial代码片段](../../assets/content/introPopupTutorial.png) </figure>
+<figure class="image image_resized" style="width:75%" markdown="">   ![在 BeamNG.drive 中显示的introPopupTutorial代码片段](../../../assets/content/introPopupTutorial.png) </figure>
 
 `flavour` 控制哪些按钮会被显示。共有四种类型：
 
@@ -275,7 +275,7 @@ guihooks.trigger("introPopupCareer", {
 guihooks.trigger("introPopupClose")
 ```
 
-<figure class="image image_resized" style="width:75%" markdown="">   !在 BeamNG.drive 中显示的introPopupCareer代码片段](../../assets/content/introPopupCareer.png) </figure>
+<figure class="image image_resized" style="width:75%" markdown="">   !在 BeamNG.drive 中显示的introPopupCareer代码片段](../../../assets/content/introPopupCareer.png) </figure>
 
 如果提供了多个页面，或者该Hook被多次触发，这些页面将被合并到同一个弹出窗口中。<br>如果在一个introPopup处于活动状态时触发了该钩子，或者已经触发了另一种不同类型的introPopup，那么它将在当前窗口关闭后，通过一个独立的弹出窗口进行显示。
 
@@ -318,7 +318,7 @@ guihooks.trigger('introPopupMission', {
 guihooks.trigger("introPopupClose")
 ```
 
-<figure class="image image_resized" style="width:75%" markdown="">   ![在 BeamNG.drive 中显示的introPopupMission代码片段](../../assets/content/introPopupMission.png) </figure>
+<figure class="image image_resized" style="width:75%" markdown="">   ![在 BeamNG.drive 中显示的introPopupMission代码片段](../../../assets/content/introPopupMission.png) </figure>
 
 如果提供了多个页面，或者该Hook被多次触发，这些页面将合并到同一个弹出窗口中。<br>如果在一个introPopup处于活动状态时触发了该钩子，或者已经触发了另一种不同类型的 introPopup，则它会在当前窗口关闭后，通过一个独立的弹出窗口进行显示。
 

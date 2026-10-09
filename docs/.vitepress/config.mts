@@ -391,7 +391,9 @@ export default defineConfig({
     },
   },
   sitemap: {
-    hostname: 'https://example.com'
+    // Where the site is served: docs.beammp.dev while this is the preview, and
+    // docs.beammp.com once it replaces the live docs.
+    hostname: process.env.DOCS_HOSTNAME || 'https://docs.beammp.dev'
   },
   themeConfig: {
     editLink: {

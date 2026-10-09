@@ -192,7 +192,7 @@ guihooks.trigger("ConfirmationDialogClose", "Example Title")
 ```
 
 <figure class="image image_resized" style="width:75%" markdown>
-  ![Example of a ConfirmationDialog](../../assets/content/ConfirmationDialog.png)
+  ![Example of a ConfirmationDialog](../../../assets/content/ConfirmationDialog.png)
 </figure>
 
 Both fields of a button must be strings in order for the button to appear.
@@ -216,7 +216,7 @@ The SDF parts of the Minimap UI app remain visible while a ConfirmationDialog is
 :::
 
 <figure class="image image_resized" style="width:75%" markdown>
-  ![ConfirmationDialog being used for an inactivity kick system](../../assets/content/ConfirmationDialog_Example.png)
+  ![ConfirmationDialog being used for an inactivity kick system](../../../assets/content/ConfirmationDialog_Example.png)
 </figure>
 
 ### introPopupTutorial
@@ -235,7 +235,7 @@ guihooks.trigger("introPopupClose")
 ```
 
 <figure class="image image_resized" style="width:75%" markdown>
-  ![The introPopupTutorial snippet displayed in BeamNG.drive](../../assets/content/introPopupTutorial.png)
+  ![The introPopupTutorial snippet displayed in BeamNG.drive](../../../assets/content/introPopupTutorial.png)
 </figure>
 
 `flavour` controls which buttons are displayed. Four flavours exist:
@@ -288,7 +288,7 @@ guihooks.trigger("introPopupClose")
 ```
 
 <figure class="image image_resized" style="width:75%" markdown>
-  ![The introPopupCareer snippet displayed in BeamNG.drive](../../assets/content/introPopupCareer.png)
+  ![The introPopupCareer snippet displayed in BeamNG.drive](../../../assets/content/introPopupCareer.png)
 </figure>
 
 If multiple pages are provided, or the hook is triggered multiple times, then the pages are combined into the same popup. If the hook is triggered while a introPopup is active, or when a different introPopup type has already been triggered, then it is displayed in a separate popup after the existing popup is closed.
@@ -333,7 +333,7 @@ guihooks.trigger("introPopupClose")
 ```
 
 <figure class="image image_resized" style="width:75%" markdown>
-  ![The introPopupMission snippet displayed in BeamNG.drive](../../assets/content/introPopupMission.png)
+  ![The introPopupMission snippet displayed in BeamNG.drive](../../../assets/content/introPopupMission.png)
 </figure>
 
 If multiple pages are provided, or the hook is triggered multiple times, then the pages are combined into the same popup. If the hook is triggered while a introPopup is active, or when a different introPopup type has already been triggered, then it is displayed in a separate popup after the existing popup is closed.
@@ -369,7 +369,7 @@ ui_missionInfo.closeDialogue()
 ```
 
 <figure class="image image_resized" style="width:75%" markdown>
-  ![The Dialogue snippet displayed in BeamNG.drive](../../assets/content/Dialogue.png)
+  ![The Dialogue snippet displayed in BeamNG.drive](../../../assets/content/Dialogue.png)
 </figure>
 
 Only one Dialogue can be displayed at once. Any existing Dialogue is overridden.
