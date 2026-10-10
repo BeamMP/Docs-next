@@ -5,7 +5,7 @@ description: "Alle Einstellungen der ServerConfig.toml eines BeamMP-Servers, die
 
 Die Einstellungen eines BeamMP-Servers, wie du ihn benennst und mit Tags versiehst, und die Pfade der Standardkarten. Zum Installieren eines Servers siehe [Einen Server hosten](/de/server-owners/host-a-server). Zum Lesen der Logdatei oder zum Aktualisieren des Servers siehe [Server Wartung](/de/server-owners/maintenance).
 
-## Die ServerConfig-Datei
+## Die ServerConfig-Datei {#the-serverconfig-file}
 
 Die Server-Konfiguration, eine Datei namens `ServerConfig.toml`, verwendet das [TOML-Format](https://toml.io/en/).
 
@@ -15,34 +15,36 @@ Die alte Server-Konfigurationsdatei hieß `Server.cfg`. Sie wird nicht mehr verw
 
 Die Konfiguration hat zwei Abschnitte, `[General]` und `[Misc]`. Die Standardwerte sind die der Server-Version 3.9.4.
 
-### Der Abschnitt `[General]`
+### Der Abschnitt `[General]` {#the-general-section}
 
 | Schlüssel | Standard | Wert | Was er bewirkt |
 |---|---|---|---|
-| Port | `30814` | 1024-65535 | Der Netzwerkport, auf dem der Server erreichbar ist. (Muss eindeutig sein und darf nicht von einem anderen Dienst auf demselben Host verwendet werden.) |
-| AuthKey | leer | AuthKey-Format `xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`, wobei alle x alphanumerische Zeichen (Zahlen und Buchstaben) sind | Wird verwendet, um einen öffentlichen Server gegenüber dem Backend zu identifizieren. |
-| AllowGuests | `true` | true/false | Ob Gäste dem Server beitreten dürfen. |
-| LogChat | `true` | true/false | Wenn aktiviert (true), werden Chatnachrichten in der Datei server.log protokolliert. |
+| Port | `30814` | 1024-65535 | Der Netzwerkport, auf dem der Server erreichbar ist. Der Server verwendet ihn sowohl für TCP als auch für UDP. (Muss eindeutig sein und darf nicht von einem anderen Dienst auf demselben Host verwendet werden.) |
+| AuthKey | leer | AuthKey-Format `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`, wobei alle x alphanumerische Zeichen (Zahlen und Buchstaben) sind | Wird verwendet, um einen öffentlichen Server gegenüber dem Backend zu identifizieren. Der Server warnt beim Start, wenn der Schlüssel nicht 36 Zeichen lang ist. |
+| AllowGuests | `true` | true/false | Ob Gäste dem Server beitreten dürfen. Wenn deaktiviert (`false`), wird ein Gast, der beitreten will, abgewiesen. |
+| LogChat | `true` | true/false | Wenn aktiviert (true), werden Chatnachrichten in der Konsole und in der Datei `Server.log` protokolliert. |
 | Debug | `false` | true/false | Wenn aktiviert (true), werden mehr Meldungen im Log angezeigt und mehr Informationen bereitgestellt. Aktiviere das, wenn Probleme auftreten. Dadurch wird die Logdatei drastisch größer. |
-| IP | `"::"` | Eine lokale IP-Adresse einer der Netzwerkschnittstellen des Hosts | Der Server bindet sich an diese IP-Adresse. Es ist **nicht** deine öffentliche IP. Nutze sie, wenn dein Rechner mehrere Netzwerkschnittstellen hat. Du musst sie nicht ändern, damit der Server funktioniert. |
+| IP | `"::"` | Eine lokale IP-Adresse einer der Netzwerkschnittstellen des Hosts | Der Server bindet sich an diese IP-Adresse. Es ist **nicht** deine öffentliche IP. Nutze sie, wenn dein Rechner mehrere Netzwerkschnittstellen hat. Du musst sie nicht ändern, damit der Server funktioniert. Der Standardwert `"::"` akzeptiert Verbindungen auf allen Schnittstellen. |
 | Private | `true` | true/false | Wenn aktiviert (true), wird dein Server nicht in der Serverliste angezeigt. Jeder mit der richtigen IP und dem richtigen Port kann sich trotzdem verbinden. |
 | InformationPacket | `true` | true/false | Wenn aktiviert (true), erlaubt der Server nicht authentifizierten Clients, dieselben Informationen wie in der Serverliste zu erhalten, aber direkt über den Server. |
 | Name | `"BeamMP Server"` | Beliebiger „Text“ | Wird als Name / Titel deines Servers in der Serverliste angezeigt. Mit Sonderzeichen kannst du ihn mit Farben und Stilen formatieren. |
 | Tags | `"Freeroam"` | Siehe die Liste der erlaubten Tags weiter unten. | Tags für die Suche, z. B. Police, Racing usw. |
-| MaxCars | `1` | Eine beliebige Zahl ≥ 1 | Die maximale Anzahl an Fahrzeugen pro Spieler. Jedes weitere Fahrzeug, das ein Spieler zu spawnen versucht, wird sofort gelöscht. |
-| MaxPlayers | `8` | Eine beliebige Zahl ≥ 1 | Die maximale Anzahl an Spielern pro Server. Das wirkt sich nicht auf die Anzahl der Fahrzeuge aus. |
+| MaxCars | `1` | Eine beliebige Zahl ≥ 1 | Die maximale Anzahl an Fahrzeugen pro Spieler. Jedes weitere Fahrzeug, das ein Spieler zu spawnen versucht, wird sofort gelöscht. Das Einrad (zu Fuß gehen) zählt nicht mit. |
+| MaxPlayers | `8` | Eine beliebige Zahl ≥ 1 | Die maximale Anzahl an Spielern pro Server. Das wirkt sich nicht auf die Anzahl der Fahrzeuge aus. Wenn der Server voll ist, wird ein beitretender Spieler mit „Server full!“ abgewiesen, es sei denn, ein Plugin lässt ihn trotzdem herein (siehe `onPlayerAuth` in der [Scripting-Referenz](/de/developers/beammp-scripting/server/latest#onplayerauth)). |
 | Map | `"/levels/gridmap_v2/info.json"` | Ein gültiger Kartenpfad, etwa `/levels/gridmap_v2/info.json` | Die Karte, die dein Server hostet. Sie muss entweder standardmäßig installiert sein (eine Liste findest du unten) oder als Server-Mod. |
 | Description | `"BeamMP Default Description"` | Beliebiger „Text“ | Wird als Beschreibung des Servers in der Serverliste angezeigt (wenn der Server öffentlich ist). Mit Sonderzeichen kannst du sie mit Farben und Stilen formatieren. |
 | ResourceFolder | `"Resources"` | Ein gültiger Ordnerpfad, etwa "D:\Server\BeamMP\Resources" | Nützlich, um den Server und den Resources-Ordner getrennt zu speichern. |
 
-### Der Abschnitt `[Misc]`
+### Der Abschnitt `[Misc]` {#the-misc-section}
 
 | Schlüssel | Standard | Wert | Was er bewirkt |
 |---|---|---|---|
 | ImScaredOfUpdates | `true` | true/false | Wenn aktiviert (`true`), wird die regelmäßige Meldung ausgeblendet, die dich darauf hinweist, dass eine neue Server-Version erschienen ist. Der Server aktualisiert sich nicht selbst: siehe [Server Wartung](/de/server-owners/maintenance#updating-the-server). |
 | UpdateReminderTime | `"30s"` | Eine Zahl mit angehängtem `s`, `min`, `h` oder `d`, zum Beispiel `30s` | Wie oft die Update-Erinnerung im Terminal ausgegeben wird. `30d` bedeutet alle 30 Tage, `0.5min` alle halbe Minute. |
 
-Plugins können eigene Abschnitte verwenden, etwa `[MyMod]`.
+::: warning Der Server schreibt diese Datei neu
+Bei jedem Start schreibt der Server die `ServerConfig.toml` mit den aktuellen Werten der Einstellungen aus `[General]` und `[Misc]` neu, und zwar nur mit diesen. Kommentare, die du hinzugefügt hast, und Abschnitte, die Plugins angelegt haben, etwa `[MyMod]`, werden entfernt. Werte, die über [Umgebungsvariablen](/de/server-owners/manual#general-settings) gesetzt wurden, werden ebenfalls in die Datei geschrieben, es sei denn, `BEAMMP_PROVIDER_DISABLE_CONFIG` ist gesetzt.
+:::
 
 Den AuthKey **musst** du selbst setzen. Er ist standardmäßig leer. Trage den AuthKey ein, den du beim [Installieren des Servers](/de/server-owners/host-a-server) erhalten hast. Gib ihn niemandem weiter und verwische ihn in Screenshots vollständig.
 

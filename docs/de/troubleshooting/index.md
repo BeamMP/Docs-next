@@ -7,12 +7,12 @@ Suche unten dein Problem. Passt nichts davon, schau in die [Spiel FAQ](/de/playe
 
 ## Der Launcher startet oder aktualisiert nicht
 
-- [Probleme beim Launcher-Update](/de/troubleshooting/launcher-update): Der Launcher kann sich nicht aktualisieren oder zeigt einen leeren Bildschirm.
-- [Fehlercodes](/de/troubleshooting/error-codes): Was die Meldungen im Launcher-Fenster bedeuten.
+- [Probleme beim Launcher-Update](/de/troubleshooting/launcher-update): Der Launcher kann sich nicht aktualisieren oder zeigt einen leeren Bildschirm. Aktualisiere ihn unter Windows oder Linux von Hand.
+- [Fehlercodes](/de/troubleshooting/error-codes): Was die Meldungen im Launcher-Fenster bedeuten, auch wenn er das Spiel nicht finden oder starten kann.
 
 ## Ich kann mich nicht verbinden
 
-- [Verbindungs-/Netzwerkprobleme](/de/troubleshooting/connection-networking): Finde die IP-Adresse deines Servers, teste deinen Port und prüfe auf CGNAT.
+- [Verbindungs-/Netzwerkprobleme](/de/troubleshooting/connection-networking): Finde die IP-Adresse deines Servers, teste deinen Port, prüfe auf CGNAT und sieh dir die Ports an, die der Launcher verwendet.
 - [Ändern des Launcher-Ports](/de/troubleshooting/launcher-port): Der Launcher verbindet sich nicht mit dem Spiel.
 - [Defender-/Firewall-Ausnahmen](/de/troubleshooting/defender-exclusions): Erlaube dem Launcher und dem Server den Zugriff durch die Windows-Sicherheit.
 

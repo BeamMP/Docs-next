@@ -66,11 +66,11 @@ Für eine Karte als Mod:
 
 Wenn jemand beitritt, wird die Karte automatisch heruntergeladen und funktioniert.
 
-Wenn es nicht funktioniert, installiere die Karte im Einzelspieler von BeamNG.drive und betrete sie. Öffne die Konsole mit der Taste `~` (Tilde). Bei einer Nicht-US-Tastatur suchst du die Aktion **Toggle System Console** unter **Options** > **Controls** > **Bindings**, im Abschnitt **General Debug**. Führe `print(getMissionFilename())` aus. Es zeigt den Namen an, den du verwenden musst.
+Wenn es nicht funktioniert, installiere die Karte im Einzelspieler von BeamNG.drive und betrete sie. Öffne die Konsole mit der Taste `~` (Tilde). Bei einer Nicht-US-Tastatur suchst du die Aktion **Systemkonsole umschalten** unter **Optionen** > **Bedienelemente** > **Tastenbelegungen**, im Abschnitt **Allgemeines Debugging**. Führe `print(getMissionFilename())` aus. Es zeigt den Namen an, den du verwenden musst.
 
 ## Spieler beitreten lassen
 
-Spieler können per Direct Connect mit der öffentlichen IP-Adresse und dem Port des Servers beitreten, beides findest du in der Verwaltungsoberfläche. Die IP-Adresse findest du auch auf der Website [Keymaster](https://keymaster.beammp.com/).
+Spieler können per Direct Connect mit der öffentlichen IP-Adresse und dem Port des Servers beitreten, beides findest du in der Verwaltungsoberfläche.
 
 Bei einem öffentlichen Server können Spieler stattdessen die Serverliste öffnen, den Namen des Servers eingeben und auf **Connect** klicken. Der Name ist der, den du festgelegt hast. Wenn sie ihn nicht finden, sollen sie die Suchfilter ausschalten und die Karte auf **Any** setzen.
 

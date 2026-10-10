@@ -37,4 +37,10 @@ Ein Mitglied des BeamMP-Mod-Teams prüft deinen Pull Request und genehmigt ihn e
 
 ## Übersetzen {#translating}
 
-Die Dokumentation wird mit [GitLocalize](https://gitlocalize.com/repo/9180) in mehrere Sprachen übersetzt. GitLocalize kann einen Absatz als „nicht übersetzt“ anzeigen, obwohl er es schon ist. Prüfe daher, ob eine Seite nicht schon übersetzt ist, bevor du sie änderst.
+Englisch ist die Vorlage. Die anderen Sprachen haben dieselben Seiten unter denselben Pfaden, eine Änderung beginnt also auf der englischen Seite.
+
+1. Führe `npm run check:translations` aus. Es listet die Übersetzungen auf, die veraltet sind, weil sich ihre englische Seite geändert hat.
+2. Aktualisiere jede davon anhand der englischen Seite. Behalte Überschriften, Boxen, Bilder und Links bei und übersetze weder Code noch Befehle, Dateinamen oder Einstellungsschlüssel.
+3. Halte die Aktualisierung fest: `npm run check:translations -- --record de/players/faq.md`.
+
+Für die Einstellungen und Schaltflächen des Mods verwenden Französisch und Chinesisch die genauen Bezeichnungen aus den Übersetzungsdateien des Mods. Deutsch, Spanisch, Italienisch und Russisch behalten die englischen Bezeichnungen, weil das Spiel dort Englisch anzeigt. Die vollständigen Regeln stehen in der [README](https://github.com/__repo__#translations).

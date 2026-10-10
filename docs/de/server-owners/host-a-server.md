@@ -63,9 +63,9 @@ Leite zuerst deinen Port weiter. Ohne ihn kann niemand außerhalb deines Zuhause
 
 Das funktioniert auf jeder Distribution, für die wir Binärdateien bereitstellen. Sie sind auf der [Seite der neuesten Version](https://github.com/BeamMP/BeamMP-Server/releases/latest) aufgelistet. Für eine andere Distribution oder Architektur siehe [Aus dem Quellcode erstellen](#build-from-source).
 
-1. Installiere die Abhängigkeiten, die unter [runtime dependencies](https://github.com/BeamMP/BeamMP-Server#runtime-dependencies) aufgelistet sind.
+1. Installiere die Abhängigkeiten, die unter [runtime dependencies](https://github.com/BeamMP/BeamMP-Server#runtime-dependencies) aufgelistet sind. Unter Debian und Ubuntu ist das das Paket `liblua5.3-0`.
 2. Gehe auf [beammp.com](https://beammp.com/) und klicke auf **Download Server**. Du gelangst zur GitHub-Release-Seite des Servers.
-3. Lade die Version für deine Distribution herunter. In dieser Anleitung heißt sie `BeamMP-Server-xxx`, wobei `xxx` die Version für deine Distribution ist.
+3. Lade die Datei für deine Distribution und deinen Prozessortyp herunter. Ihr Name sieht aus wie `BeamMP-Server.debian.12.x86_64`. Die Version v3.9.4 hat Builds für Debian 12 und 13 sowie Ubuntu 22.04 und 24.04, jeweils für `x86_64` und `arm64`. Lade die `debuginfo`-Dateien nicht herunter. In dieser Anleitung heißt die heruntergeladene Datei `BeamMP-Server-xxx`.
 4. Lege irgendwo einen Ordner an und kopiere `BeamMP-Server-xxx` hinein. Die anderen heruntergeladenen Dateien kannst du vorerst ignorieren. Hier lebt dein Server.
 5. Öffne ein Terminal in diesem Ordner und führe `chmod +x BeamMP-Server-xxx` aus, damit du die Berechtigung zum Ausführen hast.
 6. Starte den Server einmal mit `./BeamMP-Server-xxx`. Er erzeugt die Dateien, die er braucht. Wenn Text erscheint, schließe ihn. Jetzt hast du neben `BeamMP-Server-xxx` eine Datei `ServerConfig.toml`.
@@ -84,6 +84,7 @@ Als du den Server einmal gestartet hast, hat er einige Dateien erzeugt und wahrs
 Es sind `ServerConfig.toml`, `Server.log` und `BeamMP-Server.exe`. Je nach deinen Einstellungen siehst du die Endungen `.toml`, `.log` und `.exe` eventuell nicht.
 
 Öffne `ServerConfig.toml` in einem Texteditor wie dem Editor (Notepad): **Rechtsklick** > **Öffnen mit…**, dann wähle den Editor. Eine Beispielkonfiguration:
+
 ```toml
 [General]
 Port = 30814
@@ -102,9 +103,11 @@ Map = "/levels/ks_nord/info.json"
 Description = "Total Random Beam MP Server"
 ResourceFolder = "Resources"
 ```
+
 Diese Datei verwendet das TOML-Format. [Server-Konfiguration](/de/server-owners/configuration) beschreibt jede Einstellung.
 
 1. Setze `AuthKey` auf den Schlüssel, den du kopiert hast. Füge ihn zwischen den Anführungszeichen ein. Für den Beispielschlüssel sieht es so aus:
+
    ```toml
    AuthKey = '3173a2e-6az0-4542-a3p0-ddqq5ff95558'
    ```
@@ -137,21 +140,25 @@ Für eine Karte als Mod:
 1. Lege die `.zip`-Datei der Karte in `Resources/Client`.
 2. Öffne die `.zip`-Datei, ohne sie zu entpacken, und öffne dann ihren Ordner `levels`. Er enthält einen Ordner, der nach der Karte benannt ist, zum Beispiel `myawesomedriftmap2021`. Notiere dir den Namen genau so, wie er geschrieben ist.
 3. In der `ServerConfig.toml` sieht `Map` aus wie `/levels/MAPNAME/info.json`, wobei `MAPNAME` wahrscheinlich etwas wie `gridmap_v2` ist. Ersetze `MAPNAME` durch den Ordnernamen aus Schritt 2. Der Wert muss auf `/info.json` enden. Für dieses Beispiel:
+
    ```toml
    Map = '/levels/myawesomedriftmap2021/info.json'
    ```
+
 Wenn jemand beitritt, wird die Karte automatisch heruntergeladen und funktioniert.
 
-Wenn es nicht funktioniert, installiere die Karte im Einzelspieler von BeamNG.drive und betrete sie. Öffne die Konsole mit der Taste `~` (Tilde). Bei einer Nicht-US-Tastatur suchst du die Aktion **Toggle System Console** unter **Options** > **Controls** > **Bindings**, im Abschnitt **General Debug**. Führe `print(getMissionFilename())` aus. Es zeigt den Namen an, den du verwenden musst.
+Wenn es nicht funktioniert, installiere die Karte im Einzelspieler von BeamNG.drive und betrete sie. Öffne die Konsole mit der Taste `~` (Tilde). Bei einer Nicht-US-Tastatur suchst du die Aktion **Systemkonsole umschalten** unter **Optionen** > **Bedienelemente** > **Tastenbelegungen**, im Abschnitt **Allgemeines Debugging**. Führe `print(getMissionFilename())` aus. Es zeigt den Namen an, den du verwenden musst.
 
 ### Mods vor dem Download schützen
 
 Du kannst geschützte oder eingeschränkte Inhalte hosten, ohne sie weiterzuverbreiten. Das eignet sich für „bezahlte Mods“ oder für Mod-Ersteller, die den Zugang zu neuen Arbeiten begrenzen möchten.
 
 Um einen Mod zu schützen, führe dies in der Server-Konsole aus:
+
 ```text
 protectmod <filename with .zip> <true/false>
 ```
+
 Spieler, die einem Server mit geschützten Mods beitreten, müssen die Datei selbst besorgen, zum Beispiel vom Ersteller oder von einer Plattform wie Patreon, und in den Resources-Ordner ihres Launchers legen. Der Launcher teilt ihnen mit, wenn eine Datei fehlt, und das Spiel zeigt eine Benachrichtigung mit der fehlenden Datei und der Lösung an.
 
 ## Spieler beitreten lassen
@@ -170,7 +177,7 @@ Gib anderen Spielern die öffentliche IP-Adresse deines Servers. Überlege gut, 
 
 ### Öffentlicher Server
 
-Andere Spieler finden ihn in der Serverliste: Sie geben seinen Namen ein und klicken auf **Connect**. Der Name ist der aus deiner `ServerConfig.toml`. Wenn sie ihn nicht finden, sollen sie die Suchfilter ausschalten und die Karte auf **Any** setzen. Auch die Website [Keymaster](https://keymaster.beammp.com/) zeigt die IP-Adresse deines Servers an.
+Andere Spieler finden ihn in der Serverliste: Sie geben seinen Namen ein und klicken auf **Connect**. Der Name ist der aus deiner `ServerConfig.toml`. Wenn sie ihn nicht finden, sollen sie die Suchfilter ausschalten und die Karte auf **Any** setzen.
 
 ### „Connection Failed!“
 
@@ -180,10 +187,10 @@ Um auf CGNAT zu prüfen, suche die WAN-IP-Adresse auf der Seite deines Routers u
 
 ## Prüfen, ob Spieler deinen Server erreichen können
 
-Gib die öffentliche IPv4-Adresse und den Port deines Servers ein und klicke dann auf **CheckBeamMP**:
+Solange der Server läuft, kannst du in seiner Konsole `nettest` eingeben. Der Server fragt beim selben Prüfdienst nach, ob Spieler ihn über seinen Port erreichen können, und gibt die Antwort aus. Oder gib die öffentliche IPv4-Adresse und den Port deines Servers ein und klicke dann auf **CheckBeamMP**:
 
 <form action="https://check.beammp.com/api/v2/beammp" method="get" target="_blank">
-  <label for="ip">IP address:</label>
+  <label for="ip">IP-Adresse:</label>
   <input type="text" id="ip" name="ip"><br>
   <label for="port">Port:</label>
   <input type="text" id="port" name="port"><br>

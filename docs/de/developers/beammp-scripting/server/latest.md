@@ -15,6 +15,7 @@ Eine Migrationsanleitung für Lua vor v3.0.0 findest du im Abschnitt ["Migration
 ## Verzeichnisstruktur
 
 Server-Plugins befinden sich im Gegensatz zu Mods (standardmäßig) in `Resources/Server`, während Mods, die für BeamNG.drive geschrieben sind und an die Clients gesendet werden, in `Resources/Client` liegen. Jedes Plugin muss einen eigenen Unterordner in `Resources/Server` haben. Für ein Plugin namens „MyPlugin“ sähe die Struktur zum Beispiel so aus:
+
 ```
 Resources
 └── Server
@@ -23,18 +24,22 @@ Resources
     └── SomeOtherPlugin
         └── ...
 ```
+
 Hier zeigen wir außerdem ein weiteres Plugin namens „SomeOtherPlugin“, um zu veranschaulichen, dass dein Ordner `Resources/Server` mehrere verschiedene Plugin-Ordner enthalten kann. Diese Verzeichnisstruktur verwenden wir in dieser Anleitung durchgehend als Beispiel.
 
-Dir fällt auch die `main.lua` auf. Du kannst beliebig viele Lua-Dateien (`.lua`) haben. Alle Lua-Dateien im Hauptverzeichnis deines Plugins werden in *alphabetischer Reihenfolge* geladen (`aaa.lua` wird also vor `bbb.lua` ausgeführt).
+Dir fällt auch die `main.lua` auf. Du kannst beliebig viele Lua-Dateien (`.lua`) haben. Alle Lua-Dateien im Hauptverzeichnis deines Plugins werden in *alphabetischer Reihenfolge* geladen, ohne Beachtung der Groß- und Kleinschreibung (`aaa.lua` wird also vor `bbb.lua` ausgeführt).
+
+Auch die Plugin-Ordner selbst werden in alphabetischer Reihenfolge geladen, ohne Beachtung der Groß- und Kleinschreibung. Alles in `Resources/Server`, was kein Ordner ist, wird übersprungen, und der Server gibt dafür einen Fehler aus.
 
 
 ## Lua-Dateien
 
 Jede Lua-Datei (`.lua`) im Ordner des Plugins wird beim Start des Servers geladen. Das bedeutet, dass Anweisungen außerhalb von Funktionen sofort ausgewertet („ausgeführt“) werden.
 
-Lua-Dateien in Unterordnern werden ignoriert, können aber mit `require()` eingebunden werden.
+Lua-Dateien in Unterordnern werden ignoriert, können aber mit `require()` eingebunden werden. Vor `onInit` fügt der Server den Ordner des Plugins und dessen Unterordner `lua` zu `package.path` hinzu, sodass `require("helpers")` die Datei `helpers.lua` in beiden findet. Für `.so`-Dateien (unter Windows `.dll`-Dateien) fügt er den Ordner des Plugins und dessen Unterordner `lib` zu `package.cpath` hinzu.
 
 Unsere `main.lua` sieht zum Beispiel so aus:
+
 ```lua
 function PrintMyName()
 	print("I'm 'My Plugin'!")
@@ -42,7 +47,18 @@ end
 
 print("What's up!")
 ```
+
 Wenn der Server startet und die `main.lua` geladen wird, führt er `print("What's up!")` *sofort* aus, ruft die Funktion `PrintMyName` aber **NICHT** auf (denn sie wurde nicht aufgerufen)!
+
+## Einen Lua-State teilen {#sharing-a-lua-state}
+
+Jedes Plugin läuft in einem eigenen Lua-State, der nach seinem Ordner benannt ist. Damit sich mehrere Plugins einen State teilen und gegenseitig ihre globalen Variablen und Event-Handler sehen, lege in jedem dieser Plugin-Ordner eine Datei namens `PluginConfig.toml` an:
+
+```toml
+LuaStateID = "MySharedState"
+```
+
+Alle Plugins mit derselben `LuaStateID` laufen im selben State. Ein leerer Wert wird ignoriert, und das Plugin behält seinen eigenen State. Der Name des States ist auch das, was du dem Konsolenbefehl `lua` übergibst (siehe [Debugging](#debugging)).
 
 ## Events {#events}
 
@@ -53,6 +69,7 @@ Du kannst Events abbrechen (sofern sie abbrechbar sind), indem du im Handler `1`
 In Lua möchtest du meist auf einige dieser Events reagieren. Dafür kannst du einen „Handler“ registrieren. Das ist eine Funktion, die aufgerufen wird, wenn ein Event eintritt, und der einige Argumente übergeben werden.
 
 Beispiel:
+
 ```lua
 function MyChatMessageHandler(sender_id, sender_name, message)
 	-- censoring only the exact message 'darn'
@@ -66,21 +83,40 @@ end
 
 MP.RegisterEvent("onChatMessage", "MyChatMessageHandler")
 ```
+
 Damit wird sichergestellt, dass jede Nachricht, die genau „darn“ lautet, nicht gesendet wird und nicht im Chat erscheint (beachte, dass du bei einem echten Schimpfwortfilter prüfen würdest, ob die Nachricht „darn“ *enthält*, nicht ob sie „darn“ *ist*). Das Abbrechen eines Events führt dazu, dass es nicht stattfindet, zum Beispiel dass eine Chatnachricht niemand anderem angezeigt wird oder dass ein Fahrzeug nicht gespawnt wird usw.
 
 ## Benutzerdefinierte Events {#custom-events}
 
 Du kannst dich für jedes beliebige Event registrieren, zum Beispiel:
+
 ```lua
 MP.RegisterEvent("MyCoolCustomEvent", "MyHandler")
 ```
+
 Diese benutzerdefinierten Events kannst du dann auslösen:
+
 ```lua
 -- call all event handlers to this in ALL plugins
 MP.TriggerGlobalEvent("MyCoolCustomEvent")
 -- call all event handlers to this in THIS plugin
 MP.TriggerLocalEvent("MyCoolCustomEvent")
 ```
+
+### Events aus dem Spiel
+
+Ein clientseitiges Plugin kann mit `TriggerServerEvent("eventName", "data")` ein Event auf dem Server auslösen (siehe [Mod (Im Spiel)](/de/developers/beammp-scripting/mod-in-game)). Registriere für diesen Namen einen Handler wie für jedes andere Event. Der Handler erhält die ID des Spielers, der es gesendet hat, und den Daten-String:
+
+```lua
+function MyHandler(player_id, data)
+	print(MP.GetPlayerName(player_id) .. " sent: " .. data)
+end
+
+MP.RegisterEvent("MyClientEvent", "MyHandler")
+```
+
+Seit v3.9.0 ignoriert der Server ein Client-Event, dessen Name dem eines serverinternen Events entspricht, zum Beispiel `onChatMessage`, sodass ein Spieler diese nicht vortäuschen kann. Um ein Event in die andere Richtung zu senden, verwende [`MP.TriggerClientEvent`](#mp-triggerclientevent-player-id-number-event-name-string-data-string-boolean).
+
 Mit Events kannst du noch viel mehr machen, diese Möglichkeiten werden weiter unten in der API-Referenz ausführlich behandelt.
 
 ## Event-Timer („Threads“)
@@ -90,6 +126,7 @@ Lua vor v3.0.0 kannte das Konzept von „Threads“, die X-mal pro Sekunde ausge
 Lua ab v3.0.0 hat stattdessen „Event-Timer“. Das sind Timer, die im Server laufen und, sobald sie ablaufen, ein Event (global) auslösen. Auch das geschieht synchron. Beachte, dass das zweite Argument ein Intervall in Millisekunden ist.
 
 Beispiel:
+
 ```lua
 local seconds = 0
 
@@ -104,9 +141,10 @@ MP.RegisterEvent("EverySecond", "CountSeconds")
 -- create a timer for this event, which will fire every 1000ms (1s)
 MP.CreateEventTimer("EverySecond", 1000)
 ```
+
 Dadurch wird „CountSeconds“ jede Sekunde aufgerufen. Du kannst Event-Timer auch mit `MP.CancelEventTimer` abbrechen (siehe API-Referenz).
 
-In der Serverkonsole kannst du `status` ausführen, um zu sehen, wie viele Event-Timer aktuell laufen und welche Event-Handler warten. Dieser Befehl wird in Zukunft mehr Informationen anzeigen.
+In der Serverkonsole kannst du `status` ausführen, um zu sehen, wie viele Event-Timer laufen, wie viele Event-Handler registriert sind und wie viele Lua-States es gibt.
 
 ## Debugging
 
@@ -117,34 +155,48 @@ Im Allgemeinen kannst du natürlich jederzeit die Werte, die du untersuchen möc
 Ab v3.0.0 bietet der Server die Möglichkeit, einen Interpreter in ein Plugin einzuschleusen und darin anschließend in Echtzeit Lua auszuführen. Das ist das, was einem Debugger am nächsten kommt.
 
 Angenommen, du hast das obige Plugin namens `MyPlugin`, dann kannst du so in dessen Lua-State wechseln:
+
 ```
 > lua MyPlugin
 ```
+
 Die Groß- und Kleinschreibung ist hier wichtig, achte also auf die korrekte Eingabe. 
 Die Ausgabe sieht etwa so aus:
 ```
 lua @MyPlugin> 
 ```
-Wie du siehst, haben wir in den Lua-State von `MyPlugin` gewechselt. Ab jetzt, bis wir `exit()` (ab v3.1.0 `:exit`) eingeben, befinden wir uns in `MyPlugin` und können dort Lua ausführen. 
+Wie du siehst, haben wir in den Lua-State von `MyPlugin` gewechselt. Ab jetzt, bis wir `:exit` eingeben, befinden wir uns in `MyPlugin` und können dort Lua ausführen. Verwende dafür nicht `exit()`: Das fährt den Server herunter.
+
+Befehle, die mit `:` beginnen, gelten dem Debugger selbst. Alles andere wird als Lua ausgeführt. Die Befehle sind:
+
+- `:exit` trennt die Verbindung zum Lua-State.
+- `:help` zeigt die Befehle an.
+- `:events` listet die in diesem State registrierten Events und Handler auf.
+- `:queued` listet die Funktionen auf, die in diesem State auf ihre Ausführung warten.
+
+Wenn du `lua` ohne Namen eingibst, wechselst du in einen eigenen State der Konsole, in dem kein Plugin läuft.
 
 Wenn wir zum Beispiel eine globale Variable namens `MyValue` haben, können wir ihren Wert so ausgeben:
+
 ```
 lua @MyPlugin> print(MyValue)
 ```
+
 Du kannst hier Funktionen aufrufen und alles tun, was du erwartest.
 
-Ab v3.1.0: Du kannst mit TAB Funktionen und Variablen automatisch vervollständigen.
+Mit TAB kannst du Funktionen und Variablen automatisch vervollständigen. Dafür ist v3.1.0 oder neuer nötig.
 
 WARNUNG: Wenn der Lua-State gerade anderen Code ausführt (etwa eine `while`-Schleife), kann das leider die Konsole vollständig blockieren, bis diese Arbeit erledigt ist. Sei deshalb sehr vorsichtig beim Wechsel in States, die möglicherweise auf etwas warten.
 
 Außerdem kannst du in der normalen Konsole (`> `) `status` ausführen, was dir unter anderem einige Statistiken zu Lua anzeigt.
 
-## Benutzerdefinierte Befehle
+## Benutzerdefinierte Befehle {#custom-commands}
 
 Um eigene Befehle für die Serverkonsole zu implementieren, kann das Event `onConsoleInput` verwendet werden. 
 Das ist nützlich, wenn du dem Serverbetreiber eine Möglichkeit geben möchtest, deinem Plugin etwas zu signalisieren, oder wenn du den internen Zustand auf eigene Weise anzeigen möchtest.
 
 Hier ein Beispiel:
+
 ```lua
 function handleConsoleInput(cmd)
     local delim = cmd:find(' ')
@@ -158,11 +210,16 @@ end
 
 MP.RegisterEvent("onConsoleInput", "handleConsoleInput")
 ```
+
+Der Handler erhält die ganze eingegebene Zeile. Gibt er einen Wert zurück, gibt die Konsole ihn aus. Gibt kein Handler einen Wert zurück und ist die Zeile kein eingebauter Befehl, gibt die Konsole „Unknown command“ aus. Der Server löst dieses Event auch für die eingebauten Befehle wie `list` aus, sodass ein Plugin darauf reagieren kann.
+
 Damit kannst du in der Serverkonsole Folgendes tun:
+
 ```
 > print hello, world
 hello, world
 ```
+
 Wir haben unser eigenes `print` implementiert. Versuche als Übung, eine Funktion wie `say` zu bauen, die eine Chatnachricht an alle Spieler oder sogar an einen bestimmten Spieler sendet (mit `MP.SendChatMessage`).
 
 **Achtung:** Für deine eigenen Plugins wird generell empfohlen, einen „Namespace“ zu verwenden. Unser `print`-Beispiel könnte in einem Plugin namens `mystuff` `mystuff.print` oder `ms.print` oder ähnlich heißen.
@@ -178,10 +235,12 @@ Dokumentationsformat: `function_name(arg_name: arg_type, arg_name: arg_type) -> 
 Gibt die Nachricht in der Serverkonsole aus, mit dem Präfix `[DATE TIME] [LUA]`. Wenn du dieses Präfix nicht möchtest, kannst du `printRaw(...)` verwenden.
 
 Beispiel:
+
 ```lua
 local name = "John Doe"
 print("Hello, I'm", name, "and I'm", 32)
 ```
+
 Die Funktion akzeptiert beliebig viele Argumente beliebiger Typen. Sie gibt bereitwillig auch Tabellen aus!
 
 Sie verhält sich wie das `print` des Lua-Interpreters und setzt daher Tabulatoren zwischen die Argumente.
@@ -199,11 +258,13 @@ Erstellt ein Timer-Objekt, mit dem du messen kannst, wie lange etwas gedauert ha
 Die aktuell verstrichene Zeit in Sekunden erhältst du mit `mytimer:GetCurrent()`.
 
 Beispiel:
+
 ```lua
 local mytimer = MP.CreateTimer()
 -- do stuff here that needs to be timed
 print(mytimer:GetCurrent()) -- print how much time elapsed
 ```
+
 Timer müssen nicht gestoppt werden (und lassen sich auch nicht stoppen), sie verursachen keinen Overhead.
 
 ### `MP.GetOSName() -> string`
@@ -215,14 +276,16 @@ Gibt den Namen des aktuellen Betriebssystems zurück, entweder `Windows`, `Linux
 Gibt die aktuelle Serverversion im Format Major, Minor, Patch zurück. Für Version v3.0.0 würde zum Beispiel `3, 0, 0` zurückgegeben.
 
 Beispiel:
+
 ```lua
 local major, minor, patch = MP.GetServerVersion()
 print(major, minor, patch)
 ```
-Ausgabe:
+Ausgabe für Server v3.9.4:
 ```
-2	4	0
+3	9	4
 ```
+
 ### `MP.RegisterEvent(event_name: string, function_name: string)`
 
 Merkt sich die Funktion mit dem Namen `Function Name` als Event-Handler für das Event mit dem Namen `Event Name`.
@@ -234,6 +297,7 @@ Eine Liste der vom Server bereitgestellten Events findest du [hier](#events-1).
 Wenn das Event mit diesem Namen nicht existiert, wird es erstellt, weshalb RegisterEvent nicht fehlschlagen kann. Auf diese Weise lassen sich benutzerdefinierte Events erstellen. Mehr dazu unter [Benutzerdefinierte Events](#custom-events) und [Events](#events).
 
 Beispiel:
+
 ```lua
 function ChatHandler(player_id, player_name, msg)
     if msg == "hello" then
@@ -263,7 +327,7 @@ Als drittes Argument kann optional eine `CallStrategy` übergeben werden. Diese 
 
 ### `MP.CancelEventTimer(event_name: string)`
 
-Bricht alle Timer des Events mit dem Namen `event_name` ab. In manchen Fällen kann der Timer aufgrund der Natur der asynchronen Programmierung vor dem Abbruch noch ein weiteres Mal auslösen.
+Bricht alle Timer des Events mit dem Namen `event_name` ab, die im aktuellen Lua-State erstellt wurden. In manchen Fällen kann der Timer aufgrund der Natur der asynchronen Programmierung vor dem Abbruch noch ein weiteres Mal auslösen.
 
 ### `MP.TriggerLocalEvent(event_name: string, ...) -> table`
 
@@ -278,10 +342,12 @@ Dieser Aufruf ist synchron und kehrt zurück, sobald alle Event-Handler fertig s
 Der zurückgegebene Wert ist eine Tabelle mit allen Ergebnissen. Hat ein Handler einen Wert zurückgegeben, steht dieser ohne Anmerkung und ohne Namen in dieser Tabelle. So lassen sich Dinge „einsammeln“ oder Unter-Handler für abbrechbare Events registrieren. Praktisch ist das ein Array.
 
 Beispiel:
+
 ```lua
 local Results = MP.TriggerLocalEvent("MyEvent")
 print(Results)
 ```
+
 ### `MP.TriggerGlobalEvent(event_name: string, ...) -> table`
 
 Globaler, asynchroner Event-Auslöser.
@@ -300,6 +366,7 @@ Die zurückgegebene Tabelle hat zwei Funktionen:
 Rufe diese unbedingt mit der Syntax `Obj:Function()` auf (`:`, NICHT `.`).
 
 Beispiel:
+
 ```lua
 local Future = MP.TriggerGlobalEvent("MyEvent")
 -- wait until handlers finished
@@ -309,6 +376,7 @@ end
 local Results = Future:GetResults()
 print(Results)
 ```
+
 Beachte, dass ein Handler, der sich hier für „MyEvent“ registriert und nie zurückkehrt, dein Plugin blockieren könnte. Du solltest wahrscheinlich im Blick behalten, wie lange du schon wartest, und nach ein paar Sekunden aufhören zu warten.
 
 ### `MP.Sleep(time_ms: number)`
@@ -319,10 +387,12 @@ Dies gibt die Ausführung des Lua-States nicht frei, und solange gewartet wird, 
 
 WARNUNG: Warte NICHT länger als 500 ms, wenn du Event-Handler registriert hast, es sei denn, du weißt *genau*, was du tust. Die Funktion ist dafür gedacht, 1-100 ms zu warten, um auf Ergebnisse oder Ähnliches zu warten. Ein blockierter (wartender) Lua-State kann den gesamten Server drastisch verlangsamen, wenn man nicht vorsichtig ist.
 
-### `MP.SendChatMessage(player_id: number, message: string)`
+### `MP.SendChatMessage(player_id: number, message: string, [log_chat: boolean])`
 
 Sendet eine Chatnachricht, die nur der angegebene Spieler sehen kann (oder alle, wenn die ID `-1` ist).
 Im Spiel erscheint sie nicht als direkt adressierte Nachricht.
+
+Seit v3.9.2 legt das optionale dritte Argument `log_chat` fest, ob die Nachricht ins Serverlog geschrieben wird. Lässt du es weg, ist es `true`. Auch dann enthält das Log nur dann Chatnachrichten, wenn die Einstellung `LogChat` aktiv ist. Die Nachricht wird nicht an einen Spieler gesendet, der den Beitritt noch nicht abgeschlossen hat.
 
 Du kannst dies zum Beispiel nutzen, um einem Spieler mitzuteilen, *warum* du sein Fahrzeug-Spawning, seine Chatnachricht oder Ähnliches abgebrochen hast, oder um einige Informationen über deinen Server anzuzeigen.
 
@@ -348,6 +418,7 @@ function ChatHandler(player_id, player_name, msg)
     end
 end
 ```
+
 ### `MP.TriggerClientEvent(player_id: number, event_name: string, data: string) -> boolean`
 *bis v3.1.0*
 
@@ -364,6 +435,50 @@ Gibt `true` zurück, wenn die Nachricht gesendet werden konnte (bei `id = -1`, a
 Wenn `false` zurückgegeben wird, ist es sinnlos, dieses Event erneut zu senden, und eine Antwort (falls eine erwartet wurde) sollte nicht erwartet werden.
 
 Seit v3.1.0 enthält der zweite Rückgabewert eine Fehlermeldung, falls die Funktion fehlgeschlagen ist. Ebenfalls seit dieser Version nimmt die `*Json`-Variante der Funktion als Datenargument eine Tabelle entgegen und wandelt sie in JSON um. Dies ist lediglich eine Kurzform für `MP.TriggerClientEvent(..., Util.JsonEncode(mytable))`.
+
+Die Fehlermeldung lautet `Invalid Player ID`, wenn es keinen solchen Spieler gibt, oder `Player hasn't joined yet`, wenn der Spieler noch Mods herunterlädt. Seit v3.8.3 sendet der Server keine Events an einen Spieler, der noch herunterlädt.
+
+### `MP.SendNotification(player_id: number, message: string, [icon: string], [category: string])`
+
+*seit v3.6.0*
+
+Zeigt im Spiel des angegebenen Spielers (oder aller, wenn die ID `-1` ist) eine Benachrichtigung an. Lässt du `icon` weg, hat die Benachrichtigung kein Symbol. Lässt du `category` weg, entspricht sie `message`. Das Weglassen des Symbols funktioniert seit v3.7.2. Die Funktion nimmt zwei bis vier Argumente entgegen und gibt bei jeder anderen Anzahl einen Fehler aus. Sie gibt nichts zurück. Ein Spieler, der den Beitritt noch nicht abgeschlossen hat, erhält die Benachrichtigung nicht.
+
+Beispiel:
+```lua
+MP.SendNotification(-1, "The race starts in one minute")
+```
+
+### `MP.ConfirmationDialog(player_id: number, title: string, body: string, buttons: table, interaction_id: string, [warning: boolean, report_to_server: boolean, report_to_extensions: boolean]) -> boolean,string`
+
+*seit v3.8.5*
+
+Zeigt im Spiel des angegebenen Spielers (oder aller, wenn die ID `-1` ist) ein Dialogfenster mit Schaltflächen an. Übergib entweder die ersten fünf Argumente oder alle acht. Mit fünf Argumenten gibt die Funktion nichts zurück. Mit acht gibt sie `true` zurück, oder `false` und eine Fehlermeldung wie `Player is not synced yet` oder `Invalid Player ID`.
+
+- `buttons` ist eine Tabelle von Tabellen. Jede hat ein `label` (der Text auf der Schaltfläche), einen `key` (der Name des Events, das auf dem Server ausgelöst wird, wenn die Schaltfläche gedrückt wird) und, für höchstens eine Schaltfläche, `isCancel = true`. Die Schaltfläche mit `isCancel` gilt als gedrückt, wenn der Spieler den Dialog mit `Esc` schließt. Hat keine Schaltfläche `isCancel`, kann der Spieler den Dialog nur mit einer der Schaltflächen schließen.
+- `interaction_id` wird dem `key`-Event als Daten übergeben, sodass du bei mehreren geöffneten Dialogen erkennst, zu welchem Dialog eine Schaltfläche gehörte.
+- `warning` (Standard `false`) kennzeichnet den Dialog als Warnung.
+- `report_to_server` (Standard `true`) und `report_to_extensions` (Standard `true`) legen fest, wohin der Tastendruck gemeldet wird.
+
+Der Druck auf die Schaltfläche kommt an wie ein Event aus dem Spiel: Der Handler erhält die ID des Spielers und die `interaction_id`.
+
+Beispiel:
+```lua
+function onChatMessage(player_id, player_name, message)
+    if message == "/rules" then
+        MP.ConfirmationDialog(player_id, "Rules", "Do not ram other players.",
+            { { label = "OK", key = "rulesOK", isCancel = true } }, "rules")
+        return 1
+    end
+end
+
+function rulesOK(player_id, interaction_id)
+    MP.SendChatMessage(-1, MP.GetPlayerName(player_id) .. " read the rules")
+end
+
+MP.RegisterEvent("onChatMessage", "onChatMessage")
+MP.RegisterEvent("rulesOK", "rulesOK")
+```
 
 ### `MP.GetPlayerCount() -> number`
 
@@ -422,7 +537,7 @@ local player_id = 4
 local vehicle_id = 0
 
 local raw_pos, error = MP.GetPositionRaw(player_id, vehicle_id)
-if error = "" then
+if error == "" then
     local x, y, z = table.unpack(raw_pos["pos"])
 
     print("X:", x)
@@ -438,6 +553,7 @@ X: -603.459
 Y: -175.078
 Z: 26.9505
 ```
+
 ### `MP.IsPlayerConnected(player_id: number) -> boolean`
 
 Gibt an, ob der Spieler verbunden ist und der Server ein UDP-Paket von ihm erhalten hat.
@@ -451,9 +567,10 @@ Ausgabe:
 ```lua
 true
 ```
+
 ### `MP.GetPlayerName(player_id: number) -> string`
 
-Gibt den Anzeigenamen des Spielers zurück.
+Gibt den Anzeigenamen des Spielers zurück. Gibt einen leeren String zurück, wenn es keinen Spieler mit dieser ID gibt.
 
 Beispiel:
 ```lua
@@ -464,9 +581,30 @@ Ausgabe:
 ```
 ilovebeammp2004
 ```
-### `MP.RemoveVehicle(player_id: number, vehicle_id: number)`
 
-Entfernt das angegebene Fahrzeug des angegebenen Spielers.
+### `MP.GetPlayerIDByName(name: string) -> number`
+
+Gibt die ID des Spielers zurück, dessen Anzeigename genau `name` lautet, einschließlich Groß- und Kleinschreibung. Gibt `-1` zurück, wenn es keinen solchen Spieler gibt.
+
+Beispiel:
+```lua
+local player_id = MP.GetPlayerIDByName("ilovebeammp2004")
+if player_id ~= -1 then
+    MP.SendChatMessage(player_id, "Hello!")
+end
+```
+
+### `MP.GetPlayerRole(player_id: number) -> string`
+
+*seit v3.6.0*
+
+Gibt die Rolle des Spielers zurück, so wie das BeamMP-Backend sie beim Beitritt des Spielers meldet, zum Beispiel `USER`. Gibt `nil` zurück, wenn es keinen Spieler mit dieser ID gibt. Es ist derselbe Wert wie das Argument `player_role` von [`onPlayerAuth`](#onplayerauth).
+
+### `MP.RemoveVehicle(player_id: number, vehicle_id: number) -> boolean,string`
+
+Entfernt das angegebene Fahrzeug des angegebenen Spielers. Löst [`onVehicleDeleted`](#onvehicledeleted) aus.
+
+Gibt `true` zurück, wenn das Fahrzeug entfernt wurde. Andernfalls gibt sie `false` und eine Fehlermeldung zurück: `Vehicle does not exist` oder `Invalid Player ID`.
 
 Beispiel:
 ```lua
@@ -478,9 +616,10 @@ for vehicle_id, vehicle_data in pairs(player_vehicles) do
       MP.RemoveVehicle(player_id, vehicle_id)
 end
 ```
+
 ### `MP.GetPlayerVehicles(player_id: number) -> table`
 
-Gibt eine Tabelle mit allen Fahrzeugen zurück, die der Spieler aktuell hat. Jeder Eintrag der Tabelle ordnet eine Fahrzeug-ID den Fahrzeugdaten zu (aktuell ein roher JSON-String).
+Gibt eine Tabelle mit allen Fahrzeugen zurück, die der Spieler hat. Jeder Eintrag der Tabelle ordnet eine Fahrzeug-ID den Fahrzeugdaten zu, die ein roher String im Format `role:name:player_id-vehicle_id:json` sind. Gibt `nil` zurück, wenn der Spieler nicht existiert oder keine Fahrzeuge hat.
 
 Beispiel:
 ```lua
@@ -540,6 +679,7 @@ Ausgabe:
     ign: 0,
 }
 ```
+
 ### `MP.GetPlayers() -> table`
 
 Gibt eine Tabelle aller verbundenen Spieler zurück. Diese Tabelle ordnet IDs Namen zu, etwa so:  
@@ -549,15 +689,19 @@ Gibt eine Tabelle aller verbundenen Spieler zurück. Diese Tabelle ordnet IDs Na
 	1: "JohnDoe"
 }
 ```
+
 ### `MP.IsPlayerGuest(player_id: number) -> boolean`
 
 Gibt an, ob der Spieler ein Gast ist. Ein Gast ist jemand, der sich nicht angemeldet hat und stattdessen als Gast spielen wollte. Sein Name lautet normalerweise `guest` gefolgt von einer langen Zahl.
 
 Da Gäste anonym sind, möchtest du ihnen den Beitritt vielleicht verbieten. In diesem Fall wird empfohlen, stattdessen das Argument `is_guest` von [`onPlayerAuth`](#onplayerauth) zu verwenden.
 
-### `MP.DropPlayer(player_id: number, [reason: string])`
+### `MP.DropPlayer(player_id: number, [reason: string]) -> boolean,string`
 
-Kickt den Spieler mit der angegebenen ID. Der Parameter reason ist optional.
+Kickt den Spieler mit der angegebenen ID. Der Parameter reason ist optional. Ohne ihn sieht der Spieler `No reason`.
+
+Gibt `true` zurück, oder `false` und `Player does not exist`, wenn es keinen Spieler mit dieser ID gibt.
+
 ```lua
 function ChatHandler(player_id, player_name, message)
     if string.match(message, "darn") then
@@ -580,9 +724,10 @@ Gibt den Speicherverbrauch aller Lua-States zusammen in Bytes zurück.
 
 Gibt eine Tabelle mit Informationen über den Spieler zurück, etwa die BeamMP-Forum-ID, die IP-Adresse und die Discord-Konto-ID. Die Discord-ID wird nur zurückgegeben, wenn der Benutzer sie mit seinem Forenkonto verknüpft hat.
 
-Die Forum-ID eines Benutzers findest du, indem du `https://forum.beammp.com/u/USERNAME.json` aufrufst und nach `"user": {"id": 123456}` suchst. Eine BeamMP-ID ist für jeden Spieler einzigartig und lässt sich im Gegensatz zum Benutzernamen nicht ändern.
+Die Forum-ID eines Benutzers findest du, indem du `https://forum.beammp.com/u/USERNAME.json` aufrufst und nach `"user": {"id": 123456}` suchst. Eine BeamMP-ID ist für jeden Spieler einzigartig und lässt sich im Gegensatz zum Benutzernamen nicht ändern. Gibt `nil` zurück, wenn der Spieler nicht existiert.
 
 Beispiel:
+
 ```lua
 local player_id = 5
 print(MP.GetPlayerIdentifiers(player_id))
@@ -595,19 +740,38 @@ Ausgabe:
     beammp: "1234567",
 }
 ```
+
 *Bis v3.1.0 ist das Feld `ip` fehlerhaft und funktioniert nicht wie vorgesehen. Behoben in v3.1.0.*
 
-### `MP.Set(setting: number, ...)`
+### `MP.Set(setting: number, value)`
 
-Setzt eine ServerConfig-Einstellung vorübergehend. Dafür ist die Tabelle `MP.Settings` nützlich.
+Setzt eine ServerConfig-Einstellung vorübergehend: Die Änderung gilt, bis der Server stoppt, und wird nicht in `ServerConfig.toml` geschrieben. Verwende als erstes Argument einen Wert aus der Tabelle `MP.Settings`. Der Typ von `value` hängt von der Einstellung ab:
+
+- `MP.Settings.Debug`, `MP.Settings.Private` und `MP.Settings.InformationPacket` erwarten einen Boolean.
+- `MP.Settings.MaxCars` und `MP.Settings.MaxPlayers` erwarten eine Ganzzahl.
+- `MP.Settings.Map`, `MP.Settings.Name` und `MP.Settings.Description` erwarten einen String.
+
+Ein Wert vom falschen Typ gibt einen Fehler aus, und eine unbekannte Einstellung gibt eine Warnung aus. Beides ändert nichts. Ein Serveranbieter kann diese Funktion deaktivieren, siehe `BEAMMP_PROVIDER_DISABLE_MP_SET` im [Server Handbuch](/de/server-owners/manual#provider-settings). Dann gibt jeder Aufruf einen Fehler aus und ändert nichts.
 
 Beispiel:
 ```lua
 MP.Set(MP.Settings.Debug, true) -- Turns on debug mode
 ```
+
+### `MP.Get(setting: number) -> boolean | number | string`
+
+*seit v3.6.0*
+
+Gibt den aktuellen Wert einer ServerConfig-Einstellung zurück. Verwende als Argument einen Wert aus der Tabelle `MP.Settings`. Der Typ des Ergebnisses ist der Typ, den `MP.Set` für diese Einstellung erwartet. Bei einer unbekannten Einstellung gibt die Funktion eine Warnung aus und liefert `0` zurück.
+
+Beispiel:
+```lua
+print(MP.Get(MP.Settings.MaxPlayers))
+```
+
 ### `MP.Settings -> table`
 
-Tabelle, die Einstellungs-IDs den Namen zuordnet. Wird zusammen mit `MP.Set` verwendet, um ServerConfig-Einstellungen zu ändern. 
+Tabelle, die Einstellungsnamen IDs zuordnet. Wird zusammen mit `MP.Set` und `MP.Get` verwendet, um ServerConfig-Einstellungen zu ändern und zu lesen. `InformationPacket` gibt es seit v3.7.0.
 
 Beispiel:
 ```lua
@@ -616,14 +780,30 @@ print(MP.Settings)
 Ausgabe:
 ```json
 {
-    MaxPlayers: 3,
     Debug: 0,
+    Private: 1,
+    MaxCars: 2,
+    MaxPlayers: 3,
+    Map: 4,
     Name: 5,
     Description: 6,
-    MaxCars: 2,
-    Private: 1,
-    Map: 4,
+    InformationPacket: 7,
 }
+```
+
+### `MP.GetServerTimeMS() -> number`
+
+### `MP.GetServerTime() -> number`
+
+*seit v3.9.4*
+
+Geben den Wert der serverinternen Uhr zurück. Der Server sendet diesen Wert auch an das Spiel eines Spielers, wenn das Spiel nach der Zeit fragt. `MP.GetServerTimeMS()` gibt ihn in Millisekunden zurück und `MP.GetServerTime()` in Sekunden, mit Nachkommastellen. Die Uhr zeigt weder das Datum noch die Tageszeit an und beginnt bei jedem Start des Servers mit einem anderen Wert. Verwende sie, um zu messen, wie viel Zeit zwischen zwei Zeitpunkten vergangen ist, nicht um herauszufinden, wie spät es ist.
+
+Beispiel:
+```lua
+local start = MP.GetServerTimeMS()
+-- do something
+print("took " .. (MP.GetServerTimeMS() - start) .. " ms")
 ```
 ## Util-Funktionen
 
@@ -648,10 +828,12 @@ local player = {
 }
 local json = Util.JsonEncode(player)
 ```
+
 Ergebnis: 
 ```json
 {"name":"Lion","age":69,"skills":["skill A","skill B"]}
 ```
+
 ### `Util.JsonDecode(json: string) -> table`
 
 Dekodiert JSON in eine Lua-Tabelle. Gibt `nil` zurück und gibt einen Fehler aus, falls dies fehlgeschlagen ist.
@@ -661,6 +843,7 @@ Beispiel:
 local json = "{\"message\":\"OK\",\"code\":200}"
 local tbl = Util.JsonDecode(json)
 ```
+
 Ergebnis:
 ```lua
 {
@@ -668,6 +851,7 @@ Ergebnis:
 	code = 200,
 }
 ```
+
 ### `Util.JsonPrettify(json: string) -> string`
 
 Fügt dem JSON Einrückungen und Zeilenumbrüche hinzu, damit es für Menschen besser lesbar ist.
@@ -678,6 +862,7 @@ local myjson = Util.JsonEncode({ name="Lion", age = 69, skills = { "skill A", "s
 
 print(Util.JsonPrettify(myjson))
 ```
+
 Ergebnis:
 ```json
 {
@@ -689,6 +874,7 @@ Ergebnis:
     ]
 }
 ```
+
 ### `Util.JsonMinify(json: string) -> string`
 
 Entfernt Einrückungen, Zeilenumbrüche und sonstige Leerzeichen. Nur nötig, wenn du `Util.JsonPrettify` aufgerufen hast, da jede Ausgabe von `Util.Json*` bereits minifiziert ist.
@@ -699,10 +885,12 @@ local pretty = Util.JsonPrettify(Util.JsonEncode({ name="Lion", age = 69, skills
 
 print(Util.JsonMinify(pretty))
 ```
+
 Ergebnis:
 ```json
 {"age":69.0,"name":"Lion","skills":["skill A","skill B"]}
 ```
+
 ### `Util.JsonFlatten(json: string) -> string`
 
 Erstellt ein JSON-Objekt, dessen Schlüssel gemäß RFC 6901 zu JSON-Pointern abgeflacht werden. Das Original lässt sich mit `Util.JsonUnflatten()` wiederherstellen. Damit das funktioniert, müssen alle Werte primitiv sein.
@@ -715,6 +903,7 @@ print("flattened: " .. Util.JsonFlatten(json))
 print("flattened pretty: " .. Util.JsonPrettify(Util.JsonFlatten(json)))
 
 ```
+
 Ergebnis: 
 ```json
 normal: {"age":69.0,"name":"Lion","skills":["skill A","skill B"]}
@@ -726,17 +915,14 @@ flattened pretty: {
     "/skills/1": "skill B"
 }
 ```
+
 ### `Util.JsonUnflatten(json: string) -> string`
 
 Stellt die beliebige Verschachtelung eines JSON-Werts wieder her, der zuvor mit der Funktion `Util.JsonFlatten()` abgeflacht wurde. 
 
 ### `Util.JsonDiff(a: string, b: string) -> string`
 
-Erstellt einen JSON-Diff gemäß RFC 6902 (http://jsonpatch.com/). Dieser Diff kann anschließend mit `Util.JsonDiffApply()` als Patch angewendet werden. Gibt den Diff zurück.
-
-### `Util.JsonDiffApply(base: string, diff: string) -> string`
-
-Wendet den JSON-`diff` als JSON-Patch (RFC 6902, http://jsonpatch.com/) auf `base` an. Gibt das Ergebnis zurück.
+Erstellt einen JSON-Diff gemäß RFC 6902 (http://jsonpatch.com/). Gibt den Diff zurück.
 
 ## `Util.Random*`
 
@@ -751,10 +937,12 @@ Beispiel:
 local rand = Util.Random()
 print("rand: " .. rand)
 ```
+
 Ergebnis: 
 ```lua
 rand: 0.135477
 ```
+
 ### `Util.RandomIntRange(min: int, max: int) -> int`
 
 Gibt eine Ganzzahl zwischen min und max zurück.
@@ -764,10 +952,12 @@ Beispiel:
 local randInt = Util.RandomIntRange(1, 100)
 print("randInt: " .. randInt)
 ```
+
 Ergebnis: 
 ```lua
 randInt:  69
 ```
+
 ### `Util.RandomRange(min: number, max: number) -> float`
 
 Gibt eine Gleitkommazahl zwischen min und max zurück.
@@ -777,11 +967,14 @@ Beispiel:
 local randFloat = Util.RandomRange(1, 1000)
 print("randFloat: " .. randFloat)
 ```
+
 Ergebnis: 
 ```lua
 randFloat: 420.6969
 ```
+
 ### `Util.LogInfo(params: ...)` u. a. (seit v3.3.0)
+
 ```lua
 Util.LogInfo("Hello, World!")
 Util.LogWarn("Cool warning")
@@ -789,12 +982,16 @@ Util.LogError("Oh no!")
 Util.LogDebug("hi")
 ```
 erzeugt
+
 ```
 [19/04/24 11:06:50.142] [Test] [INFO] Hello, World!    
 [19/04/24 11:06:50.142] [Test] [WARN] Cool warning    
 [19/04/24 11:06:50.142] [Test] [ERROR] Oh no!
 [19/04/24 11:06:50.142] [Test] [DEBUG] hi
 ```
+
+`[Test]` ist der Name des Lua-States, also der Name des Plugins, sofern das Plugin keinen State teilt (siehe [Einen Lua-State teilen](#sharing-a-lua-state)). `Util.LogDebug` gibt nur etwas aus, solange die Einstellung `Debug` aktiv ist.
+
 Unterstützt genau dieselbe Ausgabe bzw. Darstellung von Daten wie `print()`.
 
 ### `Util.DebugExecutionTime() -> table`
@@ -829,6 +1026,7 @@ Pro Event-*Handler* werden folgende Daten zurückgegeben:
 - `stdev`: Die Standardabweichung aller durchschnittlichen Ausführungszeiten in ms
 
 Hier ist eine Funktion, mit der du diese Daten formatiert ausgeben kannst:
+
 ```lua
 function printDebugExecutionTime()
     local stats = Util.DebugExecutionTime()
@@ -845,13 +1043,32 @@ function printDebugExecutionTime()
     print(pretty)
 end
 ```
+
 Du kannst sie so aufrufen, um deinen Code zu debuggen, wenn er langsam ist:
+
 ```lua
 -- event to print the debug times
 MP.RegisterEvent("printStuff", "printDebugExecutionTime")
 -- run every 5000 ms = 5 seconds (or 10, or 60, whatever makes sense for you
 MP.CreateEventTimer("printStuff", 5000)
 ```
+
+### `Util.DebugStartProfile(name: string)`
+
+### `Util.DebugStopProfile(name: string)`
+
+Seit BeamMP-Server `v3.4.0`.
+
+Miss die Zeit eines beliebigen Teils deines Codes, nicht nur die eines ganzen Event-Handlers. `Util.DebugStartProfile` startet eine Messung mit dem angegebenen Namen, und `Util.DebugStopProfile` beendet sie und addiert die Zeit zur Statistik für diesen Namen. Die Statistiken erscheinen neben den Event-Handlern in der Tabelle, die `Util.DebugExecutionTime()` zurückgibt. Wird `Util.DebugStopProfile` mit einem Namen aufgerufen, der nicht gestartet wurde, gibt die Funktion einen Fehler aus.
+
+Beispiel:
+```lua
+Util.DebugStartProfile("mySlowPart")
+-- do something slow
+Util.DebugStopProfile("mySlowPart")
+print(Util.DebugExecutionTime()["mySlowPart"].mean)
+```
+
 ## FS-Funktionen
 
 `FS`-Funktionen sind **F**ile**s**ystem-Funktionen (Dateisystem-Funktionen), die besser sein sollen als die Standardfähigkeiten von Lua.
@@ -880,36 +1097,39 @@ if error_message then
 	-- ...
 end
 ```
+
 ### `FS.Remove(path: string) -> bool,string`
 
-Entfernt die angegebene Datei oder den angegebenen Ordner.
+Entfernt die angegebene Datei oder den angegebenen leeren Ordner. Ein Ordner, in dem Dateien liegen, wird nicht entfernt.
 
-Gibt `true` zurück, wenn ein Fehler aufgetreten ist, mit einer Fehlermeldung im zweiten Rückgabewert.
+Gibt `true` zurück, wenn es geklappt hat oder wenn es nichts zu entfernen gab. Ist es fehlgeschlagen, gibt sie `false` und eine Fehlermeldung zurück.
 
 Beispiel:
 ```lua
-local error, error_message = FS.Remove("myfile.txt")
+local success, error_message = FS.Remove("myfile.txt")
 
-if error then
+if not success then
 	print("failed to delete myfile: " .. error_message)
 end
 ```
+
 ### `FS.Rename(pathA: string, pathB: string) -> bool,string`
 
 Benennt `pathA` in `pathB` um (oder verschiebt es).
 
-Gibt `true` zurück, wenn ein Fehler aufgetreten ist, mit einer Fehlermeldung im zweiten Rückgabewert.
+Gibt `true` zurück, wenn es geklappt hat. Ist es fehlgeschlagen, gibt sie `false` und eine Fehlermeldung zurück.
 
 ### `FS.Copy(pathA: string, pathB: string) -> bool,string`
 
-Kopiert `pathA` nach `pathB`.
+Kopiert `pathA` nach `pathB`. Ein Ordner wird mit allem, was darin liegt, kopiert.
 
-Gibt `true` zurück, wenn ein Fehler aufgetreten ist, mit einer Fehlermeldung im zweiten Rückgabewert.
+Gibt `true` zurück, wenn es geklappt hat. Ist es fehlgeschlagen, gibt sie `false` und eine Fehlermeldung zurück.
 
 ### `FS.GetFilename(path: string) -> string`
 
 Gibt den letzten Teil eines Pfades zurück, das ist normalerweise der Dateiname.
 Hier einige Beispiele für Eingaben und Ausgaben:
+
 ```lua
 input -> output
 
@@ -917,11 +1137,13 @@ input -> output
 "somefile.txt" 		-> "somefile.txt"
 "/awesome/path" 	-> "path"
 ```
+
 ### `FS.GetExtension(path: string) -> string`
 
 
 Gibt die Erweiterung der Datei zurück oder einen leeren String, wenn keine Erweiterung existiert.
 Hier einige Beispiele für Eingaben und Ausgaben
+
 ```lua
 input -> output
 
@@ -931,10 +1153,13 @@ input -> output
 "/awesome/path/file.zip.txt"	-> ".txt"
 "myexe.exe" 					-> ".exe"
 ```
+
+
 ### `FS.GetParentFolder(path: string) -> string`
 
 Gibt den Pfad zum übergeordneten Verzeichnis zurück, also dem Ordner, in dem eine Datei oder ein Ordner liegt.
 Hier einige Beispiele für Eingaben und Ausgaben:
+
 ```lua
 input -> output
 
@@ -942,6 +1167,8 @@ input -> output
 "/"							-> "/"
 "mydir/a/b/c.txt"			-> "mydir/a/b"
 ```
+
+
 ### `FS.Exists(path: string) -> bool`
 
 Gibt `true` zurück, wenn der Pfad existiert, und `false`, wenn nicht.
@@ -956,7 +1183,7 @@ Gibt `true` zurück, wenn der angegebene Pfad eine reguläre Datei ist (kein Sym
 
 ### `FS.ListDirectories(path: string) -> table`
 
-Gibt eine Tabelle aller Verzeichnisse im angegebenen Pfad zurück.
+Gibt eine Tabelle aller Verzeichnisse im angegebenen Pfad zurück. Gibt `nil` zurück, wenn der Pfad nicht existiert.
 
 Beispiel:
 ```lua
@@ -969,9 +1196,10 @@ Ergebnis:
     2: "Server"
 }
 ```
+
 ### `FS.ListFiles(path: string) -> table`
 
-Gibt eine Tabelle aller Dateien im angegebenen Pfad zurück.
+Gibt eine Tabelle aller Dateien im angegebenen Pfad zurück. Gibt `nil` zurück, wenn der Pfad nicht existiert.
 
 Beispiel:
 ```lua
@@ -984,6 +1212,7 @@ Ergebnis:
     2: "example.lua"
 }
 ```
+
 ### `FS.ConcatPaths(...) -> string`
 
 Fügt alle Argumente mit dem vom System bevorzugten Pfadtrennzeichen aneinander (konkateniert sie).
@@ -996,6 +1225,7 @@ ergibt
 ```
 a/b/c/d/e/f/g/h.txt
 ```
+
 Löst außerdem `..` auf, falls es an irgendeiner Stelle im Pfad vorkommt. Diese Funktion ist sicherer als das Zusammenfügen von Strings in Lua und berücksichtigt die Trennzeichen der jeweiligen Plattform.
 
 Verwende als Trennzeichen in Pfaden bitte immer `/`, da dies plattformübergreifend funktioniert (Windows, Linux, macOS, ...).
@@ -1012,9 +1242,12 @@ Verwende als Trennzeichen in Pfaden bitte immer `/`, da dies plattformübergreif
 Wenn ein Spieler beitritt, werden die folgenden Events in dieser Reihenfolge ausgelöst:
 
 1. `onPlayerAuth`
-2. `onPlayerConnecting`
-3. `onPlayerJoining`
-4. `onPlayerJoin`
+2. `postPlayerAuth` (auch dann, wenn der Spieler abgelehnt wurde)
+3. `onPlayerConnecting`
+4. `onPlayerJoining`
+5. `onPlayerJoin`
+
+Events, deren Name mit `post` beginnt, melden nach dem Ereignis dessen Ergebnis für das Event mit dem gleichen Namen. Du kannst sie nicht abbrechen.
 
 ### System-Events
 
@@ -1023,21 +1256,21 @@ Wenn ein Spieler beitritt, werden die folgenden Events in dieser Reihenfolge aus
 Arguments: NONE
 Cancellable: NO
 
-Wird ausgelöst, sobald alle Dateien des Plugins initialisiert wurden.
+Wird ausgelöst, sobald alle Dateien des Plugins initialisiert wurden. Der Server wartet bis zu 5 Sekunden auf die Handler. Es wird für ein Plugin außerdem erneut ausgelöst, wenn eine seiner `.lua`-Dateien im laufenden Betrieb neu geladen wird (Hot-Reload).
 
 #### `onConsoleInput`
 
 Arguments: `input: string`
 Cancellable: NO
 
-Wird ausgelöst, wenn die BeamMP-Konsole eine Eingabe erhält.
+Wird ausgelöst, wenn die BeamMP-Konsole eine Eingabe erhält. Das Argument ist die ganze eingegebene Zeile. Siehe [Benutzerdefinierte Befehle](#custom-commands).
 
 #### `onShutdown`
 
 Arguments: NONE
 Cancellable: NO
 
-Wird ausgelöst, wenn der Server herunterfährt. Dies geschieht derzeit, nachdem alle Spieler gekickt wurden.
+Wird ausgelöst, wenn der Server herunterfährt, nachdem alle Spieler gekickt wurden. Der Server wartet bis zu 5 Sekunden auf die Handler.
 
 ### Spielbezogene Events
 
@@ -1046,19 +1279,32 @@ Wird ausgelöst, wenn der Server herunterfährt. Dies geschieht derzeit, nachdem
 Arguments: `player_name: string`, `player_role: string`, `is_guest: bool`, `identifiers: table -> beammp, ip`
 Cancellable: YES
 
-Das erste Event, das ausgelöst wird, wenn ein Spieler beitreten möchte. Einem Spieler kann der Beitritt verweigert werden, indem der Handler `1` oder einen Grund (`string`) zurückgibt.
+Das erste Event, das ausgelöst wird, wenn ein Spieler beitreten möchte. Einem Spieler kann der Beitritt verweigert werden, indem der Handler `1` oder einen Grund (`string`) zurückgibt. Ein zurückgegebener Grund wird dem Spieler angezeigt. Bei `1` sieht der Spieler „you are not allowed on the server!“.
+
+Seit v3.6.0 kann ein Handler `2` zurückgeben, um den Spieler auch dann beitreten zu lassen, wenn der Server voll ist (`MaxPlayers`). Das hebt eine Ablehnung durch einen anderen Handler nicht auf und erlaubt keinem Gast den Beitritt zu einem Server, auf dem `AllowGuests` auf `false` steht.
+
 ```lua
 function myPlayerAuthorizer(name, role, is_guest, identifiers)
 	return "Sorry, you cannot join at this time."
 end
 MP.RegisterEvent("onPlayerAuth", "myPlayerAuthorizer")
 ```
+
+#### `postPlayerAuth`
+
+*seit v3.5.0*
+
+Arguments: `denied: bool`, `reason: string`, `player_name: string`, `player_role: string`, `is_guest: bool`, `identifiers: table -> beammp, ip`
+Cancellable: NO
+
+Wird direkt nach `onPlayerAuth` ausgelöst, unabhängig davon, ob der Spieler beitreten durfte oder nicht. `denied` ist `true`, wenn der Spieler abgelehnt wurde. `reason` ist der Text, der dem Spieler angezeigt wird, oder ein leerer String, wenn es keinen gibt.
+
 #### `onPlayerConnecting`
 
 Arguments: `player_id: number`
 Cancellable: NO
 
-Wird ausgelöst, wenn ein Spieler beginnt, sich zu verbinden, nach `onPlayerAuth`.
+Wird ausgelöst, wenn ein Spieler beginnt, sich zu verbinden, nach `onPlayerAuth`. Der Spieler erhält seine ID vor diesem Event. Der Spieler hat die Mods noch nicht heruntergeladen.
 
 #### `onPlayerJoining`
 
@@ -1067,32 +1313,58 @@ Cancellable: NO
 
 Wird ausgelöst, wenn ein Spieler alle Mods fertig geladen hat, nach `onPlayerConnecting`.
 
+#### `onPlayerJoin`
+
+Arguments: `player_id: number`
+Cancellable: NO
+
+Wird nach `onPlayerJoining` ausgelöst, wenn das Spiel des Spielers meldet, dass es beigetreten ist. Der Server beginnt dann, dem Spieler die bereits vorhandenen Fahrzeuge zu senden.
+
 #### `onPlayerDisconnect`
 
 Arguments: `player_id: number`
 Cancellable: NO
 
-Wird ausgelöst, wenn ein Spieler die Verbindung trennt.
+Wird ausgelöst, wenn ein Spieler die Verbindung trennt. Es kommt, nachdem [`onVehicleDeleted`](#onvehicledeleted) für jedes Fahrzeug des Spielers ausgelöst wurde.
 
 #### `onChatMessage`
 
 Arguments: `player_id: number`, `player_name: string`, `message: string`
 Cancellable: YES
 
-Wird ausgelöst, wenn ein Spieler eine Chatnachricht sendet. Wird es abgebrochen, wird die Chatnachricht niemandem angezeigt, nicht einmal dem Spieler, der sie gesendet hat.
+Wird ausgelöst, wenn ein Spieler eine Chatnachricht sendet. Wird es abgebrochen, wird die Chatnachricht niemandem angezeigt, nicht einmal dem Spieler, der sie gesendet hat. Der Server verwirft eine leere Nachricht sowie eine, die länger als 500 Bytes ist (seit v3.9.1), bevor er dieses Event auslöst.
+
+#### `postChatMessage`
+
+*seit v3.5.0*
+
+Arguments: `accepted: bool`, `player_id: number`, `player_name: string`, `message: string`
+Cancellable: NO
+
+Wird nach `onChatMessage` ausgelöst. `accepted` ist `false`, wenn ein Handler die Nachricht abgebrochen hat.
 
 #### `onVehicleSpawn`
 
 Arguments: `player_id: number`, `vehicle_id: number`, `data: string`
 Cancellable: YES
 
-Wird ausgelöst, wenn ein Spieler ein neues Fahrzeug spawnt. Beachte, dass Fahrzeugwechsel/-ersetzungen stattdessen [`onVehicleEdited`](#onvehicleedited) auslösen. Das Argument `data` enthält die Konfiguration des Fahrzeugs sowie Positions- und Rotationsdaten als JSON-String.
+Wird ausgelöst, wenn ein Spieler ein neues Fahrzeug spawnt. Beachte, dass Fahrzeugwechsel/-ersetzungen stattdessen [`onVehicleEdited`](#onvehicleedited) auslösen. Das Argument `data` enthält die Konfiguration des Fahrzeugs sowie Positions- und Rotationsdaten als JSON-String. Ein Fahrzeug wird außerdem nicht gespawnt, wenn der Spieler bereits `MaxCars` Fahrzeuge hat. Das Einrad zählt dabei nicht mit.
+
+#### `postVehicleSpawn`
+
+*seit v3.5.0*
+
+Arguments: `spawned: bool`, `player_id: number`, `vehicle_id: number`, `data: string`
+Cancellable: NO
+
+Wird nach `onVehicleSpawn` ausgelöst. `spawned` ist `false`, wenn ein Handler das Spawnen abgebrochen hat oder wenn das Fahrzeug aus einem anderen Grund abgelehnt wurde, etwa weil der Spieler bereits `MaxCars` Fahrzeuge hat. `data` ist dasselbe wie in `onVehicleSpawn`.
 
 <details>
 
 <summary>Beispielwert für <code>data</code></summary>
 
-Der Daten-String beginnt mit einer eindeutigen Fahrzeugkennung, bestehend aus der Spieler-ID, einem Bindestrich und der Fahrzeug-ID. Darauf folgt ein JSON-Objekt mit Informationen zur Konfiguration und Positionierung des Fahrzeugs.
+Der Daten-String beginnt mit der Rolle und dem Namen des Spielers, gefolgt von einer eindeutigen Fahrzeugkennung, bestehend aus der Spieler-ID, einem Bindestrich und der Fahrzeug-ID. Darauf folgt ein JSON-Objekt mit Informationen zur Konfiguration und Positionierung des Fahrzeugs. Die Teile sind durch `:` getrennt, der String sieht also so aus: `role:name:player_id-vehicle_id:{...}`. Im Beispiel unten sind Rolle und Name weggelassen.
+
 ```
 0-0: {
     "abs": "realistic",
@@ -1291,6 +1563,7 @@ Der Daten-String beginnt mit einer eindeutigen Fahrzeugkennung, bestehend aus de
     "vid": 29339
 }
 ```
+
 </details>
 
 #### `onVehicleEdited`
@@ -1298,13 +1571,14 @@ Der Daten-String beginnt mit einer eindeutigen Fahrzeugkennung, bestehend aus de
 Arguments: `player_id: number`, `vehicle_id: number`, `data: string`
 Cancellable: YES
 
-Wird ausgelöst, wenn ein Spieler sein Fahrzeug bearbeitet oder ersetzt. Das Argument `data` enthält die aktualisierte Konfiguration des Fahrzeugs als JSON-String, enthält aber **keine** Positions- oder Rotationsdaten. Mit [MP.GetPositionRaw](#mp-getpositionraw-pid-number-vid-number-table-string) kannst du Positions- und Rotationsdaten abrufen.
+Wird ausgelöst, wenn ein Spieler sein Fahrzeug bearbeitet oder ersetzt. Das Argument `data` enthält die aktualisierte Konfiguration des Fahrzeugs als JSON-String, aber **keine** Positions- oder Rotationsdaten. Mit [MP.GetPositionRaw](#mp-getpositionraw-pid-number-vid-number-table-string) kannst du Positions- und Rotationsdaten abrufen.
 
 <details>
 
 <summary>Beispielwert für <code>data</code></summary>
 
 Der Daten-String beginnt mit einer eindeutigen Fahrzeugkennung, bestehend aus der Spieler-ID, einem Bindestrich und der Fahrzeug-ID. Darauf folgt ein JSON-Objekt mit Informationen zur Konfiguration des Fahrzeugs.
+
 ```
 0-0: {
   "abs": "realistic",
@@ -1494,14 +1768,24 @@ Der Daten-String beginnt mit einer eindeutigen Fahrzeugkennung, bestehend aus de
   }
 }
 ```
+
 </details>
+
+#### `postVehicleEdited`
+
+*seit v3.5.0*
+
+Arguments: `allowed: bool`, `player_id: number`, `vehicle_id: number`, `data: string`
+Cancellable: NO
+
+Wird nach `onVehicleEdited` ausgelöst. `allowed` ist `false`, wenn ein Handler die Bearbeitung abgebrochen hat. Der Server löscht das Fahrzeug dann. `data` ist dasselbe wie in `onVehicleEdited`.
 
 #### `onVehicleDeleted`
 
 Arguments: `player_id: number`, `vehicle_id: number`
 Cancellable: NO
 
-Wird ausgelöst, wenn ein Spieler sein Fahrzeug löscht.
+Wird ausgelöst, wenn ein Spieler sein Fahrzeug löscht. Es wird außerdem ausgelöst, wenn `MP.RemoveVehicle` ein Fahrzeug entfernt, wenn ein Spawn oder eine Bearbeitung abgebrochen und das Fahrzeug gelöscht wird und, seit v3.5.0, für jedes Fahrzeug eines Spielers, der die Verbindung trennt.
 
 #### `onVehicleReset`
 
@@ -1510,6 +1794,15 @@ Cancellable: NO
 
 Wird ausgelöst, wenn ein Spieler sein Fahrzeug zurücksetzt. `data` enthält die aktualisierte Position und Rotation des Fahrzeugs, aber **nicht** dessen Konfiguration. Mit [MP.GetPlayerVehicles](#mp-getplayervehicles-player-id-number-table) kannst du die Konfiguration des Fahrzeugs abrufen.
 
+#### `onVehiclePaintChanged`
+
+*seit v3.7.0*
+
+Arguments: `player_id: number`, `vehicle_id: number`, `data: string`
+Cancellable: NO
+
+Wird ausgelöst, wenn ein Spieler die Lackierung seines Fahrzeugs ändert. `data` ist ein JSON-String mit den neuen Lackierungen des Fahrzeugs, als Array. Der Server speichert die neuen Lackierungen in den Fahrzeugdaten, sodass [MP.GetPlayerVehicles](#mp-getplayervehicles-player-id-number-table) sie danach zurückgibt.
+
 #### `onFileChanged`
 
 *seit v3.1.0*
@@ -1517,17 +1810,17 @@ Wird ausgelöst, wenn ein Spieler sein Fahrzeug zurücksetzt. `data` enthält di
 Arguments: `path: string`
 Cancellable: NO
 
-Wird ausgelöst, wenn sich eine Datei im Verzeichnis `Resources/Server` *oder einem seiner Unterverzeichnisse* ändert. 
+Wird ausgelöst, wenn sich eine Datei im Verzeichnis `Resources/Server` *oder einem seiner Unterverzeichnisse* ändert. Der Server prüft alle 3 Sekunden auf Änderungen.
 
-Jede Dateiänderung im Verzeichnis `Resources/Server/<plugin>` (nicht in einem Unterordner davon) löst ein Neuladen des Lua-States und ein `onFileChanged`-Event aus.
+Eine Änderung an einer `.lua`-Datei im Verzeichnis `Resources/Server/<plugin>` (nicht in einem Unterordner davon) bewirkt, dass der Server diese Datei im Lua-State des Plugins erneut ausführt, dann `onInit` für dieses Plugin auslöst und danach `onFileChanged`. Der State selbst bleibt erhalten, seine globalen Variablen bleiben also bestehen, und bereits registrierte Handler bleiben weiterhin registriert.
 
-Jede Datei in Unterordnern von `Resources/Server/<plugin>`, etwa `Resources/Server/<plugin>/lua/stuff.lua`, löst kein Neuladen des States aus, sondern nur ein `onFileChanged`-Event. So kannst du sie selbst auf die richtige Weise neu laden (oder eben nicht).
+Eine Änderung an jeder anderen Datei in `Resources/Server/<plugin>` oder an jeder Datei in einem Unterordner, etwa `Resources/Server/<plugin>/lua/stuff.lua`, führt nichts aus und löst nur `onFileChanged` aus. So kannst du sie selbst auf die richtige Weise neu laden (oder eben nicht).
 
 Das gilt für alle Dateien, nicht nur für `.lua`-Dateien.
 
 Der `path` ist relativ zum Stammverzeichnis des Servers, zum Beispiel `Resources/Server/myplugin/myfile.txt`. Diesen String kannst du mit der Funktionsfamilie `FS.*` weiterverarbeiten, etwa um den Namen oder die Erweiterung zu extrahieren (`FS.GetExtension(...)`, `FS.GetFilename(...)`, ...).
 
-Hinweis: Dateien, die nach dem Start des Servers hinzugefügt werden, werden ab v3.1.0 *nicht* überwacht.
+Hinweis: Dateien, die nach dem Start des Servers hinzugefügt werden, werden *nicht* überwacht.
 
 ## Migration vom alten Lua {#migrating-from-old-lua}
 
@@ -1543,36 +1836,44 @@ Das ist nötig, um die nächsten Schritte richtig auszuführen.
 Zuerst solltest du alle MP-Funktionen per Suchen & Ersetzen anpassen. Dabei sollte allen MP-Funktionen außer `print()` ein `MP.` vorangestellt werden.
 
 Beispiel:
+
 ```lua
 local players = GetPlayers()
 print(#players)
 ```
 wird zu
+
 ```lua
 local players = MP.GetPlayers()
 print(#players) -- note how print() doesn't change
 ```
+
 ### Auf Wiedersehen Threads, hallo Event-Timer!
 
 Wie in der Einführung besprochen, sind Threads Event-Timer. Ersetze jeden Aufruf von `CreateThread` durch einen Aufruf von `CreateEventTimer`. Prüfe sorgfältig, welches Timing dein alter CreateThread hatte (die Zahl bedeutete X pro Sekunde), und überlege, welcher Timeout-Wert dafür beim Event-Timer passt (dieser wird in Millisekunden angegeben). Beachte außerdem, dass statt eines Funktionsnamens ein Eventname übergeben wird, du musst also auch ein Event registrieren.
 
 Beispiel:
+
 ```lua
 CreateThread("myFunction", 2) -- calls "myFunction" twice per second
 ```
 wird zu
+
 ```lua
 MP.RegisterEvent("myEvent", "myFunction") -- registering our event for the timer
 MP.CreateEventTimer("myEvent", 500) -- 500 milliseconds = 2 times per second
 ```
+
 Wenn du viele Event-Timer hast, lohnt es sich zu prüfen, ob du sie zusammenlegen kannst, zum Beispiel indem du ein „Jede Minute“-Event erstellst und mehrere Funktionen dafür registrierst, die jede Minute aufgerufen werden müssen, anstatt mehrere Event-Timer zu haben. Jeder Event-Timer kostet den Server beim Auslösen ein wenig Zeit.
 
 ### Kein implizites Aufrufen von Events mehr
 
 Du musst alle deine Events registrieren. Du kannst dich nicht auf Funktionsnamen verlassen. Im alten Lua war das unklar, im neuen Lua wird es in der Regel erzwungen. Ein gutes Muster ist: 
+
 ```lua
 MP.RegisterEvent("onChatMessage", "chatMessageHandler")
 -- or 
 MP.RegisterEvent("onChatMessage", "handleChatMessage")
 ```
+
 Dieses Muster ist besser, als den Handler genauso zu nennen wie das Event, was irreführend und verwirrend ist.

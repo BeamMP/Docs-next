@@ -40,7 +40,7 @@ Wenn andere Spieler in ihrem Launcher den Fehlercode 10060, 10061 oder 10038 erh
 Während der Server läuft, kannst du mit CheckBeamMP testen, ob der Port weitergeleitet ist:
 
 <form action="https://check.beammp.com/api/v2/beammp" method="get" target="_blank">
-  <label for="ip">IP address:</label>
+  <label for="ip">IP-Adresse:</label>
   <input type="text" id="ip" name="ip"><br>
   <label for="port">Port:</label>
   <input type="text" id="port" name="port"><br>
@@ -59,6 +59,12 @@ Um deinem eigenen, selbst gehosteten Server über die Serverliste beizutreten, m
 
 <!--@include: ../_parts/faq-code-and-bugs.md-->
 
+### Wie viele AuthKeys kann ich haben, und wie bekomme ich mehr?
+
+Standardmäßig kann ein Konto 2 AuthKeys haben. Patreon-Stufen und das Boosten des BeamMP-Discord-Servers fügen weitere hinzu. Der **Keymaster** in [BeamMP Accounts](https://accounts.beammp.com) zeigt, wie viele Schlüssel du schon verwendet hast und woher jeder zusätzliche Schlüssel stammt. Die Schritte findest du unter [Einen AuthKey besorgen](/de/server-owners/host-a-server#get-an-authkey).
+
 ### Mein AuthKey wurde kompromittiert. Was soll ich tun?
 
-Wenn du glaubst, dass einer deiner AuthKeys kompromittiert wurde, erstelle ein **Account Support**-Ticket auf [Discord](https://discord.gg/beammp).
+Tausche den Schlüssel im **Keymaster** aus. Der alte Schlüssel funktioniert sofort nicht mehr. Trage den neuen Schlüssel in deine `ServerConfig.toml` ein und starte den Server neu. Die Schritte findest du unter [Einen AuthKey besorgen](/de/server-owners/host-a-server#get-an-authkey).
+
+Wenn du den Schlüssel nicht selbst austauschen kannst, zum Beispiel weil du dich nicht bei BeamMP Accounts anmelden kannst, erstelle ein **Account Support**-Ticket auf [Discord](https://discord.gg/beammp).

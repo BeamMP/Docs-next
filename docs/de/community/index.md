@@ -27,7 +27,11 @@ BeamMP ist eine Gemeinschaft aus Spielern, Serverbetreibern und Entwicklern. Hie
 
 ## Unterstütze das Projekt
 
-Unterstützer auf [Patreon](https://www.patreon.com/c/BeamMP) erhalten frühen Zugang und zusätzliche Server-Keys. Wie das funktioniert, steht in der [Spieler-FAQ](/de/players/faq).
+Unterstützer auf [Patreon](https://www.patreon.com/c/BeamMP) erhalten frühen Zugang und zusätzliche Server-Keys. Auch das Boosten des Discord-Servers bringt zusätzliche Server-Keys. Wie das funktioniert, steht in der [Spieler-FAQ](/de/players/faq).
+
+## Dein Konto
+
+Ein Konto bei [BeamMP Accounts](https://accounts.beammp.com) meldet dich im Spiel und im Forum an und enthält deine Server-Keys. Siehe [Dein BeamMP-Konto](/de/players/account).
 
 ## Entwickle mit uns
 

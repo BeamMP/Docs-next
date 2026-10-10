@@ -18,23 +18,24 @@ Für Inhalte auf extern verlinkten Diensten oder Websites übernehmen wir keine 
 1. Öffne **Windows Defender Firewall mit erweiterter Sicherheit**.
 2. Klicke auf **Eingehende Regeln**.
 3. Klicke oben rechts auf **Neue Regel**.
-4. Wähle **Programm**, um eine Regel für ein Programm zu erstellen.
-5. Gib den vollständigen Pfad zu `BeamMP-Launcher.exe` ein. Standardmäßig ist das `%appdata%\BeamMP-Launcher\BeamMP-Launcher.exe`, ohne Anführungszeichen.
-6. Wähle, die Verbindung zuzulassen.
-7. Gib der Regel einen Namen, zum Beispiel „BeamMP-Launcher“, und speichere sie.
-8. Starte deinen Computer neu.
+4. Wähle **Programm** und klicke auf **Weiter**.
+5. Wähle **Dieser Programmpfad** und gib den vollständigen Pfad zu `BeamMP-Launcher.exe` ein. Standardmäßig ist das `%appdata%\BeamMP-Launcher\BeamMP-Launcher.exe`, ohne Anführungszeichen.
+6. Wähle **Verbindung zulassen**.
+7. Lass die markierten Netzwerktypen unverändert und klicke auf **Weiter**.
+8. Gib der Regel einen Namen, zum Beispiel „BeamMP-Launcher“, und klicke auf **Fertig stellen**.
 
 ## Dem Server den Zugriff durch die Firewall erlauben
 
-1. Öffne **Windows Defender Firewall mit erweiterter Sicherheit**.
-2. Klicke auf **Eingehende Regeln**.
-3. Klicke oben rechts auf **Neue Regel**.
-4. Wähle **Port**, um eine Regel für einen Port zu erstellen.
-5. Gib denselben Port ein wie in deiner `ServerConfig.toml`.
-6. Gib den vollständigen Pfad zu `BeamMP-Server.exe` ein. Das ist der Ort, an den du die Datei nach dem Download gelegt hast.
-7. Wähle, die Verbindung zuzulassen.
-8. Gib der Regel einen Namen, zum Beispiel „BeamMP-Server“, und speichere sie.
-9. Starte deinen Computer neu.
+Der Server braucht eine Regel für das Programm und eine Regel für seinen Port. Spieler verbinden sich mit derselben Portnummer über TCP und über UDP, deshalb braucht der Port für jedes Protokoll eine Regel.
+
+1. Erstelle eine Regel für das Programm wie in den Schritten oben, aber mit dem vollständigen Pfad zu `BeamMP-Server.exe`. Das ist der Ort, an den du die Datei nach dem Download gelegt hast. Nenne sie „BeamMP-Server“.
+2. Klicke erneut auf **Neue Regel**.
+3. Wähle **Port** und klicke auf **Weiter**.
+4. Wähle **TCP** und **Bestimmte lokale Ports** und gib denselben Port ein wie bei `Port` in deiner `ServerConfig.toml`. Standardmäßig ist das `30814`.
+5. Wähle **Verbindung zulassen**, lass die markierten Netzwerktypen unverändert und gib der Regel einen Namen, zum Beispiel „BeamMP-Server TCP“.
+6. Wiederhole die Schritte 2 bis 5 mit **UDP** und nenne die Regel „BeamMP-Server UDP“.
+
+Eine Firewall-Regel gilt, sobald du sie speicherst. Starte danach den Launcher oder den Server neu.
 
 ## Eine Virenschutz-Ausnahme hinzufügen
 
@@ -43,10 +44,11 @@ Das gilt für den Launcher und den Server.
 1. Öffne die App **Windows-Sicherheit**.
 2. Klicke auf **Viren- & Bedrohungsschutz**.
 3. Klicke unter **Einstellungen für Viren- & Bedrohungsschutz** auf **Einstellungen verwalten**.
-4. Scrolle nach unten zu **Ausschlüsse**.
-5. Klicke auf **Ausschlüsse hinzufügen oder entfernen**, dann auf **Ausschluss hinzufügen** und wähle **Prozess**.
-6. Gib `BeamMP-Launcher.exe` oder `BeamMP-Server.exe` ein und speichere es.
-7. Starte deinen Computer neu.
+4. Scrolle nach unten zu **Ausschlüsse** und klicke auf **Ausschlüsse hinzufügen oder entfernen**.
+5. Klicke auf **Ausschluss hinzufügen**, wähle **Datei** und wähle `BeamMP-Launcher.exe` oder `BeamMP-Server.exe`. So wird das Programm selbst nicht gescannt oder entfernt.
+6. Klicke erneut auf **Ausschluss hinzufügen**, wähle **Prozess** und gib den vollständigen Pfad zum selben Programm ein. So werden die Dateien, die das Programm öffnet, nicht gescannt.
+
+Eine Ausnahme gilt für den Echtzeitschutz. Ein geplanter oder manueller Scan kann eine ausgeschlossene Datei trotzdem scannen.
 
 ## Immer noch Probleme?
 

@@ -47,9 +47,11 @@ Das BeamMP-Staff ist nicht verpflichtet, streng nach diesen Regeln zu moderieren
 
 ## So legst du Einspruch gegen Maßnahmen gegen dich ein:
 
+Wenn dein BeamMP-Konto gesperrt wurde, lege den Einspruch in BeamMP Accounts ein. Siehe [Sperren und Einsprüche](/de/players/suspensions-and-appeals).
+
 ### Einsprüche gegen Bans können unter <a href="https://docs.google.com/forms/d/1MaTPKM-MHQU5lUtxeOKz3C7OoI6Xbu5RX5AJdX-UOz4" class="inline-onebox">Ban Appeal - BeamMP</a> eingereicht werden.
 
-Alle Einsprüche gegen Bans werden gründlich geprüft, und zwar von mindestens zwei (2) Mitgliedern des Staff-/Moderationsteams, die nicht am betreffenden Fall beteiligt waren.  Das Staff-Mitglied, das die Maßnahme verhängt hat, darf Stellung nehmen, ist aber ansonsten nicht an der Entscheidung über den Einspruch beteiligt. Das Ergebnis eines Einspruchs ist endgültig. BeamMP behält sich vor, Mitglieder nach eigenem Ermessen entsprechend den BeamMP-Community-Regeln (siehe oben), den [Nutzungsbedingungen von Discord](https://discord.com/terms) und weiteren Faktoren zuzulassen oder nicht zuzulassen. 
+Alle Einsprüche gegen Bans, die mit diesem Formular eingereicht werden, werden gründlich geprüft, und zwar von mindestens zwei (2) Mitgliedern des Staff-/Moderationsteams, die nicht am betreffenden Fall beteiligt waren.  Das Staff-Mitglied, das die Maßnahme verhängt hat, darf Stellung nehmen, ist aber ansonsten nicht an der Entscheidung über den Einspruch beteiligt. Das Ergebnis eines Einspruchs ist endgültig. BeamMP behält sich vor, Mitglieder nach eigenem Ermessen entsprechend den BeamMP-Community-Regeln (siehe oben), den [Nutzungsbedingungen von Discord](https://discord.com/terms) und weiteren Faktoren zuzulassen oder nicht zuzulassen. 
 
 ::: warning
 Wenn Maßnahmen gegen dich verhängt wurden, darfst du kein neues Discord- oder BeamMP-Konto erstellen, um den Bann zu umgehen.

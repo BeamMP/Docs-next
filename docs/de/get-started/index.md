@@ -8,7 +8,8 @@ BeamMP bringt Multiplayer in BeamNG.drive. Dieser Bereich führt dich von der In
 ## Was du brauchst
 
 - Eine legale, aktuelle Kopie von BeamNG.drive.
-- Windows oder Linux. Die Unterstützung für macOS ist in Arbeit. Linux und macOS sind sekundäre Plattformen, daher sind einige Fehler zu erwarten.
+- Windows oder Linux. Unter Linux funktioniert der Launcher mit dem nativen BeamNG.drive und mit BeamNG.drive über Proton, und du erstellst ihn selbst. Linux ist eine sekundäre Plattform, daher sind einige Fehler zu erwarten. Für macOS gibt es keinen Launcher.
+- Eine Internetverbindung, über die der Launcher `backend.beammp.com`, `auth.beammp.com` und `forum.beammp.com` per HTTPS erreichen kann.
 
 ::: warning
 BeamMP funktioniert nicht mit raubkopierten oder veralteten Kopien von BeamNG.drive, und das Support-Team kann bei Problemen damit nicht helfen.

@@ -1,9 +1,9 @@
 ---
-description: "Was die Fehlercodes im Fenster des BeamMP-Servers bedeuten, etwa 10048 und 10060, und was du jeweils dagegen tun kannst."
+description: "Was die Netzwerk-Fehlercodes hinter BeamMP-Server-Problemen bedeuten, etwa 10048 und 10060, und was du jeweils dagegen tun kannst."
 ---
 # Server-Fehlercodes
 
-Diese Seite listet die Fehlercodes auf, die der Server anzeigen kann, und was du jeweils tun kannst.
+Diese Seite listet die Netzwerk-Fehlercodes auf, die dir beim Betrieb eines Servers begegnen können, und was du jeweils tun kannst. Der Server selbst gibt den Text des Fehlers aus, zum Beispiel nach `bind() failed:`, nicht die Nummer. Die Nummern sind die Windows-Sockets-Fehlercodes, die der Launcher und Windows anzeigen.
 
 
 | Code  | Beschreibung                               | Mögliche Lösung                                                                                                       |
