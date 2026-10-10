@@ -1,5 +1,5 @@
 ---
-description: "Réponses aux questions courantes sur les serveurs BeamMP : installation, Linux, configuration minimale, joueurs qui ne peuvent pas se connecter, signalement de bugs ou d'une AuthKey compromise."
+description: "Réponses aux questions courantes sur les serveurs BeamMP : installation, Linux, configuration requise, joueurs qui ne peuvent pas se connecter, bugs et AuthKey compromise."
 ---
 # FAQ du serveur
 
@@ -7,15 +7,15 @@ Questions fréquentes et problèmes connus concernant l'hébergement d'un serveu
 
 ## Mise en place
 
-### Comment puis-je créer mon propre serveur ?
+### Comment puis-je créer mon propre serveur ?
 
 Tout ce dont vous avez besoin se trouve dans [Héberger un serveur](/fr/server-owners/host-a-server), ou dans [Configuration du serveur sur un VPS](/fr/server-owners/setup-vps) si vous passez par un hébergeur.
 
-### Puis-je faire tourner un serveur sous Linux ?
+### Puis-je faire tourner un serveur sous Linux ?
 
 Oui. Nous fournissons des binaires pour de nombreuses distributions Linux sur la [page de la dernière version](https://github.com/BeamMP/BeamMP-Server/releases/latest). S'il n'y en a pas pour votre distribution, vous pouvez le compiler à partir des sources sur [GitHub](https://github.com/BeamMP/BeamMP-Server). Les [instructions de compilation](https://github.com/BeamMP/BeamMP-Server#build-instructions) expliquent comment faire.
 
-### Quelle est la configuration minimale requise ?
+### Quelle est la configuration minimale requise ?
 
 | | Exigence |
 |---|---|
@@ -37,17 +37,17 @@ Si d'autres joueurs obtiennent le code d'erreur 10060, 10061 ou 10038 dans leur 
 - Assurez-vous de ne pas utiliser de VPN. Il peut causer des problèmes.
 - Assurez-vous que le serveur fonctionne, sans erreurs ni avertissements.
 
-Pendant que le serveur fonctionne, vous pouvez tester si le port est bien redirigé avec CheckBeamMP :
+Pendant que le serveur fonctionne, vous pouvez tester si le port est bien redirigé avec CheckBeamMP :
 
 <form action="https://check.beammp.com/api/v2/beammp" method="get" target="_blank">
-  <label for="ip">Adresse IP :</label>
+  <label for="ip">Adresse IP :</label>
   <input type="text" id="ip" name="ip"><br>
-  <label for="port">Port :</label>
+  <label for="port">Port :</label>
   <input type="text" id="port" name="port"><br>
   <input type="submit" value="CheckBeamMP">
 </form>
 
-Certains fournisseurs d'accès à Internet ne vous donnent pas d'adresse IPv4 dédiée (CGNAT) : la redirection de port peut alors ne pas fonctionner même si votre routeur la propose. Consultez [Vérifier le CGNAT](/fr/server-owners/cgnat). La redirection de port est impossible sur une connexion mobile (4G ou 5G).
+Certains fournisseurs d'accès à Internet ne vous donnent pas d'adresse IPv4 dédiée (CGNAT) : la redirection de port peut alors ne pas fonctionner même si votre routeur la propose. Consultez [Vérifier le CGNAT](/fr/server-owners/cgnat). La redirection de port est impossible sur une connexion mobile (4G ou 5G).
 
 ### Je vois mon serveur dans la liste, mais je n'arrive pas à le rejoindre moi-même
 
@@ -59,6 +59,12 @@ Pour rejoindre votre propre serveur hébergé à domicile via la liste des serve
 
 <!--@include: ../_parts/faq-code-and-bugs.md-->
 
-### Mon AuthKey a été compromise. Que dois-je faire ?
+### Combien d'AuthKeys puis-je avoir, et comment en obtenir davantage ?
 
-Si vous pensez que l'une de vos AuthKeys est compromise, créez un ticket **Account Support** sur [Discord](https://discord.gg/beammp).
+Par défaut, un compte peut avoir 2 AuthKeys. Les paliers Patreon et le boost du serveur Discord de BeamMP en ajoutent d'autres. **Keymaster**, dans [BeamMP Accounts](https://accounts.beammp.com), indique combien de clés vous avez utilisées et d'où vient chaque clé supplémentaire. Les étapes se trouvent dans [Obtenir une AuthKey](/fr/server-owners/host-a-server#get-an-authkey).
+
+### Mon AuthKey a été compromise. Que dois-je faire ?
+
+Renouvelez la clé dans **Keymaster**. L'ancienne clé cesse immédiatement de fonctionner. Placez la nouvelle clé dans votre `ServerConfig.toml` et redémarrez le serveur. Les étapes se trouvent dans [Obtenir une AuthKey](/fr/server-owners/host-a-server#get-an-authkey).
+
+Si vous ne parvenez pas à renouveler la clé vous-même, par exemple parce que vous ne pouvez pas vous connecter à BeamMP Accounts, créez un ticket **Account Support** sur [Discord](https://discord.gg/beammp).

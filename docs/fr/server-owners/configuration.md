@@ -19,36 +19,38 @@ La configuration comporte deux sections, `[General]` et `[Misc]`. Les valeurs pa
 
 | Clé | Par défaut | Valeur | Rôle |
 |---|---|---|---|
-| Port | `30814` | 1024-65535 | Le port réseau sur lequel le serveur sera joignable. (Il doit être unique et ne pas être utilisé par un autre service sur la même machine.) |
-| AuthKey | vide | Format AuthKey `xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` où tous les x sont des caractères alphanumériques (chiffres et lettres) | Sert à identifier un serveur public auprès du backend. |
-| AllowGuests | `true` | true/false | Indique si les invités sont autorisés à rejoindre le serveur. |
-| LogChat | `true` | true/false | Lorsque cette option est activée (true), les messages du chat sont enregistrés dans le fichier server.log. |
+| Port | `30814` | 1024-65535 | Le port réseau sur lequel le serveur sera joignable. Le serveur l'utilise à la fois pour TCP et pour UDP. (Il doit être unique et ne pas être utilisé par un autre service sur la même machine.) |
+| AuthKey | vide | Format AuthKey `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` où tous les x sont des caractères alphanumériques (chiffres et lettres) | Sert à identifier un serveur public auprès du backend. Le serveur affiche un avertissement au démarrage si la clé ne comporte pas 36 caractères. |
+| AllowGuests | `true` | true/false | Indique si les invités sont autorisés à rejoindre le serveur. Lorsque cette option est désactivée (`false`), un invité qui essaie de rejoindre le serveur est refusé. |
+| LogChat | `true` | true/false | Lorsque cette option est activée (true), les messages du chat sont enregistrés dans la console et dans le fichier `Server.log`. |
 | Debug | `false` | true/false | Lorsque cette option est activée (true), affiche davantage de messages dans le journal et fournit plus d'informations. Activez-la si vous rencontrez des problèmes. Cela augmente considérablement la taille du fichier journal. |
-| IP | `"::"` | Une adresse IP locale de l'une des interfaces réseau de la machine | Le serveur s'attache à cette adresse IP. Ce n'est **pas** votre adresse IP publique. Utilisez-la si votre machine possède plusieurs interfaces réseau. Vous n'avez pas besoin de la modifier pour que le serveur fonctionne. |
+| IP | `"::"` | Une adresse IP locale de l'une des interfaces réseau de la machine | Le serveur s'attache à cette adresse IP. Ce n'est **pas** votre adresse IP publique. Utilisez-la si votre machine possède plusieurs interfaces réseau. Vous n'avez pas besoin de la modifier pour que le serveur fonctionne. La valeur par défaut `"::"` accepte les connexions sur toutes les interfaces. |
 | Private | `true` | true/false | Lorsque cette option est activée (true), votre serveur n'apparaît pas dans la liste des serveurs. Toute personne disposant de la bonne adresse IP et du bon port peut quand même s'y connecter. |
 | InformationPacket | `true` | true/false | Lorsque cette option est activée (true), le serveur autorise les clients non authentifiés à obtenir les mêmes informations que dans la liste des serveurs, mais directement auprès du serveur. |
-| Name | `"BeamMP Server"` | Tout « texte » | Affiché comme nom / titre de votre serveur dans la liste des serveurs. Vous pouvez utiliser des caractères spéciaux pour le mettre en forme avec des couleurs et des styles. |
+| Name | `"BeamMP Server"` | Tout « texte » | Affiché comme nom / titre de votre serveur dans la liste des serveurs. Vous pouvez utiliser des caractères spéciaux pour le mettre en forme avec des couleurs et des styles. |
 | Tags | `"Freeroam"` | Voir la liste des tags autorisés plus bas. | Tags pour la recherche, par ex. Police, Racing, etc. |
-| MaxCars | `1` | Tout nombre ≥ 1 | Le nombre maximal de voitures par joueur. Toute voiture supplémentaire qu'un joueur essaie de faire apparaître est supprimée immédiatement. |
-| MaxPlayers | `8` | Tout nombre ≥ 1 | Le nombre maximal de joueurs par serveur. Cela n'affecte pas le nombre de véhicules. |
+| MaxCars | `1` | Tout nombre ≥ 1 | Le nombre maximal de voitures par joueur. Toute voiture supplémentaire qu'un joueur essaie de faire apparaître est supprimée immédiatement. Le personnage à pied (l'unicycle) n'est pas compté. |
+| MaxPlayers | `8` | Tout nombre ≥ 1 | Le nombre maximal de joueurs par serveur. Cela n'affecte pas le nombre de véhicules. Lorsque le serveur est plein, un joueur qui se connecte est refusé avec « Server full! », sauf si un plugin le laisse entrer (consultez `onPlayerAuth` dans la [référence de script](/fr/developers/beammp-scripting/server/latest#onplayerauth)). |
 | Map | `"/levels/gridmap_v2/info.json"` | Un emplacement de carte valide, tel que `/levels/gridmap_v2/info.json` | La carte que votre serveur hébergera. Elle doit être installée par défaut (une liste figure plus bas) ou comme mod du serveur. |
-| Description | `"BeamMP Default Description"` | Tout « texte » | Affiché comme description du serveur dans la liste des serveurs (si le serveur est public). Vous pouvez utiliser des caractères spéciaux pour la mettre en forme avec des couleurs et des styles. |
-| ResourceFolder | `"Resources"` | Un emplacement de dossier valide, tel que « D:\Server\BeamMP\Resources » | Utile pour stocker séparément le serveur et le dossier de ressources. |
+| Description | `"BeamMP Default Description"` | Tout « texte » | Affiché comme description du serveur dans la liste des serveurs (si le serveur est public). Vous pouvez utiliser des caractères spéciaux pour la mettre en forme avec des couleurs et des styles. |
+| ResourceFolder | `"Resources"` | Un emplacement de dossier valide, tel que « D:\Server\BeamMP\Resources » | Utile pour stocker séparément le serveur et le dossier de ressources. |
 
-### La section `[Misc]`
+### La section `[Misc]` {#the-misc-section}
 
 | Clé | Par défaut | Valeur | Rôle |
 |---|---|---|---|
-| ImScaredOfUpdates | `true` | true/false | Lorsque cette option est activée (`true`), masque le message périodique qui indique qu'une nouvelle version du serveur est disponible. Le serveur ne se met pas à jour tout seul : consultez [Maintenance du serveur](/fr/server-owners/maintenance#updating-the-server). |
+| ImScaredOfUpdates | `true` | true/false | Lorsque cette option est activée (`true`), masque le message périodique qui indique qu'une nouvelle version du serveur est disponible. Le serveur ne se met pas à jour tout seul : consultez [Maintenance du serveur](/fr/server-owners/maintenance#updating-the-server). |
 | UpdateReminderTime | `"30s"` | Un nombre suivi de `s`, `min`, `h` ou `d`, par exemple `30s` | La fréquence à laquelle le rappel de mise à jour est affiché dans le terminal. `30d` correspond à tous les 30 jours, `0.5min` à toutes les demi-minutes. |
 
-Les plugins peuvent utiliser leurs propres sections, comme `[MyMod]`.
+::: warning Le serveur réécrit ce fichier
+À chaque démarrage, le serveur réécrit `ServerConfig.toml` avec les valeurs actuelles des seuls paramètres de `[General]` et `[Misc]`. Les commentaires que vous avez ajoutés et les sections ajoutées par des plugins, comme `[MyMod]`, sont supprimés. Les valeurs définies avec des [variables d'environnement](/fr/server-owners/manual#general-settings) sont elles aussi écrites dans le fichier, sauf si `BEAMMP_PROVIDER_DISABLE_CONFIG` est définie.
+:::
 
 Vous **devez** définir vous-même l'AuthKey. Elle est vide par défaut. Renseignez l'AuthKey que vous avez obtenue pendant [l'installation du serveur](/fr/server-owners/host-a-server). Ne la partagez avec personne et floutez-la entièrement dans les captures d'écran.
 
 ### Noms de toutes les cartes d'origine {#all-vanilla-maps-names}
 
-Voici toutes les cartes d'origine :
+Voici toutes les cartes d'origine :
 
 - /levels/gridmap_v2/info.json
 - /levels/johnson_valley/info.json
@@ -67,7 +69,7 @@ Voici toutes les cartes d'origine :
 
 ### Personnaliser l'apparence du nom de votre serveur {#customize-the-look-of-your-server-name}
 
-Utilisez ces symboles spéciaux avant votre texte pour lui appliquer un effet dans la liste des serveurs :
+Utilisez ces symboles spéciaux avant votre texte pour lui appliquer un effet dans la liste des serveurs :
 
 | Valeur | Description                 |
 |:-----:|-----------------------------|
@@ -98,9 +100,9 @@ Utilisez ces symboles spéciaux avant votre texte pour lui appliquer un effet da
 
 Les tags permettent aux gens de rechercher un type de serveur précis. Votre serverConfig.toml sera généré avec le tag freeroam `Tags = "Freeroam"`.
 
-Vous pouvez ajouter plusieurs tags séparés par des virgules `Tags = "Events,Offroad,lang:english"` ; la casse n'a pas d'importance.
+Vous pouvez ajouter plusieurs tags séparés par des virgules `Tags = "Events,Offroad,lang:english"` ; la casse n'a pas d'importance.
 
-Vous pouvez choisir dans la liste suivante :
+Vous pouvez choisir dans la liste suivante :
 
 ::: tabs
 

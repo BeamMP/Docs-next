@@ -1,6 +1,6 @@
 ---
 sidebar: false
-description: "Où trouver la communauté BeamMP : le forum, Discord, YouTube, X, Reddit, Bluesky et d'autres réseaux sociaux, et où lire les règles de la communauté."
+description: "Où trouver la communauté BeamMP : le forum, Discord, YouTube, X, Reddit, Bluesky et d'autres réseaux sociaux, et où lire les règles de la communauté."
 ---
 # Communauté
 
@@ -11,8 +11,8 @@ BeamMP est une communauté de joueurs, de propriétaires de serveurs et de déve
 
 ## Discutez avec nous
 
-- [Forum](https://forum.beammp.com) : questions, guides, annonces de serveurs et sujets d'assistance.
-- [Discord](https://discord.gg/beammp) : discussions, le canal `#support` et les tickets d'assistance pour les serveurs.
+- [Forum](https://forum.beammp.com) : questions, guides, annonces de serveurs et sujets d'assistance.
+- [Discord](https://discord.gg/beammp) : discussions, le canal `#support` et les tickets d'assistance pour les serveurs.
 
 ## Suivez-nous
 
@@ -27,7 +27,11 @@ BeamMP est une communauté de joueurs, de propriétaires de serveurs et de déve
 
 ## Soutenez le projet
 
-Les soutiens sur [Patreon](https://www.patreon.com/c/BeamMP) bénéficient d'un accès anticipé et de clés de serveur supplémentaires. Consultez la [FAQ du joueur](/fr/players/faq) pour savoir comment cela fonctionne.
+Les soutiens sur [Patreon](https://www.patreon.com/c/BeamMP) bénéficient d'un accès anticipé et de clés de serveur supplémentaires. Booster le serveur Discord ajoute aussi des clés de serveur. Consultez la [FAQ du joueur](/fr/players/faq) pour savoir comment cela fonctionne.
+
+## Votre compte
+
+Un seul compte [BeamMP Accounts](https://accounts.beammp.com) vous connecte au jeu et au forum, et conserve vos clés de serveur. Consultez [Votre compte BeamMP](/fr/players/account).
 
 ## Construisez avec nous
 

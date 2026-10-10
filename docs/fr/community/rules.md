@@ -45,11 +45,13 @@ Le staff de BeamMP n'est pas tenu de modérer de façon stricte selon ces règle
 14.   Ne faites pas la promotion de contenus non liés à BeamNG/BeamMP. L'envoi de médias issus de votre propre chaîne n'est autorisé que dans le [salon médias](https://discord.com/channels/601558901657305098/705427325646274680) dédié.
 15.   Suivez les instructions des membres du staff. Si vous pensez qu'un membre du staff abuse de son pouvoir, contactez en message privé son responsable ou la direction du projet.
 
-## Comment contester les sanctions prises à votre encontre :
+## Comment contester les sanctions prises à votre encontre :
+
+Si votre compte BeamMP est suspendu, faites appel dans BeamMP Accounts. Consultez [Suspensions et recours](/fr/players/suspensions-and-appeals).
 
 ### Les demandes de levée de bannissement peuvent être soumises sur <a href="https://docs.google.com/forms/d/1MaTPKM-MHQU5lUtxeOKz3C7OoI6Xbu5RX5AJdX-UOz4" class="inline-onebox">Ban Appeal - BeamMP</a>.
 
-Toutes les demandes de levée de bannissement font l'objet d'une enquête approfondie, impliquant au moins deux (2) membres de l'équipe du staff/de modération qui n'ont pas participé à l'affaire en question.  Le membre du staff à l'origine de la sanction pourra faire part de ses commentaires, mais ne participera pas à la décision. Ces décisions sont définitives. BeamMP se réserve le droit d'accepter ou non les membres comme il le juge approprié, conformément aux règles de la communauté BeamMP (ci-dessus), aux [conditions d'utilisation de Discord](https://discord.com/terms) et à d'autres facteurs. 
+Toutes les demandes de levée de bannissement effectuées avec ce formulaire font l'objet d'une enquête approfondie, impliquant au moins deux (2) membres de l'équipe du staff/de modération qui n'ont pas participé à l'affaire en question.  Le membre du staff à l'origine de la sanction pourra faire part de ses commentaires, mais ne participera pas à la décision. Ces décisions sont définitives. BeamMP se réserve le droit d'accepter ou non les membres comme il le juge approprié, conformément aux règles de la communauté BeamMP (ci-dessus), aux [conditions d'utilisation de Discord](https://discord.com/terms) et à d'autres facteurs.
 
 ::: warning
 En cas de sanction à votre encontre, il vous est interdit de créer un nouveau compte Discord ou BeamMP pour contourner le bannissement.
