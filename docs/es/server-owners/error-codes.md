@@ -1,9 +1,9 @@
 ---
-description: "Qué significan los códigos de error de la ventana del servidor de BeamMP, como 10048 y 10060, y qué hacer en cada caso."
+description: "Qué significan los códigos de error de red detrás de los problemas del servidor de BeamMP, como 10048 y 10060, y qué hacer en cada caso."
 ---
 # Códigos de error del servidor
 
-Esta página enumera los códigos de error que puede mostrar el servidor y qué hacer en cada caso.
+Esta página enumera los códigos de error de red con los que puedes encontrarte al ejecutar un servidor y qué hacer en cada caso. El propio servidor imprime el texto del error, por ejemplo después de `bind() failed:`, no el número. Los números son los códigos de error de Windows Sockets que muestran el Launcher y Windows.
 
 
 | Código | Descripción                                | Posible solución                                                                                                      |

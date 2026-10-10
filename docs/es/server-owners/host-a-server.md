@@ -63,9 +63,9 @@ Redirige primero tu puerto. Sin eso, nadie de fuera de tu casa podrá unirse.
 
 Funciona en todas las distribuciones para las que ofrecemos binarios, que se enumeran en la [página de la última versión](https://github.com/BeamMP/BeamMP-Server/releases/latest). Para otra distribución o arquitectura, consulta [Compilar desde el código fuente](#build-from-source).
 
-1. Instala las dependencias que se enumeran en las [dependencias de ejecución](https://github.com/BeamMP/BeamMP-Server#runtime-dependencies).
+1. Instala las dependencias que se enumeran en las [dependencias de ejecución](https://github.com/BeamMP/BeamMP-Server#runtime-dependencies). En Debian y Ubuntu, es el paquete `liblua5.3-0`.
 2. Ve a [beammp.com](https://beammp.com/) y haz clic en **Download Server**. Se te llevará a la página de versiones del servidor en GitHub.
-3. Descarga la versión para tu distribución. Esta guía la llama `BeamMP-Server-xxx`, donde `xxx` es la versión para tu distribución.
+3. Descarga el archivo para tu distribución y tu tipo de procesador. Su nombre tiene este aspecto: `BeamMP-Server.debian.12.x86_64`. La versión v3.9.4 incluye compilaciones para Debian 12 y 13 y Ubuntu 22.04 y 24.04, cada una para `x86_64` y `arm64`. No descargues los archivos `debuginfo`. Esta guía llama `BeamMP-Server-xxx` al archivo que has descargado.
 4. Crea una carpeta en algún sitio y pon `BeamMP-Server-xxx` en ella. Por ahora puedes ignorar los demás archivos descargados. Ahí es donde vivirá tu servidor.
 5. Abre una ventana de terminal en esa carpeta y ejecuta `chmod +x BeamMP-Server-xxx`, para tener permiso de ejecutarlo.
 6. Inicia el servidor una vez con `./BeamMP-Server-xxx`. Genera los archivos que necesita. Cuando veas texto, ciérralo. Ahora tienes un archivo `ServerConfig.toml` junto a `BeamMP-Server-xxx`.
@@ -84,6 +84,7 @@ Cuando ejecutaste el servidor una vez, creó algunos archivos y probablemente mo
 Son `ServerConfig.toml`, `Server.log` y `BeamMP-Server.exe`. Según tus ajustes, puede que no veas las extensiones `.toml`, `.log` y `.exe`.
 
 Abre `ServerConfig.toml` en un editor de texto como el Bloc de notas: **Clic derecho** > **Abrir con…** y elige el editor. Una configuración de ejemplo:
+
 ```toml
 [General]
 Port = 30814
@@ -102,12 +103,15 @@ Map = "/levels/ks_nord/info.json"
 Description = "Total Random Beam MP Server"
 ResourceFolder = "Resources"
 ```
+
 Este archivo usa el formato TOML. [Configuración del servidor](/es/server-owners/configuration) describe cada ajuste.
 
 1. Establece `AuthKey` con la clave que copiaste. Pégala entre las comillas. Con la clave de ejemplo queda así:
+
    ```toml
    AuthKey = '3173a2e-6az0-4542-a3p0-ddqq5ff95558'
    ```
+
 2. Establece `Name`, el nombre de tu servidor en la lista de servidores. Puedes darle formato con colores y más: consulta [Personalizar el aspecto del nombre de tu servidor](/es/server-owners/configuration#customize-the-look-of-your-server-name).
 3. Si has elegido un puerto distinto del 30814, indícalo en `Port`.
 4. Tu servidor no aparece en la lista de servidores mientras `Private = true`. Para que aparezca, establece `Private = false`.
@@ -137,21 +141,25 @@ Para un mapa con mod:
 1. Pon el archivo `.zip` del mapa en `Resources/Client`.
 2. Abre el `.zip` sin extraerlo y luego abre su carpeta `levels`. Contiene una carpeta con el nombre del mapa, por ejemplo `myawesomedriftmap2021`. Anota el nombre exactamente como está escrito.
 3. En `ServerConfig.toml`, `Map` tiene el aspecto `/levels/MAPNAME/info.json`, donde `MAPNAME` probablemente sea algo como `gridmap_v2`. Sustituye `MAPNAME` por el nombre de la carpeta del paso 2. Debe terminar en `/info.json`. Para este ejemplo:
+
    ```toml
    Map = '/levels/myawesomedriftmap2021/info.json'
    ```
+
 Cuando alguien se una, el mapa se descargará automáticamente y funcionará.
 
-Si no funciona, instala el mapa en BeamNG.drive en modo un jugador y entra en él. Abre la consola con la tecla `~` (tilde). En un teclado que no sea estadounidense, busca la acción **Toggle System Console** en **Options** > **Controls** > **Bindings**, en la sección **General Debug**. Ejecuta `print(getMissionFilename())`. Te muestra el nombre que debes usar.
+Si no funciona, instala el mapa en BeamNG.drive en modo un jugador y entra en él. Abre la consola con la tecla `~` (tilde). En un teclado que no sea estadounidense, busca la acción **Consola del sistema** en **Opciones** > **Controles** > **Atajos**, en la sección **Depuración general**. Ejecuta `print(getMissionFilename())`. Te muestra el nombre que debes usar.
 
 ### Proteger mods contra la descarga
 
 Puedes alojar contenido protegido o restringido sin redistribuirlo. Es útil para los «mods de pago» o para un creador de mods que quiere dar acceso limitado a su trabajo nuevo.
 
 Para proteger un mod, ejecuta esto en la consola del servidor:
+
 ```text
 protectmod <filename with .zip> <true/false>
 ```
+
 Los jugadores que se unan a un servidor con mods protegidos deben conseguir el archivo por su cuenta, por ejemplo del creador o de una plataforma como Patreon, y ponerlo en la carpeta de recursos de su Launcher. El Launcher les avisa cuando falta un archivo, y el juego muestra una notificación con el archivo que falta y cómo solucionarlo.
 
 ## Dejar que se unan jugadores
@@ -160,17 +168,17 @@ Los jugadores que se unan a un servidor con mods protegidos deben conseguir el a
 
 Tanto si es privado como público, cómo te unes depende de dónde se ejecute:
 
-- **En el mismo ordenador que el juego:** usa la conexión directa. Haz clic en la pestaña **Conexión directa**, a la izquierda de la lista de servidores, deja los datos por defecto (`127.0.0.1` y tu puerto) y haz clic en **Conectarse**.
+- **En el mismo ordenador que el juego:** usa la conexión directa. Haz clic en la pestaña **Direct Connect**, a la izquierda de la lista de servidores, deja los datos por defecto (`127.0.0.1` y tu puerto) y haz clic en **Connect**.
 - **En otro ordenador de tu red local:** conexión directa con la dirección IP local de ese ordenador.
 - **Fuera de tu casa, como un VPS:** conexión directa con la dirección IP pública de esa máquina.
 
 ### Servidor privado
 
-Dale a los demás jugadores la dirección IP pública de tu servidor. Ten cuidado con quién la compartes. Para unirse, tienen que abrir la pestaña **Conexión directa** en BeamMP e introducir tu dirección IP y tu puerto.
+Dale a los demás jugadores la dirección IP pública de tu servidor. Ten cuidado con quién la compartes. Para unirse, tienen que abrir la pestaña **Direct Connect** en BeamMP e introducir tu dirección IP y tu puerto.
 
 ### Servidor público
 
-Los demás jugadores lo encuentran en la lista de servidores: escriben su nombre y hacen clic en **Conectarse**. El nombre es el que está en tu `ServerConfig.toml`. Si no lo encuentran, diles que desactiven los filtros de búsqueda y que pongan el mapa en **Any**. El sitio web del [Keymaster](https://keymaster.beammp.com/) también muestra la dirección IP de tu servidor.
+Los demás jugadores lo encuentran en la lista de servidores: escriben su nombre y hacen clic en **Connect**. El nombre es el que está en tu `ServerConfig.toml`. Si no lo encuentran, diles que desactiven los filtros de búsqueda y que pongan el mapa en **Any**.
 
 ### «Connection Failed!»
 
@@ -180,7 +188,7 @@ Para comprobar si hay CGNAT, busca la dirección IP WAN en la página de tu rout
 
 ## Comprobar que los jugadores pueden llegar a tu servidor
 
-Introduce la dirección IPv4 pública de tu servidor y el puerto, y haz clic en **CheckBeamMP**:
+Mientras el servidor está en ejecución, puedes escribir `nettest` en su consola. El servidor le pregunta al mismo servicio de comprobación si los jugadores pueden llegar a él por su puerto, e imprime la respuesta. O introduce la dirección IPv4 pública de tu servidor y el puerto, y haz clic en **CheckBeamMP**:
 
 <form action="https://check.beammp.com/api/v2/beammp" method="get" target="_blank">
   <label for="ip">Dirección IP:</label>

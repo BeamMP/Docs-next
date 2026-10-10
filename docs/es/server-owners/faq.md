@@ -51,7 +51,7 @@ Algunos proveedores de internet no ofrecen una dirección IPv4 dedicada (CGNAT),
 
 ### Veo mi servidor en la lista, pero yo no puedo unirme
 
-Si el servidor se ejecuta en el mismo ordenador que el juego, únete con **Conexión directa**, usando la dirección IP `127.0.0.1` y el puerto de tu servidor.
+Si el servidor se ejecuta en el mismo ordenador que el juego, únete con **Direct Connect**, usando la dirección IP `127.0.0.1` y el puerto de tu servidor.
 
 Para unirte a tu propio servidor autoalojado a través de la lista de servidores, tu router tiene que ser compatible con NAT loopback. No muchos routers domésticos lo son.
 
@@ -59,6 +59,12 @@ Para unirte a tu propio servidor autoalojado a través de la lista de servidores
 
 <!--@include: ../_parts/faq-code-and-bugs.md-->
 
+### ¿Cuántas AuthKeys puedo tener y cómo consigo más?
+
+De forma predeterminada, una cuenta puede tener 2 AuthKeys. Los niveles de Patreon y el impulso («boost») del servidor de Discord de BeamMP añaden más. **Keymaster**, en [BeamMP Accounts](https://accounts.beammp.com), muestra cuántas claves has usado y de dónde viene cada clave adicional. Los pasos están en [Conseguir una AuthKey](/es/server-owners/host-a-server#get-an-authkey).
+
 ### Mi AuthKey se ha visto comprometida, ¿qué debo hacer?
 
-Si crees que una de tus AuthKeys se ha visto comprometida, crea un ticket de **Account Support** en [Discord](https://discord.gg/beammp).
+Rota la clave en **Keymaster**. La clave antigua deja de funcionar al instante. Pon la clave nueva en tu `ServerConfig.toml` y reinicia el servidor. Los pasos están en [Conseguir una AuthKey](/es/server-owners/host-a-server#get-an-authkey).
+
+Si no puedes rotar la clave tú mismo, por ejemplo porque no puedes iniciar sesión en BeamMP Accounts, crea un ticket de **Account Support** en [Discord](https://discord.gg/beammp).

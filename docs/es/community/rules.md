@@ -47,9 +47,11 @@ El Staff de BeamMP no está obligado a moderar de forma estricta según estas no
 
 ## Cómo apelar las medidas tomadas contra ti:
 
+Si tu cuenta de BeamMP está suspendida, apela en BeamMP Accounts. Consulta [Suspensiones y apelaciones](/es/players/suspensions-and-appeals).
+
 ### Las apelaciones de baneo pueden enviarse en <a href="https://docs.google.com/forms/d/1MaTPKM-MHQU5lUtxeOKz3C7OoI6Xbu5RX5AJdX-UOz4" class="inline-onebox">Apelación de baneo - BeamMP</a>.
 
-Todas las apelaciones de baneo se investigan a fondo y en ellas participan al menos dos (2) miembros del equipo de staff/moderación que no hayan intervenido en el caso. El miembro del staff que impuso la sanción podrá comentar, pero no participará de otro modo en la decisión sobre la apelación. Los resultados de estas apelaciones son definitivos. BeamMP se reserva el derecho de admitir o no a los miembros según estime oportuno de acuerdo con las normas de la comunidad de BeamMP (arriba), los [Términos del servicio de Discord](https://discord.com/terms) y otros factores. 
+Todas las apelaciones de baneo enviadas con este formulario se investigan a fondo y en ellas participan al menos dos (2) miembros del equipo de staff/moderación que no hayan intervenido en el caso. El miembro del staff que impuso la sanción podrá comentar, pero no participará de otro modo en la decisión sobre la apelación. Los resultados de estas apelaciones son definitivos. BeamMP se reserva el derecho de admitir o no a los miembros según estime oportuno de acuerdo con las normas de la comunidad de BeamMP (arriba), los [Términos del servicio de Discord](https://discord.com/terms) y otros factores. 
 
 ::: warning
 En caso de que se tome una medida contra ti, te está prohibido crear una nueva cuenta de Discord o de BeamMP para eludir el baneo.

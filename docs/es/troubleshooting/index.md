@@ -7,12 +7,12 @@ Busca tu problema a continuación. Si ninguno encaja, consulta las [Preguntas fr
 
 ## El Launcher no inicia o no se actualiza
 
-- [Problemas de actualización del Launcher](/es/troubleshooting/launcher-update): el Launcher no puede actualizarse o muestra una pantalla en blanco.
-- [Códigos de error](/es/troubleshooting/error-codes): qué significan los mensajes de la ventana del Launcher.
+- [Problemas de actualización del Launcher](/es/troubleshooting/launcher-update): el Launcher no puede actualizarse o muestra una pantalla en blanco. Actualízalo a mano en Windows o Linux.
+- [Códigos de error](/es/troubleshooting/error-codes): qué significan los mensajes de la ventana del Launcher, incluido cuando no puede encontrar o iniciar el juego.
 
 ## No puedo conectarme
 
-- [Problemas de conexión / red](/es/troubleshooting/connection-networking): averigua la dirección IP de tu servidor, prueba tu puerto y comprueba si hay CGNAT.
+- [Problemas de conexión / red](/es/troubleshooting/connection-networking): averigua la dirección IP de tu servidor, prueba tu puerto, comprueba si hay CGNAT y consulta los puertos que usa el Launcher.
 - [Cambiar el puerto del Launcher](/es/troubleshooting/launcher-port): el Launcher no se conecta al juego.
 - [Exclusiones de Defender / Firewall](/es/troubleshooting/defender-exclusions): permite que el Launcher y el servidor pasen por la seguridad de Windows.
 

@@ -8,6 +8,7 @@ Esta página muestra la estructura de carpetas de un plugin de BeamMP y un peque
 ## Estructura de carpetas y conceptos básicos de los archivos
 
 La estructura de carpetas y archivos tiene este aspecto:
+
 ```
 Resources/
 ├─ Client/
@@ -24,6 +25,7 @@ Resources/
       └─ further_lua/
          └─ further.lua
 ```
+
 - El Lua del lado del servidor es lo mínimo imprescindible. Para añadir eventos personalizados, necesitas además al menos un archivo de Lua del lado del cliente y un `modScript.lua`.
 - La carpeta `Server` contiene una subcarpeta por cada plugin del lado del servidor. Es una buena práctica tener un archivo principal de Lua y poner los demás archivos de Lua en subcarpetas. No es obligatorio: si hay varios, el servidor carga los archivos de Lua por orden alfabético.
 - La carpeta `Client` contiene los archivos zip que se envían a un cliente, que los carga como un mod. Cualquier otro archivo en `Client` provoca un error al iniciar el servidor y, por lo demás, se ignora.
@@ -34,6 +36,7 @@ Puedes descargar un ejemplo: [examplePlugin.zip](/assets/content/ResourcesForExa
 ## Lua del lado del servidor
 
 El plugin de ejemplo tiene más ejemplos. Este es uno muy básico que muestra los identificadores de un jugador:
+
 ```lua
 function onInit() --runs when plugin is loaded
 
@@ -50,9 +53,11 @@ function onPlayerAuth(player_name, role, isGuest, identifiers)
 	print("onPlayerAuth: player_name: " .. player_name .. " | role: " .. role .. " | isGuest: " .. tostring(isGuest) .. " | identifiers: ip: " .. ip .. " - beammp: " .. beammp)
 end
 ```
+
 `onPlayerAuth` se ejecuta en cuanto un jugador quiere unirse. Consulta [onPlayerAuth en la referencia de scripting](/es/developers/beammp-scripting/server/latest#onplayerauth).
 
 Otro ejemplo usa `onPlayerAuth` para denegar el acceso a los invitados. El mensaje que devuelvas se muestra al jugador:
+
 ```lua
 function onPlayerAuth(playerName, playerRole, isGuest, identifiers)
   if isGuest then
@@ -60,31 +65,42 @@ function onPlayerAuth(playerName, playerRole, isGuest, identifiers)
   end
 end
 ```
+
 Encontrarás más funciones que puedes usar en el servidor en la [referencia del servidor más reciente](/es/developers/beammp-scripting/server/latest).
 
 ## Lua del lado del cliente
 
-El Lua del lado del cliente sigue en gran medida las [extensiones de BeamNG](https://documentation.beamng.com/modding/programming/extensions/). Este ejemplo imprime en la consola que se cargó el plugin:
+El Lua del lado del cliente sigue en gran medida las [extensiones de BeamNG](https://documentation.beamng.com/modding/programming/extensions/). Este ejemplo escribe una línea en el registro cuando se carga la extensión:
+
 ```lua
 local M = {}
 
-if extensions.isExtensionLoaded("examplePlugin") then
-  log("E", "examplePlugin", "examplePlugin loaded on client side")
-  return
+local function onExtensionLoaded()
+  log("I", "examplePlugin", "examplePlugin loaded on client side")
 end
+
+M.onExtensionLoaded = onExtensionLoaded
 
 return M
 ```
-Para saber más sobre cómo imprimir mensajes desde el Lua de BeamNG, consulta la [documentación de BeamNG sobre mensajes de depuración](https://documentation.beamng.com/modding/programming/debugging/#a-add-a-log).
+
+Para saber más sobre cómo imprimir mensajes desde el Lua de BeamNG, consulta la [documentación de BeamNG sobre mensajes de depuración](https://documentation.beamng.com/modding/programming/debugging/#a-add-a-log). Para ver las funciones que BeamMP añade al cliente, consulta la [referencia de scripting en el juego](/es/developers/beammp-scripting/mod-in-game).
+
+Cuando un jugador sale de un servidor que envió mods, el juego recarga su Lua. Tu extensión se vuelve a cargar la próxima vez que el jugador se una.
 
 ## modScript.lua
 
 Un `modScript.lua` suele tener solo dos líneas:
+
 ```lua
 load('examplePlugin')
 setExtensionUnloadMode('examplePlugin', 'manual')
 ```
+
+El modo de descarga `'manual'` impide que el juego descargue la extensión por su cuenta. No uses `queueExtensionToLoad`: BeamMP muestra un error por ello.
+
 Puedes añadir una línea de registro para ver en los logs cuándo BeamNG procesa tu `modScript.lua`:
+
 ```lua
 load('examplePlugin')
 setExtensionUnloadMode('examplePlugin', 'manual')

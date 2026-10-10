@@ -27,7 +27,11 @@ BeamMP es una comunidad de jugadores, propietarios de servidores y desarrollador
 
 ## Apoya el proyecto
 
-Quienes apoyan en [Patreon](https://www.patreon.com/c/BeamMP) obtienen acceso anticipado y claves de servidor adicionales. Consulta las [Preguntas frecuentes del jugador](/es/players/faq) para saber cómo funciona.
+Quienes apoyan en [Patreon](https://www.patreon.com/c/BeamMP) obtienen acceso anticipado y claves de servidor adicionales. Impulsar (boost) el servidor de Discord también añade claves de servidor. Consulta las [Preguntas frecuentes del jugador](/es/players/faq) para saber cómo funciona.
+
+## Tu cuenta
+
+Una sola cuenta de [BeamMP Accounts](https://accounts.beammp.com) te permite iniciar sesión en el juego y en el foro, y guarda tus claves de servidor. Consulta [Tu cuenta de BeamMP](/es/players/account).
 
 ## Construye con nosotros
 

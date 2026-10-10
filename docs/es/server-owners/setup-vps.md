@@ -66,13 +66,13 @@ Para un mapa con mod:
 
 Cuando alguien se una, el mapa se descargará automáticamente y funcionará.
 
-Si no funciona, instala el mapa en BeamNG.drive en modo un jugador y entra en él. Abre la consola con la tecla `~` (tilde). En un teclado que no sea estadounidense, busca la acción **Toggle System Console** en **Options** > **Controls** > **Bindings**, en la sección **General Debug**. Ejecuta `print(getMissionFilename())`. Te muestra el nombre que debes usar.
+Si no funciona, instala el mapa en BeamNG.drive en modo un jugador y entra en él. Abre la consola con la tecla `~` (tilde). En un teclado que no sea estadounidense, busca la acción **Consola del sistema** en **Opciones** > **Controles** > **Atajos**, en la sección **Depuración general**. Ejecuta `print(getMissionFilename())`. Te muestra el nombre que debes usar.
 
 ## Dejar que se unan jugadores
 
-Los jugadores pueden conectarse directamente a la dirección IP pública y al puerto del servidor, que se encuentran en el panel de gestión. También puedes encontrar la dirección IP en el sitio web del [Keymaster](https://keymaster.beammp.com/).
+Los jugadores pueden conectarse directamente a la dirección IP pública y al puerto del servidor, que se encuentran en el panel de gestión.
 
-En un servidor público, los jugadores pueden abrir en su lugar la lista de servidores, escribir el nombre del servidor y hacer clic en **Conectarse**. El nombre es el que hayas establecido. Si no lo encuentran, diles que desactiven los filtros de búsqueda y que pongan el mapa en **Any**.
+En un servidor público, los jugadores pueden abrir en su lugar la lista de servidores, escribir el nombre del servidor y hacer clic en **Connect**. El nombre es el que hayas establecido. Si no lo encuentran, diles que desactiven los filtros de búsqueda y que pongan el mapa en **Any**.
 
 Si te aparece «Connection Failed!» (a ti o a un amigo), busca en la ventana del Launcher códigos como 10060, 10061 o 10030. Significan que no se puede acceder al servidor, o que la dirección IP y el puerto escritos en el cliente son incorrectos. Todavía no se admite IPv6.
 
