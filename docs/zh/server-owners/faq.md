@@ -59,6 +59,12 @@ description: "BeamMP 服务器常见问题解答：搭建服务器、Linux、系
 
 <!--@include: ../_parts/faq-code-and-bugs.md-->
 
+### 我可以拥有多少个 AuthKey，如何获得更多？
+
+默认情况下，一个账号可以拥有 2 个 AuthKey。Patreon 等级和加速（Boost）BeamMP Discord 服务器可以增加更多。[BeamMP Accounts](https://accounts.beammp.com) 中的 **Keymaster** 会显示你已使用的密钥数量，以及每个额外密钥的来源。具体步骤请参阅[获取 AuthKey](/zh/server-owners/host-a-server#get-an-authkey)。
+
 ### 我的 AuthKey 泄露了，该怎么办？
 
-如果你认为自己的某个 AuthKey 已经泄露，请在 [Discord](https://discord.gg/beammp) 上创建一个 **Account Support** 工单。
+在 **Keymaster** 中轮换（rotate）该密钥。旧密钥会立即失效。将新密钥填入你的 `ServerConfig.toml`，然后重启服务器。具体步骤请参阅[获取 AuthKey](/zh/server-owners/host-a-server#get-an-authkey)。
+
+如果你无法自行轮换密钥，例如无法登录 BeamMP Accounts，请在 [Discord](https://discord.gg/beammp) 上创建一个 **Account Support** 工单。

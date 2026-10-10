@@ -7,12 +7,12 @@ description: "解决常见的 BeamMP 问题：启动器无法启动或更新、�
 
 ## 启动器无法启动或更新
 
-- [启动器更新问题](/zh/troubleshooting/launcher-update)：启动器无法更新或显示空白屏幕。
-- [错误代码](/zh/troubleshooting/error-codes)：启动器窗口中的各条消息是什么意思。
+- [启动器更新问题](/zh/troubleshooting/launcher-update)：启动器无法更新或显示空白屏幕。在 Windows 或 Linux 上手动更新。
+- [错误代码](/zh/troubleshooting/error-codes)：启动器窗口中的各条消息是什么意思，包括它找不到或无法启动游戏的情况。
 
 ## 我无法连接
 
-- [连接 / 网络问题](/zh/troubleshooting/connection-networking)：查找服务器的 IP 地址、测试端口，以及检查 CGNAT。
+- [连接 / 网络问题](/zh/troubleshooting/connection-networking)：查找服务器的 IP 地址、测试端口、检查 CGNAT，以及了解启动器使用的端口。
 - [更改启动器端口](/zh/troubleshooting/launcher-port)：启动器没有连接到游戏。
 - [Defender / 防火墙排除项](/zh/troubleshooting/defender-exclusions)：让启动器和服务器通过 Windows 安全防护。
 

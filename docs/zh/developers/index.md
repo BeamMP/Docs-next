@@ -15,6 +15,7 @@ BeamMP 分为三个部分，每一部分你都可以为其编写代码。本部�
 
 - **参与 BeamMP 本身的开发：** [开发环境设置](/zh/developers/dev-environment-setup)。
 - **编写服务器插件或模组：** [模组与资源制作](/zh/developers/mod-and-resource-creation)。
+- **让用户通过 BeamMP 登录你的应用：** [使用 BeamMP 登录](/zh/developers/sign-in-with-beammp)。
 - **查询函数或事件：** [脚本参考](/zh/developers/beammp-scripting/)：[游戏内模组](/zh/developers/beammp-scripting/mod-in-game)和[服务器](/zh/developers/beammp-scripting/server/latest)。
 - **使用 BeamNG.drive 本身：** [游戏文档](/zh/game-documentation/)。
 

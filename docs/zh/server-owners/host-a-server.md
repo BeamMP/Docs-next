@@ -63,9 +63,9 @@ BeamMP 服务器提供 Windows 和 Linux 版本。
 
 这适用于我们提供二进制文件的所有发行版，列在[最新发布页面](https://github.com/BeamMP/BeamMP-Server/releases/latest)上。如果使用其他发行版或架构，请参阅[从源代码编译](#build-from-source)。
 
-1. 安装[运行时依赖项](https://github.com/BeamMP/BeamMP-Server#runtime-dependencies)中列出的依赖项。
+1. 安装[运行时依赖项](https://github.com/BeamMP/BeamMP-Server#runtime-dependencies)中列出的依赖项。在 Debian 和 Ubuntu 上，就是软件包 `liblua5.3-0`。
 2. 前往 [beammp.com](https://beammp.com/)，点击 **Download Server**。你会被带到服务器的 GitHub 发布页面。
-3. 下载适用于你的发行版的版本。本指南称之为 `BeamMP-Server-xxx`，其中 `xxx` 是适用于你的发行版的版本。
+3. 下载适用于你的发行版和处理器类型的文件。文件名类似 `BeamMP-Server.debian.12.x86_64`。v3.9.4 版本提供 Debian 12 和 13 以及 Ubuntu 22.04 和 24.04 的构建，每个都有 `x86_64` 和 `arm64` 两种。请不要下载 `debuginfo` 文件。本指南将你下载的文件称为 `BeamMP-Server-xxx`。
 4. 在某处创建一个文件夹，并把 `BeamMP-Server-xxx` 放进去。其他下载的文件暂时可以忽略。这就是你的服务器所在的位置。
 5. 在该文件夹中打开终端并运行 `chmod +x BeamMP-Server-xxx`，这样你就有权限运行它。
 6. 使用 `./BeamMP-Server-xxx` 运行一次服务器，它会生成所需的文件。看到文字出现后，将其关闭。现在，`BeamMP-Server-xxx` 旁边就有了一个 `ServerConfig.toml` 文件。
@@ -84,6 +84,7 @@ BeamMP 服务器提供 Windows 和 Linux 版本。
 它们是 `ServerConfig.toml`、`Server.log` 和 `BeamMP-Server.exe`。根据你的设置，你可能看不到 `.toml`、`.log` 和 `.exe` 扩展名。
 
 用记事本等文本编辑器打开 `ServerConfig.toml`：**右键单击** > **打开方式…**，然后选择编辑器。配置示例：
+
 ```toml
 [General]
 Port = 30814
@@ -102,12 +103,15 @@ Map = "/levels/ks_nord/info.json"
 Description = "Total Random Beam MP Server"
 ResourceFolder = "Resources"
 ```
+
 此文件使用 TOML 格式。[服务器配置](/zh/server-owners/configuration)介绍了每一项设置。
 
 1. 将 `AuthKey` 设置为你复制的密钥。把它粘贴在引号之间。以示例密钥为例，如下所示：
+
    ```toml
    AuthKey = '3173a2e-6az0-4542-a3p0-ddqq5ff95558'
    ```
+
 2. 设置 `Name`，即你的服务器在服务器列表中的名称。你可以使用颜色等对它进行格式化：请参阅[自定义服务器名称的外观](/zh/server-owners/configuration#customize-the-look-of-your-server-name)。
 3. 如果你选择了 30814 以外的端口，请在 `Port` 中设置它。
 4. 当 `Private = true` 时，你的服务器不会显示在服务器列表中。要让它显示在列表中，请设置 `Private = false`。
@@ -137,21 +141,25 @@ ResourceFolder = "Resources"
 1. 把地图的 `.zip` 文件放进 `Resources/Client`。
 2. 不解压，直接打开该 `.zip`，然后打开其中的 `levels` 文件夹。里面有一个以地图命名的文件夹，例如 `myawesomedriftmap2021`。请准确记下这个名称，并保持大小写和拼写一致。
 3. 在 `ServerConfig.toml` 中，`Map` 的格式类似 `/levels/MAPNAME/info.json`，其中 `MAPNAME` 很可能是类似 `gridmap_v2` 的内容。请把 `MAPNAME` 替换为第 2 步中得到的文件夹名称。它必须以 `/info.json` 结尾。对于这个例子：
+
    ```toml
    Map = '/levels/myawesomedriftmap2021/info.json'
    ```
+
 有人加入时，地图会自动下载并正常使用。
 
-如果不起作用，请在单人模式的 BeamNG.drive 中安装该地图并进入它。按 `~`（波浪号）键打开控制台。如果你使用的不是美式键盘，请在 **Options** > **Controls** > **Bindings** 的 **General Debug** 部分中找到 **Toggle System Console** 操作。运行 `print(getMissionFilename())`，它会显示应使用的名称。
+如果不起作用，请在单人模式的 BeamNG.drive 中安装该地图并进入它。按 `~`（波浪号）键打开控制台。如果你使用的不是美式键盘，请在 **选项** > **控制** > **按键绑定** 的 **整体调试** 部分中找到 **开/关系统控制台** 操作。运行 `print(getMissionFilename())`，它会显示应使用的名称。
 
 ### 保护模组不被下载
 
 你可以托管受保护或受限的内容，而无需再分发它们。这适用于“付费模组”，或者希望限制新作品访问范围的模组作者。
 
 要保护某个模组，请在服务器控制台中运行：
+
 ```text
 protectmod <filename with .zip> <true/false>
 ```
+
 加入有受保护模组的服务器的玩家，必须自己获取该文件，例如从作者那里或 Patreon 等平台获取，并把它放进启动器的资源文件夹。启动器会告诉他们缺少了文件，游戏中也会弹出通知，显示缺少的文件以及解决方法。
 
 ## 让玩家加入
@@ -170,7 +178,7 @@ protectmod <filename with .zip> <true/false>
 
 ### 公开服务器
 
-其他玩家可以在服务器列表中找到它：输入服务器名称，然后点击 **Connect**。这个名称就是你的 `ServerConfig.toml` 中的名称。如果他们找不到，请让他们关闭搜索筛选，并将地图设置为 **Any**。[Keymaster](https://keymaster.beammp.com/) 网站上也会显示你服务器的 IP 地址。
+其他玩家可以在服务器列表中找到它：输入服务器名称，然后点击 **Connect**。这个名称就是你的 `ServerConfig.toml` 中的名称。如果他们找不到，请让他们关闭搜索筛选，并将地图设置为 **Any**。
 
 ### “Connection Failed!”
 
@@ -180,7 +188,7 @@ protectmod <filename with .zip> <true/false>
 
 ## 检查玩家能否访问你的服务器
 
-输入你服务器的公网 IPv4 地址和端口，然后点击 **CheckBeamMP**：
+服务器运行期间，你可以在其控制台中输入 `nettest`。服务器会向同一个检测服务询问玩家能否通过其端口访问它，并打印结果。或者，输入你服务器的公网 IPv4 地址和端口，然后点击 **CheckBeamMP**：
 
 <form action="https://check.beammp.com/api/v2/beammp" method="get" target="_blank">
   <label for="ip">IP address:</label>

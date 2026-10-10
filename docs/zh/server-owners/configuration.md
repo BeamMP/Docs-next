@@ -5,7 +5,7 @@ description: "BeamMP 服务器 ServerConfig.toml 的所有设置、原版地图�
 
 BeamMP 服务器的设置、如何为它命名和添加标签，以及原版地图路径。要安装服务器，请参阅[搭建服务器](/zh/server-owners/host-a-server)。要查看日志或更新服务器，请参阅[服务器维护](/zh/server-owners/maintenance)。
 
-## ServerConfig 文件
+## ServerConfig 文件 {#the-serverconfig-file}
 
 服务器配置是一个名为 `ServerConfig.toml` 的文件，使用 [TOML 格式](https://toml.io/en/)。
 
@@ -15,34 +15,36 @@ BeamMP 服务器的设置、如何为它命名和添加标签，以及原版地�
 
 配置分为 `[General]` 和 `[Misc]` 两个部分。默认值为服务器 3.9.4 版本的默认值。
 
-### `[General]` 部分
+### `[General]` 部分 {#the-general-section}
 
 | 设置项 | 默认值 | 取值 | 作用 |
 |---|---|---|---|
-| Port | `30814` | 1024-65535 | 服务器可供访问的网络端口。（必须唯一，且不能被同一主机上的其他服务占用。） |
-| AuthKey | 空 | AuthKey 格式 `xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`，其中所有 x 都是字母或数字（数字和字母） | 用于向后端标识一个公开设置的服务器。 |
-| AllowGuests | `true` | true/false | 是否允许访客加入服务器。 |
-| LogChat | `true` | true/false | 启用（true）时，聊天消息会记录在 server.log 文件中。 |
+| Port | `30814` | 1024-65535 | 服务器可供访问的网络端口。服务器会同时将它用于 TCP 和 UDP。（必须唯一，且不能被同一主机上的其他服务占用。） |
+| AuthKey | 空 | AuthKey 格式 `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`，其中所有 x 都是字母或数字（数字和字母） | 用于向后端标识一个公开设置的服务器。如果密钥长度不是 36 个字符，服务器会在启动时发出警告。 |
+| AllowGuests | `true` | true/false | 是否允许访客加入服务器。禁用（`false`）时，尝试加入的访客会被拒绝。 |
+| LogChat | `true` | true/false | 启用（true）时，聊天消息会记录在控制台和 `Server.log` 文件中。 |
 | Debug | `false` | true/false | 启用（true）时，会在日志中显示更多消息并提供更多信息。如果遇到问题，请启用它。启用后日志文件的大小会急剧增加。 |
-| IP | `"::"` | 主机某个网络接口的本地 IP 地址 | 服务器绑定到此 IP 地址。它**不是**你的公网 IP。如果你的机器有多个网络接口，可以使用它。服务器正常运行并不需要你更改它。 |
+| IP | `"::"` | 主机某个网络接口的本地 IP 地址 | 服务器绑定到此 IP 地址。它**不是**你的公网 IP。如果你的机器有多个网络接口，可以使用它。服务器正常运行并不需要你更改它。默认值 `"::"` 会接受所有网络接口上的连接。 |
 | Private | `true` | true/false | 启用（true）时，你的服务器不会显示在服务器列表中。任何知道正确 IP 和端口的人仍然可以连接。 |
 | InformationPacket | `true` | true/false | 启用（true）时，服务器会允许未经身份验证的客户端直接通过服务器获取与服务器列表中相同的信息。 |
 | Name | `"BeamMP Server"` | 任意“文本” | 在服务器列表中显示为你的服务器的名称/标题。你可以使用特殊字符为其设置颜色和样式。 |
 | Tags | `"Freeroam"` | 请参阅下方允许使用的标签列表。 | 用于搜索的标签，例如 Police、Racing 等…… |
-| MaxCars | `1` | 任意数字 ≥ 1 | 每名玩家的最大车辆数。玩家尝试生成的任何额外车辆都会被立即删除。 |
-| MaxPlayers | `8` | 任意数字 ≥ 1 | 每个服务器的最大玩家数。这不会影响车辆数量。 |
+| MaxCars | `1` | 任意数字 ≥ 1 | 每名玩家的最大车辆数。玩家尝试生成的任何额外车辆都会被立即删除。独轮车（步行状态）不计入。 |
+| MaxPlayers | `8` | 任意数字 ≥ 1 | 每个服务器的最大玩家数。这不会影响车辆数量。服务器已满时，加入的玩家会被拒绝并显示“Server full!”，除非有插件放行（参见[脚本参考](/zh/developers/beammp-scripting/server/latest#onplayerauth)中的 `onPlayerAuth`）。 |
 | Map | `"/levels/gridmap_v2/info.json"` | 有效的地图位置，例如 `/levels/gridmap_v2/info.json` | 你的服务器将托管的地图。必须是默认已安装的地图（列表见下方），或作为服务器模组安装。 |
 | Description | `"BeamMP Default Description"` | 任意“文本” | 在服务器列表中显示为服务器的描述（如果服务器是公开的）。你可以使用特殊字符为其设置颜色和样式。 |
 | ResourceFolder | `"Resources"` | 有效的文件夹位置，例如 "D:\Server\BeamMP\Resources" | 便于将服务器和资源文件夹分开存放。 |
 
-### `[Misc]` 部分
+### `[Misc]` 部分 {#the-misc-section}
 
 | 设置项 | 默认值 | 取值 | 作用 |
 |---|---|---|---|
 | ImScaredOfUpdates | `true` | true/false | 启用（`true`）时，隐藏提示有新服务器版本发布的定期消息。服务器不会自行更新：请参阅[服务器维护](/zh/server-owners/maintenance#updating-the-server)。 |
 | UpdateReminderTime | `"30s"` | 一个数字，后面加上 `s`、`min`、`h` 或 `d`，例如 `30s` | 更新提醒在终端中打印的频率。`30d` 表示每 30 天一次，`0.5min` 表示每半分钟一次。 |
 
-插件可以使用它们自己的部分，例如 `[MyMod]`。
+::: warning 服务器会重写此文件
+服务器每次启动时，都会重新写入 `ServerConfig.toml`，其中只包含 `[General]` 和 `[Misc]` 设置的当前值。你添加的注释，以及插件添加的部分（例如 `[MyMod]`），都会被删除。通过[环境变量](/zh/server-owners/manual#general-settings)设置的值也会写入该文件，除非设置了 `BEAMMP_PROVIDER_DISABLE_CONFIG`。
+:::
 
 你**必须**自己设置 AuthKey。它默认是空的。请填入你在[安装服务器](/zh/server-owners/host-a-server)时获得的 AuthKey。不要与任何人分享，并且在截图中要将其完全模糊处理。
 

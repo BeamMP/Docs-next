@@ -37,4 +37,10 @@ BeamMP 模组团队（Mod Team）的成员会审核你的拉取请求，然后�
 
 ## 翻译 {#translating}
 
-这些文档通过 [GitLocalize](https://gitlocalize.com/repo/9180) 翻译成多种语言。GitLocalize 有时会把已经翻译过的段落显示为“未翻译”，所以在修改某个页面之前，请先确认它是否已经翻译。
+英文是主版本。其他语言的页面与英文使用相同的路径，所以任何修改都从英文页面开始。
+
+1. 运行 `npm run check:translations`。它会列出因对应英文页面已更改而过时的译文。
+2. 根据英文页面逐一更新这些译文。保持标题、提示框、图片和链接不变，并且不要翻译代码、命令、文件名或设置键名。
+3. 记录这次更新：`npm run check:translations -- --record de/players/faq.md`。
+
+对于模组自身的设置和按钮，法语和中文使用模组翻译文件中的准确名称。德语、西班牙语、意大利语和俄语保留英文名称，因为游戏在这些语言下显示的是英文。完整规则见 [README](https://github.com/__repo__#translations)。

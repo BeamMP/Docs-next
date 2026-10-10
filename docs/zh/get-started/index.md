@@ -8,7 +8,8 @@ BeamMP 为 BeamNG.drive 增加了多人模式。本部分将带你从什么都�
 ## 所需条件
 
 - 一份合法且为最新版本的 BeamNG.drive。
-- Windows 或 Linux。对 macOS 的支持正在开发中。Linux 和 macOS 属于次要平台，因此可能会遇到一些 bug。
+- Windows 或 Linux。在 Linux 上，启动器可以配合原生版 BeamNG.drive 以及通过 Proton 运行的 BeamNG.drive 使用，而且需要你自行编译。Linux 属于次要平台，因此可能会遇到一些 bug。macOS 没有对应的启动器。
+- 能让启动器通过 HTTPS 访问 `backend.beammp.com`、`auth.beammp.com` 和 `forum.beammp.com` 的网络连接。
 
 ::: warning
 BeamMP 无法在盗版或过时的 BeamNG.drive 上运行，支持团队也无法帮助解决这类副本上的问题。

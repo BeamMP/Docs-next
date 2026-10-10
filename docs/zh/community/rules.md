@@ -47,9 +47,11 @@ BeamMP 工作人员不必严格按照这些规则进行管理，可以自行酌�
 
 ## 如何对针对你的处理提出申诉：
 
+如果你的 BeamMP 账号被封禁，请在 BeamMP Accounts 中申诉。请参阅[封禁与申诉](/zh/players/suspensions-and-appeals)。
+
 ### 封禁申诉可以通过 <a href="https://docs.google.com/forms/d/1MaTPKM-MHQU5lUtxeOKz3C7OoI6Xbu5RX5AJdX-UOz4" class="inline-onebox">封禁申诉 - BeamMP</a> 提交。
 
-所有封禁申诉都会经过彻底调查，涉及至少两（2）名未参与该案件的工作人员/管理团队成员。作出处理的工作人员可以发表意见，但不会以其他方式参与申诉决定。申诉结果为最终结果。BeamMP 保留根据 BeamMP 社区规则（如上所述）、[Discord 服务条款](https://discord.com/terms)及其他因素，自行决定是否允许成员留在社区的权利。
+所有通过此表单提交的封禁申诉都会经过彻底调查，涉及至少两（2）名未参与该案件的工作人员/管理团队成员。作出处理的工作人员可以发表意见，但不会以其他方式参与申诉决定。申诉结果为最终结果。BeamMP 保留根据 BeamMP 社区规则（如上所述）、[Discord 服务条款](https://discord.com/terms)及其他因素，自行决定是否允许成员留在社区的权利。
 
 ::: warning
 如果你被采取了处理措施，则禁止你创建新的 Discord 或 BeamMP 账号来规避封禁。

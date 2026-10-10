@@ -27,7 +27,11 @@ BeamMP 是一个由玩家、服务器所有者和开发者组成的社区。你�
 
 ## 支持本项目
 
-[Patreon](https://www.patreon.com/c/BeamMP) 的支持者可以获得抢先体验和额外的服务器密钥。具体运作方式请参阅[玩家常见问题](/zh/players/faq)。
+[Patreon](https://www.patreon.com/c/BeamMP) 的支持者可以获得抢先体验和额外的服务器密钥。为 Discord 服务器助力也能增加服务器密钥。具体运作方式请参阅[玩家常见问题](/zh/players/faq)。
+
+## 你的账号
+
+一个 [BeamMP Accounts](https://accounts.beammp.com) 账号即可让你登录游戏和论坛，并保存你的服务器密钥。请参阅[你的 BeamMP 账号](/zh/players/account)。
 
 ## 与我们一起开发
 

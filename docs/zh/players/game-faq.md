@@ -1,5 +1,5 @@
 ---
-description: "关于 BeamMP 玩家常见问题的解答：安装、盗版或修改版游戏、Linux、杀毒软件警告、性能不佳以及报告 bug。"
+description: "关于 BeamMP 玩家常见问题的解答：安装、游戏版本、与启动器的连接、Linux、杀毒软件警告、性能不佳以及报告 bug。"
 ---
 # 游戏常见问题
 
@@ -19,6 +19,17 @@ BeamMP 无法在盗版或过时的 BeamNG.drive 上运行。
 
 BeamMP 支持团队无法帮助解决盗版、过时或经过其他修改的 BeamNG.drive 上的问题。
 
+### 为什么 BeamMP 提示它与我的 BeamNG.drive 版本不兼容？
+
+BeamMP 4.22 只能与 BeamNG.drive 0.39 配合使用。在任何其他版本上，BeamMP 模组都会自行关闭，并显示 **Error loading BeamMP**。
+
+- 如果你的游戏版本较旧，请更新 BeamNG.drive。
+- 如果你的游戏版本较新，请等待 BeamMP 更新。[Discord 服务器](https://discord.gg/BeamMP)会发布更新公告。
+
+### 游戏提示它没有连接到启动器，我该怎么办？
+
+请通过 BeamMP 启动器启动游戏，而不是从 Steam 或 BeamNG 启动程序启动。如果游戏已经在运行，请在该界面上点击 **Connect** 重试。如果启动器使用了不同的端口，请参阅[更改启动器端口](/zh/troubleshooting/launcher-port)。
+
 ### BeamMP 可以在 Linux 上运行吗？
 
 客户端在 Linux 上不受官方支持。你可以参考我们的指南，在 Linux 上[安装 BeamMP](/zh/get-started/install-beammp#install-on-linux)。
@@ -32,6 +43,8 @@ BeamMP 支持团队无法帮助解决盗版、过时或经过其他修改的 Bea
 我们正在努力让多人模式尽可能稳定。如果你已经降低了图形设置，但性能仍然很差，请尝试玩家较少的服务器。
 
 当很多人一起游玩时，游戏主要受限于 CPU，因此较旧的 CPU（即使是四核）在玩家稍多时就会吃力。一般的经验法则是每个 CPU 线程对应一辆车。
+
+在 BeamMP 选项中开启 **可用时使用简化车辆**，可以把其他玩家的车辆替换为更轻量的版本。请参阅[多人模式设置](/zh/players/multiplayer-settings#players)。
 
 ## 其他问题
 
