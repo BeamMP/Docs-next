@@ -15,6 +15,7 @@ BeamMP è diviso in tre parti e puoi scrivere codice per ciascuna. Questa sezion
 
 - **Lavorare su BeamMP stesso:** [Configurazione dell’ambiente di sviluppo](/it/developers/dev-environment-setup).
 - **Scrivere un plugin per il server o una mod:** [Creazione di Mod e Risorse](/it/developers/mod-and-resource-creation).
+- **Far accedere le persone alla tua app con BeamMP:** [Accedi con BeamMP](/it/developers/sign-in-with-beammp).
 - **Cercare una funzione o un evento:** i [riferimenti allo scripting](/it/developers/beammp-scripting/): [Mod (In gioco)](/it/developers/beammp-scripting/mod-in-game) e [Server](/it/developers/beammp-scripting/server/latest).
 - **Lavorare con BeamNG.drive stesso:** [Documentazione di gioco](/it/game-documentation/).
 

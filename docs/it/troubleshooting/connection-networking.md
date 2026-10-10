@@ -9,7 +9,7 @@ Usa questa pagina quando tu o i tuoi giocatori non riuscite a connettervi a un s
 
 ### Un server presso un'azienda di hosting
 
-L'indirizzo IP è riportato nell'interfaccia di gestione del server dell'azienda di hosting. Puoi trovare l'indirizzo IP dei tuoi server anche sul sito [Keymaster](https://keymaster.beammp.com/login).
+L'indirizzo IP è riportato nell'interfaccia di gestione del server dell'azienda di hosting.
 
 ### Un server a casa
 
@@ -33,8 +33,22 @@ Se hai ancora problemi di connessione con un server ospitato a casa, controlla i
 
 Alcuni provider Internet rendono difficile reindirizzare le porte. [Verifica la presenza di CGNAT](/it/server-owners/cgnat) per scoprire se puoi ospitare un server a casa.
 
+## Porte e indirizzi usati dal Launcher
+
+Se usi un firewall restrittivo o un proxy, consenti al Launcher queste connessioni:
+
+| Porta | Protocollo | Collega | Usata per |
+|---|---|---|---|
+| `4444` | TCP | Il gioco al Launcher, sul tuo computer | La lista dei server, l'accesso e le richieste di ingresso. Si imposta con `Port` in `Launcher.cfg` |
+| `4445` (`Port` + 1) | TCP | Il gioco al Launcher, sul tuo computer | I dati di gioco mentre sei in un server |
+| Una porta libera scelta all'avvio | TCP (HTTP) | Il gioco al Launcher, su `127.0.0.1` | Le richieste a `backend.beammp.com` e `forum.beammp.com` per i menu in gioco |
+| La porta del server (`30814`, a meno che il proprietario l'abbia cambiata) | TCP e UDP | Il Launcher al server | Entrare, scaricare le mod e giocare |
+| `443` | HTTPS | Il Launcher a `backend.beammp.com`, `auth.beammp.com` e `forum.beammp.com` | Gli aggiornamenti, la lista dei server e l'accesso |
+
+Non devi reindirizzare `4444` e `4445`. Servono solo al gioco e al Launcher sullo stesso computer. La porta del server deve essere raggiungibile sia con TCP sia con UDP.
+
 ## Altri problemi di connessione
 
-- Il Launcher mostra i codici di errore 10060 o 10061: consulta i [Codici di errore](/it/troubleshooting/error-codes).
+- Il Launcher mostra i codici di errore 10060 o 10061, oppure su Linux `Error code: 110` o `111`: consulta i [Codici di errore](/it/troubleshooting/error-codes).
 - Il Launcher non si connette al gioco: consulta [Cambiare la porta del Launcher](/it/troubleshooting/launcher-port).
 - Un firewall o un antivirus potrebbe bloccare BeamMP: consulta [Esclusioni Defender / Firewall](/it/troubleshooting/defender-exclusions).

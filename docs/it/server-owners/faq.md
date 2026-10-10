@@ -59,6 +59,12 @@ Per entrare nel tuo server ospitato da te attraverso la lista dei server, il tuo
 
 <!--@include: ../_parts/faq-code-and-bugs.md-->
 
+### Quante AuthKey posso avere e come ne ottengo altre?
+
+Per impostazione predefinita un account può avere 2 AuthKey. I livelli Patreon e il boost del server Discord di BeamMP ne aggiungono altre. **Keymaster** in [BeamMP Accounts](https://accounts.beammp.com) mostra quante chiavi hai usato e da dove arriva ogni chiave extra. I passaggi sono in [Ottenere una AuthKey](/it/server-owners/host-a-server#get-an-authkey).
+
 ### La mia AuthKey è stata compromessa. Cosa devo fare?
 
-Se pensi che una delle tue AuthKey sia compromessa, crea un ticket **Account Support** su [Discord](https://discord.gg/beammp).
+Fai ruotare la chiave in **Keymaster**. La vecchia chiave smette di funzionare subito. Inserisci la nuova chiave nel tuo `ServerConfig.toml` e riavvia il server. I passaggi sono in [Ottenere una AuthKey](/it/server-owners/host-a-server#get-an-authkey).
+
+Se non riesci a far ruotare la chiave da solo, per esempio perché non riesci ad accedere a BeamMP Accounts, crea un ticket **Account Support** su [Discord](https://discord.gg/beammp).

@@ -37,4 +37,10 @@ Un membro del Mod Team di BeamMP esamina la tua pull request e la approva oppure
 
 ## Traduzioni {#translating}
 
-La documentazione è tradotta in diverse lingue tramite [GitLocalize](https://gitlocalize.com/repo/9180). GitLocalize può mostrare un paragrafo come "non tradotto" anche quando lo è già, quindi controlla che una pagina non sia già tradotta prima di modificarla.
+L'inglese è la versione di riferimento. Le altre lingue hanno le stesse pagine negli stessi percorsi, quindi una modifica parte dalla pagina in inglese.
+
+1. Esegui `npm run check:translations`. Elenca le traduzioni non aggiornate perché la loro pagina in inglese è cambiata.
+2. Aggiorna ciascuna partendo dalla pagina in inglese. Mantieni titoli, riquadri, immagini e link, e non tradurre il codice, i comandi, i nomi dei file né le chiavi delle impostazioni.
+3. Registra l'aggiornamento: `npm run check:translations -- --record de/players/faq.md`.
+
+Per le impostazioni e i pulsanti del mod, francese e cinese usano le etichette esatte dei file di traduzione del mod. Tedesco, spagnolo, italiano e russo mantengono le etichette in inglese, perché il gioco le mostra in inglese. Le regole complete sono nel [README](https://github.com/__repo__#translations).

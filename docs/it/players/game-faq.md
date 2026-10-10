@@ -1,5 +1,5 @@
 ---
-description: "Risposte alle domande più comuni dei giocatori BeamMP: installazione, copie piratate o modificate, Linux, avvisi dell'antivirus, prestazioni scarse e segnalazione di bug."
+description: "Risposte alle domande più comuni dei giocatori BeamMP: installazione, versione del gioco, connessione al Launcher, Linux, avvisi dell'antivirus, prestazioni scarse e bug."
 ---
 # FAQ del gioco
 
@@ -19,6 +19,17 @@ Le modifiche, comprese le mod di terze parti, possono interferire con BeamMP. Co
 
 Il team di supporto di BeamMP non può aiutarti con i problemi su versioni di BeamNG.drive piratate, non aggiornate o comunque modificate.
 
+### Perché BeamMP dice di non essere compatibile con la mia versione di BeamNG.drive?
+
+BeamMP 4.22 funziona solo con BeamNG.drive 0.39. Con qualsiasi altra versione, la mod BeamMP si disattiva da sola e mostra **Error loading BeamMP**.
+
+- Se il tuo gioco è più vecchio, aggiorna BeamNG.drive.
+- Se il tuo gioco è più recente, aspetta un aggiornamento di BeamMP. Il [server Discord](https://discord.gg/BeamMP) li annuncia.
+
+### Il gioco dice di non essere connesso al Launcher. Cosa devo fare?
+
+Avvia il gioco con il Launcher di BeamMP, non da Steam né dal launcher di BeamNG. Se il gioco è già in esecuzione, clicca su **Connect** in quella schermata per riprovare. Se il Launcher usa una porta diversa, consulta [Cambiare la porta del Launcher](/it/troubleshooting/launcher-port).
+
 ### BeamMP funziona su Linux?
 
 Il client non è supportato ufficialmente su Linux. Puoi seguire la nostra guida per [installare BeamMP su Linux](/it/get-started/install-beammp#install-on-linux).
@@ -32,6 +43,8 @@ Alcuni antivirus segnalano BeamMP come una minaccia perché, tra le altre cose, 
 Stiamo lavorando per rendere la modalità multigiocatore il più stabile possibile. Se hai già abbassato le impostazioni grafiche e le prestazioni restano scarse, prova un server con meno giocatori.
 
 Quando giocano in tanti, il gioco è limitato soprattutto dalla CPU, quindi le CPU più vecchie, anche quad-core, faticano con più di una manciata di giocatori. Come regola generale, conta un'auto per ogni thread della CPU.
+
+Attiva **Use simplified vehicles when available** nelle opzioni di BeamMP per sostituire i veicoli degli altri giocatori con versioni più leggere. Vedi [Impostazioni multigiocatore](/it/players/multiplayer-settings#players).
 
 ## Altre domande
 

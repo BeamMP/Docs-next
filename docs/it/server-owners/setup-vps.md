@@ -70,7 +70,7 @@ Se non funziona, installa la mappa in BeamNG.drive in singleplayer ed entraci. A
 
 ## Fare entrare i giocatori
 
-I giocatori possono usare la connessione diretta all'indirizzo IP pubblico e alla porta del server, che trovi entrambi nel pannello di gestione. Puoi trovare l'indirizzo IP anche sul sito [Keymaster](https://keymaster.beammp.com/).
+I giocatori possono usare la connessione diretta all'indirizzo IP pubblico e alla porta del server, che trovi entrambi nel pannello di gestione.
 
 Per un server pubblico, i giocatori possono invece aprire la lista dei server, digitare il nome del server e cliccare su **Connect**. Il nome è quello che hai impostato. Se non lo trovano, di' loro di disattivare i filtri di ricerca e di impostare la mappa su **Any**.
 

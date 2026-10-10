@@ -7,26 +7,29 @@ Come gestire un server BeamMP già in funzione: il file di log e gli aggiornamen
 
 ## Il file di log del server
 
-Questo file viene generato mentre il server è in esecuzione. È uno specchio dei messaggi che vedi nella console quando avvii il server. Dovresti allegarlo ogni volta che chiedi aiuto al nostro staff di supporto e non mostra mai la tua AuthKey, quindi di solito puoi inviarlo senza modifiche.
+Questo file viene generato mentre il server è in esecuzione. È uno specchio dei messaggi che vedi nella console quando avvii il server. Il file si chiama `Server.log`. All'avvio il server rinomina il log dell'esecuzione precedente in `Server.old.log`, sostituendo il vecchio `Server.old.log`. Dovresti allegare questo file ogni volta che chiedi aiuto al nostro staff di supporto e non mostra mai la tua AuthKey, quindi di solito puoi inviarlo senza modifiche.
 
 Il formato è il seguente (il prefisso $ indica una “variabile”, spiegata più sotto):
+
 ```
 [$DATE $TIME] $CONTEXT [$LOG_LEVEL] $MESSAGE
 ```
+
 Dove:
 
-- `$DATE` è la data del messaggio, per esempio 21/07/2021
-- `$TIME` è l'ora del messaggio, per esempio 11:05:23
+- `$DATE` è la data del messaggio nel formato giorno/mese/anno, per esempio 21/07/21
+- `$TIME` è l'ora del messaggio, per esempio 11:05:23. In modalità Debug mostra anche i millisecondi, per esempio 11:05:23.142
 - `$CONTEXT` (visibile solo in modalità Debug e per lo più utile agli sviluppatori) è il contesto del messaggio, che può essere:
 	- `(Player ID) “Player Name”`, dove l'ID del giocatore è utile per la moderazione
 	- Un nome breve come “HeartbeatThread”
 - `$LOG_LEVEL` è uno dei livelli di importanza di un messaggio:
 	- `DEBUG`: visibile solo in modalità Debug, di solito molto prolisso e importante solo per gli sviluppatori
+	- `EVENT`: visibile solo in modalità Debug, un evento Lua attivato dal server
 	- `INFO`: informazioni generali
 	- `LUA`: messaggio di un plugin Lua
+	- `LUA WARN` e `LUA ERROR`: un avviso o un errore del sistema di plugin Lua, per esempio un errore nel codice di un plugin
 	- `WARN`: descrive qualcosa che di solito non dovrebbe succedere
 	- `ERROR`: qualcosa è andato molto storto o era del tutto inatteso
-	- `FATAL`: è successo qualcosa che causa lo spegnimento del server
 - `$MESSAGE` è il messaggio vero e proprio, di solito qualcosa a cui dovresti prestare attenzione e che dovresti capire. In alcuni casi può essere criptico, ma la regola generale è che, finché nel server non c'è nulla di visibilmente sbagliato e non ci sono ERROR, va tutto bene.
 
 ## Aggiornare il server {#updating-the-server}
@@ -60,14 +63,14 @@ Se hai compilato dal codice sorgente, ti basta ricompilare. Prima di ricompilare
 #### Su Linux
 
 1. Vai su [BeamMP.com](https://beammp.com/) e clicca sul pulsante “Download Server”: verrai reindirizzato alla pagina delle release del server su GitHub.
-2. Scarica la versione corretta per la tua distribuzione. Per semplicità, da qui in poi si chiamerà `BeamMP-Server-xxx`, dove `xxx` indica la versione per la distribuzione che stai usando.
+2. Scarica il file per la tua distribuzione e il tuo tipo di processore. Il nome è simile a `BeamMP-Server.debian.12.x86_64`. Non scaricare i file `debuginfo`. Per semplicità, da qui in poi si chiamerà `BeamMP-Server-xxx`, dove `xxx` indica la versione per la distribuzione che stai usando.
 3. Una volta scaricato, dovresti vedere un file chiamato `BeamMP-Server-xxx`, a seconda della versione che hai scaricato. Lo chiameremo il “nuovo eseguibile”.
 4. Vai nella cartella in cui si trova il tuo attuale eseguibile `BeamMP-Server-xxx` (di solito la stessa cartella in cui si trova `ServerConfig.toml`). Lo chiameremo il “vecchio eseguibile”.
 5. Sostituisci il vecchio eseguibile con quello nuovo (per esempio copiando o spostando il nuovo eseguibile nella cartella).
 6. Apri un terminale nella cartella in cui hai appena sostituito l'eseguibile ed esegui `sudo chmod +x BeamMP-Server-xxx`. Così ti assicuri che il server possa essere avviato.
 
-### Aggiornamenti automatici
+### Messaggi di aggiornamento {#update-messages}
 
-Il server non supporta (ancora) gli aggiornamenti automatici né le notifiche di aggiornamento.
+Il server non si aggiorna da solo. All'avvio controlla se esiste una versione più recente e, se c'è, stampa un messaggio. Lo stampa di nuovo a intervalli pari al valore di `UpdateReminderTime`, a meno che `ImScaredOfUpdates` sia `true`, che è il valore predefinito. Entrambe le impostazioni si trovano in [Configurazione del server](/it/server-owners/configuration#the-misc-section). Un provider di hosting può sostituire il messaggio: vedi le impostazioni del provider nel [Manuale del server](/it/server-owners/manual#provider-settings).
 
-Puoi comunque chiedere all'API di GitHub l'ultima release, confrontando la versione del server con i tag. Puoi ottenerli con una richiesta GET a `https://api.github.com/repos/BeamMP/BeamMP-Server/git/refs/tags`.
+Per controllare la presenza di una nuova versione da uno script, chiedi all'API di GitHub l'ultima release, confrontando la versione del server con i tag. Puoi ottenerli con una richiesta GET a `https://api.github.com/repos/BeamMP/BeamMP-Server/git/refs/tags`.

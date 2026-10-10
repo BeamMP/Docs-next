@@ -8,6 +8,7 @@ Questa pagina mostra la struttura delle cartelle di un plugin BeamMP e un piccol
 ## Struttura delle cartelle e nozioni di base sui file
 
 La struttura di cartelle e file è questa:
+
 ```
 Resources/
 ├─ Client/
@@ -24,6 +25,7 @@ Resources/
       └─ further_lua/
          └─ further.lua
 ```
+
 - Il Lua lato server è il minimo indispensabile. Per aggiungere eventi personalizzati ti servono anche almeno un file Lua lato client e un `modScript.lua`.
 - La cartella `Server` contiene una sottocartella per ogni plugin lato server. È buona prassi avere un file Lua principale e mettere gli altri file Lua in sottocartelle. Non sei obbligato: se ce ne sono diversi, il server carica i file Lua in ordine alfabetico.
 - La cartella `Client` contiene i file zip che vengono inviati a un client, che li carica come mod. Qualsiasi altro file in `Client` causa un errore all'avvio del server e viene altrimenti ignorato.
@@ -34,6 +36,7 @@ Puoi scaricare un esempio: [examplePlugin.zip](/assets/content/ResourcesForExamp
 ## Lua lato server
 
 Il plugin di esempio contiene altri esempi. Questo è molto semplice e stampa gli identificatori di un giocatore:
+
 ```lua
 function onInit() --runs when plugin is loaded
 
@@ -50,9 +53,11 @@ function onPlayerAuth(player_name, role, isGuest, identifiers)
 	print("onPlayerAuth: player_name: " .. player_name .. " | role: " .. role .. " | isGuest: " .. tostring(isGuest) .. " | identifiers: ip: " .. ip .. " - beammp: " .. beammp)
 end
 ```
+
 `onPlayerAuth` viene eseguito non appena un giocatore vuole entrare. Consulta [onPlayerAuth nel riferimento allo scripting](/it/developers/beammp-scripting/server/latest#onplayerauth).
 
 Un altro esempio usa `onPlayerAuth` per rifiutare gli ospiti. Il messaggio che restituisci viene mostrato al giocatore:
+
 ```lua
 function onPlayerAuth(playerName, playerRole, isGuest, identifiers)
   if isGuest then
@@ -60,31 +65,42 @@ function onPlayerAuth(playerName, playerRole, isGuest, identifiers)
   end
 end
 ```
+
 Altre funzioni che puoi usare sul server si trovano nel [riferimento più recente del server](/it/developers/beammp-scripting/server/latest).
 
 ## Lua lato client
 
-Il Lua lato client segue in gran parte le [estensioni di BeamNG](https://documentation.beamng.com/modding/programming/extensions/). Questo esempio stampa nella console che il plugin è stato caricato:
+Il Lua lato client segue in gran parte le [estensioni di BeamNG](https://documentation.beamng.com/modding/programming/extensions/). Questo esempio scrive una riga nel log quando l'estensione viene caricata:
+
 ```lua
 local M = {}
 
-if extensions.isExtensionLoaded("examplePlugin") then
-  log("E", "examplePlugin", "examplePlugin loaded on client side")
-  return
+local function onExtensionLoaded()
+  log("I", "examplePlugin", "examplePlugin loaded on client side")
 end
+
+M.onExtensionLoaded = onExtensionLoaded
 
 return M
 ```
-Per saperne di più sulla stampa dal Lua di BeamNG, consulta la [documentazione di BeamNG sulle stampe di debug](https://documentation.beamng.com/modding/programming/debugging/#a-add-a-log).
+
+Per saperne di più sulla stampa dal Lua di BeamNG, consulta la [documentazione di BeamNG sulle stampe di debug](https://documentation.beamng.com/modding/programming/debugging/#a-add-a-log). Per le funzioni che BeamMP aggiunge al client, consulta il [riferimento allo scripting in gioco](/it/developers/beammp-scripting/mod-in-game).
+
+Quando un giocatore lascia un server che ha inviato delle mod, il gioco ricarica il proprio Lua. La tua estensione viene caricata di nuovo la volta successiva che il giocatore entra.
 
 ## modScript.lua
 
 Un `modScript.lua` di solito ha solo due righe:
+
 ```lua
 load('examplePlugin')
 setExtensionUnloadMode('examplePlugin', 'manual')
 ```
+
+La modalità di scaricamento `'manual'` impedisce al gioco di scaricare l'estensione da solo. Non usare `queueExtensionToLoad`: BeamMP mostra un errore in quel caso.
+
 Puoi aggiungere una riga di log per vedere nei log quando BeamNG elabora il tuo `modScript.lua`:
+
 ```lua
 load('examplePlugin')
 setExtensionUnloadMode('examplePlugin', 'manual')

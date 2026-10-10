@@ -47,9 +47,11 @@ Lo staff di BeamMP non è tenuto a moderare in modo rigido secondo queste regole
 
 ## Come presentare appello contro i provvedimenti presi nei tuoi confronti:
 
+Se il tuo account BeamMP è sospeso, presenta appello in BeamMP Accounts. Consulta [Sospensioni e ricorsi](/it/players/suspensions-and-appeals).
+
 ### Gli appelli contro i ban possono essere inviati su <a href="https://docs.google.com/forms/d/1MaTPKM-MHQU5lUtxeOKz3C7OoI6Xbu5RX5AJdX-UOz4" class="inline-onebox">Ban Appeal - BeamMP</a>.
 
-Tutti gli appelli contro i ban vengono esaminati a fondo e coinvolgono almeno due (2) membri dello staff/del team di moderazione che non erano coinvolti nel caso in questione.  Il membro dello staff che ha emesso il provvedimento potrà commentare, ma non parteciperà in altro modo alla decisione sull'appello. L'esito di questi appelli è definitivo. BeamMP si riserva il diritto di ammettere o meno i membri come ritiene opportuno in base alle regole della community di BeamMP (come sopra), ai [ToS di Discord](https://discord.com/terms) e ad altri fattori. 
+Tutti gli appelli contro i ban presentati con questo modulo vengono esaminati a fondo e coinvolgono almeno due (2) membri dello staff/del team di moderazione che non erano coinvolti nel caso in questione.  Il membro dello staff che ha emesso il provvedimento potrà commentare, ma non parteciperà in altro modo alla decisione sull'appello. L'esito di questi appelli è definitivo. BeamMP si riserva il diritto di ammettere o meno i membri come ritiene opportuno in base alle regole della community di BeamMP (come sopra), ai [ToS di Discord](https://discord.com/terms) e ad altri fattori. 
 
 ::: warning
 In caso di provvedimenti presi nei tuoi confronti, ti è vietato creare un nuovo account Discord o BeamMP per aggirare il ban.
