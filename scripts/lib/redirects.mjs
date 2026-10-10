@@ -74,9 +74,20 @@ export function englishRootPlan(oldAddresses, pages, moved = {}) {
 
 const escapeAttr = (text) => text.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;')
 
+/**
+ * Sections that moved to another page than the rest of their old page. An old page that was split
+ * sends everyone to one new page, but a link with an `#anchor` (the server prints one in its update
+ * message) has to land where that section is now.
+ * `{ '/en/server-owners/configuration.html': { '#updating-the-server': '/en/server-owners/maintenance.html' } }`
+ */
+export const MOVED_ANCHORS = {
+  '/en/server-owners/configuration.html': { '#updating-the-server': '/en/server-owners/maintenance.html' },
+}
+
 /** The page that sends a visitor on, keeping the `#anchor` they came with. */
-export function redirectPage(to) {
+export function redirectPage(to, anchors = MOVED_ANCHORS[to] ?? {}) {
   const safe = escapeAttr(to)
+  const json = (value) => JSON.stringify(value).replace(/</g, '\\u003c')
   return `<!doctype html>
 <html lang="en">
 <head>
@@ -85,7 +96,7 @@ export function redirectPage(to) {
 <meta name="robots" content="noindex">
 <link rel="canonical" href="${safe}">
 <meta http-equiv="refresh" content="0; url=${safe}">
-<script>location.replace(${JSON.stringify(to).replace(/</g, '\\u003c')} + location.hash)</script>
+<script>var h = location.hash, a = ${json(anchors)}; location.replace((a[h] || ${json(to)}) + h)</script>
 </head>
 <body><p>This page has moved to <a href="${safe}">${safe}</a>.</p></body>
 </html>

@@ -63,9 +63,17 @@ test('a page that really exists is never replaced by a redirect', () => {
 
 test('the redirect page keeps the anchor and escapes the address', () => {
   const html = redirectPage('/en/x.html')
-  assert.match(html, /location\.replace\("\/en\/x\.html" \+ location\.hash\)/)
+  assert.match(html, /location\.replace\(\(a\[h\] \|\| "\/en\/x\.html"\) \+ h\)/)
+  assert.match(html, /var h = location\.hash/)
   assert.match(html, /<link rel="canonical" href="\/en\/x\.html">/)
   assert.doesNotMatch(redirectPage('/a"><script>'), /"><script>/)
+})
+
+test('a section that moved to another page than the rest of its old page is sent there by its anchor', () => {
+  const html = redirectPage('/en/server-owners/configuration.html')
+  assert.match(html, /"#updating-the-server":"\/en\/server-owners\/maintenance\.html"/)
+  assert.match(redirectPage('/de/server-owners/configuration.html'), /a = \{\}/, 'only English has the anchor the server prints')
+  assert.match(redirectPage('/en/x.html', { '#a': '/en/y.html' }), /"#a":"\/en\/y\.html"/)
 })
 
 test('an old English address, which had no language folder, gets a redirect page at that same address', () => {
