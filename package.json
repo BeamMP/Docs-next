@@ -12,6 +12,7 @@
     "preview": "vitepress preview docs",
     "check": "node scripts/check-docs.mjs",
     "check:update-baseline": "node scripts/check-docs.mjs --update-baseline",
+    "check:translations": "node scripts/check-translations.mjs",
     "test": "node --test \"tests/*.test.mjs\""
   },
   "dependencies": {

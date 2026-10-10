@@ -139,6 +139,9 @@ Every page is translated into six languages, by people and tools that see one se
 - No sentence that depends on a picture or on the sentence before it.
 - Put what must not change (names, code, settings) in `code` or bold so it is clear.
 - Do not edit a translated page for facts: change the English page, and the translation follows.
+- After you change an English page, `npm run check:translations` lists the translations that are now out of date.
+  Update them, then record them with `npm run check:translations -- --record de/players/faq.md` (or `en/players/faq.md` for
+  every language). It only warns; it never blocks a change to English.
 - A new English page shows in another language's menus only once that language has the page, so
   nobody is sent to a page that is not there. Until then that language keeps its old page, if it has one.
 
