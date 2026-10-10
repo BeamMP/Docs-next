@@ -1,5 +1,5 @@
 ---
-description: "Cambia a mano la porta del Launcher di BeamMP quando il Launcher non si connette al gioco: imposta la porta nelle opzioni di BeamNG e in launcher.cfg."
+description: "Cambia a mano la porta del Launcher di BeamMP quando il Launcher non si connette al gioco: imposta la porta nelle opzioni di BeamNG e in Launcher.cfg."
 ---
 # Cambiare la porta del Launcher
 
@@ -12,7 +12,7 @@ Il Launcher non si connette al gioco? Questa guida spiega come cambiare a mano l
 5. In **Launcher port**, cambia il numero con un altro, ad esempio `4567`.
 6. Chiudi BeamNG.drive.
 7. Fai clic con il tasto destro sul collegamento del Launcher di BeamMP e scegli **Apri percorso file**.
-8. Apri `launcher.cfg` con un editor di testo.
+8. Apri `Launcher.cfg` con un editor di testo.
 9. Cambia il numero in `"Port": 4444,` con la porta che hai impostato nel gioco, in questo esempio `4567`.
 10. Salva il file e chiudi l'editor.
 11. Avvia il Launcher.

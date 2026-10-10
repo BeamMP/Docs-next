@@ -250,7 +250,7 @@ Diese Einstellung legt den Port fest, der für die Kommunikation mit dem Launche
 
 Sollte nur geändert werden, wenn der Standardport 4444 nicht verwendet werden kann
 
-Vergiss nicht, ihn auch auf der Launcher-Seite zu ändern, indem du die `launcher.cfg` anpasst
+Vergiss nicht, ihn auch auf der Launcher-Seite zu ändern, indem du die `Launcher.cfg` anpasst
 
 ::: tip
 Der angegebene Port ist nur der erste von zwei Ports. Der zweite verwendete Port folgt direkt darauf, also Port + 1

@@ -1,5 +1,5 @@
 ---
-description: "Den Port des BeamMP-Launchers von Hand ändern, wenn sich der Launcher nicht mit dem Spiel verbindet: Port in den BeamNG-Optionen und in der Datei launcher.cfg setzen."
+description: "Den Port des BeamMP-Launchers von Hand ändern, wenn sich der Launcher nicht mit dem Spiel verbindet: Port in den BeamNG-Optionen und in der Datei Launcher.cfg setzen."
 ---
 # Ändern des Launcher-Ports
 
@@ -12,7 +12,7 @@ Der Launcher verbindet sich nicht mit dem Spiel? Diese Anleitung zeigt dir, wie 
 5. Ändere bei **Launcher port** die Zahl auf eine andere, zum Beispiel `4567`.
 6. Schließe BeamNG.drive.
 7. Klicke mit der rechten Maustaste auf die Verknüpfung des BeamMP-Launchers und wähle **Dateispeicherort öffnen**.
-8. Öffne `launcher.cfg` in einem Texteditor.
+8. Öffne `Launcher.cfg` in einem Texteditor.
 9. Ändere die Zahl in `"Port": 4444,` auf den Port, den du im Spiel eingestellt hast, in diesem Beispiel `4567`.
 10. Speichere die Datei und schließe den Editor.
 11. Starte den Launcher.

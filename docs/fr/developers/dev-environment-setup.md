@@ -34,6 +34,7 @@ La mise à jour automatique supprimerait votre clone git local : désactivez-la 
 | `--no-update` | N'applique pas les mises à jour du lanceur : vous devez le mettre à jour manuellement |
 | `--no-launch` | Ne lance pas le jeu : vous devez le démarrer vous-même |
 | `--dev` | Mode développeur : équivalent à `--verbose --no-download --no-launch --no-update` |
+| `--user-path <path>` | Chemin du dossier utilisateur de BeamNG.drive |
 | `--game <args...>` ou `-- <args...>` | Transmet des arguments au jeu |
 
 ## Cloner le dépôt BeamMP dans le dossier unpacked

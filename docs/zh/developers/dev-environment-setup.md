@@ -34,6 +34,7 @@ description: "为 BeamMP 模组搭建开发环境：未打包的 mods 文件夹�
 | `--no-update` | 跳过应用启动器更新，因此你必须手动更新 |
 | `--no-launch` | 跳过启动游戏，因此你必须自己启动游戏 |
 | `--dev` | 开发者模式：等同于 `--verbose --no-download --no-launch --no-update` |
+| `--user-path <path>` | BeamNG.drive 用户文件夹的路径 |
 | `--game <args...>` 或 `-- <args...>` | 将参数传递给游戏 |
 
 ## 将 BeamMP 仓库克隆到 unpacked 文件夹中

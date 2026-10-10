@@ -250,7 +250,7 @@ Ce paramètre définit le port utilisé pour communiquer avec le lanceur
 
 Ne le modifiez que si le port standard 4444 ne peut pas être utilisé
 
-N'oubliez pas de le modifier aussi côté lanceur, en modifiant `launcher.cfg`
+N'oubliez pas de le modifier aussi côté lanceur, en modifiant `Launcher.cfg`
 
 ::: tip
 Le port indiqué n'est que le premier de deux : le second port utilisé le suit directement, c'est-à-dire le port + 1

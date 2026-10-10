@@ -34,6 +34,7 @@ L'aggiornamento automatico cancellerebbe il tuo clone git locale, quindi disatti
 | `--no-update` | Salta l'applicazione degli aggiornamenti del Launcher, quindi devi aggiornarlo a mano |
 | `--no-launch` | Salta l'avvio del gioco, quindi devi avviarlo tu |
 | `--dev` | Modalità sviluppatore: equivale a `--verbose --no-download --no-launch --no-update` |
+| `--user-path <path>` | Percorso della cartella utente di BeamNG.drive |
 | `--game <args...>` o `-- <args...>` | Passa degli argomenti al gioco |
 
 ## Clona il repository di BeamMP nella cartella unpacked

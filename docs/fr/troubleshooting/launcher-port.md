@@ -1,5 +1,5 @@
 ---
-description: "Modifiez manuellement le port du lanceur BeamMP lorsqu'il ne se connecte pas au jeu : définissez le port dans les options de BeamNG et dans launcher.cfg."
+description: "Modifiez manuellement le port du lanceur BeamMP lorsqu'il ne se connecte pas au jeu : définissez le port dans les options de BeamNG et dans Launcher.cfg."
 ---
 # Changer le port du lanceur
 
@@ -12,7 +12,7 @@ Le lanceur ne se connecte pas au jeu ? Ce guide explique comment modifier manuel
 5. Dans **Port du lanceur**, remplacez le numéro par un autre, par exemple `4567`.
 6. Fermez BeamNG.drive.
 7. Faites un clic droit sur le raccourci du lanceur BeamMP et choisissez **Ouvrir l'emplacement du fichier**.
-8. Ouvrez `launcher.cfg` dans un éditeur de texte.
+8. Ouvrez `Launcher.cfg` dans un éditeur de texte.
 9. Remplacez le numéro dans `"Port": 4444,` par le port que vous avez défini dans le jeu, ici `4567`.
 10. Enregistrez le fichier et fermez l'éditeur.
 11. Démarrez le lanceur.

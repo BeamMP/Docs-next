@@ -249,7 +249,7 @@ Este ajuste define el puerto que se usa para comunicarse con el Launcher.
 
 Solo debe cambiarse si no se puede usar el puerto estándar, el 4444.
 
-No olvides cambiarlo también en el lado del Launcher, modificando `launcher.cfg`.
+No olvides cambiarlo también en el lado del Launcher, modificando `Launcher.cfg`.
 
 ::: tip
 El puerto indicado es solo el primero de dos: el segundo puerto que se usa es el siguiente, es decir, el puerto + 1.

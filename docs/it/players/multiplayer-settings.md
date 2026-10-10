@@ -249,7 +249,7 @@ Questa impostazione definisce la porta usata per comunicare con il Launcher
 
 Va cambiata solo se la porta standard 4444 non può essere usata
 
-Non dimenticare di cambiarla anche lato Launcher, modificando `launcher.cfg`
+Non dimenticare di cambiarla anche lato Launcher, modificando `Launcher.cfg`
 
 ::: tip
 La porta indicata è solo la prima di due: la seconda porta usata è quella immediatamente successiva, cioè porta + 1

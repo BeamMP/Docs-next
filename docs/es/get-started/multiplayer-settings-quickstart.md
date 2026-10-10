@@ -24,6 +24,6 @@ Activa **Show advanced options** para ver todos los ajustes multijugador. Si est
 
 - **Disable pausing caused by instabilities** es mejor dejarlo desactivado. Las inestabilidades repetidas pueden hacer que el juego se cierre.
 - **Show network activity in the console** escribe todo en los archivos de registro, que pueden crecer cientos de megabytes en unos minutos.
-- **Launcher port** solo hay que cambiarlo si no se puede usar el puerto 4444. Si lo cambias, cámbialo también en `launcher.cfg`. Consulta [Cambiar el puerto del Launcher](/es/troubleshooting/launcher-port).
+- **Launcher port** solo hay que cambiarlo si no se puede usar el puerto 4444. Si lo cambias, cámbialo también en `Launcher.cfg`. Consulta [Cambiar el puerto del Launcher](/es/troubleshooting/launcher-port).
 
 Siguiente: [Fundamentos de jugabilidad](/es/players/gameplay-basics).

@@ -249,7 +249,7 @@ This setting defines the port used for communicating with the launcher
 
 Should only be changed if the standard port 4444 can not be used
 
-Don't forget to also change it on the launcher side, by modifying `launcher.cfg`
+Don't forget to also change it on the launcher side, by modifying `Launcher.cfg`
 
 ::: tip
 The port specified is only the first of two, the second port being used is directly following, set port + 1

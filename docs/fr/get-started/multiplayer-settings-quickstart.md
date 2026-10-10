@@ -24,6 +24,6 @@ Activez **Afficher les options avancées** pour afficher tous les paramètres mu
 
 - Il est préférable de laisser **Disable pausing caused by instabilities** désactivé. Des instabilités répétées peuvent faire planter le jeu.
 - **Afficher l'activité réseau dans la console** écrit tout dans les fichiers journaux, qui peuvent atteindre des centaines de mégaoctets en quelques minutes.
-- **Port du lanceur** ne doit être modifié que si le port 4444 ne peut pas être utilisé. Si vous le modifiez, modifiez-le aussi dans `launcher.cfg`. Voir [Changer le port du lanceur](/fr/troubleshooting/launcher-port).
+- **Port du lanceur** ne doit être modifié que si le port 4444 ne peut pas être utilisé. Si vous le modifiez, modifiez-le aussi dans `Launcher.cfg`. Voir [Changer le port du lanceur](/fr/troubleshooting/launcher-port).
 
 Étape suivante : [Bases du gameplay](/fr/players/gameplay-basics).

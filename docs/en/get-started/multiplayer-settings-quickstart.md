@@ -24,6 +24,6 @@ Turn on **Show advanced options** to see every multiplayer setting. With it off,
 
 - **Disable pausing caused by instabilities** is best left off. Repeated instabilities can crash the game.
 - **Show network activity in the console** writes everything to the log files, which can grow by hundreds of megabytes in minutes.
-- **Launcher port** only needs changing if port 4444 cannot be used. If you change it, change it in `launcher.cfg` too. See [Changing the Launcher Port](/en/troubleshooting/launcher-port).
+- **Launcher port** only needs changing if port 4444 cannot be used. If you change it, change it in `Launcher.cfg` too. See [Changing the Launcher Port](/en/troubleshooting/launcher-port).
 
 Next: [Gameplay Basics](/en/players/gameplay-basics).

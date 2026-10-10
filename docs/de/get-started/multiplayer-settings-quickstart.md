@@ -24,6 +24,6 @@ Aktiviere **Show advanced options**, um alle Multiplayer-Einstellungen zu sehen.
 
 - **Disable pausing caused by instabilities** lässt du am besten ausgeschaltet. Wiederholte Instabilitäten können das Spiel zum Absturz bringen.
 - **Show network activity in the console** schreibt alles in die Logdateien, die innerhalb weniger Minuten auf mehrere hundert Megabyte anwachsen können.
-- **Launcher port** musst du nur ändern, wenn Port 4444 nicht verwendet werden kann. Wenn du ihn änderst, ändere ihn auch in der `launcher.cfg`. Siehe [Ändern des Launcher-Ports](/de/troubleshooting/launcher-port).
+- **Launcher port** musst du nur ändern, wenn Port 4444 nicht verwendet werden kann. Wenn du ihn änderst, ändere ihn auch in der `Launcher.cfg`. Siehe [Ändern des Launcher-Ports](/de/troubleshooting/launcher-port).
 
 Weiter geht es mit: [Gameplay-Grundlagen](/de/players/gameplay-basics).

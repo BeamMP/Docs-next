@@ -34,6 +34,7 @@ Auto-update would delete your local git clone, so turn it off with `--no-downloa
 | `--no-update` | Skips applying Launcher updates, so you must update by hand |
 | `--no-launch` | Skips launching the game, so you must start it yourself |
 | `--dev` | Developer mode: the same as `--verbose --no-download --no-launch --no-update` |
+| `--user-path <path>` | Path to the BeamNG.drive user folder |
 | `--game <args...>` or `-- <args...>` | Passes arguments to the game |
 
 ## Clone the BeamMP repository into the unpacked folder
