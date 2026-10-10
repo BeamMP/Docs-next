@@ -1,5 +1,5 @@
 ---
-description: "Start the BeamMP Launcher, open multiplayer in BeamNG.drive, sign in or play as a guest, and connect to a server."
+description: "Start the BeamMP Launcher, open BeamMP in BeamNG.drive, sign in or play as a guest, and connect to a server."
 ---
 # Join Your First Server
 
@@ -7,10 +7,10 @@ You have [installed BeamMP](/en/get-started/install-beammp). Now start the Launc
 
 ## Start multiplayer
 
-1. Start the BeamMP Launcher. A terminal window opens, and shortly after, the standard BeamNG launcher starts. Do not close the terminal window.
-2. In the BeamNG.drive main menu, click **Repository** and check that `multiplayerbeammp` is the only enabled mod.
-3. Go back to the main menu, click **More…**, then **Multiplayer**.
-4. Sign in, or play as a guest. Not every server allows guests. You can create an account on the [forum](https://forum.beammp.com) and sign in to BeamMP with the same details.
+1. Start the BeamMP Launcher. A terminal window opens. The Launcher downloads the BeamMP mod, turns it on and starts BeamNG.drive. Do not close the terminal window: the Launcher must stay open while you play. When you close the game, the Launcher closes too.
+2. In the BeamNG.drive main menu, click **Repository**, then open the **Mods Manager** tab. Check that `multiplayerbeammp` is the only entry under **Active Mods**.
+3. Go back to the main menu, click **More...**, then **BeamMP**.
+4. Sign in with your [BeamMP account](/en/players/account), or play as a guest. Not every server allows guests. The Launcher keeps you signed in with a file called `key` in its folder. Do not share that file.
 5. Choose a server and click **Connect**.
 
 ::: info Joining can take a while
@@ -19,10 +19,10 @@ When you load into a map with many vehicles already spawned, joining can take lo
 
 ## If you cannot connect
 
-- **There is no Multiplayer button.** Make sure the BeamMP mod is present and enabled in the **Mod Manager**, then press `Ctrl` + `L`.
+- **There is no BeamMP entry under More...** Make sure the BeamMP mod is present and active in the **Mods Manager**, then press `Ctrl` + `L`.
 - **A VPN is on.** VPNs of any kind can cause connection problems. Turn it off and try again.
 - **The Launcher shows an error.** Look it up in the [error codes](/en/troubleshooting/error-codes) or the [forum FAQ](https://forum.beammp.com/c/faq/35).
-- **On Linux, you can only connect once.** The native Linux Launcher currently connects to one server per start. After you disconnect, restart the Launcher. You can do this without closing the game.
+- **On Linux, a second join fails.** After you leave a server, the Launcher can fail to connect to the next one. It then shows `(Proxy) bind failed with error: 98` or `Connection still alive terminating`. Close the game and the Launcher, then start them again.
 
 For more help, see [Troubleshooting](/en/troubleshooting/), or ask on the [forum](https://forum.beammp.com) or the [Discord server](https://discord.gg/beammp).
 

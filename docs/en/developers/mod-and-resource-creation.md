@@ -70,20 +70,23 @@ More functions you can use on the server are in the [latest server reference](/e
 
 ## Client-side Lua
 
-Client-side Lua largely follows [BeamNG extensions](https://documentation.beamng.com/modding/programming/extensions/). This example prints to the console that the plugin was loaded:
+Client-side Lua largely follows [BeamNG extensions](https://documentation.beamng.com/modding/programming/extensions/). This example writes a line to the log when the extension is loaded:
 
 ```lua
 local M = {}
 
-if extensions.isExtensionLoaded("examplePlugin") then
-  log("E", "examplePlugin", "examplePlugin loaded on client side")
-  return
+local function onExtensionLoaded()
+  log("I", "examplePlugin", "examplePlugin loaded on client side")
 end
+
+M.onExtensionLoaded = onExtensionLoaded
 
 return M
 ```
 
-To learn more about printing from BeamNG Lua, see the [BeamNG documentation on debug prints](https://documentation.beamng.com/modding/programming/debugging/#a-add-a-log).
+To learn more about printing from BeamNG Lua, see the [BeamNG documentation on debug prints](https://documentation.beamng.com/modding/programming/debugging/#a-add-a-log). For the functions BeamMP adds to the client, see the [in-game scripting reference](/en/developers/beammp-scripting/mod-in-game).
+
+When a player leaves a server that sent mods, the game reloads its Lua. Your extension loads again the next time the player joins.
 
 ## modScript.lua
 
@@ -93,6 +96,8 @@ A `modScript.lua` usually has only two lines:
 load('examplePlugin')
 setExtensionUnloadMode('examplePlugin', 'manual')
 ```
+
+The `'manual'` unload mode stops the game unloading the extension on its own. Do not use `queueExtensionToLoad`: BeamMP shows an error for it.
 
 You can add a log line to see in the logs when BeamNG processes your `modScript.lua`:
 
