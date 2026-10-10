@@ -70,7 +70,7 @@ If it does not work, install the map in singleplayer BeamNG.drive and enter it. 
 
 ## Let players join
 
-Players can direct connect to the server's public IP address and port, both found on the management panel. You can also find the IP address on the [Keymaster](https://keymaster.beammp.com/) website.
+Players can direct connect to the server's public IP address and port, both found on the management panel.
 
 For a public server, players can instead open the server list, type the name of the server and click **Connect**. The name is the one you set. If they cannot find it, tell them to turn off the search filters and set the map to **Any**.
 

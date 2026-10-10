@@ -63,9 +63,9 @@ Forward your port first. Without it, nobody outside your home can join.
 
 This works on every distribution we provide binaries for, listed on the [latest release page](https://github.com/BeamMP/BeamMP-Server/releases/latest). For another distribution or architecture, see [Build from source](#build-from-source).
 
-1. Install the dependencies listed in the [runtime dependencies](https://github.com/BeamMP/BeamMP-Server#runtime-dependencies).
+1. Install the dependencies listed in the [runtime dependencies](https://github.com/BeamMP/BeamMP-Server#runtime-dependencies). On Debian and Ubuntu, that is the package `liblua5.3-0`.
 2. Go to [beammp.com](https://beammp.com/) and click **Download Server**. You are taken to the server's GitHub release page.
-3. Download the version for your distribution. This guide calls it `BeamMP-Server-xxx`, where `xxx` is the version for your distribution.
+3. Download the file for your distribution and processor type. Its name looks like `BeamMP-Server.debian.12.x86_64`. Release v3.9.4 has builds for Debian 12 and 13 and Ubuntu 22.04 and 24.04, each for `x86_64` and `arm64`. Do not download the `debuginfo` files. This guide calls the file you downloaded `BeamMP-Server-xxx`.
 4. Make a folder somewhere and put `BeamMP-Server-xxx` in it. You can ignore the other downloaded files for now. This is where your server lives.
 5. Open a terminal in that folder and run `chmod +x BeamMP-Server-xxx`, so you have permission to run it.
 6. Start the server once with `./BeamMP-Server-xxx`. It generates the files it needs. When you see text, close it. You now have a `ServerConfig.toml` file next to `BeamMP-Server-xxx`.
@@ -178,7 +178,7 @@ Give other players your server's public IP address. Be careful who you share it 
 
 ### Public server
 
-Other players find it in the server list: they type its name and click **Connect**. The name is the one in your `ServerConfig.toml`. If they cannot find it, tell them to turn off the search filters and set the map to **Any**. The [Keymaster](https://keymaster.beammp.com/) website also shows your server's IP address.
+Other players find it in the server list: they type its name and click **Connect**. The name is the one in your `ServerConfig.toml`. If they cannot find it, tell them to turn off the search filters and set the map to **Any**.
 
 ### "Connection Failed!"
 
@@ -188,7 +188,7 @@ To check for CGNAT, look up the WAN IP address on your router's page and compare
 
 ## Check that players can reach your server
 
-Enter your server's public IPv4 address and port, then click **CheckBeamMP**:
+While the server runs, you can type `nettest` in its console. The server asks the same check service whether players can reach it on its port, and prints the answer. Or enter your server's public IPv4 address and port, then click **CheckBeamMP**:
 
 <form action="https://check.beammp.com/api/v2/beammp" method="get" target="_blank">
   <label for="ip">IP address:</label>
