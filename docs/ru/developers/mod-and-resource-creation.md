@@ -8,6 +8,7 @@ description: "Создайте плагин BeamMP: структура папк�
 ## Структура папок и основы работы с файлами
 
 Структура папок и файлов выглядит так:
+
 ```
 Resources/
 ├─ Client/
@@ -24,6 +25,7 @@ Resources/
       └─ further_lua/
          └─ further.lua
 ```
+
 - Серверный Lua — это необходимый минимум. Чтобы добавлять собственные события, нужны также как минимум клиентский Lua-файл и `modScript.lua`.
 - В папке `Server` находится по одной подпапке для каждого серверного плагина. Хорошая практика — иметь один главный Lua-файл, а остальные Lua-файлы класть в подпапки. Это не обязательно: если файлов несколько, сервер загружает Lua-файлы в алфавитном порядке.
 - В папке `Client` лежат zip-файлы, которые отправляются клиенту, и он загружает их как мод. Любой другой файл в `Client` вызывает ошибку при запуске сервера и в остальном игнорируется.
@@ -34,6 +36,7 @@ Resources/
 ## Серверный Lua
 
 В примере плагина есть и другие примеры. Вот очень простой, который выводит идентификаторы игрока:
+
 ```lua
 function onInit() --runs when plugin is loaded
 
@@ -50,9 +53,11 @@ function onPlayerAuth(player_name, role, isGuest, identifiers)
 	print("onPlayerAuth: player_name: " .. player_name .. " | role: " .. role .. " | isGuest: " .. tostring(isGuest) .. " | identifiers: ip: " .. ip .. " - beammp: " .. beammp)
 end
 ```
+
 `onPlayerAuth` срабатывает, как только игрок хочет подключиться. См. [onPlayerAuth в справочнике по скриптингу](/ru/developers/beammp-scripting/server/latest#onplayerauth).
 
 Ещё один пример использует `onPlayerAuth`, чтобы не пускать гостей. Возвращённое вами сообщение показывается игроку:
+
 ```lua
 function onPlayerAuth(playerName, playerRole, isGuest, identifiers)
   if isGuest then
@@ -60,31 +65,42 @@ function onPlayerAuth(playerName, playerRole, isGuest, identifiers)
   end
 end
 ```
+
 Другие функции, доступные на сервере, описаны в [справочнике по последней версии сервера](/ru/developers/beammp-scripting/server/latest).
 
 ## Клиентский Lua
 
-Клиентский Lua в основном следует [расширениям BeamNG](https://documentation.beamng.com/modding/programming/extensions/). Этот пример выводит в консоль сообщение о том, что плагин загружен:
+Клиентский Lua в основном следует [расширениям BeamNG](https://documentation.beamng.com/modding/programming/extensions/). Этот пример записывает строку в журнал, когда расширение загружено:
+
 ```lua
 local M = {}
 
-if extensions.isExtensionLoaded("examplePlugin") then
-  log("E", "examplePlugin", "examplePlugin loaded on client side")
-  return
+local function onExtensionLoaded()
+  log("I", "examplePlugin", "examplePlugin loaded on client side")
 end
+
+M.onExtensionLoaded = onExtensionLoaded
 
 return M
 ```
-Подробнее о выводе сообщений из Lua в BeamNG см. в [документации BeamNG по отладочному выводу](https://documentation.beamng.com/modding/programming/debugging/#a-add-a-log).
+
+Подробнее о выводе сообщений из Lua в BeamNG см. в [документации BeamNG по отладочному выводу](https://documentation.beamng.com/modding/programming/debugging/#a-add-a-log). О функциях, которые BeamMP добавляет на клиенте, см. [справочник по внутриигровому скриптингу](/ru/developers/beammp-scripting/mod-in-game).
+
+Когда игрок покидает сервер, приславший моды, игра перезагружает свой Lua. Ваше расширение загрузится снова при следующем подключении игрока.
 
 ## modScript.lua
 
 В `modScript.lua` обычно всего две строки:
+
 ```lua
 load('examplePlugin')
 setExtensionUnloadMode('examplePlugin', 'manual')
 ```
+
+Режим выгрузки `'manual'` не даёт игре выгрузить расширение самостоятельно. Не используйте `queueExtensionToLoad`: BeamMP показывает для него ошибку.
+
 Можно добавить строку журнала, чтобы видеть в логах, когда BeamNG обрабатывает ваш `modScript.lua`:
+
 ```lua
 load('examplePlugin')
 setExtensionUnloadMode('examplePlugin', 'manual')

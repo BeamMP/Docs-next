@@ -76,5 +76,8 @@
   "More": "Ещё",
   "Server Setup on VPS": "Настройка сервера на VPS",
   "Changing the Launcher Port": "Изменение порта лаунчера",
-  "Server Configuration": "Настройка сервера"
+  "Server Configuration": "Настройка сервера",
+  "Sign in with BeamMP": "Вход через BeamMP",
+  "Your BeamMP Account": "Ваш аккаунт BeamMP",
+  "Suspensions and Appeals": "Блокировки и апелляции"
 }

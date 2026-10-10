@@ -15,6 +15,7 @@ BeamMP состоит из трёх частей, и для каждой из н
 
 - **Работа над самим BeamMP:** [Настройка среды разработки](/ru/developers/dev-environment-setup).
 - **Написать серверный плагин или мод:** [Создание модов и ресурсов](/ru/developers/mod-and-resource-creation).
+- **Дать пользователям войти в ваше приложение через BeamMP:** [Вход через BeamMP](/ru/developers/sign-in-with-beammp).
 - **Найти функцию или событие:** [справочники по скриптингу](/ru/developers/beammp-scripting/): [Мод (в игре)](/ru/developers/beammp-scripting/mod-in-game) и [Сервер](/ru/developers/beammp-scripting/server/latest).
 - **Работа с самой BeamNG.drive:** [Игровая документация](/ru/game-documentation/).
 

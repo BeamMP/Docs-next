@@ -40,9 +40,9 @@ description: "Ответы на частые вопросы о серверах 
 Пока сервер запущен, вы можете проверить, переадресован ли порт, с помощью CheckBeamMP:
 
 <form action="https://check.beammp.com/api/v2/beammp" method="get" target="_blank">
-  <label for="ip">IP address:</label>
+  <label for="ip">IP-адрес:</label>
   <input type="text" id="ip" name="ip"><br>
-  <label for="port">Port:</label>
+  <label for="port">Порт:</label>
   <input type="text" id="port" name="port"><br>
   <input type="submit" value="CheckBeamMP">
 </form>
@@ -59,6 +59,12 @@ description: "Ответы на частые вопросы о серверах 
 
 <!--@include: ../_parts/faq-code-and-bugs.md-->
 
+### Сколько AuthKey у меня может быть и как получить больше?
+
+По умолчанию у аккаунта может быть 2 AuthKey. Больше ключей дают уровни подписки на Patreon и буст сервера BeamMP в Discord. В разделе **Keymaster** на [BeamMP Accounts](https://accounts.beammp.com) видно, сколько ключей вы использовали и откуда взялся каждый дополнительный ключ. Порядок действий описан в разделе [Получение AuthKey](/ru/server-owners/host-a-server#get-an-authkey).
+
 ### Мой AuthKey скомпрометирован. Что делать?
 
-Если вы считаете, что один из ваших AuthKey скомпрометирован, создайте тикет **Account Support** в [Discord](https://discord.gg/beammp).
+Замените ключ в **Keymaster**. Старый ключ перестанет работать сразу же. Впишите новый ключ в `ServerConfig.toml` и перезапустите сервер. Порядок действий описан в разделе [Получение AuthKey](/ru/server-owners/host-a-server#get-an-authkey).
+
+Если вы не можете заменить ключ самостоятельно, например потому, что не можете войти в BeamMP Accounts, создайте тикет **Account Support** в [Discord](https://discord.gg/beammp).
