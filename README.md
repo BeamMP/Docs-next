@@ -45,13 +45,14 @@ How a page should read (voice, page layout, when to use each box, images, links,
 ## Checks
 
 ```bash
-npm test            # tests for the check tooling itself
-npm run check       # checks the pages, and fails if anything got worse
+npm test                      # tests for the check tooling itself
+npm run check                 # checks the pages, and fails if anything got worse
+npm run check:translations    # lists translations that are out of date (warns, never fails)
 ```
 
-`npm run check` looks for MkDocs syntax that VitePress does not understand, boxes that are left open, pages that do not compile, and dead links. Many pages still have problems from the move to VitePress, so they are saved in `scripts/docs-check-baseline.json`. The check fails only when a page gets **worse** than its baseline. When you fix problems, run `npm run check:update-baseline` and commit the smaller file, so they stay fixed.
+`npm run check` looks for MkDocs syntax that VitePress does not understand, boxes that are left open, pages that do not compile, dead links, missing images, and old addresses of the previous site that no longer work. It has no known problems today: `scripts/docs-check-baseline.json` is empty and should stay that way. A pull request that adds a problem fails the check.
 
-The same checks run on every pull request.
+The tests, the check and a build run on every pull request.
 
 ## Deployment
 
@@ -63,7 +64,7 @@ Every push to `main` is built and published to GitHub Pages by `.github/workflow
         .vitepress/   # Site configuration, navigation, theme, and site.ts (the repository and address).
         en/ de/ ...   # The pages, one folder per language, each at its final path.
         assets/       # Images and other files.
-    scripts/          # The check tooling, its baseline, and old-addresses.txt (see below).
+    scripts/          # The check tooling, its baseline, old-addresses.txt and translation-sources.json (see below).
     tests/            # Tests for the check tooling.
     STYLE_GUIDE.md    # How a page is written.
 
@@ -74,22 +75,28 @@ fails if any of those addresses stops working.
 
 ## Translations
 
-The BeamMP Docs are translated in multiple languages. The current progress of this sits at: [![gitlocalized ](https://gitlocalize.com/repo/9180/whole_project/badge.svg)](https://gitlocalize.com/repo/9180?utm_source=badge)
+The docs are in English, German, Spanish, French, Italian, Russian and Chinese. English is the master: every other language folder has the same pages at the same paths, and a page is changed in English first.
 
-We use [GitLocalize](https://gitlocalize.com/) for managing this. You can contribute if you wish here: https://gitlocalize.com/repo/9180
+### When you change an English page
 
-The individual language progress is as follows:
+1. Make the change in `docs/en/`.
+2. Run `npm run check:translations`. It lists the translations that are now out of date, because the English page they were made from changed. A shared part (`_parts/`) counts for every page that includes it.
+3. Update each translation, or say in your pull request which ones you could not do. The list is a warning, not a failure, so an English change is never blocked by it, but the languages fall behind until someone updates them.
+4. After you update a translation from the current English, record it:
 
-| Language | Badge                                                                                                                     |
-|----------|---------------------------------------------------------------------------------------------------------------------------|
-| German   | [![gitlocalized ](https://gitlocalize.com/repo/9180/de/badge.svg)](https://gitlocalize.com/repo/9180/de?utm_source=badge) |
-| Spanish  | [![gitlocalized ](https://gitlocalize.com/repo/9180/es/badge.svg)](https://gitlocalize.com/repo/9180/es?utm_source=badge) |
-| French   | [![gitlocalized ](https://gitlocalize.com/repo/9180/fr/badge.svg)](https://gitlocalize.com/repo/9180/fr?utm_source=badge) |
-| Italian  | [![gitlocalized ](https://gitlocalize.com/repo/9180/it/badge.svg)](https://gitlocalize.com/repo/9180/it?utm_source=badge) |
-| Russian  | [![gitlocalized ](https://gitlocalize.com/repo/9180/ru/badge.svg)](https://gitlocalize.com/repo/9180/ru?utm_source=badge) |
-| Chinese  | [![gitlocalized ](https://gitlocalize.com/repo/9180/zh/badge.svg)](https://gitlocalize.com/repo/9180/zh?utm_source=badge) |
+   ```bash
+   npm run check:translations -- --record de/players/faq.md   # one language
+   npm run check:translations -- --record en/players/faq.md   # every language that has the page
+   ```
 
-> [!NOTE]
-> GitLocalize may show some paragraphs as "not translated" while in fact they already are, messing up the whole page.
->
-> Please double check if the page is already translated before committing anything!
+   This writes `scripts/translation-sources.json`. Record only when the translation matches the English, because the list trusts it.
+
+### How to translate
+
+- Translate the text, not the code. Commands, file names, settings keys, Lua and TOML stay as they are, and so do links to other pages (only the language part of the path changes, for example `/en/` to `/de/`).
+- Keep the structure: the same headings, boxes, images and links as the English page.
+- **BeamMP's own labels** (the mod's settings and buttons): the game shows them in the player's language where the mod has a translation. For French and Chinese the mod has one, so use the exact label from the mod's `locales/translations/<language>/beammp/` files. For German, Spanish, Italian and Russian the game shows the English label, so keep the English label in the translated page.
+- Labels that belong to BeamNG.drive itself are written as the game shows them in that language.
+- Do not change the legacy scripting page (`developers/beammp-scripting/server/legacy-v2.md`) in any language. It is not maintained.
+- A native speaker reading a page is welcome at any time: open a pull request with the corrections.
+

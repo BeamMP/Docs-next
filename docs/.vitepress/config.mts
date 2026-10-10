@@ -109,6 +109,8 @@ const baseNav: NavItem[] = [
     items: [
       { text: 'Gameplay Basics', link: '/players/gameplay-basics' },
       { text: 'Multiplayer Settings', link: '/players/multiplayer-settings' },
+      { text: 'Your BeamMP Account', link: '/players/account' },
+      { text: 'Suspensions and Appeals', link: '/players/suspensions-and-appeals' },
       { text: 'Player FAQ', link: '/players/faq' },
       { text: 'Game FAQ', link: '/players/game-faq' },
       { text: 'Mod Safety', link: '/players/mod-safety' }
@@ -133,6 +135,7 @@ const baseNav: NavItem[] = [
     items: [
       { text: 'Development Environment Setup', link: '/developers/dev-environment-setup' },
       { text: 'Mod & Resource Creation', link: '/developers/mod-and-resource-creation' },
+      { text: 'Sign in with BeamMP', link: '/developers/sign-in-with-beammp' },
       {
         text: 'BeamMP Scripting Reference',
         items: [

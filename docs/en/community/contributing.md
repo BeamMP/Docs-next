@@ -37,4 +37,10 @@ A member of the BeamMP Mod Team reviews your pull request, and either approves i
 
 ## Translating
 
-The docs are translated into several languages, using [GitLocalize](https://gitlocalize.com/repo/9180). GitLocalize can show a paragraph as "not translated" when it already is, so check that a page is not already translated before you change it.
+English is the master. The other languages have the same pages at the same paths, so a change starts in the English page.
+
+1. Run `npm run check:translations`. It lists the translations that are out of date because their English page changed.
+2. Update each one from the English page. Keep the headings, boxes, images and links, and do not translate code, commands, file names or settings keys.
+3. Record the update: `npm run check:translations -- --record de/players/faq.md`.
+
+For the mod's own settings and buttons, French and Chinese use the exact labels from the mod's translation files. German, Spanish, Italian and Russian keep the English labels, because the game shows English there. The full rules are in the [README](https://github.com/__repo__#translations).
