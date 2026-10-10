@@ -47,9 +47,11 @@ BeamMP Staff are not bound to moderate strictly by these rules and may operate a
 
 ## How to appeal actions against you:
 
+If your BeamMP account is suspended, appeal in BeamMP Accounts. See [Suspensions and Appeals](/en/players/suspensions-and-appeals).
+
 ### Ban appeals may be submitted at <a href="https://docs.google.com/forms/d/1MaTPKM-MHQU5lUtxeOKz3C7OoI6Xbu5RX5AJdX-UOz4" class="inline-onebox">Ban Appeal - BeamMP</a>.
 
-All ban appeals are investigated thoroughly, involving at least two (2) members of the staff/moderation team that were not involved in the case-at-hand.  The issuing staff member will be allowed to comment, but will not be otherwise involved in the appeal decision.  These appeal outcomes are final. BeamMP reserves the right to allow or not allow members as they deem appropriate according to the BeamMP Community Rules (as above), [Discord ToS](https://discord.com/terms), and other factors. 
+All ban appeals made with this form are investigated thoroughly, involving at least two (2) members of the staff/moderation team that were not involved in the case-at-hand.  The issuing staff member will be allowed to comment, but will not be otherwise involved in the appeal decision.  These appeal outcomes are final. BeamMP reserves the right to allow or not allow members as they deem appropriate according to the BeamMP Community Rules (as above), [Discord ToS](https://discord.com/terms), and other factors. 
 
 ::: warning
 In the event of action taken against you, you are prohibited from creating a new Discord or BeamMP account to circumvent the ban.

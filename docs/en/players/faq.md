@@ -1,5 +1,5 @@
 ---
-description: "Answers to BeamMP account questions: linking Discord, getting early access, and getting your Patreon perks."
+description: "Answers to BeamMP account questions: signing in, suspensions and appeals, linking Discord and Patreon, getting early access, and getting your Patreon perks."
 ---
 # Player FAQ
 
@@ -9,25 +9,53 @@ Questions about your BeamMP account and supporting the project. For questions ab
 
 ### How do I link my Discord account?
 
-Linking your Discord and BeamMP accounts is a new feature. Go to your [forum account preferences](https://forum.beammp.com/my/preferences/account) and connect your Discord account under **Associated Accounts**. This is only visible when 2FA is disabled on the forum.
+Sign in to [BeamMP Accounts](https://accounts.beammp.com), open **Your Profile**, go to **Linked Accounts** and click **Link** next to **Discord**. Finish the sign-in in the window that opens. The steps are in [Your BeamMP Account](/en/players/account#linked-accounts).
 
 ## Early access and Patreon
 
 ### How do I get early access?
 
-You get early access, including the purple nametag and other benefits, by supporting us financially. You can buy a tier on [Patreon](https://patreon.com/BeamMP), donate, or boost the Discord server.
+You get early access, including the purple `[Early Access]` nametag and other benefits, by supporting us financially. You can buy a tier on [Patreon](https://patreon.com/BeamMP), donate, or boost the Discord server.
 
 - Donating **x** US$ gives you **x** additional server keys, plus the early access benefits.
-- Boosting the Discord server gives you 5 additional server keys in total (not 5 per boost), plus the early access benefits.
+- A Patreon tier gives you one additional server key for each whole US$ of its price, plus the early access benefits if the tier includes them.
+- Boosting the Discord server gives you 5 additional server keys in total (not 5 per boost), plus the early access benefits. Link your Discord account in BeamMP Accounts first.
+
+Server keys are managed in **Keymaster** in BeamMP Accounts. See [Get an AuthKey](/en/server-owners/host-a-server#get-an-authkey).
 
 ### I subscribed on Patreon. How do I get my perks?
 
 You get your perks automatically if you do both of these:
 
 1. Link your Discord account on [Patreon](https://www.patreon.com/settings/apps/discord), to receive the roles and access in the Discord server.
-2. Use the same email address on Patreon as for your BeamMP account on the [forum](https://forum.beammp.com/).
+2. Link your Patreon account in BeamMP Accounts. Open **Your Profile**, go to **Linked Accounts** and click **Link** next to **Patreon**.
 
-It can take a few hours, sometimes up to 12, for the system to sync. If you have done both and still have no perks after 12 hours, contact BeamMP support.
+If you do not link Patreon, BeamMP matches the email address of your Patreon account to a verified email address on your BeamMP account. One Patreon account can be linked to one BeamMP account.
+
+BeamMP updates your perks when Patreon reports a change to your membership, and checks every supporter once a day. If you have done both and still have no perks after 24 hours, contact BeamMP support.
+
+If you cancel, you keep early access until your next charge date.
+
+## Signing in and suspensions
+
+### How do I create a BeamMP account or sign in?
+
+Create and manage your account at [BeamMP Accounts](https://accounts.beammp.com). You sign in with your username or email address and your password. See [Your BeamMP Account](/en/players/account).
+
+### I cannot sign in. What should I do?
+
+- If you forgot your password, click **Forgot password?** on the sign-in page.
+- If your email address is not verified, open the verification link BeamMP sent you. Signing in again sends a new link.
+- If the sign-in page says your account needs to be recovered, click **Start Recovery** on the sign-in page.
+- If it says your account is suspended, see below.
+
+### My account is suspended. Can I appeal?
+
+Yes. Sign in to [BeamMP Accounts](https://accounts.beammp.com) and click **Appeal** on the **Home** page. See [Suspensions and Appeals](/en/players/suspensions-and-appeals).
+
+### How do I change my username?
+
+In [BeamMP Accounts](https://accounts.beammp.com), open **Your Profile** and send a username change request. A moderator approves it. A change to capital and lowercase letters only applies at once. See [Change your username](/en/players/account#change-your-username).
 
 ## I have more questions
 

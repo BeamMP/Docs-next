@@ -59,6 +59,12 @@ To join your own self-hosted server through the server list, your router must su
 
 <!--@include: ../_parts/faq-code-and-bugs.md-->
 
+### How many AuthKeys can I have, and how do I get more?
+
+By default an account can have 2 AuthKeys. Patreon tiers and boosting the BeamMP Discord server add more. **Keymaster** in [BeamMP Accounts](https://accounts.beammp.com) shows how many keys you have used and where each extra key comes from. The steps are in [Get an AuthKey](/en/server-owners/host-a-server#get-an-authkey).
+
 ### My AuthKey was compromised. What should I do?
 
-If you think one of your AuthKeys is compromised, create an **Account Support** ticket on [Discord](https://discord.gg/beammp).
+Rotate the key in **Keymaster**. The old key stops working at once. Put the new key in your `ServerConfig.toml` and restart the server. The steps are in [Get an AuthKey](/en/server-owners/host-a-server#get-an-authkey).
+
+If you cannot rotate the key yourself, for example because you cannot sign in to BeamMP Accounts, create an **Account Support** ticket on [Discord](https://discord.gg/beammp).
