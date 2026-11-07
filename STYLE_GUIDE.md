@@ -89,10 +89,14 @@ box. Give a box a title only if it adds something ("Windows only"); otherwise le
 - Only when a picture saves a paragraph: a window that is hard to find, a setting that is easy to
   misread. Not for decoration.
 - Always alt text that says what the picture shows, not "image" or "screenshot".
-- Store in `docs/assets/content/`, named for what it shows (`router-port-forwarding.png`).
-  Do not write `<figure>` or width attributes in a page; images fill the column.
+- Store in `docs/assets/content/`, named for what it shows (`router-port-forwarding.png`). A page
+  with several images can keep them in a subfolder named for the page (`docs/assets/content/link-patreon/`).
+- Link an image with a relative path from the page: from `docs/en/players/page.md` that is
+  `![Alt text](../../assets/content/name.png)`. Do not use a root path such as `/assets/content/name.png`:
+  a root path only works for a file in `docs/public`, and `npm run check` fails on it.
+- Do not write `<figure>` or width attributes in a page; images fill the column.
 - If the picture looks wrong on the other theme (a white window on a dark page), give a light and a
-  dark version: `![Alt text](/assets/content/name-light.png){.only-light}` and the same with
+  dark version: `![Alt text](../../assets/content/name-light.png){.only-light}` and the same with
   `-dark` and `{.only-dark}`. Crop to the relevant part.
 - Never a screenshot containing someone's name, IP address, key or account details.
 
