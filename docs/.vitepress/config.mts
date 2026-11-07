@@ -72,7 +72,7 @@ const pageExists = (locale: LocaleKey, link: string) => {
 const localizeItems = (locale: LocaleKey, items: NavItem[]): DefaultTheme.NavItem[] => {
   return items
     .filter((item) => {
-      if (item.items) return true
+      if (item.items) return !item.link || item.link.startsWith('http') || pageExists(locale, item.link)
       if (item.link && !item.link.startsWith('http')) return pageExists(locale, item.link)
       return true
     })
@@ -110,6 +110,11 @@ const baseNav: NavItem[] = [
       { text: 'Gameplay Basics', link: '/players/gameplay-basics' },
       { text: 'Multiplayer Settings', link: '/players/multiplayer-settings' },
       { text: 'Your BeamMP Account', link: '/players/account' },
+      {
+        text: 'Patreon and Early Access',
+        link: '/players/patreon-and-early-access',
+        items: [{ text: 'Link Your Patreon Account', link: '/players/link-patreon' }]
+      },
       { text: 'Suspensions and Appeals', link: '/players/suspensions-and-appeals' },
       { text: 'Player FAQ', link: '/players/faq' },
       { text: 'Game FAQ', link: '/players/game-faq' },
@@ -120,10 +125,12 @@ const baseNav: NavItem[] = [
     text: 'Server Owners',
     items: [
       { text: 'Host a Server', link: '/server-owners/host-a-server' },
-      { text: 'Server Setup on VPS', link: '/server-owners/setup-vps' },
+      { text: 'Get an AuthKey', link: '/server-owners/authkey' },
       { text: 'Port Forwarding', link: '/server-owners/port-forwarding' },
       { text: 'Check for CGNAT', link: '/server-owners/cgnat' },
       { text: 'Server Configuration', link: '/server-owners/configuration' },
+      { text: 'Installing Mods', link: '/server-owners/mods' },
+      { text: 'Server Customization', link: '/server-owners/server-customization' },
       { text: 'Server Maintenance', link: '/server-owners/maintenance' },
       { text: 'Server FAQ', link: '/server-owners/faq' },
       { text: 'Server Manual', link: '/server-owners/manual' },
@@ -249,7 +256,7 @@ const movedPages: Record<string, string> = {
   'FAQ/Change-launcher-port': 'troubleshooting/launcher-port',
   'FAQ/game-faq': 'players/game-faq',
   'server/manual': 'server-owners/manual',
-  'server/setup-vps': 'server-owners/setup-vps',
+  'server/setup-vps': 'server-owners/host-a-server',
   'API documentation/Client-Side': 'developers/beammp-scripting/mod-in-game',
   'API documentation/Server-Side': 'developers/beammp-scripting/server/latest',
   'beamng/dev/modding/imgui-windows': 'game-documentation/programming/imgui',

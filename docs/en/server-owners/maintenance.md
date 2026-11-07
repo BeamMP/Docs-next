@@ -3,7 +3,7 @@ description: "Look after a running BeamMP server: read the server log file, upda
 ---
 # Server Maintenance
 
-How to look after a BeamMP server that is already running: the log file, and updating. For the settings in `ServerConfig.toml`, see [Server Configuration](/en/server-owners/configuration).
+How to look after a BeamMP server that is already running: the log file, and updates. For the settings in `ServerConfig.toml`, see [Server Configuration](/en/server-owners/configuration).
 
 ## The server log file
 
@@ -32,45 +32,35 @@ Where:
 	- `ERROR`: Something went very wrong, or was very unexpected
 - `$MESSAGE` the message itself, usually something that you should pay attention to and understand. In some cases this might be cryptic, but the general rule is that, as long as nothing is visibly wrong with the server and there are no ERRORs, all is good.
 
-## Updating the server
+## Updating the server {#updating-the-server}
 
-### Why to update
+Update the server whenever a new version is released. Updates fix bugs and improve stability and security.
 
-Whenever a new update is released, you're advised to update your server. Usually this involves bug fixes, stability improvements and security improvements, next to the general new features etc. that are introduced.
+New versions are announced in the updates channel on the [Discord server](https://discord.gg/beammp), on the [forum](https://forum.beammp.com), and on the [GitHub releases page](https://github.com/BeamMP/BeamMP-Server/releases).
 
-To receive news about updates when they come out, either follow the Discord server's “update” channel, look out for it on the forums, or look at / ask the [GitHub releases page](https://github.com/BeamMP/BeamMP-Server/releases).
+### With a hosting company
 
-### How to update
+The hosting company updates the server. The steps below usually do not work there. If your server stays on an old version, contact the company.
 
-#### If you are using a BeamMP partnered hosting provider
+### On Windows
 
-If you are using a BeamMP partnered hosting provider, the instructions below likely won't work. We recommend waiting for more details from your hosting provider, or contacting them for assistance.
+1. Stop the server.
+2. Download the Windows server from [beammp.com](https://beammp.com). You get a new `BeamMP-Server.exe`.
+3. Move the new `BeamMP-Server.exe` into your server's folder, the one with `ServerConfig.toml`, and replace the old file.
+4. Start the server.
 
-#### Managing the server yourself
+### On Linux
 
-The server is updated by replacing the old executable with the new one. If you are unsure how to do this, there are step-by-step instructions for Windows and Linux below.
+1. Stop the server.
+2. Download the file for your distribution and processor from the [latest release page](https://github.com/BeamMP/BeamMP-Server/releases/latest), as when you [installed the server](/en/server-owners/host-a-server#install-the-server).
+3. Move it into your server's folder, the one with `ServerConfig.toml`, and replace the old file.
+4. Make it executable, using the name of the file: `chmod +x BeamMP-Server.debian.12.x86_64`.
+5. Start the server.
 
-If you built from source, you just rebuild. Make sure to run `git submodule update --init --recursive` before you rebuild.
-
-#### On Windows
-
-1. Ensure you have installed the [Visual C++ Redistributables](https://aka.ms/vs/17/release/vc_redist.x64.exe) in order to run the server.
-2. Go to [BeamMP.com](https://beammp.com/) and click the “Download Server” button.
-3. Once downloaded, you should see one file called `BeamMP-Server.exe`. We will call this one the “new executable”.
-4. Go to the folder where your current `BeamMP-Server.exe` executable is located (same folder where your `ServerConfig.toml` is, usually). We will call this one the “old executable”.
-5. Replace the old executable with the new executable (for example by copying or moving the new executable into the folder).
-
-#### On Linux
-
-1. Go to [BeamMP.com](https://beammp.com/) and click the “Download Server” button, you will be redirected to the server's Github release page.
-2. Download the file for your distribution and processor type. Its name looks like `BeamMP-Server.debian.12.x86_64`. Do not download the `debuginfo` files. For simplicity, it will now be called `BeamMP-Server-xxx` from now on, where `xxx` denotes the version for the distro you're using.
-3. Once downloaded, you should see one file called `BeamMP-Server-xxx` depending on the version you've downloaded. We will call this one the “new executable”.
-4. Go to the folder where your current `BeamMP-Server-xxx` executable is located (same folder where your `ServerConfig.toml` is, usually). We will call this one the “old executable”.
-5. Replace the old executable with the new executable (for example by copying or moving the new executable into the folder).
-6. Open a terminal in that folder where you just replaced the executable, and run `sudo chmod +x BeamMP-Server-xxx`. This will make sure the server can be run.
+If you built the server from source, update the source, run `git submodule update --init --recursive`, and build again.
 
 ### Update messages
 
 The server does not update itself. It checks for a newer version when it starts, and prints a message if there is one. It prints the message again at the interval `UpdateReminderTime` sets, unless `ImScaredOfUpdates` is `true`, which is the default. Both settings are in [Server Configuration](/en/server-owners/configuration#the-misc-section). A hosting provider can replace the message: see the provider settings in the [Server Manual](/en/server-owners/manual#provider-settings).
 
-To check for a new version from a script, ask the GitHub API for the latest release by checking the server's version against the tags. You can get that by GET'ing from `https://api.github.com/repos/BeamMP/BeamMP-Server/git/refs/tags`.
+To check for a new version from a script, compare the server's version with the release tags that the GitHub API returns from `https://api.github.com/repos/BeamMP/BeamMP-Server/git/refs/tags`.

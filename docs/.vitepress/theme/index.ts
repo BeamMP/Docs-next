@@ -4,6 +4,7 @@ import { h } from 'vue'
 import { enhanceAppWithTabs } from 'vitepress-plugin-tabs/client'
 import AppFooter from './components/AppFooter.vue'
 import NavGithub from './components/NavGithub.vue'
+import ServerNamePreview from './components/ServerNamePreview.vue'
 import './tokens.css'
 import './custom.css'
 import './layout.css'
@@ -19,5 +20,6 @@ export default {
   },
   enhanceApp({ app }) {
     enhanceAppWithTabs(app)
+    app.component('ServerNamePreview', ServerNamePreview)
   },
 } satisfies Theme

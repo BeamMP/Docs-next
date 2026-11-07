@@ -3,7 +3,7 @@ description: "Answers to common BeamMP player questions: installing, game versio
 ---
 # Game FAQ
 
-Common questions about playing BeamMP. For account, Patreon and early access questions, see the [Player FAQ](/en/players/faq).
+Common questions about playing BeamMP. For account questions, see the [Player FAQ](/en/players/faq). For Patreon and early access, see [Patreon and Early Access](/en/players/patreon-and-early-access).
 
 ## Playing
 

@@ -1,21 +1,10 @@
-::: warning This site is under construction!
-This site is being actively worked on. 
-
-Feel you could help? Please do by clicking on the page with a pencil on the right!
-
-This can be done any page too.
-:::
-
-# Server Scripting Reference
-## Server Version 2.X
-::: warning
-BeamMP server version 2.X is now unsupported. This documentation is provided as a reference only.
+# Server Version 2.x Server Scripting Reference
+::: warning Are you in the right place?
+BeamMP server version v2.x is very old and unsupported. This documentation is provided as a reference only, and may not be correct.
 Please update to the latest version for maintenance and support.
-:::
 ---
-
-> This is 2.x scripting. Only refer to this if your server is old/outdated (version 2.x.x). For the latest documentation see [here](https://docs.beammp.com/scripting/server/latest-server-reference).
-{.is-warning}
+The v3.x documentation can be found [here](./latest)
+:::
 
 ### Notes
 

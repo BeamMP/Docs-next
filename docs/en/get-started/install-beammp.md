@@ -9,7 +9,11 @@ You need the BeamMP Launcher. On Windows an installer sets it up. On Linux you b
 BeamMP does not work with pirated or outdated copies of BeamNG.drive.
 :::
 
-## Install on Windows
+## Installation Procedure
+
+:::: tabs
+
+== Windows
 
 1. Go to [beammp.com](https://beammp.com/) and click **Download Now**.
 2. Run `BeamMP_Installer.exe` and follow the instructions. Keep **Create a desktop shortcut** selected if you want an icon on your desktop.
@@ -17,19 +21,27 @@ BeamMP does not work with pirated or outdated copies of BeamNG.drive.
 
 The installer does not need administrator rights. By default it puts the Launcher in `%AppData%\BeamMP-Launcher`. The Launcher updates itself when it starts. If it cannot, see [Launcher Update Issues](/en/troubleshooting/launcher-update).
 
-Next: [join your first server](/en/get-started/join-first-server).
-
-## Install on Linux
+== Linux
 
 There is no installer or download for Linux, so you build the Launcher yourself. You need a basic understanding of how to build an application.
 
 ### Before you start
 
-- Install BeamNG.drive through Steam. The Launcher finds the game only through Steam. It looks in these folders under your home folder: `.steam/root/steamapps`, `.steam/steam/steamapps`, `.var/app/com.valvesoftware.Steam/.steam/root/steamapps` (Flatpak) and `snap/steam/common/.local/share/Steam/steamapps` (Snap). The game must be in a Steam library that is listed in `libraryfolders.vdf`.
+- Install BeamNG.drive through Steam. The Launcher finds the game only through Steam. It looks in these folders under your home folder: 
+   * `.steam/root/steamapps` 
+   * `.steam/steam/steamapps`
+   * `.var/app/com.valvesoftware.Steam/.steam/root/steamapps` (Flatpak) 
+   * `snap/steam/common/.local/share/Steam/steamapps` (Snap). 
+- The game must be in a Steam library that is listed in `libraryfolders.vdf`.
 - The Launcher reads and writes the game's user folder at `~/.local/share/BeamNG/BeamNG.drive/current/`. The `--user-path` option has no effect on Linux.
 - You need a compiler that supports C++20 and `std::format`, for example GCC 13 or newer.
 
-If the Launcher cannot find the game, it shows `Unsupported Steam installation.`, `libraryfolders.vdf is missing.` or `The game directory was not found.`. See [Error Codes](/en/troubleshooting/error-codes).
+**If the Launcher cannot find the game**, it shows one of the following errors:
+   * `Unsupported Steam installation.`
+   * `libraryfolders.vdf is missing.`
+   * `The game directory was not found.` 
+
+See [Error Codes](/en/troubleshooting/error-codes) for further information.
 
 ::: warning
 On Linux, joining a second server after you leave the first can fail. The Launcher window then shows `(Proxy) bind failed with error: 98` or `Connection still alive terminating`. Close the game and the Launcher, then start them again. No Launcher release up to v2.8.1 fixes this.
@@ -158,7 +170,16 @@ Change `~/BeamMP/` to the folder where you put the Launcher you built. The Launc
 To show emoji in server names in the server list, and in the in-game chat, you need a font that has them. One option is the [Linux port of the Windows Segoe UI emoji font](https://github.com/mrbvrz/segoe-ui-linux).
 :::
 
-### Update the Launcher on Linux
+::::
+
+## Updating the Launcher
+
+:::: tabs
+
+== Windows
+The Launcher will check for and download updates upon starting automatically. If it cannot, see [Launcher Update Issues](/en/troubleshooting/launcher-update).
+
+== Linux
 
 The Linux Launcher does not update itself. When a newer version exists, it shows `Auto update is NOT implemented for the Linux version. Please update manually ASAP as updates contain security patches.` Rebuild it from the tag of the newest release:
 
@@ -181,4 +202,4 @@ The Linux Launcher does not update itself. When a newer version exists, it shows
    ./BeamMP-Launcher
    ```
 
-Next: [join your first server](/en/get-started/join-first-server).
+::::

@@ -98,9 +98,9 @@ The **Security** tab lists the devices that are signed in to your account. Click
 Open **Your Profile** and go to **Linked Accounts**. Click **Link** next to a service and finish the sign-in in the window that opens. Click **Unlink** to remove the link at any time.
 
 - **Discord** brings your old server keys to your account. It also lets BeamMP give you the extra server keys of a Discord Server Boost.
-- **Patreon** connects your Patreon membership, so BeamMP gives you your supporter perks. A Patreon account can be linked to one BeamMP account.
+- **Patreon** connects your Patreon membership, so BeamMP gives you your supporter perks. A Patreon account can be linked to one BeamMP account. See [Link Your Patreon Account](/en/players/link-patreon).
 
-See the [Player FAQ](/en/players/faq) for early access and Patreon perks.
+See [Patreon and Early Access](/en/players/patreon-and-early-access) for early access and Patreon perks.
 
 ## Your settings
 

@@ -237,9 +237,11 @@ body {
   font-size: 0.875em;
 }
 
-/* Tables: rounded, bordered, and they scroll sideways instead of widening the page. */
+/* Tables: rounded, bordered, and they scroll sideways instead of widening the page.
+   display:block makes the box full width, so width:fit-content shrinks the border back to the columns. */
 .vp-doc table {
   display: block;
+  width: fit-content;
   max-width: 100%;
   overflow-x: auto;
   border: 1px solid var(--border);
@@ -269,6 +271,71 @@ body {
 .vp-doc th {
   background-color: var(--secondary);
 }
+
+/* BeamMP server-name format codes (^0-^f colours, plus effects).
+   Every chip looks the same and follows the site theme; colours are shown by the swatch only, so the
+   text stays readable in both themes. Swatch colours are the real in-game ones, copied from
+   ui/assets/BeamMP/shared_styles/formatCodes.css in the BeamMP mod, with BeamNG's --bng-* palette
+   variables resolved from the game's ui-vue/src/styles/modules/_colors.scss. */
+.vp-doc .mp-color,
+.vp-doc .mp-effect {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  padding: 0.1em 0.6em;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm, 4px);
+  background-color: #f4f4f5;
+  color: #1c1c1c;
+  white-space: nowrap;
+}
+
+.dark .vp-doc .mp-color,
+.dark .vp-doc .mp-effect {
+  background-color: #1c1c1c;
+  color: #ffffff;
+}
+
+/* The ring keeps black, white and the greys visible on either chip. */
+.vp-doc .mp-color::before {
+  content: "";
+  width: 0.75em;
+  height: 0.75em;
+  border-radius: 2px;
+  background-color: var(--mp);
+  box-shadow: 0 0 0 1px color-mix(in srgb, currentColor 40%, transparent);
+}
+
+/* ^p example: the two lines stack inside the chip. */
+.vp-doc .mp-effect:has(br) {
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 1.3;
+  padding: 0.25em 0.6em;
+}
+
+/* Effects (^l ^o ^n ^m), matching .bold / .italic / .underline / .line-through in formatCodes.css. */
+.vp-doc .mp-bold { font-weight: bold; }
+.vp-doc .mp-italic { font-style: italic; }
+.vp-doc .mp-underline { text-decoration: underline; }
+.vp-doc .mp-line-through { text-decoration: line-through; }
+
+.vp-doc .mp-color-0 { --mp: #131313; }
+.vp-doc .mp-color-1 { --mp: oklch(50.50% 0.2303 263.99); } /* bng-add-indigoblue-600 */
+.vp-doc .mp-color-2 { --mp: oklch(69.59% 0.1416 153.15); } /* bng-add-green-400 */
+.vp-doc .mp-color-3 { --mp: oklch(69.50% 0.1152 219.90); } /* bng-add-babyblue-400 */
+.vp-doc .mp-color-4 { --mp: oklch(50.48% 0.17 30.36); }    /* bng-add-red-600 */
+.vp-doc .mp-color-5 { --mp: oklch(56.46% 0.2621 326.42); } /* bng-add-magenta-550 */
+.vp-doc .mp-color-6 { --mp: oklch(69.58% 0.2043 43.49); }  /* bng-orange-b400 */
+.vp-doc .mp-color-7 { --mp: #aaaaaa; }
+.vp-doc .mp-color-8 { --mp: #555555; }
+.vp-doc .mp-color-9 { --mp: oklch(61.98% 0.194 264.13); }  /* bng-add-indigoblue-500 */
+.vp-doc .mp-color-a { --mp: oklch(79.81% 0.1703 153.54); } /* bng-add-green-200 */
+.vp-doc .mp-color-b { --mp: oklch(79.88% 0.0804 219.66); } /* bng-add-babyblue-200 */
+.vp-doc .mp-color-c { --mp: #ff4545; }
+.vp-doc .mp-color-d { --mp: oklch(75.05% 0.2348 326.77); } /* bng-add-magenta-300 */
+.vp-doc .mp-color-e { --mp: oklch(90.11% 0.1706 100.06); } /* bng-ter-yellow-50 */
+.vp-doc .mp-color-f { --mp: #ffffff; }
 
 /* Previous / next */
 .VPDocFooter .pager-link {

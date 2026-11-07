@@ -1,5 +1,5 @@
 ---
-description: "Answers to BeamMP account questions: signing in, suspensions and appeals, linking Discord and Patreon, getting early access, and getting your Patreon perks."
+description: "Answers to BeamMP account questions: linking Discord, signing in, suspensions and appeals, and changing your username."
 ---
 # Player FAQ
 
@@ -13,28 +13,7 @@ Sign in to [BeamMP Accounts](https://accounts.beammp.com), open **Your Profile**
 
 ## Early access and Patreon
 
-### How do I get early access?
-
-You get early access, including the purple `[Early Access]` nametag and other benefits, by supporting us financially. You can buy a tier on [Patreon](https://patreon.com/BeamMP), donate, or boost the Discord server.
-
-- Donating **x** US$ gives you **x** additional server keys, plus the early access benefits.
-- A Patreon tier gives you one additional server key for each whole US$ of its price, plus the early access benefits if the tier includes them.
-- Boosting the Discord server gives you 5 additional server keys in total (not 5 per boost), plus the early access benefits. Link your Discord account in BeamMP Accounts first.
-
-Server keys are managed in **Keymaster** in BeamMP Accounts. See [Get an AuthKey](/en/server-owners/host-a-server#get-an-authkey).
-
-### I subscribed on Patreon. How do I get my perks?
-
-You get your perks automatically if you do both of these:
-
-1. Link your Discord account on [Patreon](https://www.patreon.com/settings/apps/discord), to receive the roles and access in the Discord server.
-2. Link your Patreon account in BeamMP Accounts. Open **Your Profile**, go to **Linked Accounts** and click **Link** next to **Patreon**.
-
-If you do not link Patreon, BeamMP matches the email address of your Patreon account to a verified email address on your BeamMP account. One Patreon account can be linked to one BeamMP account.
-
-BeamMP updates your perks when Patreon reports a change to your membership, and checks every supporter once a day. If you have done both and still have no perks after 24 hours, contact BeamMP support.
-
-If you cancel, you keep early access until your next charge date.
+For early access, Patreon perks, extra server keys and linking Patreon, see [Patreon and Early Access](/en/players/patreon-and-early-access).
 
 ## Signing in and suspensions
 

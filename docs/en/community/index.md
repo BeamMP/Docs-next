@@ -27,7 +27,7 @@ BeamMP is a community of players, server owners and developers. This is where to
 
 ## Support the project
 
-[Patreon](https://www.patreon.com/c/BeamMP) supporters get early access and extra server keys. Boosting the Discord server also adds server keys. See the [Player FAQ](/en/players/faq) for how it works.
+[Patreon](https://www.patreon.com/c/BeamMP) supporters get early access and extra server keys. Boosting the Discord server also adds server keys. See [Patreon and Early Access](/en/players/patreon-and-early-access) for how it works.
 
 ## Your account
 

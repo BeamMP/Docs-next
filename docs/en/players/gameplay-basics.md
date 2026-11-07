@@ -57,6 +57,8 @@ Mods can add buttons of their own to this menu.
 
 Each player has a nametag above their vehicle. It carries the role tag, and optionally the distance and the names of the players who are spectating the vehicle. You can hide nametags, fade them with distance, and show the distance. The **Player Nametags** key action hides and shows all of them.
 
+![A nametag above a truck in game, showing the player name, the purple Early Access tag and the distance](/assets/content/ea_nametag.png)
+
 The role of a player's BeamMP account sets the tag:
 
 | Tag | Short tag |
