@@ -19,7 +19,7 @@ You get early access and extra server keys by supporting BeamMP financially.
 - **Home page:** the **Home** page of BeamMP Accounts says that you are an Early Access supporter.
 - **Discord roles:** Patreon supporters get roles in the BeamMP Discord server. See [Get your Discord roles](/en/players/link-patreon#get-your-discord-roles).
 
-![An Early Access nametag above a truck in game, showing the player name, the purple Early Access tag and the distance](/assets/content/ea_nametag.png)
+![An Early Access nametag above a truck in game, showing the player name, the purple Early Access tag and the distance](../../assets/content/ea_nametag.png)
 
 ## Extra server keys
 
