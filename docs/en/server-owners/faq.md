@@ -13,7 +13,7 @@ Follow [Host a Server](/en/server-owners/host-a-server). It covers hosting at ho
 
 ### Can I run a server on Linux?
 
-Yes. There are builds for several Debian and Ubuntu versions. See the Linux steps in [Install the server](/en/server-owners/host-a-server#install-the-server). On another distribution, you can build the server from source.
+Yes. There are builds for several Debian and Ubuntu versions. See the Linux steps in [Install the server](/en/server-owners/host-a-server#self-host). On another distribution, you can build the server from source.
 
 ### What are the minimum system requirements?
 
@@ -34,7 +34,7 @@ Players usually see "Connection Failed!", and error code 10060 or 10061 in their
 
 - The server is running, without `[ERROR]` lines in its window.
 - Port `30814`, or the port you set in `ServerConfig.toml`, is forwarded for both TCP and UDP. See [Port Forwarding](/en/server-owners/port-forwarding).
-- The firewall allows the server for both TCP and UDP. On Windows, see [Allow the server through the firewall](/en/troubleshooting/defender-exclusions#allow-the-server-through-the-firewall). Turning the firewall off usually does **not** work. On Linux, see the Linux steps in [Install the server](/en/server-owners/host-a-server#install-the-server).
+- The firewall allows the server for both TCP and UDP. On Windows, see [Allow the server through the firewall](/en/troubleshooting/defender-exclusions#allow-the-server-through-the-firewall). Turning the firewall off usually does **not** work. On Linux, see the Linux steps in [Install the server](/en/server-owners/host-a-server#self-host).
 - You are not using a VPN or tunnelling service. See [Can I use a VPN or tunnelling service?](#can-i-use-a-vpn-or-tunnelling-service).
 
 To test the port, type `nettest` in the server's window, or use the form in [Test the port](/en/server-owners/port-forwarding#test-the-port).
@@ -49,7 +49,7 @@ To join your own home-hosted server through the server list, your router must su
 
 ### Can I use a VPN or tunnelling service? {#can-i-use-a-vpn-or-tunnelling-service}
 
-No. BeamMP does not support VPNs and tunnelling services such as Radmin VPN, Hamachi or Playit. They often cause problems, such as not forwarding UDP traffic. Forward the port instead, or use a [hosting company](/en/server-owners/host-a-server#use-a-hosting-company).
+No. BeamMP does not support VPNs and tunnelling services such as Radmin VPN, Hamachi or Playit. They often cause problems, such as not forwarding UDP traffic. Forward the port instead, or use a [hosting company](/en/server-owners/host-a-server#hosting-provider).
 
 If one of these worked before and stopped, its developers changed their software. BeamMP has no control over that.
 

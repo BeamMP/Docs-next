@@ -52,7 +52,7 @@ The hosting company updates the server. The steps below usually do not work ther
 ### On Linux
 
 1. Stop the server.
-2. Download the file for your distribution and processor from the [latest release page](https://github.com/BeamMP/BeamMP-Server/releases/latest), as when you [installed the server](/en/server-owners/host-a-server#install-the-server).
+2. Download the file for your distribution and processor from the [latest release page](https://github.com/BeamMP/BeamMP-Server/releases/latest), as when you [installed the server](/en/server-owners/host-a-server#self-host).
 3. Move it into your server's folder, the one with `ServerConfig.toml`, and replace the old file.
 4. Make it executable, using the name of the file: `chmod +x BeamMP-Server.debian.12.x86_64`.
 5. Start the server.

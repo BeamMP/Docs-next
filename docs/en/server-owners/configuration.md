@@ -46,7 +46,7 @@ The config has two sections, `[General]` and `[Misc]`. The defaults are those of
 Every time it starts, the server writes `ServerConfig.toml` again with the current values of the `[General]` and `[Misc]` settings only. Comments you added and sections that plugins added, such as `[MyMod]`, are removed. Values set with [environment variables](/en/server-owners/manual#general-settings) are written to the file too, unless `BEAMMP_PROVIDER_DISABLE_CONFIG` is set.
 :::
 
-A hosting company's panel sets these values with its own fields, usually on a **Startup** tab, and overwrites changes you make to the file. See [Use a hosting company](/en/server-owners/host-a-server#use-a-hosting-company).
+A hosting company's panel sets these values with its own fields, usually on a **Startup** tab, and overwrites changes you make to the file. See [Use a hosting company](/en/server-owners/host-a-server#hosting-provider).
 
 ## Stock map paths {#stock-map-paths}
 
