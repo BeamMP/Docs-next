@@ -6,7 +6,7 @@ description: "Install BeamMP on Windows with the installer, or build the BeamMP 
 You need the BeamMP Launcher. On Windows an installer sets it up. On Linux you build it yourself. There is no Launcher for macOS.
 
 ::: warning
-BeamMP does not work with pirated or outdated copies of BeamNG.drive.
+BeamMP does not work with pirated or outdated copies of BeamNG.drive, and the support team cannot help with problems on them.
 :::
 
 ## Installation Procedure
